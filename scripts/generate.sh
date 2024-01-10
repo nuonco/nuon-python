@@ -5,7 +5,7 @@ SPEC=https://ctl.prod.nuon.co/oapi/v3
 #SPEC=http://host.docker.internal:8081/oapi/v3
 
 docker run --rm \
-  -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+  -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
   -i $SPEC \
   -g python \
   -o /local \
