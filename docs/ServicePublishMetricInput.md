@@ -6,7 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **decr** | [**MetricsDecr**](MetricsDecr.md) |  | [optional] 
-**event** | [**MetricsEvent**](MetricsEvent.md) |  | [optional] 
+**event** | [**MetricsEvent**](MetricsEvent.md) | TODO: remove this after test
+Just making a non-functional change to create a promotion PR.
+Generating the python SDK locally, with no changes, actually fixed the synax error.
+This may be an edge case that only happens on the first generation, when it creates all the files from scratch.
+If this doesn&#39;t fix it, I&#39;ll try moving this statsd stuff to the admin api. | [optional] 
 **incr** | [**MetricsIncr**](MetricsIncr.md) |  | [optional] 
 **timing** | [**MetricsTiming**](MetricsTiming.md) |  | [optional] 
 
