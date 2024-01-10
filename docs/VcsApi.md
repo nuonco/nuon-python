@@ -22,6 +22,8 @@ create a vcs connection for Github
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.models.service_create_connection_request import ServiceCreateConnectionRequest
@@ -110,6 +112,8 @@ public connection to create a vcs connection via a callback
 
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.models.service_create_connection_callback_request import ServiceCreateConnectionCallbackRequest
@@ -184,6 +188,8 @@ get all vcs connected repos for an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.service_repository import ServiceRepository
 from nuon.rest import ApiException
@@ -269,6 +275,8 @@ get vcs connection for an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.rest import ApiException
@@ -354,6 +362,8 @@ returns a vcs connection for an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.rest import ApiException

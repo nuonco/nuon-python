@@ -22,6 +22,8 @@ create a release
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_release import AppComponentRelease
 from nuon.models.service_create_component_release_request import ServiceCreateComponentReleaseRequest
@@ -114,6 +116,8 @@ get all releases for an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
@@ -203,6 +207,8 @@ get all releases for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
@@ -292,6 +298,8 @@ get a release
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
@@ -381,6 +389,8 @@ get a release
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_release_step import AppComponentReleaseStep
 from nuon.rest import ApiException

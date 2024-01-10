@@ -18,10 +18,15 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppVCSConnectionCommit(BaseModel):
     """
@@ -55,7 +60,7 @@ class AppVCSConnectionCommit(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppVCSConnectionCommit from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,18 +74,16 @@ class AppVCSConnectionCommit(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppVCSConnectionCommit from a dict"""
         if obj is None:
             return None

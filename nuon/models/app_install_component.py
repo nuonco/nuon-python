@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_component import AppComponent
 from nuon.models.app_install_deploy import AppInstallDeploy
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppInstallComponent(BaseModel):
     """
@@ -56,7 +61,7 @@ class AppInstallComponent(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppInstallComponent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,12 +75,10 @@ class AppInstallComponent(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of component
@@ -91,7 +94,7 @@ class AppInstallComponent(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppInstallComponent from a dict"""
         if obj is None:
             return None
@@ -100,12 +103,12 @@ class AppInstallComponent(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "component": AppComponent.from_dict(obj["component"]) if obj.get("component") is not None else None,
+            "component": AppComponent.from_dict(obj.get("component")) if obj.get("component") is not None else None,
             "component_id": obj.get("component_id"),
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
             "id": obj.get("id"),
-            "install_deploys": [AppInstallDeploy.from_dict(_item) for _item in obj["install_deploys"]] if obj.get("install_deploys") is not None else None,
+            "install_deploys": [AppInstallDeploy.from_dict(_item) for _item in obj.get("install_deploys")] if obj.get("install_deploys") is not None else None,
             "install_id": obj.get("install_id"),
             "updated_at": obj.get("updated_at")
         })

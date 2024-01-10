@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.service_update_app_installer_request_links import ServiceUpdateAppInstallerRequestLinks
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ServiceUpdateAppInstallerRequest(BaseModel):
     """
@@ -50,7 +55,7 @@ class ServiceUpdateAppInstallerRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServiceUpdateAppInstallerRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,12 +69,10 @@ class ServiceUpdateAppInstallerRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of links
@@ -78,7 +81,7 @@ class ServiceUpdateAppInstallerRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ServiceUpdateAppInstallerRequest from a dict"""
         if obj is None:
             return None
@@ -88,7 +91,7 @@ class ServiceUpdateAppInstallerRequest(BaseModel):
 
         _obj = cls.model_validate({
             "description": obj.get("description"),
-            "links": ServiceUpdateAppInstallerRequestLinks.from_dict(obj["links"]) if obj.get("links") is not None else None,
+            "links": ServiceUpdateAppInstallerRequestLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
             "name": obj.get("name")
         })
         return _obj

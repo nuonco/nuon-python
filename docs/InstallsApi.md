@@ -41,6 +41,8 @@ create an app install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.models.service_create_install_request import ServiceCreateInstallRequest
@@ -133,6 +135,8 @@ deploy a build to an install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.models.service_create_install_deploy_request import ServiceCreateInstallDeployRequest
@@ -225,6 +229,8 @@ create install inputs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_inputs import AppInstallInputs
 from nuon.models.service_create_install_inputs_request import ServiceCreateInstallInputsRequest
@@ -317,6 +323,8 @@ delete an install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -405,6 +413,8 @@ get all installs for an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.rest import ApiException
@@ -494,6 +504,8 @@ get an installs current inputs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_inputs import AppInstallInputs
 from nuon.rest import ApiException
@@ -583,6 +595,8 @@ get an install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.rest import ApiException
@@ -672,6 +686,8 @@ get an install component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_component import AppInstallComponent
 from nuon.rest import ApiException
@@ -763,6 +779,8 @@ get an install components deploys
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -854,6 +872,8 @@ get the latest deploy for an install component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -945,6 +965,8 @@ get an installs components
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_component import AppInstallComponent
 from nuon.rest import ApiException
@@ -1034,6 +1056,8 @@ get an install deploy
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -1125,6 +1149,8 @@ get install deploy logs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -1215,6 +1241,8 @@ get install deploy plan
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.planv1_plan import Planv1Plan
 from nuon.rest import ApiException
@@ -1306,6 +1334,8 @@ get all deploys to an install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -1395,6 +1425,8 @@ get an installs inputs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_inputs import AppInstallInputs
 from nuon.rest import ApiException
@@ -1484,6 +1516,8 @@ get an install deploy
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -1573,6 +1607,8 @@ get install sandbox run logs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -1663,6 +1699,8 @@ get an installs sandbox runs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_sandbox_run import AppInstallSandboxRun
 from nuon.rest import ApiException
@@ -1752,6 +1790,8 @@ get all installs for an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.rest import ApiException
@@ -1835,6 +1875,8 @@ create an app install from an installer
 
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.models.service_installer_create_install_request import ServiceInstallerCreateInstallRequest
@@ -1909,6 +1951,8 @@ get an installer install
 
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.rest import ApiException
@@ -1984,6 +2028,8 @@ teardown an install component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install_deploy import AppInstallDeploy
 from nuon.rest import ApiException
@@ -2075,6 +2121,8 @@ update an install
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_install import AppInstall
 from nuon.models.service_update_install_request import ServiceUpdateInstallRequest

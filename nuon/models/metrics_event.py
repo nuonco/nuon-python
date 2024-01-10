@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.statsd_event import StatsdEvent
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class MetricsEvent(BaseModel):
     """
@@ -48,7 +53,7 @@ class MetricsEvent(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of MetricsEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -62,12 +67,10 @@ class MetricsEvent(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of event
@@ -76,7 +79,7 @@ class MetricsEvent(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of MetricsEvent from a dict"""
         if obj is None:
             return None
@@ -85,7 +88,7 @@ class MetricsEvent(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "event": StatsdEvent.from_dict(obj["event"]) if obj.get("event") is not None else None
+            "event": StatsdEvent.from_dict(obj.get("event")) if obj.get("event") is not None else None
         })
         return _obj
 

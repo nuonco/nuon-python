@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.0"
+__version__ = "0.19.15"
 
 # import apis into sdk package
 from nuon.api.apps_api import AppsApi

@@ -12,10 +12,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
+import io
 import warnings
+
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Any, Dict, List, Optional, Tuple, Union
-from typing_extensions import Annotated
+from typing import Dict, List, Optional, Tuple, Union, Any
+
+try:
+    from typing import Annotated
+except ImportError:
+    from typing_extensions import Annotated
 
 from pydantic import Field
 from typing_extensions import Annotated
@@ -25,7 +32,7 @@ from nuon.models.service_create_org_request import ServiceCreateOrgRequest
 from nuon.models.service_create_org_user_request import ServiceCreateOrgUserRequest
 from nuon.models.service_update_org_request import ServiceUpdateOrgRequest
 
-from nuon.api_client import ApiClient, RequestSerialized
+from nuon.api_client import ApiClient
 from nuon.api_response import ApiResponse
 from nuon.rest import RESTResponseType
 
@@ -259,7 +266,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -543,7 +550,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -813,7 +820,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1069,7 +1076,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1325,7 +1332,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1593,7 +1600,7 @@ class OrgsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 

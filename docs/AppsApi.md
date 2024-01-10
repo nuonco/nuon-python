@@ -36,6 +36,8 @@ create an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app import AppApp
 from nuon.models.service_create_app_request import ServiceCreateAppRequest
@@ -126,6 +128,8 @@ Name | Type | Description  | Notes
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_input_config import AppAppInputConfig
 from nuon.models.service_create_app_input_config_request import ServiceCreateAppInputConfigRequest
@@ -217,6 +221,8 @@ create an app installer
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_installer import AppAppInstaller
 from nuon.models.service_create_app_installer_request import ServiceCreateAppInstallerRequest
@@ -309,6 +315,8 @@ create an app runner config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_runner_config import AppAppRunnerConfig
 from nuon.models.service_create_app_runner_config_request import ServiceCreateAppRunnerConfigRequest
@@ -401,6 +409,8 @@ create an app sandbox config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.models.service_create_app_sandbox_config_request import ServiceCreateAppSandboxConfigRequest
@@ -493,6 +503,8 @@ delete an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -581,6 +593,8 @@ delete an app installer
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -669,6 +683,8 @@ get an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app import AppApp
 from nuon.rest import ApiException
@@ -758,6 +774,8 @@ get app input configs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_input_config import AppAppInputConfig
 from nuon.rest import ApiException
@@ -847,6 +865,8 @@ get latest app input config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_input_config import AppAppInputConfig
 from nuon.rest import ApiException
@@ -936,6 +956,8 @@ get an app installer
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_installer import AppAppInstaller
 from nuon.rest import ApiException
@@ -1025,6 +1047,8 @@ get app runner configs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_runner_config import AppAppRunnerConfig
 from nuon.rest import ApiException
@@ -1114,6 +1138,8 @@ get latest app runner config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_runner_config import AppAppRunnerConfig
 from nuon.rest import ApiException
@@ -1203,6 +1229,8 @@ get app sandbox configs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.rest import ApiException
@@ -1292,6 +1320,8 @@ get latest app sandbox config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.rest import ApiException
@@ -1381,6 +1411,8 @@ get all apps for the current org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app import AppApp
 from nuon.rest import ApiException
@@ -1464,6 +1496,8 @@ render an app installer
 
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.service_app_installer import ServiceAppInstaller
 from nuon.rest import ApiException
@@ -1537,6 +1571,8 @@ update an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app import AppApp
 from nuon.models.service_update_app_request import ServiceUpdateAppRequest
@@ -1629,6 +1665,8 @@ update an app installer
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_app_installer import AppAppInstaller
 from nuon.models.service_update_app_installer_request import ServiceUpdateAppInstallerRequest

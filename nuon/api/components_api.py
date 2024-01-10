@@ -12,10 +12,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
+import io
 import warnings
+
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Any, Dict, List, Optional, Tuple, Union
-from typing_extensions import Annotated
+from typing import Dict, List, Optional, Tuple, Union, Any
+
+try:
+    from typing import Annotated
+except ImportError:
+    from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
@@ -37,7 +44,7 @@ from nuon.models.service_create_job_component_config_request import ServiceCreat
 from nuon.models.service_create_terraform_module_component_config_request import ServiceCreateTerraformModuleComponentConfigRequest
 from nuon.models.service_update_component_request import ServiceUpdateComponentRequest
 
-from nuon.api_client import ApiClient, RequestSerialized
+from nuon.api_client import ApiClient
 from nuon.api_response import ApiResponse
 from nuon.rest import RESTResponseType
 
@@ -284,7 +291,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -583,7 +590,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -882,7 +889,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1181,7 +1188,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1480,7 +1487,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -1779,7 +1786,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -2078,7 +2085,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -2364,7 +2371,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -2635,7 +2642,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -2906,7 +2913,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -3177,7 +3184,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -3461,7 +3468,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -3747,7 +3754,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -4033,7 +4040,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -4306,7 +4313,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -4577,7 +4584,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -4848,7 +4855,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -5119,7 +5126,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -5377,7 +5384,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -5659,7 +5666,7 @@ class ComponentsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 

@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_app import AppApp
 from nuon.models.app_app_installer_metadata import AppAppInstallerMetadata
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppAppInstaller(BaseModel):
     """
@@ -57,7 +62,7 @@ class AppAppInstaller(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppAppInstaller from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,12 +76,10 @@ class AppAppInstaller(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of app
@@ -88,7 +91,7 @@ class AppAppInstaller(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppAppInstaller from a dict"""
         if obj is None:
             return None
@@ -97,9 +100,9 @@ class AppAppInstaller(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "app": AppApp.from_dict(obj["app"]) if obj.get("app") is not None else None,
+            "app": AppApp.from_dict(obj.get("app")) if obj.get("app") is not None else None,
             "app_id": obj.get("app_id"),
-            "app_installer_metadata": AppAppInstallerMetadata.from_dict(obj["app_installer_metadata"]) if obj.get("app_installer_metadata") is not None else None,
+            "app_installer_metadata": AppAppInstallerMetadata.from_dict(obj.get("app_installer_metadata")) if obj.get("app_installer_metadata") is not None else None,
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
             "id": obj.get("id"),

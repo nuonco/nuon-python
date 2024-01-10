@@ -13,6 +13,7 @@
 """  # noqa: E501
 
 
+import atexit
 import datetime
 from dateutil.parser import parse
 import json
@@ -22,10 +23,10 @@ import re
 import tempfile
 
 from urllib.parse import quote
-from typing import Tuple, Optional, List, Dict
+from typing import Tuple, Optional, List
 
 from nuon.configuration import Configuration
-from nuon.api_response import ApiResponse, T as ApiResponseT
+from nuon.api_response import ApiResponse
 import nuon.models
 from nuon import rest
 from nuon.exceptions import (
@@ -38,7 +39,6 @@ from nuon.exceptions import (
     ServiceException
 )
 
-RequestSerialized = Tuple[str, str, Dict[str, str], Optional[str], List[str]]
 
 class ApiClient:
     """Generic API client for OpenAPI client library builds.
@@ -87,7 +87,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.0.0/python'
+        self.user_agent = 'OpenAPI-Generator/0.19.15/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -148,7 +148,7 @@ class ApiClient:
         collection_formats=None,
         _host=None,
         _request_auth=None
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         """Builds the HTTP request params needed by the request.
         :param method: Method to call.
@@ -274,23 +274,23 @@ class ApiClient:
             )
 
         except ApiException as e:
+            if e.body:
+                e.body = e.body.decode('utf-8')
             raise e
 
         return response_data
 
     def response_deserialize(
         self,
-        response_data: rest.RESTResponse,
-        response_types_map: Optional[Dict[str, ApiResponseT]]=None
-    ) -> ApiResponse[ApiResponseT]:
+        response_data: rest.RESTResponse = None,
+        response_types_map=None
+    ) -> ApiResponse:
         """Deserializes response into an object.
         :param response_data: RESTResponse object to be deserialized.
         :param response_types_map: dict of response types.
         :return: ApiResponse
         """
 
-        msg = "RESTResponse.read() must be called before passing it to response_deserialize()"
-        assert response_data.data is not None, msg
 
         response_type = response_types_map.get(str(response_data.status), None)
         if not response_type and isinstance(response_data.status, int) and 100 <= response_data.status <= 599:
@@ -403,16 +403,12 @@ class ApiClient:
 
         if isinstance(klass, str):
             if klass.startswith('List['):
-                m = re.match(r'List\[(.*)]', klass)
-                assert m is not None, "Malformed List type definition"
-                sub_kls = m.group(1)
+                sub_kls = re.match(r'List\[(.*)]', klass).group(1)
                 return [self.__deserialize(sub_data, sub_kls)
                         for sub_data in data]
 
             if klass.startswith('Dict['):
-                m = re.match(r'Dict\[([^,]*), (.*)]', klass)
-                assert m is not None, "Malformed Dict type definition"
-                sub_kls = m.group(2)
+                sub_kls = re.match(r'Dict\[([^,]*), (.*)]', klass).group(2)
                 return {k: self.__deserialize(v, sub_kls)
                         for k, v in data.items()}
 
@@ -440,7 +436,7 @@ class ApiClient:
         :param dict collection_formats: Parameter collection formats
         :return: Parameters as list of tuples, collections formatted
         """
-        new_params: List[Tuple[str, str]] = []
+        new_params = []
         if collection_formats is None:
             collection_formats = {}
         for k, v in params.items() if isinstance(params, dict) else params:
@@ -470,7 +466,7 @@ class ApiClient:
         :param dict collection_formats: Parameter collection formats
         :return: URL query string (e.g. a=Hello%20World&b=123)
         """
-        new_params: List[Tuple[str, str]] = []
+        new_params = []
         if collection_formats is None:
             collection_formats = {}
         for k, v in params.items() if isinstance(params, dict) else params:
@@ -655,12 +651,10 @@ class ApiClient:
 
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            m = re.search(
+            filename = re.search(
                 r'filename=[\'"]?([^\'"\s]+)[\'"]?',
                 content_disposition
-            )
-            assert m is not None, "Unexpected 'content-disposition' header value"
-            filename = m.group(1)
+            ).group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
         with open(path, "wb") as f:

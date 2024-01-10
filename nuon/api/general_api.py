@@ -12,10 +12,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
+import io
 import warnings
+
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Any, Dict, List, Optional, Tuple, Union
-from typing_extensions import Annotated
+from typing import Dict, List, Optional, Tuple, Union, Any
+
+try:
+    from typing import Annotated
+except ImportError:
+    from typing_extensions import Annotated
 
 from pydantic import Field
 from typing import List
@@ -24,7 +31,7 @@ from nuon.models.app_user_token import AppUserToken
 from nuon.models.service_cli_config import ServiceCLIConfig
 from nuon.models.service_publish_metric_input import ServicePublishMetricInput
 
-from nuon.api_client import ApiClient, RequestSerialized
+from nuon.api_client import ApiClient
 from nuon.api_response import ApiResponse
 from nuon.rest import RESTResponseType
 
@@ -245,7 +252,7 @@ class GeneralApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -499,7 +506,7 @@ class GeneralApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
@@ -767,7 +774,7 @@ class GeneralApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> RequestSerialized:
+    ) -> Tuple:
 
         _host = None
 
