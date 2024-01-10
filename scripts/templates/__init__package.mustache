@@ -4,7 +4,7 @@
 
 {{>partial_header}}
 
-__version__ = "{{packageVersion}}"
+__version__ = "{{version}}"
 
 # import apis into sdk package
 {{#apiInfo}}{{#apis}}from {{apiPackage}}.{{classFilename}} import {{classname}}
