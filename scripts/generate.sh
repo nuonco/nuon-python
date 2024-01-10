@@ -9,7 +9,7 @@ docker run --rm \
   -i $SPEC \
   -g python \
   -o /local \
-  --package-name nuon
+  --package-name nuon \
   -t /local/scripts/templates
 
 # save version to file for workflows to read from
