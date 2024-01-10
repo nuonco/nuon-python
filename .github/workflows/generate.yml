@@ -1,0 +1,10 @@
+---
+name: Generate
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [generate]
+jobs:
+  generate:
+    uses: nuonco/.github/.github/workflows/generate.yml@main
+    secrets: inherit
