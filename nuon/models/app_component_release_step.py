@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_install_deploy import AppInstallDeploy
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppComponentReleaseStep(BaseModel):
     """
@@ -57,7 +62,7 @@ class AppComponentReleaseStep(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppComponentReleaseStep from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,12 +76,10 @@ class AppComponentReleaseStep(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in install_deploys (list)
@@ -89,7 +92,7 @@ class AppComponentReleaseStep(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppComponentReleaseStep from a dict"""
         if obj is None:
             return None
@@ -103,7 +106,7 @@ class AppComponentReleaseStep(BaseModel):
             "created_by_id": obj.get("created_by_id"),
             "delay": obj.get("delay"),
             "id": obj.get("id"),
-            "install_deploys": [AppInstallDeploy.from_dict(_item) for _item in obj["install_deploys"]] if obj.get("install_deploys") is not None else None,
+            "install_deploys": [AppInstallDeploy.from_dict(_item) for _item in obj.get("install_deploys")] if obj.get("install_deploys") is not None else None,
             "requested_install_ids": obj.get("requested_install_ids"),
             "status": obj.get("status"),
             "status_description": obj.get("status_description"),

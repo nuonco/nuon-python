@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.models.app_sandbox_run_type import AppSandboxRunType
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppInstallSandboxRun(BaseModel):
     """
@@ -57,7 +62,7 @@ class AppInstallSandboxRun(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppInstallSandboxRun from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,12 +76,10 @@ class AppInstallSandboxRun(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of app_sandbox_config
@@ -85,7 +88,7 @@ class AppInstallSandboxRun(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppInstallSandboxRun from a dict"""
         if obj is None:
             return None
@@ -94,7 +97,7 @@ class AppInstallSandboxRun(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "app_sandbox_config": AppAppSandboxConfig.from_dict(obj["app_sandbox_config"]) if obj.get("app_sandbox_config") is not None else None,
+            "app_sandbox_config": AppAppSandboxConfig.from_dict(obj.get("app_sandbox_config")) if obj.get("app_sandbox_config") is not None else None,
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
             "id": obj.get("id"),

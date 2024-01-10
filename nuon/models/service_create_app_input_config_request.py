@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel
 from typing import Any, ClassVar, Dict, List
 from nuon.models.service_app_input_request import ServiceAppInputRequest
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ServiceCreateAppInputConfigRequest(BaseModel):
     """
@@ -48,7 +53,7 @@ class ServiceCreateAppInputConfigRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServiceCreateAppInputConfigRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -62,12 +67,10 @@ class ServiceCreateAppInputConfigRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in inputs (dict)
@@ -80,7 +83,7 @@ class ServiceCreateAppInputConfigRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ServiceCreateAppInputConfigRequest from a dict"""
         if obj is None:
             return None
@@ -91,7 +94,7 @@ class ServiceCreateAppInputConfigRequest(BaseModel):
         _obj = cls.model_validate({
             "inputs": dict(
                 (_k, ServiceAppInputRequest.from_dict(_v))
-                for _k, _v in obj["inputs"].items()
+                for _k, _v in obj.get("inputs").items()
             )
             if obj.get("inputs") is not None
             else None

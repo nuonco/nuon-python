@@ -18,14 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.metrics_decr import MetricsDecr
 from nuon.models.metrics_event import MetricsEvent
 from nuon.models.metrics_incr import MetricsIncr
 from nuon.models.metrics_timing import MetricsTiming
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ServicePublishMetricInput(BaseModel):
     """
@@ -54,7 +59,7 @@ class ServicePublishMetricInput(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServicePublishMetricInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,12 +73,10 @@ class ServicePublishMetricInput(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of decr
@@ -91,7 +94,7 @@ class ServicePublishMetricInput(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ServicePublishMetricInput from a dict"""
         if obj is None:
             return None
@@ -100,10 +103,10 @@ class ServicePublishMetricInput(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "decr": MetricsDecr.from_dict(obj["decr"]) if obj.get("decr") is not None else None,
-            "event": MetricsEvent.from_dict(obj["event"]) if obj.get("event") is not None else None,
-            "incr": MetricsIncr.from_dict(obj["incr"]) if obj.get("incr") is not None else None,
-            "timing": MetricsTiming.from_dict(obj["timing"]) if obj.get("timing") is not None else None
+            "decr": MetricsDecr.from_dict(obj.get("decr")) if obj.get("decr") is not None else None,
+            "event": MetricsEvent.from_dict(obj.get("event")) if obj.get("event") is not None else None,
+            "incr": MetricsIncr.from_dict(obj.get("incr")) if obj.get("incr") is not None else None,
+            "timing": MetricsTiming.from_dict(obj.get("timing")) if obj.get("timing") is not None else None
         })
         return _obj
 

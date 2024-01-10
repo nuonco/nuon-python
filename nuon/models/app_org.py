@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_user_org import AppUserOrg
 from nuon.models.app_vcs_connection import AppVCSConnection
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppOrg(BaseModel):
     """
@@ -59,7 +64,7 @@ class AppOrg(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppOrg from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,12 +78,10 @@ class AppOrg(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in users (list)
@@ -98,7 +101,7 @@ class AppOrg(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppOrg from a dict"""
         if obj is None:
             return None
@@ -116,8 +119,8 @@ class AppOrg(BaseModel):
             "status": obj.get("status"),
             "status_description": obj.get("status_description"),
             "updated_at": obj.get("updated_at"),
-            "users": [AppUserOrg.from_dict(_item) for _item in obj["users"]] if obj.get("users") is not None else None,
-            "vcs_connections": [AppVCSConnection.from_dict(_item) for _item in obj["vcs_connections"]] if obj.get("vcs_connections") is not None else None
+            "users": [AppUserOrg.from_dict(_item) for _item in obj.get("users")] if obj.get("users") is not None else None,
+            "vcs_connections": [AppVCSConnection.from_dict(_item) for _item in obj.get("vcs_connections")] if obj.get("vcs_connections") is not None else None
         })
         return _obj
 

@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
 from nuon.models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ServiceCreateHelmComponentConfigRequest(BaseModel):
     """
@@ -52,7 +57,7 @@ class ServiceCreateHelmComponentConfigRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServiceCreateHelmComponentConfigRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,12 +71,10 @@ class ServiceCreateHelmComponentConfigRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of connected_github_vcs_config
@@ -83,7 +86,7 @@ class ServiceCreateHelmComponentConfigRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ServiceCreateHelmComponentConfigRequest from a dict"""
         if obj is None:
             return None
@@ -93,8 +96,8 @@ class ServiceCreateHelmComponentConfigRequest(BaseModel):
 
         _obj = cls.model_validate({
             "chart_name": obj.get("chart_name"),
-            "connected_github_vcs_config": ServiceConnectedGithubVCSConfigRequest.from_dict(obj["connected_github_vcs_config"]) if obj.get("connected_github_vcs_config") is not None else None,
-            "public_git_vcs_config": ServicePublicGitVCSConfigRequest.from_dict(obj["public_git_vcs_config"]) if obj.get("public_git_vcs_config") is not None else None,
+            "connected_github_vcs_config": ServiceConnectedGithubVCSConfigRequest.from_dict(obj.get("connected_github_vcs_config")) if obj.get("connected_github_vcs_config") is not None else None,
+            "public_git_vcs_config": ServicePublicGitVCSConfigRequest.from_dict(obj.get("public_git_vcs_config")) if obj.get("public_git_vcs_config") is not None else None,
             "values": obj.get("values")
         })
         return _obj

@@ -18,6 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_app_runner_config import AppAppRunnerConfig
@@ -26,8 +29,10 @@ from nuon.models.app_aws_account import AppAWSAccount
 from nuon.models.app_install_component import AppInstallComponent
 from nuon.models.app_install_inputs import AppInstallInputs
 from nuon.models.app_install_sandbox_run import AppInstallSandboxRun
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppInstall(BaseModel):
     """
@@ -66,7 +71,7 @@ class AppInstall(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppInstall from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -80,12 +85,10 @@ class AppInstall(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of app_runner_config
@@ -121,7 +124,7 @@ class AppInstall(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppInstall from a dict"""
         if obj is None:
             return None
@@ -131,15 +134,15 @@ class AppInstall(BaseModel):
 
         _obj = cls.model_validate({
             "app_id": obj.get("app_id"),
-            "app_runner_config": AppAppRunnerConfig.from_dict(obj["app_runner_config"]) if obj.get("app_runner_config") is not None else None,
-            "app_sandbox_config": AppAppSandboxConfig.from_dict(obj["app_sandbox_config"]) if obj.get("app_sandbox_config") is not None else None,
-            "aws_account": AppAWSAccount.from_dict(obj["aws_account"]) if obj.get("aws_account") is not None else None,
+            "app_runner_config": AppAppRunnerConfig.from_dict(obj.get("app_runner_config")) if obj.get("app_runner_config") is not None else None,
+            "app_sandbox_config": AppAppSandboxConfig.from_dict(obj.get("app_sandbox_config")) if obj.get("app_sandbox_config") is not None else None,
+            "aws_account": AppAWSAccount.from_dict(obj.get("aws_account")) if obj.get("aws_account") is not None else None,
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
             "id": obj.get("id"),
-            "install_components": [AppInstallComponent.from_dict(_item) for _item in obj["install_components"]] if obj.get("install_components") is not None else None,
-            "install_inputs": [AppInstallInputs.from_dict(_item) for _item in obj["install_inputs"]] if obj.get("install_inputs") is not None else None,
-            "install_sandbox_runs": [AppInstallSandboxRun.from_dict(_item) for _item in obj["install_sandbox_runs"]] if obj.get("install_sandbox_runs") is not None else None,
+            "install_components": [AppInstallComponent.from_dict(_item) for _item in obj.get("install_components")] if obj.get("install_components") is not None else None,
+            "install_inputs": [AppInstallInputs.from_dict(_item) for _item in obj.get("install_inputs")] if obj.get("install_inputs") is not None else None,
+            "install_sandbox_runs": [AppInstallSandboxRun.from_dict(_item) for _item in obj.get("install_sandbox_runs")] if obj.get("install_sandbox_runs") is not None else None,
             "name": obj.get("name"),
             "status": obj.get("status"),
             "status_description": obj.get("status_description"),

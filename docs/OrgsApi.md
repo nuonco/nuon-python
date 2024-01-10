@@ -23,6 +23,8 @@ Add a user to the current org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_user_org import AppUserOrg
 from nuon.models.service_create_org_user_request import ServiceCreateOrgUserRequest
@@ -112,6 +114,8 @@ create a new org
 * Api Key Authentication (APIKey):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_org import AppOrg
 from nuon.models.service_create_org_request import ServiceCreateOrgRequest
@@ -196,6 +200,8 @@ Delete an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -280,6 +286,8 @@ Get an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_org import AppOrg
 from nuon.rest import ApiException
@@ -364,6 +372,8 @@ Return current user's orgs
 * Api Key Authentication (APIKey):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_org import AppOrg
 from nuon.rest import ApiException
@@ -443,6 +453,8 @@ Update current org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_org import AppOrg
 from nuon.models.service_update_org_request import ServiceUpdateOrgRequest

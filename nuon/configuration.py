@@ -15,10 +15,8 @@
 
 import copy
 import logging
-from logging import FileHandler
 import multiprocessing
 import sys
-from typing import Optional
 import urllib3
 
 import http.client as httplib
@@ -138,7 +136,7 @@ conf = nuon.Configuration(
         self.logger_stream_handler = None
         """Log stream handler
         """
-        self.logger_file_handler: Optional[FileHandler] = None
+        self.logger_file_handler = None
         """Log file handler
         """
         self.logger_file = None
@@ -178,7 +176,7 @@ conf = nuon.Configuration(
            cpu_count * 5 is used as default value to increase performance.
         """
 
-        self.proxy: Optional[str] = None
+        self.proxy = None
         """Proxy URL
         """
         self.proxy_headers = None
@@ -409,7 +407,7 @@ conf = nuon.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 0.19.15\n"\
-               "SDK Package Version: 1.0.0".\
+               "SDK Package Version: 0.19.15".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

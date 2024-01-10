@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
 from nuon.models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
     """
@@ -54,7 +59,7 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ServiceCreateDockerBuildComponentConfigRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,12 +73,10 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of connected_github_vcs_config
@@ -85,7 +88,7 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ServiceCreateDockerBuildComponentConfigRequest from a dict"""
         if obj is None:
             return None
@@ -95,10 +98,10 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
 
         _obj = cls.model_validate({
             "build_args": obj.get("build_args"),
-            "connected_github_vcs_config": ServiceConnectedGithubVCSConfigRequest.from_dict(obj["connected_github_vcs_config"]) if obj.get("connected_github_vcs_config") is not None else None,
+            "connected_github_vcs_config": ServiceConnectedGithubVCSConfigRequest.from_dict(obj.get("connected_github_vcs_config")) if obj.get("connected_github_vcs_config") is not None else None,
             "dockerfile": obj.get("dockerfile"),
             "env_vars": obj.get("env_vars"),
-            "public_git_vcs_config": ServicePublicGitVCSConfigRequest.from_dict(obj["public_git_vcs_config"]) if obj.get("public_git_vcs_config") is not None else None,
+            "public_git_vcs_config": ServicePublicGitVCSConfigRequest.from_dict(obj.get("public_git_vcs_config")) if obj.get("public_git_vcs_config") is not None else None,
             "target": obj.get("target")
         })
         return _obj

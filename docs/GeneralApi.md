@@ -18,6 +18,8 @@ Get config for cli
 
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.service_cli_config import ServiceCLIConfig
 from nuon.rest import ApiException
@@ -86,6 +88,8 @@ Get current user
 * Api Key Authentication (APIKey):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_user_token import AppUserToken
 from nuon.rest import ApiException
@@ -164,6 +168,8 @@ Publish a metric from different Nuon clients for telemetry purposes.
 * Api Key Authentication (APIKey):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.service_publish_metric_input import ServicePublishMetricInput
 from nuon.rest import ApiException

@@ -15,8 +15,16 @@
 
 from __future__ import annotations
 import json
+import pprint
+import re  # noqa: F401
 from enum import Enum
-from typing_extensions import Self
+
+
+
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class StatsdEventAlertType(str, Enum):

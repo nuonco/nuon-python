@@ -18,6 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_docker_build_component_config import AppDockerBuildComponentConfig
@@ -25,8 +28,10 @@ from nuon.models.app_external_image_component_config import AppExternalImageComp
 from nuon.models.app_helm_component_config import AppHelmComponentConfig
 from nuon.models.app_job_component_config import AppJobComponentConfig
 from nuon.models.app_terraform_module_component_config import AppTerraformModuleComponentConfig
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppComponentConfigConnection(BaseModel):
     """
@@ -61,7 +66,7 @@ class AppComponentConfigConnection(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppComponentConfigConnection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,12 +80,10 @@ class AppComponentConfigConnection(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of docker_build
@@ -101,7 +104,7 @@ class AppComponentConfigConnection(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppComponentConfigConnection from a dict"""
         if obj is None:
             return None
@@ -113,12 +116,12 @@ class AppComponentConfigConnection(BaseModel):
             "component_id": obj.get("component_id"),
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
-            "docker_build": AppDockerBuildComponentConfig.from_dict(obj["docker_build"]) if obj.get("docker_build") is not None else None,
-            "external_image": AppExternalImageComponentConfig.from_dict(obj["external_image"]) if obj.get("external_image") is not None else None,
-            "helm": AppHelmComponentConfig.from_dict(obj["helm"]) if obj.get("helm") is not None else None,
+            "docker_build": AppDockerBuildComponentConfig.from_dict(obj.get("docker_build")) if obj.get("docker_build") is not None else None,
+            "external_image": AppExternalImageComponentConfig.from_dict(obj.get("external_image")) if obj.get("external_image") is not None else None,
+            "helm": AppHelmComponentConfig.from_dict(obj.get("helm")) if obj.get("helm") is not None else None,
             "id": obj.get("id"),
-            "job": AppJobComponentConfig.from_dict(obj["job"]) if obj.get("job") is not None else None,
-            "terraform_module": AppTerraformModuleComponentConfig.from_dict(obj["terraform_module"]) if obj.get("terraform_module") is not None else None,
+            "job": AppJobComponentConfig.from_dict(obj.get("job")) if obj.get("job") is not None else None,
+            "terraform_module": AppTerraformModuleComponentConfig.from_dict(obj.get("terraform_module")) if obj.get("terraform_module") is not None else None,
             "updated_at": obj.get("updated_at")
         })
         return _obj

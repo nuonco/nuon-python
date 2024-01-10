@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+
+
 from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_app_input import AppAppInput
-from typing import Optional, Set
-from typing_extensions import Self
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class AppAppInputConfig(BaseModel):
     """
@@ -54,7 +59,7 @@ class AppAppInputConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AppAppInputConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,12 +73,10 @@ class AppAppInputConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
-
         _dict = self.model_dump(
             by_alias=True,
-            exclude=excluded_fields,
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in app_inputs (list)
@@ -86,7 +89,7 @@ class AppAppInputConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AppAppInputConfig from a dict"""
         if obj is None:
             return None
@@ -96,7 +99,7 @@ class AppAppInputConfig(BaseModel):
 
         _obj = cls.model_validate({
             "app_id": obj.get("app_id"),
-            "app_inputs": [AppAppInput.from_dict(_item) for _item in obj["app_inputs"]] if obj.get("app_inputs") is not None else None,
+            "app_inputs": [AppAppInput.from_dict(_item) for _item in obj.get("app_inputs")] if obj.get("app_inputs") is not None else None,
             "created_at": obj.get("created_at"),
             "created_by_id": obj.get("created_by_id"),
             "id": obj.get("id"),

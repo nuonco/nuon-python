@@ -37,6 +37,8 @@ create a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component import AppComponent
 from nuon.models.service_create_component_request import ServiceCreateComponentRequest
@@ -129,6 +131,8 @@ create component build
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_build import AppComponentBuild
 from nuon.models.service_create_component_build_request import ServiceCreateComponentBuildRequest
@@ -221,6 +225,8 @@ create a docker build component config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_docker_build_component_config import AppDockerBuildComponentConfig
 from nuon.models.service_create_docker_build_component_config_request import ServiceCreateDockerBuildComponentConfigRequest
@@ -313,6 +319,8 @@ create an external image component config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_external_image_component_config import AppExternalImageComponentConfig
 from nuon.models.service_create_external_image_component_config_request import ServiceCreateExternalImageComponentConfigRequest
@@ -405,6 +413,8 @@ create a helm component config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_helm_component_config import AppHelmComponentConfig
 from nuon.models.service_create_helm_component_config_request import ServiceCreateHelmComponentConfigRequest
@@ -497,6 +507,8 @@ create a job component config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_job_component_config import AppJobComponentConfig
 from nuon.models.service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
@@ -589,6 +601,8 @@ create a terraform component config
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_terraform_module_component_config import AppTerraformModuleComponentConfig
 from nuon.models.service_create_terraform_module_component_config_request import ServiceCreateTerraformModuleComponentConfigRequest
@@ -681,6 +695,8 @@ delete a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -769,6 +785,8 @@ get all components for an app
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component import AppComponent
 from nuon.rest import ApiException
@@ -858,6 +876,8 @@ get a build
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_build import AppComponentBuild
 from nuon.rest import ApiException
@@ -947,6 +967,8 @@ get a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component import AppComponent
 from nuon.rest import ApiException
@@ -1036,6 +1058,8 @@ get a build for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_build import AppComponentBuild
 from nuon.rest import ApiException
@@ -1127,6 +1151,8 @@ get component build logs
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.rest import ApiException
 from pprint import pprint
@@ -1217,6 +1243,8 @@ get component build plan
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.planv1_plan import Planv1Plan
 from nuon.rest import ApiException
@@ -1308,6 +1336,8 @@ get all builds for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_build import AppComponentBuild
 from nuon.rest import ApiException
@@ -1397,6 +1427,8 @@ get all configs for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_config_connection import AppComponentConfigConnection
 from nuon.rest import ApiException
@@ -1486,6 +1518,8 @@ get latest build for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_build import AppComponentBuild
 from nuon.rest import ApiException
@@ -1575,6 +1609,8 @@ get latest config for a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component_config_connection import AppComponentConfigConnection
 from nuon.rest import ApiException
@@ -1664,6 +1700,8 @@ get all components for an org
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component import AppComponent
 from nuon.rest import ApiException
@@ -1749,6 +1787,8 @@ update a component
 * Api Key Authentication (OrgID):
 
 ```python
+import time
+import os
 import nuon
 from nuon.models.app_component import AppComponent
 from nuon.models.service_update_component_request import ServiceUpdateComponentRequest
