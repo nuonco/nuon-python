@@ -8,8 +8,8 @@ docker run --rm \
   -v ${PWD}:/local openapitools/openapi-generator-cli generate \
   -i $SPEC \
   -g python \
-  -o /local
-#  -t /local/scripts/templates
+  -o /local \
+  -t /local/scripts/templates
 
 # save version to file for workflows to read from
 cat pyproject.toml | grep version | sed -e 's/.*version = "\(.*\)"/\1/' > version.txt
