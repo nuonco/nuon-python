@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**get_install_sandbox_run_logs**](InstallsApi.md#get_install_sandbox_run_logs) | **GET** /v1/installs/{install_id}/sandbox-run/{run_id}/logs | get install sandbox run logs
 [**get_install_sandbox_runs**](InstallsApi.md#get_install_sandbox_runs) | **GET** /v1/installs/{install_id}/sandbox-runs | get an installs sandbox runs
 [**get_org_installs**](InstallsApi.md#get_org_installs) | **GET** /v1/installs | get all installs for an org
-[**installer_create_installer**](InstallsApi.md#installer_create_installer) | **POST** /v1/installer/{installer_slug}/installs | create an app install from an installer
+[**installer_create_install**](InstallsApi.md#installer_create_install) | **POST** /v1/installer/{installer_slug}/installs | create an app install from an installer
 [**installer_get_install**](InstallsApi.md#installer_get_install) | **GET** /v1/installer/{installer_slug}/install/{install_id} | get an installer install
 [**teardown_install_component**](InstallsApi.md#teardown_install_component) | **POST** /v1/installs/{install_id}/components/{component_id}/teardown | teardown an install component
 [**update_install**](InstallsApi.md#update_install) | **PATCH** /v1/installs/{install_id} | update an install
@@ -1866,8 +1866,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **installer_create_installer**
-> AppInstall installer_create_installer(installer_slug, service_installer_create_install_request)
+# **installer_create_install**
+> AppInstall installer_create_install(installer_slug, service_installer_create_install_request)
 
 create an app install from an installer
 
@@ -1899,11 +1899,11 @@ with nuon.ApiClient(configuration) as api_client:
 
     try:
         # create an app install from an installer
-        api_response = api_instance.installer_create_installer(installer_slug, service_installer_create_install_request)
-        print("The response of InstallsApi->installer_create_installer:\n")
+        api_response = api_instance.installer_create_install(installer_slug, service_installer_create_install_request)
+        print("The response of InstallsApi->installer_create_install:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallsApi->installer_create_installer: %s\n" % e)
+        print("Exception when calling InstallsApi->installer_create_install: %s\n" % e)
 ```
 
 
