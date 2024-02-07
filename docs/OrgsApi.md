@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_org**](OrgsApi.md#create_org) | **POST** /v1/orgs | create a new org
 [**delete_org**](OrgsApi.md#delete_org) | **DELETE** /v1/orgs/current | Delete an org
 [**get_org**](OrgsApi.md#get_org) | **GET** /v1/orgs/current | Get an org
+[**get_org_health_checks**](OrgsApi.md#get_org_health_checks) | **GET** /v1/orgs/current/health-checks | Get an org&#39;s health checks
 [**get_orgs**](OrgsApi.md#get_orgs) | **GET** /v1/orgs | Return current user&#39;s orgs
 [**update_org**](OrgsApi.md#update_org) | **PATCH** /v1/orgs/current | Update current org
 
@@ -339,6 +340,99 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**AppOrg**](AppOrg.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_org_health_checks**
+> List[AppOrgHealthCheck] get_org_health_checks(limit=limit)
+
+Get an org's health checks
+
+Fetch the most recent health checks for an org. Health checks are automatically performed once every 60 seconds. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_org_health_check import AppOrgHealthCheck
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.OrgsApi(api_client)
+    limit = 60 # int | limit of health checks to return (optional) (default to 60)
+
+    try:
+        # Get an org's health checks
+        api_response = api_instance.get_org_health_checks(limit=limit)
+        print("The response of OrgsApi->get_org_health_checks:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrgsApi->get_org_health_checks: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| limit of health checks to return | [optional] [default to 60]
+
+### Return type
+
+[**List[AppOrgHealthCheck]**](AppOrgHealthCheck.md)
 
 ### Authorization
 
