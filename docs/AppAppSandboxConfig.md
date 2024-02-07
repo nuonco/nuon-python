@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** | TODO(jm): add this back, once we have migrated all existing app sandbox configs &#x60;gorm:\&quot;not null;default null\&quot;&#x60; | [optional] 
+**artifacts** | [**AppAppSandboxConfigArtifacts**](AppAppSandboxConfigArtifacts.md) |  | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by_id** | **str** |  | [optional] 

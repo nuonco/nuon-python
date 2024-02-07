@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_id** | **str** |  | 
 **description** | **str** |  | 
 **links** | [**ServiceCreateAppInstallerRequestLinks**](ServiceCreateAppInstallerRequestLinks.md) |  | [optional] 
 **name** | **str** |  | 

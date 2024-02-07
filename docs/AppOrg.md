@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **str** |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **custom_cert** | **bool** |  | [optional] 
+**health_checks** | [**List[AppOrgHealthCheck]**](AppOrgHealthCheck.md) |  | [optional] 
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **sandbox_mode** | **bool** | These fields are used to control the behaviour of the org NOTE: these are starting as nullable, so we can update stage/prod before resetting locally. | [optional] 
