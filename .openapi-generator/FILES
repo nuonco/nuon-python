@@ -205,8 +205,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_app_sandbox_config_artifacts.py
-test/test_app_org_health_check.py
-test/test_app_org_health_check_status.py
-test/test_installers_api.py
 tox.ini
