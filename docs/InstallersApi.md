@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_app_installer**](InstallersApi.md#create_app_installer) | **POST** /v1/installers | create an app installer
 [**delete_app_installer**](InstallersApi.md#delete_app_installer) | **DELETE** /v1/installers/{installer_id} | delete an app installer
 [**get_app_installer**](InstallersApi.md#get_app_installer) | **GET** /v1/installers/{installer_id} | get an app installer
+[**get_installers**](InstallersApi.md#get_installers) | **GET** /v1/installers | get installers for current org
 [**installer_create_install**](InstallersApi.md#installer_create_install) | **POST** /v1/installer/{installer_slug}/installs | create an app install from an installer
 [**installer_get_install**](InstallersApi.md#installer_get_install) | **GET** /v1/installer/{installer_slug}/install/{install_id} | get an installer install
 [**render_app_installer**](InstallersApi.md#render_app_installer) | **GET** /v1/installer/{installer_slug}/render | render an app installer
@@ -263,6 +264,95 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AppAppInstaller**](AppAppInstaller.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_installers**
+> List[AppAppInstaller] get_installers()
+
+get installers for current org
+
+Return all installers for the current org. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_app_installer import AppAppInstaller
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallersApi(api_client)
+
+    try:
+        # get installers for current org
+        api_response = api_instance.get_installers()
+        print("The response of InstallersApi->get_installers:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallersApi->get_installers: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[AppAppInstaller]**](AppAppInstaller.md)
 
 ### Authorization
 
