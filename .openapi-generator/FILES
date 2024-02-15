@@ -209,9 +209,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_token_type.py
-test/test_service_rendered_install.py
-test/test_service_rendered_installer.py
-test/test_service_update_installer_request.py
-test/test_service_update_installer_request_links.py
 tox.ini
