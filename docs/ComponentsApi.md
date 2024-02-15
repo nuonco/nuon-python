@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**get_component_build**](ComponentsApi.md#get_component_build) | **GET** /v1/components/{component_id}/builds/{build_id} | get a build for a component
 [**get_component_build_logs**](ComponentsApi.md#get_component_build_logs) | **GET** /v1/components/{component_id}/builds/{build_id}/logs | get component build logs
 [**get_component_build_plan**](ComponentsApi.md#get_component_build_plan) | **GET** /v1/components/{component_id}/builds/{build_id}/plan | get component build plan
-[**get_component_builds**](ComponentsApi.md#get_component_builds) | **GET** /v1/components/{component_id}/builds | get all builds for a component
+[**get_component_builds**](ComponentsApi.md#get_component_builds) | **GET** /v1/builds | get builds for components
 [**get_component_configs**](ComponentsApi.md#get_component_configs) | **GET** /v1/components/{component_id}/configs | get all configs for a component
 [**get_component_latest_build**](ComponentsApi.md#get_component_latest_build) | **GET** /v1/components/{component_id}/builds/latest | get latest build for a component
 [**get_component_latest_config**](ComponentsApi.md#get_component_latest_config) | **GET** /v1/components/{component_id}/configs/latest | get latest config for a component
@@ -870,6 +870,8 @@ Name | Type | Description  | Notes
 
 get a build
 
+Returns builds for one or all components in an app. 
+
 ### Example
 
 * Api Key Authentication (APIKey):
@@ -1051,6 +1053,8 @@ Name | Type | Description  | Notes
 > AppComponentBuild get_component_build(component_id, build_id)
 
 get a build for a component
+
+Returns builds for one or all components in an app. 
 
 ### Example
 
@@ -1326,9 +1330,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_component_builds**
-> List[AppComponentBuild] get_component_builds(component_id)
+> List[AppComponentBuild] get_component_builds(limit=limit, component_id=component_id, app_id=app_id)
 
-get all builds for a component
+get builds for components
 
 ### Example
 
@@ -1370,11 +1374,13 @@ configuration.api_key['OrgID'] = os.environ["API_KEY"]
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.ComponentsApi(api_client)
-    component_id = 'component_id_example' # str | component ID
+    limit = 60 # int | limit of builds to return (optional) (default to 60)
+    component_id = 'component_id_example' # str | component id to filter by (optional)
+    app_id = 'app_id_example' # str | app id to filter by (optional)
 
     try:
-        # get all builds for a component
-        api_response = api_instance.get_component_builds(component_id)
+        # get builds for components
+        api_response = api_instance.get_component_builds(limit=limit, component_id=component_id, app_id=app_id)
         print("The response of ComponentsApi->get_component_builds:\n")
         pprint(api_response)
     except Exception as e:
@@ -1388,7 +1394,9 @@ with nuon.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **component_id** | **str**| component ID | 
+ **limit** | **int**| limit of builds to return | [optional] [default to 60]
+ **component_id** | **str**| component id to filter by | [optional] 
+ **app_id** | **str**| app id to filter by | [optional] 
 
 ### Return type
 

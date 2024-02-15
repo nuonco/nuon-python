@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | 
 **links** | [**ServiceCreateAppInstallerRequestLinks**](ServiceCreateAppInstallerRequestLinks.md) |  | [optional] 
 **name** | **str** |  | 
+**post_install_markdown** | **str** |  | [optional] 
 **slug** | **str** |  | 
 
 ## Example

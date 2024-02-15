@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **issued_at** | **str** |  | [optional] 
 **issuer** | **str** |  | [optional] 
 **subject** | **str** | claim data | [optional] 
+**token_type** | [**AppTokenType**](AppTokenType.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example
