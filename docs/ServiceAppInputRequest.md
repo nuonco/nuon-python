@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **default** | **str** |  | [optional] 
 **description** | **str** |  | 
+**display_name** | **str** |  | 
 **required** | **bool** |  | [optional] 
 
 ## Example

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **created_by_id** | **str** |  | [optional] 
 **default** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
+**display_name** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 

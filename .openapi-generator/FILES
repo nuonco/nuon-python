@@ -33,6 +33,7 @@ docs/AppSandbox.md
 docs/AppSandboxRelease.md
 docs/AppSandboxRunType.md
 docs/AppTerraformModuleComponentConfig.md
+docs/AppTokenType.md
 docs/AppUserOrg.md
 docs/AppUserToken.md
 docs/AppVCSConnection.md
@@ -51,7 +52,6 @@ docs/Planv1Plan.md
 docs/ReleasesApi.md
 docs/SandboxesApi.md
 docs/ServiceAppInputRequest.md
-docs/ServiceAppInstaller.md
 docs/ServiceAwsECRImageConfigRequest.md
 docs/ServiceCLIConfig.md
 docs/ServiceConnectedGithubVCSConfigRequest.md
@@ -82,12 +82,14 @@ docs/ServiceCreateTerraformModuleComponentConfigRequest.md
 docs/ServicePublicGitVCSConfigRequest.md
 docs/ServicePublicGitVCSSandboxConfigRequest.md
 docs/ServicePublishMetricInput.md
+docs/ServiceRenderedInstall.md
+docs/ServiceRenderedInstaller.md
 docs/ServiceRepository.md
-docs/ServiceUpdateAppInstallerRequest.md
-docs/ServiceUpdateAppInstallerRequestLinks.md
 docs/ServiceUpdateAppRequest.md
 docs/ServiceUpdateComponentRequest.md
 docs/ServiceUpdateInstallRequest.md
+docs/ServiceUpdateInstallerRequest.md
+docs/ServiceUpdateInstallerRequestLinks.md
 docs/ServiceUpdateOrgRequest.md
 docs/StatsdEvent.md
 docs/StatsdEventAlertType.md
@@ -145,6 +147,7 @@ nuon/models/app_sandbox.py
 nuon/models/app_sandbox_release.py
 nuon/models/app_sandbox_run_type.py
 nuon/models/app_terraform_module_component_config.py
+nuon/models/app_token_type.py
 nuon/models/app_user_org.py
 nuon/models/app_user_token.py
 nuon/models/app_vcs_connection.py
@@ -155,7 +158,6 @@ nuon/models/metrics_incr.py
 nuon/models/metrics_timing.py
 nuon/models/planv1_plan.py
 nuon/models/service_app_input_request.py
-nuon/models/service_app_installer.py
 nuon/models/service_aws_ecr_image_config_request.py
 nuon/models/service_cli_config.py
 nuon/models/service_connected_github_vcs_config_request.py
@@ -186,12 +188,14 @@ nuon/models/service_create_terraform_module_component_config_request.py
 nuon/models/service_public_git_vcs_config_request.py
 nuon/models/service_public_git_vcs_sandbox_config_request.py
 nuon/models/service_publish_metric_input.py
+nuon/models/service_rendered_install.py
+nuon/models/service_rendered_installer.py
 nuon/models/service_repository.py
-nuon/models/service_update_app_installer_request.py
-nuon/models/service_update_app_installer_request_links.py
 nuon/models/service_update_app_request.py
 nuon/models/service_update_component_request.py
 nuon/models/service_update_install_request.py
+nuon/models/service_update_installer_request.py
+nuon/models/service_update_installer_request_links.py
 nuon/models/service_update_org_request.py
 nuon/models/statsd_event.py
 nuon/models/statsd_event_alert_type.py
@@ -205,4 +209,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_token_type.py
+test/test_service_rendered_install.py
+test/test_service_rendered_installer.py
+test/test_service_update_installer_request.py
+test/test_service_update_installer_request_links.py
 tox.ini

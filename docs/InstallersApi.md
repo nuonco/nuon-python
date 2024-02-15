@@ -4,18 +4,19 @@ All URIs are relative to *https://ctl.prod.nuon.co*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_app_installer**](InstallersApi.md#create_app_installer) | **POST** /v1/installers | create an app installer
-[**delete_app_installer**](InstallersApi.md#delete_app_installer) | **DELETE** /v1/installers/{installer_id} | delete an app installer
-[**get_app_installer**](InstallersApi.md#get_app_installer) | **GET** /v1/installers/{installer_id} | get an app installer
+[**create_installer**](InstallersApi.md#create_installer) | **POST** /v1/installers | create an app installer
+[**delete_installer**](InstallersApi.md#delete_installer) | **DELETE** /v1/installers/{installer_id} | delete an installer
+[**get_installer**](InstallersApi.md#get_installer) | **GET** /v1/installers/{installer_id} | get an installer
+[**get_installer_install**](InstallersApi.md#get_installer_install) | **GET** /v1/installer/{installer_slug}/install/{install_id} | render an installer install
 [**get_installers**](InstallersApi.md#get_installers) | **GET** /v1/installers | get installers for current org
 [**installer_create_install**](InstallersApi.md#installer_create_install) | **POST** /v1/installer/{installer_slug}/installs | create an app install from an installer
-[**installer_get_install**](InstallersApi.md#installer_get_install) | **GET** /v1/installer/{installer_slug}/install/{install_id} | get an installer install
-[**render_app_installer**](InstallersApi.md#render_app_installer) | **GET** /v1/installer/{installer_slug}/render | render an app installer
-[**update_app_installer**](InstallersApi.md#update_app_installer) | **PATCH** /v1/installers/{installer_id} | update an app installer
+[**render_installer**](InstallersApi.md#render_installer) | **GET** /v1/installer/{installer_slug}/render | render an installer
+[**render_installer_install**](InstallersApi.md#render_installer_install) | **GET** /v1/installer/{installer_slug}/install/{install_id}/render | render an installer install
+[**update_installer**](InstallersApi.md#update_installer) | **PATCH** /v1/installers/{installer_id} | update an installer
 
 
-# **create_app_installer**
-> AppAppInstaller create_app_installer(service_create_app_installer_request)
+# **create_installer**
+> AppAppInstaller create_installer(service_create_app_installer_request)
 
 create an app installer
 
@@ -64,11 +65,11 @@ with nuon.ApiClient(configuration) as api_client:
 
     try:
         # create an app installer
-        api_response = api_instance.create_app_installer(service_create_app_installer_request)
-        print("The response of InstallersApi->create_app_installer:\n")
+        api_response = api_instance.create_installer(service_create_app_installer_request)
+        print("The response of InstallersApi->create_installer:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallersApi->create_app_installer: %s\n" % e)
+        print("Exception when calling InstallersApi->create_installer: %s\n" % e)
 ```
 
 
@@ -106,10 +107,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_app_installer**
-> bool delete_app_installer(installer_id)
+# **delete_installer**
+> bool delete_installer(installer_id)
 
-delete an app installer
+delete an installer
 
 ### Example
 
@@ -153,12 +154,12 @@ with nuon.ApiClient(configuration) as api_client:
     installer_id = 'installer_id_example' # str | installer ID
 
     try:
-        # delete an app installer
-        api_response = api_instance.delete_app_installer(installer_id)
-        print("The response of InstallersApi->delete_app_installer:\n")
+        # delete an installer
+        api_response = api_instance.delete_installer(installer_id)
+        print("The response of InstallersApi->delete_installer:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallersApi->delete_app_installer: %s\n" % e)
+        print("Exception when calling InstallersApi->delete_installer: %s\n" % e)
 ```
 
 
@@ -196,10 +197,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_app_installer**
-> AppAppInstaller get_app_installer(installer_id)
+# **get_installer**
+> AppAppInstaller get_installer(installer_id)
 
-get an app installer
+get an installer
 
 ### Example
 
@@ -244,12 +245,12 @@ with nuon.ApiClient(configuration) as api_client:
     installer_id = 'installer_id_example' # str | installer ID
 
     try:
-        # get an app installer
-        api_response = api_instance.get_app_installer(installer_id)
-        print("The response of InstallersApi->get_app_installer:\n")
+        # get an installer
+        api_response = api_instance.get_installer(installer_id)
+        print("The response of InstallersApi->get_installer:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallersApi->get_app_installer: %s\n" % e)
+        print("Exception when calling InstallersApi->get_installer: %s\n" % e)
 ```
 
 
@@ -268,6 +269,81 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_installer_install**
+> AppInstall get_installer_install(installer_slug, install_id)
+
+render an installer install
+
+### Example
+
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_install import AppInstall
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallersApi(api_client)
+    installer_slug = 'installer_slug_example' # str | installer slug or ID
+    install_id = 'install_id_example' # str | install id
+
+    try:
+        # render an installer install
+        api_response = api_instance.get_installer_install(installer_slug, install_id)
+        print("The response of InstallersApi->get_installer_install:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallersApi->get_installer_install: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **installer_slug** | **str**| installer slug or ID | 
+ **install_id** | **str**| install id | 
+
+### Return type
+
+[**AppInstall**](AppInstall.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -452,10 +528,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **installer_get_install**
-> AppInstall installer_get_install(installer_slug, install_id)
+# **render_installer**
+> ServiceRenderedInstaller render_installer(installer_slug)
 
-get an installer install
+render an installer
 
 ### Example
 
@@ -464,7 +540,82 @@ get an installer install
 import time
 import os
 import nuon
-from nuon.models.app_install import AppInstall
+from nuon.models.service_rendered_installer import ServiceRenderedInstaller
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallersApi(api_client)
+    installer_slug = 'installer_slug_example' # str | installer slug or ID
+
+    try:
+        # render an installer
+        api_response = api_instance.render_installer(installer_slug)
+        print("The response of InstallersApi->render_installer:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallersApi->render_installer: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **installer_slug** | **str**| installer slug or ID | 
+
+### Return type
+
+[**ServiceRenderedInstaller**](ServiceRenderedInstaller.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **render_installer_install**
+> ServiceRenderedInstall render_installer_install(installer_slug, install_id)
+
+render an installer install
+
+Render an install in the context of an installer. 
+
+### Example
+
+
+```python
+import time
+import os
+import nuon
+from nuon.models.service_rendered_install import ServiceRenderedInstall
 from nuon.rest import ApiException
 from pprint import pprint
 
@@ -483,12 +634,12 @@ with nuon.ApiClient(configuration) as api_client:
     install_id = 'install_id_example' # str | install id
 
     try:
-        # get an installer install
-        api_response = api_instance.installer_get_install(installer_slug, install_id)
-        print("The response of InstallersApi->installer_get_install:\n")
+        # render an installer install
+        api_response = api_instance.render_installer_install(installer_slug, install_id)
+        print("The response of InstallersApi->render_installer_install:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallersApi->installer_get_install: %s\n" % e)
+        print("Exception when calling InstallersApi->render_installer_install: %s\n" % e)
 ```
 
 
@@ -503,7 +654,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AppInstall**](AppInstall.md)
+[**ServiceRenderedInstall**](ServiceRenderedInstall.md)
 
 ### Authorization
 
@@ -527,83 +678,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **render_app_installer**
-> ServiceAppInstaller render_app_installer(installer_slug)
+# **update_installer**
+> AppAppInstaller update_installer(installer_id, service_update_installer_request)
 
-render an app installer
-
-### Example
-
-
-```python
-import time
-import os
-import nuon
-from nuon.models.service_app_installer import ServiceAppInstaller
-from nuon.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
-# See configuration.py for a list of all supported configuration parameters.
-configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
-)
-
-
-# Enter a context with an instance of the API client
-with nuon.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = nuon.InstallersApi(api_client)
-    installer_slug = 'installer_slug_example' # str | installer slug or ID
-
-    try:
-        # render an app installer
-        api_response = api_instance.render_app_installer(installer_slug)
-        print("The response of InstallersApi->render_app_installer:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling InstallersApi->render_app_installer: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **installer_slug** | **str**| installer slug or ID | 
-
-### Return type
-
-[**ServiceAppInstaller**](ServiceAppInstaller.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_app_installer**
-> AppAppInstaller update_app_installer(installer_id, service_update_app_installer_request)
-
-update an app installer
+update an installer
 
 ### Example
 
@@ -615,7 +693,7 @@ import time
 import os
 import nuon
 from nuon.models.app_app_installer import AppAppInstaller
-from nuon.models.service_update_app_installer_request import ServiceUpdateAppInstallerRequest
+from nuon.models.service_update_installer_request import ServiceUpdateInstallerRequest
 from nuon.rest import ApiException
 from pprint import pprint
 
@@ -647,15 +725,15 @@ with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.InstallersApi(api_client)
     installer_id = 'installer_id_example' # str | installer ID
-    service_update_app_installer_request = nuon.ServiceUpdateAppInstallerRequest() # ServiceUpdateAppInstallerRequest | Input
+    service_update_installer_request = nuon.ServiceUpdateInstallerRequest() # ServiceUpdateInstallerRequest | Input
 
     try:
-        # update an app installer
-        api_response = api_instance.update_app_installer(installer_id, service_update_app_installer_request)
-        print("The response of InstallersApi->update_app_installer:\n")
+        # update an installer
+        api_response = api_instance.update_installer(installer_id, service_update_installer_request)
+        print("The response of InstallersApi->update_installer:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InstallersApi->update_app_installer: %s\n" % e)
+        print("Exception when calling InstallersApi->update_installer: %s\n" % e)
 ```
 
 
@@ -666,7 +744,7 @@ with nuon.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installer_id** | **str**| installer ID | 
- **service_update_app_installer_request** | [**ServiceUpdateAppInstallerRequest**](ServiceUpdateAppInstallerRequest.md)| Input | 
+ **service_update_installer_request** | [**ServiceUpdateInstallerRequest**](ServiceUpdateInstallerRequest.md)| Input | 
 
 ### Return type
 
