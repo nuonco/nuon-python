@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **logo_url** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**org_id** | **str** |  | [optional] 
 **post_install_markdown** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
