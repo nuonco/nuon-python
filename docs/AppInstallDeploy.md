@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **component_id** | **str** |  | [optional] 
 **component_name** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_component_id** | **str** |  | [optional] 

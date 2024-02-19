@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **artifacts** | [**AppAppSandboxConfigArtifacts**](AppAppSandboxConfigArtifacts.md) |  | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
