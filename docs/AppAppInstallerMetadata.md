@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **app_installer_id** | **str** |  | [optional] 
 **community_url** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **demo_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 

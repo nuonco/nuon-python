@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **app_id** | **str** |  | [optional] 
 **app_runner_type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
 **id** | **str** |  | [optional] 

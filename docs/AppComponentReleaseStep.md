@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **component_release_id** | **str** | parent release ID | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **delay** | **str** | fields to control the delay of the individual step, as this is set based on the parent strategy | [optional] 
 **id** | **str** |  | [optional] 

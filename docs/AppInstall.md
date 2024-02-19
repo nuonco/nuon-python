@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **app_sandbox_config** | [**AppAppSandboxConfig**](AppAppSandboxConfig.md) |  | [optional] 
 **aws_account** | [**AppAWSAccount**](AppAWSAccount.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_components** | [**List[AppInstallComponent]**](AppInstallComponent.md) |  | [optional] 

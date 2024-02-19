@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **app_id** | **str** |  | [optional] 
 **config_versions** | **int** |  | [optional] 
 **created_at** | **str** |  | [optional] 
+**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **dependencies** | **List[str]** |  | [optional] 
 **id** | **str** |  | [optional] 
