@@ -5,8 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**awsecrimage_configs** | [**List[AppAWSECRImageConfig]**](AppAWSECRImageConfig.md) |  | [optional] 
-**connected_github_vcs_configs** | [**List[AppConnectedGithubVCSConfig]**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
@@ -15,7 +13,6 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **latest_health_check** | [**AppOrgHealthCheck**](AppOrgHealthCheck.md) | Filled in at read time | [optional] 
 **name** | **str** |  | [optional] 
-**public_git_vcs_configs** | [**List[AppPublicGitVCSConfig]**](AppPublicGitVCSConfig.md) | NOTE(jm): with GORM, these cascades are not getting created properly. For now, we just add them here, but eventually we should be able to remove these and add them directly. | [optional] 
 **sandbox_mode** | **bool** | These fields are used to control the behaviour of the org NOTE: these are starting as nullable, so we can update stage/prod before resetting locally. | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
