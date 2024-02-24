@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **required** | **bool** |  | [optional] 
+**sensitive** | **bool** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | 
 **display_name** | **str** |  | 
 **required** | **bool** |  | [optional] 
+**sensitive** | **bool** |  | [optional] 
 
 ## Example
 
