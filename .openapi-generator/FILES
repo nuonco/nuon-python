@@ -221,10 +221,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_app_config.py
-test/test_app_app_config_fmt.py
-test/test_app_app_config_status.py
-test/test_service_app_config_template.py
-test/test_service_app_config_template_type.py
-test/test_service_create_app_config_request.py
 tox.ini
