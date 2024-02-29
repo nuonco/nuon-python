@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**installer_url** | **str** | filled in via after query | [optional] 
 **org_id** | **str** |  | [optional] 
 **slug** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
