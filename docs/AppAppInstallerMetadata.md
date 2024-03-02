@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **demo_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **documentation_url** | **str** |  | [optional] 
+**formatted_demo_url** | **str** |  | [optional] 
 **github_url** | **str** |  | [optional] 
 **homepage_url** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
