@@ -6,8 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aggregation_key** | **str** | AggregationKey groups this event with others of the same key. | [optional] 
-**alert_type** | [**StatsdEventAlertType**](StatsdEventAlertType.md) | AlertType can be statsd.Info, statsd.Error, statsd.Warning, or statsd.Success.
-If absent, the default value applied by the dogstatsd server is Info. | [optional] 
+**alert_type** | [**StatsdEventAlertType**](StatsdEventAlertType.md) | AlertType can be statsd.Info, statsd.Error, statsd.Warning, or statsd.Success. If absent, the default value applied by the dogstatsd server is Info. | [optional] 
 **hostname** | **str** | Hostname for the event. | [optional] 
 **priority** | [**StatsdEventPriority**](StatsdEventPriority.md) | Priority of the event.  Can be statsd.Low or statsd.Normal. | [optional] 
 **source_type_name** | **str** | SourceTypeName is a source type for the event. | [optional] 
