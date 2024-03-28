@@ -12,6 +12,8 @@ docs/AppAppRunnerConfig.md
 docs/AppAppRunnerType.md
 docs/AppAppSandboxConfig.md
 docs/AppAppSandboxConfigArtifacts.md
+docs/AppAzureAccount.md
+docs/AppCloudPlatform.md
 docs/AppComponent.md
 docs/AppComponentBuild.md
 docs/AppComponentConfigConnection.md
@@ -25,9 +27,11 @@ docs/AppInstall.md
 docs/AppInstallComponent.md
 docs/AppInstallDeploy.md
 docs/AppInstallDeployType.md
+docs/AppInstallEvent.md
 docs/AppInstallInputs.md
 docs/AppInstallSandboxRun.md
 docs/AppJobComponentConfig.md
+docs/AppOperationStatus.md
 docs/AppOrg.md
 docs/AppOrgHealthCheck.md
 docs/AppOrgHealthCheckStatus.md
@@ -44,6 +48,7 @@ docs/AppVCSConnectionCommit.md
 docs/AppsApi.md
 docs/ComponentsApi.md
 docs/GeneralApi.md
+docs/GithubComPowertoolsdevMonoServicesCtlApiInternalAppInstallsWorkerSignalsOperation.md
 docs/InstallersApi.md
 docs/InstallsApi.md
 docs/MetricsDecr.md
@@ -81,6 +86,7 @@ docs/ServiceCreateInstallDeployRequest.md
 docs/ServiceCreateInstallInputsRequest.md
 docs/ServiceCreateInstallRequest.md
 docs/ServiceCreateInstallRequestAwsAccount.md
+docs/ServiceCreateInstallRequestAzureAccount.md
 docs/ServiceCreateJobComponentConfigRequest.md
 docs/ServiceCreateOrgRequest.md
 docs/ServiceCreateOrgUserRequest.md
@@ -132,6 +138,8 @@ nuon/models/app_app_sandbox_config.py
 nuon/models/app_app_sandbox_config_artifacts.py
 nuon/models/app_aws_account.py
 nuon/models/app_awsecr_image_config.py
+nuon/models/app_azure_account.py
+nuon/models/app_cloud_platform.py
 nuon/models/app_component.py
 nuon/models/app_component_build.py
 nuon/models/app_component_config_connection.py
@@ -145,9 +153,11 @@ nuon/models/app_install.py
 nuon/models/app_install_component.py
 nuon/models/app_install_deploy.py
 nuon/models/app_install_deploy_type.py
+nuon/models/app_install_event.py
 nuon/models/app_install_inputs.py
 nuon/models/app_install_sandbox_run.py
 nuon/models/app_job_component_config.py
+nuon/models/app_operation_status.py
 nuon/models/app_org.py
 nuon/models/app_org_health_check.py
 nuon/models/app_org_health_check_status.py
@@ -161,6 +171,7 @@ nuon/models/app_user_org.py
 nuon/models/app_user_token.py
 nuon/models/app_vcs_connection.py
 nuon/models/app_vcs_connection_commit.py
+nuon/models/github_com_powertoolsdev_mono_services_ctl_api_internal_app_installs_worker_signals_operation.py
 nuon/models/metrics_decr.py
 nuon/models/metrics_event.py
 nuon/models/metrics_incr.py
@@ -193,6 +204,7 @@ nuon/models/service_create_install_deploy_request.py
 nuon/models/service_create_install_inputs_request.py
 nuon/models/service_create_install_request.py
 nuon/models/service_create_install_request_aws_account.py
+nuon/models/service_create_install_request_azure_account.py
 nuon/models/service_create_job_component_config_request.py
 nuon/models/service_create_org_request.py
 nuon/models/service_create_org_user_request.py
@@ -221,4 +233,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_azure_account.py
+test/test_app_cloud_platform.py
+test/test_app_install_event.py
+test/test_app_operation_status.py
+test/test_github_com_powertoolsdev_mono_services_ctl_api_internal_app_installs_worker_signals_operation.py
+test/test_service_create_install_request_azure_account.py
 tox.ini

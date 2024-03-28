@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
 **app_runner_type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | [optional] 
+**cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
