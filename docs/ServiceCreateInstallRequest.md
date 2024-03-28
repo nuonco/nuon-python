@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aws_account** | [**ServiceCreateInstallRequestAwsAccount**](ServiceCreateInstallRequestAwsAccount.md) |  | 
+**aws_account** | [**ServiceCreateInstallRequestAwsAccount**](ServiceCreateInstallRequestAwsAccount.md) |  | [optional] 
+**azure_account** | [**ServiceCreateInstallRequestAzureAccount**](ServiceCreateInstallRequestAzureAccount.md) |  | [optional] 
 **inputs** | **Dict[str, str]** |  | [optional] 
 **name** | **str** |  | 
 

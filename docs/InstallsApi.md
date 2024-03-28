@@ -19,6 +19,8 @@ Method | HTTP request | Description
 [**get_install_deploy_logs**](InstallsApi.md#get_install_deploy_logs) | **GET** /v1/installs/{install_id}/deploys/{deploy_id}/logs | get install deploy logs
 [**get_install_deploy_plan**](InstallsApi.md#get_install_deploy_plan) | **GET** /v1/installs/{install_id}/deploys/{deploy_id}/plan | get install deploy plan
 [**get_install_deploys**](InstallsApi.md#get_install_deploys) | **GET** /v1/installs/{install_id}/deploys | get all deploys to an install
+[**get_install_event**](InstallsApi.md#get_install_event) | **GET** /v1/installs/{install_id}/events/{event_id} | get an install event
+[**get_install_events**](InstallsApi.md#get_install_events) | **GET** /v1/installs/{install_id}/events | get events for an install
 [**get_install_inputs**](InstallsApi.md#get_install_inputs) | **GET** /v1/installs/{install_id}/inputs | get an installs inputs
 [**get_install_latest_deploy**](InstallsApi.md#get_install_latest_deploy) | **GET** /v1/installs/{install_id}/deploys/latest | get an install deploy
 [**get_install_sandbox_run_logs**](InstallsApi.md#get_install_sandbox_run_logs) | **GET** /v1/installs/{install_id}/sandbox-run/{run_id}/logs | get install sandbox run logs
@@ -1389,6 +1391,194 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List[AppInstallDeploy]**](AppInstallDeploy.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_install_event**
+> AppInstallEvent get_install_event(install_id, event_id)
+
+get an install event
+
+Get a single install event. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_install_event import AppInstallEvent
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+    event_id = 'event_id_example' # str | event ID
+
+    try:
+        # get an install event
+        api_response = api_instance.get_install_event(install_id, event_id)
+        print("The response of InstallsApi->get_install_event:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->get_install_event: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+ **event_id** | **str**| event ID | 
+
+### Return type
+
+[**AppInstallEvent**](AppInstallEvent.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_install_events**
+> List[AppInstallEvent] get_install_events(install_id)
+
+get events for an install
+
+# Get Install Events  Return an event stream for an install. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_install_event import AppInstallEvent
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+
+    try:
+        # get events for an install
+        api_response = api_instance.get_install_events(install_id)
+        print("The response of InstallsApi->get_install_events:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->get_install_events: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+
+### Return type
+
+[**List[AppInstallEvent]**](AppInstallEvent.md)
 
 ### Authorization
 
