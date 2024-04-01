@@ -233,10 +233,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_azure_account.py
-test/test_app_cloud_platform.py
-test/test_app_install_event.py
-test/test_app_operation_status.py
-test/test_github_com_powertoolsdev_mono_services_ctl_api_internal_app_installs_worker_signals_operation.py
-test/test_service_create_install_request_azure_account.py
 tox.ini
