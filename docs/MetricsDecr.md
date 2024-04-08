@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
-**value** | **int** |  | [optional] 
 
 ## Example
 
