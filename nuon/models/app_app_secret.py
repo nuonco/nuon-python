@@ -21,34 +21,28 @@ import json
 
 
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_user_token import AppUserToken
-from nuon.models.app_vcs_connection import AppVCSConnection
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class AppConnectedGithubVCSConfig(BaseModel):
+class AppAppSecret(BaseModel):
     """
-    AppConnectedGithubVCSConfig
+    AppAppSecret
     """ # noqa: E501
-    branch: Optional[StrictStr] = None
-    component_config_id: Optional[StrictStr] = Field(default=None, description="parent component")
-    component_config_type: Optional[StrictStr] = None
+    app_id: Optional[StrictStr] = None
     created_at: Optional[StrictStr] = None
     created_by: Optional[AppUserToken] = None
     created_by_id: Optional[StrictStr] = None
-    directory: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
-    repo: Optional[StrictStr] = None
-    repo_name: Optional[StrictStr] = None
-    repo_owner: Optional[StrictStr] = None
+    length: Optional[StrictInt] = Field(default=None, description="after query fields")
+    name: Optional[StrictStr] = None
+    org_id: Optional[StrictStr] = None
     updated_at: Optional[StrictStr] = None
-    vcs_connection: Optional[AppVCSConnection] = None
-    vcs_connection_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["branch", "component_config_id", "component_config_type", "created_at", "created_by", "created_by_id", "directory", "id", "repo", "repo_name", "repo_owner", "updated_at", "vcs_connection", "vcs_connection_id"]
+    __properties: ClassVar[List[str]] = ["app_id", "created_at", "created_by", "created_by_id", "id", "length", "name", "org_id", "updated_at"]
 
     model_config = {
         "populate_by_name": True,
@@ -68,7 +62,7 @@ class AppConnectedGithubVCSConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AppConnectedGithubVCSConfig from a JSON string"""
+        """Create an instance of AppAppSecret from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,14 +84,11 @@ class AppConnectedGithubVCSConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of vcs_connection
-        if self.vcs_connection:
-            _dict['vcs_connection'] = self.vcs_connection.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of AppConnectedGithubVCSConfig from a dict"""
+        """Create an instance of AppAppSecret from a dict"""
         if obj is None:
             return None
 
@@ -105,20 +96,15 @@ class AppConnectedGithubVCSConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "branch": obj.get("branch"),
-            "component_config_id": obj.get("component_config_id"),
-            "component_config_type": obj.get("component_config_type"),
+            "app_id": obj.get("app_id"),
             "created_at": obj.get("created_at"),
             "created_by": AppUserToken.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
             "created_by_id": obj.get("created_by_id"),
-            "directory": obj.get("directory"),
             "id": obj.get("id"),
-            "repo": obj.get("repo"),
-            "repo_name": obj.get("repo_name"),
-            "repo_owner": obj.get("repo_owner"),
-            "updated_at": obj.get("updated_at"),
-            "vcs_connection": AppVCSConnection.from_dict(obj.get("vcs_connection")) if obj.get("vcs_connection") is not None else None,
-            "vcs_connection_id": obj.get("vcs_connection_id")
+            "length": obj.get("length"),
+            "name": obj.get("name"),
+            "org_id": obj.get("org_id"),
+            "updated_at": obj.get("updated_at")
         })
         return _obj
 
