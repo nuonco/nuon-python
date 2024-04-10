@@ -12,6 +12,7 @@ docs/AppAppRunnerConfig.md
 docs/AppAppRunnerType.md
 docs/AppAppSandboxConfig.md
 docs/AppAppSandboxConfigArtifacts.md
+docs/AppAppSecret.md
 docs/AppAzureAccount.md
 docs/AppCloudPlatform.md
 docs/AppComponent.md
@@ -73,6 +74,7 @@ docs/ServiceCreateAppInstallerRequestLinks.md
 docs/ServiceCreateAppRequest.md
 docs/ServiceCreateAppRunnerConfigRequest.md
 docs/ServiceCreateAppSandboxConfigRequest.md
+docs/ServiceCreateAppSecretRequest.md
 docs/ServiceCreateComponentBuildRequest.md
 docs/ServiceCreateComponentReleaseRequest.md
 docs/ServiceCreateComponentReleaseRequestStrategy.md
@@ -136,6 +138,7 @@ nuon/models/app_app_runner_config.py
 nuon/models/app_app_runner_type.py
 nuon/models/app_app_sandbox_config.py
 nuon/models/app_app_sandbox_config_artifacts.py
+nuon/models/app_app_secret.py
 nuon/models/app_aws_account.py
 nuon/models/app_awsecr_image_config.py
 nuon/models/app_azure_account.py
@@ -191,6 +194,7 @@ nuon/models/service_create_app_installer_request_links.py
 nuon/models/service_create_app_request.py
 nuon/models/service_create_app_runner_config_request.py
 nuon/models/service_create_app_sandbox_config_request.py
+nuon/models/service_create_app_secret_request.py
 nuon/models/service_create_component_build_request.py
 nuon/models/service_create_component_release_request.py
 nuon/models/service_create_component_release_request_strategy.py
@@ -233,4 +237,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_app_secret.py
+test/test_service_create_app_secret_request.py
 tox.ini

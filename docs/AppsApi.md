@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**create_app_input_config**](AppsApi.md#create_app_input_config) | **POST** /v1/apps/{app_id}/input-config | 
 [**create_app_runner_config**](AppsApi.md#create_app_runner_config) | **POST** /v1/apps/{app_id}/runner-config | create an app runner config
 [**create_app_sandbox_config**](AppsApi.md#create_app_sandbox_config) | **POST** /v1/apps/{app_id}/sandbox-config | create an app sandbox config
+[**create_app_secret**](AppsApi.md#create_app_secret) | **POST** /v1/apps/{app_id}/secret | create an app secret
 [**delete_app**](AppsApi.md#delete_app) | **DELETE** /v1/apps/{app_id} | delete an app
+[**delete_app_secret**](AppsApi.md#delete_app_secret) | **DELETE** /v1/apps/{app_id}/secret/{secret_id} | delete an app secret
 [**get_app**](AppsApi.md#get_app) | **GET** /v1/apps/{app_id} | get an app
 [**get_app_config**](AppsApi.md#get_app_config) | **GET** /v1/apps/{app_id}/config/{app_config_id} | get an app config
 [**get_app_config_template**](AppsApi.md#get_app_config_template) | **GET** /v1/apps/{app_id}/template-config | get an app config template
@@ -21,6 +23,7 @@ Method | HTTP request | Description
 [**get_app_runner_latest_config**](AppsApi.md#get_app_runner_latest_config) | **GET** /v1/apps/{app_id}/runner-latest-config | get latest app runner config
 [**get_app_sandbox_configs**](AppsApi.md#get_app_sandbox_configs) | **GET** /v1/apps/{app_id}/sandbox-configs | get app sandbox configs
 [**get_app_sandbox_latest_config**](AppsApi.md#get_app_sandbox_latest_config) | **GET** /v1/apps/{app_id}/sandbox-latest-config | get latest app sandbox config
+[**get_app_secrets**](AppsApi.md#get_app_secrets) | **GET** /v1/apps/{app_id}/secrets | get app secrets
 [**get_apps**](AppsApi.md#get_apps) | **GET** /v1/apps | get all apps for the current org
 [**update_app**](AppsApi.md#update_app) | **PATCH** /v1/apps/{app_id} | update an app
 
@@ -493,6 +496,102 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_app_secret**
+> AppAppSecret create_app_secret(app_id, service_create_app_secret_request)
+
+create an app secret
+
+Create an app secret that can be used to configure components. To reference an app secret, use `.nuon.secrets.<secret_name>`.  **NOTE** secrets can only be written, or deleted, not read. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_app_secret import AppAppSecret
+from nuon.models.service_create_app_secret_request import ServiceCreateAppSecretRequest
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.AppsApi(api_client)
+    app_id = 'app_id_example' # str | app ID
+    service_create_app_secret_request = nuon.ServiceCreateAppSecretRequest() # ServiceCreateAppSecretRequest | Input
+
+    try:
+        # create an app secret
+        api_response = api_instance.create_app_secret(app_id, service_create_app_secret_request)
+        print("The response of AppsApi->create_app_secret:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppsApi->create_app_secret: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **str**| app ID | 
+ **service_create_app_secret_request** | [**ServiceCreateAppSecretRequest**](ServiceCreateAppSecretRequest.md)| Input | 
+
+### Return type
+
+[**AppAppSecret**](AppAppSecret.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_app**
 > bool delete_app(app_id)
 
@@ -556,6 +655,100 @@ with nuon.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_id** | **str**| app ID | 
+
+### Return type
+
+**bool**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_app_secret**
+> bool delete_app_secret(app_id, secret_id)
+
+delete an app secret
+
+Delete an app secret. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.AppsApi(api_client)
+    app_id = 'app_id_example' # str | app ID
+    secret_id = 'secret_id_example' # str | secret ID
+
+    try:
+        # delete an app secret
+        api_response = api_instance.delete_app_secret(app_id, secret_id)
+        print("The response of AppsApi->delete_app_secret:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppsApi->delete_app_secret: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **str**| app ID | 
+ **secret_id** | **str**| secret ID | 
 
 ### Return type
 
@@ -1573,6 +1766,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AppAppSandboxConfig**](AppAppSandboxConfig.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_app_secrets**
+> List[AppAppSecret] get_app_secrets(app_id)
+
+get app secrets
+
+List all secrets for an app.  **NOTE** this does not return any sensitive values, as secrets are write only. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_app_secret import AppAppSecret
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://ctl.prod.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.AppsApi(api_client)
+    app_id = 'app_id_example' # str | app ID
+
+    try:
+        # get app secrets
+        api_response = api_instance.get_app_secrets(app_id)
+        print("The response of AppsApi->get_app_secrets:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppsApi->get_app_secrets: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **str**| app ID | 
+
+### Return type
+
+[**List[AppAppSecret]**](AppAppSecret.md)
 
 ### Authorization
 
