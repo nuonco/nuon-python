@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_id** | **str** | gorm:\&quot;not null;default null\&quot;&#x60; | [optional] 
+**app_id** | **str** |  | [optional] 
 **artifacts** | [**AppAppSandboxConfigArtifacts**](AppAppSandboxConfigArtifacts.md) |  | [optional] 
 **cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) |  | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
