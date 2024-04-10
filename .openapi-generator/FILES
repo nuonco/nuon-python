@@ -237,6 +237,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_app_secret.py
-test/test_service_create_app_secret_request.py
 tox.ini
