@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **public_git_vcs_config** | [**AppPublicGitVCSConfig**](AppPublicGitVCSConfig.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **values** | **Dict[str, str]** |  | [optional] 
+**values_files** | **List[str]** |  | [optional] 
 
 ## Example
 
