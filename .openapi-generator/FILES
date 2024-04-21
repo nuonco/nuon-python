@@ -36,6 +36,8 @@ docs/AppOperationStatus.md
 docs/AppOrg.md
 docs/AppOrgHealthCheck.md
 docs/AppOrgHealthCheckStatus.md
+docs/AppOrgInvite.md
+docs/AppOrgInviteStatus.md
 docs/AppPublicGitVCSConfig.md
 docs/AppSandbox.md
 docs/AppSandboxRelease.md
@@ -90,6 +92,7 @@ docs/ServiceCreateInstallRequest.md
 docs/ServiceCreateInstallRequestAwsAccount.md
 docs/ServiceCreateInstallRequestAzureAccount.md
 docs/ServiceCreateJobComponentConfigRequest.md
+docs/ServiceCreateOrgInviteRequest.md
 docs/ServiceCreateOrgRequest.md
 docs/ServiceCreateOrgUserRequest.md
 docs/ServiceCreateTerraformModuleComponentConfigRequest.md
@@ -164,6 +167,8 @@ nuon/models/app_operation_status.py
 nuon/models/app_org.py
 nuon/models/app_org_health_check.py
 nuon/models/app_org_health_check_status.py
+nuon/models/app_org_invite.py
+nuon/models/app_org_invite_status.py
 nuon/models/app_public_git_vcs_config.py
 nuon/models/app_sandbox.py
 nuon/models/app_sandbox_release.py
@@ -210,6 +215,7 @@ nuon/models/service_create_install_request.py
 nuon/models/service_create_install_request_aws_account.py
 nuon/models/service_create_install_request_azure_account.py
 nuon/models/service_create_job_component_config_request.py
+nuon/models/service_create_org_invite_request.py
 nuon/models/service_create_org_request.py
 nuon/models/service_create_org_user_request.py
 nuon/models/service_create_terraform_module_component_config_request.py
@@ -237,4 +243,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_org_invite.py
+test/test_app_org_invite_status.py
+test/test_service_create_org_invite_request.py
 tox.ini
