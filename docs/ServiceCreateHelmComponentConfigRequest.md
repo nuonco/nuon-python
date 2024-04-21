@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSConfigRequest**](ServiceConnectedGithubVCSConfigRequest.md) |  | [optional] 
 **public_git_vcs_config** | [**ServicePublicGitVCSConfigRequest**](ServicePublicGitVCSConfigRequest.md) |  | [optional] 
 **values** | **Dict[str, str]** |  | 
+**values_files** | **List[str]** |  | [optional] 
 
 ## Example
 
