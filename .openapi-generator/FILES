@@ -243,7 +243,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_org_invite.py
-test/test_app_org_invite_status.py
-test/test_service_create_org_invite_request.py
 tox.ini

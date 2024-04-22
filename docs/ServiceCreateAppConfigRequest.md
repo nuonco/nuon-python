@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** |  | 
-**format** | [**AppAppConfigFmt**](AppAppConfigFmt.md) |  | 
+**generated_terraform_json** | **str** |  | [optional] 
 
 ## Example
 
