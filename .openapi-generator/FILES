@@ -241,9 +241,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_installer.py
-test/test_app_installer_metadata.py
-test/test_app_installer_type.py
-test/test_service_create_installer_request.py
-test/test_service_create_installer_request_metadata.py
 tox.ini
