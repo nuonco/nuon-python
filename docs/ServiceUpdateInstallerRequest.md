@@ -5,10 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | 
-**links** | [**ServiceUpdateInstallerRequestLinks**](ServiceUpdateInstallerRequestLinks.md) |  | [optional] 
+**app_ids** | **List[str]** |  | 
+**metadata** | [**ServiceCreateInstallerRequestMetadata**](ServiceCreateInstallerRequestMetadata.md) |  | [optional] 
 **name** | **str** |  | 
-**post_install_markdown** | **str** |  | [optional] 
 
 ## Example
 

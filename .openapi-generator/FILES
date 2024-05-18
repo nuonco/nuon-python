@@ -6,8 +6,6 @@ docs/AppAppConfigFmt.md
 docs/AppAppConfigStatus.md
 docs/AppAppInput.md
 docs/AppAppInputConfig.md
-docs/AppAppInstaller.md
-docs/AppAppInstallerMetadata.md
 docs/AppAppRunnerConfig.md
 docs/AppAppRunnerType.md
 docs/AppAppSandboxConfig.md
@@ -31,6 +29,9 @@ docs/AppInstallDeployType.md
 docs/AppInstallEvent.md
 docs/AppInstallInputs.md
 docs/AppInstallSandboxRun.md
+docs/AppInstaller.md
+docs/AppInstallerMetadata.md
+docs/AppInstallerType.md
 docs/AppJobComponentConfig.md
 docs/AppOperationStatus.md
 docs/AppOrg.md
@@ -71,8 +72,6 @@ docs/ServiceConnectedGithubVCSConfigRequest.md
 docs/ServiceConnectedGithubVCSSandboxConfigRequest.md
 docs/ServiceCreateAppConfigRequest.md
 docs/ServiceCreateAppInputConfigRequest.md
-docs/ServiceCreateAppInstallerRequest.md
-docs/ServiceCreateAppInstallerRequestLinks.md
 docs/ServiceCreateAppRequest.md
 docs/ServiceCreateAppRunnerConfigRequest.md
 docs/ServiceCreateAppSandboxConfigRequest.md
@@ -91,6 +90,8 @@ docs/ServiceCreateInstallInputsRequest.md
 docs/ServiceCreateInstallRequest.md
 docs/ServiceCreateInstallRequestAwsAccount.md
 docs/ServiceCreateInstallRequestAzureAccount.md
+docs/ServiceCreateInstallerRequest.md
+docs/ServiceCreateInstallerRequestMetadata.md
 docs/ServiceCreateJobComponentConfigRequest.md
 docs/ServiceCreateOrgInviteRequest.md
 docs/ServiceCreateOrgRequest.md
@@ -99,14 +100,12 @@ docs/ServiceCreateTerraformModuleComponentConfigRequest.md
 docs/ServicePublicGitVCSConfigRequest.md
 docs/ServicePublicGitVCSSandboxConfigRequest.md
 docs/ServicePublishMetricInput.md
-docs/ServiceRenderedInstall.md
 docs/ServiceRenderedInstaller.md
 docs/ServiceRepository.md
 docs/ServiceUpdateAppRequest.md
 docs/ServiceUpdateComponentRequest.md
 docs/ServiceUpdateInstallRequest.md
 docs/ServiceUpdateInstallerRequest.md
-docs/ServiceUpdateInstallerRequestLinks.md
 docs/ServiceUpdateOrgRequest.md
 docs/StatsdEvent.md
 docs/StatsdEventAlertType.md
@@ -135,8 +134,6 @@ nuon/models/app_app_config_fmt.py
 nuon/models/app_app_config_status.py
 nuon/models/app_app_input.py
 nuon/models/app_app_input_config.py
-nuon/models/app_app_installer.py
-nuon/models/app_app_installer_metadata.py
 nuon/models/app_app_runner_config.py
 nuon/models/app_app_runner_type.py
 nuon/models/app_app_sandbox_config.py
@@ -162,6 +159,9 @@ nuon/models/app_install_deploy_type.py
 nuon/models/app_install_event.py
 nuon/models/app_install_inputs.py
 nuon/models/app_install_sandbox_run.py
+nuon/models/app_installer.py
+nuon/models/app_installer_metadata.py
+nuon/models/app_installer_type.py
 nuon/models/app_job_component_config.py
 nuon/models/app_operation_status.py
 nuon/models/app_org.py
@@ -194,8 +194,6 @@ nuon/models/service_connected_github_vcs_config_request.py
 nuon/models/service_connected_github_vcs_sandbox_config_request.py
 nuon/models/service_create_app_config_request.py
 nuon/models/service_create_app_input_config_request.py
-nuon/models/service_create_app_installer_request.py
-nuon/models/service_create_app_installer_request_links.py
 nuon/models/service_create_app_request.py
 nuon/models/service_create_app_runner_config_request.py
 nuon/models/service_create_app_sandbox_config_request.py
@@ -214,6 +212,8 @@ nuon/models/service_create_install_inputs_request.py
 nuon/models/service_create_install_request.py
 nuon/models/service_create_install_request_aws_account.py
 nuon/models/service_create_install_request_azure_account.py
+nuon/models/service_create_installer_request.py
+nuon/models/service_create_installer_request_metadata.py
 nuon/models/service_create_job_component_config_request.py
 nuon/models/service_create_org_invite_request.py
 nuon/models/service_create_org_request.py
@@ -222,14 +222,12 @@ nuon/models/service_create_terraform_module_component_config_request.py
 nuon/models/service_public_git_vcs_config_request.py
 nuon/models/service_public_git_vcs_sandbox_config_request.py
 nuon/models/service_publish_metric_input.py
-nuon/models/service_rendered_install.py
 nuon/models/service_rendered_installer.py
 nuon/models/service_repository.py
 nuon/models/service_update_app_request.py
 nuon/models/service_update_component_request.py
 nuon/models/service_update_install_request.py
 nuon/models/service_update_installer_request.py
-nuon/models/service_update_installer_request_links.py
 nuon/models/service_update_org_request.py
 nuon/models/statsd_event.py
 nuon/models/statsd_event_alert_type.py
@@ -243,4 +241,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_installer.py
+test/test_app_installer_metadata.py
+test/test_app_installer_type.py
+test/test_service_create_installer_request.py
+test/test_service_create_installer_request_metadata.py
 tox.ini

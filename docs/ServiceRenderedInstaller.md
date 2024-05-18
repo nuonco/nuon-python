@@ -5,10 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app** | [**AppApp**](AppApp.md) |  | [optional] 
-**app_inputs** | [**AppAppInputConfig**](AppAppInputConfig.md) |  | [optional] 
-**app_sandbox** | [**AppAppSandboxConfig**](AppAppSandboxConfig.md) |  | [optional] 
-**metadata** | [**AppAppInstallerMetadata**](AppAppInstallerMetadata.md) |  | [optional] 
+**apps** | [**List[AppApp]**](AppApp.md) |  | [optional] 
+**metadata** | [**AppInstallerMetadata**](AppInstallerMetadata.md) |  | [optional] 
 **sandbox_mode** | **bool** |  | [optional] 
 
 ## Example

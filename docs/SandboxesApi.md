@@ -1,6 +1,6 @@
 # nuon.SandboxesApi
 
-All URIs are relative to *https://ctl.prod.nuon.co*
+All URIs are relative to *https://api.nuon.co*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ from nuon.models.app_sandbox import AppSandbox
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -110,10 +110,10 @@ from nuon.models.app_sandbox_release import AppSandboxRelease
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -193,10 +193,10 @@ from nuon.models.app_sandbox import AppSandbox
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 

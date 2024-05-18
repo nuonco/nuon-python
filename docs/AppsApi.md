@@ -1,6 +1,6 @@
 # nuon.AppsApi
 
-All URIs are relative to *https://ctl.prod.nuon.co*
+All URIs are relative to *https://api.nuon.co*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -47,10 +47,10 @@ from nuon.models.service_create_app_request import ServiceCreateAppRequest
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -141,10 +141,10 @@ from nuon.models.service_create_app_config_request import ServiceCreateAppConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -234,10 +234,10 @@ from nuon.models.service_create_app_input_config_request import ServiceCreateApp
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -327,10 +327,10 @@ from nuon.models.service_create_app_runner_config_request import ServiceCreateAp
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -421,10 +421,10 @@ from nuon.models.service_create_app_sandbox_config_request import ServiceCreateA
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -517,10 +517,10 @@ from nuon.models.service_create_app_secret_request import ServiceCreateAppSecret
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -609,10 +609,10 @@ import nuon
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -701,10 +701,10 @@ import nuon
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -794,10 +794,10 @@ from nuon.models.app_app import AppApp
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -887,10 +887,10 @@ from nuon.models.app_app_config import AppAppConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -982,10 +982,10 @@ from nuon.models.service_app_config_template import ServiceAppConfigTemplate
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1077,10 +1077,10 @@ from nuon.models.app_app_config import AppAppConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1168,10 +1168,10 @@ from nuon.models.app_app_input_config import AppAppInputConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1259,10 +1259,10 @@ from nuon.models.app_app_input_config import AppAppInputConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1352,10 +1352,10 @@ from nuon.models.app_app_config import AppAppConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1443,10 +1443,10 @@ from nuon.models.app_app_runner_config import AppAppRunnerConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1534,10 +1534,10 @@ from nuon.models.app_app_runner_config import AppAppRunnerConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1625,10 +1625,10 @@ from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1716,10 +1716,10 @@ from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1809,10 +1809,10 @@ from nuon.models.app_app_secret import AppAppSecret
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1900,10 +1900,10 @@ from nuon.models.app_app import AppApp
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1988,10 +1988,10 @@ from nuon.models.service_update_app_request import ServiceUpdateAppRequest
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://ctl.prod.nuon.co
+# Defining the host is optional and defaults to https://api.nuon.co
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://ctl.prod.nuon.co"
+    host = "https://api.nuon.co"
 )
 
 # The client must configure the authentication and authorization parameters
