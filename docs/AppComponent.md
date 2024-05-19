@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**var_name** | **str** |  | [optional] 
 
 ## Example
 
