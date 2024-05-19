@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dependencies** | **List[str]** |  | [optional] 
 **name** | **str** |  | 
+**var_name** | **str** |  | [optional] 
 
 ## Example
 

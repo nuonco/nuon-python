@@ -13,9 +13,11 @@ Name | Type | Description | Notes
 **dependencies** | **List[str]** |  | [optional] 
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**resolved_var_name** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**var_name** | **str** |  | [optional] 
 
 ## Example
 
