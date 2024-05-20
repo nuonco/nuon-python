@@ -5,6 +5,7 @@ All URIs are relative to *https://api.nuon.co*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_cli_config**](GeneralApi.md#get_cli_config) | **GET** /v1/general/cli-config | Get config for cli
+[**get_cloud_platform_regions**](GeneralApi.md#get_cloud_platform_regions) | **GET** /v1/general/cloud-platform/{cloud_platform}/regions | Get regions for a cloud platform
 [**get_current_user**](GeneralApi.md#get_current_user) | **GET** /v1/general/current-user | Get current user
 [**publish_metrics**](GeneralApi.md#publish_metrics) | **POST** /v1/general/metrics | Publish a metric from different Nuon clients for telemetry purposes.
 
@@ -55,6 +56,81 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ServiceCLIConfig**](ServiceCLIConfig.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_cloud_platform_regions**
+> List[AppCloudPlatformRegion] get_cloud_platform_regions(cloud_platform)
+
+Get regions for a cloud platform
+
+Return region metadata for the Nuon supported cloud platforms. 
+
+### Example
+
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_cloud_platform_region import AppCloudPlatformRegion
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.GeneralApi(api_client)
+    cloud_platform = 'cloud_platform_example' # str | cloud platform
+
+    try:
+        # Get regions for a cloud platform
+        api_response = api_instance.get_cloud_platform_regions(cloud_platform)
+        print("The response of GeneralApi->get_cloud_platform_regions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeneralApi->get_cloud_platform_regions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_platform** | **str**| cloud platform | 
+
+### Return type
+
+[**List[AppCloudPlatformRegion]**](AppCloudPlatformRegion.md)
 
 ### Authorization
 
