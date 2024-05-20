@@ -23,24 +23,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from nuon.models.app_user_token import AppUserToken
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class AppAWSAccount(BaseModel):
+class AppCloudPlatformRegion(BaseModel):
     """
-    AppAWSAccount
+    AppCloudPlatformRegion
     """ # noqa: E501
-    created_at: Optional[StrictStr] = None
-    created_by: Optional[AppUserToken] = None
-    created_by_id: Optional[StrictStr] = None
-    iam_role_arn: Optional[StrictStr] = None
-    id: Optional[StrictStr] = None
-    region: Optional[StrictStr] = None
-    updated_at: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["created_at", "created_by", "created_by_id", "iam_role_arn", "id", "region", "updated_at"]
+    display_name: Optional[StrictStr] = None
+    icon: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    value: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["display_name", "icon", "name", "value"]
 
     model_config = {
         "populate_by_name": True,
@@ -60,7 +56,7 @@ class AppAWSAccount(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AppAWSAccount from a JSON string"""
+        """Create an instance of AppCloudPlatformRegion from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,14 +75,11 @@ class AppAWSAccount(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['created_by'] = self.created_by.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of AppAWSAccount from a dict"""
+        """Create an instance of AppCloudPlatformRegion from a dict"""
         if obj is None:
             return None
 
@@ -94,13 +87,10 @@ class AppAWSAccount(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created_at": obj.get("created_at"),
-            "created_by": AppUserToken.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
-            "created_by_id": obj.get("created_by_id"),
-            "iam_role_arn": obj.get("iam_role_arn"),
-            "id": obj.get("id"),
-            "region": obj.get("region"),
-            "updated_at": obj.get("updated_at")
+            "display_name": obj.get("display_name"),
+            "icon": obj.get("icon"),
+            "name": obj.get("name"),
+            "value": obj.get("value")
         })
         return _obj
 

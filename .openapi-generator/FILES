@@ -13,6 +13,7 @@ docs/AppAppSandboxConfigArtifacts.md
 docs/AppAppSecret.md
 docs/AppAzureAccount.md
 docs/AppCloudPlatform.md
+docs/AppCloudPlatformRegion.md
 docs/AppComponent.md
 docs/AppComponentBuild.md
 docs/AppComponentConfigConnection.md
@@ -143,6 +144,7 @@ nuon/models/app_aws_account.py
 nuon/models/app_awsecr_image_config.py
 nuon/models/app_azure_account.py
 nuon/models/app_cloud_platform.py
+nuon/models/app_cloud_platform_region.py
 nuon/models/app_component.py
 nuon/models/app_component_build.py
 nuon/models/app_component_config_connection.py
@@ -241,4 +243,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_cloud_platform_region.py
 tox.ini
