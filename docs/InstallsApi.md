@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_install_deploy**](InstallsApi.md#create_install_deploy) | **POST** /v1/installs/{install_id}/deploys | deploy a build to an install
 [**create_install_inputs**](InstallsApi.md#create_install_inputs) | **POST** /v1/installs/{install_id}/inputs | create install inputs
 [**delete_install**](InstallsApi.md#delete_install) | **DELETE** /v1/installs/{install_id} | delete an install
+[**deprovision_install**](InstallsApi.md#deprovision_install) | **POST** /v1/installs/{install_id}/deprovision | deprovision an install
 [**get_app_installs**](InstallsApi.md#get_app_installs) | **GET** /v1/apps/{app_id}/installs | get all installs for an app
 [**get_current_install_inputs**](InstallsApi.md#get_current_install_inputs) | **GET** /v1/installs/{install_id}/inputs/current | get an installs current inputs
 [**get_install**](InstallsApi.md#get_install) | **GET** /v1/installs/{install_id} | get an install
@@ -26,7 +27,9 @@ Method | HTTP request | Description
 [**get_install_sandbox_run_logs**](InstallsApi.md#get_install_sandbox_run_logs) | **GET** /v1/installs/{install_id}/sandbox-run/{run_id}/logs | get install sandbox run logs
 [**get_install_sandbox_runs**](InstallsApi.md#get_install_sandbox_runs) | **GET** /v1/installs/{install_id}/sandbox-runs | get an installs sandbox runs
 [**get_org_installs**](InstallsApi.md#get_org_installs) | **GET** /v1/installs | get all installs for an org
+[**reprovision_install**](InstallsApi.md#reprovision_install) | **POST** /v1/installs/{install_id}/reprovision | reprovision an install
 [**teardown_install_component**](InstallsApi.md#teardown_install_component) | **POST** /v1/installs/{install_id}/components/{component_id}/teardown | teardown an install component
+[**teardown_install_components**](InstallsApi.md#teardown_install_components) | **POST** /v1/installs/{install_id}/components/teardown-all | teardown an install&#39;s components
 [**update_install**](InstallsApi.md#update_install) | **PATCH** /v1/installs/{install_id} | update an install
 
 
@@ -394,6 +397,100 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deprovision_install**
+> str deprovision_install(install_id, body)
+
+deprovision an install
+
+Deprovision an install sandbox. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+    body = None # object | Input
+
+    try:
+        # deprovision an install
+        api_response = api_instance.deprovision_install(install_id, body)
+        print("The response of InstallsApi->deprovision_install:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->deprovision_install: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+ **body** | **object**| Input | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -2054,6 +2151,100 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **reprovision_install**
+> str reprovision_install(install_id, body)
+
+reprovision an install
+
+Reprovision an install sandbox.  
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+    body = None # object | Input
+
+    try:
+        # reprovision an install
+        api_response = api_instance.reprovision_install(install_id, body)
+        print("The response of InstallsApi->reprovision_install:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->reprovision_install: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+ **body** | **object**| Input | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **teardown_install_component**
 > AppInstallDeploy teardown_install_component(install_id, component_id)
 
@@ -2132,6 +2323,100 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **teardown_install_components**
+> str teardown_install_components(install_id, body)
+
+teardown an install's components
+
+Teardown all components on an install. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+    body = None # object | Input
+
+    try:
+        # teardown an install's components
+        api_response = api_instance.teardown_install_components(install_id, body)
+        print("The response of InstallsApi->teardown_install_components:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->teardown_install_components: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+ **body** | **object**| Input | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
