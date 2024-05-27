@@ -34,6 +34,7 @@ docs/AppInstaller.md
 docs/AppInstallerMetadata.md
 docs/AppInstallerType.md
 docs/AppJobComponentConfig.md
+docs/AppNotificationsConfig.md
 docs/AppOperationStatus.md
 docs/AppOrg.md
 docs/AppOrgHealthCheck.md
@@ -53,7 +54,6 @@ docs/AppVCSConnectionCommit.md
 docs/AppsApi.md
 docs/ComponentsApi.md
 docs/GeneralApi.md
-docs/GithubComPowertoolsdevMonoServicesCtlApiInternalAppInstallsWorkerSignalsOperation.md
 docs/InstallersApi.md
 docs/InstallsApi.md
 docs/MetricsDecr.md
@@ -165,6 +165,7 @@ nuon/models/app_installer.py
 nuon/models/app_installer_metadata.py
 nuon/models/app_installer_type.py
 nuon/models/app_job_component_config.py
+nuon/models/app_notifications_config.py
 nuon/models/app_operation_status.py
 nuon/models/app_org.py
 nuon/models/app_org_health_check.py
@@ -181,7 +182,6 @@ nuon/models/app_user_org.py
 nuon/models/app_user_token.py
 nuon/models/app_vcs_connection.py
 nuon/models/app_vcs_connection_commit.py
-nuon/models/github_com_powertoolsdev_mono_services_ctl_api_internal_app_installs_worker_signals_operation.py
 nuon/models/metrics_decr.py
 nuon/models/metrics_event.py
 nuon/models/metrics_incr.py
@@ -243,4 +243,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_notifications_config.py
 tox.ini

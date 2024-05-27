@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **job** | [**AppJobComponentConfig**](AppJobComponentConfig.md) |  | [optional] 
 **terraform_module** | [**AppTerraformModuleComponentConfig**](AppTerraformModuleComponentConfig.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**version** | **int** |  | [optional] 
 
 ## Example
 

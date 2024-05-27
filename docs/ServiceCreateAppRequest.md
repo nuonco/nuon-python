@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | [optional] 
+**display_name** | **str** |  | [optional] 
 **name** | **str** |  | 
+**slack_webhook_url** | **str** |  | [optional] 
 
 ## Example
 

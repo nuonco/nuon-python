@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **install_components** | [**List[AppInstallComponent]**](AppInstallComponent.md) |  | [optional] 
 **install_events** | [**List[AppInstallEvent]**](AppInstallEvent.md) |  | [optional] 
 **install_inputs** | [**List[AppInstallInputs]**](AppInstallInputs.md) |  | [optional] 
+**install_number** | **int** |  | [optional] 
 **install_sandbox_runs** | [**List[AppInstallSandboxRun]**](AppInstallSandboxRun.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 

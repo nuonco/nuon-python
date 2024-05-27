@@ -1,4 +1,4 @@
-# AppInstallEvent
+# AppNotificationsConfig
 
 
 ## Properties
@@ -9,30 +9,28 @@ Name | Type | Description | Notes
 **created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**install_id** | **str** |  | [optional] 
-**operation** | **str** |  | [optional] 
-**operation_name** | **str** |  | [optional] 
-**operation_status** | [**AppOperationStatus**](AppOperationStatus.md) |  | [optional] 
 **org_id** | **str** |  | [optional] 
-**payload** | **Dict[str, str]** |  | [optional] 
+**owner_id** | **str** |  | [optional] 
+**owner_type** | **str** |  | [optional] 
+**slack_webhook_url** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example
 
 ```python
-from nuon.models.app_install_event import AppInstallEvent
+from nuon.models.app_notifications_config import AppNotificationsConfig
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of AppInstallEvent from a JSON string
-app_install_event_instance = AppInstallEvent.from_json(json)
+# create an instance of AppNotificationsConfig from a JSON string
+app_notifications_config_instance = AppNotificationsConfig.from_json(json)
 # print the JSON string representation of the object
-print AppInstallEvent.to_json()
+print AppNotificationsConfig.to_json()
 
 # convert the object into a dict
-app_install_event_dict = app_install_event_instance.to_dict()
-# create an instance of AppInstallEvent from a dict
-app_install_event_form_dict = app_install_event.from_dict(app_install_event_dict)
+app_notifications_config_dict = app_notifications_config_instance.to_dict()
+# create an instance of AppNotificationsConfig from a dict
+app_notifications_config_form_dict = app_notifications_config.from_dict(app_notifications_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

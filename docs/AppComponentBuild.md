@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **component_config_connection_id** | **str** |  | [optional] 
+**component_config_version** | **int** |  | [optional] 
 **component_id** | **str** | Read-only fields set on the object to de-nest data | [optional] 
 **component_name** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 

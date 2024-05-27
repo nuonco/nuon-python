@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **latest_health_check** | [**AppOrgHealthCheck**](AppOrgHealthCheck.md) | Filled in at read time | [optional] 
 **name** | **str** |  | [optional] 
+**notifications_config** | [**AppNotificationsConfig**](AppNotificationsConfig.md) |  | [optional] 
 **sandbox_mode** | **bool** | These fields are used to control the behaviour of the org NOTE: these are starting as nullable, so we can update stage/prod before resetting locally. | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 

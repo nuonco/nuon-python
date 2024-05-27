@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_install_deploy**](InstallsApi.md#create_install_deploy) | **POST** /v1/installs/{install_id}/deploys | deploy a build to an install
 [**create_install_inputs**](InstallsApi.md#create_install_inputs) | **POST** /v1/installs/{install_id}/inputs | create install inputs
 [**delete_install**](InstallsApi.md#delete_install) | **DELETE** /v1/installs/{install_id} | delete an install
+[**deploy_install_components**](InstallsApi.md#deploy_install_components) | **POST** /v1/installs/{install_id}/components/deploy-all | deploy all components on an install
 [**deprovision_install**](InstallsApi.md#deprovision_install) | **POST** /v1/installs/{install_id}/deprovision | deprovision an install
 [**get_app_installs**](InstallsApi.md#get_app_installs) | **GET** /v1/apps/{app_id}/installs | get all installs for an app
 [**get_current_install_inputs**](InstallsApi.md#get_current_install_inputs) | **GET** /v1/installs/{install_id}/inputs/current | get an installs current inputs
@@ -397,6 +398,100 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deploy_install_components**
+> str deploy_install_components(install_id, body)
+
+deploy all components on an install
+
+Deploy all components to an install.  This walks the graph order of the install's app, and will trigger a deploy for each on the specified install. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+    body = None # object | Input
+
+    try:
+        # deploy all components on an install
+        api_response = api_instance.deploy_install_components(install_id, body)
+        print("The response of InstallsApi->deploy_install_components:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->deploy_install_components: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+ **body** | **object**| Input | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
