@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **status** | [**AppAppConfigStatus**](AppAppConfigStatus.md) |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**version** | **int** | fields that are filled in via after query or views | [optional] 
 
 ## Example
 

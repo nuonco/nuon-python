@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **build_id** | **str** |  | [optional] 
+**component_config_version** | **int** |  | [optional] 
 **component_id** | **str** |  | [optional] 
 **component_name** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
