@@ -6,11 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
-**app_inputs** | [**List[AppAppInput]**](AppAppInput.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**input_groups** | [**List[AppAppInputGroup]**](AppAppInputGroup.md) |  | [optional] 
+**inputs** | [**List[AppAppInput]**](AppAppInput.md) |  | [optional] 
 **install_inputs** | [**List[AppInstallInputs]**](AppInstallInputs.md) |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**groups** | [**Dict[str, ServiceAppGroupRequest]**](ServiceAppGroupRequest.md) |  | 
 **inputs** | [**Dict[str, ServiceAppInputRequest]**](ServiceAppInputRequest.md) |  | 
 
 ## Example

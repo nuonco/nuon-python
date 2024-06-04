@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **default** | **str** |  | [optional] 
 **description** | **str** |  | 
 **display_name** | **str** |  | 
+**group** | **str** |  | 
 **required** | **bool** |  | [optional] 
 **sensitive** | **bool** |  | [optional] 
 

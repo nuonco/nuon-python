@@ -28,12 +28,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class ServiceCreateConnectionRequest(BaseModel):
+class ServiceAppGroupRequest(BaseModel):
     """
-    ServiceCreateConnectionRequest
+    ServiceAppGroupRequest
     """ # noqa: E501
-    github_install_id: StrictStr
-    __properties: ClassVar[List[str]] = ["github_install_id"]
+    description: StrictStr
+    display_name: StrictStr
+    __properties: ClassVar[List[str]] = ["description", "display_name"]
 
     model_config = {
         "populate_by_name": True,
@@ -53,7 +54,7 @@ class ServiceCreateConnectionRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ServiceCreateConnectionRequest from a JSON string"""
+        """Create an instance of ServiceAppGroupRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +77,7 @@ class ServiceCreateConnectionRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ServiceCreateConnectionRequest from a dict"""
+        """Create an instance of ServiceAppGroupRequest from a dict"""
         if obj is None:
             return None
 
@@ -84,7 +85,8 @@ class ServiceCreateConnectionRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "github_install_id": obj.get("github_install_id")
+            "description": obj.get("description"),
+            "display_name": obj.get("display_name")
         })
         return _obj
 
