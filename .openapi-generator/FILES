@@ -6,6 +6,7 @@ docs/AppAppConfigFmt.md
 docs/AppAppConfigStatus.md
 docs/AppAppInput.md
 docs/AppAppInputConfig.md
+docs/AppAppInputGroup.md
 docs/AppAppRunnerConfig.md
 docs/AppAppRunnerType.md
 docs/AppAppSandboxConfig.md
@@ -66,6 +67,7 @@ docs/ReleasesApi.md
 docs/SandboxesApi.md
 docs/ServiceAppConfigTemplate.md
 docs/ServiceAppConfigTemplateType.md
+docs/ServiceAppGroupRequest.md
 docs/ServiceAppInputRequest.md
 docs/ServiceAwsECRImageConfigRequest.md
 docs/ServiceCLIConfig.md
@@ -135,6 +137,7 @@ nuon/models/app_app_config_fmt.py
 nuon/models/app_app_config_status.py
 nuon/models/app_app_input.py
 nuon/models/app_app_input_config.py
+nuon/models/app_app_input_group.py
 nuon/models/app_app_runner_config.py
 nuon/models/app_app_runner_type.py
 nuon/models/app_app_sandbox_config.py
@@ -189,6 +192,7 @@ nuon/models/metrics_timing.py
 nuon/models/planv1_plan.py
 nuon/models/service_app_config_template.py
 nuon/models/service_app_config_template_type.py
+nuon/models/service_app_group_request.py
 nuon/models/service_app_input_request.py
 nuon/models/service_aws_ecr_image_config_request.py
 nuon/models/service_cli_config.py
@@ -243,4 +247,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_app_input_group.py
+test/test_service_app_group_request.py
 tox.ini

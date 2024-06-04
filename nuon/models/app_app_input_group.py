@@ -21,41 +21,31 @@ import json
 
 
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from nuon.models.app_app_input_config import AppAppInputConfig
-from nuon.models.app_app_runner_config import AppAppRunnerConfig
-from nuon.models.app_app_sandbox_config import AppAppSandboxConfig
-from nuon.models.app_cloud_platform import AppCloudPlatform
-from nuon.models.app_notifications_config import AppNotificationsConfig
 from nuon.models.app_user_token import AppUserToken
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class AppApp(BaseModel):
+class AppAppInputGroup(BaseModel):
     """
-    AppApp
+    AppAppInputGroup
     """ # noqa: E501
-    cloud_platform: Optional[AppCloudPlatform] = None
+    app_input_id: Optional[StrictStr] = None
+    app_inputs: Optional[List[AppAppInput]] = None
     created_at: Optional[StrictStr] = None
     created_by: Optional[AppUserToken] = None
     created_by_id: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     display_name: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
-    input_config: Optional[AppAppInputConfig] = Field(default=None, description="fields set via after query")
+    is_default: Optional[StrictBool] = None
     name: Optional[StrictStr] = None
-    notifications_config: Optional[AppNotificationsConfig] = None
     org_id: Optional[StrictStr] = None
-    runner_config: Optional[AppAppRunnerConfig] = None
-    sandbox_config: Optional[AppAppSandboxConfig] = None
-    slack_webhook_url: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    status_description: Optional[StrictStr] = None
     updated_at: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["cloud_platform", "created_at", "created_by", "created_by_id", "description", "display_name", "id", "input_config", "name", "notifications_config", "org_id", "runner_config", "sandbox_config", "slack_webhook_url", "status", "status_description", "updated_at"]
+    __properties: ClassVar[List[str]] = ["app_input_id", "app_inputs", "created_at", "created_by", "created_by_id", "description", "display_name", "id", "is_default", "name", "org_id", "updated_at"]
 
     model_config = {
         "populate_by_name": True,
@@ -75,7 +65,7 @@ class AppApp(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AppApp from a JSON string"""
+        """Create an instance of AppAppInputGroup from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -94,26 +84,21 @@ class AppApp(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in app_inputs (list)
+        _items = []
+        if self.app_inputs:
+            for _item in self.app_inputs:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['app_inputs'] = _items
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['created_by'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of input_config
-        if self.input_config:
-            _dict['input_config'] = self.input_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of notifications_config
-        if self.notifications_config:
-            _dict['notifications_config'] = self.notifications_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of runner_config
-        if self.runner_config:
-            _dict['runner_config'] = self.runner_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of sandbox_config
-        if self.sandbox_config:
-            _dict['sandbox_config'] = self.sandbox_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of AppApp from a dict"""
+        """Create an instance of AppAppInputGroup from a dict"""
         if obj is None:
             return None
 
@@ -121,24 +106,22 @@ class AppApp(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "cloud_platform": obj.get("cloud_platform"),
+            "app_input_id": obj.get("app_input_id"),
+            "app_inputs": [AppAppInput.from_dict(_item) for _item in obj.get("app_inputs")] if obj.get("app_inputs") is not None else None,
             "created_at": obj.get("created_at"),
             "created_by": AppUserToken.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
             "created_by_id": obj.get("created_by_id"),
             "description": obj.get("description"),
             "display_name": obj.get("display_name"),
             "id": obj.get("id"),
-            "input_config": AppAppInputConfig.from_dict(obj.get("input_config")) if obj.get("input_config") is not None else None,
+            "is_default": obj.get("is_default"),
             "name": obj.get("name"),
-            "notifications_config": AppNotificationsConfig.from_dict(obj.get("notifications_config")) if obj.get("notifications_config") is not None else None,
             "org_id": obj.get("org_id"),
-            "runner_config": AppAppRunnerConfig.from_dict(obj.get("runner_config")) if obj.get("runner_config") is not None else None,
-            "sandbox_config": AppAppSandboxConfig.from_dict(obj.get("sandbox_config")) if obj.get("sandbox_config") is not None else None,
-            "slack_webhook_url": obj.get("slack_webhook_url"),
-            "status": obj.get("status"),
-            "status_description": obj.get("status_description"),
             "updated_at": obj.get("updated_at")
         })
         return _obj
 
+from nuon.models.app_app_input import AppAppInput
+# TODO: Rewrite to not use raise_errors
+AppAppInputGroup.model_rebuild(raise_errors=False)
 
