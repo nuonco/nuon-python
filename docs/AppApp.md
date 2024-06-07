@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **org_id** | **str** |  | [optional] 
 **runner_config** | [**AppAppRunnerConfig**](AppAppRunnerConfig.md) |  | [optional] 
 **sandbox_config** | [**AppAppSandboxConfig**](AppAppSandboxConfig.md) |  | [optional] 
-**slack_webhook_url** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
