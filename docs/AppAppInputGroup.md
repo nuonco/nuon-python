@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**is_default** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
