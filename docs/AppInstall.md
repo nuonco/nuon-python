@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **aws_account** | [**AppAWSAccount**](AppAWSAccount.md) |  | [optional] 
 **azure_account** | [**AppAzureAccount**](AppAzureAccount.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_components** | [**List[AppInstallComponent]**](AppInstallComponent.md) |  | [optional] 

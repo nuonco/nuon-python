@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **author_name** | **str** |  | [optional] 
 **component_config_connection_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **message** | **str** |  | [optional] 

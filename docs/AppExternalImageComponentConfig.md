@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **aws_ecr_image_config** | [**AppAWSECRImageConfig**](AppAWSECRImageConfig.md) |  | [optional] 
 **component_config_connection_id** | **str** | value | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **image_url** | **str** |  | [optional] 

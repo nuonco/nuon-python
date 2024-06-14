@@ -6,11 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_id** | **str** | parent relationship | [optional] 
+**role_type** | [**AppRoleType**](AppRoleType.md) |  | [optional] 
 **status** | [**AppOrgInviteStatus**](AppOrgInviteStatus.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 

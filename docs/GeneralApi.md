@@ -155,7 +155,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_current_user**
-> AppUserToken get_current_user()
+> AppAccount get_current_user()
 
 Get current user
 
@@ -167,7 +167,7 @@ Get current user
 import time
 import os
 import nuon
-from nuon.models.app_user_token import AppUserToken
+from nuon.models.app_account import AppAccount
 from nuon.rest import ApiException
 from pprint import pprint
 
@@ -210,7 +210,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AppUserToken**](AppUserToken.md)
+[**AppAccount**](AppAccount.md)
 
 ### Authorization
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **cmd** | **List[str]** |  | [optional] 
 **component_config_connection_id** | **str** | value | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
 **id** | **str** |  | [optional] 
