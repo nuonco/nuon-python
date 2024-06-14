@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **component_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **docker_build** | [**AppDockerBuildComponentConfig**](AppDockerBuildComponentConfig.md) |  | [optional] 
 **external_image** | [**AppExternalImageComponentConfig**](AppExternalImageComponentConfig.md) |  | [optional] 

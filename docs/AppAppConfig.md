@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **app_id** | **str** |  | [optional] 
 **content** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **format** | [**AppAppConfigFmt**](AppAppConfigFmt.md) |  | [optional] 
 **generated_terraform** | **str** |  | [optional] 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **community_url** | **str** |  | [optional] 
 **copyright_markdown** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **demo_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **add_user**
-> AppUserOrg add_user(service_create_org_user_request)
+> AppAccount add_user(service_create_org_user_request)
 
 Add a user to the current org
 
@@ -29,7 +29,7 @@ Add a user to the current org
 import time
 import os
 import nuon
-from nuon.models.app_user_org import AppUserOrg
+from nuon.models.app_account import AppAccount
 from nuon.models.service_create_org_user_request import ServiceCreateOrgUserRequest
 from nuon.rest import ApiException
 from pprint import pprint
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AppUserOrg**](AppUserOrg.md)
+[**AppAccount**](AppAccount.md)
 
 ### Authorization
 

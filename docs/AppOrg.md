@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppUserToken**](AppUserToken.md) |  | [optional] 
+**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **custom_cert** | **bool** |  | [optional] 
 **health_checks** | [**List[AppOrgHealthCheck]**](AppOrgHealthCheck.md) |  | [optional] 
@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
-**users** | [**List[AppUserOrg]**](AppUserOrg.md) |  | [optional] 
 **vcs_connections** | [**List[AppVCSConnection]**](AppVCSConnection.md) |  | [optional] 
 
 ## Example

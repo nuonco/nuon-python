@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSSandboxConfigRequest**](ServiceConnectedGithubVCSSandboxConfigRequest.md) |  | [optional] 
 **public_git_vcs_config** | [**ServicePublicGitVCSSandboxConfigRequest**](ServicePublicGitVCSSandboxConfigRequest.md) |  | [optional] 
 **sandbox_inputs** | **Dict[str, str]** |  | 
-**sandbox_release_id** | **str** |  | [optional] 
 **terraform_version** | **str** |  | 
 
 ## Example
