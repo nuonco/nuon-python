@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_ids** | **List[str]** | ReadOnly Fields | [optional] 
-**orgs** | [**List[AppOrg]**](AppOrg.md) |  | [optional] 
 **permissions** | [**Dict[str, PermissionsPermission]**](PermissionsPermission.md) |  | [optional] 
 **roles** | [**List[AppRole]**](AppRole.md) |  | [optional] 
 **subject** | **str** |  | [optional] 
