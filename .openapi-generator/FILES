@@ -249,11 +249,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_account.py
-test/test_app_account_type.py
-test/test_app_policy.py
-test/test_app_policy_name.py
-test/test_app_role.py
-test/test_app_role_type.py
-test/test_permissions_permission.py
 tox.ini
