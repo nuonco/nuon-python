@@ -251,5 +251,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_app_aws_delegation_config.py
 tox.ini
