@@ -3,6 +3,7 @@ docs/AppAWSECRImageConfig.md
 docs/AppAccount.md
 docs/AppAccountType.md
 docs/AppApp.md
+docs/AppAppAWSDelegationConfig.md
 docs/AppAppConfig.md
 docs/AppAppConfigFmt.md
 docs/AppAppConfigStatus.md
@@ -134,6 +135,7 @@ nuon/models/__init__.py
 nuon/models/app_account.py
 nuon/models/app_account_type.py
 nuon/models/app_app.py
+nuon/models/app_app_aws_delegation_config.py
 nuon/models/app_app_config.py
 nuon/models/app_app_config_fmt.py
 nuon/models/app_app_config_status.py
@@ -249,4 +251,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_app_aws_delegation_config.py
 tox.ini
