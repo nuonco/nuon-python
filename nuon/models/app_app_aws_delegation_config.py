@@ -21,31 +21,29 @@ import json
 
 
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from nuon.models.app_account import AppAccount
-from nuon.models.app_app_runner_type import AppAppRunnerType
-from nuon.models.app_cloud_platform import AppCloudPlatform
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class AppAppRunnerConfig(BaseModel):
+class AppAppAWSDelegationConfig(BaseModel):
     """
-    AppAppRunnerConfig
+    AppAppAWSDelegationConfig
     """ # noqa: E501
-    app_id: Optional[StrictStr] = None
-    app_runner_type: Optional[AppAppRunnerType] = None
-    cloud_platform: Optional[AppCloudPlatform] = None
+    access_key_id: Optional[StrictStr] = Field(default=None, description="static credentials for long lived cross account access. NOTE: this is not recommended for long-term usage, just to be used for short term access before gov-cloud support is fully spun up.")
+    app_sandbox_config_id: Optional[StrictStr] = None
     created_at: Optional[StrictStr] = None
     created_by: Optional[AppAccount] = None
     created_by_id: Optional[StrictStr] = None
-    env_vars: Optional[Dict[str, StrictStr]] = None
+    iam_role_arn: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
     org_id: Optional[StrictStr] = None
+    secret_access_key: Optional[StrictStr] = None
     updated_at: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["app_id", "app_runner_type", "cloud_platform", "created_at", "created_by", "created_by_id", "env_vars", "id", "org_id", "updated_at"]
+    __properties: ClassVar[List[str]] = ["access_key_id", "app_sandbox_config_id", "created_at", "created_by", "created_by_id", "iam_role_arn", "id", "org_id", "secret_access_key", "updated_at"]
 
     model_config = {
         "populate_by_name": True,
@@ -65,7 +63,7 @@ class AppAppRunnerConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AppAppRunnerConfig from a JSON string"""
+        """Create an instance of AppAppAWSDelegationConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -91,7 +89,7 @@ class AppAppRunnerConfig(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of AppAppRunnerConfig from a dict"""
+        """Create an instance of AppAppAWSDelegationConfig from a dict"""
         if obj is None:
             return None
 
@@ -99,15 +97,15 @@ class AppAppRunnerConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "app_id": obj.get("app_id"),
-            "app_runner_type": obj.get("app_runner_type"),
-            "cloud_platform": obj.get("cloud_platform"),
+            "access_key_id": obj.get("access_key_id"),
+            "app_sandbox_config_id": obj.get("app_sandbox_config_id"),
             "created_at": obj.get("created_at"),
             "created_by": AppAccount.from_dict(obj.get("created_by")) if obj.get("created_by") is not None else None,
             "created_by_id": obj.get("created_by_id"),
-            "env_vars": obj.get("env_vars"),
+            "iam_role_arn": obj.get("iam_role_arn"),
             "id": obj.get("id"),
             "org_id": obj.get("org_id"),
+            "secret_access_key": obj.get("secret_access_key"),
             "updated_at": obj.get("updated_at")
         })
         return _obj

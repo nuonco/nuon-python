@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
 **artifacts** | [**AppAppSandboxConfigArtifacts**](AppAppSandboxConfigArtifacts.md) |  | [optional] 
-**cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) |  | [optional] 
+**aws_delegation_config** | [**AppAppAWSDelegationConfig**](AppAppAWSDelegationConfig.md) | cloud specific fields | [optional] 
+**aws_region_type** | **str** |  | [optional] 
+**cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) | fields set via after query | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
