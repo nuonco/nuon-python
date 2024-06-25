@@ -111,6 +111,7 @@ docs/ServiceUpdateAppRequest.md
 docs/ServiceUpdateComponentRequest.md
 docs/ServiceUpdateInstallRequest.md
 docs/ServiceUpdateInstallerRequest.md
+docs/ServiceUpdateInstallerRequestMetadata.md
 docs/ServiceUpdateOrgRequest.md
 docs/StatsdEvent.md
 docs/StatsdEventAlertType.md
@@ -238,6 +239,7 @@ nuon/models/service_update_app_request.py
 nuon/models/service_update_component_request.py
 nuon/models/service_update_install_request.py
 nuon/models/service_update_installer_request.py
+nuon/models/service_update_installer_request_metadata.py
 nuon/models/service_update_org_request.py
 nuon/models/statsd_event.py
 nuon/models/statsd_event_alert_type.py
@@ -251,4 +253,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_service_update_installer_request_metadata.py
 tox.ini
