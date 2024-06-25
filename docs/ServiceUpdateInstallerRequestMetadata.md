@@ -1,4 +1,4 @@
-# ServiceCreateInstallerRequestMetadata
+# ServiceUpdateInstallerRequestMetadata
 
 
 ## Properties
@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **demo_url** | **str** |  | [optional] 
 **description** | **str** |  | 
 **documentation_url** | **str** |  | 
-**favicon_url** | **str** |  | 
+**favicon_url** | **str** |  | [optional] 
 **footer_markdown** | **str** |  | [optional] 
 **github_url** | **str** |  | 
 **homepage_url** | **str** |  | 
@@ -20,19 +20,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from nuon.models.service_create_installer_request_metadata import ServiceCreateInstallerRequestMetadata
+from nuon.models.service_update_installer_request_metadata import ServiceUpdateInstallerRequestMetadata
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of ServiceCreateInstallerRequestMetadata from a JSON string
-service_create_installer_request_metadata_instance = ServiceCreateInstallerRequestMetadata.from_json(json)
+# create an instance of ServiceUpdateInstallerRequestMetadata from a JSON string
+service_update_installer_request_metadata_instance = ServiceUpdateInstallerRequestMetadata.from_json(json)
 # print the JSON string representation of the object
-print ServiceCreateInstallerRequestMetadata.to_json()
+print ServiceUpdateInstallerRequestMetadata.to_json()
 
 # convert the object into a dict
-service_create_installer_request_metadata_dict = service_create_installer_request_metadata_instance.to_dict()
-# create an instance of ServiceCreateInstallerRequestMetadata from a dict
-service_create_installer_request_metadata_form_dict = service_create_installer_request_metadata.from_dict(service_create_installer_request_metadata_dict)
+service_update_installer_request_metadata_dict = service_update_installer_request_metadata_instance.to_dict()
+# create an instance of ServiceUpdateInstallerRequestMetadata from a dict
+service_update_installer_request_metadata_form_dict = service_update_installer_request_metadata.from_dict(service_update_installer_request_metadata_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

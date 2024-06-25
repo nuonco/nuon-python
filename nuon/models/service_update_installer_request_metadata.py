@@ -22,19 +22,28 @@ import json
 
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ServiceAppGroupRequest(BaseModel):
+class ServiceUpdateInstallerRequestMetadata(BaseModel):
     """
-    ServiceAppGroupRequest
+    ServiceUpdateInstallerRequestMetadata
     """ # noqa: E501
+    community_url: StrictStr
+    copyright_markdown: Optional[StrictStr] = None
+    demo_url: Optional[StrictStr] = None
     description: StrictStr
-    display_name: StrictStr
-    __properties: ClassVar[List[str]] = ["description", "display_name"]
+    documentation_url: StrictStr
+    favicon_url: Optional[StrictStr] = None
+    footer_markdown: Optional[StrictStr] = None
+    github_url: StrictStr
+    homepage_url: StrictStr
+    logo_url: StrictStr
+    post_install_markdown: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["community_url", "copyright_markdown", "demo_url", "description", "documentation_url", "favicon_url", "footer_markdown", "github_url", "homepage_url", "logo_url", "post_install_markdown"]
 
     model_config = {
         "populate_by_name": True,
@@ -54,7 +63,7 @@ class ServiceAppGroupRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ServiceAppGroupRequest from a JSON string"""
+        """Create an instance of ServiceUpdateInstallerRequestMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +86,7 @@ class ServiceAppGroupRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ServiceAppGroupRequest from a dict"""
+        """Create an instance of ServiceUpdateInstallerRequestMetadata from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +94,17 @@ class ServiceAppGroupRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "community_url": obj.get("community_url"),
+            "copyright_markdown": obj.get("copyright_markdown"),
+            "demo_url": obj.get("demo_url"),
             "description": obj.get("description"),
-            "display_name": obj.get("display_name")
+            "documentation_url": obj.get("documentation_url"),
+            "favicon_url": obj.get("favicon_url"),
+            "footer_markdown": obj.get("footer_markdown"),
+            "github_url": obj.get("github_url"),
+            "homepage_url": obj.get("homepage_url"),
+            "logo_url": obj.get("logo_url"),
+            "post_install_markdown": obj.get("post_install_markdown")
         })
         return _obj
 

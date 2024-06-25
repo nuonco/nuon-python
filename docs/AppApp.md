@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) |  | [optional] 
+**cloud_platform** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
