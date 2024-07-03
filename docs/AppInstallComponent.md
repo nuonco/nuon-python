@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **install_deploys** | [**List[AppInstallDeploy]**](AppInstallDeploy.md) |  | [optional] 
 **install_id** | **str** |  | [optional] 
+**status** | **str** | after query fields filled in after querying | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example
