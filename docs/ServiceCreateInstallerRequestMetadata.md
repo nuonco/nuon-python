@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **github_url** | **str** |  | 
 **homepage_url** | **str** |  | 
 **logo_url** | **str** |  | 
+**og_image_url** | **str** |  | [optional] 
 **post_install_markdown** | **str** |  | [optional] 
 
 ## Example

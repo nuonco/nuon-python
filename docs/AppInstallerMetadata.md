@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **installer_id** | **str** |  | [optional] 
 **logo_url** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**og_image_url** | **str** |  | [optional] 
 **post_install_markdown** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
