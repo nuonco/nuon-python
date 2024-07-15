@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**get_app_sandbox_latest_config**](AppsApi.md#get_app_sandbox_latest_config) | **GET** /v1/apps/{app_id}/sandbox-latest-config | get latest app sandbox config
 [**get_app_secrets**](AppsApi.md#get_app_secrets) | **GET** /v1/apps/{app_id}/secrets | get app secrets
 [**get_apps**](AppsApi.md#get_apps) | **GET** /v1/apps | get all apps for the current org
+[**set_app_config_status**](AppsApi.md#set_app_config_status) | **POST** /v1/apps/{app_id}/config/{app_config_id}/set-status | updates an app config sync status
 [**update_app**](AppsApi.md#update_app) | **PATCH** /v1/apps/{app_id} | update an app
 
 
@@ -1956,6 +1957,101 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_app_config_status**
+> bool set_app_config_status(app_id, app_config_id, service_set_app_config_status_request)
+
+updates an app config sync status
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.service_set_app_config_status_request import ServiceSetAppConfigStatusRequest
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.AppsApi(api_client)
+    app_id = 'app_id_example' # str | app ID
+    app_config_id = 'app_config_id_example' # str | app config ID
+    service_set_app_config_status_request = nuon.ServiceSetAppConfigStatusRequest() # ServiceSetAppConfigStatusRequest | Input
+
+    try:
+        # updates an app config sync status
+        api_response = api_instance.set_app_config_status(app_id, app_config_id, service_set_app_config_status_request)
+        print("The response of AppsApi->set_app_config_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AppsApi->set_app_config_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **str**| app ID | 
+ **app_config_id** | **str**| app config ID | 
+ **service_set_app_config_status_request** | [**ServiceSetAppConfigStatusRequest**](ServiceSetAppConfigStatusRequest.md)| Input | 
+
+### Return type
+
+**bool**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

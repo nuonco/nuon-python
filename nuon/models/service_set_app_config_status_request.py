@@ -22,20 +22,20 @@ import json
 
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from nuon.models.app_app_config_status import AppAppConfigStatus
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ServicePublicGitVCSSandboxConfigRequest(BaseModel):
+class ServiceSetAppConfigStatusRequest(BaseModel):
     """
-    ServicePublicGitVCSSandboxConfigRequest
+    ServiceSetAppConfigStatusRequest
     """ # noqa: E501
-    branch: StrictStr
-    directory: StrictStr
-    repo: StrictStr
-    __properties: ClassVar[List[str]] = ["branch", "directory", "repo"]
+    status: Optional[AppAppConfigStatus] = None
+    status_description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["status", "status_description"]
 
     model_config = {
         "populate_by_name": True,
@@ -55,7 +55,7 @@ class ServicePublicGitVCSSandboxConfigRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ServicePublicGitVCSSandboxConfigRequest from a JSON string"""
+        """Create an instance of ServiceSetAppConfigStatusRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,7 +78,7 @@ class ServicePublicGitVCSSandboxConfigRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ServicePublicGitVCSSandboxConfigRequest from a dict"""
+        """Create an instance of ServiceSetAppConfigStatusRequest from a dict"""
         if obj is None:
             return None
 
@@ -86,9 +86,8 @@ class ServicePublicGitVCSSandboxConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "branch": obj.get("branch"),
-            "directory": obj.get("directory"),
-            "repo": obj.get("repo")
+            "status": obj.get("status"),
+            "status_description": obj.get("status_description")
         })
         return _obj
 

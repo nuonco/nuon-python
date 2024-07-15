@@ -107,6 +107,7 @@ docs/ServicePublicGitVCSSandboxConfigRequest.md
 docs/ServicePublishMetricInput.md
 docs/ServiceRenderedInstaller.md
 docs/ServiceRepository.md
+docs/ServiceSetAppConfigStatusRequest.md
 docs/ServiceUpdateAppRequest.md
 docs/ServiceUpdateComponentRequest.md
 docs/ServiceUpdateInstallRequest.md
@@ -235,6 +236,7 @@ nuon/models/service_public_git_vcs_sandbox_config_request.py
 nuon/models/service_publish_metric_input.py
 nuon/models/service_rendered_installer.py
 nuon/models/service_repository.py
+nuon/models/service_set_app_config_status_request.py
 nuon/models/service_update_app_request.py
 nuon/models/service_update_component_request.py
 nuon/models/service_update_install_request.py
@@ -253,4 +255,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_service_set_app_config_status_request.py
 tox.ini
