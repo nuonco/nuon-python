@@ -255,5 +255,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_service_set_app_config_status_request.py
 tox.ini
