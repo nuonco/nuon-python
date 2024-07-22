@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_ids** | **List[str]** |  | 
-**metadata** | [**ServiceUpdateInstallerRequestMetadata**](ServiceUpdateInstallerRequestMetadata.md) |  | [optional] 
+**metadata** | [**ServiceCreateInstallerRequestMetadata**](ServiceCreateInstallerRequestMetadata.md) |  | [optional] 
 **name** | **str** |  | 
 
 ## Example

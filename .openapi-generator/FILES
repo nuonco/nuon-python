@@ -23,6 +23,7 @@ docs/AppComponentBuild.md
 docs/AppComponentConfigConnection.md
 docs/AppComponentRelease.md
 docs/AppComponentReleaseStep.md
+docs/AppComponentType.md
 docs/AppConnectedGithubVCSConfig.md
 docs/AppDockerBuildComponentConfig.md
 docs/AppExternalImageComponentConfig.md
@@ -75,7 +76,6 @@ docs/ServiceAwsECRImageConfigRequest.md
 docs/ServiceCLIConfig.md
 docs/ServiceConnectedGithubVCSConfigRequest.md
 docs/ServiceConnectedGithubVCSSandboxConfigRequest.md
-docs/ServiceCreateAppConfigRequest.md
 docs/ServiceCreateAppInputConfigRequest.md
 docs/ServiceCreateAppRequest.md
 docs/ServiceCreateAppRunnerConfigRequest.md
@@ -107,12 +107,11 @@ docs/ServicePublicGitVCSSandboxConfigRequest.md
 docs/ServicePublishMetricInput.md
 docs/ServiceRenderedInstaller.md
 docs/ServiceRepository.md
-docs/ServiceSetAppConfigStatusRequest.md
+docs/ServiceUpdateAppConfigRequest.md
 docs/ServiceUpdateAppRequest.md
 docs/ServiceUpdateComponentRequest.md
 docs/ServiceUpdateInstallRequest.md
 docs/ServiceUpdateInstallerRequest.md
-docs/ServiceUpdateInstallerRequestMetadata.md
 docs/ServiceUpdateOrgRequest.md
 docs/StatsdEvent.md
 docs/StatsdEventAlertType.md
@@ -159,6 +158,7 @@ nuon/models/app_component_build.py
 nuon/models/app_component_config_connection.py
 nuon/models/app_component_release.py
 nuon/models/app_component_release_step.py
+nuon/models/app_component_type.py
 nuon/models/app_connected_github_vcs_config.py
 nuon/models/app_docker_build_component_config.py
 nuon/models/app_external_image_component_config.py
@@ -204,7 +204,6 @@ nuon/models/service_aws_ecr_image_config_request.py
 nuon/models/service_cli_config.py
 nuon/models/service_connected_github_vcs_config_request.py
 nuon/models/service_connected_github_vcs_sandbox_config_request.py
-nuon/models/service_create_app_config_request.py
 nuon/models/service_create_app_input_config_request.py
 nuon/models/service_create_app_request.py
 nuon/models/service_create_app_runner_config_request.py
@@ -236,12 +235,11 @@ nuon/models/service_public_git_vcs_sandbox_config_request.py
 nuon/models/service_publish_metric_input.py
 nuon/models/service_rendered_installer.py
 nuon/models/service_repository.py
-nuon/models/service_set_app_config_status_request.py
+nuon/models/service_update_app_config_request.py
 nuon/models/service_update_app_request.py
 nuon/models/service_update_component_request.py
 nuon/models/service_update_install_request.py
 nuon/models/service_update_installer_request.py
-nuon/models/service_update_installer_request_metadata.py
 nuon/models/service_update_org_request.py
 nuon/models/statsd_event.py
 nuon/models/statsd_event_alert_type.py
@@ -255,4 +253,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_component_type.py
+test/test_service_update_app_config_request.py
 tox.ini

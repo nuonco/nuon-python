@@ -23,24 +23,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from nuon.models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
-from nuon.models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+from nuon.models.app_app_config_status import AppAppConfigStatus
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
+class ServiceUpdateAppConfigRequest(BaseModel):
     """
-    ServiceCreateDockerBuildComponentConfigRequest
+    ServiceUpdateAppConfigRequest
     """ # noqa: E501
-    build_args: Optional[List[StrictStr]] = None
-    connected_github_vcs_config: Optional[ServiceConnectedGithubVCSConfigRequest] = None
-    dockerfile: StrictStr
-    env_vars: Optional[Dict[str, StrictStr]] = None
-    public_git_vcs_config: Optional[ServicePublicGitVCSConfigRequest] = None
-    target: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["build_args", "connected_github_vcs_config", "dockerfile", "env_vars", "public_git_vcs_config", "target"]
+    state: Optional[StrictStr] = None
+    status: Optional[AppAppConfigStatus] = None
+    status_description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["state", "status", "status_description"]
 
     model_config = {
         "populate_by_name": True,
@@ -60,7 +56,7 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ServiceCreateDockerBuildComponentConfigRequest from a JSON string"""
+        """Create an instance of ServiceUpdateAppConfigRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,17 +75,11 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of connected_github_vcs_config
-        if self.connected_github_vcs_config:
-            _dict['connected_github_vcs_config'] = self.connected_github_vcs_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of public_git_vcs_config
-        if self.public_git_vcs_config:
-            _dict['public_git_vcs_config'] = self.public_git_vcs_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ServiceCreateDockerBuildComponentConfigRequest from a dict"""
+        """Create an instance of ServiceUpdateAppConfigRequest from a dict"""
         if obj is None:
             return None
 
@@ -97,12 +87,9 @@ class ServiceCreateDockerBuildComponentConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "build_args": obj.get("build_args"),
-            "connected_github_vcs_config": ServiceConnectedGithubVCSConfigRequest.from_dict(obj.get("connected_github_vcs_config")) if obj.get("connected_github_vcs_config") is not None else None,
-            "dockerfile": obj.get("dockerfile"),
-            "env_vars": obj.get("env_vars"),
-            "public_git_vcs_config": ServicePublicGitVCSConfigRequest.from_dict(obj.get("public_git_vcs_config")) if obj.get("public_git_vcs_config") is not None else None,
-            "target": obj.get("target")
+            "state": obj.get("state"),
+            "status": obj.get("status"),
+            "status_description": obj.get("status_description")
         })
         return _obj
 
