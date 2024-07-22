@@ -253,6 +253,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_component_type.py
-test/test_service_update_app_config_request.py
 tox.ini
