@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **resolved_var_name** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
+**type** | [**AppComponentType**](AppComponentType.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **var_name** | **str** |  | [optional] 
 

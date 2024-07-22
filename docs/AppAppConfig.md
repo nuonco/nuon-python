@@ -6,14 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** |  | [optional] 
-**content** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
-**format** | [**AppAppConfigFmt**](AppAppConfigFmt.md) |  | [optional] 
-**generated_terraform** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
+**state** | **str** |  | [optional] 
 **status** | [**AppAppConfigStatus**](AppAppConfigStatus.md) |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 

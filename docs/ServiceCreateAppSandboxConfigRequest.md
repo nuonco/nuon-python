@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**aws_delegation_iam_role_arn** | **str** |  | [optional] 
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSSandboxConfigRequest**](ServiceConnectedGithubVCSSandboxConfigRequest.md) |  | [optional] 
 **public_git_vcs_config** | [**ServicePublicGitVCSSandboxConfigRequest**](ServicePublicGitVCSSandboxConfigRequest.md) |  | [optional] 
 **sandbox_inputs** | **Dict[str, str]** |  | 

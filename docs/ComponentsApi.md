@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**create_job_component_config**](ComponentsApi.md#create_job_component_config) | **POST** /v1/components/{component_id}/configs/job | create a job component config
 [**create_terraform_module_component_config**](ComponentsApi.md#create_terraform_module_component_config) | **POST** /v1/components/{component_id}/configs/terraform-module | create a terraform component config
 [**delete_component**](ComponentsApi.md#delete_component) | **DELETE** /v1/components/{component_id} | delete a component
+[**get_app_component**](ComponentsApi.md#get_app_component) | **GET** /v1/apps/{app_id}/component/{component_name_or_id} | get a components for a specific app
 [**get_app_components**](ComponentsApi.md#get_app_components) | **GET** /v1/apps/{app_id}/components | get all components for an app
 [**get_build**](ComponentsApi.md#get_build) | **GET** /v1/components/builds/{build_id} | get a build
 [**get_component**](ComponentsApi.md#get_component) | **GET** /v1/components/{component_id} | get a component
@@ -751,6 +752,101 @@ Name | Type | Description  | Notes
 ### Return type
 
 **bool**
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_app_component**
+> AppComponent get_app_component(app_id, component_name_or_id)
+
+get a components for a specific app
+
+Return an app component by id or name. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_component import AppComponent
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.ComponentsApi(api_client)
+    app_id = 'app_id_example' # str | app ID
+    component_name_or_id = 'component_name_or_id_example' # str | name or ID
+
+    try:
+        # get a components for a specific app
+        api_response = api_instance.get_app_component(app_id, component_name_or_id)
+        print("The response of ComponentsApi->get_app_component:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ComponentsApi->get_app_component: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **app_id** | **str**| app ID | 
+ **component_name_or_id** | **str**| name or ID | 
+
+### Return type
+
+[**AppComponent**](AppComponent.md)
 
 ### Authorization
 

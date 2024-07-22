@@ -27,19 +27,24 @@ except ImportError:
     from typing_extensions import Self
 
 
-class AppInstallerType(str, Enum):
+class AppComponentType(str, Enum):
     """
-    AppInstallerType
+    AppComponentType
     """
 
     """
     allowed enum values
     """
-    SELF_HOSTED = 'self_hosted'
+    TERRAFORM_MODULE = 'terraform_module'
+    HELM_CHART = 'helm_chart'
+    DOCKER_BUILD = 'docker_build'
+    EXTERNAL_IMAGE = 'external_image'
+    JOB = 'job'
+    UNKNOWN = 'unknown'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AppInstallerType from a JSON string"""
+        """Create an instance of AppComponentType from a JSON string"""
         return cls(json.loads(json_str))
 
 
