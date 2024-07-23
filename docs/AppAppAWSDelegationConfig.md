@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_key_id** | **str** | static credentials for long lived cross account access. NOTE: this is not recommended for long-term usage, just to be used for short term access before gov-cloud support is fully spun up. | [optional] 
 **app_sandbox_config_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
@@ -13,7 +12,6 @@ Name | Type | Description | Notes
 **iam_role_arn** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
-**secret_access_key** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example
