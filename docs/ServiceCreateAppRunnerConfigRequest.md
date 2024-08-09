@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **env_vars** | **Dict[str, str]** |  | [optional] 
-**type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | [optional] 
+**type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | 
 
 ## Example
 
