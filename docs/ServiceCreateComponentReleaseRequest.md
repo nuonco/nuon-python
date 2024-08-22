@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auto_build** | **bool** |  | [optional] 
 **build_id** | **str** |  | [optional] 
+**install_ids** | **List[str]** |  | [optional] 
 **strategy** | [**ServiceCreateComponentReleaseRequestStrategy**](ServiceCreateComponentReleaseRequestStrategy.md) |  | [optional] 
 
 ## Example
