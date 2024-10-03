@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **install_deploy_type** | [**AppInstallDeployType**](AppInstallDeployType.md) |  | [optional] 
 **install_id** | **str** | Fields that are de-nested at read time using AfterQuery | [optional] 
 **release_id** | **str** |  | [optional] 
+**runner_job** | [**AppRunnerJob**](AppRunnerJob.md) | runner details | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 

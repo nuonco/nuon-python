@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **install_id** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
+**redacted_values** | **Dict[str, str]** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **values** | **Dict[str, str]** |  | [optional] 
 

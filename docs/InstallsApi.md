@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**get_install_events**](InstallsApi.md#get_install_events) | **GET** /v1/installs/{install_id}/events | get events for an install
 [**get_install_inputs**](InstallsApi.md#get_install_inputs) | **GET** /v1/installs/{install_id}/inputs | get an installs inputs
 [**get_install_latest_deploy**](InstallsApi.md#get_install_latest_deploy) | **GET** /v1/installs/{install_id}/deploys/latest | get an install deploy
+[**get_install_runner_group**](InstallsApi.md#get_install_runner_group) | **GET** /v1/installs/{install_id}/runner-group | Get an install&#39;s runner group
 [**get_install_sandbox_run_logs**](InstallsApi.md#get_install_sandbox_run_logs) | **GET** /v1/installs/{install_id}/sandbox-run/{run_id}/logs | get install sandbox run logs
 [**get_install_sandbox_runs**](InstallsApi.md#get_install_sandbox_runs) | **GET** /v1/installs/{install_id}/sandbox-runs | get an installs sandbox runs
 [**get_org_installs**](InstallsApi.md#get_org_installs) | **GET** /v1/installs | get all installs for an org
@@ -1953,6 +1954,99 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AppInstallDeploy**](AppInstallDeploy.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_install_runner_group**
+> AppRunnerGroup get_install_runner_group(install_id)
+
+Get an install's runner group
+
+Return the runner group, including runners and settings for the provided install. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_runner_group import AppRunnerGroup
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.InstallsApi(api_client)
+    install_id = 'install_id_example' # str | install ID
+
+    try:
+        # Get an install's runner group
+        api_response = api_instance.get_install_runner_group(install_id)
+        print("The response of InstallsApi->get_install_runner_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InstallsApi->get_install_runner_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **install_id** | **str**| install ID | 
+
+### Return type
+
+[**AppRunnerGroup**](AppRunnerGroup.md)
 
 ### Authorization
 

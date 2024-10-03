@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **install_deploys** | [**List[AppInstallDeploy]**](AppInstallDeploy.md) |  | [optional] 
 **releases** | [**List[AppComponentRelease]**](AppComponentRelease.md) |  | [optional] 
+**runner_job** | [**AppRunnerJob**](AppRunnerJob.md) | runner details | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
