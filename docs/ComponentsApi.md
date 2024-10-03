@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**get_component_build_plan**](ComponentsApi.md#get_component_build_plan) | **GET** /v1/components/{component_id}/builds/{build_id}/plan | get component build plan
 [**get_component_builds**](ComponentsApi.md#get_component_builds) | **GET** /v1/builds | get builds for components
 [**get_component_configs**](ComponentsApi.md#get_component_configs) | **GET** /v1/components/{component_id}/configs | get all configs for a component
+[**get_component_dependencies**](ComponentsApi.md#get_component_dependencies) | **GET** /v1/components/{component_id}/dependencies | get a component&#39;s dependencies
 [**get_component_latest_build**](ComponentsApi.md#get_component_latest_build) | **GET** /v1/components/{component_id}/builds/latest | get latest build for a component
 [**get_component_latest_config**](ComponentsApi.md#get_component_latest_config) | **GET** /v1/components/{component_id}/configs/latest | get latest config for a component
 [**get_org_components**](ComponentsApi.md#get_org_components) | **GET** /v1/components | get all components for an org
@@ -1588,6 +1589,97 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List[AppComponentConfigConnection]**](AppComponentConfigConnection.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_component_dependencies**
+> List[AppComponent] get_component_dependencies(component_id)
+
+get a component's dependencies
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_component import AppComponent
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.nuon.co
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "https://api.nuon.co"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.ComponentsApi(api_client)
+    component_id = 'component_id_example' # str | component ID
+
+    try:
+        # get a component's dependencies
+        api_response = api_instance.get_component_dependencies(component_id)
+        print("The response of ComponentsApi->get_component_dependencies:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ComponentsApi->get_component_dependencies: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **component_id** | **str**| component ID | 
+
+### Return type
+
+[**List[AppComponent]**](AppComponent.md)
 
 ### Authorization
 

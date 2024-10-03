@@ -8,5 +8,8 @@ from nuon.api.installers_api import InstallersApi
 from nuon.api.installs_api import InstallsApi
 from nuon.api.orgs_api import OrgsApi
 from nuon.api.releases_api import ReleasesApi
+from nuon.api.runner_runners_api import RunnerRunnersApi
+from nuon.api.runners_api import RunnersApi
+from nuon.api.runners_runner_api import RunnersRunnerApi
 from nuon.api.vcs_api import VcsApi
 

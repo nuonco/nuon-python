@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **runner_status** | **str** |  | [optional] 
 **sandbox_status** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
+**status** | **str** | TODO(jm): deprecate these fields once the terraform provider has been updated | [optional] 
 **status_description** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
