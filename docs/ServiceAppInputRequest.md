@@ -9,8 +9,11 @@ Name | Type | Description | Notes
 **description** | **str** |  | 
 **display_name** | **str** |  | 
 **group** | **str** |  | 
+**index** | **int** |  | 
+**internal** | **bool** | New, optional fields | [optional] 
 **required** | **bool** |  | [optional] 
 **sensitive** | **bool** |  | [optional] 
+**type** | **str** |  | [optional] 
 
 ## Example
 

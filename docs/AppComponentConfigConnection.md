@@ -5,15 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
+**app_config_version** | **int** |  | [optional] 
+**checksum** | **str** |  | [optional] 
+**component_dependency_ids** | **List[str]** |  | [optional] 
 **component_id** | **str** |  | [optional] 
+**component_name** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **docker_build** | [**AppDockerBuildComponentConfig**](AppDockerBuildComponentConfig.md) |  | [optional] 
 **external_image** | [**AppExternalImageComponentConfig**](AppExternalImageComponentConfig.md) |  | [optional] 
 **helm** | [**AppHelmComponentConfig**](AppHelmComponentConfig.md) |  | [optional] 
 **id** | **str** |  | [optional] 
 **job** | [**AppJobComponentConfig**](AppJobComponentConfig.md) |  | [optional] 
+**kubernetes_manifest** | [**AppKubernetesManifestComponentConfig**](AppKubernetesManifestComponentConfig.md) |  | [optional] 
+**references** | **List[str]** |  | [optional] 
+**refs** | [**List[RefsRef]**](RefsRef.md) |  | [optional] 
 **terraform_module** | [**AppTerraformModuleComponentConfig**](AppTerraformModuleComponentConfig.md) |  | [optional] 
 **type** | [**AppComponentType**](AppComponentType.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 

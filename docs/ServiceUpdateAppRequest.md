@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config_directory** | **str** |  | [optional] 
+**config_repo** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 

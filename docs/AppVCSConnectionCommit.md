@@ -7,14 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author_email** | **str** |  | [optional] 
 **author_name** | **str** |  | [optional] 
-**component_config_connection_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **message** | **str** |  | [optional] 
 **sha** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**vcs_connection_id** | **str** |  | [optional] 
 
 ## Example
 

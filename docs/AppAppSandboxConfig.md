@@ -5,21 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **app_id** | **str** |  | [optional] 
-**artifacts** | [**AppAppSandboxConfigArtifacts**](AppAppSandboxConfigArtifacts.md) |  | [optional] 
-**aws_delegation_config** | [**AppAppAWSDelegationConfig**](AppAppAWSDelegationConfig.md) | cloud specific fields | [optional] 
-**aws_region_type** | **str** |  | [optional] 
+**aws_region_type** | **str** | cloud specific fields | [optional] 
 **cloud_platform** | **str** | fields set via after query | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
+**env_vars** | **Dict[str, str]** |  | [optional] 
 **id** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **public_git_vcs_config** | [**AppPublicGitVCSConfig**](AppPublicGitVCSConfig.md) |  | [optional] 
 **terraform_version** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **variables** | **Dict[str, str]** |  | [optional] 
+**variables_files** | **List[str]** |  | [optional] 
 
 ## Example
 

@@ -1,6 +1,6 @@
 # nuon.OrgsApi
 
-All URIs are relative to *https://api.nuon.co*
+All URIs are relative to *http://localhost:8081*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**create_org_invite**](OrgsApi.md#create_org_invite) | **POST** /v1/orgs/current/invites | Invite a user to the current org
 [**delete_org**](OrgsApi.md#delete_org) | **DELETE** /v1/orgs/current | Delete an org
 [**get_org**](OrgsApi.md#get_org) | **GET** /v1/orgs/current | Get an org
-[**get_org_health_checks**](OrgsApi.md#get_org_health_checks) | **GET** /v1/orgs/current/health-checks | Get an org&#39;s health checks
+[**get_org_acounts**](OrgsApi.md#get_org_acounts) | **GET** /v1/orgs/current/accounts | Get user accounts for current org
 [**get_org_invites**](OrgsApi.md#get_org_invites) | **GET** /v1/orgs/current/invites | Return org invites
 [**get_org_runner_group**](OrgsApi.md#get_org_runner_group) | **GET** /v1/orgs/current/runner-group | Get an org&#39;s runner group
 [**get_orgs**](OrgsApi.md#get_orgs) | **GET** /v1/orgs | Return current user&#39;s orgs
+[**remove_user**](OrgsApi.md#remove_user) | **POST** /v1/orgs/current/remove-user | Remove a user from the current org
 [**update_org**](OrgsApi.md#update_org) | **PATCH** /v1/orgs/current | Update current org
 
 
@@ -35,10 +36,10 @@ from nuon.models.service_create_org_user_request import ServiceCreateOrgUserRequ
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -126,10 +127,10 @@ from nuon.models.service_create_org_request import ServiceCreateOrgRequest
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -214,10 +215,10 @@ from nuon.models.service_create_org_invite_request import ServiceCreateOrgInvite
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -304,10 +305,10 @@ import nuon
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -391,10 +392,10 @@ from nuon.models.app_org import AppOrg
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -460,12 +461,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_org_health_checks**
-> List[AppOrgHealthCheck] get_org_health_checks(limit=limit)
+# **get_org_acounts**
+> AppAccount get_org_acounts(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
-Get an org's health checks
-
-Fetch the most recent health checks for an org. Health checks are automatically performed once every 60 seconds. 
+Get user accounts for current org
 
 ### Example
 
@@ -476,14 +475,14 @@ Fetch the most recent health checks for an org. Health checks are automatically 
 import time
 import os
 import nuon
-from nuon.models.app_org_health_check import AppOrgHealthCheck
+from nuon.models.app_account import AppAccount
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -507,15 +506,18 @@ configuration.api_key['OrgID'] = os.environ["API_KEY"]
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.OrgsApi(api_client)
-    limit = 60 # int | limit of health checks to return (optional) (default to 60)
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
-        # Get an org's health checks
-        api_response = api_instance.get_org_health_checks(limit=limit)
-        print("The response of OrgsApi->get_org_health_checks:\n")
+        # Get user accounts for current org
+        api_response = api_instance.get_org_acounts(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
+        print("The response of OrgsApi->get_org_acounts:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrgsApi->get_org_health_checks: %s\n" % e)
+        print("Exception when calling OrgsApi->get_org_acounts: %s\n" % e)
 ```
 
 
@@ -525,11 +527,14 @@ with nuon.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int**| limit of health checks to return | [optional] [default to 60]
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
-[**List[AppOrgHealthCheck]**](AppOrgHealthCheck.md)
+[**AppAccount**](AppAccount.md)
 
 ### Authorization
 
@@ -554,7 +559,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_org_invites**
-> List[AppOrgInvite] get_org_invites(limit=limit)
+> List[AppOrgInvite] get_org_invites(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 Return org invites
 
@@ -563,6 +568,7 @@ Returns a list of all invites to the org.
 ### Example
 
 * Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
 
 ```python
 import time
@@ -572,10 +578,10 @@ from nuon.models.app_org_invite import AppOrgInvite
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -589,15 +595,24 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['APIKey'] = 'Bearer'
 
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
 # Enter a context with an instance of the API client
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.OrgsApi(api_client)
-    limit = 60 # int | limit of health checks to return (optional) (default to 60)
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # Return org invites
-        api_response = api_instance.get_org_invites(limit=limit)
+        api_response = api_instance.get_org_invites(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of OrgsApi->get_org_invites:\n")
         pprint(api_response)
     except Exception as e:
@@ -611,7 +626,10 @@ with nuon.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int**| limit of health checks to return | [optional] [default to 60]
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -619,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey)
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
 
 ### HTTP request headers
 
@@ -659,10 +677,10 @@ from nuon.models.app_runner_group import AppRunnerGroup
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -729,7 +747,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_orgs**
-> List[AppOrg] get_orgs()
+> List[AppOrg] get_orgs(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 Return current user's orgs
 
@@ -745,10 +763,10 @@ from nuon.models.app_org import AppOrg
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -766,10 +784,14 @@ configuration.api_key['APIKey'] = os.environ["API_KEY"]
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.OrgsApi(api_client)
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # Return current user's orgs
-        api_response = api_instance.get_orgs()
+        api_response = api_instance.get_orgs(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of OrgsApi->get_orgs:\n")
         pprint(api_response)
     except Exception as e:
@@ -780,7 +802,13 @@ with nuon.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -808,6 +836,100 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_user**
+> AppAccount remove_user(service_remove_org_user_request)
+
+Remove a user from the current org
+
+Remove a user from an org. 
+
+### Example
+
+* Api Key Authentication (APIKey):
+* Api Key Authentication (OrgID):
+
+```python
+import time
+import os
+import nuon
+from nuon.models.app_account import AppAccount
+from nuon.models.service_remove_org_user_request import ServiceRemoveOrgUserRequest
+from nuon.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8081
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuon.Configuration(
+    host = "http://localhost:8081"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKey
+configuration.api_key['APIKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKey'] = 'Bearer'
+
+# Configure API key authorization: OrgID
+configuration.api_key['OrgID'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['OrgID'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuon.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuon.OrgsApi(api_client)
+    service_remove_org_user_request = nuon.ServiceRemoveOrgUserRequest() # ServiceRemoveOrgUserRequest | Input
+
+    try:
+        # Remove a user from the current org
+        api_response = api_instance.remove_user(service_remove_org_user_request)
+        print("The response of OrgsApi->remove_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrgsApi->remove_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_remove_org_user_request** | [**ServiceRemoveOrgUserRequest**](ServiceRemoveOrgUserRequest.md)| Input | 
+
+### Return type
+
+[**AppAccount**](AppAccount.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_org**
 > AppOrg update_org(service_update_org_request)
 
@@ -827,10 +949,10 @@ from nuon.models.service_update_org_request import ServiceUpdateOrgRequest
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters

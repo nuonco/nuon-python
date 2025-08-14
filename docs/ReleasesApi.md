@@ -1,6 +1,6 @@
 # nuon.ReleasesApi
 
-All URIs are relative to *https://api.nuon.co*
+All URIs are relative to *http://localhost:8081*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ from nuon.models.service_create_component_release_request import ServiceCreateCo
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_releases**
-> List[AppComponentRelease] get_app_releases(app_id)
+> List[AppComponentRelease] get_app_releases(app_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 get all releases for an app
 
@@ -123,10 +123,10 @@ from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -151,10 +151,14 @@ with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.ReleasesApi(api_client)
     app_id = 'app_id_example' # str | app ID
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # get all releases for an app
-        api_response = api_instance.get_app_releases(app_id)
+        api_response = api_instance.get_app_releases(app_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of ReleasesApi->get_app_releases:\n")
         pprint(api_response)
     except Exception as e:
@@ -169,6 +173,10 @@ with nuon.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_id** | **str**| app ID | 
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -197,7 +205,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_component_releases**
-> List[AppComponentRelease] get_component_releases(component_id)
+> List[AppComponentRelease] get_component_releases(component_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 get all releases for a component
 
@@ -214,10 +222,10 @@ from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -242,10 +250,14 @@ with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.ReleasesApi(api_client)
     component_id = 'component_id_example' # str | component ID
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # get all releases for a component
-        api_response = api_instance.get_component_releases(component_id)
+        api_response = api_instance.get_component_releases(component_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of ReleasesApi->get_component_releases:\n")
         pprint(api_response)
     except Exception as e:
@@ -260,6 +272,10 @@ with nuon.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **component_id** | **str**| component ID | 
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -305,10 +321,10 @@ from nuon.models.app_component_release import AppComponentRelease
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -379,7 +395,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_release_steps**
-> List[AppComponentReleaseStep] get_release_steps(release_id)
+> List[AppComponentReleaseStep] get_release_steps(release_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 get a release
 
@@ -396,10 +412,10 @@ from nuon.models.app_component_release_step import AppComponentReleaseStep
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -424,10 +440,14 @@ with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.ReleasesApi(api_client)
     release_id = 'release_id_example' # str | release ID
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # get a release
-        api_response = api_instance.get_release_steps(release_id)
+        api_response = api_instance.get_release_steps(release_id, offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of ReleasesApi->get_release_steps:\n")
         pprint(api_response)
     except Exception as e:
@@ -442,6 +462,10 @@ with nuon.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **release_id** | **str**| release ID | 
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 

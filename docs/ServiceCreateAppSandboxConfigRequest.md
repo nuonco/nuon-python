@@ -5,11 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aws_delegation_iam_role_arn** | **str** |  | [optional] 
+**app_config_id** | **str** |  | [optional] 
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSSandboxConfigRequest**](ServiceConnectedGithubVCSSandboxConfigRequest.md) |  | [optional] 
+**env_vars** | **Dict[str, str]** |  | 
 **public_git_vcs_config** | [**ServicePublicGitVCSSandboxConfigRequest**](ServicePublicGitVCSSandboxConfigRequest.md) |  | [optional] 
-**sandbox_inputs** | **Dict[str, str]** |  | 
 **terraform_version** | **str** |  | 
+**variables** | **Dict[str, str]** |  | 
+**variables_files** | **List[str]** |  | [optional] 
 
 ## Example
 

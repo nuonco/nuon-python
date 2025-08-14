@@ -6,11 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**org** | [**AppOrg**](AppOrg.md) |  | [optional] 
 **org_id** | **str** |  | [optional] 
+**outputs** | [**AppRunnerJobExecutionOutputs**](AppRunnerJobExecutionOutputs.md) |  | [optional] 
 **result** | [**AppRunnerJobExecutionResult**](AppRunnerJobExecutionResult.md) |  | [optional] 
 **runner_job_id** | **str** |  | [optional] 
 **status** | [**AppRunnerJobExecutionStatus**](AppRunnerJobExecutionStatus.md) |  | [optional] 

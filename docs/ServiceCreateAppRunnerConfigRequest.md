@@ -5,7 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
+**helm_driver** | [**AppAppRunnerConfigHelmDriverType**](AppAppRunnerConfigHelmDriverType.md) |  | [optional] 
+**init_script_url** | **str** |  | [optional] 
 **type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | 
 
 ## Example

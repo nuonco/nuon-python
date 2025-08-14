@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**iam_role_arn** | **str** |  | 
+**iam_role_arn** | **str** |  | [optional] 
 **region** | **str** |  | [optional] 
 
 ## Example

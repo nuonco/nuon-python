@@ -5,16 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**contents** | **str** |  | [optional] 
+**contents_display** | **str** |  | [optional] 
+**contents_display_gzip** | **str** |  | [optional] 
+**contents_gzip** | **str** | columns for storage of gzipped contents and plans | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **error_code** | **int** |  | [optional] 
 **error_metadata** | **Dict[str, str]** |  | [optional] 
 **id** | **str** |  | [optional] 
-**org** | [**AppOrg**](AppOrg.md) |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **runner_job_execution_id** | **str** |  | [optional] 
-**success** | **bool** | TODO(jm): add richer information on the error or other tied to a job execution. | [optional] 
+**success** | **bool** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example

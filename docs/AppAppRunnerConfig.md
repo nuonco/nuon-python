@@ -5,14 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **app_id** | **str** |  | [optional] 
 **app_runner_type** | [**AppAppRunnerType**](AppAppRunnerType.md) |  | [optional] 
 **cloud_platform** | [**AppCloudPlatform**](AppCloudPlatform.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
+**helm_driver** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**init_script** | **str** | takes a URL to a bash script ⤵  which will be &#x60;curl | bash&#x60;-ed on the VM. usually via user-data or equivalent. | [optional] 
 **org_id** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 

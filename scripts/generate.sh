@@ -1,9 +1,20 @@
 #/bin/bash
 
-SPEC=https://ctl.prod.nuon.co/oapi/v3
-#SPEC=https://ctl.stage.nuon.co/oapi/v3
-#SPEC=http://host.docker.internal:8081/oapi/v3
+set -e
+set -o pipefail
+set -u
 
+echo
+echo "preparing to generate SDK"
+echo
+
+# SPEC=https://api.nuon.co/oapi/v3
+# SPEC=https://ctl.stage.nuon.co/oapi/v3
+SPEC=http://host.docker.internal:8081/oapi/v3
+
+echo "> spec: $SPEC"
+
+echo "> generating"
 docker run --rm \
   -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
   -i $SPEC \

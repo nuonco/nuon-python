@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**component_ids** | **List[str]** |  | [optional] 
 **state** | **str** |  | [optional] 
 **status** | [**AppAppConfigStatus**](AppAppConfigStatus.md) |  | [optional] 
 **status_description** | **str** |  | [optional] 

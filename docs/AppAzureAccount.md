@@ -6,10 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**install** | [**AppInstall**](AppInstall.md) |  | [optional] 
 **location** | **str** |  | [optional] 
 **service_principal_app_id** | **str** |  | [optional] 
 **service_principal_password** | **str** |  | [optional] 

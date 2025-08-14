@@ -5,10 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **args** | **List[str]** |  | [optional] 
+**checksum** | **str** |  | [optional] 
 **cmd** | **List[str]** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
 **image_url** | **str** |  | 
+**references** | **List[str]** |  | [optional] 
 **tag** | **str** |  | 
 
 ## Example
