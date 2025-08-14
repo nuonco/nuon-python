@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**component_config_connection_id** | **str** |  | [optional] 
+**checksum** | **str** | checksum of our intermediate component config | [optional] 
+**component_config_connection** | [**AppComponentConfigConnection**](AppComponentConfigConnection.md) |  | [optional] 
+**component_config_connection_id** | **str** | DEPRECATED: will retain the field to connect against the last component config connection that set this build | [optional] 
 **component_config_version** | **int** |  | [optional] 
 **component_id** | **str** | Read-only fields set on the object to de-nest data | [optional] 
 **component_name** | **str** |  | [optional] 
@@ -15,10 +17,12 @@ Name | Type | Description | Notes
 **git_ref** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_deploys** | [**List[AppInstallDeploy]**](AppInstallDeploy.md) |  | [optional] 
+**log_stream** | [**AppLogStream**](AppLogStream.md) |  | [optional] 
 **releases** | [**List[AppComponentRelease]**](AppComponentRelease.md) |  | [optional] 
 **runner_job** | [**AppRunnerJob**](AppRunnerJob.md) | runner details | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
+**status_v2** | [**AppCompositeStatus**](AppCompositeStatus.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **vcs_connection_commit** | [**AppVCSConnectionCommit**](AppVCSConnectionCommit.md) |  | [optional] 
 

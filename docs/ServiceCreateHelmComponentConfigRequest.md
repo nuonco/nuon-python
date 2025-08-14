@@ -5,9 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **chart_name** | **str** |  | 
+**checksum** | **str** |  | [optional] 
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSConfigRequest**](ServiceConnectedGithubVCSConfigRequest.md) |  | [optional] 
+**dependencies** | **List[str]** |  | [optional] 
+**namespace** | **str** |  | [optional] 
 **public_git_vcs_config** | [**ServicePublicGitVCSConfigRequest**](ServicePublicGitVCSConfigRequest.md) |  | [optional] 
+**references** | **List[str]** |  | [optional] 
+**storage_driver** | **str** |  | [optional] 
+**take_ownership** | **bool** |  | [optional] 
 **values** | **Dict[str, str]** |  | 
 **values_files** | **List[str]** |  | [optional] 
 

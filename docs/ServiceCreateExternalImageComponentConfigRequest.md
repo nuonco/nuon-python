@@ -5,8 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **aws_ecr_image_config** | [**ServiceAwsECRImageConfigRequest**](ServiceAwsECRImageConfigRequest.md) |  | [optional] 
+**checksum** | **str** |  | [optional] 
+**dependencies** | **List[str]** |  | [optional] 
 **image_url** | **str** |  | 
+**references** | **List[str]** |  | [optional] 
 **tag** | **str** |  | 
 
 ## Example

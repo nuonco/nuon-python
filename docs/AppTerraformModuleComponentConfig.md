@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **component_config_connection_id** | **str** | parent reference | [optional] 
 **connected_github_vcs_config** | [**AppConnectedGithubVCSConfig**](AppConnectedGithubVCSConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **env_vars** | **Dict[str, str]** |  | [optional] 
 **id** | **str** |  | [optional] 
 **public_git_vcs_config** | [**AppPublicGitVCSConfig**](AppPublicGitVCSConfig.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 **variables** | **Dict[str, str]** |  | [optional] 
+**variables_files** | **List[str]** |  | [optional] 
 **version** | **str** | terraform configuration values | [optional] 
 
 ## Example

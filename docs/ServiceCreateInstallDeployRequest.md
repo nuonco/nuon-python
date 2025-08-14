@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **build_id** | **str** |  | [optional] 
+**deploy_dependents** | **bool** |  | [optional] 
+**plan_only** | **bool** |  | [optional] 
 
 ## Example
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nuon"
-version = "0.19.216"
+version = "cc3796a"
 description = "Nuon"
 authors = ["Nuon Support <support@nuon.co>"]
 license = "NoLicense"

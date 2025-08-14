@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_input_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **default** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
@@ -15,10 +14,13 @@ Name | Type | Description | Notes
 **group** | [**AppAppInputGroup**](AppAppInputGroup.md) |  | [optional] 
 **group_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**index** | **int** |  | [optional] 
+**internal** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 
 **required** | **bool** |  | [optional] 
 **sensitive** | **bool** |  | [optional] 
+**type** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example

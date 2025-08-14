@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**action_workflow_runs** | [**List[AppInstallActionWorkflowRun]**](AppInstallActionWorkflowRun.md) |  | [optional] 
 **build_id** | **str** |  | [optional] 
+**component_build** | [**AppComponentBuild**](AppComponentBuild.md) |  | [optional] 
 **component_config_version** | **int** |  | [optional] 
 **component_id** | **str** |  | [optional] 
 **component_name** | **str** |  | [optional] 
@@ -16,11 +18,18 @@ Name | Type | Description | Notes
 **install_component_id** | **str** |  | [optional] 
 **install_deploy_type** | [**AppInstallDeployType**](AppInstallDeployType.md) |  | [optional] 
 **install_id** | **str** | Fields that are de-nested at read time using AfterQuery | [optional] 
+**install_workflow_id** | **str** | DEPRECATED: use WorkflowID | [optional] 
+**log_stream** | [**AppLogStream**](AppLogStream.md) |  | [optional] 
+**oci_artifact** | [**AppOCIArtifact**](AppOCIArtifact.md) |  | [optional] 
+**outputs** | **Dict[str, object]** |  | [optional] 
 **release_id** | **str** |  | [optional] 
-**runner_job** | [**AppRunnerJob**](AppRunnerJob.md) | runner details | [optional] 
+**runner_jobs** | [**List[AppRunnerJob]**](AppRunnerJob.md) | runner details | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
+**status_v2** | [**AppCompositeStatus**](AppCompositeStatus.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**workflow** | [**AppWorkflow**](AppWorkflow.md) |  | [optional] 
+**workflow_id** | **str** |  | [optional] 
 
 ## Example
 

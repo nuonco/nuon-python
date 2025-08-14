@@ -5,11 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_config_id** | **str** |  | [optional] 
 **build_args** | **List[str]** |  | [optional] 
+**checksum** | **str** |  | [optional] 
 **connected_github_vcs_config** | [**ServiceConnectedGithubVCSConfigRequest**](ServiceConnectedGithubVCSConfigRequest.md) |  | [optional] 
+**dependencies** | **List[str]** |  | [optional] 
 **dockerfile** | **str** |  | 
 **env_vars** | **Dict[str, str]** |  | [optional] 
 **public_git_vcs_config** | [**ServicePublicGitVCSConfigRequest**](ServicePublicGitVCSConfigRequest.md) |  | [optional] 
+**references** | **List[str]** |  | [optional] 
 **target** | **str** |  | [optional] 
 
 ## Example

@@ -6,15 +6,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **jobs** | [**List[AppRunnerJob]**](AppRunnerJob.md) |  | [optional] 
 **name** | **str** |  | [optional] 
-**org** | [**AppOrg**](AppOrg.md) |  | [optional] 
+**operations** | [**List[AppRunnerOperation]**](AppRunnerOperation.md) |  | [optional] 
 **org_id** | **str** |  | [optional] 
-**runner_id** | **str** |  | [optional] 
+**runner_group_id** | **str** |  | [optional] 
 **runner_job** | [**AppRunnerJob**](AppRunnerJob.md) |  | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 

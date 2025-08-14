@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **component_config_id** | **str** |  | [optional] 
 **component_config_type** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **directory** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 

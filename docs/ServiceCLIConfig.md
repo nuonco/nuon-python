@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **auth_audience** | **str** |  | [optional] 
 **auth_client_id** | **str** |  | [optional] 
 **auth_domain** | **str** |  | [optional] 
+**dashboard_url** | **str** |  | [optional] 
 
 ## Example
 

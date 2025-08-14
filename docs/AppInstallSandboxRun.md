@@ -5,16 +5,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**action_workflow_runs** | [**List[AppInstallActionWorkflowRun]**](AppInstallActionWorkflowRun.md) |  | [optional] 
 **app_sandbox_config** | [**AppAppSandboxConfig**](AppAppSandboxConfig.md) |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_id** | **str** |  | [optional] 
+**install_sandbox_id** | **str** | TODO: once we run a backfill we can make this non pointer | [optional] 
+**install_workflow_id** | **str** |  | [optional] 
+**log_stream** | [**AppLogStream**](AppLogStream.md) |  | [optional] 
+**outputs** | **Dict[str, object]** |  | [optional] 
 **run_type** | [**AppSandboxRunType**](AppSandboxRunType.md) |  | [optional] 
+**runner_jobs** | [**List[AppRunnerJob]**](AppRunnerJob.md) | runner details | [optional] 
 **status** | **str** |  | [optional] 
 **status_description** | **str** |  | [optional] 
+**status_v2** | [**AppCompositeStatus**](AppCompositeStatus.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
+**workflow** | [**AppWorkflow**](AppWorkflow.md) |  | [optional] 
+**workflow_id** | **str** | Fields that are de-nested at read time using AfterQuery | [optional] 
 
 ## Example
 

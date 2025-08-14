@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **aws_account** | [**ServiceCreateInstallRequestAwsAccount**](ServiceCreateInstallRequestAwsAccount.md) |  | [optional] 
 **azure_account** | [**ServiceCreateInstallRequestAzureAccount**](ServiceCreateInstallRequestAzureAccount.md) |  | [optional] 
 **inputs** | **Dict[str, str]** |  | [optional] 
+**install_config** | [**HelpersCreateInstallConfigParams**](HelpersCreateInstallConfigParams.md) |  | [optional] 
 **name** | **str** |  | 
 
 ## Example

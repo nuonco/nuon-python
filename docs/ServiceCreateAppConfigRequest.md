@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | **str** |  | 
-**generated_terraform_json** | **str** |  | [optional] 
+**cli_version** | **str** |  | [optional] 
+**readme** | **str** | not required Readme | [optional] 
 
 ## Example
 

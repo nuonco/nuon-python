@@ -1,6 +1,6 @@
 # nuon.InstallersApi
 
-All URIs are relative to *https://api.nuon.co*
+All URIs are relative to *http://localhost:8081*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ from nuon.models.service_create_installer_request import ServiceCreateInstallerR
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -121,10 +121,10 @@ import nuon
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -212,10 +212,10 @@ from nuon.models.app_installer import AppInstaller
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_installers**
-> List[AppInstaller] get_installers()
+> List[AppInstaller] get_installers(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 get installers for current org
 
@@ -305,10 +305,10 @@ from nuon.models.app_installer import AppInstaller
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -332,10 +332,14 @@ configuration.api_key['OrgID'] = os.environ["API_KEY"]
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.InstallersApi(api_client)
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # get installers for current org
-        api_response = api_instance.get_installers()
+        api_response = api_instance.get_installers(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of InstallersApi->get_installers:\n")
         pprint(api_response)
     except Exception as e:
@@ -346,7 +350,13 @@ with nuon.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -390,10 +400,10 @@ from nuon.models.service_rendered_installer import ServiceRenderedInstaller
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 
@@ -466,10 +476,10 @@ from nuon.models.service_update_installer_request import ServiceUpdateInstallerR
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters

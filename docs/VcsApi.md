@@ -1,12 +1,11 @@
 # nuon.VcsApi
 
-All URIs are relative to *https://api.nuon.co*
+All URIs are relative to *http://localhost:8081*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_vcs_connection**](VcsApi.md#create_vcs_connection) | **POST** /v1/vcs/connections | create a vcs connection for Github
 [**create_vcs_connection_callback**](VcsApi.md#create_vcs_connection_callback) | **POST** /v1/vcs/connection-callback | public connection to create a vcs connection via a callback
-[**get_all_vcs_connected_repos**](VcsApi.md#get_all_vcs_connected_repos) | **GET** /v1/vcs/connected-repos | get all vcs connected repos for an org
 [**get_org_vcs_connections**](VcsApi.md#get_org_vcs_connections) | **GET** /v1/vcs/connections | get vcs connection for an org
 [**get_vcs_connection**](VcsApi.md#get_vcs_connection) | **GET** /v1/vcs/connections/{connection_id} | returns a vcs connection for an org
 
@@ -30,10 +29,10 @@ from nuon.models.service_create_connection_request import ServiceCreateConnectio
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -120,10 +119,10 @@ from nuon.models.service_create_connection_callback_request import ServiceCreate
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 
@@ -177,95 +176,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_all_vcs_connected_repos**
-> List[ServiceRepository] get_all_vcs_connected_repos()
-
-get all vcs connected repos for an org
-
-### Example
-
-* Api Key Authentication (APIKey):
-* Api Key Authentication (OrgID):
-
-```python
-import time
-import os
-import nuon
-from nuon.models.service_repository import ServiceRepository
-from nuon.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.nuon.co
-# See configuration.py for a list of all supported configuration parameters.
-configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKey
-configuration.api_key['APIKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKey'] = 'Bearer'
-
-# Configure API key authorization: OrgID
-configuration.api_key['OrgID'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['OrgID'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with nuon.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = nuon.VcsApi(api_client)
-
-    try:
-        # get all vcs connected repos for an org
-        api_response = api_instance.get_all_vcs_connected_repos()
-        print("The response of VcsApi->get_all_vcs_connected_repos:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling VcsApi->get_all_vcs_connected_repos: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List[ServiceRepository]**](ServiceRepository.md)
-
-### Authorization
-
-[APIKey](../README.md#APIKey), [OrgID](../README.md#OrgID)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_org_vcs_connections**
-> List[AppVCSConnection] get_org_vcs_connections()
+> List[AppVCSConnection] get_org_vcs_connections(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
 
 get vcs connection for an org
 
@@ -282,10 +194,10 @@ from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -309,10 +221,14 @@ configuration.api_key['OrgID'] = os.environ["API_KEY"]
 with nuon.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuon.VcsApi(api_client)
+    offset = 0 # int | offset of results to return (optional) (default to 0)
+    limit = 10 # int | limit of results to return (optional) (default to 10)
+    page = 0 # int | page number of results to return (optional) (default to 0)
+    x_nuon_pagination_enabled = True # bool | Enable pagination (optional)
 
     try:
         # get vcs connection for an org
-        api_response = api_instance.get_org_vcs_connections()
+        api_response = api_instance.get_org_vcs_connections(offset=offset, limit=limit, page=page, x_nuon_pagination_enabled=x_nuon_pagination_enabled)
         print("The response of VcsApi->get_org_vcs_connections:\n")
         pprint(api_response)
     except Exception as e:
@@ -323,7 +239,13 @@ with nuon.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset of results to return | [optional] [default to 0]
+ **limit** | **int**| limit of results to return | [optional] [default to 10]
+ **page** | **int**| page number of results to return | [optional] [default to 0]
+ **x_nuon_pagination_enabled** | **bool**| Enable pagination | [optional] 
 
 ### Return type
 
@@ -369,10 +291,10 @@ from nuon.models.app_vcs_connection import AppVCSConnection
 from nuon.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuon.co
+# Defining the host is optional and defaults to http://localhost:8081
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuon.Configuration(
-    host = "https://api.nuon.co"
+    host = "http://localhost:8081"
 )
 
 # The client must configure the authentication and authorization parameters

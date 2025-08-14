@@ -6,9 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**use_custom_cert** | **bool** | These fields are used to control the behaviour of the org. | [optional] 
-**use_new_runner** | **bool** |  | [optional] 
-**use_sandbox_mode** | **bool** |  | [optional] 
+**use_sandbox_mode** | **bool** | These fields are used to control the behaviour of the org. | [optional] 
 
 ## Example
 

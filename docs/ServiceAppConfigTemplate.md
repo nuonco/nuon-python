@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** |  | [optional] 
 **filename** | **str** |  | [optional] 
-**format** | [**AppAppConfigFmt**](AppAppConfigFmt.md) |  | [optional] 
+**format** | [**AppAppConfigVersion**](AppAppConfigVersion.md) |  | [optional] 
 **type** | [**ServiceAppConfigTemplateType**](ServiceAppConfigTemplateType.md) |  | [optional] 
 
 ## Example

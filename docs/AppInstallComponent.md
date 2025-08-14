@@ -8,12 +8,16 @@ Name | Type | Description | Notes
 **component** | [**AppComponent**](AppComponent.md) |  | [optional] 
 **component_id** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
-**created_by** | [**AppAccount**](AppAccount.md) |  | [optional] 
 **created_by_id** | **str** |  | [optional] 
+**helm_chart** | [**AppHelmChart**](AppHelmChart.md) |  | [optional] 
 **id** | **str** |  | [optional] 
 **install_deploys** | [**List[AppInstallDeploy]**](AppInstallDeploy.md) |  | [optional] 
 **install_id** | **str** |  | [optional] 
-**status** | **str** | after query fields filled in after querying | [optional] 
+**links** | **Dict[str, object]** |  | [optional] 
+**status** | **str** |  | [optional] 
+**status_description** | **str** |  | [optional] 
+**status_v2** | [**AppCompositeStatus**](AppCompositeStatus.md) |  | [optional] 
+**terraform_workspace** | [**AppTerraformWorkspace**](AppTerraformWorkspace.md) |  | [optional] 
 **updated_at** | **str** |  | [optional] 
 
 ## Example
