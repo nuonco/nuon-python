@@ -19,8 +19,10 @@ echo "> spec: $SPEC"
 echo "> generating"
 openapi-python-client generate \
   --url $SPEC \
+  --config gen.yaml \
   --output-path . \
-  --overwrite
+  --overwrite \
+  --meta uv
 
 # save version to file for workflows to read from
 cat pyproject.toml | grep version | sed -e 's/.*version = "\(.*\)"/\1/' > version.txt
