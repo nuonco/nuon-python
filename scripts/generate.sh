@@ -4,24 +4,36 @@ set -e
 set -o pipefail
 set -u
 
+ENV="{$1:-prod}"
+
+
+HOST="https://api.nuon.co"
+if [ "$ENV" == "dev" ]; then
+  HOST="http://localhost:8081"
+elif [ "$ENV" == "stage" ]; then
+  HOST="https://api.stage.nuon.co"
+fi
+
+SPEC="$HOST/oapi/v3"
+
+config=`pwd`"/gen.yaml"
 echo
 echo "preparing to generate SDK"
-echo
+echo ">   host: $HOST"
+echo "> config: $config"
 
-# SPEC=https://api.nuon.co/oapi/v3
-# SPEC=https://ctl.stage.nuon.co/oapi/v3
-SPEC=http://host.docker.internal:8081/oapi/v3
+echo "> installing dependencies"
+pipx install openapi-python-client --include-deps
+
 
 echo "> spec: $SPEC"
-
 echo "> generating"
-docker run --rm \
-  -v ${PWD}:/local openapitools/openapi-generator-cli:latest-release generate \
-  -i $SPEC \
-  -g python \
-  -o /local \
-  --package-name nuon \
-  -t /local/scripts/templates
+openapi-python-client generate \
+  --url $SPEC \
+  --config $config \
+  --output-path . \
+  --overwrite \
+  --meta uv
 
 # save version to file for workflows to read from
 cat pyproject.toml | grep version | sed -e 's/.*version = "\(.*\)"/\1/' > version.txt
