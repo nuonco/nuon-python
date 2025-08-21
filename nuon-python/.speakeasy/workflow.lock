@@ -1,0 +1,37 @@
+speakeasyVersion: 1.606.0
+sources:
+    Nuon:
+        sourceNamespace: nuon
+        sourceRevisionDigest: sha256:6a8821acea6ce555b6e71607ca8b8e31333790dd831e6b4370d81478f7f4fa4a
+        sourceBlobDigest: sha256:97ab9d0ea42cdd92df17c10cad59d6c53a492d0facee3c94438ee7276d8d7d28
+        tags:
+            - latest
+            - 0.19.619
+targets:
+    nuon:
+        source: Nuon
+        sourceNamespace: nuon
+        sourceRevisionDigest: sha256:6a8821acea6ce555b6e71607ca8b8e31333790dd831e6b4370d81478f7f4fa4a
+        sourceBlobDigest: sha256:97ab9d0ea42cdd92df17c10cad59d6c53a492d0facee3c94438ee7276d8d7d28
+        codeSamplesNamespace: nuon-code-samples
+        codeSamplesRevisionDigest: sha256:a769840fec5f2366a84b92a3f2cf5d6e9fb08b6a9fb9c6db3f3e569c34dadb36
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Nuon:
+            inputs:
+                - location: https://api.nuon.co/oapi/v3
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/nuon-test/nuon-python/nuon
+    targets:
+        nuon:
+            target: python
+            source: Nuon
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/nuon-test/nuon-python/nuon-code-samples
+                labelOverride:
+                    fixedValue: Python (SDK)
+                blocking: false

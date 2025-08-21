@@ -1,0 +1,9 @@
+# CreateAppBreakGlassConfigRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `app_id`                                                                                               | *str*                                                                                                  | :heavy_check_mark:                                                                                     | app ID                                                                                                 |
+| `service_create_app_break_glass_config_request`                                                        | [models.ServiceCreateAppBreakGlassConfigRequest](../models/servicecreateappbreakglassconfigrequest.md) | :heavy_check_mark:                                                                                     | Input                                                                                                  |

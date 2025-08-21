@@ -1,0 +1,10 @@
+# UpdateInstallConfigRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `install_id`                                                                               | *str*                                                                                      | :heavy_check_mark:                                                                         | install ID                                                                                 |
+| `config_id`                                                                                | *str*                                                                                      | :heavy_check_mark:                                                                         | config ID                                                                                  |
+| `service_update_install_config_request`                                                    | [models.ServiceUpdateInstallConfigRequest](../models/serviceupdateinstallconfigrequest.md) | :heavy_check_mark:                                                                         | Input                                                                                      |

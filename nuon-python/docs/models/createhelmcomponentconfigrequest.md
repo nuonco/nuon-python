@@ -1,0 +1,9 @@
+# CreateHelmComponentConfigRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `component_id`                                                                                         | *str*                                                                                                  | :heavy_check_mark:                                                                                     | component ID                                                                                           |
+| `service_create_helm_component_config_request`                                                         | [models.ServiceCreateHelmComponentConfigRequest](../models/servicecreatehelmcomponentconfigrequest.md) | :heavy_check_mark:                                                                                     | Input                                                                                                  |

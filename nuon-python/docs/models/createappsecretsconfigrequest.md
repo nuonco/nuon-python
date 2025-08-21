@@ -1,0 +1,9 @@
+# CreateAppSecretsConfigRequest
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `app_id`                                                                                         | *str*                                                                                            | :heavy_check_mark:                                                                               | app ID                                                                                           |
+| `service_create_app_secrets_config_request`                                                      | [models.ServiceCreateAppSecretsConfigRequest](../models/servicecreateappsecretsconfigrequest.md) | :heavy_check_mark:                                                                               | Input                                                                                            |

@@ -1,0 +1,13 @@
+# AppVCSConnection
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `created_at`                                                               | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `created_by_id`                                                            | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `github_install_id`                                                        | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `id`                                                                       | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `updated_at`                                                               | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `vcs_connection_commit`                                                    | List[[models.AppVCSConnectionCommit](../models/appvcsconnectioncommit.md)] | :heavy_minus_sign:                                                         | N/A                                                                        |

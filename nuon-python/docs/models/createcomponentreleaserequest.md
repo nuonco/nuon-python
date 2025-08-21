@@ -1,0 +1,9 @@
+# CreateComponentReleaseRequest
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `component_id`                                                                                   | *str*                                                                                            | :heavy_check_mark:                                                                               | component ID                                                                                     |
+| `service_create_component_release_request`                                                       | [models.ServiceCreateComponentReleaseRequest](../models/servicecreatecomponentreleaserequest.md) | :heavy_check_mark:                                                                               | Input                                                                                            |

@@ -1,0 +1,9 @@
+# DeployInstallComponentsRequest
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `install_id`                                                                                                 | *str*                                                                                                        | :heavy_check_mark:                                                                                           | install ID                                                                                                   |
+| `service_deploy_install_components_request`                                                                  | [Optional[models.ServiceDeployInstallComponentsRequest]](../models/servicedeployinstallcomponentsrequest.md) | :heavy_minus_sign:                                                                                           | Input                                                                                                        |

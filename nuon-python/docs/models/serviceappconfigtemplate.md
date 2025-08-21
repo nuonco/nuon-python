@@ -1,0 +1,11 @@
+# ServiceAppConfigTemplate
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `content`                                                                                  | *Optional[str]*                                                                            | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `filename`                                                                                 | *Optional[str]*                                                                            | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `format_`                                                                                  | [Optional[models.AppAppConfigVersion]](../models/appappconfigversion.md)                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | [Optional[models.ServiceAppConfigTemplateType]](../models/serviceappconfigtemplatetype.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |

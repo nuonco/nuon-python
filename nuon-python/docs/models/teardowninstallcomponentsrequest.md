@@ -1,0 +1,9 @@
+# TeardownInstallComponentsRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `install_id`                                                                                           | *str*                                                                                                  | :heavy_check_mark:                                                                                     | install ID                                                                                             |
+| `service_teardown_install_components_request`                                                          | [models.ServiceTeardownInstallComponentsRequest](../models/serviceteardowninstallcomponentsrequest.md) | :heavy_check_mark:                                                                                     | Input                                                                                                  |

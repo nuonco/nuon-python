@@ -1,0 +1,9 @@
+# ReprovisionInstallSandboxRequest
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `install_id`                                                                                           | *str*                                                                                                  | :heavy_check_mark:                                                                                     | install ID                                                                                             |
+| `service_reprovision_install_sandbox_request`                                                          | [models.ServiceReprovisionInstallSandboxRequest](../models/servicereprovisioninstallsandboxrequest.md) | :heavy_check_mark:                                                                                     | Input                                                                                                  |

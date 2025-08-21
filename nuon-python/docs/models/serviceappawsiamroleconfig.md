@@ -1,0 +1,12 @@
+# ServiceAppAWSIAMRoleConfig
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `description`                                                                          | *str*                                                                                  | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `display_name`                                                                         | *str*                                                                                  | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `name`                                                                                 | *str*                                                                                  | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `permissions_boundary`                                                                 | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `policies`                                                                             | List[[models.ServiceAppAWSIAMPolicyConfig](../models/serviceappawsiampolicyconfig.md)] | :heavy_minus_sign:                                                                     | N/A                                                                                    |

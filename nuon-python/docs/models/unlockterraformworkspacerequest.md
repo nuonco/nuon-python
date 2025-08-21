@@ -1,0 +1,9 @@
+# UnlockTerraformWorkspaceRequest
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `workspace_id`                                                                                 | *str*                                                                                          | :heavy_check_mark:                                                                             | workspace ID                                                                                   |
+| `request_body`                                                                                 | [models.UnlockTerraformWorkspaceRequestBody](../models/unlockterraformworkspacerequestbody.md) | :heavy_check_mark:                                                                             | terraform workspace unlock                                                                     |

@@ -1,0 +1,9 @@
+# CreateActionWorkflowConfigRequest
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `action_workflow_id`                                                                                     | *str*                                                                                                    | :heavy_check_mark:                                                                                       | action workflow ID                                                                                       |
+| `service_create_action_workflow_config_request`                                                          | [models.ServiceCreateActionWorkflowConfigRequest](../models/servicecreateactionworkflowconfigrequest.md) | :heavy_check_mark:                                                                                       | Input                                                                                                    |

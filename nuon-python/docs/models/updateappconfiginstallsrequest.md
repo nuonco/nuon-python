@@ -1,0 +1,10 @@
+# UpdateAppConfigInstallsRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `app_id`                                                                                           | *str*                                                                                              | :heavy_check_mark:                                                                                 | app ID                                                                                             |
+| `app_config_id`                                                                                    | *str*                                                                                              | :heavy_check_mark:                                                                                 | app config ID                                                                                      |
+| `service_update_app_config_installs_request`                                                       | [models.ServiceUpdateAppConfigInstallsRequest](../models/serviceupdateappconfiginstallsrequest.md) | :heavy_check_mark:                                                                                 | Input                                                                                              |

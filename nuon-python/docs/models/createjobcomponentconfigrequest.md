@@ -1,0 +1,9 @@
+# CreateJobComponentConfigRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `component_id`                                                                                       | *str*                                                                                                | :heavy_check_mark:                                                                                   | component ID                                                                                         |
+| `service_create_job_component_config_request`                                                        | [models.ServiceCreateJobComponentConfigRequest](../models/servicecreatejobcomponentconfigrequest.md) | :heavy_check_mark:                                                                                   | Input                                                                                                |

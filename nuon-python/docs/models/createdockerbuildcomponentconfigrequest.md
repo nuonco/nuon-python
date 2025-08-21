@@ -1,0 +1,9 @@
+# CreateDockerBuildComponentConfigRequest
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `component_id`                                                                                                       | *str*                                                                                                                | :heavy_check_mark:                                                                                                   | component ID                                                                                                         |
+| `service_create_docker_build_component_config_request`                                                               | [models.ServiceCreateDockerBuildComponentConfigRequest](../models/servicecreatedockerbuildcomponentconfigrequest.md) | :heavy_check_mark:                                                                                                   | Input                                                                                                                |

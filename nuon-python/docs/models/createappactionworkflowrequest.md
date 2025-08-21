@@ -1,0 +1,9 @@
+# CreateAppActionWorkflowRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `app_id`                                                                                           | *str*                                                                                              | :heavy_check_mark:                                                                                 | app ID                                                                                             |
+| `service_create_app_action_workflow_request`                                                       | [models.ServiceCreateAppActionWorkflowRequest](../models/servicecreateappactionworkflowrequest.md) | :heavy_check_mark:                                                                                 | Input                                                                                              |

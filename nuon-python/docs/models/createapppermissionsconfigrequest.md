@@ -1,0 +1,9 @@
+# CreateAppPermissionsConfigRequest
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `app_id`                                                                                                 | *str*                                                                                                    | :heavy_check_mark:                                                                                       | app ID                                                                                                   |
+| `service_create_app_permissions_config_request`                                                          | [models.ServiceCreateAppPermissionsConfigRequest](../models/servicecreateapppermissionsconfigrequest.md) | :heavy_check_mark:                                                                                       | Input                                                                                                    |

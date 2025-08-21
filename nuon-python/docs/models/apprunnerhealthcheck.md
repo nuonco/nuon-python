@@ -1,0 +1,16 @@
+# AppRunnerHealthCheck
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `created_at`                                                     | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `created_by_id`                                                  | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `id`                                                             | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `minute_bucket`                                                  | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `runner_id`                                                      | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `runner_job`                                                     | [Optional[models.AppRunnerJob]](../models/apprunnerjob.md)       | :heavy_minus_sign:                                               | N/A                                                              |
+| `status`                                                         | [Optional[models.AppRunnerStatus]](../models/apprunnerstatus.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| `status_code`                                                    | *Optional[int]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `updated_at`                                                     | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |

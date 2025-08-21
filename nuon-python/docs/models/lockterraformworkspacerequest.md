@@ -1,0 +1,10 @@
+# LockTerraformWorkspaceRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `workspace_id`                                                                             | *str*                                                                                      | :heavy_check_mark:                                                                         | workspace ID                                                                               |
+| `job_id`                                                                                   | *Optional[str]*                                                                            | :heavy_minus_sign:                                                                         | job ID                                                                                     |
+| `request_body`                                                                             | [models.LockTerraformWorkspaceRequestBody](../models/lockterraformworkspacerequestbody.md) | :heavy_check_mark:                                                                         | terraform workspace lock                                                                   |

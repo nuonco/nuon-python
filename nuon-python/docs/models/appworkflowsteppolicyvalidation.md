@@ -1,0 +1,15 @@
+# AppWorkflowStepPolicyValidation
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `created_at`                                                             | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `created_by_id`                                                          | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `id`                                                                     | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `install_workflow_step_id`                                               | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | install workflow step is the install step that this was performed within |
+| `response`                                                               | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | response is the kyverno response                                         |
+| `runner_job_id`                                                          | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | runnerJobID is the runner job that this was performed within             |
+| `status`                                                                 | [Optional[models.AppCompositeStatus]](../models/appcompositestatus.md)   | :heavy_minus_sign:                                                       | status denotes whether this passed, or whether it failed the job.        |
+| `updated_at`                                                             | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |

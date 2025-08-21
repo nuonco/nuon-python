@@ -1,0 +1,9 @@
+# CreateAppPoliciesConfigRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `app_id`                                                                                           | *str*                                                                                              | :heavy_check_mark:                                                                                 | app ID                                                                                             |
+| `service_create_app_policies_config_request`                                                       | [models.ServiceCreateAppPoliciesConfigRequest](../models/servicecreateapppoliciesconfigrequest.md) | :heavy_check_mark:                                                                                 | Input                                                                                              |

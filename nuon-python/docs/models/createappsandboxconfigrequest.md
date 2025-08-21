@@ -1,0 +1,9 @@
+# CreateAppSandboxConfigRequest
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `app_id`                                                                                         | *str*                                                                                            | :heavy_check_mark:                                                                               | app ID                                                                                           |
+| `service_create_app_sandbox_config_request`                                                      | [models.ServiceCreateAppSandboxConfigRequest](../models/servicecreateappsandboxconfigrequest.md) | :heavy_check_mark:                                                                               | Input                                                                                            |

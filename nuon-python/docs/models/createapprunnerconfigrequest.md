@@ -1,0 +1,9 @@
+# CreateAppRunnerConfigRequest
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `app_id`                                                                                       | *str*                                                                                          | :heavy_check_mark:                                                                             | app ID                                                                                         |
+| `service_create_app_runner_config_request`                                                     | [models.ServiceCreateAppRunnerConfigRequest](../models/servicecreateapprunnerconfigrequest.md) | :heavy_check_mark:                                                                             | Input                                                                                          |

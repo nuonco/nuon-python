@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Nuon:
+        inputs:
+            - location: https://api.nuon.co/oapi/v3
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/nuon-test/nuon-python/nuon
+targets:
+    nuon:
+        target: python
+        source: Nuon
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/nuon-test/nuon-python/nuon-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false

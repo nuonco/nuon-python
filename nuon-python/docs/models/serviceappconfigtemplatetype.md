@@ -1,0 +1,25 @@
+# ServiceAppConfigTemplateType
+
+
+## Values
+
+| Name                  | Value                 |
+| --------------------- | --------------------- |
+| `AWS_ECS`             | aws-ecs               |
+| `AWS_ECS_BYOVPC`      | aws-ecs-byovpc        |
+| `AWS_EKS`             | aws-eks               |
+| `AWS_EKS_BYOVPC`      | aws-eks-byovpc        |
+| `AZURE_AKS`           | azure-aks             |
+| `FLAT`                | flat                  |
+| `TOP_LEVEL`           | top-level             |
+| `INSTALLER`           | installer             |
+| `RUNNER`              | runner                |
+| `SANDBOX`             | sandbox               |
+| `INPUTS`              | inputs                |
+| `TERRAFORM`           | terraform             |
+| `TERRAFORM_INFRA`     | terraformInfra        |
+| `HELM`                | helm                  |
+| `DOCKER_BUILD`        | docker-build          |
+| `JOB`                 | job                   |
+| `CONTAINER_IMAGE`     | container-image       |
+| `ECR_CONTAINER_IMAGE` | ecr-container-image   |

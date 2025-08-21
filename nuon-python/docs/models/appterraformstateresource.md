@@ -1,0 +1,12 @@
+# AppTerraformStateResource
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `instances`                                                                      | List[[models.AppTerraformStateInstance](../models/appterraformstateinstance.md)] | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `mode`                                                                           | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `name`                                                                           | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `provider`                                                                       | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `type`                                                                           | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |

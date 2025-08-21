@@ -1,0 +1,9 @@
+# ReprovisionInstallRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `install_id`                                                                                       | *str*                                                                                              | :heavy_check_mark:                                                                                 | install ID                                                                                         |
+| `service_reprovision_install_request`                                                              | [Optional[models.ServiceReprovisionInstallRequest]](../models/servicereprovisioninstallrequest.md) | :heavy_minus_sign:                                                                                 | Input                                                                                              |

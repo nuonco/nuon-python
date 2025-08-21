@@ -1,0 +1,9 @@
+# CreateInstallActionWorkflowRunRequest
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `install_id`                                                                                                     | *str*                                                                                                            | :heavy_check_mark:                                                                                               | install ID                                                                                                       |
+| `service_create_install_action_workflow_run_request`                                                             | [models.ServiceCreateInstallActionWorkflowRunRequest](../models/servicecreateinstallactionworkflowrunrequest.md) | :heavy_check_mark:                                                                                               | Input                                                                                                            |
