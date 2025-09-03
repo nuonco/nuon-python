@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.app_install_event import AppInstallEvent
     from ..models.app_install_inputs import AppInstallInputs
     from ..models.app_install_links import AppInstallLinks
+    from ..models.app_install_metadata import AppInstallMetadata
     from ..models.app_install_sandbox import AppInstallSandbox
     from ..models.app_install_sandbox_run import AppInstallSandboxRun
     from ..models.app_install_stack import AppInstallStack
@@ -55,6 +56,7 @@ class AppInstall:
         install_stack (Union[Unset, AppInstallStack]):
         install_states (Union[Unset, list['AppInstallState']]):
         links (Union[Unset, AppInstallLinks]):
+        metadata (Union[Unset, AppInstallMetadata]):
         name (Union[Unset, str]):
         runner_id (Union[Unset, str]):
         runner_status (Union[Unset, str]):
@@ -92,6 +94,7 @@ class AppInstall:
     install_stack: Union[Unset, "AppInstallStack"] = UNSET
     install_states: Union[Unset, list["AppInstallState"]] = UNSET
     links: Union[Unset, "AppInstallLinks"] = UNSET
+    metadata: Union[Unset, "AppInstallMetadata"] = UNSET
     name: Union[Unset, str] = UNSET
     runner_id: Union[Unset, str] = UNSET
     runner_status: Union[Unset, str] = UNSET
@@ -199,6 +202,10 @@ class AppInstall:
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
+
         name = self.name
 
         runner_id = self.runner_id
@@ -279,6 +286,8 @@ class AppInstall:
             field_dict["install_states"] = install_states
         if links is not UNSET:
             field_dict["links"] = links
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if name is not UNSET:
             field_dict["name"] = name
         if runner_id is not UNSET:
@@ -319,6 +328,7 @@ class AppInstall:
         from ..models.app_install_event import AppInstallEvent
         from ..models.app_install_inputs import AppInstallInputs
         from ..models.app_install_links import AppInstallLinks
+        from ..models.app_install_metadata import AppInstallMetadata
         from ..models.app_install_sandbox import AppInstallSandbox
         from ..models.app_install_sandbox_run import AppInstallSandboxRun
         from ..models.app_install_stack import AppInstallStack
@@ -442,6 +452,13 @@ class AppInstall:
         else:
             links = AppInstallLinks.from_dict(_links)
 
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, AppInstallMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppInstallMetadata.from_dict(_metadata)
+
         name = d.pop("name", UNSET)
 
         runner_id = d.pop("runner_id", UNSET)
@@ -500,6 +517,7 @@ class AppInstall:
             install_stack=install_stack,
             install_states=install_states,
             links=links,
+            metadata=metadata,
             name=name,
             runner_id=runner_id,
             runner_status=runner_status,

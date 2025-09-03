@@ -22,6 +22,7 @@ class AppRunnerHealthCheck:
         created_by_id (Union[Unset, str]):
         id (Union[Unset, str]):
         minute_bucket (Union[Unset, str]):
+        process (Union[Unset, str]):
         runner_id (Union[Unset, str]):
         runner_job (Union[Unset, AppRunnerJob]):
         status (Union[Unset, AppRunnerStatus]):
@@ -33,6 +34,7 @@ class AppRunnerHealthCheck:
     created_by_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
     minute_bucket: Union[Unset, str] = UNSET
+    process: Union[Unset, str] = UNSET
     runner_id: Union[Unset, str] = UNSET
     runner_job: Union[Unset, "AppRunnerJob"] = UNSET
     status: Union[Unset, AppRunnerStatus] = UNSET
@@ -48,6 +50,8 @@ class AppRunnerHealthCheck:
         id = self.id
 
         minute_bucket = self.minute_bucket
+
+        process = self.process
 
         runner_id = self.runner_id
 
@@ -74,6 +78,8 @@ class AppRunnerHealthCheck:
             field_dict["id"] = id
         if minute_bucket is not UNSET:
             field_dict["minute_bucket"] = minute_bucket
+        if process is not UNSET:
+            field_dict["process"] = process
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if runner_job is not UNSET:
@@ -100,6 +106,8 @@ class AppRunnerHealthCheck:
 
         minute_bucket = d.pop("minute_bucket", UNSET)
 
+        process = d.pop("process", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
@@ -125,6 +133,7 @@ class AppRunnerHealthCheck:
             created_by_id=created_by_id,
             id=id,
             minute_bucket=minute_bucket,
+            process=process,
             runner_id=runner_id,
             runner_job=runner_job,
             status=status,

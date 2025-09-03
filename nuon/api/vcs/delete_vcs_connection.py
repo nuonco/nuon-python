@@ -1,35 +1,20 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_component import AppComponent
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    *,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
+    connection_id: str,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    params["offset"] = offset
-
-    params["limit"] = limit
-
-    params["page"] = page
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/v1/components",
-        "params": params,
+        "method": "delete",
+        "url": f"/v1/vcs/connections/{connection_id}",
     }
 
     return _kwargs
@@ -37,16 +22,10 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
-    if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = AppComponent.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
-
-        return response_200
+) -> Optional[Union[Any, StderrErrResponse]]:
+    if response.status_code == 204:
+        response_204 = cast(Any, None)
+        return response_204
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
@@ -75,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
+) -> Response[Union[Any, StderrErrResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,31 +64,25 @@ def _build_response(
 
 
 def sync_detailed(
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
-    """get all components for an org
+) -> Response[Union[Any, StderrErrResponse]]:
+    """Deletes a VCS connection
 
     Args:
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppComponent']]]
+        Response[Union[Any, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        offset=offset,
-        limit=limit,
-        page=page,
+        connection_id=connection_id,
     )
 
     response = client.get_httpx_client().request(
@@ -120,61 +93,49 @@ def sync_detailed(
 
 
 def sync(
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
-    """get all components for an org
+) -> Optional[Union[Any, StderrErrResponse]]:
+    """Deletes a VCS connection
 
     Args:
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppComponent']]
+        Union[Any, StderrErrResponse]
     """
 
     return sync_detailed(
+        connection_id=connection_id,
         client=client,
-        offset=offset,
-        limit=limit,
-        page=page,
     ).parsed
 
 
 async def asyncio_detailed(
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
-    """get all components for an org
+) -> Response[Union[Any, StderrErrResponse]]:
+    """Deletes a VCS connection
 
     Args:
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppComponent']]]
+        Response[Union[Any, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        offset=offset,
-        limit=limit,
-        page=page,
+        connection_id=connection_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -183,32 +144,26 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
-    """get all components for an org
+) -> Optional[Union[Any, StderrErrResponse]]:
+    """Deletes a VCS connection
 
     Args:
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppComponent']]
+        Union[Any, StderrErrResponse]
     """
 
     return (
         await asyncio_detailed(
+            connection_id=connection_id,
             client=client,
-            offset=offset,
-            limit=limit,
-            page=page,
         )
     ).parsed

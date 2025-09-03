@@ -17,12 +17,7 @@ def _get_kwargs(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_pagination_enabled, Unset):
-        headers["x-nuon-pagination-enabled"] = "true" if x_nuon_pagination_enabled else "false"
-
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -39,7 +34,6 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -100,7 +94,6 @@ def sync_detailed(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallDeploy"]]]:
     """get an install components deploys
 
@@ -110,7 +103,6 @@ def sync_detailed(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +118,6 @@ def sync_detailed(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = client.get_httpx_client().request(
@@ -144,7 +135,6 @@ def sync(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallDeploy"]]]:
     """get an install components deploys
 
@@ -154,7 +144,6 @@ def sync(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -171,7 +160,6 @@ def sync(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     ).parsed
 
 
@@ -183,7 +171,6 @@ async def asyncio_detailed(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallDeploy"]]]:
     """get an install components deploys
 
@@ -193,7 +180,6 @@ async def asyncio_detailed(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,7 +195,6 @@ async def asyncio_detailed(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -225,7 +210,6 @@ async def asyncio(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallDeploy"]]]:
     """get an install components deploys
 
@@ -235,7 +219,6 @@ async def asyncio(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -253,6 +236,5 @@ async def asyncio(
             offset=offset,
             limit=limit,
             page=page,
-            x_nuon_pagination_enabled=x_nuon_pagination_enabled,
         )
     ).parsed

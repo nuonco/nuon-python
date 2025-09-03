@@ -5,31 +5,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_runner_job import AppRunnerJob
+from ...models.app_install_state import AppInstallState
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    runner_id: str,
+    install_id: str,
     *,
-    group: Union[Unset, str] = UNSET,
-    groups: Union[Unset, str] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    statuses: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["group"] = group
-
-    params["groups"] = groups
-
-    params["status"] = status
-
-    params["statuses"] = statuses
 
     params["offset"] = offset
 
@@ -41,7 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/runners/{runner_id}/jobs",
+        "url": f"/v1/installs/{install_id}/state-history",
         "params": params,
     }
 
@@ -50,12 +38,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[StderrErrResponse, list["AppRunnerJob"]]]:
+) -> Optional[Union[StderrErrResponse, list["AppInstallState"]]]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppRunnerJob.from_dict(response_200_item_data)
+            response_200_item = AppInstallState.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -88,7 +76,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[StderrErrResponse, list["AppRunnerJob"]]]:
+) -> Response[Union[StderrErrResponse, list["AppInstallState"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -98,27 +86,17 @@ def _build_response(
 
 
 def sync_detailed(
-    runner_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    group: Union[Unset, str] = UNSET,
-    groups: Union[Unset, str] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    statuses: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppRunnerJob"]]]:
-    """get runner jobs
-
-     Return runner jobs.
+) -> Response[Union[StderrErrResponse, list["AppInstallState"]]]:
+    """Get install state history.
 
     Args:
-        runner_id (str):
-        group (Union[Unset, str]):
-        groups (Union[Unset, str]):
-        status (Union[Unset, str]):
-        statuses (Union[Unset, str]):
+        install_id (str):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
@@ -128,15 +106,11 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppRunnerJob']]]
+        Response[Union[StderrErrResponse, list['AppInstallState']]]
     """
 
     kwargs = _get_kwargs(
-        runner_id=runner_id,
-        group=group,
-        groups=groups,
-        status=status,
-        statuses=statuses,
+        install_id=install_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -150,27 +124,17 @@ def sync_detailed(
 
 
 def sync(
-    runner_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    group: Union[Unset, str] = UNSET,
-    groups: Union[Unset, str] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    statuses: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppRunnerJob"]]]:
-    """get runner jobs
-
-     Return runner jobs.
+) -> Optional[Union[StderrErrResponse, list["AppInstallState"]]]:
+    """Get install state history.
 
     Args:
-        runner_id (str):
-        group (Union[Unset, str]):
-        groups (Union[Unset, str]):
-        status (Union[Unset, str]):
-        statuses (Union[Unset, str]):
+        install_id (str):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
@@ -180,16 +144,12 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppRunnerJob']]
+        Union[StderrErrResponse, list['AppInstallState']]
     """
 
     return sync_detailed(
-        runner_id=runner_id,
+        install_id=install_id,
         client=client,
-        group=group,
-        groups=groups,
-        status=status,
-        statuses=statuses,
         offset=offset,
         limit=limit,
         page=page,
@@ -197,27 +157,17 @@ def sync(
 
 
 async def asyncio_detailed(
-    runner_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    group: Union[Unset, str] = UNSET,
-    groups: Union[Unset, str] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    statuses: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppRunnerJob"]]]:
-    """get runner jobs
-
-     Return runner jobs.
+) -> Response[Union[StderrErrResponse, list["AppInstallState"]]]:
+    """Get install state history.
 
     Args:
-        runner_id (str):
-        group (Union[Unset, str]):
-        groups (Union[Unset, str]):
-        status (Union[Unset, str]):
-        statuses (Union[Unset, str]):
+        install_id (str):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
@@ -227,15 +177,11 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppRunnerJob']]]
+        Response[Union[StderrErrResponse, list['AppInstallState']]]
     """
 
     kwargs = _get_kwargs(
-        runner_id=runner_id,
-        group=group,
-        groups=groups,
-        status=status,
-        statuses=statuses,
+        install_id=install_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -247,27 +193,17 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    runner_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    group: Union[Unset, str] = UNSET,
-    groups: Union[Unset, str] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    statuses: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppRunnerJob"]]]:
-    """get runner jobs
-
-     Return runner jobs.
+) -> Optional[Union[StderrErrResponse, list["AppInstallState"]]]:
+    """Get install state history.
 
     Args:
-        runner_id (str):
-        group (Union[Unset, str]):
-        groups (Union[Unset, str]):
-        status (Union[Unset, str]):
-        statuses (Union[Unset, str]):
+        install_id (str):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
@@ -277,17 +213,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppRunnerJob']]
+        Union[StderrErrResponse, list['AppInstallState']]
     """
 
     return (
         await asyncio_detailed(
-            runner_id=runner_id,
+            install_id=install_id,
             client=client,
-            group=group,
-            groups=groups,
-            status=status,
-            statuses=statuses,
             offset=offset,
             limit=limit,
             page=page,
