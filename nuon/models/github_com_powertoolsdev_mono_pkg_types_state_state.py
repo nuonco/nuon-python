@@ -44,6 +44,7 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
         runner (Union[Unset, StateRunnerState]):
         sandbox (Union[Unset, StateSandboxState]):
         secrets (Union[Unset, StateSecretsState]):
+        stale_at (Union[Unset, str]): loaded from the database but not part of the state itself
     """
 
     actions: Union[Unset, "StateActionsState"] = UNSET
@@ -60,6 +61,7 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
     runner: Union[Unset, "StateRunnerState"] = UNSET
     sandbox: Union[Unset, "StateSandboxState"] = UNSET
     secrets: Union[Unset, "StateSecretsState"] = UNSET
+    stale_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -115,6 +117,8 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
         if not isinstance(self.secrets, Unset):
             secrets = self.secrets.to_dict()
 
+        stale_at = self.stale_at
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -146,6 +150,8 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
             field_dict["sandbox"] = sandbox
         if secrets is not UNSET:
             field_dict["secrets"] = secrets
+        if stale_at is not UNSET:
+            field_dict["stale_at"] = stale_at
 
         return field_dict
 
@@ -255,6 +261,8 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
         else:
             secrets = StateSecretsState.from_dict(_secrets)
 
+        stale_at = d.pop("stale_at", UNSET)
+
         github_com_powertoolsdev_mono_pkg_types_state_state = cls(
             actions=actions,
             app=app,
@@ -270,6 +278,7 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
             runner=runner,
             sandbox=sandbox,
             secrets=secrets,
+            stale_at=stale_at,
         )
 
         github_com_powertoolsdev_mono_pkg_types_state_state.additional_properties = d

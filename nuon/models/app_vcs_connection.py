@@ -19,6 +19,8 @@ class AppVCSConnection:
     Attributes:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
+        github_account_id (Union[Unset, str]):
+        github_account_name (Union[Unset, str]):
         github_install_id (Union[Unset, str]):
         id (Union[Unset, str]):
         updated_at (Union[Unset, str]):
@@ -27,6 +29,8 @@ class AppVCSConnection:
 
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
+    github_account_id: Union[Unset, str] = UNSET
+    github_account_name: Union[Unset, str] = UNSET
     github_install_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
@@ -37,6 +41,10 @@ class AppVCSConnection:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        github_account_id = self.github_account_id
+
+        github_account_name = self.github_account_name
 
         github_install_id = self.github_install_id
 
@@ -58,6 +66,10 @@ class AppVCSConnection:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if github_account_id is not UNSET:
+            field_dict["github_account_id"] = github_account_id
+        if github_account_name is not UNSET:
+            field_dict["github_account_name"] = github_account_name
         if github_install_id is not UNSET:
             field_dict["github_install_id"] = github_install_id
         if id is not UNSET:
@@ -78,6 +90,10 @@ class AppVCSConnection:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        github_account_id = d.pop("github_account_id", UNSET)
+
+        github_account_name = d.pop("github_account_name", UNSET)
+
         github_install_id = d.pop("github_install_id", UNSET)
 
         id = d.pop("id", UNSET)
@@ -94,6 +110,8 @@ class AppVCSConnection:
         app_vcs_connection = cls(
             created_at=created_at,
             created_by_id=created_by_id,
+            github_account_id=github_account_id,
+            github_account_name=github_account_name,
             github_install_id=github_install_id,
             id=id,
             updated_at=updated_at,

@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
+    from ..models.helpers_install_metadata import HelpersInstallMetadata
     from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
     from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
     from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
@@ -25,6 +26,7 @@ class ServiceCreateInstallRequest:
         azure_account (Union[Unset, ServiceCreateInstallRequestAzureAccount]):
         inputs (Union[Unset, ServiceCreateInstallRequestInputs]):
         install_config (Union[Unset, HelpersCreateInstallConfigParams]):
+        metadata (Union[Unset, HelpersInstallMetadata]):
     """
 
     name: str
@@ -32,6 +34,7 @@ class ServiceCreateInstallRequest:
     azure_account: Union[Unset, "ServiceCreateInstallRequestAzureAccount"] = UNSET
     inputs: Union[Unset, "ServiceCreateInstallRequestInputs"] = UNSET
     install_config: Union[Unset, "HelpersCreateInstallConfigParams"] = UNSET
+    metadata: Union[Unset, "HelpersInstallMetadata"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,6 +56,10 @@ class ServiceCreateInstallRequest:
         if not isinstance(self.install_config, Unset):
             install_config = self.install_config.to_dict()
 
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -68,12 +75,15 @@ class ServiceCreateInstallRequest:
             field_dict["inputs"] = inputs
         if install_config is not UNSET:
             field_dict["install_config"] = install_config
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
+        from ..models.helpers_install_metadata import HelpersInstallMetadata
         from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
         from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
         from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
@@ -109,12 +119,20 @@ class ServiceCreateInstallRequest:
         else:
             install_config = HelpersCreateInstallConfigParams.from_dict(_install_config)
 
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, HelpersInstallMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = HelpersInstallMetadata.from_dict(_metadata)
+
         service_create_install_request = cls(
             name=name,
             aws_account=aws_account,
             azure_account=azure_account,
             inputs=inputs,
             install_config=install_config,
+            metadata=metadata,
         )
 
         service_create_install_request.additional_properties = d

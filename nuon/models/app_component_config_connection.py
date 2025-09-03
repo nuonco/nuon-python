@@ -33,6 +33,7 @@ class AppComponentConfigConnection:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         docker_build (Union[Unset, AppDockerBuildComponentConfig]):
+        drift_schedule (Union[Unset, str]):
         external_image (Union[Unset, AppExternalImageComponentConfig]):
         helm (Union[Unset, AppHelmComponentConfig]):
         id (Union[Unset, str]):
@@ -55,6 +56,7 @@ class AppComponentConfigConnection:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     docker_build: Union[Unset, "AppDockerBuildComponentConfig"] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     external_image: Union[Unset, "AppExternalImageComponentConfig"] = UNSET
     helm: Union[Unset, "AppHelmComponentConfig"] = UNSET
     id: Union[Unset, str] = UNSET
@@ -90,6 +92,8 @@ class AppComponentConfigConnection:
         docker_build: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.docker_build, Unset):
             docker_build = self.docker_build.to_dict()
+
+        drift_schedule = self.drift_schedule
 
         external_image: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.external_image, Unset):
@@ -153,6 +157,8 @@ class AppComponentConfigConnection:
             field_dict["created_by_id"] = created_by_id
         if docker_build is not UNSET:
             field_dict["docker_build"] = docker_build
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if external_image is not UNSET:
             field_dict["external_image"] = external_image
         if helm is not UNSET:
@@ -211,6 +217,8 @@ class AppComponentConfigConnection:
             docker_build = UNSET
         else:
             docker_build = AppDockerBuildComponentConfig.from_dict(_docker_build)
+
+        drift_schedule = d.pop("drift_schedule", UNSET)
 
         _external_image = d.pop("external_image", UNSET)
         external_image: Union[Unset, AppExternalImageComponentConfig]
@@ -279,6 +287,7 @@ class AppComponentConfigConnection:
             created_at=created_at,
             created_by_id=created_by_id,
             docker_build=docker_build,
+            drift_schedule=drift_schedule,
             external_image=external_image,
             helm=helm,
             id=id,

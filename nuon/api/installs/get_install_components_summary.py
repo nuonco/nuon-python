@@ -18,12 +18,7 @@ def _get_kwargs(
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
     q: Union[Unset, str] = UNSET,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_pagination_enabled, Unset):
-        headers["x-nuon-pagination-enabled"] = "true" if x_nuon_pagination_enabled else "false"
-
     params: dict[str, Any] = {}
 
     params["types"] = types
@@ -44,7 +39,6 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -106,7 +100,6 @@ def sync_detailed(
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
     q: Union[Unset, str] = UNSET,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallComponentSummary"]]]:
     """get an installs components summary
 
@@ -117,7 +110,6 @@ def sync_detailed(
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
         q (Union[Unset, str]):
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,7 +126,6 @@ def sync_detailed(
         limit=limit,
         page=page,
         q=q,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = client.get_httpx_client().request(
@@ -153,7 +144,6 @@ def sync(
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
     q: Union[Unset, str] = UNSET,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallComponentSummary"]]]:
     """get an installs components summary
 
@@ -164,7 +154,6 @@ def sync(
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
         q (Union[Unset, str]):
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,7 +171,6 @@ def sync(
         limit=limit,
         page=page,
         q=q,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     ).parsed
 
 
@@ -195,7 +183,6 @@ async def asyncio_detailed(
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
     q: Union[Unset, str] = UNSET,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallComponentSummary"]]]:
     """get an installs components summary
 
@@ -206,7 +193,6 @@ async def asyncio_detailed(
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
         q (Union[Unset, str]):
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,7 +209,6 @@ async def asyncio_detailed(
         limit=limit,
         page=page,
         q=q,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -240,7 +225,6 @@ async def asyncio(
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
     q: Union[Unset, str] = UNSET,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallComponentSummary"]]]:
     """get an installs components summary
 
@@ -251,7 +235,6 @@ async def asyncio(
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
         q (Union[Unset, str]):
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -270,6 +253,5 @@ async def asyncio(
             limit=limit,
             page=page,
             q=q,
-            x_nuon_pagination_enabled=x_nuon_pagination_enabled,
         )
     ).parsed

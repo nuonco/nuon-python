@@ -17,6 +17,7 @@ class AppRunnerHeartBeat:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         id (Union[Unset, str]):
+        process (Union[Unset, str]):
         runner_id (Union[Unset, str]):
         started_at (Union[Unset, str]):
         updated_at (Union[Unset, str]):
@@ -27,6 +28,7 @@ class AppRunnerHeartBeat:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
+    process: Union[Unset, str] = UNSET
     runner_id: Union[Unset, str] = UNSET
     started_at: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
@@ -41,6 +43,8 @@ class AppRunnerHeartBeat:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        process = self.process
 
         runner_id = self.runner_id
 
@@ -61,6 +65,8 @@ class AppRunnerHeartBeat:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if process is not UNSET:
+            field_dict["process"] = process
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if started_at is not UNSET:
@@ -83,6 +89,8 @@ class AppRunnerHeartBeat:
 
         id = d.pop("id", UNSET)
 
+        process = d.pop("process", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         started_at = d.pop("started_at", UNSET)
@@ -96,6 +104,7 @@ class AppRunnerHeartBeat:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            process=process,
             runner_id=runner_id,
             started_at=started_at,
             updated_at=updated_at,

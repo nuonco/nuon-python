@@ -27,6 +27,7 @@ class AppAppSandboxConfig:
         connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
+        drift_schedule (Union[Unset, str]):
         env_vars (Union[Unset, AppAppSandboxConfigEnvVars]):
         id (Union[Unset, str]):
         org_id (Union[Unset, str]):
@@ -44,6 +45,7 @@ class AppAppSandboxConfig:
     connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     env_vars: Union[Unset, "AppAppSandboxConfigEnvVars"] = UNSET
     id: Union[Unset, str] = UNSET
     org_id: Union[Unset, str] = UNSET
@@ -70,6 +72,8 @@ class AppAppSandboxConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        drift_schedule = self.drift_schedule
 
         env_vars: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -112,6 +116,8 @@ class AppAppSandboxConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if id is not UNSET:
@@ -158,6 +164,8 @@ class AppAppSandboxConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        drift_schedule = d.pop("drift_schedule", UNSET)
+
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: Union[Unset, AppAppSandboxConfigEnvVars]
         if isinstance(_env_vars, Unset):
@@ -197,6 +205,7 @@ class AppAppSandboxConfig:
             connected_github_vcs_config=connected_github_vcs_config,
             created_at=created_at,
             created_by_id=created_by_id,
+            drift_schedule=drift_schedule,
             env_vars=env_vars,
             id=id,
             org_id=org_id,

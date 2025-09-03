@@ -16,12 +16,11 @@ def _get_kwargs(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
+    planonly: Union[Unset, bool] = True,
+    type_: Union[Unset, str] = UNSET,
+    created_at_gte: Union[Unset, str] = UNSET,
+    created_at_lte: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_pagination_enabled, Unset):
-        headers["x-nuon-pagination-enabled"] = "true" if x_nuon_pagination_enabled else "false"
-
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -29,6 +28,14 @@ def _get_kwargs(
     params["limit"] = limit
 
     params["page"] = page
+
+    params["planonly"] = planonly
+
+    params["type"] = type_
+
+    params["created_at_gte"] = created_at_gte
+
+    params["created_at_lte"] = created_at_lte
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -38,7 +45,6 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -98,7 +104,10 @@ def sync_detailed(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
+    planonly: Union[Unset, bool] = True,
+    type_: Union[Unset, str] = UNSET,
+    created_at_gte: Union[Unset, str] = UNSET,
+    created_at_lte: Union[Unset, str] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppWorkflow"]]]:
     """get workflows
 
@@ -109,7 +118,10 @@ def sync_detailed(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
+        planonly (Union[Unset, bool]):  Default: True.
+        type_ (Union[Unset, str]):
+        created_at_gte (Union[Unset, str]):
+        created_at_lte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,7 +136,10 @@ def sync_detailed(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
+        planonly=planonly,
+        type_=type_,
+        created_at_gte=created_at_gte,
+        created_at_lte=created_at_lte,
     )
 
     response = client.get_httpx_client().request(
@@ -141,7 +156,10 @@ def sync(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
+    planonly: Union[Unset, bool] = True,
+    type_: Union[Unset, str] = UNSET,
+    created_at_gte: Union[Unset, str] = UNSET,
+    created_at_lte: Union[Unset, str] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppWorkflow"]]]:
     """get workflows
 
@@ -152,7 +170,10 @@ def sync(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
+        planonly (Union[Unset, bool]):  Default: True.
+        type_ (Union[Unset, str]):
+        created_at_gte (Union[Unset, str]):
+        created_at_lte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +189,10 @@ def sync(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
+        planonly=planonly,
+        type_=type_,
+        created_at_gte=created_at_gte,
+        created_at_lte=created_at_lte,
     ).parsed
 
 
@@ -179,7 +203,10 @@ async def asyncio_detailed(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
+    planonly: Union[Unset, bool] = True,
+    type_: Union[Unset, str] = UNSET,
+    created_at_gte: Union[Unset, str] = UNSET,
+    created_at_lte: Union[Unset, str] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppWorkflow"]]]:
     """get workflows
 
@@ -190,7 +217,10 @@ async def asyncio_detailed(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
+        planonly (Union[Unset, bool]):  Default: True.
+        type_ (Union[Unset, str]):
+        created_at_gte (Union[Unset, str]):
+        created_at_lte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -205,7 +235,10 @@ async def asyncio_detailed(
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
+        planonly=planonly,
+        type_=type_,
+        created_at_gte=created_at_gte,
+        created_at_lte=created_at_lte,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -220,7 +253,10 @@ async def asyncio(
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
+    planonly: Union[Unset, bool] = True,
+    type_: Union[Unset, str] = UNSET,
+    created_at_gte: Union[Unset, str] = UNSET,
+    created_at_lte: Union[Unset, str] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppWorkflow"]]]:
     """get workflows
 
@@ -231,7 +267,10 @@ async def asyncio(
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
+        planonly (Union[Unset, bool]):  Default: True.
+        type_ (Union[Unset, str]):
+        created_at_gte (Union[Unset, str]):
+        created_at_lte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -248,6 +287,9 @@ async def asyncio(
             offset=offset,
             limit=limit,
             page=page,
-            x_nuon_pagination_enabled=x_nuon_pagination_enabled,
+            planonly=planonly,
+            type_=type_,
+            created_at_gte=created_at_gte,
+            created_at_lte=created_at_lte,
         )
     ).parsed
