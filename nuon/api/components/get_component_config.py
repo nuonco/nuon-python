@@ -72,7 +72,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppComponentConfigConnection, StderrErrResponse]]:
-    """get all configs for a component
+    """get a config for a component
 
     Args:
         component_id (str):
@@ -104,7 +104,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppComponentConfigConnection, StderrErrResponse]]:
-    """get all configs for a component
+    """get a config for a component
 
     Args:
         component_id (str):
@@ -131,7 +131,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppComponentConfigConnection, StderrErrResponse]]:
-    """get all configs for a component
+    """get a config for a component
 
     Args:
         component_id (str):
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppComponentConfigConnection, StderrErrResponse]]:
-    """get all configs for a component
+    """get a config for a component
 
     Args:
         component_id (str):

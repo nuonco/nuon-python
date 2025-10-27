@@ -28,6 +28,7 @@ class AppInstallComponentSummary:
         dependencies (Union[Unset, list['AppComponent']]):
         deploy_status (Union[Unset, AppInstallDeployStatus]):
         deploy_status_description (Union[Unset, str]):
+        drifted_status (Union[Unset, bool]):
         id (Union[Unset, str]):
     """
 
@@ -39,6 +40,7 @@ class AppInstallComponentSummary:
     dependencies: Union[Unset, list["AppComponent"]] = UNSET
     deploy_status: Union[Unset, AppInstallDeployStatus] = UNSET
     deploy_status_description: Union[Unset, str] = UNSET
+    drifted_status: Union[Unset, bool] = UNSET
     id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -70,6 +72,8 @@ class AppInstallComponentSummary:
 
         deploy_status_description = self.deploy_status_description
 
+        drifted_status = self.drifted_status
+
         id = self.id
 
         field_dict: dict[str, Any] = {}
@@ -91,6 +95,8 @@ class AppInstallComponentSummary:
             field_dict["deploy_status"] = deploy_status
         if deploy_status_description is not UNSET:
             field_dict["deploy_status_description"] = deploy_status_description
+        if drifted_status is not UNSET:
+            field_dict["drifted_status"] = drifted_status
         if id is not UNSET:
             field_dict["id"] = id
 
@@ -138,6 +144,8 @@ class AppInstallComponentSummary:
 
         deploy_status_description = d.pop("deploy_status_description", UNSET)
 
+        drifted_status = d.pop("drifted_status", UNSET)
+
         id = d.pop("id", UNSET)
 
         app_install_component_summary = cls(
@@ -149,6 +157,7 @@ class AppInstallComponentSummary:
             dependencies=dependencies,
             deploy_status=deploy_status,
             deploy_status_description=deploy_status_description,
+            drifted_status=drifted_status,
             id=id,
         )
 

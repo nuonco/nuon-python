@@ -7,7 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.state_app_state_secrets import StateAppStateSecrets
+    from ..models.state_app_state_variables import StateAppStateVariables
 
 
 T = TypeVar("T", bound="StateAppState")
@@ -20,15 +20,15 @@ class StateAppState:
         id (Union[Unset, str]):
         name (Union[Unset, str]):
         populated (Union[Unset, bool]):
-        secrets (Union[Unset, StateAppStateSecrets]):
         status (Union[Unset, str]):
+        variables (Union[Unset, StateAppStateVariables]):
     """
 
     id: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     populated: Union[Unset, bool] = UNSET
-    secrets: Union[Unset, "StateAppStateSecrets"] = UNSET
     status: Union[Unset, str] = UNSET
+    variables: Union[Unset, "StateAppStateVariables"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,11 +38,11 @@ class StateAppState:
 
         populated = self.populated
 
-        secrets: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.secrets, Unset):
-            secrets = self.secrets.to_dict()
-
         status = self.status
+
+        variables: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.variables, Unset):
+            variables = self.variables.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -53,16 +53,16 @@ class StateAppState:
             field_dict["name"] = name
         if populated is not UNSET:
             field_dict["populated"] = populated
-        if secrets is not UNSET:
-            field_dict["secrets"] = secrets
         if status is not UNSET:
             field_dict["status"] = status
+        if variables is not UNSET:
+            field_dict["variables"] = variables
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_app_state_secrets import StateAppStateSecrets
+        from ..models.state_app_state_variables import StateAppStateVariables
 
         d = dict(src_dict)
         id = d.pop("id", UNSET)
@@ -71,21 +71,21 @@ class StateAppState:
 
         populated = d.pop("populated", UNSET)
 
-        _secrets = d.pop("secrets", UNSET)
-        secrets: Union[Unset, StateAppStateSecrets]
-        if isinstance(_secrets, Unset):
-            secrets = UNSET
-        else:
-            secrets = StateAppStateSecrets.from_dict(_secrets)
-
         status = d.pop("status", UNSET)
+
+        _variables = d.pop("variables", UNSET)
+        variables: Union[Unset, StateAppStateVariables]
+        if isinstance(_variables, Unset):
+            variables = UNSET
+        else:
+            variables = StateAppStateVariables.from_dict(_variables)
 
         state_app_state = cls(
             id=id,
             name=name,
             populated=populated,
-            secrets=secrets,
             status=status,
+            variables=variables,
         )
 
         state_app_state.additional_properties = d

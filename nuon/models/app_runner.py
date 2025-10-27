@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_runner_group import AppRunnerGroup
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_runner_operation import AppRunnerOperation
 
@@ -26,6 +27,7 @@ class AppRunner:
         name (Union[Unset, str]):
         operations (Union[Unset, list['AppRunnerOperation']]):
         org_id (Union[Unset, str]):
+        runner_group (Union[Unset, AppRunnerGroup]):
         runner_group_id (Union[Unset, str]):
         runner_job (Union[Unset, AppRunnerJob]):
         status (Union[Unset, str]):
@@ -41,6 +43,7 @@ class AppRunner:
     name: Union[Unset, str] = UNSET
     operations: Union[Unset, list["AppRunnerOperation"]] = UNSET
     org_id: Union[Unset, str] = UNSET
+    runner_group: Union[Unset, "AppRunnerGroup"] = UNSET
     runner_group_id: Union[Unset, str] = UNSET
     runner_job: Union[Unset, "AppRunnerJob"] = UNSET
     status: Union[Unset, str] = UNSET
@@ -75,6 +78,10 @@ class AppRunner:
 
         org_id = self.org_id
 
+        runner_group: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.runner_group, Unset):
+            runner_group = self.runner_group.to_dict()
+
         runner_group_id = self.runner_group_id
 
         runner_job: Union[Unset, dict[str, Any]] = UNSET
@@ -106,6 +113,8 @@ class AppRunner:
             field_dict["operations"] = operations
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if runner_group is not UNSET:
+            field_dict["runner_group"] = runner_group
         if runner_group_id is not UNSET:
             field_dict["runner_group_id"] = runner_group_id
         if runner_job is not UNSET:
@@ -121,6 +130,7 @@ class AppRunner:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_runner_group import AppRunnerGroup
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_runner_operation import AppRunnerOperation
 
@@ -151,6 +161,13 @@ class AppRunner:
 
         org_id = d.pop("org_id", UNSET)
 
+        _runner_group = d.pop("runner_group", UNSET)
+        runner_group: Union[Unset, AppRunnerGroup]
+        if isinstance(_runner_group, Unset):
+            runner_group = UNSET
+        else:
+            runner_group = AppRunnerGroup.from_dict(_runner_group)
+
         runner_group_id = d.pop("runner_group_id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
@@ -175,6 +192,7 @@ class AppRunner:
             name=name,
             operations=operations,
             org_id=org_id,
+            runner_group=runner_group,
             runner_group_id=runner_group_id,
             runner_job=runner_job,
             status=status,

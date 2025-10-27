@@ -79,7 +79,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Response[Union[StderrErrResponse, bool]]:
-    """shut down an install runner management process
+    """update an install runner via the mng process
 
     Args:
         runner_id (str):
@@ -111,7 +111,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Optional[Union[StderrErrResponse, bool]]:
-    """shut down an install runner management process
+    """update an install runner via the mng process
 
     Args:
         runner_id (str):
@@ -138,7 +138,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Response[Union[StderrErrResponse, bool]]:
-    """shut down an install runner management process
+    """update an install runner via the mng process
 
     Args:
         runner_id (str):
@@ -168,7 +168,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Optional[Union[StderrErrResponse, bool]]:
-    """shut down an install runner management process
+    """update an install runner via the mng process
 
     Args:
         runner_id (str):

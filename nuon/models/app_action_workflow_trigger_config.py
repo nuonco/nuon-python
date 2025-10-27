@@ -26,6 +26,7 @@ class AppActionWorkflowTriggerConfig:
         created_by_id (Union[Unset, str]):
         cron_schedule (Union[Unset, str]):
         id (Union[Unset, str]):
+        index (Union[Unset, int]):
         type_ (Union[Unset, str]):
         updated_at (Union[Unset, str]):
     """
@@ -39,6 +40,7 @@ class AppActionWorkflowTriggerConfig:
     created_by_id: Union[Unset, str] = UNSET
     cron_schedule: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
+    index: Union[Unset, int] = UNSET
     type_: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -63,6 +65,8 @@ class AppActionWorkflowTriggerConfig:
         cron_schedule = self.cron_schedule
 
         id = self.id
+
+        index = self.index
 
         type_ = self.type_
 
@@ -89,6 +93,8 @@ class AppActionWorkflowTriggerConfig:
             field_dict["cron_schedule"] = cron_schedule
         if id is not UNSET:
             field_dict["id"] = id
+        if index is not UNSET:
+            field_dict["index"] = index
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -124,6 +130,8 @@ class AppActionWorkflowTriggerConfig:
 
         id = d.pop("id", UNSET)
 
+        index = d.pop("index", UNSET)
+
         type_ = d.pop("type", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -138,6 +146,7 @@ class AppActionWorkflowTriggerConfig:
             created_by_id=created_by_id,
             cron_schedule=cron_schedule,
             id=id,
+            index=index,
             type_=type_,
             updated_at=updated_at,
         )

@@ -75,7 +75,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[StderrErrResponse, list["AppWorkflowStep"]]]:
-    """get a workflow step
+    """get all of the steps for a given workflow
 
      Return all steps for a workflow.
 
@@ -106,7 +106,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[StderrErrResponse, list["AppWorkflowStep"]]]:
-    """get a workflow step
+    """get all of the steps for a given workflow
 
      Return all steps for a workflow.
 
@@ -132,7 +132,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[StderrErrResponse, list["AppWorkflowStep"]]]:
-    """get a workflow step
+    """get all of the steps for a given workflow
 
      Return all steps for a workflow.
 
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[StderrErrResponse, list["AppWorkflowStep"]]]:
-    """get a workflow step
+    """get all of the steps for a given workflow
 
      Return all steps for a workflow.
 

@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs import AppAWSStackOutputs
     from ..models.app_azure_stack_outputs import AppAzureStackOutputs
     from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData
+    from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 
 
 T = TypeVar("T", bound="AppInstallStackOutputs")
@@ -24,6 +25,7 @@ class AppInstallStackOutputs:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         data (Union[Unset, AppInstallStackOutputsData]):
+        data_contents (Union[Unset, AppInstallStackOutputsDataContents]):
         id (Union[Unset, str]):
         install_stack_id (Union[Unset, str]):
         install_version_run_id (Union[Unset, str]):
@@ -36,6 +38,7 @@ class AppInstallStackOutputs:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     data: Union[Unset, "AppInstallStackOutputsData"] = UNSET
+    data_contents: Union[Unset, "AppInstallStackOutputsDataContents"] = UNSET
     id: Union[Unset, str] = UNSET
     install_stack_id: Union[Unset, str] = UNSET
     install_version_run_id: Union[Unset, str] = UNSET
@@ -60,6 +63,10 @@ class AppInstallStackOutputs:
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
+        data_contents: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.data_contents, Unset):
+            data_contents = self.data_contents.to_dict()
+
         id = self.id
 
         install_stack_id = self.install_stack_id
@@ -83,6 +90,8 @@ class AppInstallStackOutputs:
             field_dict["created_by_id"] = created_by_id
         if data is not UNSET:
             field_dict["data"] = data
+        if data_contents is not UNSET:
+            field_dict["data_contents"] = data_contents
         if id is not UNSET:
             field_dict["id"] = id
         if install_stack_id is not UNSET:
@@ -101,6 +110,7 @@ class AppInstallStackOutputs:
         from ..models.app_aws_stack_outputs import AppAWSStackOutputs
         from ..models.app_azure_stack_outputs import AppAzureStackOutputs
         from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData
+        from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)
@@ -128,6 +138,13 @@ class AppInstallStackOutputs:
         else:
             data = AppInstallStackOutputsData.from_dict(_data)
 
+        _data_contents = d.pop("data_contents", UNSET)
+        data_contents: Union[Unset, AppInstallStackOutputsDataContents]
+        if isinstance(_data_contents, Unset):
+            data_contents = UNSET
+        else:
+            data_contents = AppInstallStackOutputsDataContents.from_dict(_data_contents)
+
         id = d.pop("id", UNSET)
 
         install_stack_id = d.pop("install_stack_id", UNSET)
@@ -144,6 +161,7 @@ class AppInstallStackOutputs:
             created_at=created_at,
             created_by_id=created_by_id,
             data=data,
+            data_contents=data_contents,
             id=id,
             install_stack_id=install_stack_id,
             install_version_run_id=install_version_run_id,

@@ -70,7 +70,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppActionWorkflow, StderrErrResponse]]:
-    """get an app action workflow
+    """get an app action workflow by action workflow id
 
     Args:
         action_workflow_id (str):
@@ -99,7 +99,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppActionWorkflow, StderrErrResponse]]:
-    """get an app action workflow
+    """get an app action workflow by action workflow id
 
     Args:
         action_workflow_id (str):
@@ -123,7 +123,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppActionWorkflow, StderrErrResponse]]:
-    """get an app action workflow
+    """get an app action workflow by action workflow id
 
     Args:
         action_workflow_id (str):
@@ -150,7 +150,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppActionWorkflow, StderrErrResponse]]:
-    """get an app action workflow
+    """get an app action workflow by action workflow id
 
     Args:
         action_workflow_id (str):

@@ -9,6 +9,8 @@ class AppWorkflowType(str, Enum):
     DEPLOY_COMPONENTS = "deploy_components"
     DEPROVISION = "deprovision"
     DEPROVISION_SANDBOX = "deprovision_sandbox"
+    DRIFT_RUN = "drift_run"
+    DRIFT_RUN_REPROVISION_SANDBOX = "drift_run_reprovision_sandbox"
     INPUT_UPDATE = "input_update"
     MANUAL_DEPLOY = "manual_deploy"
     PROVISION = "provision"

@@ -5,9 +5,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse
 from ...models.service_create_workflow_step_approval_response_request import (
     ServiceCreateWorkflowStepApprovalResponseRequest,
+)
+from ...models.service_create_workflow_step_approval_response_response import (
+    ServiceCreateWorkflowStepApprovalResponseResponse,
 )
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
@@ -37,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
+) -> Optional[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
     if response.status_code == 201:
-        response_201 = AppWorkflowStepApprovalResponse.from_dict(response.json())
+        response_201 = ServiceCreateWorkflowStepApprovalResponseResponse.from_dict(response.json())
 
         return response_201
     if response.status_code == 400:
@@ -70,7 +72,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
+) -> Response[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,8 +88,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+) -> Response[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
+    """Create an approval response for a workflow step.
+
+     Create a response for an approval for an action workflow step.
 
     Args:
         workflow_id (str):
@@ -100,7 +104,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]
+        Response[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -124,8 +128,10 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+) -> Optional[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
+    """Create an approval response for a workflow step.
+
+     Create a response for an approval for an action workflow step.
 
     Args:
         workflow_id (str):
@@ -138,7 +144,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApprovalResponse, StderrErrResponse]
+        Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]
     """
 
     return sync_detailed(
@@ -157,8 +163,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+) -> Response[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
+    """Create an approval response for a workflow step.
+
+     Create a response for an approval for an action workflow step.
 
     Args:
         workflow_id (str):
@@ -171,7 +179,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]
+        Response[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -193,8 +201,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+) -> Optional[Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]]:
+    """Create an approval response for a workflow step.
+
+     Create a response for an approval for an action workflow step.
 
     Args:
         workflow_id (str):
@@ -207,7 +217,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApprovalResponse, StderrErrResponse]
+        Union[ServiceCreateWorkflowStepApprovalResponseResponse, StderrErrResponse]
     """
 
     return (

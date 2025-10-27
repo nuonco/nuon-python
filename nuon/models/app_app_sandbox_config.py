@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
     from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
     from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
+    from ..models.refs_ref import RefsRef
 
 
 T = TypeVar("T", bound="AppAppSandboxConfig")
@@ -27,10 +28,13 @@ class AppAppSandboxConfig:
         connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
+        drift_schedule (Union[Unset, str]):
         env_vars (Union[Unset, AppAppSandboxConfigEnvVars]):
         id (Union[Unset, str]):
         org_id (Union[Unset, str]):
         public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
+        references (Union[Unset, list[str]]):
+        refs (Union[Unset, list['RefsRef']]):
         terraform_version (Union[Unset, str]):
         updated_at (Union[Unset, str]):
         variables (Union[Unset, AppAppSandboxConfigVariables]):
@@ -44,10 +48,13 @@ class AppAppSandboxConfig:
     connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     env_vars: Union[Unset, "AppAppSandboxConfigEnvVars"] = UNSET
     id: Union[Unset, str] = UNSET
     org_id: Union[Unset, str] = UNSET
     public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
+    references: Union[Unset, list[str]] = UNSET
+    refs: Union[Unset, list["RefsRef"]] = UNSET
     terraform_version: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     variables: Union[Unset, "AppAppSandboxConfigVariables"] = UNSET
@@ -71,6 +78,8 @@ class AppAppSandboxConfig:
 
         created_by_id = self.created_by_id
 
+        drift_schedule = self.drift_schedule
+
         env_vars: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
@@ -82,6 +91,17 @@ class AppAppSandboxConfig:
         public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
+
+        references: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.references, Unset):
+            references = self.references
+
+        refs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.refs, Unset):
+            refs = []
+            for refs_item_data in self.refs:
+                refs_item = refs_item_data.to_dict()
+                refs.append(refs_item)
 
         terraform_version = self.terraform_version
 
@@ -112,6 +132,8 @@ class AppAppSandboxConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if id is not UNSET:
@@ -120,6 +142,10 @@ class AppAppSandboxConfig:
             field_dict["org_id"] = org_id
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if references is not UNSET:
+            field_dict["references"] = references
+        if refs is not UNSET:
+            field_dict["refs"] = refs
         if terraform_version is not UNSET:
             field_dict["terraform_version"] = terraform_version
         if updated_at is not UNSET:
@@ -137,6 +163,7 @@ class AppAppSandboxConfig:
         from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
         from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
         from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
+        from ..models.refs_ref import RefsRef
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -158,6 +185,8 @@ class AppAppSandboxConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        drift_schedule = d.pop("drift_schedule", UNSET)
+
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: Union[Unset, AppAppSandboxConfigEnvVars]
         if isinstance(_env_vars, Unset):
@@ -175,6 +204,15 @@ class AppAppSandboxConfig:
             public_git_vcs_config = UNSET
         else:
             public_git_vcs_config = AppPublicGitVCSConfig.from_dict(_public_git_vcs_config)
+
+        references = cast(list[str], d.pop("references", UNSET))
+
+        refs = []
+        _refs = d.pop("refs", UNSET)
+        for refs_item_data in _refs or []:
+            refs_item = RefsRef.from_dict(refs_item_data)
+
+            refs.append(refs_item)
 
         terraform_version = d.pop("terraform_version", UNSET)
 
@@ -197,10 +235,13 @@ class AppAppSandboxConfig:
             connected_github_vcs_config=connected_github_vcs_config,
             created_at=created_at,
             created_by_id=created_by_id,
+            drift_schedule=drift_schedule,
             env_vars=env_vars,
             id=id,
             org_id=org_id,
             public_git_vcs_config=public_git_vcs_config,
+            references=references,
+            refs=refs,
             terraform_version=terraform_version,
             updated_at=updated_at,
             variables=variables,

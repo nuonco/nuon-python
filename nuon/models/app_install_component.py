@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_component import AppComponent
     from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_drifted_object import AppDriftedObject
     from ..models.app_helm_chart import AppHelmChart
     from ..models.app_install_component_links import AppInstallComponentLinks
     from ..models.app_install_deploy import AppInstallDeploy
@@ -26,6 +27,7 @@ class AppInstallComponent:
         component_id (Union[Unset, str]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
+        drifted_object (Union[Unset, AppDriftedObject]):
         helm_chart (Union[Unset, AppHelmChart]):
         id (Union[Unset, str]):
         install_deploys (Union[Unset, list['AppInstallDeploy']]):
@@ -42,6 +44,7 @@ class AppInstallComponent:
     component_id: Union[Unset, str] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
+    drifted_object: Union[Unset, "AppDriftedObject"] = UNSET
     helm_chart: Union[Unset, "AppHelmChart"] = UNSET
     id: Union[Unset, str] = UNSET
     install_deploys: Union[Unset, list["AppInstallDeploy"]] = UNSET
@@ -64,6 +67,10 @@ class AppInstallComponent:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        drifted_object: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.drifted_object, Unset):
+            drifted_object = self.drifted_object.to_dict()
 
         helm_chart: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.helm_chart, Unset):
@@ -109,6 +116,8 @@ class AppInstallComponent:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if drifted_object is not UNSET:
+            field_dict["drifted_object"] = drifted_object
         if helm_chart is not UNSET:
             field_dict["helm_chart"] = helm_chart
         if id is not UNSET:
@@ -136,6 +145,7 @@ class AppInstallComponent:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_component import AppComponent
         from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_drifted_object import AppDriftedObject
         from ..models.app_helm_chart import AppHelmChart
         from ..models.app_install_component_links import AppInstallComponentLinks
         from ..models.app_install_deploy import AppInstallDeploy
@@ -154,6 +164,13 @@ class AppInstallComponent:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        _drifted_object = d.pop("drifted_object", UNSET)
+        drifted_object: Union[Unset, AppDriftedObject]
+        if isinstance(_drifted_object, Unset):
+            drifted_object = UNSET
+        else:
+            drifted_object = AppDriftedObject.from_dict(_drifted_object)
 
         _helm_chart = d.pop("helm_chart", UNSET)
         helm_chart: Union[Unset, AppHelmChart]
@@ -205,6 +222,7 @@ class AppInstallComponent:
             component_id=component_id,
             created_at=created_at,
             created_by_id=created_by_id,
+            drifted_object=drifted_object,
             helm_chart=helm_chart,
             id=id,
             install_deploys=install_deploys,

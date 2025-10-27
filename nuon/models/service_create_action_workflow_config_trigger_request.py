@@ -17,11 +17,13 @@ class ServiceCreateActionWorkflowConfigTriggerRequest:
         type_ (AppActionWorkflowTriggerType):
         component_name (Union[Unset, str]):
         cron_schedule (Union[Unset, str]):
+        index (Union[Unset, int]):
     """
 
     type_: AppActionWorkflowTriggerType
     component_name: Union[Unset, str] = UNSET
     cron_schedule: Union[Unset, str] = UNSET
+    index: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,6 +32,8 @@ class ServiceCreateActionWorkflowConfigTriggerRequest:
         component_name = self.component_name
 
         cron_schedule = self.cron_schedule
+
+        index = self.index
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -42,6 +46,8 @@ class ServiceCreateActionWorkflowConfigTriggerRequest:
             field_dict["component_name"] = component_name
         if cron_schedule is not UNSET:
             field_dict["cron_schedule"] = cron_schedule
+        if index is not UNSET:
+            field_dict["index"] = index
 
         return field_dict
 
@@ -54,10 +60,13 @@ class ServiceCreateActionWorkflowConfigTriggerRequest:
 
         cron_schedule = d.pop("cron_schedule", UNSET)
 
+        index = d.pop("index", UNSET)
+
         service_create_action_workflow_config_trigger_request = cls(
             type_=type_,
             component_name=component_name,
             cron_schedule=cron_schedule,
+            index=index,
         )
 
         service_create_action_workflow_config_trigger_request.additional_properties = d

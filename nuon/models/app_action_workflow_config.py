@@ -22,6 +22,7 @@ class AppActionWorkflowConfig:
         action_workflow_id (Union[Unset, str]):
         app_config_id (Union[Unset, str]):
         app_id (Union[Unset, str]):
+        break_glass_role_arn (Union[Unset, str]):
         component_dependency_ids (Union[Unset, list[str]]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
@@ -38,6 +39,7 @@ class AppActionWorkflowConfig:
     action_workflow_id: Union[Unset, str] = UNSET
     app_config_id: Union[Unset, str] = UNSET
     app_id: Union[Unset, str] = UNSET
+    break_glass_role_arn: Union[Unset, str] = UNSET
     component_dependency_ids: Union[Unset, list[str]] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
@@ -56,6 +58,8 @@ class AppActionWorkflowConfig:
         app_config_id = self.app_config_id
 
         app_id = self.app_id
+
+        break_glass_role_arn = self.break_glass_role_arn
 
         component_dependency_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.component_dependency_ids, Unset):
@@ -105,6 +109,8 @@ class AppActionWorkflowConfig:
             field_dict["app_config_id"] = app_config_id
         if app_id is not UNSET:
             field_dict["app_id"] = app_id
+        if break_glass_role_arn is not UNSET:
+            field_dict["break_glass_role_arn"] = break_glass_role_arn
         if component_dependency_ids is not UNSET:
             field_dict["component_dependency_ids"] = component_dependency_ids
         if created_at is not UNSET:
@@ -140,6 +146,8 @@ class AppActionWorkflowConfig:
         app_config_id = d.pop("app_config_id", UNSET)
 
         app_id = d.pop("app_id", UNSET)
+
+        break_glass_role_arn = d.pop("break_glass_role_arn", UNSET)
 
         component_dependency_ids = cast(list[str], d.pop("component_dependency_ids", UNSET))
 
@@ -180,6 +188,7 @@ class AppActionWorkflowConfig:
             action_workflow_id=action_workflow_id,
             app_config_id=app_config_id,
             app_id=app_id,
+            break_glass_role_arn=break_glass_role_arn,
             component_dependency_ids=component_dependency_ids,
             created_at=created_at,
             created_by_id=created_by_id,

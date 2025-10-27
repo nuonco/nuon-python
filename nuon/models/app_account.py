@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_role import AppRole
+    from ..models.app_user_journey import AppUserJourney
     from ..models.permissions_set import PermissionsSet
 
 
@@ -28,6 +29,7 @@ class AppAccount:
         roles (Union[Unset, list['AppRole']]):
         subject (Union[Unset, str]):
         updated_at (Union[Unset, str]):
+        user_journeys (Union[Unset, list['AppUserJourney']]):
     """
 
     account_type: Union[Unset, AppAccountType] = UNSET
@@ -39,6 +41,7 @@ class AppAccount:
     roles: Union[Unset, list["AppRole"]] = UNSET
     subject: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
+    user_journeys: Union[Unset, list["AppUserJourney"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,6 +74,13 @@ class AppAccount:
 
         updated_at = self.updated_at
 
+        user_journeys: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.user_journeys, Unset):
+            user_journeys = []
+            for user_journeys_item_data in self.user_journeys:
+                user_journeys_item = user_journeys_item_data.to_dict()
+                user_journeys.append(user_journeys_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -92,12 +102,15 @@ class AppAccount:
             field_dict["subject"] = subject
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if user_journeys is not UNSET:
+            field_dict["user_journeys"] = user_journeys
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_role import AppRole
+        from ..models.app_user_journey import AppUserJourney
         from ..models.permissions_set import PermissionsSet
 
         d = dict(src_dict)
@@ -134,6 +147,13 @@ class AppAccount:
 
         updated_at = d.pop("updated_at", UNSET)
 
+        user_journeys = []
+        _user_journeys = d.pop("user_journeys", UNSET)
+        for user_journeys_item_data in _user_journeys or []:
+            user_journeys_item = AppUserJourney.from_dict(user_journeys_item_data)
+
+            user_journeys.append(user_journeys_item)
+
         app_account = cls(
             account_type=account_type,
             created_at=created_at,
@@ -144,6 +164,7 @@ class AppAccount:
             roles=roles,
             subject=subject,
             updated_at=updated_at,
+            user_journeys=user_journeys,
         )
 
         app_account.additional_properties = d

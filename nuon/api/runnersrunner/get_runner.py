@@ -70,7 +70,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppRunner, StderrErrResponse]]:
-    """get a runner
+    """get a runner by id
 
      Return a runner.
 
@@ -101,7 +101,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppRunner, StderrErrResponse]]:
-    """get a runner
+    """get a runner by id
 
      Return a runner.
 
@@ -127,7 +127,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppRunner, StderrErrResponse]]:
-    """get a runner
+    """get a runner by id
 
      Return a runner.
 
@@ -156,7 +156,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppRunner, StderrErrResponse]]:
-    """get a runner
+    """get a runner by id
 
      Return a runner.
 

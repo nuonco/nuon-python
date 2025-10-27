@@ -43,6 +43,7 @@ class AppInstallDeploy:
         log_stream (Union[Unset, AppLogStream]):
         oci_artifact (Union[Unset, AppOCIArtifact]):
         outputs (Union[Unset, AppInstallDeployOutputs]):
+        plan_only (Union[Unset, bool]):
         release_id (Union[Unset, str]):
         runner_jobs (Union[Unset, list['AppRunnerJob']]): runner details
         status (Union[Unset, str]):
@@ -70,6 +71,7 @@ class AppInstallDeploy:
     log_stream: Union[Unset, "AppLogStream"] = UNSET
     oci_artifact: Union[Unset, "AppOCIArtifact"] = UNSET
     outputs: Union[Unset, "AppInstallDeployOutputs"] = UNSET
+    plan_only: Union[Unset, bool] = UNSET
     release_id: Union[Unset, str] = UNSET
     runner_jobs: Union[Unset, list["AppRunnerJob"]] = UNSET
     status: Union[Unset, str] = UNSET
@@ -131,6 +133,8 @@ class AppInstallDeploy:
         outputs: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
+
+        plan_only = self.plan_only
 
         release_id = self.release_id
 
@@ -194,6 +198,8 @@ class AppInstallDeploy:
             field_dict["oci_artifact"] = oci_artifact
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
+        if plan_only is not UNSET:
+            field_dict["plan_only"] = plan_only
         if release_id is not UNSET:
             field_dict["release_id"] = release_id
         if runner_jobs is not UNSET:
@@ -295,6 +301,8 @@ class AppInstallDeploy:
         else:
             outputs = AppInstallDeployOutputs.from_dict(_outputs)
 
+        plan_only = d.pop("plan_only", UNSET)
+
         release_id = d.pop("release_id", UNSET)
 
         runner_jobs = []
@@ -344,6 +352,7 @@ class AppInstallDeploy:
             log_stream=log_stream,
             oci_artifact=oci_artifact,
             outputs=outputs,
+            plan_only=plan_only,
             release_id=release_id,
             runner_jobs=runner_jobs,
             status=status,

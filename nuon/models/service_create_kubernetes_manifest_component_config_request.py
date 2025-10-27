@@ -16,6 +16,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         app_config_id (Union[Unset, str]):
         checksum (Union[Unset, str]):
         dependencies (Union[Unset, list[str]]):
+        drift_schedule (Union[Unset, str]):
         manifest (Union[Unset, str]):
         namespace (Union[Unset, str]):
         references (Union[Unset, list[str]]):
@@ -24,6 +25,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     app_config_id: Union[Unset, str] = UNSET
     checksum: Union[Unset, str] = UNSET
     dependencies: Union[Unset, list[str]] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     manifest: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     references: Union[Unset, list[str]] = UNSET
@@ -37,6 +39,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         dependencies: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        drift_schedule = self.drift_schedule
 
         manifest = self.manifest
 
@@ -55,6 +59,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             field_dict["checksum"] = checksum
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if manifest is not UNSET:
             field_dict["manifest"] = manifest
         if namespace is not UNSET:
@@ -73,6 +79,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
+        drift_schedule = d.pop("drift_schedule", UNSET)
+
         manifest = d.pop("manifest", UNSET)
 
         namespace = d.pop("namespace", UNSET)
@@ -83,6 +91,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             app_config_id=app_config_id,
             checksum=checksum,
             dependencies=dependencies,
+            drift_schedule=drift_schedule,
             manifest=manifest,
             namespace=namespace,
             references=references,

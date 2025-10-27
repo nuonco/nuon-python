@@ -29,7 +29,9 @@ class ServiceCreateAppSandboxConfigRequest:
         variables (ServiceCreateAppSandboxConfigRequestVariables):
         app_config_id (Union[Unset, str]):
         connected_github_vcs_config (Union[Unset, ServiceConnectedGithubVCSSandboxConfigRequest]):
+        drift_schedule (Union[Unset, str]):
         public_git_vcs_config (Union[Unset, ServicePublicGitVCSSandboxConfigRequest]):
+        references (Union[Unset, list[str]]):
         variables_files (Union[Unset, list[str]]):
     """
 
@@ -38,7 +40,9 @@ class ServiceCreateAppSandboxConfigRequest:
     variables: "ServiceCreateAppSandboxConfigRequestVariables"
     app_config_id: Union[Unset, str] = UNSET
     connected_github_vcs_config: Union[Unset, "ServiceConnectedGithubVCSSandboxConfigRequest"] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     public_git_vcs_config: Union[Unset, "ServicePublicGitVCSSandboxConfigRequest"] = UNSET
+    references: Union[Unset, list[str]] = UNSET
     variables_files: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -55,9 +59,15 @@ class ServiceCreateAppSandboxConfigRequest:
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
+        drift_schedule = self.drift_schedule
+
         public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
+
+        references: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.references, Unset):
+            references = self.references
 
         variables_files: Union[Unset, list[str]] = UNSET
         if not isinstance(self.variables_files, Unset):
@@ -76,8 +86,12 @@ class ServiceCreateAppSandboxConfigRequest:
             field_dict["app_config_id"] = app_config_id
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if references is not UNSET:
+            field_dict["references"] = references
         if variables_files is not UNSET:
             field_dict["variables_files"] = variables_files
 
@@ -114,12 +128,16 @@ class ServiceCreateAppSandboxConfigRequest:
                 _connected_github_vcs_config
             )
 
+        drift_schedule = d.pop("drift_schedule", UNSET)
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: Union[Unset, ServicePublicGitVCSSandboxConfigRequest]
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:
             public_git_vcs_config = ServicePublicGitVCSSandboxConfigRequest.from_dict(_public_git_vcs_config)
+
+        references = cast(list[str], d.pop("references", UNSET))
 
         variables_files = cast(list[str], d.pop("variables_files", UNSET))
 
@@ -129,7 +147,9 @@ class ServiceCreateAppSandboxConfigRequest:
             variables=variables,
             app_config_id=app_config_id,
             connected_github_vcs_config=connected_github_vcs_config,
+            drift_schedule=drift_schedule,
             public_git_vcs_config=public_git_vcs_config,
+            references=references,
             variables_files=variables_files,
         )
 

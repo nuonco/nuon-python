@@ -81,7 +81,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateAppActionWorkflowRequest,
 ) -> Response[Union[AppActionWorkflow, StderrErrResponse]]:
-    """create an app
+    """create an app action workflow
 
     Args:
         app_id (str):
@@ -113,7 +113,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceCreateAppActionWorkflowRequest,
 ) -> Optional[Union[AppActionWorkflow, StderrErrResponse]]:
-    """create an app
+    """create an app action workflow
 
     Args:
         app_id (str):
@@ -140,7 +140,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateAppActionWorkflowRequest,
 ) -> Response[Union[AppActionWorkflow, StderrErrResponse]]:
-    """create an app
+    """create an app action workflow
 
     Args:
         app_id (str):
@@ -170,7 +170,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceCreateAppActionWorkflowRequest,
 ) -> Optional[Union[AppActionWorkflow, StderrErrResponse]]:
-    """create an app
+    """create an app action workflow
 
     Args:
         app_id (str):

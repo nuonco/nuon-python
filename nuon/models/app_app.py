@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_config import AppAppConfig
     from ..models.app_app_input_config import AppAppInputConfig
     from ..models.app_app_links import AppAppLinks
     from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -21,6 +22,7 @@ T = TypeVar("T", bound="AppApp")
 class AppApp:
     """
     Attributes:
+        app_configs (Union[Unset, list['AppAppConfig']]):
         cloud_platform (Union[Unset, str]):
         config_directory (Union[Unset, str]):
         config_repo (Union[Unset, str]):
@@ -42,6 +44,7 @@ class AppApp:
         updated_at (Union[Unset, str]):
     """
 
+    app_configs: Union[Unset, list["AppAppConfig"]] = UNSET
     cloud_platform: Union[Unset, str] = UNSET
     config_directory: Union[Unset, str] = UNSET
     config_repo: Union[Unset, str] = UNSET
@@ -64,6 +67,13 @@ class AppApp:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_configs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.app_configs, Unset):
+            app_configs = []
+            for app_configs_item_data in self.app_configs:
+                app_configs_item = app_configs_item_data.to_dict()
+                app_configs.append(app_configs_item)
+
         cloud_platform = self.cloud_platform
 
         config_directory = self.config_directory
@@ -115,6 +125,8 @@ class AppApp:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_configs is not UNSET:
+            field_dict["app_configs"] = app_configs
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
         if config_directory is not UNSET:
@@ -158,6 +170,7 @@ class AppApp:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_config import AppAppConfig
         from ..models.app_app_input_config import AppAppInputConfig
         from ..models.app_app_links import AppAppLinks
         from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -165,6 +178,13 @@ class AppApp:
         from ..models.app_notifications_config import AppNotificationsConfig
 
         d = dict(src_dict)
+        app_configs = []
+        _app_configs = d.pop("app_configs", UNSET)
+        for app_configs_item_data in _app_configs or []:
+            app_configs_item = AppAppConfig.from_dict(app_configs_item_data)
+
+            app_configs.append(app_configs_item)
+
         cloud_platform = d.pop("cloud_platform", UNSET)
 
         config_directory = d.pop("config_directory", UNSET)
@@ -229,6 +249,7 @@ class AppApp:
         updated_at = d.pop("updated_at", UNSET)
 
         app_app = cls(
+            app_configs=app_configs,
             cloud_platform=cloud_platform,
             config_directory=config_directory,
             config_repo=config_repo,

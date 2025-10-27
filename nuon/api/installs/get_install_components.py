@@ -13,15 +13,16 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     install_id: str,
     *,
+    types: Union[Unset, str] = UNSET,
+    q: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_pagination_enabled, Unset):
-        headers["x-nuon-pagination-enabled"] = "true" if x_nuon_pagination_enabled else "false"
-
     params: dict[str, Any] = {}
+
+    params["types"] = types
+
+    params["q"] = q
 
     params["offset"] = offset
 
@@ -35,7 +36,6 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -92,17 +92,19 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    types: Union[Unset, str] = UNSET,
+    q: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallComponent"]]]:
     """get an installs components
 
     Args:
         install_id (str):
+        types (Union[Unset, str]):
+        q (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,9 +116,10 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        types=types,
+        q=q,
         offset=offset,
         limit=limit,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = client.get_httpx_client().request(
@@ -130,17 +133,19 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    types: Union[Unset, str] = UNSET,
+    q: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallComponent"]]]:
     """get an installs components
 
     Args:
         install_id (str):
+        types (Union[Unset, str]):
+        q (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -153,9 +158,10 @@ def sync(
     return sync_detailed(
         install_id=install_id,
         client=client,
+        types=types,
+        q=q,
         offset=offset,
         limit=limit,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     ).parsed
 
 
@@ -163,17 +169,19 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    types: Union[Unset, str] = UNSET,
+    q: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppInstallComponent"]]]:
     """get an installs components
 
     Args:
         install_id (str):
+        types (Union[Unset, str]):
+        q (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,9 +193,10 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        types=types,
+        q=q,
         offset=offset,
         limit=limit,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -199,17 +208,19 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    types: Union[Unset, str] = UNSET,
+    q: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppInstallComponent"]]]:
     """get an installs components
 
     Args:
         install_id (str):
+        types (Union[Unset, str]):
+        q (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,8 +234,9 @@ async def asyncio(
         await asyncio_detailed(
             install_id=install_id,
             client=client,
+            types=types,
+            q=q,
             offset=offset,
             limit=limit,
-            x_nuon_pagination_enabled=x_nuon_pagination_enabled,
         )
     ).parsed

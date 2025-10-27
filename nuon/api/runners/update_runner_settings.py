@@ -81,7 +81,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> Response[Union[AppRunnerJobExecution, StderrErrResponse]]:
-    """update a runner job execution
+    """update a runner's settings via its runner settings group
 
     Args:
         runner_id (str):
@@ -113,7 +113,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> Optional[Union[AppRunnerJobExecution, StderrErrResponse]]:
-    """update a runner job execution
+    """update a runner's settings via its runner settings group
 
     Args:
         runner_id (str):
@@ -140,7 +140,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> Response[Union[AppRunnerJobExecution, StderrErrResponse]]:
-    """update a runner job execution
+    """update a runner's settings via its runner settings group
 
     Args:
         runner_id (str):
@@ -170,7 +170,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> Optional[Union[AppRunnerJobExecution, StderrErrResponse]]:
-    """update a runner job execution
+    """update a runner's settings via its runner settings group
 
     Args:
         runner_id (str):

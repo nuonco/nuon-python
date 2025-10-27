@@ -27,6 +27,7 @@ class ServiceCreateHelmComponentConfigRequest:
         checksum (Union[Unset, str]):
         connected_github_vcs_config (Union[Unset, ServiceConnectedGithubVCSConfigRequest]):
         dependencies (Union[Unset, list[str]]):
+        drift_schedule (Union[Unset, str]):
         namespace (Union[Unset, str]):
         public_git_vcs_config (Union[Unset, ServicePublicGitVCSConfigRequest]):
         references (Union[Unset, list[str]]):
@@ -41,6 +42,7 @@ class ServiceCreateHelmComponentConfigRequest:
     checksum: Union[Unset, str] = UNSET
     connected_github_vcs_config: Union[Unset, "ServiceConnectedGithubVCSConfigRequest"] = UNSET
     dependencies: Union[Unset, list[str]] = UNSET
+    drift_schedule: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     public_git_vcs_config: Union[Unset, "ServicePublicGitVCSConfigRequest"] = UNSET
     references: Union[Unset, list[str]] = UNSET
@@ -65,6 +67,8 @@ class ServiceCreateHelmComponentConfigRequest:
         dependencies: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        drift_schedule = self.drift_schedule
 
         namespace = self.namespace
 
@@ -100,6 +104,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if drift_schedule is not UNSET:
+            field_dict["drift_schedule"] = drift_schedule
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
         if public_git_vcs_config is not UNSET:
@@ -141,6 +147,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
+        drift_schedule = d.pop("drift_schedule", UNSET)
+
         namespace = d.pop("namespace", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
@@ -165,6 +173,7 @@ class ServiceCreateHelmComponentConfigRequest:
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
             dependencies=dependencies,
+            drift_schedule=drift_schedule,
             namespace=namespace,
             public_git_vcs_config=public_git_vcs_config,
             references=references,

@@ -70,7 +70,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppAppBreakGlassConfig, StderrErrResponse]]:
-    """get latest app input config
+    """get latest app break glass config
 
      Get the latest break glass config for an app.
 
@@ -101,7 +101,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppAppBreakGlassConfig, StderrErrResponse]]:
-    """get latest app input config
+    """get latest app break glass config
 
      Get the latest break glass config for an app.
 
@@ -127,7 +127,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppAppBreakGlassConfig, StderrErrResponse]]:
-    """get latest app input config
+    """get latest app break glass config
 
      Get the latest break glass config for an app.
 
@@ -156,7 +156,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppAppBreakGlassConfig, StderrErrResponse]]:
-    """get latest app input config
+    """get latest app break glass config
 
      Get the latest break glass config for an app.
 

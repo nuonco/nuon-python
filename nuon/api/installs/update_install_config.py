@@ -83,7 +83,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateInstallConfigRequest,
 ) -> Response[Union[AppInstallConfig, StderrErrResponse]]:
-    """create an install config
+    """update an install config
 
     Args:
         install_id (str):
@@ -118,7 +118,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceUpdateInstallConfigRequest,
 ) -> Optional[Union[AppInstallConfig, StderrErrResponse]]:
-    """create an install config
+    """update an install config
 
     Args:
         install_id (str):
@@ -148,7 +148,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateInstallConfigRequest,
 ) -> Response[Union[AppInstallConfig, StderrErrResponse]]:
-    """create an install config
+    """update an install config
 
     Args:
         install_id (str):
@@ -181,7 +181,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceUpdateInstallConfigRequest,
 ) -> Optional[Union[AppInstallConfig, StderrErrResponse]]:
-    """create an install config
+    """update an install config
 
     Args:
         install_id (str):

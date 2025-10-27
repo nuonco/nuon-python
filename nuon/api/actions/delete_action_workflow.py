@@ -68,7 +68,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[StderrErrResponse, bool]]:
-    """delete an app
+    """delete an action workflow
 
     Args:
         action_workflow_id (str):
@@ -97,7 +97,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[StderrErrResponse, bool]]:
-    """delete an app
+    """delete an action workflow
 
     Args:
         action_workflow_id (str):
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[StderrErrResponse, bool]]:
-    """delete an app
+    """delete an action workflow
 
     Args:
         action_workflow_id (str):
@@ -148,7 +148,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[StderrErrResponse, bool]]:
-    """delete an app
+    """delete an action workflow
 
     Args:
         action_workflow_id (str):

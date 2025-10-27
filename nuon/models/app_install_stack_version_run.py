@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_install_stack_version_run_data import AppInstallStackVersionRunData
+    from ..models.app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
 
 
 T = TypeVar("T", bound="AppInstallStackVersionRun")
@@ -20,6 +21,7 @@ class AppInstallStackVersionRun:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         data (Union[Unset, AppInstallStackVersionRunData]):
+        data_contents (Union[Unset, AppInstallStackVersionRunDataContents]):
         id (Union[Unset, str]):
         updated_at (Union[Unset, str]):
     """
@@ -27,6 +29,7 @@ class AppInstallStackVersionRun:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     data: Union[Unset, "AppInstallStackVersionRunData"] = UNSET
+    data_contents: Union[Unset, "AppInstallStackVersionRunDataContents"] = UNSET
     id: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,6 +42,10 @@ class AppInstallStackVersionRun:
         data: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
+
+        data_contents: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.data_contents, Unset):
+            data_contents = self.data_contents.to_dict()
 
         id = self.id
 
@@ -53,6 +60,8 @@ class AppInstallStackVersionRun:
             field_dict["created_by_id"] = created_by_id
         if data is not UNSET:
             field_dict["data"] = data
+        if data_contents is not UNSET:
+            field_dict["data_contents"] = data_contents
         if id is not UNSET:
             field_dict["id"] = id
         if updated_at is not UNSET:
@@ -63,6 +72,7 @@ class AppInstallStackVersionRun:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_install_stack_version_run_data import AppInstallStackVersionRunData
+        from ..models.app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
@@ -76,6 +86,13 @@ class AppInstallStackVersionRun:
         else:
             data = AppInstallStackVersionRunData.from_dict(_data)
 
+        _data_contents = d.pop("data_contents", UNSET)
+        data_contents: Union[Unset, AppInstallStackVersionRunDataContents]
+        if isinstance(_data_contents, Unset):
+            data_contents = UNSET
+        else:
+            data_contents = AppInstallStackVersionRunDataContents.from_dict(_data_contents)
+
         id = d.pop("id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -84,6 +101,7 @@ class AppInstallStackVersionRun:
             created_at=created_at,
             created_by_id=created_by_id,
             data=data,
+            data_contents=data_contents,
             id=id,
             updated_at=updated_at,
         )

@@ -35,6 +35,7 @@ from .app_app_secrets_config import AppAppSecretsConfig
 from .app_app_stack_config import AppAppStackConfig
 from .app_aws_account import AppAWSAccount
 from .app_aws_stack_outputs import AppAWSStackOutputs
+from .app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
 from .app_awsecr_image_config import AppAWSECRImageConfig
 from .app_awsiam_role_type import AppAWSIAMRoleType
 from .app_azure_account import AppAzureAccount
@@ -54,6 +55,7 @@ from .app_composite_status_metadata import AppCompositeStatusMetadata
 from .app_connected_github_vcs_config import AppConnectedGithubVCSConfig
 from .app_docker_build_component_config import AppDockerBuildComponentConfig
 from .app_docker_build_component_config_env_vars import AppDockerBuildComponentConfigEnvVars
+from .app_drifted_object import AppDriftedObject
 from .app_external_image_component_config import AppExternalImageComponentConfig
 from .app_helm_chart import AppHelmChart
 from .app_helm_component_config import AppHelmComponentConfig
@@ -85,15 +87,18 @@ from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
 from .app_install_links import AppInstallLinks
+from .app_install_metadata import AppInstallMetadata
 from .app_install_sandbox import AppInstallSandbox
 from .app_install_sandbox_run import AppInstallSandboxRun
 from .app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
 from .app_install_stack import AppInstallStack
 from .app_install_stack_outputs import AppInstallStackOutputs
 from .app_install_stack_outputs_data import AppInstallStackOutputsData
+from .app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 from .app_install_stack_version import AppInstallStackVersion
 from .app_install_stack_version_run import AppInstallStackVersionRun
 from .app_install_stack_version_run_data import AppInstallStackVersionRunData
+from .app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
 from .app_install_state import AppInstallState
 from .app_installer import AppInstaller
 from .app_installer_metadata import AppInstallerMetadata
@@ -102,6 +107,7 @@ from .app_job_component_config import AppJobComponentConfig
 from .app_job_component_config_env_vars import AppJobComponentConfigEnvVars
 from .app_json_map import AppJSONMap
 from .app_kubernetes_manifest_component_config import AppKubernetesManifestComponentConfig
+from .app_latest_runner_heart_beat import AppLatestRunnerHeartBeat
 from .app_log_stream import AppLogStream
 from .app_log_stream_attrs import AppLogStreamAttrs
 from .app_notifications_config import AppNotificationsConfig
@@ -164,6 +170,9 @@ from .app_terraform_workspace import AppTerraformWorkspace
 from .app_terraform_workspace_lock import AppTerraformWorkspaceLock
 from .app_terraform_workspace_state import AppTerraformWorkspaceState
 from .app_terraform_workspace_state_json import AppTerraformWorkspaceStateJSON
+from .app_user_journey import AppUserJourney
+from .app_user_journey_step import AppUserJourneyStep
+from .app_user_journey_step_metadata import AppUserJourneyStepMetadata
 from .app_vcs_connection import AppVCSConnection
 from .app_vcs_connection_commit import AppVCSConnectionCommit
 from .app_waitlist import AppWaitlist
@@ -181,22 +190,87 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .config_app_policy_type import ConfigAppPolicyType
+from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
+from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
+from .configs_oci_registry_type import ConfigsOCIRegistryType
+from .credentials_assume_role_config import CredentialsAssumeRoleConfig
+from .credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
+from .credentials_static_credentials import CredentialsStaticCredentials
+from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_config_schema_response_200 import GetConfigSchemaResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_terraform_workspace_state_json_resources_response_200 import (
     GetTerraformWorkspaceStateJSONResourcesResponse200,
 )
+from .get_terraform_workspace_state_json_resources_v2_response_200 import (
+    GetTerraformWorkspaceStateJSONResourcesV2Response200,
+)
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
+from .get_terraform_workspace_states_json_by_idv2_response_200 import GetTerraformWorkspaceStatesJSONByIDV2Response200
+from .get_workflow_step_approval_contents_response_200 import GetWorkflowStepApprovalContentsResponse200
+from .github_com_powertoolsdev_mono_pkg_aws_credentials_config import GithubComPowertoolsdevMonoPkgAwsCredentialsConfig
+from .github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
+    GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+)
 from .github_com_powertoolsdev_mono_pkg_types_state_state import GithubComPowertoolsdevMonoPkgTypesStateState
 from .github_com_powertoolsdev_mono_pkg_types_state_state_components import (
     GithubComPowertoolsdevMonoPkgTypesStateStateComponents,
 )
 from .helpers_create_install_config_params import HelpersCreateInstallConfigParams
+from .helpers_install_metadata import HelpersInstallMetadata
+from .iam_static_credentials import IamStaticCredentials
+from .iam_two_step_config import IamTwoStepConfig
+from .kube_cluster_info import KubeClusterInfo
+from .kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 from .lock_terraform_workspace_body import LockTerraformWorkspaceBody
 from .outputs_secret_sync_output import OutputsSecretSyncOutput
 from .permissions_permission import PermissionsPermission
 from .permissions_set import PermissionsSet
+from .plantypes_action_workflow_run_plan import PlantypesActionWorkflowRunPlan
+from .plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs
+from .plantypes_action_workflow_run_plan_builtin_env_vars import PlantypesActionWorkflowRunPlanBuiltinEnvVars
+from .plantypes_action_workflow_run_plan_override_env_vars import PlantypesActionWorkflowRunPlanOverrideEnvVars
+from .plantypes_action_workflow_run_step_plan import PlantypesActionWorkflowRunStepPlan
+from .plantypes_action_workflow_run_step_plan_attrs import PlantypesActionWorkflowRunStepPlanAttrs
+from .plantypes_action_workflow_run_step_plan_interpolated_env_vars import (
+    PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars,
+)
+from .plantypes_build_plan import PlantypesBuildPlan
+from .plantypes_composite_plan import PlantypesCompositePlan
+from .plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan
+from .plantypes_deploy_plan import PlantypesDeployPlan
+from .plantypes_docker_build_plan import PlantypesDockerBuildPlan
+from .plantypes_docker_build_plan_build_args import PlantypesDockerBuildPlanBuildArgs
+from .plantypes_git_source import PlantypesGitSource
+from .plantypes_helm_build_plan import PlantypesHelmBuildPlan
+from .plantypes_helm_build_plan_labels import PlantypesHelmBuildPlanLabels
+from .plantypes_helm_deploy_plan import PlantypesHelmDeployPlan
+from .plantypes_helm_sandbox_mode import PlantypesHelmSandboxMode
+from .plantypes_helm_value import PlantypesHelmValue
+from .plantypes_kubernetes_manifest_deploy_plan import PlantypesKubernetesManifestDeployPlan
+from .plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode
+from .plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
+from .plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
+from .plantypes_sandbox_mode import PlantypesSandboxMode
+from .plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
+from .plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
+from .plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
+from .plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies
+from .plantypes_sandbox_run_plan_vars import PlantypesSandboxRunPlanVars
+from .plantypes_sync_oci_plan import PlantypesSyncOCIPlan
+from .plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
+from .plantypes_terraform_backend import PlantypesTerraformBackend
+from .plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
+from .plantypes_terraform_build_plan_labels import PlantypesTerraformBuildPlanLabels
+from .plantypes_terraform_deploy_hooks import PlantypesTerraformDeployHooks
+from .plantypes_terraform_deploy_hooks_env_vars import PlantypesTerraformDeployHooksEnvVars
+from .plantypes_terraform_deploy_plan import PlantypesTerraformDeployPlan
+from .plantypes_terraform_deploy_plan_env_vars import PlantypesTerraformDeployPlanEnvVars
+from .plantypes_terraform_deploy_plan_policies import PlantypesTerraformDeployPlanPolicies
+from .plantypes_terraform_deploy_plan_vars import PlantypesTerraformDeployPlanVars
+from .plantypes_terraform_local_archive import PlantypesTerraformLocalArchive
+from .plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
 from .refs_ref import RefsRef
 from .refs_ref_type import RefsRefType
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
@@ -208,6 +282,7 @@ from .service_app_input_request import ServiceAppInputRequest
 from .service_app_policy_config import ServiceAppPolicyConfig
 from .service_app_secret_config import ServiceAppSecretConfig
 from .service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
+from .service_build_all_components_request import ServiceBuildAllComponentsRequest
 from .service_cancel_runner_job_request import ServiceCancelRunnerJobRequest
 from .service_cli_config import ServiceCLIConfig
 from .service_component_children import ServiceComponentChildren
@@ -222,6 +297,7 @@ from .service_create_action_workflow_config_step_request_env_vars import (
     ServiceCreateActionWorkflowConfigStepRequestEnvVars,
 )
 from .service_create_action_workflow_config_trigger_request import ServiceCreateActionWorkflowConfigTriggerRequest
+from .service_create_app_action_request import ServiceCreateAppActionRequest
 from .service_create_app_action_workflow_request import ServiceCreateAppActionWorkflowRequest
 from .service_create_app_branch_request import ServiceCreateAppBranchRequest
 from .service_create_app_break_glass_config_request import ServiceCreateAppBreakGlassConfigRequest
@@ -257,6 +333,7 @@ from .service_create_install_action_workflow_run_request import ServiceCreateIns
 from .service_create_install_action_workflow_run_request_run_env_vars import (
     ServiceCreateInstallActionWorkflowRunRequestRunEnvVars,
 )
+from .service_create_install_component_deploy_request import ServiceCreateInstallComponentDeployRequest
 from .service_create_install_config_request import ServiceCreateInstallConfigRequest
 from .service_create_install_deploy_request import ServiceCreateInstallDeployRequest
 from .service_create_install_inputs_request import ServiceCreateInstallInputsRequest
@@ -283,7 +360,10 @@ from .service_create_terraform_module_component_config_request_variables import 
     ServiceCreateTerraformModuleComponentConfigRequestVariables,
 )
 from .service_create_terraform_workspace_request import ServiceCreateTerraformWorkspaceRequest
+from .service_create_user_journey_request import ServiceCreateUserJourneyRequest
+from .service_create_user_journey_step_req import ServiceCreateUserJourneyStepReq
 from .service_create_workflow_step_approval_response_request import ServiceCreateWorkflowStepApprovalResponseRequest
+from .service_create_workflow_step_approval_response_response import ServiceCreateWorkflowStepApprovalResponseResponse
 from .service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
@@ -291,9 +371,11 @@ from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
+from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
 from .service_mng_vm_shut_down_request import ServiceMngVMShutDownRequest
+from .service_patch_install_config_params import ServicePatchInstallConfigParams
 from .service_public_git_vcs_action_workflow_config_request import ServicePublicGitVCSActionWorkflowConfigRequest
 from .service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 from .service_public_git_vcs_sandbox_config_request import ServicePublicGitVCSSandboxConfigRequest
@@ -306,6 +388,7 @@ from .service_retry_workflow_by_id_request import ServiceRetryWorkflowByIDReques
 from .service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
+from .service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
@@ -323,6 +406,7 @@ from .service_update_installer_request import ServiceUpdateInstallerRequest
 from .service_update_installer_request_metadata import ServiceUpdateInstallerRequestMetadata
 from .service_update_org_request import ServiceUpdateOrgRequest
 from .service_update_runner_settings_request import ServiceUpdateRunnerSettingsRequest
+from .service_update_user_journey_step_request import ServiceUpdateUserJourneyStepRequest
 from .service_update_workflow_request import ServiceUpdateWorkflowRequest
 from .service_waitlist_request import ServiceWaitlistRequest
 from .state_action_workflow_state import StateActionWorkflowState
@@ -330,7 +414,7 @@ from .state_action_workflow_state_outputs import StateActionWorkflowStateOutputs
 from .state_actions_state import StateActionsState
 from .state_actions_state_workflows import StateActionsStateWorkflows
 from .state_app_state import StateAppState
-from .state_app_state_secrets import StateAppStateSecrets
+from .state_app_state_variables import StateAppStateVariables
 from .state_aws_cloud_account import StateAWSCloudAccount
 from .state_azure_cloud_account import StateAzureCloudAccount
 from .state_cloud_account import StateCloudAccount
@@ -389,6 +473,7 @@ __all__ = (
     "AppAWSECRImageConfig",
     "AppAWSIAMRoleType",
     "AppAWSStackOutputs",
+    "AppAWSStackOutputsBreakGlassRoleArns",
     "AppAzureAccount",
     "AppAzureStackOutputs",
     "AppCloudPlatform",
@@ -406,6 +491,7 @@ __all__ = (
     "AppConnectedGithubVCSConfig",
     "AppDockerBuildComponentConfig",
     "AppDockerBuildComponentConfigEnvVars",
+    "AppDriftedObject",
     "AppExternalImageComponentConfig",
     "AppHelmChart",
     "AppHelmComponentConfig",
@@ -440,20 +526,24 @@ __all__ = (
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
     "AppInstallLinks",
+    "AppInstallMetadata",
     "AppInstallSandbox",
     "AppInstallSandboxRun",
     "AppInstallSandboxRunOutputs",
     "AppInstallStack",
     "AppInstallStackOutputs",
     "AppInstallStackOutputsData",
+    "AppInstallStackOutputsDataContents",
     "AppInstallStackVersion",
     "AppInstallStackVersionRun",
     "AppInstallStackVersionRunData",
+    "AppInstallStackVersionRunDataContents",
     "AppInstallState",
     "AppJobComponentConfig",
     "AppJobComponentConfigEnvVars",
     "AppJSONMap",
     "AppKubernetesManifestComponentConfig",
+    "AppLatestRunnerHeartBeat",
     "AppLogStream",
     "AppLogStreamAttrs",
     "AppNotificationsConfig",
@@ -514,6 +604,9 @@ __all__ = (
     "AppTerraformWorkspaceLock",
     "AppTerraformWorkspaceState",
     "AppTerraformWorkspaceStateJSON",
+    "AppUserJourney",
+    "AppUserJourneyStep",
+    "AppUserJourneyStepMetadata",
     "AppVCSConnection",
     "AppVCSConnectionCommit",
     "AppWaitlist",
@@ -531,18 +624,77 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "ConfigAppPolicyType",
+    "ConfigsOCIRegistryAuth",
+    "ConfigsOCIRegistryRepository",
+    "ConfigsOCIRegistryType",
+    "CredentialsAssumeRoleConfig",
+    "CredentialsServicePrincipalCredentials",
+    "CredentialsStaticCredentials",
+    "GenericsNullTime",
     "GetAppConfigTemplateType",
     "GetConfigSchemaResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetTerraformWorkspaceStateJSONResourcesResponse200",
+    "GetTerraformWorkspaceStateJSONResourcesV2Response200",
     "GetTerraformWorkspaceStatesJSONByIDResponse200",
+    "GetTerraformWorkspaceStatesJSONByIDV2Response200",
+    "GetWorkflowStepApprovalContentsResponse200",
+    "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig",
+    "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig",
     "GithubComPowertoolsdevMonoPkgTypesStateState",
     "GithubComPowertoolsdevMonoPkgTypesStateStateComponents",
     "HelpersCreateInstallConfigParams",
+    "HelpersInstallMetadata",
+    "IamStaticCredentials",
+    "IamTwoStepConfig",
+    "KubeClusterInfo",
+    "KubeClusterInfoEnvVars",
     "LockTerraformWorkspaceBody",
     "OutputsSecretSyncOutput",
     "PermissionsPermission",
     "PermissionsSet",
+    "PlantypesActionWorkflowRunPlan",
+    "PlantypesActionWorkflowRunPlanAttrs",
+    "PlantypesActionWorkflowRunPlanBuiltinEnvVars",
+    "PlantypesActionWorkflowRunPlanOverrideEnvVars",
+    "PlantypesActionWorkflowRunStepPlan",
+    "PlantypesActionWorkflowRunStepPlanAttrs",
+    "PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars",
+    "PlantypesBuildPlan",
+    "PlantypesCompositePlan",
+    "PlantypesContainerImagePullPlan",
+    "PlantypesDeployPlan",
+    "PlantypesDockerBuildPlan",
+    "PlantypesDockerBuildPlanBuildArgs",
+    "PlantypesGitSource",
+    "PlantypesHelmBuildPlan",
+    "PlantypesHelmBuildPlanLabels",
+    "PlantypesHelmDeployPlan",
+    "PlantypesHelmSandboxMode",
+    "PlantypesHelmValue",
+    "PlantypesKubernetesManifestDeployPlan",
+    "PlantypesKubernetesSandboxMode",
+    "PlantypesKubernetesSecretSync",
+    "PlantypesNoopDeployPlan",
+    "PlantypesSandboxMode",
+    "PlantypesSandboxModeOutputs",
+    "PlantypesSandboxRunPlan",
+    "PlantypesSandboxRunPlanEnvVars",
+    "PlantypesSandboxRunPlanPolicies",
+    "PlantypesSandboxRunPlanVars",
+    "PlantypesSyncOCIPlan",
+    "PlantypesSyncSecretsPlan",
+    "PlantypesTerraformBackend",
+    "PlantypesTerraformBuildPlan",
+    "PlantypesTerraformBuildPlanLabels",
+    "PlantypesTerraformDeployHooks",
+    "PlantypesTerraformDeployHooksEnvVars",
+    "PlantypesTerraformDeployPlan",
+    "PlantypesTerraformDeployPlanEnvVars",
+    "PlantypesTerraformDeployPlanPolicies",
+    "PlantypesTerraformDeployPlanVars",
+    "PlantypesTerraformLocalArchive",
+    "PlantypesTerraformSandboxMode",
     "RefsRef",
     "RefsRefType",
     "ServiceAppAWSIAMPolicyConfig",
@@ -554,6 +706,7 @@ __all__ = (
     "ServiceAppPolicyConfig",
     "ServiceAppSecretConfig",
     "ServiceAwsECRImageConfigRequest",
+    "ServiceBuildAllComponentsRequest",
     "ServiceCancelRunnerJobRequest",
     "ServiceCLIConfig",
     "ServiceComponentChildren",
@@ -564,6 +717,7 @@ __all__ = (
     "ServiceCreateActionWorkflowConfigStepRequest",
     "ServiceCreateActionWorkflowConfigStepRequestEnvVars",
     "ServiceCreateActionWorkflowConfigTriggerRequest",
+    "ServiceCreateAppActionRequest",
     "ServiceCreateAppActionWorkflowRequest",
     "ServiceCreateAppBranchRequest",
     "ServiceCreateAppBreakGlassConfigRequest",
@@ -595,6 +749,7 @@ __all__ = (
     "ServiceCreateHelmComponentConfigRequestValues",
     "ServiceCreateInstallActionWorkflowRunRequest",
     "ServiceCreateInstallActionWorkflowRunRequestRunEnvVars",
+    "ServiceCreateInstallComponentDeployRequest",
     "ServiceCreateInstallConfigRequest",
     "ServiceCreateInstallDeployRequest",
     "ServiceCreateInstallerRequest",
@@ -615,7 +770,10 @@ __all__ = (
     "ServiceCreateTerraformModuleComponentConfigRequestEnvVars",
     "ServiceCreateTerraformModuleComponentConfigRequestVariables",
     "ServiceCreateTerraformWorkspaceRequest",
+    "ServiceCreateUserJourneyRequest",
+    "ServiceCreateUserJourneyStepReq",
     "ServiceCreateWorkflowStepApprovalResponseRequest",
+    "ServiceCreateWorkflowStepApprovalResponseResponse",
     "ServiceDeployInstallComponentsRequest",
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
@@ -623,9 +781,11 @@ __all__ = (
     "ServiceForgetInstallRequest",
     "ServiceGracefulShutdownRequest",
     "ServiceInstallPhoneHomeRequest",
+    "ServiceLatestRunnerHeartBeats",
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
     "ServiceMngVMShutDownRequest",
+    "ServicePatchInstallConfigParams",
     "ServicePublicGitVCSActionWorkflowConfigRequest",
     "ServicePublicGitVCSConfigRequest",
     "ServicePublicGitVCSSandboxConfigRequest",
@@ -638,6 +798,7 @@ __all__ = (
     "ServiceRetryWorkflowByIDResponse",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
+    "ServiceRetryWorkflowStepResponse",
     "ServiceRunnerConnectionStatus",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
@@ -655,6 +816,7 @@ __all__ = (
     "ServiceUpdateInstallRequest",
     "ServiceUpdateOrgRequest",
     "ServiceUpdateRunnerSettingsRequest",
+    "ServiceUpdateUserJourneyStepRequest",
     "ServiceUpdateWorkflowRequest",
     "ServiceWaitlistRequest",
     "StateActionsState",
@@ -662,7 +824,7 @@ __all__ = (
     "StateActionWorkflowState",
     "StateActionWorkflowStateOutputs",
     "StateAppState",
-    "StateAppStateSecrets",
+    "StateAppStateVariables",
     "StateAWSCloudAccount",
     "StateAzureCloudAccount",
     "StateCloudAccount",

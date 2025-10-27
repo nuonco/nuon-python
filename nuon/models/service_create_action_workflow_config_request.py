@@ -23,6 +23,7 @@ class ServiceCreateActionWorkflowConfigRequest:
         app_config_id (str):
         steps (list['ServiceCreateActionWorkflowConfigStepRequest']):
         triggers (list['ServiceCreateActionWorkflowConfigTriggerRequest']):
+        break_glass_role_arn (Union[Unset, str]):
         dependencies (Union[Unset, list[str]]):
         references (Union[Unset, list[str]]):
         timeout (Union[Unset, int]):
@@ -31,6 +32,7 @@ class ServiceCreateActionWorkflowConfigRequest:
     app_config_id: str
     steps: list["ServiceCreateActionWorkflowConfigStepRequest"]
     triggers: list["ServiceCreateActionWorkflowConfigTriggerRequest"]
+    break_glass_role_arn: Union[Unset, str] = UNSET
     dependencies: Union[Unset, list[str]] = UNSET
     references: Union[Unset, list[str]] = UNSET
     timeout: Union[Unset, int] = UNSET
@@ -48,6 +50,8 @@ class ServiceCreateActionWorkflowConfigRequest:
         for triggers_item_data in self.triggers:
             triggers_item = triggers_item_data.to_dict()
             triggers.append(triggers_item)
+
+        break_glass_role_arn = self.break_glass_role_arn
 
         dependencies: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dependencies, Unset):
@@ -68,6 +72,8 @@ class ServiceCreateActionWorkflowConfigRequest:
                 "triggers": triggers,
             }
         )
+        if break_glass_role_arn is not UNSET:
+            field_dict["break_glass_role_arn"] = break_glass_role_arn
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
         if references is not UNSET:
@@ -103,6 +109,8 @@ class ServiceCreateActionWorkflowConfigRequest:
 
             triggers.append(triggers_item)
 
+        break_glass_role_arn = d.pop("break_glass_role_arn", UNSET)
+
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         references = cast(list[str], d.pop("references", UNSET))
@@ -113,6 +121,7 @@ class ServiceCreateActionWorkflowConfigRequest:
             app_config_id=app_config_id,
             steps=steps,
             triggers=triggers,
+            break_glass_role_arn=break_glass_role_arn,
             dependencies=dependencies,
             references=references,
             timeout=timeout,

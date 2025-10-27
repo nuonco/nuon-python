@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+
 
 T = TypeVar("T", bound="AppAWSStackOutputs")
 
@@ -14,6 +18,7 @@ class AppAWSStackOutputs:
     """
     Attributes:
         account_id (Union[Unset, str]):
+        break_glass_role_arns (Union[Unset, AppAWSStackOutputsBreakGlassRoleArns]):
         deprovision_iam_role_arn (Union[Unset, str]):
         maintenance_iam_role_arn (Union[Unset, str]):
         private_subnets (Union[Unset, list[str]]):
@@ -26,6 +31,7 @@ class AppAWSStackOutputs:
     """
 
     account_id: Union[Unset, str] = UNSET
+    break_glass_role_arns: Union[Unset, "AppAWSStackOutputsBreakGlassRoleArns"] = UNSET
     deprovision_iam_role_arn: Union[Unset, str] = UNSET
     maintenance_iam_role_arn: Union[Unset, str] = UNSET
     private_subnets: Union[Unset, list[str]] = UNSET
@@ -39,6 +45,10 @@ class AppAWSStackOutputs:
 
     def to_dict(self) -> dict[str, Any]:
         account_id = self.account_id
+
+        break_glass_role_arns: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.break_glass_role_arns, Unset):
+            break_glass_role_arns = self.break_glass_role_arns.to_dict()
 
         deprovision_iam_role_arn = self.deprovision_iam_role_arn
 
@@ -67,6 +77,8 @@ class AppAWSStackOutputs:
         field_dict.update({})
         if account_id is not UNSET:
             field_dict["account_id"] = account_id
+        if break_glass_role_arns is not UNSET:
+            field_dict["break_glass_role_arns"] = break_glass_role_arns
         if deprovision_iam_role_arn is not UNSET:
             field_dict["deprovision_iam_role_arn"] = deprovision_iam_role_arn
         if maintenance_iam_role_arn is not UNSET:
@@ -90,8 +102,17 @@ class AppAWSStackOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+
         d = dict(src_dict)
         account_id = d.pop("account_id", UNSET)
+
+        _break_glass_role_arns = d.pop("break_glass_role_arns", UNSET)
+        break_glass_role_arns: Union[Unset, AppAWSStackOutputsBreakGlassRoleArns]
+        if isinstance(_break_glass_role_arns, Unset):
+            break_glass_role_arns = UNSET
+        else:
+            break_glass_role_arns = AppAWSStackOutputsBreakGlassRoleArns.from_dict(_break_glass_role_arns)
 
         deprovision_iam_role_arn = d.pop("deprovision_iam_role_arn", UNSET)
 
@@ -113,6 +134,7 @@ class AppAWSStackOutputs:
 
         app_aws_stack_outputs = cls(
             account_id=account_id,
+            break_glass_role_arns=break_glass_role_arns,
             deprovision_iam_role_arn=deprovision_iam_role_arn,
             maintenance_iam_role_arn=maintenance_iam_role_arn,
             private_subnets=private_subnets,

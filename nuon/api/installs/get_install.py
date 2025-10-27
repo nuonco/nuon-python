@@ -7,15 +7,24 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_install import AppInstall
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
+    *,
+    include_drifted_objects: Union[Unset, bool] = False,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["include_drifted_objects"] = include_drifted_objects
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/v1/installs/{install_id}",
+        "params": params,
     }
 
     return _kwargs
@@ -69,6 +78,7 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    include_drifted_objects: Union[Unset, bool] = False,
 ) -> Response[Union[AppInstall, StderrErrResponse]]:
     """get an install
 
@@ -79,6 +89,7 @@ def sync_detailed(
 
     Args:
         install_id (str):
+        include_drifted_objects (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,6 +101,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        include_drifted_objects=include_drifted_objects,
     )
 
     response = client.get_httpx_client().request(
@@ -103,6 +115,7 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    include_drifted_objects: Union[Unset, bool] = False,
 ) -> Optional[Union[AppInstall, StderrErrResponse]]:
     """get an install
 
@@ -113,6 +126,7 @@ def sync(
 
     Args:
         install_id (str):
+        include_drifted_objects (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -125,6 +139,7 @@ def sync(
     return sync_detailed(
         install_id=install_id,
         client=client,
+        include_drifted_objects=include_drifted_objects,
     ).parsed
 
 
@@ -132,6 +147,7 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    include_drifted_objects: Union[Unset, bool] = False,
 ) -> Response[Union[AppInstall, StderrErrResponse]]:
     """get an install
 
@@ -142,6 +158,7 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
+        include_drifted_objects (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -153,6 +170,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        include_drifted_objects=include_drifted_objects,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -164,6 +182,7 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    include_drifted_objects: Union[Unset, bool] = False,
 ) -> Optional[Union[AppInstall, StderrErrResponse]]:
     """get an install
 
@@ -174,6 +193,7 @@ async def asyncio(
 
     Args:
         install_id (str):
+        include_drifted_objects (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -187,5 +207,6 @@ async def asyncio(
         await asyncio_detailed(
             install_id=install_id,
             client=client,
+            include_drifted_objects=include_drifted_objects,
         )
     ).parsed

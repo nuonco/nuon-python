@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from ..models.app_app_sandbox_config import AppAppSandboxConfig
     from ..models.app_aws_account import AppAWSAccount
     from ..models.app_azure_account import AppAzureAccount
+    from ..models.app_drifted_object import AppDriftedObject
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
     from ..models.app_install_component import AppInstallComponent
     from ..models.app_install_component_statuses import AppInstallComponentStatuses
@@ -18,6 +19,7 @@ if TYPE_CHECKING:
     from ..models.app_install_event import AppInstallEvent
     from ..models.app_install_inputs import AppInstallInputs
     from ..models.app_install_links import AppInstallLinks
+    from ..models.app_install_metadata import AppInstallMetadata
     from ..models.app_install_sandbox import AppInstallSandbox
     from ..models.app_install_sandbox_run import AppInstallSandboxRun
     from ..models.app_install_stack import AppInstallStack
@@ -44,6 +46,7 @@ class AppInstall:
         composite_component_status_description (Union[Unset, str]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
+        drifted_objects (Union[Unset, list['AppDriftedObject']]):
         id (Union[Unset, str]):
         install_action_workflows (Union[Unset, list['AppInstallActionWorkflow']]):
         install_components (Union[Unset, list['AppInstallComponent']]):
@@ -55,6 +58,7 @@ class AppInstall:
         install_stack (Union[Unset, AppInstallStack]):
         install_states (Union[Unset, list['AppInstallState']]):
         links (Union[Unset, AppInstallLinks]):
+        metadata (Union[Unset, AppInstallMetadata]):
         name (Union[Unset, str]):
         runner_id (Union[Unset, str]):
         runner_status (Union[Unset, str]):
@@ -81,6 +85,7 @@ class AppInstall:
     composite_component_status_description: Union[Unset, str] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
+    drifted_objects: Union[Unset, list["AppDriftedObject"]] = UNSET
     id: Union[Unset, str] = UNSET
     install_action_workflows: Union[Unset, list["AppInstallActionWorkflow"]] = UNSET
     install_components: Union[Unset, list["AppInstallComponent"]] = UNSET
@@ -92,6 +97,7 @@ class AppInstall:
     install_stack: Union[Unset, "AppInstallStack"] = UNSET
     install_states: Union[Unset, list["AppInstallState"]] = UNSET
     links: Union[Unset, "AppInstallLinks"] = UNSET
+    metadata: Union[Unset, "AppInstallMetadata"] = UNSET
     name: Union[Unset, str] = UNSET
     runner_id: Union[Unset, str] = UNSET
     runner_status: Union[Unset, str] = UNSET
@@ -140,6 +146,13 @@ class AppInstall:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        drifted_objects: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.drifted_objects, Unset):
+            drifted_objects = []
+            for drifted_objects_item_data in self.drifted_objects:
+                drifted_objects_item = drifted_objects_item_data.to_dict()
+                drifted_objects.append(drifted_objects_item)
 
         id = self.id
 
@@ -199,6 +212,10 @@ class AppInstall:
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
+
         name = self.name
 
         runner_id = self.runner_id
@@ -257,6 +274,8 @@ class AppInstall:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if drifted_objects is not UNSET:
+            field_dict["drifted_objects"] = drifted_objects
         if id is not UNSET:
             field_dict["id"] = id
         if install_action_workflows is not UNSET:
@@ -279,6 +298,8 @@ class AppInstall:
             field_dict["install_states"] = install_states
         if links is not UNSET:
             field_dict["links"] = links
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if name is not UNSET:
             field_dict["name"] = name
         if runner_id is not UNSET:
@@ -312,6 +333,7 @@ class AppInstall:
         from ..models.app_app_sandbox_config import AppAppSandboxConfig
         from ..models.app_aws_account import AppAWSAccount
         from ..models.app_azure_account import AppAzureAccount
+        from ..models.app_drifted_object import AppDriftedObject
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
         from ..models.app_install_component import AppInstallComponent
         from ..models.app_install_component_statuses import AppInstallComponentStatuses
@@ -319,6 +341,7 @@ class AppInstall:
         from ..models.app_install_event import AppInstallEvent
         from ..models.app_install_inputs import AppInstallInputs
         from ..models.app_install_links import AppInstallLinks
+        from ..models.app_install_metadata import AppInstallMetadata
         from ..models.app_install_sandbox import AppInstallSandbox
         from ..models.app_install_sandbox_run import AppInstallSandboxRun
         from ..models.app_install_stack import AppInstallStack
@@ -374,6 +397,13 @@ class AppInstall:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        drifted_objects = []
+        _drifted_objects = d.pop("drifted_objects", UNSET)
+        for drifted_objects_item_data in _drifted_objects or []:
+            drifted_objects_item = AppDriftedObject.from_dict(drifted_objects_item_data)
+
+            drifted_objects.append(drifted_objects_item)
 
         id = d.pop("id", UNSET)
 
@@ -442,6 +472,13 @@ class AppInstall:
         else:
             links = AppInstallLinks.from_dict(_links)
 
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, AppInstallMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppInstallMetadata.from_dict(_metadata)
+
         name = d.pop("name", UNSET)
 
         runner_id = d.pop("runner_id", UNSET)
@@ -489,6 +526,7 @@ class AppInstall:
             composite_component_status_description=composite_component_status_description,
             created_at=created_at,
             created_by_id=created_by_id,
+            drifted_objects=drifted_objects,
             id=id,
             install_action_workflows=install_action_workflows,
             install_components=install_components,
@@ -500,6 +538,7 @@ class AppInstall:
             install_stack=install_stack,
             install_states=install_states,
             links=links,
+            metadata=metadata,
             name=name,
             runner_id=runner_id,
             runner_status=runner_status,

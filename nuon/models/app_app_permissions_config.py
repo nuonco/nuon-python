@@ -20,6 +20,7 @@ class AppAppPermissionsConfig:
         app_config_id (Union[Unset, str]):
         app_id (Union[Unset, str]):
         aws_iam_roles (Union[Unset, list['AppAppAWSIAMRoleConfig']]):
+        break_glass_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         deprovision_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
@@ -33,6 +34,7 @@ class AppAppPermissionsConfig:
     app_config_id: Union[Unset, str] = UNSET
     app_id: Union[Unset, str] = UNSET
     aws_iam_roles: Union[Unset, list["AppAppAWSIAMRoleConfig"]] = UNSET
+    break_glass_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     deprovision_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
@@ -54,6 +56,10 @@ class AppAppPermissionsConfig:
             for aws_iam_roles_item_data in self.aws_iam_roles:
                 aws_iam_roles_item = aws_iam_roles_item_data.to_dict()
                 aws_iam_roles.append(aws_iam_roles_item)
+
+        break_glass_aws_iam_role: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.break_glass_aws_iam_role, Unset):
+            break_glass_aws_iam_role = self.break_glass_aws_iam_role.to_dict()
 
         created_at = self.created_at
 
@@ -86,6 +92,8 @@ class AppAppPermissionsConfig:
             field_dict["app_id"] = app_id
         if aws_iam_roles is not UNSET:
             field_dict["aws_iam_roles"] = aws_iam_roles
+        if break_glass_aws_iam_role is not UNSET:
+            field_dict["break_glass_aws_iam_role"] = break_glass_aws_iam_role
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -120,6 +128,13 @@ class AppAppPermissionsConfig:
             aws_iam_roles_item = AppAppAWSIAMRoleConfig.from_dict(aws_iam_roles_item_data)
 
             aws_iam_roles.append(aws_iam_roles_item)
+
+        _break_glass_aws_iam_role = d.pop("break_glass_aws_iam_role", UNSET)
+        break_glass_aws_iam_role: Union[Unset, AppAppAWSIAMRoleConfig]
+        if isinstance(_break_glass_aws_iam_role, Unset):
+            break_glass_aws_iam_role = UNSET
+        else:
+            break_glass_aws_iam_role = AppAppAWSIAMRoleConfig.from_dict(_break_glass_aws_iam_role)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -156,6 +171,7 @@ class AppAppPermissionsConfig:
             app_config_id=app_config_id,
             app_id=app_id,
             aws_iam_roles=aws_iam_roles,
+            break_glass_aws_iam_role=break_glass_aws_iam_role,
             created_at=created_at,
             created_by_id=created_by_id,
             deprovision_aws_iam_role=deprovision_aws_iam_role,

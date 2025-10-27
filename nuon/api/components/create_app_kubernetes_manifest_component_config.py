@@ -5,26 +5,25 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse
-from ...models.service_create_workflow_step_approval_response_request import (
-    ServiceCreateWorkflowStepApprovalResponseRequest,
+from ...models.app_kubernetes_manifest_component_config import AppKubernetesManifestComponentConfig
+from ...models.service_create_kubernetes_manifest_component_config_request import (
+    ServiceCreateKubernetesManifestComponentConfigRequest,
 )
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    install_workflow_id: str,
-    install_workflow_step_id: str,
-    approval_id: str,
+    app_id: str,
+    component_id: str,
     *,
-    body: ServiceCreateWorkflowStepApprovalResponseRequest,
+    body: ServiceCreateKubernetesManifestComponentConfigRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/install-workflows/{install_workflow_id}/steps/{install_workflow_step_id}/approvals/{approval_id}/response",
+        "url": f"/v1/apps/{app_id}/components/{component_id}/configs/kubernetes-manifest",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -37,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
+) -> Optional[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
     if response.status_code == 201:
-        response_201 = AppWorkflowStepApprovalResponse.from_dict(response.json())
+        response_201 = AppKubernetesManifestComponentConfig.from_dict(response.json())
 
         return response_201
     if response.status_code == 400:
@@ -70,7 +69,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
+) -> Response[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,33 +79,30 @@ def _build_response(
 
 
 def sync_detailed(
-    install_workflow_id: str,
-    install_workflow_step_id: str,
-    approval_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+    body: ServiceCreateKubernetesManifestComponentConfigRequest,
+) -> Response[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
+    """create a kubernetes manifest component config
 
     Args:
-        install_workflow_id (str):
-        install_workflow_step_id (str):
-        approval_id (str):
-        body (ServiceCreateWorkflowStepApprovalResponseRequest):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateKubernetesManifestComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]
+        Response[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        install_workflow_id=install_workflow_id,
-        install_workflow_step_id=install_workflow_step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        component_id=component_id,
         body=body,
     )
 
@@ -118,66 +114,60 @@ def sync_detailed(
 
 
 def sync(
-    install_workflow_id: str,
-    install_workflow_step_id: str,
-    approval_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+    body: ServiceCreateKubernetesManifestComponentConfigRequest,
+) -> Optional[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
+    """create a kubernetes manifest component config
 
     Args:
-        install_workflow_id (str):
-        install_workflow_step_id (str):
-        approval_id (str):
-        body (ServiceCreateWorkflowStepApprovalResponseRequest):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateKubernetesManifestComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApprovalResponse, StderrErrResponse]
+        Union[AppKubernetesManifestComponentConfig, StderrErrResponse]
     """
 
     return sync_detailed(
-        install_workflow_id=install_workflow_id,
-        install_workflow_step_id=install_workflow_step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        component_id=component_id,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    install_workflow_id: str,
-    install_workflow_step_id: str,
-    approval_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+    body: ServiceCreateKubernetesManifestComponentConfigRequest,
+) -> Response[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
+    """create a kubernetes manifest component config
 
     Args:
-        install_workflow_id (str):
-        install_workflow_step_id (str):
-        approval_id (str):
-        body (ServiceCreateWorkflowStepApprovalResponseRequest):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateKubernetesManifestComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]
+        Response[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        install_workflow_id=install_workflow_id,
-        install_workflow_step_id=install_workflow_step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        component_id=component_id,
         body=body,
     )
 
@@ -187,34 +177,31 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    install_workflow_id: str,
-    install_workflow_step_id: str,
-    approval_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateWorkflowStepApprovalResponseRequest,
-) -> Optional[Union[AppWorkflowStepApprovalResponse, StderrErrResponse]]:
-    """deploy a build to an install
+    body: ServiceCreateKubernetesManifestComponentConfigRequest,
+) -> Optional[Union[AppKubernetesManifestComponentConfig, StderrErrResponse]]:
+    """create a kubernetes manifest component config
 
     Args:
-        install_workflow_id (str):
-        install_workflow_step_id (str):
-        approval_id (str):
-        body (ServiceCreateWorkflowStepApprovalResponseRequest):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateKubernetesManifestComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApprovalResponse, StderrErrResponse]
+        Union[AppKubernetesManifestComponentConfig, StderrErrResponse]
     """
 
     return (
         await asyncio_detailed(
-            install_workflow_id=install_workflow_id,
-            install_workflow_step_id=install_workflow_step_id,
-            approval_id=approval_id,
+            app_id=app_id,
+            component_id=component_id,
             client=client,
             body=body,
         )

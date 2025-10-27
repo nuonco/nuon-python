@@ -13,24 +13,18 @@ T = TypeVar("T", bound="ServiceCreateInstallRequestAwsAccount")
 class ServiceCreateInstallRequestAwsAccount:
     """
     Attributes:
-        iam_role_arn (Union[Unset, str]):
         region (Union[Unset, str]):
     """
 
-    iam_role_arn: Union[Unset, str] = UNSET
     region: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        iam_role_arn = self.iam_role_arn
-
         region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if iam_role_arn is not UNSET:
-            field_dict["iam_role_arn"] = iam_role_arn
         if region is not UNSET:
             field_dict["region"] = region
 
@@ -39,12 +33,9 @@ class ServiceCreateInstallRequestAwsAccount:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        iam_role_arn = d.pop("iam_role_arn", UNSET)
-
         region = d.pop("region", UNSET)
 
         service_create_install_request_aws_account = cls(
-            iam_role_arn=iam_role_arn,
             region=region,
         )
 

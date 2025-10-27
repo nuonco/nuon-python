@@ -15,7 +15,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": f"/v1/terraform-workspace/{workspace_id}",
+        "url": f"/v1/terraform-workspaces/{workspace_id}",
     }
 
     return _kwargs

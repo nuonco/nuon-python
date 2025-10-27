@@ -111,7 +111,7 @@ class AppWorkflowStepApproval:
         if response is not UNSET:
             field_dict["response"] = response
         if runner_job is not UNSET:
-            field_dict["runnerJob"] = runner_job
+            field_dict["runner_job"] = runner_job
         if runner_job_id is not UNSET:
             field_dict["runner_job_id"] = runner_job_id
         if type_ is not UNSET:
@@ -158,7 +158,7 @@ class AppWorkflowStepApproval:
         else:
             response = AppWorkflowStepApprovalResponse.from_dict(_response)
 
-        _runner_job = d.pop("runnerJob", UNSET)
+        _runner_job = d.pop("runner_job", UNSET)
         runner_job: Union[Unset, AppRunnerJob]
         if isinstance(_runner_job, Unset):
             runner_job = UNSET

@@ -15,20 +15,18 @@ def _get_kwargs(
     *,
     q: Union[Unset, str] = UNSET,
     types: Union[Unset, str] = UNSET,
+    component_ids: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_pagination_enabled, Unset):
-        headers["x-nuon-pagination-enabled"] = "true" if x_nuon_pagination_enabled else "false"
-
     params: dict[str, Any] = {}
 
     params["q"] = q
 
     params["types"] = types
+
+    params["component_ids"] = component_ids
 
     params["offset"] = offset
 
@@ -44,7 +42,6 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -103,10 +100,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     q: Union[Unset, str] = UNSET,
     types: Union[Unset, str] = UNSET,
+    component_ids: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
     """get all components for an app
 
@@ -114,10 +111,10 @@ def sync_detailed(
         app_id (str):
         q (Union[Unset, str]):
         types (Union[Unset, str]):
+        component_ids (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,10 +128,10 @@ def sync_detailed(
         app_id=app_id,
         q=q,
         types=types,
+        component_ids=component_ids,
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = client.get_httpx_client().request(
@@ -150,10 +147,10 @@ def sync(
     client: AuthenticatedClient,
     q: Union[Unset, str] = UNSET,
     types: Union[Unset, str] = UNSET,
+    component_ids: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
     """get all components for an app
 
@@ -161,10 +158,10 @@ def sync(
         app_id (str):
         q (Union[Unset, str]):
         types (Union[Unset, str]):
+        component_ids (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,10 +176,10 @@ def sync(
         client=client,
         q=q,
         types=types,
+        component_ids=component_ids,
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     ).parsed
 
 
@@ -192,10 +189,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     q: Union[Unset, str] = UNSET,
     types: Union[Unset, str] = UNSET,
+    component_ids: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
     """get all components for an app
 
@@ -203,10 +200,10 @@ async def asyncio_detailed(
         app_id (str):
         q (Union[Unset, str]):
         types (Union[Unset, str]):
+        component_ids (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -220,10 +217,10 @@ async def asyncio_detailed(
         app_id=app_id,
         q=q,
         types=types,
+        component_ids=component_ids,
         offset=offset,
         limit=limit,
         page=page,
-        x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -237,10 +234,10 @@ async def asyncio(
     client: AuthenticatedClient,
     q: Union[Unset, str] = UNSET,
     types: Union[Unset, str] = UNSET,
+    component_ids: Union[Unset, str] = UNSET,
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
     page: Union[Unset, int] = 0,
-    x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
     """get all components for an app
 
@@ -248,10 +245,10 @@ async def asyncio(
         app_id (str):
         q (Union[Unset, str]):
         types (Union[Unset, str]):
+        component_ids (Union[Unset, str]):
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
         page (Union[Unset, int]):  Default: 0.
-        x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -267,9 +264,9 @@ async def asyncio(
             client=client,
             q=q,
             types=types,
+            component_ids=component_ids,
             offset=offset,
             limit=limit,
             page=page,
-            x_nuon_pagination_enabled=x_nuon_pagination_enabled,
         )
     ).parsed

@@ -16,7 +16,6 @@ def _get_kwargs(
     window: Union[Unset, str] = "1h",
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
     x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -30,8 +29,6 @@ def _get_kwargs(
     params["offset"] = offset
 
     params["limit"] = limit
-
-    params["page"] = page
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -101,7 +98,6 @@ def sync_detailed(
     window: Union[Unset, str] = "1h",
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
     x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppRunnerHealthCheck"]]]:
     """get recent health checks
@@ -113,7 +109,6 @@ def sync_detailed(
         window (Union[Unset, str]):  Default: '1h'.
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
         x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
@@ -129,7 +124,6 @@ def sync_detailed(
         window=window,
         offset=offset,
         limit=limit,
-        page=page,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
@@ -147,7 +141,6 @@ def sync(
     window: Union[Unset, str] = "1h",
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
     x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppRunnerHealthCheck"]]]:
     """get recent health checks
@@ -159,7 +152,6 @@ def sync(
         window (Union[Unset, str]):  Default: '1h'.
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
         x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
@@ -176,7 +168,6 @@ def sync(
         window=window,
         offset=offset,
         limit=limit,
-        page=page,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     ).parsed
 
@@ -188,7 +179,6 @@ async def asyncio_detailed(
     window: Union[Unset, str] = "1h",
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
     x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Response[Union[StderrErrResponse, list["AppRunnerHealthCheck"]]]:
     """get recent health checks
@@ -200,7 +190,6 @@ async def asyncio_detailed(
         window (Union[Unset, str]):  Default: '1h'.
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
         x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
@@ -216,7 +205,6 @@ async def asyncio_detailed(
         window=window,
         offset=offset,
         limit=limit,
-        page=page,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
     )
 
@@ -232,7 +220,6 @@ async def asyncio(
     window: Union[Unset, str] = "1h",
     offset: Union[Unset, int] = 0,
     limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
     x_nuon_pagination_enabled: Union[Unset, bool] = UNSET,
 ) -> Optional[Union[StderrErrResponse, list["AppRunnerHealthCheck"]]]:
     """get recent health checks
@@ -244,7 +231,6 @@ async def asyncio(
         window (Union[Unset, str]):  Default: '1h'.
         offset (Union[Unset, int]):  Default: 0.
         limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
         x_nuon_pagination_enabled (Union[Unset, bool]):
 
     Raises:
@@ -262,7 +248,6 @@ async def asyncio(
             window=window,
             offset=offset,
             limit=limit,
-            page=page,
             x_nuon_pagination_enabled=x_nuon_pagination_enabled,
         )
     ).parsed
