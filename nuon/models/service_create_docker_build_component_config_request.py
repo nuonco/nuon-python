@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,27 +24,27 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     """
     Attributes:
         dockerfile (str):
-        app_config_id (Union[Unset, str]):
-        build_args (Union[Unset, list[str]]):
-        checksum (Union[Unset, str]):
-        connected_github_vcs_config (Union[Unset, ServiceConnectedGithubVCSConfigRequest]):
-        dependencies (Union[Unset, list[str]]):
-        env_vars (Union[Unset, ServiceCreateDockerBuildComponentConfigRequestEnvVars]):
-        public_git_vcs_config (Union[Unset, ServicePublicGitVCSConfigRequest]):
-        references (Union[Unset, list[str]]):
-        target (Union[Unset, str]):
+        app_config_id (str | Unset):
+        build_args (list[str] | Unset):
+        checksum (str | Unset):
+        connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        dependencies (list[str] | Unset):
+        env_vars (ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset):
+        public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
+        references (list[str] | Unset):
+        target (str | Unset):
     """
 
     dockerfile: str
-    app_config_id: Union[Unset, str] = UNSET
-    build_args: Union[Unset, list[str]] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "ServiceConnectedGithubVCSConfigRequest"] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    env_vars: Union[Unset, "ServiceCreateDockerBuildComponentConfigRequestEnvVars"] = UNSET
-    public_git_vcs_config: Union[Unset, "ServicePublicGitVCSConfigRequest"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    target: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    build_args: list[str] | Unset = UNSET
+    checksum: str | Unset = UNSET
+    connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset = UNSET
+    public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    target: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,29 +52,29 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
         app_config_id = self.app_config_id
 
-        build_args: Union[Unset, list[str]] = UNSET
+        build_args: list[str] | Unset = UNSET
         if not isinstance(self.build_args, Unset):
             build_args = self.build_args
 
         checksum = self.checksum
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
@@ -124,7 +126,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         checksum = d.pop("checksum", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, ServiceConnectedGithubVCSConfigRequest]
+        connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -133,14 +135,14 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, ServiceCreateDockerBuildComponentConfigRequestEnvVars]
+        env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
             env_vars = ServiceCreateDockerBuildComponentConfigRequestEnvVars.from_dict(_env_vars)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, ServicePublicGitVCSConfigRequest]
+        public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:

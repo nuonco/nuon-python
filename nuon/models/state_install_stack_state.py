@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,28 +19,28 @@ T = TypeVar("T", bound="StateInstallStackState")
 class StateInstallStackState:
     """
     Attributes:
-        checksum (Union[Unset, str]):
-        outputs (Union[Unset, StateInstallStackStateOutputs]):
-        populated (Union[Unset, bool]):
-        quick_link_url (Union[Unset, str]):
-        status (Union[Unset, str]):
-        template_json (Union[Unset, str]):
-        template_url (Union[Unset, str]):
+        checksum (str | Unset):
+        outputs (StateInstallStackStateOutputs | Unset):
+        populated (bool | Unset):
+        quick_link_url (str | Unset):
+        status (str | Unset):
+        template_json (str | Unset):
+        template_url (str | Unset):
     """
 
-    checksum: Union[Unset, str] = UNSET
-    outputs: Union[Unset, "StateInstallStackStateOutputs"] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    quick_link_url: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    template_json: Union[Unset, str] = UNSET
-    template_url: Union[Unset, str] = UNSET
+    checksum: str | Unset = UNSET
+    outputs: StateInstallStackStateOutputs | Unset = UNSET
+    populated: bool | Unset = UNSET
+    quick_link_url: str | Unset = UNSET
+    status: str | Unset = UNSET
+    template_json: str | Unset = UNSET
+    template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         checksum = self.checksum
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
@@ -80,7 +82,7 @@ class StateInstallStackState:
         checksum = d.pop("checksum", UNSET)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, StateInstallStackStateOutputs]
+        outputs: StateInstallStackStateOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:

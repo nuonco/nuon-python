@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="ServiceCreateInstallDeployRequest")
 class ServiceCreateInstallDeployRequest:
     """
     Attributes:
-        build_id (Union[Unset, str]):
-        deploy_dependents (Union[Unset, bool]):
-        plan_only (Union[Unset, bool]):
+        build_id (str | Unset):
+        deploy_dependents (bool | Unset):
+        plan_only (bool | Unset):
     """
 
-    build_id: Union[Unset, str] = UNSET
-    deploy_dependents: Union[Unset, bool] = UNSET
-    plan_only: Union[Unset, bool] = UNSET
+    build_id: str | Unset = UNSET
+    deploy_dependents: bool | Unset = UNSET
+    plan_only: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -8,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+    from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
 
 T = TypeVar("T", bound="AppAWSStackOutputs")
@@ -17,50 +20,56 @@ T = TypeVar("T", bound="AppAWSStackOutputs")
 class AppAWSStackOutputs:
     """
     Attributes:
-        account_id (Union[Unset, str]):
-        break_glass_role_arns (Union[Unset, AppAWSStackOutputsBreakGlassRoleArns]):
-        deprovision_iam_role_arn (Union[Unset, str]):
-        maintenance_iam_role_arn (Union[Unset, str]):
-        private_subnets (Union[Unset, list[str]]):
-        provision_iam_role_arn (Union[Unset, str]):
-        public_subnets (Union[Unset, list[str]]):
-        region (Union[Unset, str]):
-        runner_iam_role_arn (Union[Unset, str]):
-        runner_subnet (Union[Unset, str]):
-        vpc_id (Union[Unset, str]):
+        account_id (str | Unset):
+        break_glass_role_arns (AppAWSStackOutputsBreakGlassRoleArns | Unset):
+        deprovision_iam_role_arn (str | Unset):
+        install_inputs (AppAWSStackOutputsInstallInputs | Unset):
+        maintenance_iam_role_arn (str | Unset):
+        private_subnets (list[str] | Unset):
+        provision_iam_role_arn (str | Unset):
+        public_subnets (list[str] | Unset):
+        region (str | Unset):
+        runner_iam_role_arn (str | Unset):
+        runner_subnet (str | Unset):
+        vpc_id (str | Unset):
     """
 
-    account_id: Union[Unset, str] = UNSET
-    break_glass_role_arns: Union[Unset, "AppAWSStackOutputsBreakGlassRoleArns"] = UNSET
-    deprovision_iam_role_arn: Union[Unset, str] = UNSET
-    maintenance_iam_role_arn: Union[Unset, str] = UNSET
-    private_subnets: Union[Unset, list[str]] = UNSET
-    provision_iam_role_arn: Union[Unset, str] = UNSET
-    public_subnets: Union[Unset, list[str]] = UNSET
-    region: Union[Unset, str] = UNSET
-    runner_iam_role_arn: Union[Unset, str] = UNSET
-    runner_subnet: Union[Unset, str] = UNSET
-    vpc_id: Union[Unset, str] = UNSET
+    account_id: str | Unset = UNSET
+    break_glass_role_arns: AppAWSStackOutputsBreakGlassRoleArns | Unset = UNSET
+    deprovision_iam_role_arn: str | Unset = UNSET
+    install_inputs: AppAWSStackOutputsInstallInputs | Unset = UNSET
+    maintenance_iam_role_arn: str | Unset = UNSET
+    private_subnets: list[str] | Unset = UNSET
+    provision_iam_role_arn: str | Unset = UNSET
+    public_subnets: list[str] | Unset = UNSET
+    region: str | Unset = UNSET
+    runner_iam_role_arn: str | Unset = UNSET
+    runner_subnet: str | Unset = UNSET
+    vpc_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         account_id = self.account_id
 
-        break_glass_role_arns: Union[Unset, dict[str, Any]] = UNSET
+        break_glass_role_arns: dict[str, Any] | Unset = UNSET
         if not isinstance(self.break_glass_role_arns, Unset):
             break_glass_role_arns = self.break_glass_role_arns.to_dict()
 
         deprovision_iam_role_arn = self.deprovision_iam_role_arn
 
+        install_inputs: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.install_inputs, Unset):
+            install_inputs = self.install_inputs.to_dict()
+
         maintenance_iam_role_arn = self.maintenance_iam_role_arn
 
-        private_subnets: Union[Unset, list[str]] = UNSET
+        private_subnets: list[str] | Unset = UNSET
         if not isinstance(self.private_subnets, Unset):
             private_subnets = self.private_subnets
 
         provision_iam_role_arn = self.provision_iam_role_arn
 
-        public_subnets: Union[Unset, list[str]] = UNSET
+        public_subnets: list[str] | Unset = UNSET
         if not isinstance(self.public_subnets, Unset):
             public_subnets = self.public_subnets
 
@@ -81,6 +90,8 @@ class AppAWSStackOutputs:
             field_dict["break_glass_role_arns"] = break_glass_role_arns
         if deprovision_iam_role_arn is not UNSET:
             field_dict["deprovision_iam_role_arn"] = deprovision_iam_role_arn
+        if install_inputs is not UNSET:
+            field_dict["install_inputs"] = install_inputs
         if maintenance_iam_role_arn is not UNSET:
             field_dict["maintenance_iam_role_arn"] = maintenance_iam_role_arn
         if private_subnets is not UNSET:
@@ -103,18 +114,26 @@ class AppAWSStackOutputs:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+        from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
         d = dict(src_dict)
         account_id = d.pop("account_id", UNSET)
 
         _break_glass_role_arns = d.pop("break_glass_role_arns", UNSET)
-        break_glass_role_arns: Union[Unset, AppAWSStackOutputsBreakGlassRoleArns]
+        break_glass_role_arns: AppAWSStackOutputsBreakGlassRoleArns | Unset
         if isinstance(_break_glass_role_arns, Unset):
             break_glass_role_arns = UNSET
         else:
             break_glass_role_arns = AppAWSStackOutputsBreakGlassRoleArns.from_dict(_break_glass_role_arns)
 
         deprovision_iam_role_arn = d.pop("deprovision_iam_role_arn", UNSET)
+
+        _install_inputs = d.pop("install_inputs", UNSET)
+        install_inputs: AppAWSStackOutputsInstallInputs | Unset
+        if isinstance(_install_inputs, Unset):
+            install_inputs = UNSET
+        else:
+            install_inputs = AppAWSStackOutputsInstallInputs.from_dict(_install_inputs)
 
         maintenance_iam_role_arn = d.pop("maintenance_iam_role_arn", UNSET)
 
@@ -136,6 +155,7 @@ class AppAWSStackOutputs:
             account_id=account_id,
             break_glass_role_arns=break_glass_role_arns,
             deprovision_iam_role_arn=deprovision_iam_role_arn,
+            install_inputs=install_inputs,
             maintenance_iam_role_arn=maintenance_iam_role_arn,
             private_subnets=private_subnets,
             provision_iam_role_arn=provision_iam_role_arn,

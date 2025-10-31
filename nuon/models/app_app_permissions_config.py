@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,32 +19,32 @@ T = TypeVar("T", bound="AppAppPermissionsConfig")
 class AppAppPermissionsConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        aws_iam_roles (Union[Unset, list['AppAppAWSIAMRoleConfig']]):
-        break_glass_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        deprovision_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
-        id (Union[Unset, str]):
-        maintenance_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
-        org_id (Union[Unset, str]):
-        provision_aws_iam_role (Union[Unset, AppAppAWSIAMRoleConfig]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        aws_iam_roles (list[AppAppAWSIAMRoleConfig] | Unset):
+        break_glass_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        deprovision_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
+        id (str | Unset):
+        maintenance_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
+        org_id (str | Unset):
+        provision_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    aws_iam_roles: Union[Unset, list["AppAppAWSIAMRoleConfig"]] = UNSET
-    break_glass_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    deprovision_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
-    id: Union[Unset, str] = UNSET
-    maintenance_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    provision_aws_iam_role: Union[Unset, "AppAppAWSIAMRoleConfig"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    aws_iam_roles: list[AppAppAWSIAMRoleConfig] | Unset = UNSET
+    break_glass_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    deprovision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
+    id: str | Unset = UNSET
+    maintenance_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
+    org_id: str | Unset = UNSET
+    provision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,14 +52,14 @@ class AppAppPermissionsConfig:
 
         app_id = self.app_id
 
-        aws_iam_roles: Union[Unset, list[dict[str, Any]]] = UNSET
+        aws_iam_roles: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.aws_iam_roles, Unset):
             aws_iam_roles = []
             for aws_iam_roles_item_data in self.aws_iam_roles:
                 aws_iam_roles_item = aws_iam_roles_item_data.to_dict()
                 aws_iam_roles.append(aws_iam_roles_item)
 
-        break_glass_aws_iam_role: Union[Unset, dict[str, Any]] = UNSET
+        break_glass_aws_iam_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.break_glass_aws_iam_role, Unset):
             break_glass_aws_iam_role = self.break_glass_aws_iam_role.to_dict()
 
@@ -65,19 +67,19 @@ class AppAppPermissionsConfig:
 
         created_by_id = self.created_by_id
 
-        deprovision_aws_iam_role: Union[Unset, dict[str, Any]] = UNSET
+        deprovision_aws_iam_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.deprovision_aws_iam_role, Unset):
             deprovision_aws_iam_role = self.deprovision_aws_iam_role.to_dict()
 
         id = self.id
 
-        maintenance_aws_iam_role: Union[Unset, dict[str, Any]] = UNSET
+        maintenance_aws_iam_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.maintenance_aws_iam_role, Unset):
             maintenance_aws_iam_role = self.maintenance_aws_iam_role.to_dict()
 
         org_id = self.org_id
 
-        provision_aws_iam_role: Union[Unset, dict[str, Any]] = UNSET
+        provision_aws_iam_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.provision_aws_iam_role, Unset):
             provision_aws_iam_role = self.provision_aws_iam_role.to_dict()
 
@@ -130,7 +132,7 @@ class AppAppPermissionsConfig:
             aws_iam_roles.append(aws_iam_roles_item)
 
         _break_glass_aws_iam_role = d.pop("break_glass_aws_iam_role", UNSET)
-        break_glass_aws_iam_role: Union[Unset, AppAppAWSIAMRoleConfig]
+        break_glass_aws_iam_role: AppAppAWSIAMRoleConfig | Unset
         if isinstance(_break_glass_aws_iam_role, Unset):
             break_glass_aws_iam_role = UNSET
         else:
@@ -141,7 +143,7 @@ class AppAppPermissionsConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _deprovision_aws_iam_role = d.pop("deprovision_aws_iam_role", UNSET)
-        deprovision_aws_iam_role: Union[Unset, AppAppAWSIAMRoleConfig]
+        deprovision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset
         if isinstance(_deprovision_aws_iam_role, Unset):
             deprovision_aws_iam_role = UNSET
         else:
@@ -150,7 +152,7 @@ class AppAppPermissionsConfig:
         id = d.pop("id", UNSET)
 
         _maintenance_aws_iam_role = d.pop("maintenance_aws_iam_role", UNSET)
-        maintenance_aws_iam_role: Union[Unset, AppAppAWSIAMRoleConfig]
+        maintenance_aws_iam_role: AppAppAWSIAMRoleConfig | Unset
         if isinstance(_maintenance_aws_iam_role, Unset):
             maintenance_aws_iam_role = UNSET
         else:
@@ -159,7 +161,7 @@ class AppAppPermissionsConfig:
         org_id = d.pop("org_id", UNSET)
 
         _provision_aws_iam_role = d.pop("provision_aws_iam_role", UNSET)
-        provision_aws_iam_role: Union[Unset, AppAppAWSIAMRoleConfig]
+        provision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset
         if isinstance(_provision_aws_iam_role, Unset):
             provision_aws_iam_role = UNSET
         else:

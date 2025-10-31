@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,37 +21,37 @@ T = TypeVar("T", bound="AppActionWorkflowConfig")
 class AppActionWorkflowConfig:
     """
     Attributes:
-        action_workflow_id (Union[Unset, str]):
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        break_glass_role_arn (Union[Unset, str]):
-        component_dependency_ids (Union[Unset, list[str]]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        references (Union[Unset, list[str]]):
-        refs (Union[Unset, list['RefsRef']]):
-        steps (Union[Unset, list['AppActionWorkflowStepConfig']]):
-        timeout (Union[Unset, int]):
-        triggers (Union[Unset, list['AppActionWorkflowTriggerConfig']]): INFO: if adding new associations here, ensure
-            they are added to the batch delete activity
-        updated_at (Union[Unset, str]):
+        action_workflow_id (str | Unset):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        break_glass_role_arn (str | Unset):
+        component_dependency_ids (list[str] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        references (list[str] | Unset):
+        refs (list[RefsRef] | Unset):
+        steps (list[AppActionWorkflowStepConfig] | Unset):
+        timeout (int | Unset):
+        triggers (list[AppActionWorkflowTriggerConfig] | Unset): INFO: if adding new associations here, ensure they are
+            added to the batch delete activity
+        updated_at (str | Unset):
     """
 
-    action_workflow_id: Union[Unset, str] = UNSET
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    break_glass_role_arn: Union[Unset, str] = UNSET
-    component_dependency_ids: Union[Unset, list[str]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    refs: Union[Unset, list["RefsRef"]] = UNSET
-    steps: Union[Unset, list["AppActionWorkflowStepConfig"]] = UNSET
-    timeout: Union[Unset, int] = UNSET
-    triggers: Union[Unset, list["AppActionWorkflowTriggerConfig"]] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    action_workflow_id: str | Unset = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    break_glass_role_arn: str | Unset = UNSET
+    component_dependency_ids: list[str] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    refs: list[RefsRef] | Unset = UNSET
+    steps: list[AppActionWorkflowStepConfig] | Unset = UNSET
+    timeout: int | Unset = UNSET
+    triggers: list[AppActionWorkflowTriggerConfig] | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,7 +63,7 @@ class AppActionWorkflowConfig:
 
         break_glass_role_arn = self.break_glass_role_arn
 
-        component_dependency_ids: Union[Unset, list[str]] = UNSET
+        component_dependency_ids: list[str] | Unset = UNSET
         if not isinstance(self.component_dependency_ids, Unset):
             component_dependency_ids = self.component_dependency_ids
 
@@ -71,18 +73,18 @@ class AppActionWorkflowConfig:
 
         id = self.id
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
-        refs: Union[Unset, list[dict[str, Any]]] = UNSET
+        refs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
 
-        steps: Union[Unset, list[dict[str, Any]]] = UNSET
+        steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
             steps = []
             for steps_item_data in self.steps:
@@ -91,7 +93,7 @@ class AppActionWorkflowConfig:
 
         timeout = self.timeout
 
-        triggers: Union[Unset, list[dict[str, Any]]] = UNSET
+        triggers: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = []
             for triggers_item_data in self.triggers:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,44 +20,44 @@ T = TypeVar("T", bound="AppInstallStackVersion")
 class AppInstallStackVersion:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        aws_bucket_key (Union[Unset, str]):
-        aws_bucket_name (Union[Unset, str]): aws configuration parameters
-        checksum (Union[Unset, str]):
-        composite_status (Union[Unset, AppCompositeStatus]):
-        contents (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        install_stack_id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        phone_home_id (Union[Unset, str]):
-        phone_home_url (Union[Unset, str]):
-        quick_link_url (Union[Unset, str]):
-        runs (Union[Unset, list['AppInstallStackVersionRun']]):
-        template_url (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        aws_bucket_key (str | Unset):
+        aws_bucket_name (str | Unset): aws configuration parameters
+        checksum (str | Unset):
+        composite_status (AppCompositeStatus | Unset):
+        contents (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        install_stack_id (str | Unset):
+        org_id (str | Unset):
+        phone_home_id (str | Unset):
+        phone_home_url (str | Unset):
+        quick_link_url (str | Unset):
+        runs (list[AppInstallStackVersionRun] | Unset):
+        template_url (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    aws_bucket_key: Union[Unset, str] = UNSET
-    aws_bucket_name: Union[Unset, str] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    composite_status: Union[Unset, "AppCompositeStatus"] = UNSET
-    contents: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    install_stack_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    phone_home_id: Union[Unset, str] = UNSET
-    phone_home_url: Union[Unset, str] = UNSET
-    quick_link_url: Union[Unset, str] = UNSET
-    runs: Union[Unset, list["AppInstallStackVersionRun"]] = UNSET
-    template_url: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    aws_bucket_key: str | Unset = UNSET
+    aws_bucket_name: str | Unset = UNSET
+    checksum: str | Unset = UNSET
+    composite_status: AppCompositeStatus | Unset = UNSET
+    contents: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    install_stack_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    phone_home_id: str | Unset = UNSET
+    phone_home_url: str | Unset = UNSET
+    quick_link_url: str | Unset = UNSET
+    runs: list[AppInstallStackVersionRun] | Unset = UNSET
+    template_url: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,7 +69,7 @@ class AppInstallStackVersion:
 
         checksum = self.checksum
 
-        composite_status: Union[Unset, dict[str, Any]] = UNSET
+        composite_status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.composite_status, Unset):
             composite_status = self.composite_status.to_dict()
 
@@ -91,7 +93,7 @@ class AppInstallStackVersion:
 
         quick_link_url = self.quick_link_url
 
-        runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.runs, Unset):
             runs = []
             for runs_item_data in self.runs:
@@ -159,7 +161,7 @@ class AppInstallStackVersion:
         checksum = d.pop("checksum", UNSET)
 
         _composite_status = d.pop("composite_status", UNSET)
-        composite_status: Union[Unset, AppCompositeStatus]
+        composite_status: AppCompositeStatus | Unset
         if isinstance(_composite_status, Unset):
             composite_status = UNSET
         else:

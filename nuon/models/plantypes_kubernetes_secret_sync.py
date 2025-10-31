@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,22 +15,22 @@ T = TypeVar("T", bound="PlantypesKubernetesSecretSync")
 class PlantypesKubernetesSecretSync:
     """
     Attributes:
-        format_ (Union[Unset, str]): NOTE(jm): this should probably come from the app config, but for now we just use
-            string parsing to avoid
+        format_ (str | Unset): NOTE(jm): this should probably come from the app config, but for now we just use string
+            parsing to avoid
             updating the runner job and save time.
-        key_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        secret_arn (Union[Unset, str]):
-        secret_name (Union[Unset, str]): the name of the secret from the config
+        key_name (str | Unset):
+        name (str | Unset):
+        namespace (str | Unset):
+        secret_arn (str | Unset):
+        secret_name (str | Unset): the name of the secret from the config
     """
 
-    format_: Union[Unset, str] = UNSET
-    key_name: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    secret_arn: Union[Unset, str] = UNSET
-    secret_name: Union[Unset, str] = UNSET
+    format_: str | Unset = UNSET
+    key_name: str | Unset = UNSET
+    name: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    secret_arn: str | Unset = UNSET
+    secret_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

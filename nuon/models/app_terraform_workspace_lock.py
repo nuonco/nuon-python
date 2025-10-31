@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,25 +20,25 @@ T = TypeVar("T", bound="AppTerraformWorkspaceLock")
 class AppTerraformWorkspaceLock:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        lock (Union[Unset, AppTerraformLock]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        runner_job_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        workspace_id (Union[Unset, str]): Foreign key to TerraformWorkspace with unique constraint to prevent multiple
-            active locks
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        lock (AppTerraformLock | Unset):
+        runner_job (AppRunnerJob | Unset):
+        runner_job_id (str | Unset):
+        updated_at (str | Unset):
+        workspace_id (str | Unset): Foreign key to TerraformWorkspace with unique constraint to prevent multiple active
+            locks
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    lock: Union[Unset, "AppTerraformLock"] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workspace_id: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    lock: AppTerraformLock | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,11 +48,11 @@ class AppTerraformWorkspaceLock:
 
         id = self.id
 
-        lock: Union[Unset, dict[str, Any]] = UNSET
+        lock: dict[str, Any] | Unset = UNSET
         if not isinstance(self.lock, Unset):
             lock = self.lock.to_dict()
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
@@ -95,14 +97,14 @@ class AppTerraformWorkspaceLock:
         id = d.pop("id", UNSET)
 
         _lock = d.pop("lock", UNSET)
-        lock: Union[Unset, AppTerraformLock]
+        lock: AppTerraformLock | Unset
         if isinstance(_lock, Unset):
             lock = UNSET
         else:
             lock = AppTerraformLock.from_dict(_lock)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:

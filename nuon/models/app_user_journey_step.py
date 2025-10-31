@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,22 +19,22 @@ T = TypeVar("T", bound="AppUserJourneyStep")
 class AppUserJourneyStep:
     """
     Attributes:
-        complete (Union[Unset, bool]):
-        completed_at (Union[Unset, str]): Top-level completion tracking fields
-        completion_method (Union[Unset, str]):
-        completion_source (Union[Unset, str]):
-        metadata (Union[Unset, AppUserJourneyStepMetadata]): Flexible metadata for business data
-        name (Union[Unset, str]):
-        title (Union[Unset, str]):
+        complete (bool | Unset):
+        completed_at (str | Unset): Top-level completion tracking fields
+        completion_method (str | Unset):
+        completion_source (str | Unset):
+        metadata (AppUserJourneyStepMetadata | Unset): Flexible metadata for business data
+        name (str | Unset):
+        title (str | Unset):
     """
 
-    complete: Union[Unset, bool] = UNSET
-    completed_at: Union[Unset, str] = UNSET
-    completion_method: Union[Unset, str] = UNSET
-    completion_source: Union[Unset, str] = UNSET
-    metadata: Union[Unset, "AppUserJourneyStepMetadata"] = UNSET
-    name: Union[Unset, str] = UNSET
-    title: Union[Unset, str] = UNSET
+    complete: bool | Unset = UNSET
+    completed_at: str | Unset = UNSET
+    completion_method: str | Unset = UNSET
+    completion_source: str | Unset = UNSET
+    metadata: AppUserJourneyStepMetadata | Unset = UNSET
+    name: str | Unset = UNSET
+    title: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +46,7 @@ class AppUserJourneyStep:
 
         completion_source = self.completion_source
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -86,7 +88,7 @@ class AppUserJourneyStep:
         completion_source = d.pop("completion_source", UNSET)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppUserJourneyStepMetadata]
+        metadata: AppUserJourneyStepMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

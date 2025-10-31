@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,38 +25,38 @@ T = TypeVar("T", bound="KubeClusterInfo")
 class KubeClusterInfo:
     """
     Attributes:
-        aws_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
-        azure_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]):
-        ca_data (Union[Unset, str]): CAData is the base64 encoded public certificate
-        endpoint (Union[Unset, str]): Endpoint is the URL of the k8s api server
-        env_vars (Union[Unset, KubeClusterInfoEnvVars]):
-        id (Union[Unset, str]): ID is the ID of the EKS cluster
-        inline (Union[Unset, bool]): If this is set, we will _not_ use aws-iam-authenticator, but rather inline create
-            the token
-        kube_config (Union[Unset, str]): KubeConfig will override the kube config, and be parsed instead of generating a
-            new one
-        trusted_role_arn (Union[Unset, str]): TrustedRoleARN is the arn of the role that should be assumed to interact
-            with the cluster
+        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        ca_data (str | Unset): CAData is the base64 encoded public certificate
+        endpoint (str | Unset): Endpoint is the URL of the k8s api server
+        env_vars (KubeClusterInfoEnvVars | Unset):
+        id (str | Unset): ID is the ID of the EKS cluster
+        inline (bool | Unset): If this is set, we will _not_ use aws-iam-authenticator, but rather inline create the
+            token
+        kube_config (str | Unset): KubeConfig will override the kube config, and be parsed instead of generating a new
+            one
+        trusted_role_arn (str | Unset): TrustedRoleARN is the arn of the role that should be assumed to interact with
+            the cluster
             NOTE(JM): we are deprecating this
     """
 
-    aws_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
-    azure_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig"] = UNSET
-    ca_data: Union[Unset, str] = UNSET
-    endpoint: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "KubeClusterInfoEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    inline: Union[Unset, bool] = UNSET
-    kube_config: Union[Unset, str] = UNSET
-    trusted_role_arn: Union[Unset, str] = UNSET
+    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    ca_data: str | Unset = UNSET
+    endpoint: str | Unset = UNSET
+    env_vars: KubeClusterInfoEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    inline: bool | Unset = UNSET
+    kube_config: str | Unset = UNSET
+    trusted_role_arn: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws_auth: Union[Unset, dict[str, Any]] = UNSET
+        aws_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_auth, Unset):
             aws_auth = self.aws_auth.to_dict()
 
-        azure_auth: Union[Unset, dict[str, Any]] = UNSET
+        azure_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_auth, Unset):
             azure_auth = self.azure_auth.to_dict()
 
@@ -62,7 +64,7 @@ class KubeClusterInfo:
 
         endpoint = self.endpoint
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
@@ -110,14 +112,14 @@ class KubeClusterInfo:
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
             aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]
+        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
@@ -128,7 +130,7 @@ class KubeClusterInfo:
         endpoint = d.pop("endpoint", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, KubeClusterInfoEnvVars]
+        env_vars: KubeClusterInfoEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:

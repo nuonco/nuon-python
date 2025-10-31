@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,14 +16,14 @@ T = TypeVar("T", bound="ServiceUpdateInstallConfigRequest")
 class ServiceUpdateInstallConfigRequest:
     """
     Attributes:
-        approval_option (Union[Unset, AppInstallApprovalOption]):
+        approval_option (AppInstallApprovalOption | Unset):
     """
 
-    approval_option: Union[Unset, AppInstallApprovalOption] = UNSET
+    approval_option: AppInstallApprovalOption | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval_option: Union[Unset, str] = UNSET
+        approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
 
@@ -37,7 +39,7 @@ class ServiceUpdateInstallConfigRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
-        approval_option: Union[Unset, AppInstallApprovalOption]
+        approval_option: AppInstallApprovalOption | Unset
         if isinstance(_approval_option, Unset):
             approval_option = UNSET
         else:

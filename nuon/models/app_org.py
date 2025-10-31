@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,36 +23,36 @@ T = TypeVar("T", bound="AppOrg")
 class AppOrg:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        features (Union[Unset, TypesStringBoolMap]):
-        id (Union[Unset, str]):
-        links (Union[Unset, AppOrgLinks]):
-        logo_url (Union[Unset, str]):
-        name (Union[Unset, str]):
-        notifications_config (Union[Unset, AppNotificationsConfig]):
-        runner_group (Union[Unset, AppRunnerGroup]):
-        sandbox_mode (Union[Unset, bool]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        vcs_connections (Union[Unset, list['AppVCSConnection']]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        features (TypesStringBoolMap | Unset):
+        id (str | Unset):
+        links (AppOrgLinks | Unset):
+        logo_url (str | Unset):
+        name (str | Unset):
+        notifications_config (AppNotificationsConfig | Unset):
+        runner_group (AppRunnerGroup | Unset):
+        sandbox_mode (bool | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
+        vcs_connections (list[AppVCSConnection] | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    features: Union[Unset, "TypesStringBoolMap"] = UNSET
-    id: Union[Unset, str] = UNSET
-    links: Union[Unset, "AppOrgLinks"] = UNSET
-    logo_url: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    notifications_config: Union[Unset, "AppNotificationsConfig"] = UNSET
-    runner_group: Union[Unset, "AppRunnerGroup"] = UNSET
-    sandbox_mode: Union[Unset, bool] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connections: Union[Unset, list["AppVCSConnection"]] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    features: TypesStringBoolMap | Unset = UNSET
+    id: str | Unset = UNSET
+    links: AppOrgLinks | Unset = UNSET
+    logo_url: str | Unset = UNSET
+    name: str | Unset = UNSET
+    notifications_config: AppNotificationsConfig | Unset = UNSET
+    runner_group: AppRunnerGroup | Unset = UNSET
+    sandbox_mode: bool | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connections: list[AppVCSConnection] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,13 +60,13 @@ class AppOrg:
 
         created_by_id = self.created_by_id
 
-        features: Union[Unset, dict[str, Any]] = UNSET
+        features: dict[str, Any] | Unset = UNSET
         if not isinstance(self.features, Unset):
             features = self.features.to_dict()
 
         id = self.id
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
@@ -72,11 +74,11 @@ class AppOrg:
 
         name = self.name
 
-        notifications_config: Union[Unset, dict[str, Any]] = UNSET
+        notifications_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.notifications_config, Unset):
             notifications_config = self.notifications_config.to_dict()
 
-        runner_group: Union[Unset, dict[str, Any]] = UNSET
+        runner_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_group, Unset):
             runner_group = self.runner_group.to_dict()
 
@@ -88,7 +90,7 @@ class AppOrg:
 
         updated_at = self.updated_at
 
-        vcs_connections: Union[Unset, list[dict[str, Any]]] = UNSET
+        vcs_connections: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.vcs_connections, Unset):
             vcs_connections = []
             for vcs_connections_item_data in self.vcs_connections:
@@ -143,7 +145,7 @@ class AppOrg:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _features = d.pop("features", UNSET)
-        features: Union[Unset, TypesStringBoolMap]
+        features: TypesStringBoolMap | Unset
         if isinstance(_features, Unset):
             features = UNSET
         else:
@@ -152,7 +154,7 @@ class AppOrg:
         id = d.pop("id", UNSET)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppOrgLinks]
+        links: AppOrgLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
@@ -163,14 +165,14 @@ class AppOrg:
         name = d.pop("name", UNSET)
 
         _notifications_config = d.pop("notifications_config", UNSET)
-        notifications_config: Union[Unset, AppNotificationsConfig]
+        notifications_config: AppNotificationsConfig | Unset
         if isinstance(_notifications_config, Unset):
             notifications_config = UNSET
         else:
             notifications_config = AppNotificationsConfig.from_dict(_notifications_config)
 
         _runner_group = d.pop("runner_group", UNSET)
-        runner_group: Union[Unset, AppRunnerGroup]
+        runner_group: AppRunnerGroup | Unset
         if isinstance(_runner_group, Unset):
             runner_group = UNSET
         else:

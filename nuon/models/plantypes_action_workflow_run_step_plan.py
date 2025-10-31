@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,34 +23,34 @@ T = TypeVar("T", bound="PlantypesActionWorkflowRunStepPlan")
 class PlantypesActionWorkflowRunStepPlan:
     """
     Attributes:
-        attrs (Union[Unset, PlantypesActionWorkflowRunStepPlanAttrs]):
-        git_source (Union[Unset, PlantypesGitSource]):
-        interpolated_command (Union[Unset, str]):
-        interpolated_env_vars (Union[Unset, PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars]):
-        interpolated_inline_contents (Union[Unset, str]):
-        run_id (Union[Unset, str]):
+        attrs (PlantypesActionWorkflowRunStepPlanAttrs | Unset):
+        git_source (PlantypesGitSource | Unset):
+        interpolated_command (str | Unset):
+        interpolated_env_vars (PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars | Unset):
+        interpolated_inline_contents (str | Unset):
+        run_id (str | Unset):
     """
 
-    attrs: Union[Unset, "PlantypesActionWorkflowRunStepPlanAttrs"] = UNSET
-    git_source: Union[Unset, "PlantypesGitSource"] = UNSET
-    interpolated_command: Union[Unset, str] = UNSET
-    interpolated_env_vars: Union[Unset, "PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars"] = UNSET
-    interpolated_inline_contents: Union[Unset, str] = UNSET
-    run_id: Union[Unset, str] = UNSET
+    attrs: PlantypesActionWorkflowRunStepPlanAttrs | Unset = UNSET
+    git_source: PlantypesGitSource | Unset = UNSET
+    interpolated_command: str | Unset = UNSET
+    interpolated_env_vars: PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars | Unset = UNSET
+    interpolated_inline_contents: str | Unset = UNSET
+    run_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attrs: Union[Unset, dict[str, Any]] = UNSET
+        attrs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attrs, Unset):
             attrs = self.attrs.to_dict()
 
-        git_source: Union[Unset, dict[str, Any]] = UNSET
+        git_source: dict[str, Any] | Unset = UNSET
         if not isinstance(self.git_source, Unset):
             git_source = self.git_source.to_dict()
 
         interpolated_command = self.interpolated_command
 
-        interpolated_env_vars: Union[Unset, dict[str, Any]] = UNSET
+        interpolated_env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.interpolated_env_vars, Unset):
             interpolated_env_vars = self.interpolated_env_vars.to_dict()
 
@@ -84,14 +86,14 @@ class PlantypesActionWorkflowRunStepPlan:
 
         d = dict(src_dict)
         _attrs = d.pop("attrs", UNSET)
-        attrs: Union[Unset, PlantypesActionWorkflowRunStepPlanAttrs]
+        attrs: PlantypesActionWorkflowRunStepPlanAttrs | Unset
         if isinstance(_attrs, Unset):
             attrs = UNSET
         else:
             attrs = PlantypesActionWorkflowRunStepPlanAttrs.from_dict(_attrs)
 
         _git_source = d.pop("git_source", UNSET)
-        git_source: Union[Unset, PlantypesGitSource]
+        git_source: PlantypesGitSource | Unset
         if isinstance(_git_source, Unset):
             git_source = UNSET
         else:
@@ -100,7 +102,7 @@ class PlantypesActionWorkflowRunStepPlan:
         interpolated_command = d.pop("interpolated_command", UNSET)
 
         _interpolated_env_vars = d.pop("interpolated_env_vars", UNSET)
-        interpolated_env_vars: Union[Unset, PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars]
+        interpolated_env_vars: PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars | Unset
         if isinstance(_interpolated_env_vars, Unset):
             interpolated_env_vars = UNSET
         else:

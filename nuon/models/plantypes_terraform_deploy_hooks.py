@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,24 +22,24 @@ T = TypeVar("T", bound="PlantypesTerraformDeployHooks")
 class PlantypesTerraformDeployHooks:
     """
     Attributes:
-        enabled (Union[Unset, bool]):
-        env_vars (Union[Unset, PlantypesTerraformDeployHooksEnvVars]):
-        run_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
+        enabled (bool | Unset):
+        env_vars (PlantypesTerraformDeployHooksEnvVars | Unset):
+        run_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
     """
 
-    enabled: Union[Unset, bool] = UNSET
-    env_vars: Union[Unset, "PlantypesTerraformDeployHooksEnvVars"] = UNSET
-    run_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
+    enabled: bool | Unset = UNSET
+    env_vars: PlantypesTerraformDeployHooksEnvVars | Unset = UNSET
+    run_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         enabled = self.enabled
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        run_auth: Union[Unset, dict[str, Any]] = UNSET
+        run_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.run_auth, Unset):
             run_auth = self.run_auth.to_dict()
 
@@ -64,14 +66,14 @@ class PlantypesTerraformDeployHooks:
         enabled = d.pop("enabled", UNSET)
 
         _env_vars = d.pop("envVars", UNSET)
-        env_vars: Union[Unset, PlantypesTerraformDeployHooksEnvVars]
+        env_vars: PlantypesTerraformDeployHooksEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
             env_vars = PlantypesTerraformDeployHooksEnvVars.from_dict(_env_vars)
 
         _run_auth = d.pop("runAuth", UNSET)
-        run_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        run_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_run_auth, Unset):
             run_auth = UNSET
         else:

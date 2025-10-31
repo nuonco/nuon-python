@@ -1,46 +1,48 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceRetryWorkflowStepResponse")
+T = TypeVar("T", bound="ServiceCreateInstallV2RequestAzureAccount")
 
 
 @_attrs_define
-class ServiceRetryWorkflowStepResponse:
+class ServiceCreateInstallV2RequestAzureAccount:
     """
     Attributes:
-        workflow_id (Union[Unset, str]):
+        location (str | Unset):
     """
 
-    workflow_id: Union[Unset, str] = UNSET
+    location: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        workflow_id = self.workflow_id
+        location = self.location
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if workflow_id is not UNSET:
-            field_dict["workflow_id"] = workflow_id
+        if location is not UNSET:
+            field_dict["location"] = location
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        workflow_id = d.pop("workflow_id", UNSET)
+        location = d.pop("location", UNSET)
 
-        service_retry_workflow_step_response = cls(
-            workflow_id=workflow_id,
+        service_create_install_v2_request_azure_account = cls(
+            location=location,
         )
 
-        service_retry_workflow_step_response.additional_properties = d
-        return service_retry_workflow_step_response
+        service_create_install_v2_request_azure_account.additional_properties = d
+        return service_create_install_v2_request_azure_account
 
     @property
     def additional_keys(self) -> list[str]:

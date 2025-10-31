@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,34 +20,34 @@ T = TypeVar("T", bound="AppTerraformWorkspaceState")
 class AppTerraformWorkspaceState:
     """
     Attributes:
-        contents (Union[Unset, list[int]]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        revision (Union[Unset, int]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        runner_job_id (Union[Unset, str]):
-        terraform_workspace (Union[Unset, AppTerraformWorkspace]):
-        terraform_workspace_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        contents (list[int] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        revision (int | Unset):
+        runner_job (AppRunnerJob | Unset):
+        runner_job_id (str | Unset):
+        terraform_workspace (AppTerraformWorkspace | Unset):
+        terraform_workspace_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    contents: Union[Unset, list[int]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    revision: Union[Unset, int] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    terraform_workspace: Union[Unset, "AppTerraformWorkspace"] = UNSET
-    terraform_workspace_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    contents: list[int] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    revision: int | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    terraform_workspace: AppTerraformWorkspace | Unset = UNSET
+    terraform_workspace_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        contents: Union[Unset, list[int]] = UNSET
+        contents: list[int] | Unset = UNSET
         if not isinstance(self.contents, Unset):
             contents = self.contents
 
@@ -59,13 +61,13 @@ class AppTerraformWorkspaceState:
 
         revision = self.revision
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
         runner_job_id = self.runner_job_id
 
-        terraform_workspace: Union[Unset, dict[str, Any]] = UNSET
+        terraform_workspace: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_workspace, Unset):
             terraform_workspace = self.terraform_workspace.to_dict()
 
@@ -120,7 +122,7 @@ class AppTerraformWorkspaceState:
         revision = d.pop("revision", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:
@@ -129,7 +131,7 @@ class AppTerraformWorkspaceState:
         runner_job_id = d.pop("runner_job_id", UNSET)
 
         _terraform_workspace = d.pop("terraform_workspace", UNSET)
-        terraform_workspace: Union[Unset, AppTerraformWorkspace]
+        terraform_workspace: AppTerraformWorkspace | Unset
         if isinstance(_terraform_workspace, Unset):
             terraform_workspace = UNSET
         else:

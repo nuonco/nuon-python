@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,18 +19,18 @@ T = TypeVar("T", bound="StateAppState")
 class StateAppState:
     """
     Attributes:
-        id (Union[Unset, str]):
-        name (Union[Unset, str]):
-        populated (Union[Unset, bool]):
-        status (Union[Unset, str]):
-        variables (Union[Unset, StateAppStateVariables]):
+        id (str | Unset):
+        name (str | Unset):
+        populated (bool | Unset):
+        status (str | Unset):
+        variables (StateAppStateVariables | Unset):
     """
 
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    status: Union[Unset, str] = UNSET
-    variables: Union[Unset, "StateAppStateVariables"] = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    populated: bool | Unset = UNSET
+    status: str | Unset = UNSET
+    variables: StateAppStateVariables | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +42,7 @@ class StateAppState:
 
         status = self.status
 
-        variables: Union[Unset, dict[str, Any]] = UNSET
+        variables: dict[str, Any] | Unset = UNSET
         if not isinstance(self.variables, Unset):
             variables = self.variables.to_dict()
 
@@ -74,7 +76,7 @@ class StateAppState:
         status = d.pop("status", UNSET)
 
         _variables = d.pop("variables", UNSET)
-        variables: Union[Unset, StateAppStateVariables]
+        variables: StateAppStateVariables | Unset
         if isinstance(_variables, Unset):
             variables = UNSET
         else:

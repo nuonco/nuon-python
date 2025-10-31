@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,15 +16,15 @@ class ServiceCreateAppRequest:
     """
     Attributes:
         name (str):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        slack_webhook_url (Union[Unset, str]):
+        description (str | Unset):
+        display_name (str | Unset):
+        slack_webhook_url (str | Unset):
     """
 
     name: str
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    slack_webhook_url: Union[Unset, str] = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    slack_webhook_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

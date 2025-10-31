@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,44 +12,50 @@ from ...types import Response
 
 def _get_kwargs(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{workflow_step_id}/approvals/{approval_id}/contents",
+        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}/contents",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse | None:
     if response.status_code == 200:
         response_200 = GetWorkflowStepApprovalContentsResponse200.from_dict(response.json())
 
         return response_200
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
+
     if response.status_code == 403:
         response_403 = StderrErrResponse.from_dict(response.json())
 
         return response_403
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -57,8 +63,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,18 +75,18 @@ def _build_response(
 
 def sync_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+) -> Response[GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse]:
     """get a workflow step approval contents
 
      Return the contents of a json plan for an approval (compressed).
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
 
     Raises:
@@ -88,12 +94,12 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]
+        Response[GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
     )
 
@@ -106,18 +112,18 @@ def sync_detailed(
 
 def sync(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+) -> GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse | None:
     """get a workflow step approval contents
 
      Return the contents of a json plan for an approval (compressed).
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
 
     Raises:
@@ -125,12 +131,12 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]
+        GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse
     """
 
     return sync_detailed(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
         client=client,
     ).parsed
@@ -138,18 +144,18 @@ def sync(
 
 async def asyncio_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+) -> Response[GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse]:
     """get a workflow step approval contents
 
      Return the contents of a json plan for an approval (compressed).
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
 
     Raises:
@@ -157,12 +163,12 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]
+        Response[GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
     )
 
@@ -173,18 +179,18 @@ async def asyncio_detailed(
 
 async def asyncio(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]]:
+) -> GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse | None:
     """get a workflow step approval contents
 
      Return the contents of a json plan for an approval (compressed).
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
 
     Raises:
@@ -192,13 +198,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[GetWorkflowStepApprovalContentsResponse200, StderrErrResponse]
+        GetWorkflowStepApprovalContentsResponse200 | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
             workflow_id=workflow_id,
-            workflow_step_id=workflow_step_id,
+            step_id=step_id,
             approval_id=approval_id,
             client=client,
         )

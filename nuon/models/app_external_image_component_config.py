@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,28 +19,28 @@ T = TypeVar("T", bound="AppExternalImageComponentConfig")
 class AppExternalImageComponentConfig:
     """
     Attributes:
-        aws_ecr_image_config (Union[Unset, AppAWSECRImageConfig]):
-        component_config_connection_id (Union[Unset, str]): value
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        image_url (Union[Unset, str]):
-        tag (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        aws_ecr_image_config (AppAWSECRImageConfig | Unset):
+        component_config_connection_id (str | Unset): value
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        image_url (str | Unset):
+        tag (str | Unset):
+        updated_at (str | Unset):
     """
 
-    aws_ecr_image_config: Union[Unset, "AppAWSECRImageConfig"] = UNSET
-    component_config_connection_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    image_url: Union[Unset, str] = UNSET
-    tag: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    aws_ecr_image_config: AppAWSECRImageConfig | Unset = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    image_url: str | Unset = UNSET
+    tag: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws_ecr_image_config: Union[Unset, dict[str, Any]] = UNSET
+        aws_ecr_image_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_ecr_image_config, Unset):
             aws_ecr_image_config = self.aws_ecr_image_config.to_dict()
 
@@ -84,7 +86,7 @@ class AppExternalImageComponentConfig:
 
         d = dict(src_dict)
         _aws_ecr_image_config = d.pop("aws_ecr_image_config", UNSET)
-        aws_ecr_image_config: Union[Unset, AppAWSECRImageConfig]
+        aws_ecr_image_config: AppAWSECRImageConfig | Unset
         if isinstance(_aws_ecr_image_config, Unset):
             aws_ecr_image_config = UNSET
         else:

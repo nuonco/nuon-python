@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,36 +22,36 @@ T = TypeVar("T", bound="AppTerraformModuleComponentConfig")
 class AppTerraformModuleComponentConfig:
     """
     Attributes:
-        component_config_connection_id (Union[Unset, str]): parent reference
-        connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        env_vars (Union[Unset, AppTerraformModuleComponentConfigEnvVars]):
-        id (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
-        updated_at (Union[Unset, str]):
-        variables (Union[Unset, AppTerraformModuleComponentConfigVariables]):
-        variables_files (Union[Unset, list[str]]):
-        version (Union[Unset, str]): terraform configuration values
+        component_config_connection_id (str | Unset): parent reference
+        connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        env_vars (AppTerraformModuleComponentConfigEnvVars | Unset):
+        id (str | Unset):
+        public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        updated_at (str | Unset):
+        variables (AppTerraformModuleComponentConfigVariables | Unset):
+        variables_files (list[str] | Unset):
+        version (str | Unset): terraform configuration values
     """
 
-    component_config_connection_id: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppTerraformModuleComponentConfigEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    variables: Union[Unset, "AppTerraformModuleComponentConfigVariables"] = UNSET
-    variables_files: Union[Unset, list[str]] = UNSET
-    version: Union[Unset, str] = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    env_vars: AppTerraformModuleComponentConfigEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    variables: AppTerraformModuleComponentConfigVariables | Unset = UNSET
+    variables_files: list[str] | Unset = UNSET
+    version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         component_config_connection_id = self.component_config_connection_id
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
@@ -57,23 +59,23 @@ class AppTerraformModuleComponentConfig:
 
         created_by_id = self.created_by_id
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
         id = self.id
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
         updated_at = self.updated_at
 
-        variables: Union[Unset, dict[str, Any]] = UNSET
+        variables: dict[str, Any] | Unset = UNSET
         if not isinstance(self.variables, Unset):
             variables = self.variables.to_dict()
 
-        variables_files: Union[Unset, list[str]] = UNSET
+        variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
             variables_files = self.variables_files
 
@@ -118,7 +120,7 @@ class AppTerraformModuleComponentConfig:
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, AppConnectedGithubVCSConfig]
+        connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -129,7 +131,7 @@ class AppTerraformModuleComponentConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppTerraformModuleComponentConfigEnvVars]
+        env_vars: AppTerraformModuleComponentConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
@@ -138,7 +140,7 @@ class AppTerraformModuleComponentConfig:
         id = d.pop("id", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, AppPublicGitVCSConfig]
+        public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:
@@ -147,7 +149,7 @@ class AppTerraformModuleComponentConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         _variables = d.pop("variables", UNSET)
-        variables: Union[Unset, AppTerraformModuleComponentConfigVariables]
+        variables: AppTerraformModuleComponentConfigVariables | Unset
         if isinstance(_variables, Unset):
             variables = UNSET
         else:

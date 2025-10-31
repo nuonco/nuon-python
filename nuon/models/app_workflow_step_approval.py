@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,36 +22,36 @@ T = TypeVar("T", bound="AppWorkflowStepApproval")
 class AppWorkflowStepApproval:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_workflow_step (Union[Unset, AppWorkflowStep]):
-        install_workflow_step_id (Union[Unset, str]): the step that this approval belongs too
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        response (Union[Unset, AppWorkflowStepApprovalResponse]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        runner_job_id (Union[Unset, str]): the runner job where this approval was created
-        type_ (Union[Unset, AppWorkflowStepApprovalType]):
-        updated_at (Union[Unset, str]):
-        workflow_step (Union[Unset, AppWorkflowStep]):
-        workflow_step_id (Union[Unset, str]): afterquery
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_workflow_step (AppWorkflowStep | Unset):
+        install_workflow_step_id (str | Unset): the step that this approval belongs too
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        response (AppWorkflowStepApprovalResponse | Unset):
+        runner_job (AppRunnerJob | Unset):
+        runner_job_id (str | Unset): the runner job where this approval was created
+        type_ (AppWorkflowStepApprovalType | Unset):
+        updated_at (str | Unset):
+        workflow_step (AppWorkflowStep | Unset):
+        workflow_step_id (str | Unset): afterquery
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_workflow_step: Union[Unset, "AppWorkflowStep"] = UNSET
-    install_workflow_step_id: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    response: Union[Unset, "AppWorkflowStepApprovalResponse"] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    type_: Union[Unset, AppWorkflowStepApprovalType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workflow_step: Union[Unset, "AppWorkflowStep"] = UNSET
-    workflow_step_id: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_workflow_step: AppWorkflowStep | Unset = UNSET
+    install_workflow_step_id: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    response: AppWorkflowStepApprovalResponse | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    type_: AppWorkflowStepApprovalType | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workflow_step: AppWorkflowStep | Unset = UNSET
+    workflow_step_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,7 +61,7 @@ class AppWorkflowStepApproval:
 
         id = self.id
 
-        install_workflow_step: Union[Unset, dict[str, Any]] = UNSET
+        install_workflow_step: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_workflow_step, Unset):
             install_workflow_step = self.install_workflow_step.to_dict()
 
@@ -69,23 +71,23 @@ class AppWorkflowStepApproval:
 
         owner_type = self.owner_type
 
-        response: Union[Unset, dict[str, Any]] = UNSET
+        response: dict[str, Any] | Unset = UNSET
         if not isinstance(self.response, Unset):
             response = self.response.to_dict()
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
         runner_job_id = self.runner_job_id
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
         updated_at = self.updated_at
 
-        workflow_step: Union[Unset, dict[str, Any]] = UNSET
+        workflow_step: dict[str, Any] | Unset = UNSET
         if not isinstance(self.workflow_step, Unset):
             workflow_step = self.workflow_step.to_dict()
 
@@ -139,7 +141,7 @@ class AppWorkflowStepApproval:
         id = d.pop("id", UNSET)
 
         _install_workflow_step = d.pop("installWorkflowStep", UNSET)
-        install_workflow_step: Union[Unset, AppWorkflowStep]
+        install_workflow_step: AppWorkflowStep | Unset
         if isinstance(_install_workflow_step, Unset):
             install_workflow_step = UNSET
         else:
@@ -152,14 +154,14 @@ class AppWorkflowStepApproval:
         owner_type = d.pop("owner_type", UNSET)
 
         _response = d.pop("response", UNSET)
-        response: Union[Unset, AppWorkflowStepApprovalResponse]
+        response: AppWorkflowStepApprovalResponse | Unset
         if isinstance(_response, Unset):
             response = UNSET
         else:
             response = AppWorkflowStepApprovalResponse.from_dict(_response)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:
@@ -168,7 +170,7 @@ class AppWorkflowStepApproval:
         runner_job_id = d.pop("runner_job_id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppWorkflowStepApprovalType]
+        type_: AppWorkflowStepApprovalType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
@@ -177,7 +179,7 @@ class AppWorkflowStepApproval:
         updated_at = d.pop("updated_at", UNSET)
 
         _workflow_step = d.pop("workflow_step", UNSET)
-        workflow_step: Union[Unset, AppWorkflowStep]
+        workflow_step: AppWorkflowStep | Unset
         if isinstance(_workflow_step, Unset):
             workflow_step = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,20 +15,20 @@ T = TypeVar("T", bound="AppAWSAccount")
 class AppAWSAccount:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        iam_role_arn (Union[Unset, str]):
-        id (Union[Unset, str]):
-        region (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        iam_role_arn (str | Unset):
+        id (str | Unset):
+        region (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    iam_role_arn: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    region: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    iam_role_arn: str | Unset = UNSET
+    id: str | Unset = UNSET
+    region: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

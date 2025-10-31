@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,63 +27,63 @@ T = TypeVar("T", bound="AppInstallSandboxRun")
 class AppInstallSandboxRun:
     """
     Attributes:
-        action_workflow_runs (Union[Unset, list['AppInstallActionWorkflowRun']]):
-        app_sandbox_config (Union[Unset, AppAppSandboxConfig]):
-        created_at (Union[Unset, str]):
-        created_by (Union[Unset, AppAccount]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        install_sandbox_id (Union[Unset, str]): TODO: once we run a backfill we can make this non pointer
-        install_workflow_id (Union[Unset, str]):
-        log_stream (Union[Unset, AppLogStream]):
-        outputs (Union[Unset, AppInstallSandboxRunOutputs]):
-        run_type (Union[Unset, AppSandboxRunType]):
-        runner_jobs (Union[Unset, list['AppRunnerJob']]): runner details
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        status_v2 (Union[Unset, AppCompositeStatus]):
-        updated_at (Union[Unset, str]):
-        workflow (Union[Unset, AppWorkflow]):
-        workflow_id (Union[Unset, str]): Fields that are de-nested at read time using AfterQuery
+        action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
+        app_sandbox_config (AppAppSandboxConfig | Unset):
+        created_at (str | Unset):
+        created_by (AppAccount | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        install_sandbox_id (str | Unset): TODO: once we run a backfill we can make this non pointer
+        install_workflow_id (str | Unset):
+        log_stream (AppLogStream | Unset):
+        outputs (AppInstallSandboxRunOutputs | Unset):
+        run_type (AppSandboxRunType | Unset):
+        runner_jobs (list[AppRunnerJob] | Unset): runner details
+        status (str | Unset):
+        status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
+        updated_at (str | Unset):
+        workflow (AppWorkflow | Unset):
+        workflow_id (str | Unset): Fields that are de-nested at read time using AfterQuery
     """
 
-    action_workflow_runs: Union[Unset, list["AppInstallActionWorkflowRun"]] = UNSET
-    app_sandbox_config: Union[Unset, "AppAppSandboxConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by: Union[Unset, "AppAccount"] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    install_sandbox_id: Union[Unset, str] = UNSET
-    install_workflow_id: Union[Unset, str] = UNSET
-    log_stream: Union[Unset, "AppLogStream"] = UNSET
-    outputs: Union[Unset, "AppInstallSandboxRunOutputs"] = UNSET
-    run_type: Union[Unset, AppSandboxRunType] = UNSET
-    runner_jobs: Union[Unset, list["AppRunnerJob"]] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    status_v2: Union[Unset, "AppCompositeStatus"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workflow: Union[Unset, "AppWorkflow"] = UNSET
-    workflow_id: Union[Unset, str] = UNSET
+    action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+    app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by: AppAccount | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    install_sandbox_id: str | Unset = UNSET
+    install_workflow_id: str | Unset = UNSET
+    log_stream: AppLogStream | Unset = UNSET
+    outputs: AppInstallSandboxRunOutputs | Unset = UNSET
+    run_type: AppSandboxRunType | Unset = UNSET
+    runner_jobs: list[AppRunnerJob] | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workflow: AppWorkflow | Unset = UNSET
+    workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action_workflow_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        action_workflow_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.action_workflow_runs, Unset):
             action_workflow_runs = []
             for action_workflow_runs_item_data in self.action_workflow_runs:
                 action_workflow_runs_item = action_workflow_runs_item_data.to_dict()
                 action_workflow_runs.append(action_workflow_runs_item)
 
-        app_sandbox_config: Union[Unset, dict[str, Any]] = UNSET
+        app_sandbox_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_sandbox_config, Unset):
             app_sandbox_config = self.app_sandbox_config.to_dict()
 
         created_at = self.created_at
 
-        created_by: Union[Unset, dict[str, Any]] = UNSET
+        created_by: dict[str, Any] | Unset = UNSET
         if not isinstance(self.created_by, Unset):
             created_by = self.created_by.to_dict()
 
@@ -95,19 +97,19 @@ class AppInstallSandboxRun:
 
         install_workflow_id = self.install_workflow_id
 
-        log_stream: Union[Unset, dict[str, Any]] = UNSET
+        log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
             log_stream = self.log_stream.to_dict()
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
-        run_type: Union[Unset, str] = UNSET
+        run_type: str | Unset = UNSET
         if not isinstance(self.run_type, Unset):
             run_type = self.run_type.value
 
-        runner_jobs: Union[Unset, list[dict[str, Any]]] = UNSET
+        runner_jobs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.runner_jobs, Unset):
             runner_jobs = []
             for runner_jobs_item_data in self.runner_jobs:
@@ -118,13 +120,13 @@ class AppInstallSandboxRun:
 
         status_description = self.status_description
 
-        status_v2: Union[Unset, dict[str, Any]] = UNSET
+        status_v2: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status_v2, Unset):
             status_v2 = self.status_v2.to_dict()
 
         updated_at = self.updated_at
 
-        workflow: Union[Unset, dict[str, Any]] = UNSET
+        workflow: dict[str, Any] | Unset = UNSET
         if not isinstance(self.workflow, Unset):
             workflow = self.workflow.to_dict()
 
@@ -194,7 +196,7 @@ class AppInstallSandboxRun:
             action_workflow_runs.append(action_workflow_runs_item)
 
         _app_sandbox_config = d.pop("app_sandbox_config", UNSET)
-        app_sandbox_config: Union[Unset, AppAppSandboxConfig]
+        app_sandbox_config: AppAppSandboxConfig | Unset
         if isinstance(_app_sandbox_config, Unset):
             app_sandbox_config = UNSET
         else:
@@ -203,7 +205,7 @@ class AppInstallSandboxRun:
         created_at = d.pop("created_at", UNSET)
 
         _created_by = d.pop("created_by", UNSET)
-        created_by: Union[Unset, AppAccount]
+        created_by: AppAccount | Unset
         if isinstance(_created_by, Unset):
             created_by = UNSET
         else:
@@ -220,21 +222,21 @@ class AppInstallSandboxRun:
         install_workflow_id = d.pop("install_workflow_id", UNSET)
 
         _log_stream = d.pop("log_stream", UNSET)
-        log_stream: Union[Unset, AppLogStream]
+        log_stream: AppLogStream | Unset
         if isinstance(_log_stream, Unset):
             log_stream = UNSET
         else:
             log_stream = AppLogStream.from_dict(_log_stream)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, AppInstallSandboxRunOutputs]
+        outputs: AppInstallSandboxRunOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:
             outputs = AppInstallSandboxRunOutputs.from_dict(_outputs)
 
         _run_type = d.pop("run_type", UNSET)
-        run_type: Union[Unset, AppSandboxRunType]
+        run_type: AppSandboxRunType | Unset
         if isinstance(_run_type, Unset):
             run_type = UNSET
         else:
@@ -252,7 +254,7 @@ class AppInstallSandboxRun:
         status_description = d.pop("status_description", UNSET)
 
         _status_v2 = d.pop("status_v2", UNSET)
-        status_v2: Union[Unset, AppCompositeStatus]
+        status_v2: AppCompositeStatus | Unset
         if isinstance(_status_v2, Unset):
             status_v2 = UNSET
         else:
@@ -261,7 +263,7 @@ class AppInstallSandboxRun:
         updated_at = d.pop("updated_at", UNSET)
 
         _workflow = d.pop("workflow", UNSET)
-        workflow: Union[Unset, AppWorkflow]
+        workflow: AppWorkflow | Unset
         if isinstance(_workflow, Unset):
             workflow = UNSET
         else:

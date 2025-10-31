@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -29,18 +29,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[AppWaitlist]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AppWaitlist | None:
     if response.status_code == 200:
         response_200 = AppWaitlist.from_dict(response.json())
 
         return response_200
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AppWaitlist]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AppWaitlist]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceWaitlistRequest,
-) -> Optional[AppWaitlist]:
+) -> AppWaitlist | None:
     """Allow user to be added to an org waitlist.
 
     Args:
@@ -133,7 +134,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceWaitlistRequest,
-) -> Optional[AppWaitlist]:
+) -> AppWaitlist | None:
     """Allow user to be added to an org waitlist.
 
     Args:

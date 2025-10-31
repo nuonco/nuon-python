@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,18 +16,18 @@ T = TypeVar("T", bound="ServiceCreateWorkflowStepApprovalResponseRequest")
 class ServiceCreateWorkflowStepApprovalResponseRequest:
     """
     Attributes:
-        note (Union[Unset, str]):
-        response_type (Union[Unset, AppWorkflowStepResponseType]):
+        note (str | Unset):
+        response_type (AppWorkflowStepResponseType | Unset):
     """
 
-    note: Union[Unset, str] = UNSET
-    response_type: Union[Unset, AppWorkflowStepResponseType] = UNSET
+    note: str | Unset = UNSET
+    response_type: AppWorkflowStepResponseType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         note = self.note
 
-        response_type: Union[Unset, str] = UNSET
+        response_type: str | Unset = UNSET
         if not isinstance(self.response_type, Unset):
             response_type = self.response_type.value
 
@@ -45,7 +47,7 @@ class ServiceCreateWorkflowStepApprovalResponseRequest:
         note = d.pop("note", UNSET)
 
         _response_type = d.pop("response_type", UNSET)
-        response_type: Union[Unset, AppWorkflowStepResponseType]
+        response_type: AppWorkflowStepResponseType | Unset
         if isinstance(_response_type, Unset):
             response_type = UNSET
         else:

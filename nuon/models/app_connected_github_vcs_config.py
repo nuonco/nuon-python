@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,34 +19,34 @@ T = TypeVar("T", bound="AppConnectedGithubVCSConfig")
 class AppConnectedGithubVCSConfig:
     """
     Attributes:
-        branch (Union[Unset, str]):
-        component_config_id (Union[Unset, str]): parent component
-        component_config_type (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        directory (Union[Unset, str]):
-        id (Union[Unset, str]):
-        repo (Union[Unset, str]):
-        repo_name (Union[Unset, str]):
-        repo_owner (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        vcs_connection (Union[Unset, AppVCSConnection]):
-        vcs_connection_id (Union[Unset, str]):
+        branch (str | Unset):
+        component_config_id (str | Unset): parent component
+        component_config_type (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        directory (str | Unset):
+        id (str | Unset):
+        repo (str | Unset):
+        repo_name (str | Unset):
+        repo_owner (str | Unset):
+        updated_at (str | Unset):
+        vcs_connection (AppVCSConnection | Unset):
+        vcs_connection_id (str | Unset):
     """
 
-    branch: Union[Unset, str] = UNSET
-    component_config_id: Union[Unset, str] = UNSET
-    component_config_type: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    directory: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    repo: Union[Unset, str] = UNSET
-    repo_name: Union[Unset, str] = UNSET
-    repo_owner: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connection: Union[Unset, "AppVCSConnection"] = UNSET
-    vcs_connection_id: Union[Unset, str] = UNSET
+    branch: str | Unset = UNSET
+    component_config_id: str | Unset = UNSET
+    component_config_type: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    directory: str | Unset = UNSET
+    id: str | Unset = UNSET
+    repo: str | Unset = UNSET
+    repo_name: str | Unset = UNSET
+    repo_owner: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connection: AppVCSConnection | Unset = UNSET
+    vcs_connection_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,7 +72,7 @@ class AppConnectedGithubVCSConfig:
 
         updated_at = self.updated_at
 
-        vcs_connection: Union[Unset, dict[str, Any]] = UNSET
+        vcs_connection: dict[str, Any] | Unset = UNSET
         if not isinstance(self.vcs_connection, Unset):
             vcs_connection = self.vcs_connection.to_dict()
 
@@ -136,7 +138,7 @@ class AppConnectedGithubVCSConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection = d.pop("vcs_connection", UNSET)
-        vcs_connection: Union[Unset, AppVCSConnection]
+        vcs_connection: AppVCSConnection | Unset
         if isinstance(_vcs_connection, Unset):
             vcs_connection = UNSET
         else:

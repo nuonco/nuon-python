@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="IamStaticCredentials")
 class IamStaticCredentials:
     """
     Attributes:
-        access_key_id (Union[Unset, str]):
-        secret_access_key (Union[Unset, str]):
-        session_token (Union[Unset, str]):
+        access_key_id (str | Unset):
+        secret_access_key (str | Unset):
+        session_token (str | Unset):
     """
 
-    access_key_id: Union[Unset, str] = UNSET
-    secret_access_key: Union[Unset, str] = UNSET
-    session_token: Union[Unset, str] = UNSET
+    access_key_id: str | Unset = UNSET
+    secret_access_key: str | Unset = UNSET
+    session_token: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

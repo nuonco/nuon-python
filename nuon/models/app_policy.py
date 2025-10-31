@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,23 +20,22 @@ T = TypeVar("T", bound="AppPolicy")
 class AppPolicy:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        name (Union[Unset, AppPolicyName]):
-        permissions (Union[Unset, AppPolicyPermissions]): Permissions are used to track granular permissions for each
-            domain
-        role_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        name (AppPolicyName | Unset):
+        permissions (AppPolicyPermissions | Unset): Permissions are used to track granular permissions for each domain
+        role_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, AppPolicyName] = UNSET
-    permissions: Union[Unset, "AppPolicyPermissions"] = UNSET
-    role_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    name: AppPolicyName | Unset = UNSET
+    permissions: AppPolicyPermissions | Unset = UNSET
+    role_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,11 +45,11 @@ class AppPolicy:
 
         id = self.id
 
-        name: Union[Unset, str] = UNSET
+        name: str | Unset = UNSET
         if not isinstance(self.name, Unset):
             name = self.name.value
 
-        permissions: Union[Unset, dict[str, Any]] = UNSET
+        permissions: dict[str, Any] | Unset = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions.to_dict()
 
@@ -88,14 +89,14 @@ class AppPolicy:
         id = d.pop("id", UNSET)
 
         _name = d.pop("name", UNSET)
-        name: Union[Unset, AppPolicyName]
+        name: AppPolicyName | Unset
         if isinstance(_name, Unset):
             name = UNSET
         else:
             name = AppPolicyName(_name)
 
         _permissions = d.pop("permissions", UNSET)
-        permissions: Union[Unset, AppPolicyPermissions]
+        permissions: AppPolicyPermissions | Unset
         if isinstance(_permissions, Unset):
             permissions = UNSET
         else:

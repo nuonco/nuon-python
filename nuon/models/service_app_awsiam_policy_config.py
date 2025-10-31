@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="ServiceAppAWSIAMPolicyConfig")
 class ServiceAppAWSIAMPolicyConfig:
     """
     Attributes:
-        contents (Union[Unset, str]):
-        managed_policy_name (Union[Unset, str]):
-        name (Union[Unset, str]):
+        contents (str | Unset):
+        managed_policy_name (str | Unset):
+        name (str | Unset):
     """
 
-    contents: Union[Unset, str] = UNSET
-    managed_policy_name: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
+    contents: str | Unset = UNSET
+    managed_policy_name: str | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

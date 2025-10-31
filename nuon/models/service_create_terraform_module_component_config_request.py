@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,28 +28,28 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     Attributes:
         env_vars (ServiceCreateTerraformModuleComponentConfigRequestEnvVars):
         variables (ServiceCreateTerraformModuleComponentConfigRequestVariables):
-        app_config_id (Union[Unset, str]):
-        checksum (Union[Unset, str]):
-        connected_github_vcs_config (Union[Unset, ServiceConnectedGithubVCSConfigRequest]):
-        dependencies (Union[Unset, list[str]]):
-        drift_schedule (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, ServicePublicGitVCSConfigRequest]):
-        references (Union[Unset, list[str]]):
-        variables_files (Union[Unset, list[str]]):
-        version (Union[Unset, str]):
+        app_config_id (str | Unset):
+        checksum (str | Unset):
+        connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        dependencies (list[str] | Unset):
+        drift_schedule (str | Unset):
+        public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
+        references (list[str] | Unset):
+        variables_files (list[str] | Unset):
+        version (str | Unset):
     """
 
-    env_vars: "ServiceCreateTerraformModuleComponentConfigRequestEnvVars"
-    variables: "ServiceCreateTerraformModuleComponentConfigRequestVariables"
-    app_config_id: Union[Unset, str] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "ServiceConnectedGithubVCSConfigRequest"] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    drift_schedule: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "ServicePublicGitVCSConfigRequest"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    variables_files: Union[Unset, list[str]] = UNSET
-    version: Union[Unset, str] = UNSET
+    env_vars: ServiceCreateTerraformModuleComponentConfigRequestEnvVars
+    variables: ServiceCreateTerraformModuleComponentConfigRequestVariables
+    app_config_id: str | Unset = UNSET
+    checksum: str | Unset = UNSET
+    connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    drift_schedule: str | Unset = UNSET
+    public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    variables_files: list[str] | Unset = UNSET
+    version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,25 +61,25 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         checksum = self.checksum
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
         drift_schedule = self.drift_schedule
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
-        variables_files: Union[Unset, list[str]] = UNSET
+        variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
             variables_files = self.variables_files
 
@@ -133,7 +135,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         checksum = d.pop("checksum", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, ServiceConnectedGithubVCSConfigRequest]
+        connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -144,7 +146,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         drift_schedule = d.pop("drift_schedule", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, ServicePublicGitVCSConfigRequest]
+        public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:

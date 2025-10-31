@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="AppCloudPlatformRegion")
 class AppCloudPlatformRegion:
     """
     Attributes:
-        display_name (Union[Unset, str]):
-        icon (Union[Unset, str]):
-        name (Union[Unset, str]):
-        value (Union[Unset, str]):
+        display_name (str | Unset):
+        icon (str | Unset):
+        name (str | Unset):
+        value (str | Unset):
     """
 
-    display_name: Union[Unset, str] = UNSET
-    icon: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    value: Union[Unset, str] = UNSET
+    display_name: str | Unset = UNSET
+    icon: str | Unset = UNSET
+    name: str | Unset = UNSET
+    value: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

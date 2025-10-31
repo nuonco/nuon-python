@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="ServiceCreateWorkflowStepApprovalResponseResponse")
 class ServiceCreateWorkflowStepApprovalResponseResponse:
     """
     Attributes:
-        id (Union[Unset, str]):
-        note (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        id (str | Unset):
+        note (str | Unset):
+        type_ (str | Unset):
     """
 
-    id: Union[Unset, str] = UNSET
-    note: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
+    id: str | Unset = UNSET
+    note: str | Unset = UNSET
+    type_: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

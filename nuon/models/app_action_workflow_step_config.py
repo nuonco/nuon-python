@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,40 +21,40 @@ T = TypeVar("T", bound="AppActionWorkflowStepConfig")
 class AppActionWorkflowStepConfig:
     """
     Attributes:
-        action_workflow_config_id (Union[Unset, str]):
-        app_config_id (Union[Unset, str]): this belongs to an app config id
-        app_id (Union[Unset, str]):
-        command (Union[Unset, str]):
-        connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        env_vars (Union[Unset, AppActionWorkflowStepConfigEnvVars]):
-        id (Union[Unset, str]):
-        idx (Union[Unset, int]):
-        inline_contents (Union[Unset, str]):
-        name (Union[Unset, str]): metadata
-        previous_step_id (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
-        references (Union[Unset, list[str]]):
-        updated_at (Union[Unset, str]):
+        action_workflow_config_id (str | Unset):
+        app_config_id (str | Unset): this belongs to an app config id
+        app_id (str | Unset):
+        command (str | Unset):
+        connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        env_vars (AppActionWorkflowStepConfigEnvVars | Unset):
+        id (str | Unset):
+        idx (int | Unset):
+        inline_contents (str | Unset):
+        name (str | Unset): metadata
+        previous_step_id (str | Unset):
+        public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        references (list[str] | Unset):
+        updated_at (str | Unset):
     """
 
-    action_workflow_config_id: Union[Unset, str] = UNSET
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    command: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppActionWorkflowStepConfigEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    idx: Union[Unset, int] = UNSET
-    inline_contents: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    previous_step_id: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    action_workflow_config_id: str | Unset = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    command: str | Unset = UNSET
+    connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    env_vars: AppActionWorkflowStepConfigEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    idx: int | Unset = UNSET
+    inline_contents: str | Unset = UNSET
+    name: str | Unset = UNSET
+    previous_step_id: str | Unset = UNSET
+    public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,7 +66,7 @@ class AppActionWorkflowStepConfig:
 
         command = self.command
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
@@ -72,7 +74,7 @@ class AppActionWorkflowStepConfig:
 
         created_by_id = self.created_by_id
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
@@ -86,11 +88,11 @@ class AppActionWorkflowStepConfig:
 
         previous_step_id = self.previous_step_id
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
@@ -150,7 +152,7 @@ class AppActionWorkflowStepConfig:
         command = d.pop("command", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, AppConnectedGithubVCSConfig]
+        connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -161,7 +163,7 @@ class AppActionWorkflowStepConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppActionWorkflowStepConfigEnvVars]
+        env_vars: AppActionWorkflowStepConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
@@ -178,7 +180,7 @@ class AppActionWorkflowStepConfig:
         previous_step_id = d.pop("previous_step_id", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, AppPublicGitVCSConfig]
+        public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:

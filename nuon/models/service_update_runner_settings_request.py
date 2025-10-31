@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,20 +15,20 @@ T = TypeVar("T", bound="ServiceUpdateRunnerSettingsRequest")
 class ServiceUpdateRunnerSettingsRequest:
     """
     Attributes:
-        aws_max_instance_lifetime (Union[Unset, int]):
-        container_image_tag (Union[Unset, str]):
-        container_image_url (Union[Unset, str]):
-        org_awsiam_role_arn (Union[Unset, str]):
-        org_k8s_service_account_name (Union[Unset, str]):
-        runner_api_url (Union[Unset, str]):
+        aws_max_instance_lifetime (int | Unset):
+        container_image_tag (str | Unset):
+        container_image_url (str | Unset):
+        org_awsiam_role_arn (str | Unset):
+        org_k8s_service_account_name (str | Unset):
+        runner_api_url (str | Unset):
     """
 
-    aws_max_instance_lifetime: Union[Unset, int] = UNSET
-    container_image_tag: Union[Unset, str] = UNSET
-    container_image_url: Union[Unset, str] = UNSET
-    org_awsiam_role_arn: Union[Unset, str] = UNSET
-    org_k8s_service_account_name: Union[Unset, str] = UNSET
-    runner_api_url: Union[Unset, str] = UNSET
+    aws_max_instance_lifetime: int | Unset = UNSET
+    container_image_tag: str | Unset = UNSET
+    container_image_url: str | Unset = UNSET
+    org_awsiam_role_arn: str | Unset = UNSET
+    org_k8s_service_account_name: str | Unset = UNSET
+    runner_api_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

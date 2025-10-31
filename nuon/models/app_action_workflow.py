@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,28 +19,28 @@ T = TypeVar("T", bound="AppActionWorkflow")
 class AppActionWorkflow:
     """
     Attributes:
-        app_id (Union[Unset, str]):
-        config_count (Union[Unset, int]):
-        configs (Union[Unset, list['AppActionWorkflowConfig']]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        name (Union[Unset, str]): metadata
-        status (Union[Unset, str]): TODO: change to default null after migration & after initial pr
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_id (str | Unset):
+        config_count (int | Unset):
+        configs (list[AppActionWorkflowConfig] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        name (str | Unset): metadata
+        status (str | Unset): TODO: change to default null after migration & after initial pr
+        status_description (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_id: Union[Unset, str] = UNSET
-    config_count: Union[Unset, int] = UNSET
-    configs: Union[Unset, list["AppActionWorkflowConfig"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_id: str | Unset = UNSET
+    config_count: int | Unset = UNSET
+    configs: list[AppActionWorkflowConfig] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,7 +48,7 @@ class AppActionWorkflow:
 
         config_count = self.config_count
 
-        configs: Union[Unset, list[dict[str, Any]]] = UNSET
+        configs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.configs, Unset):
             configs = []
             for configs_item_data in self.configs:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="ServiceReadme")
 class ServiceReadme:
     """
     Attributes:
-        original (Union[Unset, str]):
-        readme (Union[Unset, str]):
-        warnings (Union[Unset, list[str]]):
+        original (str | Unset):
+        readme (str | Unset):
+        warnings (list[str] | Unset):
     """
 
-    original: Union[Unset, str] = UNSET
-    readme: Union[Unset, str] = UNSET
-    warnings: Union[Unset, list[str]] = UNSET
+    original: str | Unset = UNSET
+    readme: str | Unset = UNSET
+    warnings: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,7 +30,7 @@ class ServiceReadme:
 
         readme = self.readme
 
-        warnings: Union[Unset, list[str]] = UNSET
+        warnings: list[str] | Unset = UNSET
         if not isinstance(self.warnings, Unset):
             warnings = self.warnings
 

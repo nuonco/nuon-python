@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="ConfigsOCIRegistryAuth")
 class ConfigsOCIRegistryAuth:
     """
     Attributes:
-        password (Union[Unset, str]):
-        username (Union[Unset, str]):
+        password (str | Unset):
+        username (str | Unset):
     """
 
-    password: Union[Unset, str] = UNSET
-    username: Union[Unset, str] = UNSET
+    password: str | Unset = UNSET
+    username: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

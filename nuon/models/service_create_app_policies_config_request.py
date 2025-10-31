@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,17 +20,17 @@ class ServiceCreateAppPoliciesConfigRequest:
     """
     Attributes:
         app_config_id (str):
-        policies (Union[Unset, list['ServiceAppPolicyConfig']]):
+        policies (list[ServiceAppPolicyConfig] | Unset):
     """
 
     app_config_id: str
-    policies: Union[Unset, list["ServiceAppPolicyConfig"]] = UNSET
+    policies: list[ServiceAppPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_config_id = self.app_config_id
 
-        policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = []
             for policies_item_data in self.policies:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="PlantypesTerraformSandboxMode")
 class PlantypesTerraformSandboxMode:
     """
     Attributes:
-        plan_contents (Union[Unset, str]): create the plan output
-        plan_display_contents (Union[Unset, str]):
-        state_json (Union[Unset, list[int]]): needs to be the outputs of `terraform show -json`
-        workspace_id (Union[Unset, str]):
+        plan_contents (str | Unset): create the plan output
+        plan_display_contents (str | Unset):
+        state_json (list[int] | Unset): needs to be the outputs of `terraform show -json`
+        workspace_id (str | Unset):
     """
 
-    plan_contents: Union[Unset, str] = UNSET
-    plan_display_contents: Union[Unset, str] = UNSET
-    state_json: Union[Unset, list[int]] = UNSET
-    workspace_id: Union[Unset, str] = UNSET
+    plan_contents: str | Unset = UNSET
+    plan_display_contents: str | Unset = UNSET
+    state_json: list[int] | Unset = UNSET
+    workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,7 +32,7 @@ class PlantypesTerraformSandboxMode:
 
         plan_display_contents = self.plan_display_contents
 
-        state_json: Union[Unset, list[int]] = UNSET
+        state_json: list[int] | Unset = UNSET
         if not isinstance(self.state_json, Unset):
             state_json = self.state_json
 

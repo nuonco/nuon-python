@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,73 +31,73 @@ T = TypeVar("T", bound="AppAppConfig")
 class AppAppConfig:
     """
     Attributes:
-        action_workflow_configs (Union[Unset, list['AppActionWorkflowConfig']]):
-        app_branch (Union[Unset, AppAppBranch]):
-        app_branch_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        break_glass (Union[Unset, AppAppBreakGlassConfig]):
-        checksum (Union[Unset, str]):
-        cli_version (Union[Unset, str]):
-        component_config_connections (Union[Unset, list['AppComponentConfigConnection']]):
-        component_ids (Union[Unset, list[str]]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        input_ (Union[Unset, AppAppInputConfig]):
-        org_id (Union[Unset, str]):
-        permissions (Union[Unset, AppAppPermissionsConfig]):
-        policies (Union[Unset, AppAppPoliciesConfig]):
-        readme (Union[Unset, str]):
-        runner (Union[Unset, AppAppRunnerConfig]):
-        sandbox (Union[Unset, AppAppSandboxConfig]):
-        secrets (Union[Unset, AppAppSecretsConfig]):
-        stack (Union[Unset, AppAppStackConfig]):
-        state (Union[Unset, str]):
-        status (Union[Unset, AppAppConfigStatus]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        vcs_connection_commit (Union[Unset, AppVCSConnectionCommit]):
-        version (Union[Unset, int]): fields that are filled in via after query or views
+        action_workflow_configs (list[AppActionWorkflowConfig] | Unset):
+        app_branch (AppAppBranch | Unset):
+        app_branch_id (str | Unset):
+        app_id (str | Unset):
+        break_glass (AppAppBreakGlassConfig | Unset):
+        checksum (str | Unset):
+        cli_version (str | Unset):
+        component_config_connections (list[AppComponentConfigConnection] | Unset):
+        component_ids (list[str] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        input_ (AppAppInputConfig | Unset):
+        org_id (str | Unset):
+        permissions (AppAppPermissionsConfig | Unset):
+        policies (AppAppPoliciesConfig | Unset):
+        readme (str | Unset):
+        runner (AppAppRunnerConfig | Unset):
+        sandbox (AppAppSandboxConfig | Unset):
+        secrets (AppAppSecretsConfig | Unset):
+        stack (AppAppStackConfig | Unset):
+        state (str | Unset):
+        status (AppAppConfigStatus | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
+        vcs_connection_commit (AppVCSConnectionCommit | Unset):
+        version (int | Unset): fields that are filled in via after query or views
     """
 
-    action_workflow_configs: Union[Unset, list["AppActionWorkflowConfig"]] = UNSET
-    app_branch: Union[Unset, "AppAppBranch"] = UNSET
-    app_branch_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    break_glass: Union[Unset, "AppAppBreakGlassConfig"] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    cli_version: Union[Unset, str] = UNSET
-    component_config_connections: Union[Unset, list["AppComponentConfigConnection"]] = UNSET
-    component_ids: Union[Unset, list[str]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    input_: Union[Unset, "AppAppInputConfig"] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    permissions: Union[Unset, "AppAppPermissionsConfig"] = UNSET
-    policies: Union[Unset, "AppAppPoliciesConfig"] = UNSET
-    readme: Union[Unset, str] = UNSET
-    runner: Union[Unset, "AppAppRunnerConfig"] = UNSET
-    sandbox: Union[Unset, "AppAppSandboxConfig"] = UNSET
-    secrets: Union[Unset, "AppAppSecretsConfig"] = UNSET
-    stack: Union[Unset, "AppAppStackConfig"] = UNSET
-    state: Union[Unset, str] = UNSET
-    status: Union[Unset, AppAppConfigStatus] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connection_commit: Union[Unset, "AppVCSConnectionCommit"] = UNSET
-    version: Union[Unset, int] = UNSET
+    action_workflow_configs: list[AppActionWorkflowConfig] | Unset = UNSET
+    app_branch: AppAppBranch | Unset = UNSET
+    app_branch_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    break_glass: AppAppBreakGlassConfig | Unset = UNSET
+    checksum: str | Unset = UNSET
+    cli_version: str | Unset = UNSET
+    component_config_connections: list[AppComponentConfigConnection] | Unset = UNSET
+    component_ids: list[str] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    input_: AppAppInputConfig | Unset = UNSET
+    org_id: str | Unset = UNSET
+    permissions: AppAppPermissionsConfig | Unset = UNSET
+    policies: AppAppPoliciesConfig | Unset = UNSET
+    readme: str | Unset = UNSET
+    runner: AppAppRunnerConfig | Unset = UNSET
+    sandbox: AppAppSandboxConfig | Unset = UNSET
+    secrets: AppAppSecretsConfig | Unset = UNSET
+    stack: AppAppStackConfig | Unset = UNSET
+    state: str | Unset = UNSET
+    status: AppAppConfigStatus | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
+    version: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action_workflow_configs: Union[Unset, list[dict[str, Any]]] = UNSET
+        action_workflow_configs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.action_workflow_configs, Unset):
             action_workflow_configs = []
             for action_workflow_configs_item_data in self.action_workflow_configs:
                 action_workflow_configs_item = action_workflow_configs_item_data.to_dict()
                 action_workflow_configs.append(action_workflow_configs_item)
 
-        app_branch: Union[Unset, dict[str, Any]] = UNSET
+        app_branch: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_branch, Unset):
             app_branch = self.app_branch.to_dict()
 
@@ -103,7 +105,7 @@ class AppAppConfig:
 
         app_id = self.app_id
 
-        break_glass: Union[Unset, dict[str, Any]] = UNSET
+        break_glass: dict[str, Any] | Unset = UNSET
         if not isinstance(self.break_glass, Unset):
             break_glass = self.break_glass.to_dict()
 
@@ -111,14 +113,14 @@ class AppAppConfig:
 
         cli_version = self.cli_version
 
-        component_config_connections: Union[Unset, list[dict[str, Any]]] = UNSET
+        component_config_connections: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.component_config_connections, Unset):
             component_config_connections = []
             for component_config_connections_item_data in self.component_config_connections:
                 component_config_connections_item = component_config_connections_item_data.to_dict()
                 component_config_connections.append(component_config_connections_item)
 
-        component_ids: Union[Unset, list[str]] = UNSET
+        component_ids: list[str] | Unset = UNSET
         if not isinstance(self.component_ids, Unset):
             component_ids = self.component_ids
 
@@ -128,41 +130,41 @@ class AppAppConfig:
 
         id = self.id
 
-        input_: Union[Unset, dict[str, Any]] = UNSET
+        input_: dict[str, Any] | Unset = UNSET
         if not isinstance(self.input_, Unset):
             input_ = self.input_.to_dict()
 
         org_id = self.org_id
 
-        permissions: Union[Unset, dict[str, Any]] = UNSET
+        permissions: dict[str, Any] | Unset = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions.to_dict()
 
-        policies: Union[Unset, dict[str, Any]] = UNSET
+        policies: dict[str, Any] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = self.policies.to_dict()
 
         readme = self.readme
 
-        runner: Union[Unset, dict[str, Any]] = UNSET
+        runner: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner, Unset):
             runner = self.runner.to_dict()
 
-        sandbox: Union[Unset, dict[str, Any]] = UNSET
+        sandbox: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
-        secrets: Union[Unset, dict[str, Any]] = UNSET
+        secrets: dict[str, Any] | Unset = UNSET
         if not isinstance(self.secrets, Unset):
             secrets = self.secrets.to_dict()
 
-        stack: Union[Unset, dict[str, Any]] = UNSET
+        stack: dict[str, Any] | Unset = UNSET
         if not isinstance(self.stack, Unset):
             stack = self.stack.to_dict()
 
         state = self.state
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -170,7 +172,7 @@ class AppAppConfig:
 
         updated_at = self.updated_at
 
-        vcs_connection_commit: Union[Unset, dict[str, Any]] = UNSET
+        vcs_connection_commit: dict[str, Any] | Unset = UNSET
         if not isinstance(self.vcs_connection_commit, Unset):
             vcs_connection_commit = self.vcs_connection_commit.to_dict()
 
@@ -260,7 +262,7 @@ class AppAppConfig:
             action_workflow_configs.append(action_workflow_configs_item)
 
         _app_branch = d.pop("app_branch", UNSET)
-        app_branch: Union[Unset, AppAppBranch]
+        app_branch: AppAppBranch | Unset
         if isinstance(_app_branch, Unset):
             app_branch = UNSET
         else:
@@ -271,7 +273,7 @@ class AppAppConfig:
         app_id = d.pop("app_id", UNSET)
 
         _break_glass = d.pop("break_glass", UNSET)
-        break_glass: Union[Unset, AppAppBreakGlassConfig]
+        break_glass: AppAppBreakGlassConfig | Unset
         if isinstance(_break_glass, Unset):
             break_glass = UNSET
         else:
@@ -299,7 +301,7 @@ class AppAppConfig:
         id = d.pop("id", UNSET)
 
         _input_ = d.pop("input", UNSET)
-        input_: Union[Unset, AppAppInputConfig]
+        input_: AppAppInputConfig | Unset
         if isinstance(_input_, Unset):
             input_ = UNSET
         else:
@@ -308,14 +310,14 @@ class AppAppConfig:
         org_id = d.pop("org_id", UNSET)
 
         _permissions = d.pop("permissions", UNSET)
-        permissions: Union[Unset, AppAppPermissionsConfig]
+        permissions: AppAppPermissionsConfig | Unset
         if isinstance(_permissions, Unset):
             permissions = UNSET
         else:
             permissions = AppAppPermissionsConfig.from_dict(_permissions)
 
         _policies = d.pop("policies", UNSET)
-        policies: Union[Unset, AppAppPoliciesConfig]
+        policies: AppAppPoliciesConfig | Unset
         if isinstance(_policies, Unset):
             policies = UNSET
         else:
@@ -324,28 +326,28 @@ class AppAppConfig:
         readme = d.pop("readme", UNSET)
 
         _runner = d.pop("runner", UNSET)
-        runner: Union[Unset, AppAppRunnerConfig]
+        runner: AppAppRunnerConfig | Unset
         if isinstance(_runner, Unset):
             runner = UNSET
         else:
             runner = AppAppRunnerConfig.from_dict(_runner)
 
         _sandbox = d.pop("sandbox", UNSET)
-        sandbox: Union[Unset, AppAppSandboxConfig]
+        sandbox: AppAppSandboxConfig | Unset
         if isinstance(_sandbox, Unset):
             sandbox = UNSET
         else:
             sandbox = AppAppSandboxConfig.from_dict(_sandbox)
 
         _secrets = d.pop("secrets", UNSET)
-        secrets: Union[Unset, AppAppSecretsConfig]
+        secrets: AppAppSecretsConfig | Unset
         if isinstance(_secrets, Unset):
             secrets = UNSET
         else:
             secrets = AppAppSecretsConfig.from_dict(_secrets)
 
         _stack = d.pop("stack", UNSET)
-        stack: Union[Unset, AppAppStackConfig]
+        stack: AppAppStackConfig | Unset
         if isinstance(_stack, Unset):
             stack = UNSET
         else:
@@ -354,7 +356,7 @@ class AppAppConfig:
         state = d.pop("state", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppAppConfigStatus]
+        status: AppAppConfigStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -365,7 +367,7 @@ class AppAppConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
-        vcs_connection_commit: Union[Unset, AppVCSConnectionCommit]
+        vcs_connection_commit: AppVCSConnectionCommit | Unset
         if isinstance(_vcs_connection_commit, Unset):
             vcs_connection_commit = UNSET
         else:

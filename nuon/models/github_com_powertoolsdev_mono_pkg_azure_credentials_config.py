@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgAzureCredentialsConfig")
 class GithubComPowertoolsdevMonoPkgAzureCredentialsConfig:
     """
     Attributes:
-        service_principal (Union[Unset, CredentialsServicePrincipalCredentials]):
-        use_default (Union[Unset, bool]):
+        service_principal (CredentialsServicePrincipalCredentials | Unset):
+        use_default (bool | Unset):
     """
 
-    service_principal: Union[Unset, "CredentialsServicePrincipalCredentials"] = UNSET
-    use_default: Union[Unset, bool] = UNSET
+    service_principal: CredentialsServicePrincipalCredentials | Unset = UNSET
+    use_default: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        service_principal: Union[Unset, dict[str, Any]] = UNSET
+        service_principal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.service_principal, Unset):
             service_principal = self.service_principal.to_dict()
 
@@ -48,7 +50,7 @@ class GithubComPowertoolsdevMonoPkgAzureCredentialsConfig:
 
         d = dict(src_dict)
         _service_principal = d.pop("service_principal", UNSET)
-        service_principal: Union[Unset, CredentialsServicePrincipalCredentials]
+        service_principal: CredentialsServicePrincipalCredentials | Unset
         if isinstance(_service_principal, Unset):
             service_principal = UNSET
         else:

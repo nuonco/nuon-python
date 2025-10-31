@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,20 +21,20 @@ class ServiceCreateExternalImageComponentConfigRequest:
     Attributes:
         image_url (str):
         tag (str):
-        app_config_id (Union[Unset, str]):
-        aws_ecr_image_config (Union[Unset, ServiceAwsECRImageConfigRequest]):
-        checksum (Union[Unset, str]):
-        dependencies (Union[Unset, list[str]]):
-        references (Union[Unset, list[str]]):
+        app_config_id (str | Unset):
+        aws_ecr_image_config (ServiceAwsECRImageConfigRequest | Unset):
+        checksum (str | Unset):
+        dependencies (list[str] | Unset):
+        references (list[str] | Unset):
     """
 
     image_url: str
     tag: str
-    app_config_id: Union[Unset, str] = UNSET
-    aws_ecr_image_config: Union[Unset, "ServiceAwsECRImageConfigRequest"] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    references: Union[Unset, list[str]] = UNSET
+    app_config_id: str | Unset = UNSET
+    aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset = UNSET
+    checksum: str | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,17 +44,17 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         app_config_id = self.app_config_id
 
-        aws_ecr_image_config: Union[Unset, dict[str, Any]] = UNSET
+        aws_ecr_image_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_ecr_image_config, Unset):
             aws_ecr_image_config = self.aws_ecr_image_config.to_dict()
 
         checksum = self.checksum
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
@@ -89,7 +91,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         app_config_id = d.pop("app_config_id", UNSET)
 
         _aws_ecr_image_config = d.pop("aws_ecr_image_config", UNSET)
-        aws_ecr_image_config: Union[Unset, ServiceAwsECRImageConfigRequest]
+        aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset
         if isinstance(_aws_ecr_image_config, Unset):
             aws_ecr_image_config = UNSET
         else:

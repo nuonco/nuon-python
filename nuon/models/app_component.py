@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,36 +20,36 @@ T = TypeVar("T", bound="AppComponent")
 class AppComponent:
     """
     Attributes:
-        app_id (Union[Unset, str]):
-        config_versions (Union[Unset, int]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        dependencies (Union[Unset, list[str]]):
-        id (Union[Unset, str]):
-        links (Union[Unset, AppComponentLinks]):
-        name (Union[Unset, str]):
-        resolved_var_name (Union[Unset, str]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        type_ (Union[Unset, AppComponentType]):
-        updated_at (Union[Unset, str]):
-        var_name (Union[Unset, str]):
+        app_id (str | Unset):
+        config_versions (int | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        dependencies (list[str] | Unset):
+        id (str | Unset):
+        links (AppComponentLinks | Unset):
+        name (str | Unset):
+        resolved_var_name (str | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        type_ (AppComponentType | Unset):
+        updated_at (str | Unset):
+        var_name (str | Unset):
     """
 
-    app_id: Union[Unset, str] = UNSET
-    config_versions: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    id: Union[Unset, str] = UNSET
-    links: Union[Unset, "AppComponentLinks"] = UNSET
-    name: Union[Unset, str] = UNSET
-    resolved_var_name: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    type_: Union[Unset, AppComponentType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    var_name: Union[Unset, str] = UNSET
+    app_id: str | Unset = UNSET
+    config_versions: int | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    id: str | Unset = UNSET
+    links: AppComponentLinks | Unset = UNSET
+    name: str | Unset = UNSET
+    resolved_var_name: str | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    type_: AppComponentType | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    var_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,13 +61,13 @@ class AppComponent:
 
         created_by_id = self.created_by_id
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
         id = self.id
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
@@ -77,7 +79,7 @@ class AppComponent:
 
         status_description = self.status_description
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -137,7 +139,7 @@ class AppComponent:
         id = d.pop("id", UNSET)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppComponentLinks]
+        links: AppComponentLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
@@ -152,7 +154,7 @@ class AppComponent:
         status_description = d.pop("status_description", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppComponentType]
+        type_: AppComponentType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

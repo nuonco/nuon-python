@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,18 +19,18 @@ T = TypeVar("T", bound="StateActionsState")
 class StateActionsState:
     """
     Attributes:
-        populated (Union[Unset, bool]):
-        workflows (Union[Unset, StateActionsStateWorkflows]):
+        populated (bool | Unset):
+        workflows (StateActionsStateWorkflows | Unset):
     """
 
-    populated: Union[Unset, bool] = UNSET
-    workflows: Union[Unset, "StateActionsStateWorkflows"] = UNSET
+    populated: bool | Unset = UNSET
+    workflows: StateActionsStateWorkflows | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         populated = self.populated
 
-        workflows: Union[Unset, dict[str, Any]] = UNSET
+        workflows: dict[str, Any] | Unset = UNSET
         if not isinstance(self.workflows, Unset):
             workflows = self.workflows.to_dict()
 
@@ -50,7 +52,7 @@ class StateActionsState:
         populated = d.pop("populated", UNSET)
 
         _workflows = d.pop("workflows", UNSET)
-        workflows: Union[Unset, StateActionsStateWorkflows]
+        workflows: StateActionsStateWorkflows | Unset
         if isinstance(_workflows, Unset):
             workflows = UNSET
         else:

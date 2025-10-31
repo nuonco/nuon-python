@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,26 +15,26 @@ T = TypeVar("T", bound="AppAzureAccount")
 class AppAzureAccount:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        location (Union[Unset, str]):
-        service_principal_app_id (Union[Unset, str]):
-        service_principal_password (Union[Unset, str]):
-        subscription_id (Union[Unset, str]):
-        subscription_tenant_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        location (str | Unset):
+        service_principal_app_id (str | Unset):
+        service_principal_password (str | Unset):
+        subscription_id (str | Unset):
+        subscription_tenant_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    location: Union[Unset, str] = UNSET
-    service_principal_app_id: Union[Unset, str] = UNSET
-    service_principal_password: Union[Unset, str] = UNSET
-    subscription_id: Union[Unset, str] = UNSET
-    subscription_tenant_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    location: str | Unset = UNSET
+    service_principal_app_id: str | Unset = UNSET
+    service_principal_password: str | Unset = UNSET
+    subscription_id: str | Unset = UNSET
+    subscription_tenant_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,34 +19,34 @@ T = TypeVar("T", bound="AppRunnerJobExecutionResult")
 class AppRunnerJobExecutionResult:
     """
     Attributes:
-        contents (Union[Unset, str]):
-        contents_display (Union[Unset, str]):
-        contents_display_gzip (Union[Unset, str]):
-        contents_gzip (Union[Unset, str]): columns for storage of gzipped contents and plans
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        error_code (Union[Unset, int]):
-        error_metadata (Union[Unset, AppRunnerJobExecutionResultErrorMetadata]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        runner_job_execution_id (Union[Unset, str]):
-        success (Union[Unset, bool]):
-        updated_at (Union[Unset, str]):
+        contents (str | Unset):
+        contents_display (str | Unset):
+        contents_display_gzip (str | Unset):
+        contents_gzip (str | Unset): columns for storage of gzipped contents and plans
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        error_code (int | Unset):
+        error_metadata (AppRunnerJobExecutionResultErrorMetadata | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        success (bool | Unset):
+        updated_at (str | Unset):
     """
 
-    contents: Union[Unset, str] = UNSET
-    contents_display: Union[Unset, str] = UNSET
-    contents_display_gzip: Union[Unset, str] = UNSET
-    contents_gzip: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    error_code: Union[Unset, int] = UNSET
-    error_metadata: Union[Unset, "AppRunnerJobExecutionResultErrorMetadata"] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    runner_job_execution_id: Union[Unset, str] = UNSET
-    success: Union[Unset, bool] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    contents: str | Unset = UNSET
+    contents_display: str | Unset = UNSET
+    contents_display_gzip: str | Unset = UNSET
+    contents_gzip: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    error_code: int | Unset = UNSET
+    error_metadata: AppRunnerJobExecutionResultErrorMetadata | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    runner_job_execution_id: str | Unset = UNSET
+    success: bool | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,7 +64,7 @@ class AppRunnerJobExecutionResult:
 
         error_code = self.error_code
 
-        error_metadata: Union[Unset, dict[str, Any]] = UNSET
+        error_metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.error_metadata, Unset):
             error_metadata = self.error_metadata.to_dict()
 
@@ -128,7 +130,7 @@ class AppRunnerJobExecutionResult:
         error_code = d.pop("error_code", UNSET)
 
         _error_metadata = d.pop("error_metadata", UNSET)
-        error_metadata: Union[Unset, AppRunnerJobExecutionResultErrorMetadata]
+        error_metadata: AppRunnerJobExecutionResultErrorMetadata | Unset
         if isinstance(_error_metadata, Unset):
             error_metadata = UNSET
         else:

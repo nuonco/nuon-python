@@ -19,6 +19,7 @@ from .app_app_config_version import AppAppConfigVersion
 from .app_app_input import AppAppInput
 from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
+from .app_app_input_source import AppAppInputSource
 from .app_app_links import AppAppLinks
 from .app_app_permissions_config import AppAppPermissionsConfig
 from .app_app_policies_config import AppAppPoliciesConfig
@@ -36,6 +37,7 @@ from .app_app_stack_config import AppAppStackConfig
 from .app_aws_account import AppAWSAccount
 from .app_aws_stack_outputs import AppAWSStackOutputs
 from .app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+from .app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 from .app_awsecr_image_config import AppAWSECRImageConfig
 from .app_awsiam_role_type import AppAWSIAMRoleType
 from .app_azure_account import AppAzureAccount
@@ -342,6 +344,10 @@ from .service_create_install_request import ServiceCreateInstallRequest
 from .service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
 from .service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
 from .service_create_install_request_inputs import ServiceCreateInstallRequestInputs
+from .service_create_install_v2_request import ServiceCreateInstallV2Request
+from .service_create_install_v2_request_aws_account import ServiceCreateInstallV2RequestAwsAccount
+from .service_create_install_v2_request_azure_account import ServiceCreateInstallV2RequestAzureAccount
+from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
 from .service_create_installer_request import ServiceCreateInstallerRequest
 from .service_create_installer_request_metadata import ServiceCreateInstallerRequestMetadata
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
@@ -388,7 +394,7 @@ from .service_retry_workflow_by_id_request import ServiceRetryWorkflowByIDReques
 from .service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
-from .service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
+from .service_retry_workflow_step_request import ServiceRetryWorkflowStepRequest
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
@@ -455,6 +461,7 @@ __all__ = (
     "AppAppInput",
     "AppAppInputConfig",
     "AppAppInputGroup",
+    "AppAppInputSource",
     "AppAppLinks",
     "AppAppPermissionsConfig",
     "AppAppPoliciesConfig",
@@ -474,6 +481,7 @@ __all__ = (
     "AppAWSIAMRoleType",
     "AppAWSStackOutputs",
     "AppAWSStackOutputsBreakGlassRoleArns",
+    "AppAWSStackOutputsInstallInputs",
     "AppAzureAccount",
     "AppAzureStackOutputs",
     "AppCloudPlatform",
@@ -760,6 +768,10 @@ __all__ = (
     "ServiceCreateInstallRequestAwsAccount",
     "ServiceCreateInstallRequestAzureAccount",
     "ServiceCreateInstallRequestInputs",
+    "ServiceCreateInstallV2Request",
+    "ServiceCreateInstallV2RequestAwsAccount",
+    "ServiceCreateInstallV2RequestAzureAccount",
+    "ServiceCreateInstallV2RequestInputs",
     "ServiceCreateJobComponentConfigRequest",
     "ServiceCreateJobComponentConfigRequestEnvVars",
     "ServiceCreateKubernetesManifestComponentConfigRequest",
@@ -798,7 +810,7 @@ __all__ = (
     "ServiceRetryWorkflowByIDResponse",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
-    "ServiceRetryWorkflowStepResponse",
+    "ServiceRetryWorkflowStepRequest",
     "ServiceRunnerConnectionStatus",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",

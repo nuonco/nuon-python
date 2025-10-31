@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,25 +19,24 @@ T = TypeVar("T", bound="AppWorkflowStepPolicyValidation")
 class AppWorkflowStepPolicyValidation:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_workflow_step_id (Union[Unset, str]): install workflow step is the install step that this was performed
-            within
-        response (Union[Unset, str]): response is the kyverno response
-        runner_job_id (Union[Unset, str]): runnerJobID is the runner job that this was performed within
-        status (Union[Unset, AppCompositeStatus]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_workflow_step_id (str | Unset): install workflow step is the install step that this was performed within
+        response (str | Unset): response is the kyverno response
+        runner_job_id (str | Unset): runnerJobID is the runner job that this was performed within
+        status (AppCompositeStatus | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_workflow_step_id: Union[Unset, str] = UNSET
-    response: Union[Unset, str] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    status: Union[Unset, "AppCompositeStatus"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_workflow_step_id: str | Unset = UNSET
+    response: str | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    status: AppCompositeStatus | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,7 +52,7 @@ class AppWorkflowStepPolicyValidation:
 
         runner_job_id = self.runner_job_id
 
-        status: Union[Unset, dict[str, Any]] = UNSET
+        status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
@@ -97,7 +98,7 @@ class AppWorkflowStepPolicyValidation:
         runner_job_id = d.pop("runner_job_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppCompositeStatus]
+        status: AppCompositeStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

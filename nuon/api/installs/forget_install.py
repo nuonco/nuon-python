@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -31,23 +31,27 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[StderrErrResponse, bool]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> StderrErrResponse | bool | None:
     if response.status_code == 200:
         response_200 = cast(bool, response.json())
         return response_200
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -55,8 +59,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[StderrErrResponse, bool]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[StderrErrResponse | bool]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,7 +74,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallRequest,
-) -> Response[Union[StderrErrResponse, bool]]:
+) -> Response[StderrErrResponse | bool]:
     """forget an install
 
      Forget an install that has been deleted outside of nuon.
@@ -87,7 +91,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, bool]]
+        Response[StderrErrResponse | bool]
     """
 
     kwargs = _get_kwargs(
@@ -107,7 +111,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallRequest,
-) -> Optional[Union[StderrErrResponse, bool]]:
+) -> StderrErrResponse | bool | None:
     """forget an install
 
      Forget an install that has been deleted outside of nuon.
@@ -124,7 +128,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, bool]
+        StderrErrResponse | bool
     """
 
     return sync_detailed(
@@ -139,7 +143,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallRequest,
-) -> Response[Union[StderrErrResponse, bool]]:
+) -> Response[StderrErrResponse | bool]:
     """forget an install
 
      Forget an install that has been deleted outside of nuon.
@@ -156,7 +160,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, bool]]
+        Response[StderrErrResponse | bool]
     """
 
     kwargs = _get_kwargs(
@@ -174,7 +178,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallRequest,
-) -> Optional[Union[StderrErrResponse, bool]]:
+) -> StderrErrResponse | bool | None:
     """forget an install
 
      Forget an install that has been deleted outside of nuon.
@@ -191,7 +195,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, bool]
+        StderrErrResponse | bool
     """
 
     return (

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,22 +20,22 @@ T = TypeVar("T", bound="ServiceUpdateInstallRequest")
 class ServiceUpdateInstallRequest:
     """
     Attributes:
-        install_config (Union[Unset, ServicePatchInstallConfigParams]):
-        metadata (Union[Unset, HelpersInstallMetadata]):
-        name (Union[Unset, str]):
+        install_config (ServicePatchInstallConfigParams | Unset):
+        metadata (HelpersInstallMetadata | Unset):
+        name (str | Unset):
     """
 
-    install_config: Union[Unset, "ServicePatchInstallConfigParams"] = UNSET
-    metadata: Union[Unset, "HelpersInstallMetadata"] = UNSET
-    name: Union[Unset, str] = UNSET
+    install_config: ServicePatchInstallConfigParams | Unset = UNSET
+    metadata: HelpersInstallMetadata | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        install_config: Union[Unset, dict[str, Any]] = UNSET
+        install_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_config, Unset):
             install_config = self.install_config.to_dict()
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -58,14 +60,14 @@ class ServiceUpdateInstallRequest:
 
         d = dict(src_dict)
         _install_config = d.pop("install_config", UNSET)
-        install_config: Union[Unset, ServicePatchInstallConfigParams]
+        install_config: ServicePatchInstallConfigParams | Unset
         if isinstance(_install_config, Unset):
             install_config = UNSET
         else:
             install_config = ServicePatchInstallConfigParams.from_dict(_install_config)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, HelpersInstallMetadata]
+        metadata: HelpersInstallMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

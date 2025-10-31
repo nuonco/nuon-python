@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,20 +20,20 @@ T = TypeVar("T", bound="StateCloudAccount")
 class StateCloudAccount:
     """
     Attributes:
-        aws (Union[Unset, StateAWSCloudAccount]):
-        azure (Union[Unset, StateAzureCloudAccount]):
+        aws (StateAWSCloudAccount | Unset):
+        azure (StateAzureCloudAccount | Unset):
     """
 
-    aws: Union[Unset, "StateAWSCloudAccount"] = UNSET
-    azure: Union[Unset, "StateAzureCloudAccount"] = UNSET
+    aws: StateAWSCloudAccount | Unset = UNSET
+    azure: StateAzureCloudAccount | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws: Union[Unset, dict[str, Any]] = UNSET
+        aws: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws, Unset):
             aws = self.aws.to_dict()
 
-        azure: Union[Unset, dict[str, Any]] = UNSET
+        azure: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure, Unset):
             azure = self.azure.to_dict()
 
@@ -52,14 +54,14 @@ class StateCloudAccount:
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)
-        aws: Union[Unset, StateAWSCloudAccount]
+        aws: StateAWSCloudAccount | Unset
         if isinstance(_aws, Unset):
             aws = UNSET
         else:
             aws = StateAWSCloudAccount.from_dict(_aws)
 
         _azure = d.pop("azure", UNSET)
-        azure: Union[Unset, StateAzureCloudAccount]
+        azure: StateAzureCloudAccount | Unset
         if isinstance(_azure, Unset):
             azure = UNSET
         else:

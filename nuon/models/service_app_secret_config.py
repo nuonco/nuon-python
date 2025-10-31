@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,25 +18,25 @@ class ServiceAppSecretConfig:
         description (str):
         display_name (str):
         name (str):
-        auto_generate (Union[Unset, bool]):
-        default (Union[Unset, str]):
-        format_ (Union[Unset, str]):
-        kubernetes_secret_name (Union[Unset, str]):
-        kubernetes_secret_namespace (Union[Unset, str]):
-        kubernetes_sync (Union[Unset, bool]):
-        required (Union[Unset, bool]):
+        auto_generate (bool | Unset):
+        default (str | Unset):
+        format_ (str | Unset):
+        kubernetes_secret_name (str | Unset):
+        kubernetes_secret_namespace (str | Unset):
+        kubernetes_sync (bool | Unset):
+        required (bool | Unset):
     """
 
     description: str
     display_name: str
     name: str
-    auto_generate: Union[Unset, bool] = UNSET
-    default: Union[Unset, str] = UNSET
-    format_: Union[Unset, str] = UNSET
-    kubernetes_secret_name: Union[Unset, str] = UNSET
-    kubernetes_secret_namespace: Union[Unset, str] = UNSET
-    kubernetes_sync: Union[Unset, bool] = UNSET
-    required: Union[Unset, bool] = UNSET
+    auto_generate: bool | Unset = UNSET
+    default: str | Unset = UNSET
+    format_: str | Unset = UNSET
+    kubernetes_secret_name: str | Unset = UNSET
+    kubernetes_secret_namespace: str | Unset = UNSET
+    kubernetes_sync: bool | Unset = UNSET
+    required: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

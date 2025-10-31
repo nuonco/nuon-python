@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,32 +25,32 @@ class ServiceCreateHelmComponentConfigRequest:
     Attributes:
         chart_name (str):
         values (ServiceCreateHelmComponentConfigRequestValues):
-        app_config_id (Union[Unset, str]):
-        checksum (Union[Unset, str]):
-        connected_github_vcs_config (Union[Unset, ServiceConnectedGithubVCSConfigRequest]):
-        dependencies (Union[Unset, list[str]]):
-        drift_schedule (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, ServicePublicGitVCSConfigRequest]):
-        references (Union[Unset, list[str]]):
-        storage_driver (Union[Unset, str]):
-        take_ownership (Union[Unset, bool]):
-        values_files (Union[Unset, list[str]]):
+        app_config_id (str | Unset):
+        checksum (str | Unset):
+        connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        dependencies (list[str] | Unset):
+        drift_schedule (str | Unset):
+        namespace (str | Unset):
+        public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
+        references (list[str] | Unset):
+        storage_driver (str | Unset):
+        take_ownership (bool | Unset):
+        values_files (list[str] | Unset):
     """
 
     chart_name: str
-    values: "ServiceCreateHelmComponentConfigRequestValues"
-    app_config_id: Union[Unset, str] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "ServiceConnectedGithubVCSConfigRequest"] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    drift_schedule: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "ServicePublicGitVCSConfigRequest"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    storage_driver: Union[Unset, str] = UNSET
-    take_ownership: Union[Unset, bool] = UNSET
-    values_files: Union[Unset, list[str]] = UNSET
+    values: ServiceCreateHelmComponentConfigRequestValues
+    app_config_id: str | Unset = UNSET
+    checksum: str | Unset = UNSET
+    connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    drift_schedule: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    storage_driver: str | Unset = UNSET
+    take_ownership: bool | Unset = UNSET
+    values_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,11 +62,11 @@ class ServiceCreateHelmComponentConfigRequest:
 
         checksum = self.checksum
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
@@ -72,11 +74,11 @@ class ServiceCreateHelmComponentConfigRequest:
 
         namespace = self.namespace
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
@@ -84,7 +86,7 @@ class ServiceCreateHelmComponentConfigRequest:
 
         take_ownership = self.take_ownership
 
-        values_files: Union[Unset, list[str]] = UNSET
+        values_files: list[str] | Unset = UNSET
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
 
@@ -139,7 +141,7 @@ class ServiceCreateHelmComponentConfigRequest:
         checksum = d.pop("checksum", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, ServiceConnectedGithubVCSConfigRequest]
+        connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -152,7 +154,7 @@ class ServiceCreateHelmComponentConfigRequest:
         namespace = d.pop("namespace", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, ServicePublicGitVCSConfigRequest]
+        public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:

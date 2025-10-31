@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,10 +12,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    component_ids: Union[Unset, str] = UNSET,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
+    component_ids: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,8 +39,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> StderrErrResponse | list[AppComponent] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -50,26 +50,32 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
+
     if response.status_code == 403:
         response_403 = StderrErrResponse.from_dict(response.json())
 
         return response_403
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -77,8 +83,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[StderrErrResponse | list[AppComponent]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -90,25 +96,25 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    component_ids: Union[Unset, str] = UNSET,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
+    component_ids: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppComponent]]:
     """get all components for an org
 
     Args:
-        component_ids (Union[Unset, str]):
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        component_ids (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppComponent']]]
+        Response[StderrErrResponse | list[AppComponent]]
     """
 
     kwargs = _get_kwargs(
@@ -128,25 +134,25 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    component_ids: Union[Unset, str] = UNSET,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
+    component_ids: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppComponent] | None:
     """get all components for an org
 
     Args:
-        component_ids (Union[Unset, str]):
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        component_ids (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppComponent']]
+        StderrErrResponse | list[AppComponent]
     """
 
     return sync_detailed(
@@ -161,25 +167,25 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    component_ids: Union[Unset, str] = UNSET,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Response[Union[StderrErrResponse, list["AppComponent"]]]:
+    component_ids: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppComponent]]:
     """get all components for an org
 
     Args:
-        component_ids (Union[Unset, str]):
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        component_ids (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[StderrErrResponse, list['AppComponent']]]
+        Response[StderrErrResponse | list[AppComponent]]
     """
 
     kwargs = _get_kwargs(
@@ -197,25 +203,25 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    component_ids: Union[Unset, str] = UNSET,
-    offset: Union[Unset, int] = 0,
-    limit: Union[Unset, int] = 10,
-    page: Union[Unset, int] = 0,
-) -> Optional[Union[StderrErrResponse, list["AppComponent"]]]:
+    component_ids: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppComponent] | None:
     """get all components for an org
 
     Args:
-        component_ids (Union[Unset, str]):
-        offset (Union[Unset, int]):  Default: 0.
-        limit (Union[Unset, int]):  Default: 10.
-        page (Union[Unset, int]):  Default: 0.
+        component_ids (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[StderrErrResponse, list['AppComponent']]
+        StderrErrResponse | list[AppComponent]
     """
 
     return (

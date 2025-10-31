@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,28 +15,28 @@ T = TypeVar("T", bound="AppDriftedObject")
 class AppDriftedObject:
     """
     Attributes:
-        app_sandbox_config_id (Union[Unset, str]):
-        component_build_id (Union[Unset, str]):
-        component_name (Union[Unset, str]):
-        install_component_id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        install_sandbox_id (Union[Unset, str]):
-        install_workflow_id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        target_id (Union[Unset, str]):
-        target_type (Union[Unset, str]): These fields will be populated from the drifts_view
+        app_sandbox_config_id (str | Unset):
+        component_build_id (str | Unset):
+        component_name (str | Unset):
+        install_component_id (str | Unset):
+        install_id (str | Unset):
+        install_sandbox_id (str | Unset):
+        install_workflow_id (str | Unset):
+        org_id (str | Unset):
+        target_id (str | Unset):
+        target_type (str | Unset): These fields will be populated from the drifts_view
     """
 
-    app_sandbox_config_id: Union[Unset, str] = UNSET
-    component_build_id: Union[Unset, str] = UNSET
-    component_name: Union[Unset, str] = UNSET
-    install_component_id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    install_sandbox_id: Union[Unset, str] = UNSET
-    install_workflow_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    target_id: Union[Unset, str] = UNSET
-    target_type: Union[Unset, str] = UNSET
+    app_sandbox_config_id: str | Unset = UNSET
+    component_build_id: str | Unset = UNSET
+    component_name: str | Unset = UNSET
+    install_component_id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    install_sandbox_id: str | Unset = UNSET
+    install_workflow_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    target_id: str | Unset = UNSET
+    target_type: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

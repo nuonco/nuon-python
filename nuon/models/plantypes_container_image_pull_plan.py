@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,20 +19,20 @@ T = TypeVar("T", bound="PlantypesContainerImagePullPlan")
 class PlantypesContainerImagePullPlan:
     """
     Attributes:
-        image (Union[Unset, str]):
-        repo_config (Union[Unset, ConfigsOCIRegistryRepository]):
-        tag (Union[Unset, str]):
+        image (str | Unset):
+        repo_config (ConfigsOCIRegistryRepository | Unset):
+        tag (str | Unset):
     """
 
-    image: Union[Unset, str] = UNSET
-    repo_config: Union[Unset, "ConfigsOCIRegistryRepository"] = UNSET
-    tag: Union[Unset, str] = UNSET
+    image: str | Unset = UNSET
+    repo_config: ConfigsOCIRegistryRepository | Unset = UNSET
+    tag: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         image = self.image
 
-        repo_config: Union[Unset, dict[str, Any]] = UNSET
+        repo_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.repo_config, Unset):
             repo_config = self.repo_config.to_dict()
 
@@ -56,7 +58,7 @@ class PlantypesContainerImagePullPlan:
         image = d.pop("image", UNSET)
 
         _repo_config = d.pop("repo_config", UNSET)
-        repo_config: Union[Unset, ConfigsOCIRegistryRepository]
+        repo_config: ConfigsOCIRegistryRepository | Unset
         if isinstance(_repo_config, Unset):
             repo_config = UNSET
         else:

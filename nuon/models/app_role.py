@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,26 +21,26 @@ T = TypeVar("T", bound="AppRole")
 class AppRole:
     """
     Attributes:
-        created_by (Union[Unset, AppAccount]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        policies (Union[Unset, list['AppPolicy']]):
-        role_type (Union[Unset, AppRoleType]):
-        updated_at (Union[Unset, str]):
+        created_by (AppAccount | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        policies (list[AppPolicy] | Unset):
+        role_type (AppRoleType | Unset):
+        updated_at (str | Unset):
     """
 
-    created_by: Union[Unset, "AppAccount"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    policies: Union[Unset, list["AppPolicy"]] = UNSET
-    role_type: Union[Unset, AppRoleType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_by: AppAccount | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    policies: list[AppPolicy] | Unset = UNSET
+    role_type: AppRoleType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        created_by: Union[Unset, dict[str, Any]] = UNSET
+        created_by: dict[str, Any] | Unset = UNSET
         if not isinstance(self.created_by, Unset):
             created_by = self.created_by.to_dict()
 
@@ -48,14 +50,14 @@ class AppRole:
 
         id = self.id
 
-        policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = []
             for policies_item_data in self.policies:
                 policies_item = policies_item_data.to_dict()
                 policies.append(policies_item)
 
-        role_type: Union[Unset, str] = UNSET
+        role_type: str | Unset = UNSET
         if not isinstance(self.role_type, Unset):
             role_type = self.role_type.value
 
@@ -88,7 +90,7 @@ class AppRole:
 
         d = dict(src_dict)
         _created_by = d.pop("createdBy", UNSET)
-        created_by: Union[Unset, AppAccount]
+        created_by: AppAccount | Unset
         if isinstance(_created_by, Unset):
             created_by = UNSET
         else:
@@ -108,7 +110,7 @@ class AppRole:
             policies.append(policies_item)
 
         _role_type = d.pop("role_type", UNSET)
-        role_type: Union[Unset, AppRoleType]
+        role_type: AppRoleType | Unset
         if isinstance(_role_type, Unset):
             role_type = UNSET
         else:

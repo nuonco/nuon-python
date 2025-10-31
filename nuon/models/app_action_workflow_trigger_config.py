@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,32 +19,32 @@ T = TypeVar("T", bound="AppActionWorkflowTriggerConfig")
 class AppActionWorkflowTriggerConfig:
     """
     Attributes:
-        action_workflow_config_id (Union[Unset, str]):
-        app_config_id (Union[Unset, str]): this belongs to an app config id
-        app_id (Union[Unset, str]):
-        component (Union[Unset, AppComponent]):
-        component_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        cron_schedule (Union[Unset, str]):
-        id (Union[Unset, str]):
-        index (Union[Unset, int]):
-        type_ (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        action_workflow_config_id (str | Unset):
+        app_config_id (str | Unset): this belongs to an app config id
+        app_id (str | Unset):
+        component (AppComponent | Unset):
+        component_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        cron_schedule (str | Unset):
+        id (str | Unset):
+        index (int | Unset):
+        type_ (str | Unset):
+        updated_at (str | Unset):
     """
 
-    action_workflow_config_id: Union[Unset, str] = UNSET
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    component: Union[Unset, "AppComponent"] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    cron_schedule: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    index: Union[Unset, int] = UNSET
-    type_: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    action_workflow_config_id: str | Unset = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    component: AppComponent | Unset = UNSET
+    component_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    cron_schedule: str | Unset = UNSET
+    id: str | Unset = UNSET
+    index: int | Unset = UNSET
+    type_: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +54,7 @@ class AppActionWorkflowTriggerConfig:
 
         app_id = self.app_id
 
-        component: Union[Unset, dict[str, Any]] = UNSET
+        component: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component, Unset):
             component = self.component.to_dict()
 
@@ -114,7 +116,7 @@ class AppActionWorkflowTriggerConfig:
         app_id = d.pop("app_id", UNSET)
 
         _component = d.pop("component", UNSET)
-        component: Union[Unset, AppComponent]
+        component: AppComponent | Unset
         if isinstance(_component, Unset):
             component = UNSET
         else:

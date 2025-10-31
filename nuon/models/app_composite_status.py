@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,20 +20,20 @@ T = TypeVar("T", bound="AppCompositeStatus")
 class AppCompositeStatus:
     """
     Attributes:
-        created_at_ts (Union[Unset, int]):
-        created_by_id (Union[Unset, str]):
-        history (Union[Unset, list['AppCompositeStatus']]):
-        metadata (Union[Unset, AppCompositeStatusMetadata]):
-        status (Union[Unset, AppStatus]):
-        status_human_description (Union[Unset, str]):
+        created_at_ts (int | Unset):
+        created_by_id (str | Unset):
+        history (list[AppCompositeStatus] | Unset):
+        metadata (AppCompositeStatusMetadata | Unset):
+        status (AppStatus | Unset):
+        status_human_description (str | Unset):
     """
 
-    created_at_ts: Union[Unset, int] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    history: Union[Unset, list["AppCompositeStatus"]] = UNSET
-    metadata: Union[Unset, "AppCompositeStatusMetadata"] = UNSET
-    status: Union[Unset, AppStatus] = UNSET
-    status_human_description: Union[Unset, str] = UNSET
+    created_at_ts: int | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    history: list[AppCompositeStatus] | Unset = UNSET
+    metadata: AppCompositeStatusMetadata | Unset = UNSET
+    status: AppStatus | Unset = UNSET
+    status_human_description: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,18 +41,18 @@ class AppCompositeStatus:
 
         created_by_id = self.created_by_id
 
-        history: Union[Unset, list[dict[str, Any]]] = UNSET
+        history: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.history, Unset):
             history = []
             for history_item_data in self.history:
                 history_item = history_item_data.to_dict()
                 history.append(history_item)
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -91,14 +93,14 @@ class AppCompositeStatus:
             history.append(history_item)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppCompositeStatusMetadata]
+        metadata: AppCompositeStatusMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
             metadata = AppCompositeStatusMetadata.from_dict(_metadata)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppStatus]
+        status: AppStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

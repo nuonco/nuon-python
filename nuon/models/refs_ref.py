@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,16 +16,16 @@ T = TypeVar("T", bound="RefsRef")
 class RefsRef:
     """
     Attributes:
-        input_ (Union[Unset, str]):
-        name (Union[Unset, str]):
-        type_ (Union[Unset, RefsRefType]):
-        value (Union[Unset, str]):
+        input_ (str | Unset):
+        name (str | Unset):
+        type_ (RefsRefType | Unset):
+        value (str | Unset):
     """
 
-    input_: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    type_: Union[Unset, RefsRefType] = UNSET
-    value: Union[Unset, str] = UNSET
+    input_: str | Unset = UNSET
+    name: str | Unset = UNSET
+    type_: RefsRefType | Unset = UNSET
+    value: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -31,7 +33,7 @@ class RefsRef:
 
         name = self.name
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -59,7 +61,7 @@ class RefsRef:
         name = d.pop("name", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, RefsRefType]
+        type_: RefsRefType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="IamTwoStepConfig")
 class IamTwoStepConfig:
     """
     Attributes:
-        iam_role_arn (Union[Unset, str]):
-        src_iam_role_arn (Union[Unset, str]):
-        src_static_credentials (Union[Unset, IamStaticCredentials]):
+        iam_role_arn (str | Unset):
+        src_iam_role_arn (str | Unset):
+        src_static_credentials (IamStaticCredentials | Unset):
     """
 
-    iam_role_arn: Union[Unset, str] = UNSET
-    src_iam_role_arn: Union[Unset, str] = UNSET
-    src_static_credentials: Union[Unset, "IamStaticCredentials"] = UNSET
+    iam_role_arn: str | Unset = UNSET
+    src_iam_role_arn: str | Unset = UNSET
+    src_static_credentials: IamStaticCredentials | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +34,7 @@ class IamTwoStepConfig:
 
         src_iam_role_arn = self.src_iam_role_arn
 
-        src_static_credentials: Union[Unset, dict[str, Any]] = UNSET
+        src_static_credentials: dict[str, Any] | Unset = UNSET
         if not isinstance(self.src_static_credentials, Unset):
             src_static_credentials = self.src_static_credentials.to_dict()
 
@@ -58,7 +60,7 @@ class IamTwoStepConfig:
         src_iam_role_arn = d.pop("src_iam_role_arn", UNSET)
 
         _src_static_credentials = d.pop("src_static_credentials", UNSET)
-        src_static_credentials: Union[Unset, IamStaticCredentials]
+        src_static_credentials: IamStaticCredentials | Unset
         if isinstance(_src_static_credentials, Unset):
             src_static_credentials = UNSET
         else:

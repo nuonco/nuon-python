@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,14 +15,14 @@ T = TypeVar("T", bound="StateDomainState")
 class StateDomainState:
     """
     Attributes:
-        internal_domain (Union[Unset, str]):
-        populated (Union[Unset, bool]):
-        public_domain (Union[Unset, str]):
+        internal_domain (str | Unset):
+        populated (bool | Unset):
+        public_domain (str | Unset):
     """
 
-    internal_domain: Union[Unset, str] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    public_domain: Union[Unset, str] = UNSET
+    internal_domain: str | Unset = UNSET
+    populated: bool | Unset = UNSET
+    public_domain: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

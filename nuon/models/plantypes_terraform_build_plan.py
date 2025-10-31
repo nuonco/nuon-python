@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="PlantypesTerraformBuildPlan")
 class PlantypesTerraformBuildPlan:
     """
     Attributes:
-        labels (Union[Unset, PlantypesTerraformBuildPlanLabels]):
+        labels (PlantypesTerraformBuildPlanLabels | Unset):
     """
 
-    labels: Union[Unset, "PlantypesTerraformBuildPlanLabels"] = UNSET
+    labels: PlantypesTerraformBuildPlanLabels | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        labels: Union[Unset, dict[str, Any]] = UNSET
+        labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
 
@@ -42,7 +44,7 @@ class PlantypesTerraformBuildPlan:
 
         d = dict(src_dict)
         _labels = d.pop("labels", UNSET)
-        labels: Union[Unset, PlantypesTerraformBuildPlanLabels]
+        labels: PlantypesTerraformBuildPlanLabels | Unset
         if isinstance(_labels, Unset):
             labels = UNSET
         else:

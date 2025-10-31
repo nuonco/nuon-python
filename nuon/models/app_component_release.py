@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,26 +19,26 @@ T = TypeVar("T", bound="AppComponentRelease")
 class AppComponentRelease:
     """
     Attributes:
-        build_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        release_steps (Union[Unset, list['AppComponentReleaseStep']]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        total_release_steps (Union[Unset, int]):
-        updated_at (Union[Unset, str]):
+        build_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        release_steps (list[AppComponentReleaseStep] | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        total_release_steps (int | Unset):
+        updated_at (str | Unset):
     """
 
-    build_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    release_steps: Union[Unset, list["AppComponentReleaseStep"]] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    total_release_steps: Union[Unset, int] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    build_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    release_steps: list[AppComponentReleaseStep] | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    total_release_steps: int | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,7 +50,7 @@ class AppComponentRelease:
 
         id = self.id
 
-        release_steps: Union[Unset, list[dict[str, Any]]] = UNSET
+        release_steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.release_steps, Unset):
             release_steps = []
             for release_steps_item_data in self.release_steps:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,18 +19,18 @@ T = TypeVar("T", bound="PlantypesKubernetesManifestDeployPlan")
 class PlantypesKubernetesManifestDeployPlan:
     """
     Attributes:
-        cluster_info (Union[Unset, KubeClusterInfo]):
-        manifest (Union[Unset, str]):
-        namespace (Union[Unset, str]):
+        cluster_info (KubeClusterInfo | Unset):
+        manifest (str | Unset):
+        namespace (str | Unset):
     """
 
-    cluster_info: Union[Unset, "KubeClusterInfo"] = UNSET
-    manifest: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
+    cluster_info: KubeClusterInfo | Unset = UNSET
+    manifest: str | Unset = UNSET
+    namespace: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        cluster_info: Union[Unset, dict[str, Any]] = UNSET
+        cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
 
@@ -54,7 +56,7 @@ class PlantypesKubernetesManifestDeployPlan:
 
         d = dict(src_dict)
         _cluster_info = d.pop("cluster_info", UNSET)
-        cluster_info: Union[Unset, KubeClusterInfo]
+        cluster_info: KubeClusterInfo | Unset
         if isinstance(_cluster_info, Unset):
             cluster_info = UNSET
         else:

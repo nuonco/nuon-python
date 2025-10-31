@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,64 +21,64 @@ T = TypeVar("T", bound="AppOtelLogRecord")
 class AppOtelLogRecord:
     """
     Attributes:
-        body (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        log_attributes (Union[Unset, AppOtelLogRecordLogAttributes]):
-        log_stream_id (Union[Unset, str]):
-        org_id (Union[Unset, str]): internal attributes
-        resource_attributes (Union[Unset, AppOtelLogRecordResourceAttributes]):
-        resource_schema_url (Union[Unset, str]):
-        runner_group_id (Union[Unset, str]):
-        runner_id (Union[Unset, str]):
-        runner_job_execution_id (Union[Unset, str]):
-        runner_job_execution_step (Union[Unset, str]):
-        runner_job_id (Union[Unset, str]):
-        scope_attributes (Union[Unset, AppOtelLogRecordScopeAttributes]):
-        scope_name (Union[Unset, str]):
-        scope_schema_url (Union[Unset, str]):
-        scope_version (Union[Unset, str]):
-        service_name (Union[Unset, str]):
-        severity_number (Union[Unset, int]):
-        severity_text (Union[Unset, str]):
-        span_id (Union[Unset, str]):
-        timestamp (Union[Unset, str]): OTEL log message attributes
-        timestamp_date (Union[Unset, str]):
-        timestamp_time (Union[Unset, str]):
-        trace_flags (Union[Unset, int]):
-        trace_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        body (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        log_attributes (AppOtelLogRecordLogAttributes | Unset):
+        log_stream_id (str | Unset):
+        org_id (str | Unset): internal attributes
+        resource_attributes (AppOtelLogRecordResourceAttributes | Unset):
+        resource_schema_url (str | Unset):
+        runner_group_id (str | Unset):
+        runner_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        runner_job_execution_step (str | Unset):
+        runner_job_id (str | Unset):
+        scope_attributes (AppOtelLogRecordScopeAttributes | Unset):
+        scope_name (str | Unset):
+        scope_schema_url (str | Unset):
+        scope_version (str | Unset):
+        service_name (str | Unset):
+        severity_number (int | Unset):
+        severity_text (str | Unset):
+        span_id (str | Unset):
+        timestamp (str | Unset): OTEL log message attributes
+        timestamp_date (str | Unset):
+        timestamp_time (str | Unset):
+        trace_flags (int | Unset):
+        trace_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    body: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    log_attributes: Union[Unset, "AppOtelLogRecordLogAttributes"] = UNSET
-    log_stream_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    resource_attributes: Union[Unset, "AppOtelLogRecordResourceAttributes"] = UNSET
-    resource_schema_url: Union[Unset, str] = UNSET
-    runner_group_id: Union[Unset, str] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    runner_job_execution_id: Union[Unset, str] = UNSET
-    runner_job_execution_step: Union[Unset, str] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    scope_attributes: Union[Unset, "AppOtelLogRecordScopeAttributes"] = UNSET
-    scope_name: Union[Unset, str] = UNSET
-    scope_schema_url: Union[Unset, str] = UNSET
-    scope_version: Union[Unset, str] = UNSET
-    service_name: Union[Unset, str] = UNSET
-    severity_number: Union[Unset, int] = UNSET
-    severity_text: Union[Unset, str] = UNSET
-    span_id: Union[Unset, str] = UNSET
-    timestamp: Union[Unset, str] = UNSET
-    timestamp_date: Union[Unset, str] = UNSET
-    timestamp_time: Union[Unset, str] = UNSET
-    trace_flags: Union[Unset, int] = UNSET
-    trace_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    body: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    log_attributes: AppOtelLogRecordLogAttributes | Unset = UNSET
+    log_stream_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    resource_attributes: AppOtelLogRecordResourceAttributes | Unset = UNSET
+    resource_schema_url: str | Unset = UNSET
+    runner_group_id: str | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    runner_job_execution_id: str | Unset = UNSET
+    runner_job_execution_step: str | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    scope_attributes: AppOtelLogRecordScopeAttributes | Unset = UNSET
+    scope_name: str | Unset = UNSET
+    scope_schema_url: str | Unset = UNSET
+    scope_version: str | Unset = UNSET
+    service_name: str | Unset = UNSET
+    severity_number: int | Unset = UNSET
+    severity_text: str | Unset = UNSET
+    span_id: str | Unset = UNSET
+    timestamp: str | Unset = UNSET
+    timestamp_date: str | Unset = UNSET
+    timestamp_time: str | Unset = UNSET
+    trace_flags: int | Unset = UNSET
+    trace_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -88,7 +90,7 @@ class AppOtelLogRecord:
 
         id = self.id
 
-        log_attributes: Union[Unset, dict[str, Any]] = UNSET
+        log_attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_attributes, Unset):
             log_attributes = self.log_attributes.to_dict()
 
@@ -96,7 +98,7 @@ class AppOtelLogRecord:
 
         org_id = self.org_id
 
-        resource_attributes: Union[Unset, dict[str, Any]] = UNSET
+        resource_attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.resource_attributes, Unset):
             resource_attributes = self.resource_attributes.to_dict()
 
@@ -112,7 +114,7 @@ class AppOtelLogRecord:
 
         runner_job_id = self.runner_job_id
 
-        scope_attributes: Union[Unset, dict[str, Any]] = UNSET
+        scope_attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.scope_attributes, Unset):
             scope_attributes = self.scope_attributes.to_dict()
 
@@ -220,7 +222,7 @@ class AppOtelLogRecord:
         id = d.pop("id", UNSET)
 
         _log_attributes = d.pop("log_attributes", UNSET)
-        log_attributes: Union[Unset, AppOtelLogRecordLogAttributes]
+        log_attributes: AppOtelLogRecordLogAttributes | Unset
         if isinstance(_log_attributes, Unset):
             log_attributes = UNSET
         else:
@@ -231,7 +233,7 @@ class AppOtelLogRecord:
         org_id = d.pop("org_id", UNSET)
 
         _resource_attributes = d.pop("resource_attributes", UNSET)
-        resource_attributes: Union[Unset, AppOtelLogRecordResourceAttributes]
+        resource_attributes: AppOtelLogRecordResourceAttributes | Unset
         if isinstance(_resource_attributes, Unset):
             resource_attributes = UNSET
         else:
@@ -250,7 +252,7 @@ class AppOtelLogRecord:
         runner_job_id = d.pop("runner_job_id", UNSET)
 
         _scope_attributes = d.pop("scope_attributes", UNSET)
-        scope_attributes: Union[Unset, AppOtelLogRecordScopeAttributes]
+        scope_attributes: AppOtelLogRecordScopeAttributes | Unset
         if isinstance(_scope_attributes, Unset):
             scope_attributes = UNSET
         else:

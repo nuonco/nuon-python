@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,32 +22,32 @@ T = TypeVar("T", bound="AppAccount")
 class AppAccount:
     """
     Attributes:
-        account_type (Union[Unset, AppAccountType]):
-        created_at (Union[Unset, str]):
-        email (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_ids (Union[Unset, list[str]]): ReadOnly Fields
-        permissions (Union[Unset, PermissionsSet]):
-        roles (Union[Unset, list['AppRole']]):
-        subject (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        user_journeys (Union[Unset, list['AppUserJourney']]):
+        account_type (AppAccountType | Unset):
+        created_at (str | Unset):
+        email (str | Unset):
+        id (str | Unset):
+        org_ids (list[str] | Unset): ReadOnly Fields
+        permissions (PermissionsSet | Unset):
+        roles (list[AppRole] | Unset):
+        subject (str | Unset):
+        updated_at (str | Unset):
+        user_journeys (list[AppUserJourney] | Unset):
     """
 
-    account_type: Union[Unset, AppAccountType] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    email: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_ids: Union[Unset, list[str]] = UNSET
-    permissions: Union[Unset, "PermissionsSet"] = UNSET
-    roles: Union[Unset, list["AppRole"]] = UNSET
-    subject: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    user_journeys: Union[Unset, list["AppUserJourney"]] = UNSET
+    account_type: AppAccountType | Unset = UNSET
+    created_at: str | Unset = UNSET
+    email: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_ids: list[str] | Unset = UNSET
+    permissions: PermissionsSet | Unset = UNSET
+    roles: list[AppRole] | Unset = UNSET
+    subject: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    user_journeys: list[AppUserJourney] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        account_type: Union[Unset, str] = UNSET
+        account_type: str | Unset = UNSET
         if not isinstance(self.account_type, Unset):
             account_type = self.account_type.value
 
@@ -55,15 +57,15 @@ class AppAccount:
 
         id = self.id
 
-        org_ids: Union[Unset, list[str]] = UNSET
+        org_ids: list[str] | Unset = UNSET
         if not isinstance(self.org_ids, Unset):
             org_ids = self.org_ids
 
-        permissions: Union[Unset, dict[str, Any]] = UNSET
+        permissions: dict[str, Any] | Unset = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions.to_dict()
 
-        roles: Union[Unset, list[dict[str, Any]]] = UNSET
+        roles: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.roles, Unset):
             roles = []
             for roles_item_data in self.roles:
@@ -74,7 +76,7 @@ class AppAccount:
 
         updated_at = self.updated_at
 
-        user_journeys: Union[Unset, list[dict[str, Any]]] = UNSET
+        user_journeys: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.user_journeys, Unset):
             user_journeys = []
             for user_journeys_item_data in self.user_journeys:
@@ -115,7 +117,7 @@ class AppAccount:
 
         d = dict(src_dict)
         _account_type = d.pop("account_type", UNSET)
-        account_type: Union[Unset, AppAccountType]
+        account_type: AppAccountType | Unset
         if isinstance(_account_type, Unset):
             account_type = UNSET
         else:
@@ -130,7 +132,7 @@ class AppAccount:
         org_ids = cast(list[str], d.pop("org_ids", UNSET))
 
         _permissions = d.pop("permissions", UNSET)
-        permissions: Union[Unset, PermissionsSet]
+        permissions: PermissionsSet | Unset
         if isinstance(_permissions, Unset):
             permissions = UNSET
         else:

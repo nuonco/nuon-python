@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="ServiceCreateComponentBuildRequest")
 class ServiceCreateComponentBuildRequest:
     """
     Attributes:
-        git_ref (Union[Unset, str]):
-        use_latest (Union[Unset, bool]):
+        git_ref (str | Unset):
+        use_latest (bool | Unset):
     """
 
-    git_ref: Union[Unset, str] = UNSET
-    use_latest: Union[Unset, bool] = UNSET
+    git_ref: str | Unset = UNSET
+    use_latest: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

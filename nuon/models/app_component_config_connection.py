@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,50 +26,50 @@ T = TypeVar("T", bound="AppComponentConfigConnection")
 class AppComponentConfigConnection:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_config_version (Union[Unset, int]):
-        checksum (Union[Unset, str]):
-        component_dependency_ids (Union[Unset, list[str]]):
-        component_id (Union[Unset, str]):
-        component_name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        docker_build (Union[Unset, AppDockerBuildComponentConfig]):
-        drift_schedule (Union[Unset, str]):
-        external_image (Union[Unset, AppExternalImageComponentConfig]):
-        helm (Union[Unset, AppHelmComponentConfig]):
-        id (Union[Unset, str]):
-        job (Union[Unset, AppJobComponentConfig]):
-        kubernetes_manifest (Union[Unset, AppKubernetesManifestComponentConfig]):
-        references (Union[Unset, list[str]]):
-        refs (Union[Unset, list['RefsRef']]):
-        terraform_module (Union[Unset, AppTerraformModuleComponentConfig]):
-        type_ (Union[Unset, AppComponentType]):
-        updated_at (Union[Unset, str]):
-        version (Union[Unset, int]):
+        app_config_id (str | Unset):
+        app_config_version (int | Unset):
+        checksum (str | Unset):
+        component_dependency_ids (list[str] | Unset):
+        component_id (str | Unset):
+        component_name (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        docker_build (AppDockerBuildComponentConfig | Unset):
+        drift_schedule (str | Unset):
+        external_image (AppExternalImageComponentConfig | Unset):
+        helm (AppHelmComponentConfig | Unset):
+        id (str | Unset):
+        job (AppJobComponentConfig | Unset):
+        kubernetes_manifest (AppKubernetesManifestComponentConfig | Unset):
+        references (list[str] | Unset):
+        refs (list[RefsRef] | Unset):
+        terraform_module (AppTerraformModuleComponentConfig | Unset):
+        type_ (AppComponentType | Unset):
+        updated_at (str | Unset):
+        version (int | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_config_version: Union[Unset, int] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    component_dependency_ids: Union[Unset, list[str]] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    component_name: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    docker_build: Union[Unset, "AppDockerBuildComponentConfig"] = UNSET
-    drift_schedule: Union[Unset, str] = UNSET
-    external_image: Union[Unset, "AppExternalImageComponentConfig"] = UNSET
-    helm: Union[Unset, "AppHelmComponentConfig"] = UNSET
-    id: Union[Unset, str] = UNSET
-    job: Union[Unset, "AppJobComponentConfig"] = UNSET
-    kubernetes_manifest: Union[Unset, "AppKubernetesManifestComponentConfig"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    refs: Union[Unset, list["RefsRef"]] = UNSET
-    terraform_module: Union[Unset, "AppTerraformModuleComponentConfig"] = UNSET
-    type_: Union[Unset, AppComponentType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    version: Union[Unset, int] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_config_version: int | Unset = UNSET
+    checksum: str | Unset = UNSET
+    component_dependency_ids: list[str] | Unset = UNSET
+    component_id: str | Unset = UNSET
+    component_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    docker_build: AppDockerBuildComponentConfig | Unset = UNSET
+    drift_schedule: str | Unset = UNSET
+    external_image: AppExternalImageComponentConfig | Unset = UNSET
+    helm: AppHelmComponentConfig | Unset = UNSET
+    id: str | Unset = UNSET
+    job: AppJobComponentConfig | Unset = UNSET
+    kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    refs: list[RefsRef] | Unset = UNSET
+    terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
+    type_: AppComponentType | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    version: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,7 +79,7 @@ class AppComponentConfigConnection:
 
         checksum = self.checksum
 
-        component_dependency_ids: Union[Unset, list[str]] = UNSET
+        component_dependency_ids: list[str] | Unset = UNSET
         if not isinstance(self.component_dependency_ids, Unset):
             component_dependency_ids = self.component_dependency_ids
 
@@ -89,46 +91,46 @@ class AppComponentConfigConnection:
 
         created_by_id = self.created_by_id
 
-        docker_build: Union[Unset, dict[str, Any]] = UNSET
+        docker_build: dict[str, Any] | Unset = UNSET
         if not isinstance(self.docker_build, Unset):
             docker_build = self.docker_build.to_dict()
 
         drift_schedule = self.drift_schedule
 
-        external_image: Union[Unset, dict[str, Any]] = UNSET
+        external_image: dict[str, Any] | Unset = UNSET
         if not isinstance(self.external_image, Unset):
             external_image = self.external_image.to_dict()
 
-        helm: Union[Unset, dict[str, Any]] = UNSET
+        helm: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm, Unset):
             helm = self.helm.to_dict()
 
         id = self.id
 
-        job: Union[Unset, dict[str, Any]] = UNSET
+        job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.job, Unset):
             job = self.job.to_dict()
 
-        kubernetes_manifest: Union[Unset, dict[str, Any]] = UNSET
+        kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
-        refs: Union[Unset, list[dict[str, Any]]] = UNSET
+        refs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
 
-        terraform_module: Union[Unset, dict[str, Any]] = UNSET
+        terraform_module: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_module, Unset):
             terraform_module = self.terraform_module.to_dict()
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -212,7 +214,7 @@ class AppComponentConfigConnection:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _docker_build = d.pop("docker_build", UNSET)
-        docker_build: Union[Unset, AppDockerBuildComponentConfig]
+        docker_build: AppDockerBuildComponentConfig | Unset
         if isinstance(_docker_build, Unset):
             docker_build = UNSET
         else:
@@ -221,14 +223,14 @@ class AppComponentConfigConnection:
         drift_schedule = d.pop("drift_schedule", UNSET)
 
         _external_image = d.pop("external_image", UNSET)
-        external_image: Union[Unset, AppExternalImageComponentConfig]
+        external_image: AppExternalImageComponentConfig | Unset
         if isinstance(_external_image, Unset):
             external_image = UNSET
         else:
             external_image = AppExternalImageComponentConfig.from_dict(_external_image)
 
         _helm = d.pop("helm", UNSET)
-        helm: Union[Unset, AppHelmComponentConfig]
+        helm: AppHelmComponentConfig | Unset
         if isinstance(_helm, Unset):
             helm = UNSET
         else:
@@ -237,14 +239,14 @@ class AppComponentConfigConnection:
         id = d.pop("id", UNSET)
 
         _job = d.pop("job", UNSET)
-        job: Union[Unset, AppJobComponentConfig]
+        job: AppJobComponentConfig | Unset
         if isinstance(_job, Unset):
             job = UNSET
         else:
             job = AppJobComponentConfig.from_dict(_job)
 
         _kubernetes_manifest = d.pop("kubernetes_manifest", UNSET)
-        kubernetes_manifest: Union[Unset, AppKubernetesManifestComponentConfig]
+        kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset
         if isinstance(_kubernetes_manifest, Unset):
             kubernetes_manifest = UNSET
         else:
@@ -260,14 +262,14 @@ class AppComponentConfigConnection:
             refs.append(refs_item)
 
         _terraform_module = d.pop("terraform_module", UNSET)
-        terraform_module: Union[Unset, AppTerraformModuleComponentConfig]
+        terraform_module: AppTerraformModuleComponentConfig | Unset
         if isinstance(_terraform_module, Unset):
             terraform_module = UNSET
         else:
             terraform_module = AppTerraformModuleComponentConfig.from_dict(_terraform_module)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppComponentType]
+        type_: AppComponentType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

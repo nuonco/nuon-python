@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,44 +23,44 @@ T = TypeVar("T", bound="AppAppSandboxConfig")
 class AppAppSandboxConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        aws_region_type (Union[Unset, str]): cloud specific fields
-        cloud_platform (Union[Unset, str]): fields set via after query
-        connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        drift_schedule (Union[Unset, str]):
-        env_vars (Union[Unset, AppAppSandboxConfigEnvVars]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
-        references (Union[Unset, list[str]]):
-        refs (Union[Unset, list['RefsRef']]):
-        terraform_version (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        variables (Union[Unset, AppAppSandboxConfigVariables]):
-        variables_files (Union[Unset, list[str]]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        aws_region_type (str | Unset): cloud specific fields
+        cloud_platform (str | Unset): fields set via after query
+        connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        drift_schedule (str | Unset):
+        env_vars (AppAppSandboxConfigEnvVars | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        references (list[str] | Unset):
+        refs (list[RefsRef] | Unset):
+        terraform_version (str | Unset):
+        updated_at (str | Unset):
+        variables (AppAppSandboxConfigVariables | Unset):
+        variables_files (list[str] | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    aws_region_type: Union[Unset, str] = UNSET
-    cloud_platform: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    drift_schedule: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppAppSandboxConfigEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    refs: Union[Unset, list["RefsRef"]] = UNSET
-    terraform_version: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    variables: Union[Unset, "AppAppSandboxConfigVariables"] = UNSET
-    variables_files: Union[Unset, list[str]] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    aws_region_type: str | Unset = UNSET
+    cloud_platform: str | Unset = UNSET
+    connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    drift_schedule: str | Unset = UNSET
+    env_vars: AppAppSandboxConfigEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    refs: list[RefsRef] | Unset = UNSET
+    terraform_version: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    variables: AppAppSandboxConfigVariables | Unset = UNSET
+    variables_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,7 +72,7 @@ class AppAppSandboxConfig:
 
         cloud_platform = self.cloud_platform
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
@@ -80,7 +82,7 @@ class AppAppSandboxConfig:
 
         drift_schedule = self.drift_schedule
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
@@ -88,15 +90,15 @@ class AppAppSandboxConfig:
 
         org_id = self.org_id
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
-        refs: Union[Unset, list[dict[str, Any]]] = UNSET
+        refs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
@@ -107,11 +109,11 @@ class AppAppSandboxConfig:
 
         updated_at = self.updated_at
 
-        variables: Union[Unset, dict[str, Any]] = UNSET
+        variables: dict[str, Any] | Unset = UNSET
         if not isinstance(self.variables, Unset):
             variables = self.variables.to_dict()
 
-        variables_files: Union[Unset, list[str]] = UNSET
+        variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
             variables_files = self.variables_files
 
@@ -175,7 +177,7 @@ class AppAppSandboxConfig:
         cloud_platform = d.pop("cloud_platform", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, AppConnectedGithubVCSConfig]
+        connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -188,7 +190,7 @@ class AppAppSandboxConfig:
         drift_schedule = d.pop("drift_schedule", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppAppSandboxConfigEnvVars]
+        env_vars: AppAppSandboxConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
@@ -199,7 +201,7 @@ class AppAppSandboxConfig:
         org_id = d.pop("org_id", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, AppPublicGitVCSConfig]
+        public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:
@@ -219,7 +221,7 @@ class AppAppSandboxConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         _variables = d.pop("variables", UNSET)
-        variables: Union[Unset, AppAppSandboxConfigVariables]
+        variables: AppAppSandboxConfigVariables | Unset
         if isinstance(_variables, Unset):
             variables = UNSET
         else:

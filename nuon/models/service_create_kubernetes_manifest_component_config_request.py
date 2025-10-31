@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,22 +15,22 @@ T = TypeVar("T", bound="ServiceCreateKubernetesManifestComponentConfigRequest")
 class ServiceCreateKubernetesManifestComponentConfigRequest:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        checksum (Union[Unset, str]):
-        dependencies (Union[Unset, list[str]]):
-        drift_schedule (Union[Unset, str]):
-        manifest (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        references (Union[Unset, list[str]]):
+        app_config_id (str | Unset):
+        checksum (str | Unset):
+        dependencies (list[str] | Unset):
+        drift_schedule (str | Unset):
+        manifest (str | Unset):
+        namespace (str | Unset):
+        references (list[str] | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    drift_schedule: Union[Unset, str] = UNSET
-    manifest: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    references: Union[Unset, list[str]] = UNSET
+    app_config_id: str | Unset = UNSET
+    checksum: str | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    drift_schedule: str | Unset = UNSET
+    manifest: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +38,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
         checksum = self.checksum
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
@@ -46,7 +48,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
         namespace = self.namespace
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 

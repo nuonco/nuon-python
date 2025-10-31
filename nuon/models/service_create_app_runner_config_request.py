@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,17 +22,17 @@ class ServiceCreateAppRunnerConfigRequest:
     """
     Attributes:
         type_ (AppAppRunnerType):
-        app_config_id (Union[Unset, str]):
-        env_vars (Union[Unset, ServiceCreateAppRunnerConfigRequestEnvVars]):
-        helm_driver (Union[Unset, AppAppRunnerConfigHelmDriverType]):
-        init_script_url (Union[Unset, str]):
+        app_config_id (str | Unset):
+        env_vars (ServiceCreateAppRunnerConfigRequestEnvVars | Unset):
+        helm_driver (AppAppRunnerConfigHelmDriverType | Unset):
+        init_script_url (str | Unset):
     """
 
     type_: AppAppRunnerType
-    app_config_id: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "ServiceCreateAppRunnerConfigRequestEnvVars"] = UNSET
-    helm_driver: Union[Unset, AppAppRunnerConfigHelmDriverType] = UNSET
-    init_script_url: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    env_vars: ServiceCreateAppRunnerConfigRequestEnvVars | Unset = UNSET
+    helm_driver: AppAppRunnerConfigHelmDriverType | Unset = UNSET
+    init_script_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,11 +40,11 @@ class ServiceCreateAppRunnerConfigRequest:
 
         app_config_id = self.app_config_id
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        helm_driver: Union[Unset, str] = UNSET
+        helm_driver: str | Unset = UNSET
         if not isinstance(self.helm_driver, Unset):
             helm_driver = self.helm_driver.value
 
@@ -78,14 +80,14 @@ class ServiceCreateAppRunnerConfigRequest:
         app_config_id = d.pop("app_config_id", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, ServiceCreateAppRunnerConfigRequestEnvVars]
+        env_vars: ServiceCreateAppRunnerConfigRequestEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
             env_vars = ServiceCreateAppRunnerConfigRequestEnvVars.from_dict(_env_vars)
 
         _helm_driver = d.pop("helm_driver", UNSET)
-        helm_driver: Union[Unset, AppAppRunnerConfigHelmDriverType]
+        helm_driver: AppAppRunnerConfigHelmDriverType | Unset
         if isinstance(_helm_driver, Unset):
             helm_driver = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,22 +15,22 @@ T = TypeVar("T", bound="AppKubernetesManifestComponentConfig")
 class AppKubernetesManifestComponentConfig:
     """
     Attributes:
-        component_config_connection_id (Union[Unset, str]): value
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        manifest (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        component_config_connection_id (str | Unset): value
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        manifest (str | Unset):
+        namespace (str | Unset):
+        updated_at (str | Unset):
     """
 
-    component_config_connection_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    manifest: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    manifest: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

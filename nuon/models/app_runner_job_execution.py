@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,26 +21,26 @@ T = TypeVar("T", bound="AppRunnerJobExecution")
 class AppRunnerJobExecution:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        outputs (Union[Unset, AppRunnerJobExecutionOutputs]):
-        result (Union[Unset, AppRunnerJobExecutionResult]):
-        runner_job_id (Union[Unset, str]):
-        status (Union[Unset, AppRunnerJobExecutionStatus]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        outputs (AppRunnerJobExecutionOutputs | Unset):
+        result (AppRunnerJobExecutionResult | Unset):
+        runner_job_id (str | Unset):
+        status (AppRunnerJobExecutionStatus | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    outputs: Union[Unset, "AppRunnerJobExecutionOutputs"] = UNSET
-    result: Union[Unset, "AppRunnerJobExecutionResult"] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    status: Union[Unset, AppRunnerJobExecutionStatus] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    outputs: AppRunnerJobExecutionOutputs | Unset = UNSET
+    result: AppRunnerJobExecutionResult | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    status: AppRunnerJobExecutionStatus | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,17 +52,17 @@ class AppRunnerJobExecution:
 
         org_id = self.org_id
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
-        result: Union[Unset, dict[str, Any]] = UNSET
+        result: dict[str, Any] | Unset = UNSET
         if not isinstance(self.result, Unset):
             result = self.result.to_dict()
 
         runner_job_id = self.runner_job_id
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -105,14 +107,14 @@ class AppRunnerJobExecution:
         org_id = d.pop("org_id", UNSET)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, AppRunnerJobExecutionOutputs]
+        outputs: AppRunnerJobExecutionOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:
             outputs = AppRunnerJobExecutionOutputs.from_dict(_outputs)
 
         _result = d.pop("result", UNSET)
-        result: Union[Unset, AppRunnerJobExecutionResult]
+        result: AppRunnerJobExecutionResult | Unset
         if isinstance(_result, Unset):
             result = UNSET
         else:
@@ -121,7 +123,7 @@ class AppRunnerJobExecution:
         runner_job_id = d.pop("runner_job_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppRunnerJobExecutionStatus]
+        status: AppRunnerJobExecutionStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

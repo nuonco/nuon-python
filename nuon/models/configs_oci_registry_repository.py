@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,39 +26,39 @@ T = TypeVar("T", bound="ConfigsOCIRegistryRepository")
 class ConfigsOCIRegistryRepository:
     """
     Attributes:
-        acrauth (Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]):
-        ecrauth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
-        login_server (Union[Unset, str]):
-        ociauth (Union[Unset, ConfigsOCIRegistryAuth]):
-        plugin (Union[Unset, str]):
-        region (Union[Unset, str]):
-        registry_type (Union[Unset, ConfigsOCIRegistryType]):
-        repository (Union[Unset, str]): based on the type of access, either the repository (ecr) or login server (acr)
-            will be provided.
+        acrauth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        ecrauth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        login_server (str | Unset):
+        ociauth (ConfigsOCIRegistryAuth | Unset):
+        plugin (str | Unset):
+        region (str | Unset):
+        registry_type (ConfigsOCIRegistryType | Unset):
+        repository (str | Unset): based on the type of access, either the repository (ecr) or login server (acr) will be
+            provided.
     """
 
-    acrauth: Union[Unset, "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig"] = UNSET
-    ecrauth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
-    login_server: Union[Unset, str] = UNSET
-    ociauth: Union[Unset, "ConfigsOCIRegistryAuth"] = UNSET
-    plugin: Union[Unset, str] = UNSET
-    region: Union[Unset, str] = UNSET
-    registry_type: Union[Unset, ConfigsOCIRegistryType] = UNSET
-    repository: Union[Unset, str] = UNSET
+    acrauth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    ecrauth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    login_server: str | Unset = UNSET
+    ociauth: ConfigsOCIRegistryAuth | Unset = UNSET
+    plugin: str | Unset = UNSET
+    region: str | Unset = UNSET
+    registry_type: ConfigsOCIRegistryType | Unset = UNSET
+    repository: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        acrauth: Union[Unset, dict[str, Any]] = UNSET
+        acrauth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.acrauth, Unset):
             acrauth = self.acrauth.to_dict()
 
-        ecrauth: Union[Unset, dict[str, Any]] = UNSET
+        ecrauth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.ecrauth, Unset):
             ecrauth = self.ecrauth.to_dict()
 
         login_server = self.login_server
 
-        ociauth: Union[Unset, dict[str, Any]] = UNSET
+        ociauth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.ociauth, Unset):
             ociauth = self.ociauth.to_dict()
 
@@ -64,7 +66,7 @@ class ConfigsOCIRegistryRepository:
 
         region = self.region
 
-        registry_type: Union[Unset, str] = UNSET
+        registry_type: str | Unset = UNSET
         if not isinstance(self.registry_type, Unset):
             registry_type = self.registry_type.value
 
@@ -104,14 +106,14 @@ class ConfigsOCIRegistryRepository:
 
         d = dict(src_dict)
         _acrauth = d.pop("acrauth", UNSET)
-        acrauth: Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]
+        acrauth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
         if isinstance(_acrauth, Unset):
             acrauth = UNSET
         else:
             acrauth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_acrauth)
 
         _ecrauth = d.pop("ecrauth", UNSET)
-        ecrauth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        ecrauth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_ecrauth, Unset):
             ecrauth = UNSET
         else:
@@ -120,7 +122,7 @@ class ConfigsOCIRegistryRepository:
         login_server = d.pop("loginServer", UNSET)
 
         _ociauth = d.pop("ociauth", UNSET)
-        ociauth: Union[Unset, ConfigsOCIRegistryAuth]
+        ociauth: ConfigsOCIRegistryAuth | Unset
         if isinstance(_ociauth, Unset):
             ociauth = UNSET
         else:
@@ -131,7 +133,7 @@ class ConfigsOCIRegistryRepository:
         region = d.pop("region", UNSET)
 
         _registry_type = d.pop("registryType", UNSET)
-        registry_type: Union[Unset, ConfigsOCIRegistryType]
+        registry_type: ConfigsOCIRegistryType | Unset
         if isinstance(_registry_type, Unset):
             registry_type = UNSET
         else:

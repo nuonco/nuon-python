@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,29 +19,29 @@ T = TypeVar("T", bound="AppTerraformWorkspaceStateJSON")
 class AppTerraformWorkspaceStateJSON:
     """
     Attributes:
-        contents (Union[Unset, list[int]]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        runner_job_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        workspace_id (Union[Unset, str]): Foreign key to TerraformWorkspace with unique constraint to prevent
-            conflicting states for a workspace
+        contents (list[int] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        runner_job (AppRunnerJob | Unset):
+        runner_job_id (str | Unset):
+        updated_at (str | Unset):
+        workspace_id (str | Unset): Foreign key to TerraformWorkspace with unique constraint to prevent conflicting
+            states for a workspace
     """
 
-    contents: Union[Unset, list[int]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    runner_job_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workspace_id: Union[Unset, str] = UNSET
+    contents: list[int] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    runner_job_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        contents: Union[Unset, list[int]] = UNSET
+        contents: list[int] | Unset = UNSET
         if not isinstance(self.contents, Unset):
             contents = self.contents
 
@@ -49,7 +51,7 @@ class AppTerraformWorkspaceStateJSON:
 
         id = self.id
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
@@ -95,7 +97,7 @@ class AppTerraformWorkspaceStateJSON:
         id = d.pop("id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="GenericsNullTime")
 class GenericsNullTime:
     """
     Attributes:
-        time (Union[Unset, str]):
-        valid (Union[Unset, bool]): Valid is true if Time is not NULL
+        time (str | Unset):
+        valid (bool | Unset): Valid is true if Time is not NULL
     """
 
-    time: Union[Unset, str] = UNSET
-    valid: Union[Unset, bool] = UNSET
+    time: str | Unset = UNSET
+    valid: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

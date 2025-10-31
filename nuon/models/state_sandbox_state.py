@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,30 +19,30 @@ T = TypeVar("T", bound="StateSandboxState")
 class StateSandboxState:
     """
     Attributes:
-        outputs (Union[Unset, StateSandboxStateOutputs]):
-        populated (Union[Unset, bool]):
-        recent_runs (Union[Unset, list['StateSandboxState']]):
-        status (Union[Unset, str]):
-        type_ (Union[Unset, str]):
-        version (Union[Unset, str]):
+        outputs (StateSandboxStateOutputs | Unset):
+        populated (bool | Unset):
+        recent_runs (list[StateSandboxState] | Unset):
+        status (str | Unset):
+        type_ (str | Unset):
+        version (str | Unset):
     """
 
-    outputs: Union[Unset, "StateSandboxStateOutputs"] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    recent_runs: Union[Unset, list["StateSandboxState"]] = UNSET
-    status: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
-    version: Union[Unset, str] = UNSET
+    outputs: StateSandboxStateOutputs | Unset = UNSET
+    populated: bool | Unset = UNSET
+    recent_runs: list[StateSandboxState] | Unset = UNSET
+    status: str | Unset = UNSET
+    type_: str | Unset = UNSET
+    version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
         populated = self.populated
 
-        recent_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        recent_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.recent_runs, Unset):
             recent_runs = []
             for recent_runs_item_data in self.recent_runs:
@@ -77,7 +79,7 @@ class StateSandboxState:
 
         d = dict(src_dict)
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, StateSandboxStateOutputs]
+        outputs: StateSandboxStateOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:

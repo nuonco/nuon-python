@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="AppInstallAuditLog")
 class AppInstallAuditLog:
     """
     Attributes:
-        install_id (Union[Unset, str]):
-        log_line (Union[Unset, str]):
-        time_stamp (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        install_id (str | Unset):
+        log_line (str | Unset):
+        time_stamp (str | Unset):
+        type_ (str | Unset):
     """
 
-    install_id: Union[Unset, str] = UNSET
-    log_line: Union[Unset, str] = UNSET
-    time_stamp: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
+    install_id: str | Unset = UNSET
+    log_line: str | Unset = UNSET
+    time_stamp: str | Unset = UNSET
+    type_: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

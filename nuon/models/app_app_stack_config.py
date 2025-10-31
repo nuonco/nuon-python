@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,32 +16,32 @@ T = TypeVar("T", bound="AppAppStackConfig")
 class AppAppStackConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        id (Union[Unset, str]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        runner_nested_template_url (Union[Unset, str]):
-        type_ (Union[Unset, AppStackType]):
-        updated_at (Union[Unset, str]):
-        vpc_nested_template_url (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        description (str | Unset):
+        id (str | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        runner_nested_template_url (str | Unset):
+        type_ (AppStackType | Unset):
+        updated_at (str | Unset):
+        vpc_nested_template_url (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    runner_nested_template_url: Union[Unset, str] = UNSET
-    type_: Union[Unset, AppStackType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vpc_nested_template_url: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    description: str | Unset = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    runner_nested_template_url: str | Unset = UNSET
+    type_: AppStackType | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,7 +63,7 @@ class AppAppStackConfig:
 
         runner_nested_template_url = self.runner_nested_template_url
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -121,7 +123,7 @@ class AppAppStackConfig:
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppStackType]
+        type_: AppStackType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

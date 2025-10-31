@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,11 +22,11 @@ class ServiceUpdateInstallerRequestMetadata:
         github_url (str):
         homepage_url (str):
         logo_url (str):
-        copyright_markdown (Union[Unset, str]):
-        demo_url (Union[Unset, str]):
-        footer_markdown (Union[Unset, str]):
-        og_image_url (Union[Unset, str]):
-        post_install_markdown (Union[Unset, str]):
+        copyright_markdown (str | Unset):
+        demo_url (str | Unset):
+        footer_markdown (str | Unset):
+        og_image_url (str | Unset):
+        post_install_markdown (str | Unset):
     """
 
     community_url: str
@@ -34,11 +36,11 @@ class ServiceUpdateInstallerRequestMetadata:
     github_url: str
     homepage_url: str
     logo_url: str
-    copyright_markdown: Union[Unset, str] = UNSET
-    demo_url: Union[Unset, str] = UNSET
-    footer_markdown: Union[Unset, str] = UNSET
-    og_image_url: Union[Unset, str] = UNSET
-    post_install_markdown: Union[Unset, str] = UNSET
+    copyright_markdown: str | Unset = UNSET
+    demo_url: str | Unset = UNSET
+    footer_markdown: str | Unset = UNSET
+    og_image_url: str | Unset = UNSET
+    post_install_markdown: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

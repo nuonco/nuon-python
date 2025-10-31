@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,26 +19,26 @@ T = TypeVar("T", bound="AppAppBranch")
 class AppAppBranch:
     """
     Attributes:
-        app_id (Union[Unset, str]):
-        connected_github_vcs_config_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        workflows (Union[Unset, list['AppWorkflow']]):
+        app_id (str | Unset):
+        connected_github_vcs_config_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
+        workflows (list[AppWorkflow] | Unset):
     """
 
-    app_id: Union[Unset, str] = UNSET
-    connected_github_vcs_config_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workflows: Union[Unset, list["AppWorkflow"]] = UNSET
+    app_id: str | Unset = UNSET
+    connected_github_vcs_config_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,7 +58,7 @@ class AppAppBranch:
 
         updated_at = self.updated_at
 
-        workflows: Union[Unset, list[dict[str, Any]]] = UNSET
+        workflows: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.workflows, Unset):
             workflows = []
             for workflows_item_data in self.workflows:

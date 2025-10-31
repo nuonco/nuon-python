@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,20 +19,20 @@ T = TypeVar("T", bound="AppUserJourney")
 class AppUserJourney:
     """
     Attributes:
-        name (Union[Unset, str]):
-        steps (Union[Unset, list['AppUserJourneyStep']]):
-        title (Union[Unset, str]):
+        name (str | Unset):
+        steps (list[AppUserJourneyStep] | Unset):
+        title (str | Unset):
     """
 
-    name: Union[Unset, str] = UNSET
-    steps: Union[Unset, list["AppUserJourneyStep"]] = UNSET
-    title: Union[Unset, str] = UNSET
+    name: str | Unset = UNSET
+    steps: list[AppUserJourneyStep] | Unset = UNSET
+    title: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        steps: Union[Unset, list[dict[str, Any]]] = UNSET
+        steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
             steps = []
             for steps_item_data in self.steps:

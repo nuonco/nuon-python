@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,36 +21,36 @@ T = TypeVar("T", bound="AppRunner")
 class AppRunner:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        id (Union[Unset, str]):
-        jobs (Union[Unset, list['AppRunnerJob']]):
-        name (Union[Unset, str]):
-        operations (Union[Unset, list['AppRunnerOperation']]):
-        org_id (Union[Unset, str]):
-        runner_group (Union[Unset, AppRunnerGroup]):
-        runner_group_id (Union[Unset, str]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        display_name (str | Unset):
+        id (str | Unset):
+        jobs (list[AppRunnerJob] | Unset):
+        name (str | Unset):
+        operations (list[AppRunnerOperation] | Unset):
+        org_id (str | Unset):
+        runner_group (AppRunnerGroup | Unset):
+        runner_group_id (str | Unset):
+        runner_job (AppRunnerJob | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    jobs: Union[Unset, list["AppRunnerJob"]] = UNSET
-    name: Union[Unset, str] = UNSET
-    operations: Union[Unset, list["AppRunnerOperation"]] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    runner_group: Union[Unset, "AppRunnerGroup"] = UNSET
-    runner_group_id: Union[Unset, str] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    id: str | Unset = UNSET
+    jobs: list[AppRunnerJob] | Unset = UNSET
+    name: str | Unset = UNSET
+    operations: list[AppRunnerOperation] | Unset = UNSET
+    org_id: str | Unset = UNSET
+    runner_group: AppRunnerGroup | Unset = UNSET
+    runner_group_id: str | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,7 +62,7 @@ class AppRunner:
 
         id = self.id
 
-        jobs: Union[Unset, list[dict[str, Any]]] = UNSET
+        jobs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.jobs, Unset):
             jobs = []
             for jobs_item_data in self.jobs:
@@ -69,7 +71,7 @@ class AppRunner:
 
         name = self.name
 
-        operations: Union[Unset, list[dict[str, Any]]] = UNSET
+        operations: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.operations, Unset):
             operations = []
             for operations_item_data in self.operations:
@@ -78,13 +80,13 @@ class AppRunner:
 
         org_id = self.org_id
 
-        runner_group: Union[Unset, dict[str, Any]] = UNSET
+        runner_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_group, Unset):
             runner_group = self.runner_group.to_dict()
 
         runner_group_id = self.runner_group_id
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
@@ -162,7 +164,7 @@ class AppRunner:
         org_id = d.pop("org_id", UNSET)
 
         _runner_group = d.pop("runner_group", UNSET)
-        runner_group: Union[Unset, AppRunnerGroup]
+        runner_group: AppRunnerGroup | Unset
         if isinstance(_runner_group, Unset):
             runner_group = UNSET
         else:
@@ -171,7 +173,7 @@ class AppRunner:
         runner_group_id = d.pop("runner_group_id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:

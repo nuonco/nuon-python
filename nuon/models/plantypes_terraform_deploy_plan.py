@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,74 +33,74 @@ T = TypeVar("T", bound="PlantypesTerraformDeployPlan")
 class PlantypesTerraformDeployPlan:
     """
     Attributes:
-        aws_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
-        azure_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]):
-        cluster_info (Union[Unset, KubeClusterInfo]):
-        env_vars (Union[Unset, PlantypesTerraformDeployPlanEnvVars]):
-        hooks (Union[Unset, PlantypesTerraformDeployHooks]):
-        plan_json (Union[Unset, list[int]]):
-        policies (Union[Unset, PlantypesTerraformDeployPlanPolicies]):
-        state (Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateState]):
-        terraform_backend (Union[Unset, PlantypesTerraformBackend]):
-        vars_ (Union[Unset, PlantypesTerraformDeployPlanVars]):
-        vars_files (Union[Unset, list[str]]):
+        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        cluster_info (KubeClusterInfo | Unset):
+        env_vars (PlantypesTerraformDeployPlanEnvVars | Unset):
+        hooks (PlantypesTerraformDeployHooks | Unset):
+        plan_json (list[int] | Unset):
+        policies (PlantypesTerraformDeployPlanPolicies | Unset):
+        state (GithubComPowertoolsdevMonoPkgTypesStateState | Unset):
+        terraform_backend (PlantypesTerraformBackend | Unset):
+        vars_ (PlantypesTerraformDeployPlanVars | Unset):
+        vars_files (list[str] | Unset):
     """
 
-    aws_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
-    azure_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig"] = UNSET
-    cluster_info: Union[Unset, "KubeClusterInfo"] = UNSET
-    env_vars: Union[Unset, "PlantypesTerraformDeployPlanEnvVars"] = UNSET
-    hooks: Union[Unset, "PlantypesTerraformDeployHooks"] = UNSET
-    plan_json: Union[Unset, list[int]] = UNSET
-    policies: Union[Unset, "PlantypesTerraformDeployPlanPolicies"] = UNSET
-    state: Union[Unset, "GithubComPowertoolsdevMonoPkgTypesStateState"] = UNSET
-    terraform_backend: Union[Unset, "PlantypesTerraformBackend"] = UNSET
-    vars_: Union[Unset, "PlantypesTerraformDeployPlanVars"] = UNSET
-    vars_files: Union[Unset, list[str]] = UNSET
+    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    cluster_info: KubeClusterInfo | Unset = UNSET
+    env_vars: PlantypesTerraformDeployPlanEnvVars | Unset = UNSET
+    hooks: PlantypesTerraformDeployHooks | Unset = UNSET
+    plan_json: list[int] | Unset = UNSET
+    policies: PlantypesTerraformDeployPlanPolicies | Unset = UNSET
+    state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset = UNSET
+    terraform_backend: PlantypesTerraformBackend | Unset = UNSET
+    vars_: PlantypesTerraformDeployPlanVars | Unset = UNSET
+    vars_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws_auth: Union[Unset, dict[str, Any]] = UNSET
+        aws_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_auth, Unset):
             aws_auth = self.aws_auth.to_dict()
 
-        azure_auth: Union[Unset, dict[str, Any]] = UNSET
+        azure_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_auth, Unset):
             azure_auth = self.azure_auth.to_dict()
 
-        cluster_info: Union[Unset, dict[str, Any]] = UNSET
+        cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        hooks: Union[Unset, dict[str, Any]] = UNSET
+        hooks: dict[str, Any] | Unset = UNSET
         if not isinstance(self.hooks, Unset):
             hooks = self.hooks.to_dict()
 
-        plan_json: Union[Unset, list[int]] = UNSET
+        plan_json: list[int] | Unset = UNSET
         if not isinstance(self.plan_json, Unset):
             plan_json = self.plan_json
 
-        policies: Union[Unset, dict[str, Any]] = UNSET
+        policies: dict[str, Any] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = self.policies.to_dict()
 
-        state: Union[Unset, dict[str, Any]] = UNSET
+        state: dict[str, Any] | Unset = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.to_dict()
 
-        terraform_backend: Union[Unset, dict[str, Any]] = UNSET
+        terraform_backend: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_backend, Unset):
             terraform_backend = self.terraform_backend.to_dict()
 
-        vars_: Union[Unset, dict[str, Any]] = UNSET
+        vars_: dict[str, Any] | Unset = UNSET
         if not isinstance(self.vars_, Unset):
             vars_ = self.vars_.to_dict()
 
-        vars_files: Union[Unset, list[str]] = UNSET
+        vars_files: list[str] | Unset = UNSET
         if not isinstance(self.vars_files, Unset):
             vars_files = self.vars_files
 
@@ -150,35 +152,35 @@ class PlantypesTerraformDeployPlan:
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
             aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]
+        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
             azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _cluster_info = d.pop("cluster_info", UNSET)
-        cluster_info: Union[Unset, KubeClusterInfo]
+        cluster_info: KubeClusterInfo | Unset
         if isinstance(_cluster_info, Unset):
             cluster_info = UNSET
         else:
             cluster_info = KubeClusterInfo.from_dict(_cluster_info)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, PlantypesTerraformDeployPlanEnvVars]
+        env_vars: PlantypesTerraformDeployPlanEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
             env_vars = PlantypesTerraformDeployPlanEnvVars.from_dict(_env_vars)
 
         _hooks = d.pop("hooks", UNSET)
-        hooks: Union[Unset, PlantypesTerraformDeployHooks]
+        hooks: PlantypesTerraformDeployHooks | Unset
         if isinstance(_hooks, Unset):
             hooks = UNSET
         else:
@@ -187,28 +189,28 @@ class PlantypesTerraformDeployPlan:
         plan_json = cast(list[int], d.pop("plan_json", UNSET))
 
         _policies = d.pop("policies", UNSET)
-        policies: Union[Unset, PlantypesTerraformDeployPlanPolicies]
+        policies: PlantypesTerraformDeployPlanPolicies | Unset
         if isinstance(_policies, Unset):
             policies = UNSET
         else:
             policies = PlantypesTerraformDeployPlanPolicies.from_dict(_policies)
 
         _state = d.pop("state", UNSET)
-        state: Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateState]
+        state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset
         if isinstance(_state, Unset):
             state = UNSET
         else:
             state = GithubComPowertoolsdevMonoPkgTypesStateState.from_dict(_state)
 
         _terraform_backend = d.pop("terraform_backend", UNSET)
-        terraform_backend: Union[Unset, PlantypesTerraformBackend]
+        terraform_backend: PlantypesTerraformBackend | Unset
         if isinstance(_terraform_backend, Unset):
             terraform_backend = UNSET
         else:
             terraform_backend = PlantypesTerraformBackend.from_dict(_terraform_backend)
 
         _vars_ = d.pop("vars", UNSET)
-        vars_: Union[Unset, PlantypesTerraformDeployPlanVars]
+        vars_: PlantypesTerraformDeployPlanVars | Unset
         if isinstance(_vars_, Unset):
             vars_ = UNSET
         else:

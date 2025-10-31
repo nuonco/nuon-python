@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,21 +23,21 @@ class ServiceCreateActionWorkflowConfigRequest:
     """
     Attributes:
         app_config_id (str):
-        steps (list['ServiceCreateActionWorkflowConfigStepRequest']):
-        triggers (list['ServiceCreateActionWorkflowConfigTriggerRequest']):
-        break_glass_role_arn (Union[Unset, str]):
-        dependencies (Union[Unset, list[str]]):
-        references (Union[Unset, list[str]]):
-        timeout (Union[Unset, int]):
+        steps (list[ServiceCreateActionWorkflowConfigStepRequest]):
+        triggers (list[ServiceCreateActionWorkflowConfigTriggerRequest]):
+        break_glass_role_arn (str | Unset):
+        dependencies (list[str] | Unset):
+        references (list[str] | Unset):
+        timeout (int | Unset):
     """
 
     app_config_id: str
-    steps: list["ServiceCreateActionWorkflowConfigStepRequest"]
-    triggers: list["ServiceCreateActionWorkflowConfigTriggerRequest"]
-    break_glass_role_arn: Union[Unset, str] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    references: Union[Unset, list[str]] = UNSET
-    timeout: Union[Unset, int] = UNSET
+    steps: list[ServiceCreateActionWorkflowConfigStepRequest]
+    triggers: list[ServiceCreateActionWorkflowConfigTriggerRequest]
+    break_glass_role_arn: str | Unset = UNSET
+    dependencies: list[str] | Unset = UNSET
+    references: list[str] | Unset = UNSET
+    timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,11 +55,11 @@ class ServiceCreateActionWorkflowConfigRequest:
 
         break_glass_role_arn = self.break_glass_role_arn
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 

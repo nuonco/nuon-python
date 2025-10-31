@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,28 +20,28 @@ T = TypeVar("T", bound="AppRunnerHealthCheck")
 class AppRunnerHealthCheck:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        minute_bucket (Union[Unset, str]):
-        process (Union[Unset, str]):
-        runner_id (Union[Unset, str]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        status (Union[Unset, AppRunnerStatus]):
-        status_code (Union[Unset, int]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        minute_bucket (str | Unset):
+        process (str | Unset):
+        runner_id (str | Unset):
+        runner_job (AppRunnerJob | Unset):
+        status (AppRunnerStatus | Unset):
+        status_code (int | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    minute_bucket: Union[Unset, str] = UNSET
-    process: Union[Unset, str] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    status: Union[Unset, AppRunnerStatus] = UNSET
-    status_code: Union[Unset, int] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    minute_bucket: str | Unset = UNSET
+    process: str | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    status: AppRunnerStatus | Unset = UNSET
+    status_code: int | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,11 +57,11 @@ class AppRunnerHealthCheck:
 
         runner_id = self.runner_id
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -111,14 +113,14 @@ class AppRunnerHealthCheck:
         runner_id = d.pop("runner_id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:
             runner_job = AppRunnerJob.from_dict(_runner_job)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppRunnerStatus]
+        status: AppRunnerStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

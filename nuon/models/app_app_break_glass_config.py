@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,24 +19,24 @@ T = TypeVar("T", bound="AppAppBreakGlassConfig")
 class AppAppBreakGlassConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        aws_iam_roles (Union[Unset, list['AppAppAWSIAMRoleConfig']]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        aws_iam_roles (list[AppAppAWSIAMRoleConfig] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    aws_iam_roles: Union[Unset, list["AppAppAWSIAMRoleConfig"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    aws_iam_roles: list[AppAppAWSIAMRoleConfig] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +44,7 @@ class AppAppBreakGlassConfig:
 
         app_id = self.app_id
 
-        aws_iam_roles: Union[Unset, list[dict[str, Any]]] = UNSET
+        aws_iam_roles: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.aws_iam_roles, Unset):
             aws_iam_roles = []
             for aws_iam_roles_item_data in self.aws_iam_roles:

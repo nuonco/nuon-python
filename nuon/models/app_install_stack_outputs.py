@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,38 +22,38 @@ T = TypeVar("T", bound="AppInstallStackOutputs")
 class AppInstallStackOutputs:
     """
     Attributes:
-        aws (Union[Unset, AppAWSStackOutputs]):
-        azure (Union[Unset, AppAzureStackOutputs]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        data (Union[Unset, AppInstallStackOutputsData]):
-        data_contents (Union[Unset, AppInstallStackOutputsDataContents]):
-        id (Union[Unset, str]):
-        install_stack_id (Union[Unset, str]):
-        install_version_run_id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        aws (AppAWSStackOutputs | Unset):
+        azure (AppAzureStackOutputs | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        data (AppInstallStackOutputsData | Unset):
+        data_contents (AppInstallStackOutputsDataContents | Unset):
+        id (str | Unset):
+        install_stack_id (str | Unset):
+        install_version_run_id (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    aws: Union[Unset, "AppAWSStackOutputs"] = UNSET
-    azure: Union[Unset, "AppAzureStackOutputs"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    data: Union[Unset, "AppInstallStackOutputsData"] = UNSET
-    data_contents: Union[Unset, "AppInstallStackOutputsDataContents"] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_stack_id: Union[Unset, str] = UNSET
-    install_version_run_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    aws: AppAWSStackOutputs | Unset = UNSET
+    azure: AppAzureStackOutputs | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    data: AppInstallStackOutputsData | Unset = UNSET
+    data_contents: AppInstallStackOutputsDataContents | Unset = UNSET
+    id: str | Unset = UNSET
+    install_stack_id: str | Unset = UNSET
+    install_version_run_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws: Union[Unset, dict[str, Any]] = UNSET
+        aws: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws, Unset):
             aws = self.aws.to_dict()
 
-        azure: Union[Unset, dict[str, Any]] = UNSET
+        azure: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure, Unset):
             azure = self.azure.to_dict()
 
@@ -59,11 +61,11 @@ class AppInstallStackOutputs:
 
         created_by_id = self.created_by_id
 
-        data: Union[Unset, dict[str, Any]] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
-        data_contents: Union[Unset, dict[str, Any]] = UNSET
+        data_contents: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data_contents, Unset):
             data_contents = self.data_contents.to_dict()
 
@@ -114,14 +116,14 @@ class AppInstallStackOutputs:
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)
-        aws: Union[Unset, AppAWSStackOutputs]
+        aws: AppAWSStackOutputs | Unset
         if isinstance(_aws, Unset):
             aws = UNSET
         else:
             aws = AppAWSStackOutputs.from_dict(_aws)
 
         _azure = d.pop("azure", UNSET)
-        azure: Union[Unset, AppAzureStackOutputs]
+        azure: AppAzureStackOutputs | Unset
         if isinstance(_azure, Unset):
             azure = UNSET
         else:
@@ -132,14 +134,14 @@ class AppInstallStackOutputs:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _data = d.pop("data", UNSET)
-        data: Union[Unset, AppInstallStackOutputsData]
+        data: AppInstallStackOutputsData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:
             data = AppInstallStackOutputsData.from_dict(_data)
 
         _data_contents = d.pop("data_contents", UNSET)
-        data_contents: Union[Unset, AppInstallStackOutputsDataContents]
+        data_contents: AppInstallStackOutputsDataContents | Unset
         if isinstance(_data_contents, Unset):
             data_contents = UNSET
         else:

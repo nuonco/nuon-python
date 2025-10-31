@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,28 +21,28 @@ T = TypeVar("T", bound="AppInstallSandbox")
 class AppInstallSandbox:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        install_sandbox_runs (Union[Unset, list['AppInstallSandboxRun']]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        status_v2 (Union[Unset, AppCompositeStatus]):
-        terraform_workspace (Union[Unset, AppTerraformWorkspace]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
+        terraform_workspace (AppTerraformWorkspace | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    install_sandbox_runs: Union[Unset, list["AppInstallSandboxRun"]] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    status_v2: Union[Unset, "AppCompositeStatus"] = UNSET
-    terraform_workspace: Union[Unset, "AppTerraformWorkspace"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
+    terraform_workspace: AppTerraformWorkspace | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +54,7 @@ class AppInstallSandbox:
 
         install_id = self.install_id
 
-        install_sandbox_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_sandbox_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_sandbox_runs, Unset):
             install_sandbox_runs = []
             for install_sandbox_runs_item_data in self.install_sandbox_runs:
@@ -63,11 +65,11 @@ class AppInstallSandbox:
 
         status_description = self.status_description
 
-        status_v2: Union[Unset, dict[str, Any]] = UNSET
+        status_v2: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status_v2, Unset):
             status_v2 = self.status_v2.to_dict()
 
-        terraform_workspace: Union[Unset, dict[str, Any]] = UNSET
+        terraform_workspace: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_workspace, Unset):
             terraform_workspace = self.terraform_workspace.to_dict()
 
@@ -126,14 +128,14 @@ class AppInstallSandbox:
         status_description = d.pop("status_description", UNSET)
 
         _status_v2 = d.pop("status_v2", UNSET)
-        status_v2: Union[Unset, AppCompositeStatus]
+        status_v2: AppCompositeStatus | Unset
         if isinstance(_status_v2, Unset):
             status_v2 = UNSET
         else:
             status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
         _terraform_workspace = d.pop("terraform_workspace", UNSET)
-        terraform_workspace: Union[Unset, AppTerraformWorkspace]
+        terraform_workspace: AppTerraformWorkspace | Unset
         if isinstance(_terraform_workspace, Unset):
             terraform_workspace = UNSET
         else:

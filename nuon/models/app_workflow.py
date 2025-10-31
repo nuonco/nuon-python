@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,64 +29,64 @@ T = TypeVar("T", bound="AppWorkflow")
 class AppWorkflow:
     """
     Attributes:
-        approval_option (Union[Unset, AppInstallApprovalOption]):
-        created_at (Union[Unset, str]):
-        created_by (Union[Unset, AppAccount]):
-        created_by_id (Union[Unset, str]):
-        execution_time (Union[Unset, int]):
-        finished (Union[Unset, bool]):
-        finished_at (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_action_workflow_runs (Union[Unset, list['AppInstallActionWorkflowRun']]):
-        install_deploys (Union[Unset, list['AppInstallDeploy']]):
-        install_sandbox_runs (Union[Unset, list['AppInstallSandboxRun']]):
-        links (Union[Unset, AppWorkflowLinks]):
-        metadata (Union[Unset, AppWorkflowMetadata]):
-        name (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        plan_only (Union[Unset, bool]):
-        started_at (Union[Unset, str]):
-        status (Union[Unset, AppCompositeStatus]):
-        step_error_behavior (Union[Unset, AppStepErrorBehavior]):
-        steps (Union[Unset, list['AppWorkflowStep']]): steps represent each piece of the workflow
-        type_ (Union[Unset, AppWorkflowType]):
-        updated_at (Union[Unset, str]):
+        approval_option (AppInstallApprovalOption | Unset):
+        created_at (str | Unset):
+        created_by (AppAccount | Unset):
+        created_by_id (str | Unset):
+        execution_time (int | Unset):
+        finished (bool | Unset):
+        finished_at (str | Unset):
+        id (str | Unset):
+        install_action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
+        install_deploys (list[AppInstallDeploy] | Unset):
+        install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
+        links (AppWorkflowLinks | Unset):
+        metadata (AppWorkflowMetadata | Unset):
+        name (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        plan_only (bool | Unset):
+        started_at (str | Unset):
+        status (AppCompositeStatus | Unset):
+        step_error_behavior (AppStepErrorBehavior | Unset):
+        steps (list[AppWorkflowStep] | Unset): steps represent each piece of the workflow
+        type_ (AppWorkflowType | Unset):
+        updated_at (str | Unset):
     """
 
-    approval_option: Union[Unset, AppInstallApprovalOption] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by: Union[Unset, "AppAccount"] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    execution_time: Union[Unset, int] = UNSET
-    finished: Union[Unset, bool] = UNSET
-    finished_at: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_action_workflow_runs: Union[Unset, list["AppInstallActionWorkflowRun"]] = UNSET
-    install_deploys: Union[Unset, list["AppInstallDeploy"]] = UNSET
-    install_sandbox_runs: Union[Unset, list["AppInstallSandboxRun"]] = UNSET
-    links: Union[Unset, "AppWorkflowLinks"] = UNSET
-    metadata: Union[Unset, "AppWorkflowMetadata"] = UNSET
-    name: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    plan_only: Union[Unset, bool] = UNSET
-    started_at: Union[Unset, str] = UNSET
-    status: Union[Unset, "AppCompositeStatus"] = UNSET
-    step_error_behavior: Union[Unset, AppStepErrorBehavior] = UNSET
-    steps: Union[Unset, list["AppWorkflowStep"]] = UNSET
-    type_: Union[Unset, AppWorkflowType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    approval_option: AppInstallApprovalOption | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by: AppAccount | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    execution_time: int | Unset = UNSET
+    finished: bool | Unset = UNSET
+    finished_at: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+    install_deploys: list[AppInstallDeploy] | Unset = UNSET
+    install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+    links: AppWorkflowLinks | Unset = UNSET
+    metadata: AppWorkflowMetadata | Unset = UNSET
+    name: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    plan_only: bool | Unset = UNSET
+    started_at: str | Unset = UNSET
+    status: AppCompositeStatus | Unset = UNSET
+    step_error_behavior: AppStepErrorBehavior | Unset = UNSET
+    steps: list[AppWorkflowStep] | Unset = UNSET
+    type_: AppWorkflowType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval_option: Union[Unset, str] = UNSET
+        approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
 
         created_at = self.created_at
 
-        created_by: Union[Unset, dict[str, Any]] = UNSET
+        created_by: dict[str, Any] | Unset = UNSET
         if not isinstance(self.created_by, Unset):
             created_by = self.created_by.to_dict()
 
@@ -98,32 +100,32 @@ class AppWorkflow:
 
         id = self.id
 
-        install_action_workflow_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_action_workflow_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_action_workflow_runs, Unset):
             install_action_workflow_runs = []
             for install_action_workflow_runs_item_data in self.install_action_workflow_runs:
                 install_action_workflow_runs_item = install_action_workflow_runs_item_data.to_dict()
                 install_action_workflow_runs.append(install_action_workflow_runs_item)
 
-        install_deploys: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_deploys: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_deploys, Unset):
             install_deploys = []
             for install_deploys_item_data in self.install_deploys:
                 install_deploys_item = install_deploys_item_data.to_dict()
                 install_deploys.append(install_deploys_item)
 
-        install_sandbox_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_sandbox_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_sandbox_runs, Unset):
             install_sandbox_runs = []
             for install_sandbox_runs_item_data in self.install_sandbox_runs:
                 install_sandbox_runs_item = install_sandbox_runs_item_data.to_dict()
                 install_sandbox_runs.append(install_sandbox_runs_item)
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -137,22 +139,22 @@ class AppWorkflow:
 
         started_at = self.started_at
 
-        status: Union[Unset, dict[str, Any]] = UNSET
+        status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
-        step_error_behavior: Union[Unset, str] = UNSET
+        step_error_behavior: str | Unset = UNSET
         if not isinstance(self.step_error_behavior, Unset):
             step_error_behavior = self.step_error_behavior.value
 
-        steps: Union[Unset, list[dict[str, Any]]] = UNSET
+        steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
             steps = []
             for steps_item_data in self.steps:
                 steps_item = steps_item_data.to_dict()
                 steps.append(steps_item)
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -223,7 +225,7 @@ class AppWorkflow:
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
-        approval_option: Union[Unset, AppInstallApprovalOption]
+        approval_option: AppInstallApprovalOption | Unset
         if isinstance(_approval_option, Unset):
             approval_option = UNSET
         else:
@@ -232,7 +234,7 @@ class AppWorkflow:
         created_at = d.pop("created_at", UNSET)
 
         _created_by = d.pop("created_by", UNSET)
-        created_by: Union[Unset, AppAccount]
+        created_by: AppAccount | Unset
         if isinstance(_created_by, Unset):
             created_by = UNSET
         else:
@@ -272,14 +274,14 @@ class AppWorkflow:
             install_sandbox_runs.append(install_sandbox_runs_item)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppWorkflowLinks]
+        links: AppWorkflowLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = AppWorkflowLinks.from_dict(_links)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppWorkflowMetadata]
+        metadata: AppWorkflowMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
@@ -296,14 +298,14 @@ class AppWorkflow:
         started_at = d.pop("started_at", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppCompositeStatus]
+        status: AppCompositeStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = AppCompositeStatus.from_dict(_status)
 
         _step_error_behavior = d.pop("step_error_behavior", UNSET)
-        step_error_behavior: Union[Unset, AppStepErrorBehavior]
+        step_error_behavior: AppStepErrorBehavior | Unset
         if isinstance(_step_error_behavior, Unset):
             step_error_behavior = UNSET
         else:
@@ -317,7 +319,7 @@ class AppWorkflow:
             steps.append(steps_item)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppWorkflowType]
+        type_: AppWorkflowType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

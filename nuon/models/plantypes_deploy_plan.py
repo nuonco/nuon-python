@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,35 +26,34 @@ class PlantypesDeployPlan:
     Attributes:
         src_registry (ConfigsOCIRegistryRepository):
         src_tag (str):
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        apply_plan_contents (Union[Unset, str]): The following field is for applying a plan that is already save
-        apply_plan_display (Union[Unset, str]): This field is for storing a human legible plan or corollary
-            representation
-        component_id (Union[Unset, str]):
-        component_name (Union[Unset, str]):
-        helm (Union[Unset, PlantypesHelmDeployPlan]):
-        install_id (Union[Unset, str]):
-        kubernetes_manifest (Union[Unset, PlantypesKubernetesManifestDeployPlan]):
-        noop (Union[Unset, PlantypesNoopDeployPlan]):
-        sandbox_mode (Union[Unset, PlantypesSandboxMode]):
-        terraform (Union[Unset, PlantypesTerraformDeployPlan]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        apply_plan_contents (str | Unset): The following field is for applying a plan that is already save
+        apply_plan_display (str | Unset): This field is for storing a human legible plan or corollary representation
+        component_id (str | Unset):
+        component_name (str | Unset):
+        helm (PlantypesHelmDeployPlan | Unset):
+        install_id (str | Unset):
+        kubernetes_manifest (PlantypesKubernetesManifestDeployPlan | Unset):
+        noop (PlantypesNoopDeployPlan | Unset):
+        sandbox_mode (PlantypesSandboxMode | Unset):
+        terraform (PlantypesTerraformDeployPlan | Unset):
     """
 
-    src_registry: "ConfigsOCIRegistryRepository"
+    src_registry: ConfigsOCIRegistryRepository
     src_tag: str
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    apply_plan_contents: Union[Unset, str] = UNSET
-    apply_plan_display: Union[Unset, str] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    component_name: Union[Unset, str] = UNSET
-    helm: Union[Unset, "PlantypesHelmDeployPlan"] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    kubernetes_manifest: Union[Unset, "PlantypesKubernetesManifestDeployPlan"] = UNSET
-    noop: Union[Unset, "PlantypesNoopDeployPlan"] = UNSET
-    sandbox_mode: Union[Unset, "PlantypesSandboxMode"] = UNSET
-    terraform: Union[Unset, "PlantypesTerraformDeployPlan"] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    apply_plan_contents: str | Unset = UNSET
+    apply_plan_display: str | Unset = UNSET
+    component_id: str | Unset = UNSET
+    component_name: str | Unset = UNSET
+    helm: PlantypesHelmDeployPlan | Unset = UNSET
+    install_id: str | Unset = UNSET
+    kubernetes_manifest: PlantypesKubernetesManifestDeployPlan | Unset = UNSET
+    noop: PlantypesNoopDeployPlan | Unset = UNSET
+    sandbox_mode: PlantypesSandboxMode | Unset = UNSET
+    terraform: PlantypesTerraformDeployPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,25 +73,25 @@ class PlantypesDeployPlan:
 
         component_name = self.component_name
 
-        helm: Union[Unset, dict[str, Any]] = UNSET
+        helm: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm, Unset):
             helm = self.helm.to_dict()
 
         install_id = self.install_id
 
-        kubernetes_manifest: Union[Unset, dict[str, Any]] = UNSET
+        kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
 
-        noop: Union[Unset, dict[str, Any]] = UNSET
+        noop: dict[str, Any] | Unset = UNSET
         if not isinstance(self.noop, Unset):
             noop = self.noop.to_dict()
 
-        sandbox_mode: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
-        terraform: Union[Unset, dict[str, Any]] = UNSET
+        terraform: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform, Unset):
             terraform = self.terraform.to_dict()
 
@@ -156,7 +157,7 @@ class PlantypesDeployPlan:
         component_name = d.pop("component_name", UNSET)
 
         _helm = d.pop("helm", UNSET)
-        helm: Union[Unset, PlantypesHelmDeployPlan]
+        helm: PlantypesHelmDeployPlan | Unset
         if isinstance(_helm, Unset):
             helm = UNSET
         else:
@@ -165,28 +166,28 @@ class PlantypesDeployPlan:
         install_id = d.pop("install_id", UNSET)
 
         _kubernetes_manifest = d.pop("kubernetes_manifest", UNSET)
-        kubernetes_manifest: Union[Unset, PlantypesKubernetesManifestDeployPlan]
+        kubernetes_manifest: PlantypesKubernetesManifestDeployPlan | Unset
         if isinstance(_kubernetes_manifest, Unset):
             kubernetes_manifest = UNSET
         else:
             kubernetes_manifest = PlantypesKubernetesManifestDeployPlan.from_dict(_kubernetes_manifest)
 
         _noop = d.pop("noop", UNSET)
-        noop: Union[Unset, PlantypesNoopDeployPlan]
+        noop: PlantypesNoopDeployPlan | Unset
         if isinstance(_noop, Unset):
             noop = UNSET
         else:
             noop = PlantypesNoopDeployPlan.from_dict(_noop)
 
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
-        sandbox_mode: Union[Unset, PlantypesSandboxMode]
+        sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
             sandbox_mode = UNSET
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
         _terraform = d.pop("terraform", UNSET)
-        terraform: Union[Unset, PlantypesTerraformDeployPlan]
+        terraform: PlantypesTerraformDeployPlan | Unset
         if isinstance(_terraform, Unset):
             terraform = UNSET
         else:
