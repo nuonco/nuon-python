@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,26 +15,26 @@ T = TypeVar("T", bound="AppVCSConnectionCommit")
 class AppVCSConnectionCommit:
     """
     Attributes:
-        author_email (Union[Unset, str]):
-        author_name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        message (Union[Unset, str]):
-        sha (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        vcs_connection_id (Union[Unset, str]):
+        author_email (str | Unset):
+        author_name (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        message (str | Unset):
+        sha (str | Unset):
+        updated_at (str | Unset):
+        vcs_connection_id (str | Unset):
     """
 
-    author_email: Union[Unset, str] = UNSET
-    author_name: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    message: Union[Unset, str] = UNSET
-    sha: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connection_id: Union[Unset, str] = UNSET
+    author_email: str | Unset = UNSET
+    author_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    message: str | Unset = UNSET
+    sha: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connection_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

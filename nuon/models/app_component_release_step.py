@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,31 +19,31 @@ T = TypeVar("T", bound="AppComponentReleaseStep")
 class AppComponentReleaseStep:
     """
     Attributes:
-        component_release_id (Union[Unset, str]): parent release ID
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        delay (Union[Unset, str]): fields to control the delay of the individual step, as this is set based on the
-            parent strategy
-        id (Union[Unset, str]):
-        install_deploys (Union[Unset, list['AppInstallDeploy']]):
-        requested_install_ids (Union[Unset, list[str]]): When a step is created, a set of installs are targeted.
-            However, by the time the release step goes out, the
+        component_release_id (str | Unset): parent release ID
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        delay (str | Unset): fields to control the delay of the individual step, as this is set based on the parent
+            strategy
+        id (str | Unset):
+        install_deploys (list[AppInstallDeploy] | Unset):
+        requested_install_ids (list[str] | Unset): When a step is created, a set of installs are targeted. However, by
+            the time the release step goes out, the
             install might have been setup in any order of ways.
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        status (str | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
     """
 
-    component_release_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    delay: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_deploys: Union[Unset, list["AppInstallDeploy"]] = UNSET
-    requested_install_ids: Union[Unset, list[str]] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    component_release_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    delay: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_deploys: list[AppInstallDeploy] | Unset = UNSET
+    requested_install_ids: list[str] | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,14 +57,14 @@ class AppComponentReleaseStep:
 
         id = self.id
 
-        install_deploys: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_deploys: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_deploys, Unset):
             install_deploys = []
             for install_deploys_item_data in self.install_deploys:
                 install_deploys_item = install_deploys_item_data.to_dict()
                 install_deploys.append(install_deploys_item)
 
-        requested_install_ids: Union[Unset, list[str]] = UNSET
+        requested_install_ids: list[str] | Unset = UNSET
         if not isinstance(self.requested_install_ids, Unset):
             requested_install_ids = self.requested_install_ids
 

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,34 +15,34 @@ T = TypeVar("T", bound="AppAzureStackOutputs")
 class AppAzureStackOutputs:
     """
     Attributes:
-        key_vault_id (Union[Unset, str]):
-        key_vault_name (Union[Unset, str]):
-        network_id (Union[Unset, str]):
-        network_name (Union[Unset, str]):
-        private_subnet_ids (Union[Unset, list[str]]):
-        private_subnet_names (Union[Unset, list[str]]):
-        public_subnet_ids (Union[Unset, list[str]]):
-        public_subnet_names (Union[Unset, list[str]]):
-        resource_group_id (Union[Unset, str]):
-        resource_group_location (Union[Unset, str]):
-        resource_group_name (Union[Unset, str]):
-        subscription_id (Union[Unset, str]):
-        subscription_tenant_id (Union[Unset, str]):
+        key_vault_id (str | Unset):
+        key_vault_name (str | Unset):
+        network_id (str | Unset):
+        network_name (str | Unset):
+        private_subnet_ids (list[str] | Unset):
+        private_subnet_names (list[str] | Unset):
+        public_subnet_ids (list[str] | Unset):
+        public_subnet_names (list[str] | Unset):
+        resource_group_id (str | Unset):
+        resource_group_location (str | Unset):
+        resource_group_name (str | Unset):
+        subscription_id (str | Unset):
+        subscription_tenant_id (str | Unset):
     """
 
-    key_vault_id: Union[Unset, str] = UNSET
-    key_vault_name: Union[Unset, str] = UNSET
-    network_id: Union[Unset, str] = UNSET
-    network_name: Union[Unset, str] = UNSET
-    private_subnet_ids: Union[Unset, list[str]] = UNSET
-    private_subnet_names: Union[Unset, list[str]] = UNSET
-    public_subnet_ids: Union[Unset, list[str]] = UNSET
-    public_subnet_names: Union[Unset, list[str]] = UNSET
-    resource_group_id: Union[Unset, str] = UNSET
-    resource_group_location: Union[Unset, str] = UNSET
-    resource_group_name: Union[Unset, str] = UNSET
-    subscription_id: Union[Unset, str] = UNSET
-    subscription_tenant_id: Union[Unset, str] = UNSET
+    key_vault_id: str | Unset = UNSET
+    key_vault_name: str | Unset = UNSET
+    network_id: str | Unset = UNSET
+    network_name: str | Unset = UNSET
+    private_subnet_ids: list[str] | Unset = UNSET
+    private_subnet_names: list[str] | Unset = UNSET
+    public_subnet_ids: list[str] | Unset = UNSET
+    public_subnet_names: list[str] | Unset = UNSET
+    resource_group_id: str | Unset = UNSET
+    resource_group_location: str | Unset = UNSET
+    resource_group_name: str | Unset = UNSET
+    subscription_id: str | Unset = UNSET
+    subscription_tenant_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,19 +54,19 @@ class AppAzureStackOutputs:
 
         network_name = self.network_name
 
-        private_subnet_ids: Union[Unset, list[str]] = UNSET
+        private_subnet_ids: list[str] | Unset = UNSET
         if not isinstance(self.private_subnet_ids, Unset):
             private_subnet_ids = self.private_subnet_ids
 
-        private_subnet_names: Union[Unset, list[str]] = UNSET
+        private_subnet_names: list[str] | Unset = UNSET
         if not isinstance(self.private_subnet_names, Unset):
             private_subnet_names = self.private_subnet_names
 
-        public_subnet_ids: Union[Unset, list[str]] = UNSET
+        public_subnet_ids: list[str] | Unset = UNSET
         if not isinstance(self.public_subnet_ids, Unset):
             public_subnet_ids = self.public_subnet_ids
 
-        public_subnet_names: Union[Unset, list[str]] = UNSET
+        public_subnet_names: list[str] | Unset = UNSET
         if not isinstance(self.public_subnet_names, Unset):
             public_subnet_names = self.public_subnet_names
 

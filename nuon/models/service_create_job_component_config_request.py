@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,22 +23,22 @@ class ServiceCreateJobComponentConfigRequest:
     Attributes:
         image_url (str):
         tag (str):
-        app_config_id (Union[Unset, str]):
-        args (Union[Unset, list[str]]):
-        checksum (Union[Unset, str]):
-        cmd (Union[Unset, list[str]]):
-        env_vars (Union[Unset, ServiceCreateJobComponentConfigRequestEnvVars]):
-        references (Union[Unset, list[str]]):
+        app_config_id (str | Unset):
+        args (list[str] | Unset):
+        checksum (str | Unset):
+        cmd (list[str] | Unset):
+        env_vars (ServiceCreateJobComponentConfigRequestEnvVars | Unset):
+        references (list[str] | Unset):
     """
 
     image_url: str
     tag: str
-    app_config_id: Union[Unset, str] = UNSET
-    args: Union[Unset, list[str]] = UNSET
-    checksum: Union[Unset, str] = UNSET
-    cmd: Union[Unset, list[str]] = UNSET
-    env_vars: Union[Unset, "ServiceCreateJobComponentConfigRequestEnvVars"] = UNSET
-    references: Union[Unset, list[str]] = UNSET
+    app_config_id: str | Unset = UNSET
+    args: list[str] | Unset = UNSET
+    checksum: str | Unset = UNSET
+    cmd: list[str] | Unset = UNSET
+    env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset = UNSET
+    references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,21 +48,21 @@ class ServiceCreateJobComponentConfigRequest:
 
         app_config_id = self.app_config_id
 
-        args: Union[Unset, list[str]] = UNSET
+        args: list[str] | Unset = UNSET
         if not isinstance(self.args, Unset):
             args = self.args
 
         checksum = self.checksum
 
-        cmd: Union[Unset, list[str]] = UNSET
+        cmd: list[str] | Unset = UNSET
         if not isinstance(self.cmd, Unset):
             cmd = self.cmd
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        references: Union[Unset, list[str]] = UNSET
+        references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
@@ -107,7 +109,7 @@ class ServiceCreateJobComponentConfigRequest:
         cmd = cast(list[str], d.pop("cmd", UNSET))
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, ServiceCreateJobComponentConfigRequestEnvVars]
+        env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,52 +24,52 @@ T = TypeVar("T", bound="AppApp")
 class AppApp:
     """
     Attributes:
-        app_configs (Union[Unset, list['AppAppConfig']]):
-        cloud_platform (Union[Unset, str]):
-        config_directory (Union[Unset, str]):
-        config_repo (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        id (Union[Unset, str]):
-        input_config (Union[Unset, AppAppInputConfig]):
-        links (Union[Unset, AppAppLinks]):
-        name (Union[Unset, str]):
-        notifications_config (Union[Unset, AppNotificationsConfig]):
-        org_id (Union[Unset, str]):
-        runner_config (Union[Unset, AppAppRunnerConfig]):
-        runner_type (Union[Unset, str]):
-        sandbox_config (Union[Unset, AppAppSandboxConfig]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_configs (list[AppAppConfig] | Unset):
+        cloud_platform (str | Unset):
+        config_directory (str | Unset):
+        config_repo (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        description (str | Unset):
+        display_name (str | Unset):
+        id (str | Unset):
+        input_config (AppAppInputConfig | Unset):
+        links (AppAppLinks | Unset):
+        name (str | Unset):
+        notifications_config (AppNotificationsConfig | Unset):
+        org_id (str | Unset):
+        runner_config (AppAppRunnerConfig | Unset):
+        runner_type (str | Unset):
+        sandbox_config (AppAppSandboxConfig | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_configs: Union[Unset, list["AppAppConfig"]] = UNSET
-    cloud_platform: Union[Unset, str] = UNSET
-    config_directory: Union[Unset, str] = UNSET
-    config_repo: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    input_config: Union[Unset, "AppAppInputConfig"] = UNSET
-    links: Union[Unset, "AppAppLinks"] = UNSET
-    name: Union[Unset, str] = UNSET
-    notifications_config: Union[Unset, "AppNotificationsConfig"] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    runner_config: Union[Unset, "AppAppRunnerConfig"] = UNSET
-    runner_type: Union[Unset, str] = UNSET
-    sandbox_config: Union[Unset, "AppAppSandboxConfig"] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_configs: list[AppAppConfig] | Unset = UNSET
+    cloud_platform: str | Unset = UNSET
+    config_directory: str | Unset = UNSET
+    config_repo: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    id: str | Unset = UNSET
+    input_config: AppAppInputConfig | Unset = UNSET
+    links: AppAppLinks | Unset = UNSET
+    name: str | Unset = UNSET
+    notifications_config: AppNotificationsConfig | Unset = UNSET
+    org_id: str | Unset = UNSET
+    runner_config: AppAppRunnerConfig | Unset = UNSET
+    runner_type: str | Unset = UNSET
+    sandbox_config: AppAppSandboxConfig | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        app_configs: Union[Unset, list[dict[str, Any]]] = UNSET
+        app_configs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.app_configs, Unset):
             app_configs = []
             for app_configs_item_data in self.app_configs:
@@ -90,29 +92,29 @@ class AppApp:
 
         id = self.id
 
-        input_config: Union[Unset, dict[str, Any]] = UNSET
+        input_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.input_config, Unset):
             input_config = self.input_config.to_dict()
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
         name = self.name
 
-        notifications_config: Union[Unset, dict[str, Any]] = UNSET
+        notifications_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.notifications_config, Unset):
             notifications_config = self.notifications_config.to_dict()
 
         org_id = self.org_id
 
-        runner_config: Union[Unset, dict[str, Any]] = UNSET
+        runner_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_config, Unset):
             runner_config = self.runner_config.to_dict()
 
         runner_type = self.runner_type
 
-        sandbox_config: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_config, Unset):
             sandbox_config = self.sandbox_config.to_dict()
 
@@ -202,14 +204,14 @@ class AppApp:
         id = d.pop("id", UNSET)
 
         _input_config = d.pop("input_config", UNSET)
-        input_config: Union[Unset, AppAppInputConfig]
+        input_config: AppAppInputConfig | Unset
         if isinstance(_input_config, Unset):
             input_config = UNSET
         else:
             input_config = AppAppInputConfig.from_dict(_input_config)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppAppLinks]
+        links: AppAppLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
@@ -218,7 +220,7 @@ class AppApp:
         name = d.pop("name", UNSET)
 
         _notifications_config = d.pop("notifications_config", UNSET)
-        notifications_config: Union[Unset, AppNotificationsConfig]
+        notifications_config: AppNotificationsConfig | Unset
         if isinstance(_notifications_config, Unset):
             notifications_config = UNSET
         else:
@@ -227,7 +229,7 @@ class AppApp:
         org_id = d.pop("org_id", UNSET)
 
         _runner_config = d.pop("runner_config", UNSET)
-        runner_config: Union[Unset, AppAppRunnerConfig]
+        runner_config: AppAppRunnerConfig | Unset
         if isinstance(_runner_config, Unset):
             runner_config = UNSET
         else:
@@ -236,7 +238,7 @@ class AppApp:
         runner_type = d.pop("runner_type", UNSET)
 
         _sandbox_config = d.pop("sandbox_config", UNSET)
-        sandbox_config: Union[Unset, AppAppSandboxConfig]
+        sandbox_config: AppAppSandboxConfig | Unset
         if isinstance(_sandbox_config, Unset):
             sandbox_config = UNSET
         else:

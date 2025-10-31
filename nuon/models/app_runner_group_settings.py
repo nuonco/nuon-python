@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,61 +20,61 @@ T = TypeVar("T", bound="AppRunnerGroupSettings")
 class AppRunnerGroupSettings:
     """
     Attributes:
-        aws_cloudformation_stack_type (Union[Unset, str]):
-        aws_instance_type (Union[Unset, str]): aws runner specifics runner-v2
-        aws_max_instance_lifetime (Union[Unset, int]): Default: 7 days
-        aws_tags (Union[Unset, AppRunnerGroupSettingsAwsTags]):
-        container_image_tag (Union[Unset, str]):
-        container_image_url (Union[Unset, str]): configuration for deploying the runner
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        enable_logging (Union[Unset, bool]):
-        enable_metrics (Union[Unset, bool]):
-        enable_sentry (Union[Unset, bool]):
-        groups (Union[Unset, list[str]]): the job loop groups the runner should poll for
-        heart_beat_timeout (Union[Unset, int]): Various settings for the runner to handle internally
-        id (Union[Unset, str]):
-        local_aws_iam_role_arn (Union[Unset, str]):
-        logging_level (Union[Unset, str]):
-        metadata (Union[Unset, AppRunnerGroupSettingsMetadata]): Metadata is used as both log and metric tags/attributes
-            in the runner when emitting data
-        org_aws_iam_role_arn (Union[Unset, str]): org runner specifics
-        org_id (Union[Unset, str]):
-        org_k8s_service_account_name (Union[Unset, str]):
-        otel_collector_config (Union[Unset, str]):
-        platform (Union[Unset, str]): platform variable for use in the runner
-        runner_api_url (Union[Unset, str]):
-        runner_group_id (Union[Unset, str]):
-        sandbox_mode (Union[Unset, bool]): configuration for managing the runner server side
-        updated_at (Union[Unset, str]):
+        aws_cloudformation_stack_type (str | Unset):
+        aws_instance_type (str | Unset): aws runner specifics runner-v2
+        aws_max_instance_lifetime (int | Unset): Default: 7 days
+        aws_tags (AppRunnerGroupSettingsAwsTags | Unset):
+        container_image_tag (str | Unset):
+        container_image_url (str | Unset): configuration for deploying the runner
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        enable_logging (bool | Unset):
+        enable_metrics (bool | Unset):
+        enable_sentry (bool | Unset):
+        groups (list[str] | Unset): the job loop groups the runner should poll for
+        heart_beat_timeout (int | Unset): Various settings for the runner to handle internally
+        id (str | Unset):
+        local_aws_iam_role_arn (str | Unset):
+        logging_level (str | Unset):
+        metadata (AppRunnerGroupSettingsMetadata | Unset): Metadata is used as both log and metric tags/attributes in
+            the runner when emitting data
+        org_aws_iam_role_arn (str | Unset): org runner specifics
+        org_id (str | Unset):
+        org_k8s_service_account_name (str | Unset):
+        otel_collector_config (str | Unset):
+        platform (str | Unset): platform variable for use in the runner
+        runner_api_url (str | Unset):
+        runner_group_id (str | Unset):
+        sandbox_mode (bool | Unset): configuration for managing the runner server side
+        updated_at (str | Unset):
     """
 
-    aws_cloudformation_stack_type: Union[Unset, str] = UNSET
-    aws_instance_type: Union[Unset, str] = UNSET
-    aws_max_instance_lifetime: Union[Unset, int] = UNSET
-    aws_tags: Union[Unset, "AppRunnerGroupSettingsAwsTags"] = UNSET
-    container_image_tag: Union[Unset, str] = UNSET
-    container_image_url: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    enable_logging: Union[Unset, bool] = UNSET
-    enable_metrics: Union[Unset, bool] = UNSET
-    enable_sentry: Union[Unset, bool] = UNSET
-    groups: Union[Unset, list[str]] = UNSET
-    heart_beat_timeout: Union[Unset, int] = UNSET
-    id: Union[Unset, str] = UNSET
-    local_aws_iam_role_arn: Union[Unset, str] = UNSET
-    logging_level: Union[Unset, str] = UNSET
-    metadata: Union[Unset, "AppRunnerGroupSettingsMetadata"] = UNSET
-    org_aws_iam_role_arn: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    org_k8s_service_account_name: Union[Unset, str] = UNSET
-    otel_collector_config: Union[Unset, str] = UNSET
-    platform: Union[Unset, str] = UNSET
-    runner_api_url: Union[Unset, str] = UNSET
-    runner_group_id: Union[Unset, str] = UNSET
-    sandbox_mode: Union[Unset, bool] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    aws_cloudformation_stack_type: str | Unset = UNSET
+    aws_instance_type: str | Unset = UNSET
+    aws_max_instance_lifetime: int | Unset = UNSET
+    aws_tags: AppRunnerGroupSettingsAwsTags | Unset = UNSET
+    container_image_tag: str | Unset = UNSET
+    container_image_url: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    enable_logging: bool | Unset = UNSET
+    enable_metrics: bool | Unset = UNSET
+    enable_sentry: bool | Unset = UNSET
+    groups: list[str] | Unset = UNSET
+    heart_beat_timeout: int | Unset = UNSET
+    id: str | Unset = UNSET
+    local_aws_iam_role_arn: str | Unset = UNSET
+    logging_level: str | Unset = UNSET
+    metadata: AppRunnerGroupSettingsMetadata | Unset = UNSET
+    org_aws_iam_role_arn: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    org_k8s_service_account_name: str | Unset = UNSET
+    otel_collector_config: str | Unset = UNSET
+    platform: str | Unset = UNSET
+    runner_api_url: str | Unset = UNSET
+    runner_group_id: str | Unset = UNSET
+    sandbox_mode: bool | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,7 +84,7 @@ class AppRunnerGroupSettings:
 
         aws_max_instance_lifetime = self.aws_max_instance_lifetime
 
-        aws_tags: Union[Unset, dict[str, Any]] = UNSET
+        aws_tags: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_tags, Unset):
             aws_tags = self.aws_tags.to_dict()
 
@@ -100,7 +102,7 @@ class AppRunnerGroupSettings:
 
         enable_sentry = self.enable_sentry
 
-        groups: Union[Unset, list[str]] = UNSET
+        groups: list[str] | Unset = UNSET
         if not isinstance(self.groups, Unset):
             groups = self.groups
 
@@ -112,7 +114,7 @@ class AppRunnerGroupSettings:
 
         logging_level = self.logging_level
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -205,7 +207,7 @@ class AppRunnerGroupSettings:
         aws_max_instance_lifetime = d.pop("aws_max_instance_lifetime", UNSET)
 
         _aws_tags = d.pop("aws_tags", UNSET)
-        aws_tags: Union[Unset, AppRunnerGroupSettingsAwsTags]
+        aws_tags: AppRunnerGroupSettingsAwsTags | Unset
         if isinstance(_aws_tags, Unset):
             aws_tags = UNSET
         else:
@@ -236,7 +238,7 @@ class AppRunnerGroupSettings:
         logging_level = d.pop("logging_level", UNSET)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppRunnerGroupSettingsMetadata]
+        metadata: AppRunnerGroupSettingsMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

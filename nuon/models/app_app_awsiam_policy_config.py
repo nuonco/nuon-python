@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,30 +15,30 @@ T = TypeVar("T", bound="AppAppAWSIAMPolicyConfig")
 class AppAppAWSIAMPolicyConfig:
     """
     Attributes:
-        app_aws_iam_role_config_id (Union[Unset, str]):
-        app_config_id (Union[Unset, str]):
-        cloudformation_stack_name (Union[Unset, str]):
-        contents (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        managed_policy_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_aws_iam_role_config_id (str | Unset):
+        app_config_id (str | Unset):
+        cloudformation_stack_name (str | Unset):
+        contents (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        managed_policy_name (str | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_aws_iam_role_config_id: Union[Unset, str] = UNSET
-    app_config_id: Union[Unset, str] = UNSET
-    cloudformation_stack_name: Union[Unset, str] = UNSET
-    contents: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    managed_policy_name: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_aws_iam_role_config_id: str | Unset = UNSET
+    app_config_id: str | Unset = UNSET
+    cloudformation_stack_name: str | Unset = UNSET
+    contents: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    managed_policy_name: str | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

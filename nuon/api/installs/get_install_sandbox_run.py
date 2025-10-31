@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,32 +22,38 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppInstallSandboxRun, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AppInstallSandboxRun | StderrErrResponse | None:
     if response.status_code == 200:
         response_200 = AppInstallSandboxRun.from_dict(response.json())
 
         return response_200
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
+
     if response.status_code == 403:
         response_403 = StderrErrResponse.from_dict(response.json())
 
         return response_403
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -55,8 +61,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppInstallSandboxRun, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AppInstallSandboxRun | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +75,7 @@ def sync_detailed(
     run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppInstallSandboxRun, StderrErrResponse]]:
+) -> Response[AppInstallSandboxRun | StderrErrResponse]:
     """get an install sandbox run
 
     Args:
@@ -80,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppInstallSandboxRun, StderrErrResponse]]
+        Response[AppInstallSandboxRun | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -98,7 +104,7 @@ def sync(
     run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppInstallSandboxRun, StderrErrResponse]]:
+) -> AppInstallSandboxRun | StderrErrResponse | None:
     """get an install sandbox run
 
     Args:
@@ -109,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppInstallSandboxRun, StderrErrResponse]
+        AppInstallSandboxRun | StderrErrResponse
     """
 
     return sync_detailed(
@@ -122,7 +128,7 @@ async def asyncio_detailed(
     run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppInstallSandboxRun, StderrErrResponse]]:
+) -> Response[AppInstallSandboxRun | StderrErrResponse]:
     """get an install sandbox run
 
     Args:
@@ -133,7 +139,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppInstallSandboxRun, StderrErrResponse]]
+        Response[AppInstallSandboxRun | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -149,7 +155,7 @@ async def asyncio(
     run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppInstallSandboxRun, StderrErrResponse]]:
+) -> AppInstallSandboxRun | StderrErrResponse | None:
     """get an install sandbox run
 
     Args:
@@ -160,7 +166,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppInstallSandboxRun, StderrErrResponse]
+        AppInstallSandboxRun | StderrErrResponse
     """
 
     return (

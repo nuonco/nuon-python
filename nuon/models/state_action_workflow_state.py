@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,22 +19,22 @@ T = TypeVar("T", bound="StateActionWorkflowState")
 class StateActionWorkflowState:
     """
     Attributes:
-        id (Union[Unset, str]):
-        outputs (Union[Unset, StateActionWorkflowStateOutputs]):
-        populated (Union[Unset, bool]):
-        status (Union[Unset, str]):
+        id (str | Unset):
+        outputs (StateActionWorkflowStateOutputs | Unset):
+        populated (bool | Unset):
+        status (str | Unset):
     """
 
-    id: Union[Unset, str] = UNSET
-    outputs: Union[Unset, "StateActionWorkflowStateOutputs"] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    status: Union[Unset, str] = UNSET
+    id: str | Unset = UNSET
+    outputs: StateActionWorkflowStateOutputs | Unset = UNSET
+    populated: bool | Unset = UNSET
+    status: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
@@ -62,7 +64,7 @@ class StateActionWorkflowState:
         id = d.pop("id", UNSET)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, StateActionWorkflowStateOutputs]
+        outputs: StateActionWorkflowStateOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:

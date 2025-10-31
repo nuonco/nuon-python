@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,26 +20,26 @@ T = TypeVar("T", bound="AppInstallInputs")
 class AppInstallInputs:
     """
     Attributes:
-        app_input_config_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        redacted_values (Union[Unset, AppInstallInputsRedactedValues]):
-        updated_at (Union[Unset, str]):
-        values (Union[Unset, AppInstallInputsValues]):
+        app_input_config_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        org_id (str | Unset):
+        redacted_values (AppInstallInputsRedactedValues | Unset):
+        updated_at (str | Unset):
+        values (AppInstallInputsValues | Unset):
     """
 
-    app_input_config_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    redacted_values: Union[Unset, "AppInstallInputsRedactedValues"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    values: Union[Unset, "AppInstallInputsValues"] = UNSET
+    app_input_config_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    redacted_values: AppInstallInputsRedactedValues | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    values: AppInstallInputsValues | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,13 +55,13 @@ class AppInstallInputs:
 
         org_id = self.org_id
 
-        redacted_values: Union[Unset, dict[str, Any]] = UNSET
+        redacted_values: dict[str, Any] | Unset = UNSET
         if not isinstance(self.redacted_values, Unset):
             redacted_values = self.redacted_values.to_dict()
 
         updated_at = self.updated_at
 
-        values: Union[Unset, dict[str, Any]] = UNSET
+        values: dict[str, Any] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values.to_dict()
 
@@ -106,7 +108,7 @@ class AppInstallInputs:
         org_id = d.pop("org_id", UNSET)
 
         _redacted_values = d.pop("redacted_values", UNSET)
-        redacted_values: Union[Unset, AppInstallInputsRedactedValues]
+        redacted_values: AppInstallInputsRedactedValues | Unset
         if isinstance(_redacted_values, Unset):
             redacted_values = UNSET
         else:
@@ -115,7 +117,7 @@ class AppInstallInputs:
         updated_at = d.pop("updated_at", UNSET)
 
         _values = d.pop("values", UNSET)
-        values: Union[Unset, AppInstallInputsValues]
+        values: AppInstallInputsValues | Unset
         if isinstance(_values, Unset):
             values = UNSET
         else:

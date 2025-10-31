@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,34 +19,34 @@ T = TypeVar("T", bound="AppLogStream")
 class AppLogStream:
     """
     Attributes:
-        attrs (Union[Unset, AppLogStreamAttrs]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        open_ (Union[Unset, bool]):
-        org_id (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        runner_api_url (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        write_token (Union[Unset, str]):
+        attrs (AppLogStreamAttrs | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        open_ (bool | Unset):
+        org_id (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        runner_api_url (str | Unset):
+        updated_at (str | Unset):
+        write_token (str | Unset):
     """
 
-    attrs: Union[Unset, "AppLogStreamAttrs"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    open_: Union[Unset, bool] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    runner_api_url: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    write_token: Union[Unset, str] = UNSET
+    attrs: AppLogStreamAttrs | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    open_: bool | Unset = UNSET
+    org_id: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    runner_api_url: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    write_token: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attrs: Union[Unset, dict[str, Any]] = UNSET
+        attrs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attrs, Unset):
             attrs = self.attrs.to_dict()
 
@@ -102,7 +104,7 @@ class AppLogStream:
 
         d = dict(src_dict)
         _attrs = d.pop("attrs", UNSET)
-        attrs: Union[Unset, AppLogStreamAttrs]
+        attrs: AppLogStreamAttrs | Unset
         if isinstance(_attrs, Unset):
             attrs = UNSET
         else:

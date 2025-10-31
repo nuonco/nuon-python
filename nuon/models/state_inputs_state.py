@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="StateInputsState")
 class StateInputsState:
     """
     Attributes:
-        inputs (Union[Unset, StateInputsStateInputs]):
-        populated (Union[Unset, bool]):
+        inputs (StateInputsStateInputs | Unset):
+        populated (bool | Unset):
     """
 
-    inputs: Union[Unset, "StateInputsStateInputs"] = UNSET
-    populated: Union[Unset, bool] = UNSET
+    inputs: StateInputsStateInputs | Unset = UNSET
+    populated: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        inputs: Union[Unset, dict[str, Any]] = UNSET
+        inputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
             inputs = self.inputs.to_dict()
 
@@ -48,7 +50,7 @@ class StateInputsState:
 
         d = dict(src_dict)
         _inputs = d.pop("inputs", UNSET)
-        inputs: Union[Unset, StateInputsStateInputs]
+        inputs: StateInputsStateInputs | Unset
         if isinstance(_inputs, Unset):
             inputs = UNSET
         else:

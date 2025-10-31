@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,24 +20,24 @@ T = TypeVar("T", bound="AppInstallStack")
 class AppInstallStack:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        install_stack_outputs (Union[Unset, AppInstallStackOutputs]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        versions (Union[Unset, list['AppInstallStackVersion']]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        install_stack_outputs (AppInstallStackOutputs | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
+        versions (list[AppInstallStackVersion] | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    install_stack_outputs: Union[Unset, "AppInstallStackOutputs"] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    versions: Union[Unset, list["AppInstallStackVersion"]] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    install_stack_outputs: AppInstallStackOutputs | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    versions: list[AppInstallStackVersion] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,7 +49,7 @@ class AppInstallStack:
 
         install_id = self.install_id
 
-        install_stack_outputs: Union[Unset, dict[str, Any]] = UNSET
+        install_stack_outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_stack_outputs, Unset):
             install_stack_outputs = self.install_stack_outputs.to_dict()
 
@@ -55,7 +57,7 @@ class AppInstallStack:
 
         updated_at = self.updated_at
 
-        versions: Union[Unset, list[dict[str, Any]]] = UNSET
+        versions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.versions, Unset):
             versions = []
             for versions_item_data in self.versions:
@@ -99,7 +101,7 @@ class AppInstallStack:
         install_id = d.pop("install_id", UNSET)
 
         _install_stack_outputs = d.pop("install_stack_outputs", UNSET)
-        install_stack_outputs: Union[Unset, AppInstallStackOutputs]
+        install_stack_outputs: AppInstallStackOutputs | Unset
         if isinstance(_install_stack_outputs, Unset):
             install_stack_outputs = UNSET
         else:

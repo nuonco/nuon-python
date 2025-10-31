@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,30 +19,30 @@ T = TypeVar("T", bound="AppInstallState")
 class AppInstallState:
     """
     Attributes:
-        archived (Union[Unset, bool]):
-        contents (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        stale_at (Union[Unset, GenericsNullTime]):
-        triggered_by_id (Union[Unset, str]):
-        triggered_by_type (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        version (Union[Unset, int]):
+        archived (bool | Unset):
+        contents (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        stale_at (GenericsNullTime | Unset):
+        triggered_by_id (str | Unset):
+        triggered_by_type (str | Unset):
+        updated_at (str | Unset):
+        version (int | Unset):
     """
 
-    archived: Union[Unset, bool] = UNSET
-    contents: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    stale_at: Union[Unset, "GenericsNullTime"] = UNSET
-    triggered_by_id: Union[Unset, str] = UNSET
-    triggered_by_type: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    version: Union[Unset, int] = UNSET
+    archived: bool | Unset = UNSET
+    contents: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    stale_at: GenericsNullTime | Unset = UNSET
+    triggered_by_id: str | Unset = UNSET
+    triggered_by_type: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    version: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,7 +58,7 @@ class AppInstallState:
 
         install_id = self.install_id
 
-        stale_at: Union[Unset, dict[str, Any]] = UNSET
+        stale_at: dict[str, Any] | Unset = UNSET
         if not isinstance(self.stale_at, Unset):
             stale_at = self.stale_at.to_dict()
 
@@ -114,7 +116,7 @@ class AppInstallState:
         install_id = d.pop("install_id", UNSET)
 
         _stale_at = d.pop("stale_at", UNSET)
-        stale_at: Union[Unset, GenericsNullTime]
+        stale_at: GenericsNullTime | Unset
         if isinstance(_stale_at, Unset):
             stale_at = UNSET
         else:

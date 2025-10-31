@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -23,32 +23,38 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AppAppPoliciesConfig | StderrErrResponse | None:
     if response.status_code == 200:
         response_200 = AppAppPoliciesConfig.from_dict(response.json())
 
         return response_200
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
+
     if response.status_code == 403:
         response_403 = StderrErrResponse.from_dict(response.json())
 
         return response_403
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -56,8 +62,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AppAppPoliciesConfig | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +77,7 @@ def sync_detailed(
     policies_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+) -> Response[AppAppPoliciesConfig | StderrErrResponse]:
     """get app policies config
 
      Return an app policy config by id.
@@ -85,7 +91,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppAppPoliciesConfig, StderrErrResponse]]
+        Response[AppAppPoliciesConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +111,7 @@ def sync(
     policies_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+) -> AppAppPoliciesConfig | StderrErrResponse | None:
     """get app policies config
 
      Return an app policy config by id.
@@ -119,7 +125,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppAppPoliciesConfig, StderrErrResponse]
+        AppAppPoliciesConfig | StderrErrResponse
     """
 
     return sync_detailed(
@@ -134,7 +140,7 @@ async def asyncio_detailed(
     policies_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+) -> Response[AppAppPoliciesConfig | StderrErrResponse]:
     """get app policies config
 
      Return an app policy config by id.
@@ -148,7 +154,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppAppPoliciesConfig, StderrErrResponse]]
+        Response[AppAppPoliciesConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -166,7 +172,7 @@ async def asyncio(
     policies_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppAppPoliciesConfig, StderrErrResponse]]:
+) -> AppAppPoliciesConfig | StderrErrResponse | None:
     """get app policies config
 
      Return an app policy config by id.
@@ -180,7 +186,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppAppPoliciesConfig, StderrErrResponse]
+        AppAppPoliciesConfig | StderrErrResponse
     """
 
     return (

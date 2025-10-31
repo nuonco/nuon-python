@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,46 +15,46 @@ T = TypeVar("T", bound="AppInstallerMetadata")
 class AppInstallerMetadata:
     """
     Attributes:
-        community_url (Union[Unset, str]):
-        copyright_markdown (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        demo_url (Union[Unset, str]):
-        description (Union[Unset, str]):
-        documentation_url (Union[Unset, str]):
-        favicon_url (Union[Unset, str]):
-        footer_markdown (Union[Unset, str]):
-        formatted_demo_url (Union[Unset, str]):
-        github_url (Union[Unset, str]):
-        homepage_url (Union[Unset, str]):
-        id (Union[Unset, str]):
-        installer_id (Union[Unset, str]):
-        logo_url (Union[Unset, str]):
-        name (Union[Unset, str]):
-        og_image_url (Union[Unset, str]):
-        post_install_markdown (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        community_url (str | Unset):
+        copyright_markdown (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        demo_url (str | Unset):
+        description (str | Unset):
+        documentation_url (str | Unset):
+        favicon_url (str | Unset):
+        footer_markdown (str | Unset):
+        formatted_demo_url (str | Unset):
+        github_url (str | Unset):
+        homepage_url (str | Unset):
+        id (str | Unset):
+        installer_id (str | Unset):
+        logo_url (str | Unset):
+        name (str | Unset):
+        og_image_url (str | Unset):
+        post_install_markdown (str | Unset):
+        updated_at (str | Unset):
     """
 
-    community_url: Union[Unset, str] = UNSET
-    copyright_markdown: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    demo_url: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    documentation_url: Union[Unset, str] = UNSET
-    favicon_url: Union[Unset, str] = UNSET
-    footer_markdown: Union[Unset, str] = UNSET
-    formatted_demo_url: Union[Unset, str] = UNSET
-    github_url: Union[Unset, str] = UNSET
-    homepage_url: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    installer_id: Union[Unset, str] = UNSET
-    logo_url: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    og_image_url: Union[Unset, str] = UNSET
-    post_install_markdown: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    community_url: str | Unset = UNSET
+    copyright_markdown: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    demo_url: str | Unset = UNSET
+    description: str | Unset = UNSET
+    documentation_url: str | Unset = UNSET
+    favicon_url: str | Unset = UNSET
+    footer_markdown: str | Unset = UNSET
+    formatted_demo_url: str | Unset = UNSET
+    github_url: str | Unset = UNSET
+    homepage_url: str | Unset = UNSET
+    id: str | Unset = UNSET
+    installer_id: str | Unset = UNSET
+    logo_url: str | Unset = UNSET
+    name: str | Unset = UNSET
+    og_image_url: str | Unset = UNSET
+    post_install_markdown: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,36 +19,36 @@ T = TypeVar("T", bound="AppJobComponentConfig")
 class AppJobComponentConfig:
     """
     Attributes:
-        args (Union[Unset, list[str]]):
-        cmd (Union[Unset, list[str]]):
-        component_config_connection_id (Union[Unset, str]): value
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        env_vars (Union[Unset, AppJobComponentConfigEnvVars]):
-        id (Union[Unset, str]):
-        image_url (Union[Unset, str]): Image attributes, copied from a docker_buid or external_image component.
-        tag (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        args (list[str] | Unset):
+        cmd (list[str] | Unset):
+        component_config_connection_id (str | Unset): value
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        env_vars (AppJobComponentConfigEnvVars | Unset):
+        id (str | Unset):
+        image_url (str | Unset): Image attributes, copied from a docker_buid or external_image component.
+        tag (str | Unset):
+        updated_at (str | Unset):
     """
 
-    args: Union[Unset, list[str]] = UNSET
-    cmd: Union[Unset, list[str]] = UNSET
-    component_config_connection_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppJobComponentConfigEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    image_url: Union[Unset, str] = UNSET
-    tag: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    args: list[str] | Unset = UNSET
+    cmd: list[str] | Unset = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    env_vars: AppJobComponentConfigEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    image_url: str | Unset = UNSET
+    tag: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        args: Union[Unset, list[str]] = UNSET
+        args: list[str] | Unset = UNSET
         if not isinstance(self.args, Unset):
             args = self.args
 
-        cmd: Union[Unset, list[str]] = UNSET
+        cmd: list[str] | Unset = UNSET
         if not isinstance(self.cmd, Unset):
             cmd = self.cmd
 
@@ -56,7 +58,7 @@ class AppJobComponentConfig:
 
         created_by_id = self.created_by_id
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
@@ -110,7 +112,7 @@ class AppJobComponentConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppJobComponentConfigEnvVars]
+        env_vars: AppJobComponentConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:

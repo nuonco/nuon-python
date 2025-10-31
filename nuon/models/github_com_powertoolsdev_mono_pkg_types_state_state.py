@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,90 +32,90 @@ T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgTypesStateState")
 class GithubComPowertoolsdevMonoPkgTypesStateState:
     """
     Attributes:
-        actions (Union[Unset, StateActionsState]):
-        app (Union[Unset, StateAppState]):
-        cloud_account (Union[Unset, StateCloudAccount]):
-        components (Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateStateComponents]):
-        domain (Union[Unset, StateDomainState]):
-        id (Union[Unset, str]):
-        inputs (Union[Unset, StateInputsState]):
-        install (Union[Unset, StateInstallState]):
-        install_stack (Union[Unset, StateInstallStackState]):
-        name (Union[Unset, str]):
-        org (Union[Unset, StateOrgState]):
-        runner (Union[Unset, StateRunnerState]):
-        sandbox (Union[Unset, StateSandboxState]):
-        secrets (Union[Unset, StateSecretsState]):
-        stale_at (Union[Unset, str]): loaded from the database but not part of the state itself
+        actions (StateActionsState | Unset):
+        app (StateAppState | Unset):
+        cloud_account (StateCloudAccount | Unset):
+        components (GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset):
+        domain (StateDomainState | Unset):
+        id (str | Unset):
+        inputs (StateInputsState | Unset):
+        install (StateInstallState | Unset):
+        install_stack (StateInstallStackState | Unset):
+        name (str | Unset):
+        org (StateOrgState | Unset):
+        runner (StateRunnerState | Unset):
+        sandbox (StateSandboxState | Unset):
+        secrets (StateSecretsState | Unset):
+        stale_at (str | Unset): loaded from the database but not part of the state itself
     """
 
-    actions: Union[Unset, "StateActionsState"] = UNSET
-    app: Union[Unset, "StateAppState"] = UNSET
-    cloud_account: Union[Unset, "StateCloudAccount"] = UNSET
-    components: Union[Unset, "GithubComPowertoolsdevMonoPkgTypesStateStateComponents"] = UNSET
-    domain: Union[Unset, "StateDomainState"] = UNSET
-    id: Union[Unset, str] = UNSET
-    inputs: Union[Unset, "StateInputsState"] = UNSET
-    install: Union[Unset, "StateInstallState"] = UNSET
-    install_stack: Union[Unset, "StateInstallStackState"] = UNSET
-    name: Union[Unset, str] = UNSET
-    org: Union[Unset, "StateOrgState"] = UNSET
-    runner: Union[Unset, "StateRunnerState"] = UNSET
-    sandbox: Union[Unset, "StateSandboxState"] = UNSET
-    secrets: Union[Unset, "StateSecretsState"] = UNSET
-    stale_at: Union[Unset, str] = UNSET
+    actions: StateActionsState | Unset = UNSET
+    app: StateAppState | Unset = UNSET
+    cloud_account: StateCloudAccount | Unset = UNSET
+    components: GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset = UNSET
+    domain: StateDomainState | Unset = UNSET
+    id: str | Unset = UNSET
+    inputs: StateInputsState | Unset = UNSET
+    install: StateInstallState | Unset = UNSET
+    install_stack: StateInstallStackState | Unset = UNSET
+    name: str | Unset = UNSET
+    org: StateOrgState | Unset = UNSET
+    runner: StateRunnerState | Unset = UNSET
+    sandbox: StateSandboxState | Unset = UNSET
+    secrets: StateSecretsState | Unset = UNSET
+    stale_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        actions: Union[Unset, dict[str, Any]] = UNSET
+        actions: dict[str, Any] | Unset = UNSET
         if not isinstance(self.actions, Unset):
             actions = self.actions.to_dict()
 
-        app: Union[Unset, dict[str, Any]] = UNSET
+        app: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app, Unset):
             app = self.app.to_dict()
 
-        cloud_account: Union[Unset, dict[str, Any]] = UNSET
+        cloud_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cloud_account, Unset):
             cloud_account = self.cloud_account.to_dict()
 
-        components: Union[Unset, dict[str, Any]] = UNSET
+        components: dict[str, Any] | Unset = UNSET
         if not isinstance(self.components, Unset):
             components = self.components.to_dict()
 
-        domain: Union[Unset, dict[str, Any]] = UNSET
+        domain: dict[str, Any] | Unset = UNSET
         if not isinstance(self.domain, Unset):
             domain = self.domain.to_dict()
 
         id = self.id
 
-        inputs: Union[Unset, dict[str, Any]] = UNSET
+        inputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
             inputs = self.inputs.to_dict()
 
-        install: Union[Unset, dict[str, Any]] = UNSET
+        install: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install, Unset):
             install = self.install.to_dict()
 
-        install_stack: Union[Unset, dict[str, Any]] = UNSET
+        install_stack: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_stack, Unset):
             install_stack = self.install_stack.to_dict()
 
         name = self.name
 
-        org: Union[Unset, dict[str, Any]] = UNSET
+        org: dict[str, Any] | Unset = UNSET
         if not isinstance(self.org, Unset):
             org = self.org.to_dict()
 
-        runner: Union[Unset, dict[str, Any]] = UNSET
+        runner: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner, Unset):
             runner = self.runner.to_dict()
 
-        sandbox: Union[Unset, dict[str, Any]] = UNSET
+        sandbox: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
-        secrets: Union[Unset, dict[str, Any]] = UNSET
+        secrets: dict[str, Any] | Unset = UNSET
         if not isinstance(self.secrets, Unset):
             secrets = self.secrets.to_dict()
 
@@ -174,35 +176,35 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
 
         d = dict(src_dict)
         _actions = d.pop("actions", UNSET)
-        actions: Union[Unset, StateActionsState]
+        actions: StateActionsState | Unset
         if isinstance(_actions, Unset):
             actions = UNSET
         else:
             actions = StateActionsState.from_dict(_actions)
 
         _app = d.pop("app", UNSET)
-        app: Union[Unset, StateAppState]
+        app: StateAppState | Unset
         if isinstance(_app, Unset):
             app = UNSET
         else:
             app = StateAppState.from_dict(_app)
 
         _cloud_account = d.pop("cloud_account", UNSET)
-        cloud_account: Union[Unset, StateCloudAccount]
+        cloud_account: StateCloudAccount | Unset
         if isinstance(_cloud_account, Unset):
             cloud_account = UNSET
         else:
             cloud_account = StateCloudAccount.from_dict(_cloud_account)
 
         _components = d.pop("components", UNSET)
-        components: Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateStateComponents]
+        components: GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset
         if isinstance(_components, Unset):
             components = UNSET
         else:
             components = GithubComPowertoolsdevMonoPkgTypesStateStateComponents.from_dict(_components)
 
         _domain = d.pop("domain", UNSET)
-        domain: Union[Unset, StateDomainState]
+        domain: StateDomainState | Unset
         if isinstance(_domain, Unset):
             domain = UNSET
         else:
@@ -211,21 +213,21 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
         id = d.pop("id", UNSET)
 
         _inputs = d.pop("inputs", UNSET)
-        inputs: Union[Unset, StateInputsState]
+        inputs: StateInputsState | Unset
         if isinstance(_inputs, Unset):
             inputs = UNSET
         else:
             inputs = StateInputsState.from_dict(_inputs)
 
         _install = d.pop("install", UNSET)
-        install: Union[Unset, StateInstallState]
+        install: StateInstallState | Unset
         if isinstance(_install, Unset):
             install = UNSET
         else:
             install = StateInstallState.from_dict(_install)
 
         _install_stack = d.pop("install_stack", UNSET)
-        install_stack: Union[Unset, StateInstallStackState]
+        install_stack: StateInstallStackState | Unset
         if isinstance(_install_stack, Unset):
             install_stack = UNSET
         else:
@@ -234,28 +236,28 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
         name = d.pop("name", UNSET)
 
         _org = d.pop("org", UNSET)
-        org: Union[Unset, StateOrgState]
+        org: StateOrgState | Unset
         if isinstance(_org, Unset):
             org = UNSET
         else:
             org = StateOrgState.from_dict(_org)
 
         _runner = d.pop("runner", UNSET)
-        runner: Union[Unset, StateRunnerState]
+        runner: StateRunnerState | Unset
         if isinstance(_runner, Unset):
             runner = UNSET
         else:
             runner = StateRunnerState.from_dict(_runner)
 
         _sandbox = d.pop("sandbox", UNSET)
-        sandbox: Union[Unset, StateSandboxState]
+        sandbox: StateSandboxState | Unset
         if isinstance(_sandbox, Unset):
             sandbox = UNSET
         else:
             sandbox = StateSandboxState.from_dict(_sandbox)
 
         _secrets = d.pop("secrets", UNSET)
-        secrets: Union[Unset, StateSecretsState]
+        secrets: StateSecretsState | Unset
         if isinstance(_secrets, Unset):
             secrets = UNSET
         else:

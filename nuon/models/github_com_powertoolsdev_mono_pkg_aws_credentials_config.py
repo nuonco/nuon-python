@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,25 +20,25 @@ T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgAwsCredentialsConfig")
 class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
     """
     Attributes:
-        assume_role (Union[Unset, CredentialsAssumeRoleConfig]):
-        cache_id (Union[Unset, str]): when cache ID is set, these credentials will be reused, up to the duration of the
+        assume_role (CredentialsAssumeRoleConfig | Unset):
+        cache_id (str | Unset): when cache ID is set, these credentials will be reused, up to the duration of the
             sessionTimeout (or default)
-        profile (Union[Unset, str]): If profile is provided, we'll use that profile over the default credentials
-        region (Union[Unset, str]):
-        static (Union[Unset, CredentialsStaticCredentials]):
-        use_default (Union[Unset, bool]):
+        profile (str | Unset): If profile is provided, we'll use that profile over the default credentials
+        region (str | Unset):
+        static (CredentialsStaticCredentials | Unset):
+        use_default (bool | Unset):
     """
 
-    assume_role: Union[Unset, "CredentialsAssumeRoleConfig"] = UNSET
-    cache_id: Union[Unset, str] = UNSET
-    profile: Union[Unset, str] = UNSET
-    region: Union[Unset, str] = UNSET
-    static: Union[Unset, "CredentialsStaticCredentials"] = UNSET
-    use_default: Union[Unset, bool] = UNSET
+    assume_role: CredentialsAssumeRoleConfig | Unset = UNSET
+    cache_id: str | Unset = UNSET
+    profile: str | Unset = UNSET
+    region: str | Unset = UNSET
+    static: CredentialsStaticCredentials | Unset = UNSET
+    use_default: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        assume_role: Union[Unset, dict[str, Any]] = UNSET
+        assume_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.assume_role, Unset):
             assume_role = self.assume_role.to_dict()
 
@@ -46,7 +48,7 @@ class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
 
         region = self.region
 
-        static: Union[Unset, dict[str, Any]] = UNSET
+        static: dict[str, Any] | Unset = UNSET
         if not isinstance(self.static, Unset):
             static = self.static.to_dict()
 
@@ -77,7 +79,7 @@ class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
 
         d = dict(src_dict)
         _assume_role = d.pop("assume_role", UNSET)
-        assume_role: Union[Unset, CredentialsAssumeRoleConfig]
+        assume_role: CredentialsAssumeRoleConfig | Unset
         if isinstance(_assume_role, Unset):
             assume_role = UNSET
         else:
@@ -90,7 +92,7 @@ class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
         region = d.pop("region", UNSET)
 
         _static = d.pop("static", UNSET)
-        static: Union[Unset, CredentialsStaticCredentials]
+        static: CredentialsStaticCredentials | Unset
         if isinstance(_static, Unset):
             static = UNSET
         else:

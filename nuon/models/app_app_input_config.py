@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,28 +21,28 @@ T = TypeVar("T", bound="AppAppInputConfig")
 class AppAppInputConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        input_groups (Union[Unset, list['AppAppInputGroup']]):
-        inputs (Union[Unset, list['AppAppInput']]):
-        install_inputs (Union[Unset, list['AppInstallInputs']]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        input_groups (list[AppAppInputGroup] | Unset):
+        inputs (list[AppAppInput] | Unset):
+        install_inputs (list[AppInstallInputs] | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    input_groups: Union[Unset, list["AppAppInputGroup"]] = UNSET
-    inputs: Union[Unset, list["AppAppInput"]] = UNSET
-    install_inputs: Union[Unset, list["AppInstallInputs"]] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    input_groups: list[AppAppInputGroup] | Unset = UNSET
+    inputs: list[AppAppInput] | Unset = UNSET
+    install_inputs: list[AppInstallInputs] | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,21 +56,21 @@ class AppAppInputConfig:
 
         id = self.id
 
-        input_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        input_groups: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.input_groups, Unset):
             input_groups = []
             for input_groups_item_data in self.input_groups:
                 input_groups_item = input_groups_item_data.to_dict()
                 input_groups.append(input_groups_item)
 
-        inputs: Union[Unset, list[dict[str, Any]]] = UNSET
+        inputs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
             inputs = []
             for inputs_item_data in self.inputs:
                 inputs_item = inputs_item_data.to_dict()
                 inputs.append(inputs_item)
 
-        install_inputs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_inputs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_inputs, Unset):
             install_inputs = []
             for install_inputs_item_data in self.install_inputs:

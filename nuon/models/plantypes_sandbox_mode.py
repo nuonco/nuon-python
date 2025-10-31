@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,36 +22,36 @@ T = TypeVar("T", bound="PlantypesSandboxMode")
 class PlantypesSandboxMode:
     """
     Attributes:
-        enabled (Union[Unset, bool]):
-        helm (Union[Unset, PlantypesHelmSandboxMode]):
-        kubernetes_manifest (Union[Unset, PlantypesKubernetesSandboxMode]):
-        outputs (Union[Unset, PlantypesSandboxModeOutputs]):
-        terraform (Union[Unset, PlantypesTerraformSandboxMode]):
+        enabled (bool | Unset):
+        helm (PlantypesHelmSandboxMode | Unset):
+        kubernetes_manifest (PlantypesKubernetesSandboxMode | Unset):
+        outputs (PlantypesSandboxModeOutputs | Unset):
+        terraform (PlantypesTerraformSandboxMode | Unset):
     """
 
-    enabled: Union[Unset, bool] = UNSET
-    helm: Union[Unset, "PlantypesHelmSandboxMode"] = UNSET
-    kubernetes_manifest: Union[Unset, "PlantypesKubernetesSandboxMode"] = UNSET
-    outputs: Union[Unset, "PlantypesSandboxModeOutputs"] = UNSET
-    terraform: Union[Unset, "PlantypesTerraformSandboxMode"] = UNSET
+    enabled: bool | Unset = UNSET
+    helm: PlantypesHelmSandboxMode | Unset = UNSET
+    kubernetes_manifest: PlantypesKubernetesSandboxMode | Unset = UNSET
+    outputs: PlantypesSandboxModeOutputs | Unset = UNSET
+    terraform: PlantypesTerraformSandboxMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         enabled = self.enabled
 
-        helm: Union[Unset, dict[str, Any]] = UNSET
+        helm: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm, Unset):
             helm = self.helm.to_dict()
 
-        kubernetes_manifest: Union[Unset, dict[str, Any]] = UNSET
+        kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
-        terraform: Union[Unset, dict[str, Any]] = UNSET
+        terraform: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform, Unset):
             terraform = self.terraform.to_dict()
 
@@ -80,28 +82,28 @@ class PlantypesSandboxMode:
         enabled = d.pop("enabled", UNSET)
 
         _helm = d.pop("helm", UNSET)
-        helm: Union[Unset, PlantypesHelmSandboxMode]
+        helm: PlantypesHelmSandboxMode | Unset
         if isinstance(_helm, Unset):
             helm = UNSET
         else:
             helm = PlantypesHelmSandboxMode.from_dict(_helm)
 
         _kubernetes_manifest = d.pop("kubernetes_manifest", UNSET)
-        kubernetes_manifest: Union[Unset, PlantypesKubernetesSandboxMode]
+        kubernetes_manifest: PlantypesKubernetesSandboxMode | Unset
         if isinstance(_kubernetes_manifest, Unset):
             kubernetes_manifest = UNSET
         else:
             kubernetes_manifest = PlantypesKubernetesSandboxMode.from_dict(_kubernetes_manifest)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, PlantypesSandboxModeOutputs]
+        outputs: PlantypesSandboxModeOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:
             outputs = PlantypesSandboxModeOutputs.from_dict(_outputs)
 
         _terraform = d.pop("terraform", UNSET)
-        terraform: Union[Unset, PlantypesTerraformSandboxMode]
+        terraform: PlantypesTerraformSandboxMode | Unset
         if isinstance(_terraform, Unset):
             terraform = UNSET
         else:

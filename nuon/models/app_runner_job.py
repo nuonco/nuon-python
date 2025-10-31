@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,66 +25,66 @@ T = TypeVar("T", bound="AppRunnerJob")
 class AppRunnerJob:
     """
     Attributes:
-        available_timeout (Union[Unset, int]): available timeout is how long a job can be marked as "available" before
-            being requeued
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        execution_count (Union[Unset, int]):
-        execution_time (Union[Unset, int]):
-        execution_timeout (Union[Unset, int]): execution timeout is how long a job can be marked as "exeucuting" before
-            being requeued
-        executions (Union[Unset, list['AppRunnerJobExecution']]):
-        final_runner_job_execution_id (Union[Unset, str]):
-        finished_at (Union[Unset, str]):
-        group (Union[Unset, AppRunnerJobGroup]):
-        id (Union[Unset, str]):
-        log_stream_id (Union[Unset, str]):
-        max_executions (Union[Unset, int]):
-        metadata (Union[Unset, AppRunnerJobMetadata]):
-        operation (Union[Unset, AppRunnerJobOperationType]):
-        org_id (Union[Unset, str]):
-        outputs (Union[Unset, AppRunnerJobOutputs]):
-        outputs_json (Union[Unset, str]):
-        overall_timeout (Union[Unset, int]): overall timeout is how long a job can be attempted, before being cancelled
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        queue_timeout (Union[Unset, int]): queue timeout is how long a job can be queued, before being made available
-        runner_id (Union[Unset, str]):
-        started_at (Union[Unset, str]):
-        status (Union[Unset, AppRunnerJobStatus]):
-        status_description (Union[Unset, str]):
-        type_ (Union[Unset, AppRunnerJobType]):
-        updated_at (Union[Unset, str]):
+        available_timeout (int | Unset): available timeout is how long a job can be marked as "available" before being
+            requeued
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        execution_count (int | Unset):
+        execution_time (int | Unset):
+        execution_timeout (int | Unset): execution timeout is how long a job can be marked as "exeucuting" before being
+            requeued
+        executions (list[AppRunnerJobExecution] | Unset):
+        final_runner_job_execution_id (str | Unset):
+        finished_at (str | Unset):
+        group (AppRunnerJobGroup | Unset):
+        id (str | Unset):
+        log_stream_id (str | Unset):
+        max_executions (int | Unset):
+        metadata (AppRunnerJobMetadata | Unset):
+        operation (AppRunnerJobOperationType | Unset):
+        org_id (str | Unset):
+        outputs (AppRunnerJobOutputs | Unset):
+        outputs_json (str | Unset):
+        overall_timeout (int | Unset): overall timeout is how long a job can be attempted, before being cancelled
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        queue_timeout (int | Unset): queue timeout is how long a job can be queued, before being made available
+        runner_id (str | Unset):
+        started_at (str | Unset):
+        status (AppRunnerJobStatus | Unset):
+        status_description (str | Unset):
+        type_ (AppRunnerJobType | Unset):
+        updated_at (str | Unset):
     """
 
-    available_timeout: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    execution_count: Union[Unset, int] = UNSET
-    execution_time: Union[Unset, int] = UNSET
-    execution_timeout: Union[Unset, int] = UNSET
-    executions: Union[Unset, list["AppRunnerJobExecution"]] = UNSET
-    final_runner_job_execution_id: Union[Unset, str] = UNSET
-    finished_at: Union[Unset, str] = UNSET
-    group: Union[Unset, AppRunnerJobGroup] = UNSET
-    id: Union[Unset, str] = UNSET
-    log_stream_id: Union[Unset, str] = UNSET
-    max_executions: Union[Unset, int] = UNSET
-    metadata: Union[Unset, "AppRunnerJobMetadata"] = UNSET
-    operation: Union[Unset, AppRunnerJobOperationType] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    outputs: Union[Unset, "AppRunnerJobOutputs"] = UNSET
-    outputs_json: Union[Unset, str] = UNSET
-    overall_timeout: Union[Unset, int] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    queue_timeout: Union[Unset, int] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    started_at: Union[Unset, str] = UNSET
-    status: Union[Unset, AppRunnerJobStatus] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    type_: Union[Unset, AppRunnerJobType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    available_timeout: int | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    execution_count: int | Unset = UNSET
+    execution_time: int | Unset = UNSET
+    execution_timeout: int | Unset = UNSET
+    executions: list[AppRunnerJobExecution] | Unset = UNSET
+    final_runner_job_execution_id: str | Unset = UNSET
+    finished_at: str | Unset = UNSET
+    group: AppRunnerJobGroup | Unset = UNSET
+    id: str | Unset = UNSET
+    log_stream_id: str | Unset = UNSET
+    max_executions: int | Unset = UNSET
+    metadata: AppRunnerJobMetadata | Unset = UNSET
+    operation: AppRunnerJobOperationType | Unset = UNSET
+    org_id: str | Unset = UNSET
+    outputs: AppRunnerJobOutputs | Unset = UNSET
+    outputs_json: str | Unset = UNSET
+    overall_timeout: int | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    queue_timeout: int | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    started_at: str | Unset = UNSET
+    status: AppRunnerJobStatus | Unset = UNSET
+    status_description: str | Unset = UNSET
+    type_: AppRunnerJobType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -98,7 +100,7 @@ class AppRunnerJob:
 
         execution_timeout = self.execution_timeout
 
-        executions: Union[Unset, list[dict[str, Any]]] = UNSET
+        executions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.executions, Unset):
             executions = []
             for executions_item_data in self.executions:
@@ -109,7 +111,7 @@ class AppRunnerJob:
 
         finished_at = self.finished_at
 
-        group: Union[Unset, str] = UNSET
+        group: str | Unset = UNSET
         if not isinstance(self.group, Unset):
             group = self.group.value
 
@@ -119,17 +121,17 @@ class AppRunnerJob:
 
         max_executions = self.max_executions
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
-        operation: Union[Unset, str] = UNSET
+        operation: str | Unset = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation.value
 
         org_id = self.org_id
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
@@ -147,13 +149,13 @@ class AppRunnerJob:
 
         started_at = self.started_at
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
         status_description = self.status_description
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -252,7 +254,7 @@ class AppRunnerJob:
         finished_at = d.pop("finished_at", UNSET)
 
         _group = d.pop("group", UNSET)
-        group: Union[Unset, AppRunnerJobGroup]
+        group: AppRunnerJobGroup | Unset
         if isinstance(_group, Unset):
             group = UNSET
         else:
@@ -265,14 +267,14 @@ class AppRunnerJob:
         max_executions = d.pop("max_executions", UNSET)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppRunnerJobMetadata]
+        metadata: AppRunnerJobMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
             metadata = AppRunnerJobMetadata.from_dict(_metadata)
 
         _operation = d.pop("operation", UNSET)
-        operation: Union[Unset, AppRunnerJobOperationType]
+        operation: AppRunnerJobOperationType | Unset
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
@@ -281,7 +283,7 @@ class AppRunnerJob:
         org_id = d.pop("org_id", UNSET)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, AppRunnerJobOutputs]
+        outputs: AppRunnerJobOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:
@@ -302,7 +304,7 @@ class AppRunnerJob:
         started_at = d.pop("started_at", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppRunnerJobStatus]
+        status: AppRunnerJobStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -311,7 +313,7 @@ class AppRunnerJob:
         status_description = d.pop("status_description", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppRunnerJobType]
+        type_: AppRunnerJobType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

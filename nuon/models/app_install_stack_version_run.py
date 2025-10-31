@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,20 +20,20 @@ T = TypeVar("T", bound="AppInstallStackVersionRun")
 class AppInstallStackVersionRun:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        data (Union[Unset, AppInstallStackVersionRunData]):
-        data_contents (Union[Unset, AppInstallStackVersionRunDataContents]):
-        id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        data (AppInstallStackVersionRunData | Unset):
+        data_contents (AppInstallStackVersionRunDataContents | Unset):
+        id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    data: Union[Unset, "AppInstallStackVersionRunData"] = UNSET
-    data_contents: Union[Unset, "AppInstallStackVersionRunDataContents"] = UNSET
-    id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    data: AppInstallStackVersionRunData | Unset = UNSET
+    data_contents: AppInstallStackVersionRunDataContents | Unset = UNSET
+    id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,11 +41,11 @@ class AppInstallStackVersionRun:
 
         created_by_id = self.created_by_id
 
-        data: Union[Unset, dict[str, Any]] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
-        data_contents: Union[Unset, dict[str, Any]] = UNSET
+        data_contents: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data_contents, Unset):
             data_contents = self.data_contents.to_dict()
 
@@ -80,14 +82,14 @@ class AppInstallStackVersionRun:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _data = d.pop("data", UNSET)
-        data: Union[Unset, AppInstallStackVersionRunData]
+        data: AppInstallStackVersionRunData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:
             data = AppInstallStackVersionRunData.from_dict(_data)
 
         _data_contents = d.pop("data_contents", UNSET)
-        data_contents: Union[Unset, AppInstallStackVersionRunDataContents]
+        data_contents: AppInstallStackVersionRunDataContents | Unset
         if isinstance(_data_contents, Unset):
             data_contents = UNSET
         else:

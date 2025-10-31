@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,24 +15,24 @@ T = TypeVar("T", bound="OutputsSecretSyncOutput")
 class OutputsSecretSyncOutput:
     """
     Attributes:
-        arn (Union[Unset, str]):
-        exists (Union[Unset, bool]):
-        kubernetes_key (Union[Unset, str]):
-        kubernetes_name (Union[Unset, str]):
-        kubernetes_namespace (Union[Unset, str]):
-        length (Union[Unset, int]):
-        name (Union[Unset, str]):
-        timestamp (Union[Unset, str]):
+        arn (str | Unset):
+        exists (bool | Unset):
+        kubernetes_key (str | Unset):
+        kubernetes_name (str | Unset):
+        kubernetes_namespace (str | Unset):
+        length (int | Unset):
+        name (str | Unset):
+        timestamp (str | Unset):
     """
 
-    arn: Union[Unset, str] = UNSET
-    exists: Union[Unset, bool] = UNSET
-    kubernetes_key: Union[Unset, str] = UNSET
-    kubernetes_name: Union[Unset, str] = UNSET
-    kubernetes_namespace: Union[Unset, str] = UNSET
-    length: Union[Unset, int] = UNSET
-    name: Union[Unset, str] = UNSET
-    timestamp: Union[Unset, str] = UNSET
+    arn: str | Unset = UNSET
+    exists: bool | Unset = UNSET
+    kubernetes_key: str | Unset = UNSET
+    kubernetes_name: str | Unset = UNSET
+    kubernetes_namespace: str | Unset = UNSET
+    length: int | Unset = UNSET
+    name: str | Unset = UNSET
+    timestamp: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

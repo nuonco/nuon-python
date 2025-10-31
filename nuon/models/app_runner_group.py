@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,30 +22,30 @@ T = TypeVar("T", bound="AppRunnerGroup")
 class AppRunnerGroup:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        owner_id (Union[Unset, str]): parent can org, install or in the future, builtin runner group
-        owner_type (Union[Unset, str]):
-        platform (Union[Unset, AppAppRunnerType]):
-        runners (Union[Unset, list['AppRunner']]):
-        settings (Union[Unset, AppRunnerGroupSettings]):
-        type_ (Union[Unset, AppRunnerGroupType]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        owner_id (str | Unset): parent can org, install or in the future, builtin runner group
+        owner_type (str | Unset):
+        platform (AppAppRunnerType | Unset):
+        runners (list[AppRunner] | Unset):
+        settings (AppRunnerGroupSettings | Unset):
+        type_ (AppRunnerGroupType | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    platform: Union[Unset, AppAppRunnerType] = UNSET
-    runners: Union[Unset, list["AppRunner"]] = UNSET
-    settings: Union[Unset, "AppRunnerGroupSettings"] = UNSET
-    type_: Union[Unset, AppRunnerGroupType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    platform: AppAppRunnerType | Unset = UNSET
+    runners: list[AppRunner] | Unset = UNSET
+    settings: AppRunnerGroupSettings | Unset = UNSET
+    type_: AppRunnerGroupType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,22 +61,22 @@ class AppRunnerGroup:
 
         owner_type = self.owner_type
 
-        platform: Union[Unset, str] = UNSET
+        platform: str | Unset = UNSET
         if not isinstance(self.platform, Unset):
             platform = self.platform.value
 
-        runners: Union[Unset, list[dict[str, Any]]] = UNSET
+        runners: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.runners, Unset):
             runners = []
             for runners_item_data in self.runners:
                 runners_item = runners_item_data.to_dict()
                 runners.append(runners_item)
 
-        settings: Union[Unset, dict[str, Any]] = UNSET
+        settings: dict[str, Any] | Unset = UNSET
         if not isinstance(self.settings, Unset):
             settings = self.settings.to_dict()
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -127,7 +129,7 @@ class AppRunnerGroup:
         owner_type = d.pop("owner_type", UNSET)
 
         _platform = d.pop("platform", UNSET)
-        platform: Union[Unset, AppAppRunnerType]
+        platform: AppAppRunnerType | Unset
         if isinstance(_platform, Unset):
             platform = UNSET
         else:
@@ -141,14 +143,14 @@ class AppRunnerGroup:
             runners.append(runners_item)
 
         _settings = d.pop("settings", UNSET)
-        settings: Union[Unset, AppRunnerGroupSettings]
+        settings: AppRunnerGroupSettings | Unset
         if isinstance(_settings, Unset):
             settings = UNSET
         else:
             settings = AppRunnerGroupSettings.from_dict(_settings)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppRunnerGroupType]
+        type_: AppRunnerGroupType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

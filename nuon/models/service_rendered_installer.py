@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,25 +20,25 @@ T = TypeVar("T", bound="ServiceRenderedInstaller")
 class ServiceRenderedInstaller:
     """
     Attributes:
-        apps (Union[Unset, list['AppApp']]):
-        metadata (Union[Unset, AppInstallerMetadata]):
-        sandbox_mode (Union[Unset, bool]):
+        apps (list[AppApp] | Unset):
+        metadata (AppInstallerMetadata | Unset):
+        sandbox_mode (bool | Unset):
     """
 
-    apps: Union[Unset, list["AppApp"]] = UNSET
-    metadata: Union[Unset, "AppInstallerMetadata"] = UNSET
-    sandbox_mode: Union[Unset, bool] = UNSET
+    apps: list[AppApp] | Unset = UNSET
+    metadata: AppInstallerMetadata | Unset = UNSET
+    sandbox_mode: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        apps: Union[Unset, list[dict[str, Any]]] = UNSET
+        apps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.apps, Unset):
             apps = []
             for apps_item_data in self.apps:
                 apps_item = apps_item_data.to_dict()
                 apps.append(apps_item)
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -68,7 +70,7 @@ class ServiceRenderedInstaller:
             apps.append(apps_item)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppInstallerMetadata]
+        metadata: AppInstallerMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

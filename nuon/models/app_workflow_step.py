@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,33 +25,32 @@ T = TypeVar("T", bound="AppWorkflowStep")
 class AppWorkflowStep:
     """
     Attributes:
-        approval (Union[Unset, AppWorkflowStepApproval]):
-        created_at (Union[Unset, str]):
-        created_by (Union[Unset, AppAccount]):
-        created_by_id (Union[Unset, str]):
-        execution_time (Union[Unset, int]):
-        execution_type (Union[Unset, AppWorkflowStepExecutionType]):
-        finished (Union[Unset, bool]):
-        finished_at (Union[Unset, str]):
-        group_idx (Union[Unset, int]): to group steps which belong to same logical group, eg, plan/apply
-        group_retry_idx (Union[Unset, int]): counter for every retry attempted on a group
-        id (Union[Unset, str]):
-        idx (Union[Unset, int]):
-        install_workflow_id (Union[Unset, str]): DEPRECATED: this is the install workflow ID, which is now the workflow
-            ID.
-        links (Union[Unset, AppWorkflowStepLinks]):
-        metadata (Union[Unset, AppWorkflowStepMetadata]):
-        name (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        policy_validation (Union[Unset, AppWorkflowStepPolicyValidation]):
-        retried (Union[Unset, bool]):
-        retryable (Union[Unset, bool]):
-        skippable (Union[Unset, bool]):
-        started_at (Union[Unset, str]):
-        status (Union[Unset, AppCompositeStatus]):
-        step_target_id (Union[Unset, str]): the following fields are set _once_ a step is in flight, and are
-            orchestrated via the step's signal.
+        approval (AppWorkflowStepApproval | Unset):
+        created_at (str | Unset):
+        created_by (AppAccount | Unset):
+        created_by_id (str | Unset):
+        execution_time (int | Unset):
+        execution_type (AppWorkflowStepExecutionType | Unset):
+        finished (bool | Unset):
+        finished_at (str | Unset):
+        group_idx (int | Unset): to group steps which belong to same logical group, eg, plan/apply
+        group_retry_idx (int | Unset): counter for every retry attempted on a group
+        id (str | Unset):
+        idx (int | Unset):
+        install_workflow_id (str | Unset): DEPRECATED: this is the install workflow ID, which is now the workflow ID.
+        links (AppWorkflowStepLinks | Unset):
+        metadata (AppWorkflowStepMetadata | Unset):
+        name (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        policy_validation (AppWorkflowStepPolicyValidation | Unset):
+        retried (bool | Unset):
+        retryable (bool | Unset):
+        skippable (bool | Unset):
+        started_at (str | Unset):
+        status (AppCompositeStatus | Unset):
+        step_target_id (str | Unset): the following fields are set _once_ a step is in flight, and are orchestrated via
+            the step's signal.
 
             this is a polymorphic gorm relationship to one of the following objects:
 
@@ -58,49 +59,49 @@ class AppWorkflowStep:
             install_runner_update
             install_deploy
             install_action_workflow_run (can be many of these)
-        step_target_type (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        workflow_id (Union[Unset, str]): Fields that are de-nested at read time using AfterQuery
+        step_target_type (str | Unset):
+        updated_at (str | Unset):
+        workflow_id (str | Unset): Fields that are de-nested at read time using AfterQuery
     """
 
-    approval: Union[Unset, "AppWorkflowStepApproval"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by: Union[Unset, "AppAccount"] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    execution_time: Union[Unset, int] = UNSET
-    execution_type: Union[Unset, AppWorkflowStepExecutionType] = UNSET
-    finished: Union[Unset, bool] = UNSET
-    finished_at: Union[Unset, str] = UNSET
-    group_idx: Union[Unset, int] = UNSET
-    group_retry_idx: Union[Unset, int] = UNSET
-    id: Union[Unset, str] = UNSET
-    idx: Union[Unset, int] = UNSET
-    install_workflow_id: Union[Unset, str] = UNSET
-    links: Union[Unset, "AppWorkflowStepLinks"] = UNSET
-    metadata: Union[Unset, "AppWorkflowStepMetadata"] = UNSET
-    name: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    policy_validation: Union[Unset, "AppWorkflowStepPolicyValidation"] = UNSET
-    retried: Union[Unset, bool] = UNSET
-    retryable: Union[Unset, bool] = UNSET
-    skippable: Union[Unset, bool] = UNSET
-    started_at: Union[Unset, str] = UNSET
-    status: Union[Unset, "AppCompositeStatus"] = UNSET
-    step_target_id: Union[Unset, str] = UNSET
-    step_target_type: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workflow_id: Union[Unset, str] = UNSET
+    approval: AppWorkflowStepApproval | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by: AppAccount | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    execution_time: int | Unset = UNSET
+    execution_type: AppWorkflowStepExecutionType | Unset = UNSET
+    finished: bool | Unset = UNSET
+    finished_at: str | Unset = UNSET
+    group_idx: int | Unset = UNSET
+    group_retry_idx: int | Unset = UNSET
+    id: str | Unset = UNSET
+    idx: int | Unset = UNSET
+    install_workflow_id: str | Unset = UNSET
+    links: AppWorkflowStepLinks | Unset = UNSET
+    metadata: AppWorkflowStepMetadata | Unset = UNSET
+    name: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    policy_validation: AppWorkflowStepPolicyValidation | Unset = UNSET
+    retried: bool | Unset = UNSET
+    retryable: bool | Unset = UNSET
+    skippable: bool | Unset = UNSET
+    started_at: str | Unset = UNSET
+    status: AppCompositeStatus | Unset = UNSET
+    step_target_id: str | Unset = UNSET
+    step_target_type: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval: Union[Unset, dict[str, Any]] = UNSET
+        approval: dict[str, Any] | Unset = UNSET
         if not isinstance(self.approval, Unset):
             approval = self.approval.to_dict()
 
         created_at = self.created_at
 
-        created_by: Union[Unset, dict[str, Any]] = UNSET
+        created_by: dict[str, Any] | Unset = UNSET
         if not isinstance(self.created_by, Unset):
             created_by = self.created_by.to_dict()
 
@@ -108,7 +109,7 @@ class AppWorkflowStep:
 
         execution_time = self.execution_time
 
-        execution_type: Union[Unset, str] = UNSET
+        execution_type: str | Unset = UNSET
         if not isinstance(self.execution_type, Unset):
             execution_type = self.execution_type.value
 
@@ -126,11 +127,11 @@ class AppWorkflowStep:
 
         install_workflow_id = self.install_workflow_id
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -140,7 +141,7 @@ class AppWorkflowStep:
 
         owner_type = self.owner_type
 
-        policy_validation: Union[Unset, dict[str, Any]] = UNSET
+        policy_validation: dict[str, Any] | Unset = UNSET
         if not isinstance(self.policy_validation, Unset):
             policy_validation = self.policy_validation.to_dict()
 
@@ -152,7 +153,7 @@ class AppWorkflowStep:
 
         started_at = self.started_at
 
-        status: Union[Unset, dict[str, Any]] = UNSET
+        status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
@@ -237,7 +238,7 @@ class AppWorkflowStep:
 
         d = dict(src_dict)
         _approval = d.pop("approval", UNSET)
-        approval: Union[Unset, AppWorkflowStepApproval]
+        approval: AppWorkflowStepApproval | Unset
         if isinstance(_approval, Unset):
             approval = UNSET
         else:
@@ -246,7 +247,7 @@ class AppWorkflowStep:
         created_at = d.pop("created_at", UNSET)
 
         _created_by = d.pop("created_by", UNSET)
-        created_by: Union[Unset, AppAccount]
+        created_by: AppAccount | Unset
         if isinstance(_created_by, Unset):
             created_by = UNSET
         else:
@@ -257,7 +258,7 @@ class AppWorkflowStep:
         execution_time = d.pop("execution_time", UNSET)
 
         _execution_type = d.pop("execution_type", UNSET)
-        execution_type: Union[Unset, AppWorkflowStepExecutionType]
+        execution_type: AppWorkflowStepExecutionType | Unset
         if isinstance(_execution_type, Unset):
             execution_type = UNSET
         else:
@@ -278,14 +279,14 @@ class AppWorkflowStep:
         install_workflow_id = d.pop("install_workflow_id", UNSET)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppWorkflowStepLinks]
+        links: AppWorkflowStepLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = AppWorkflowStepLinks.from_dict(_links)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppWorkflowStepMetadata]
+        metadata: AppWorkflowStepMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
@@ -298,7 +299,7 @@ class AppWorkflowStep:
         owner_type = d.pop("owner_type", UNSET)
 
         _policy_validation = d.pop("policy_validation", UNSET)
-        policy_validation: Union[Unset, AppWorkflowStepPolicyValidation]
+        policy_validation: AppWorkflowStepPolicyValidation | Unset
         if isinstance(_policy_validation, Unset):
             policy_validation = UNSET
         else:
@@ -313,7 +314,7 @@ class AppWorkflowStep:
         started_at = d.pop("started_at", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppCompositeStatus]
+        status: AppCompositeStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

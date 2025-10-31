@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,36 +19,36 @@ T = TypeVar("T", bound="AppAppInputGroup")
 class AppAppInputGroup:
     """
     Attributes:
-        app_input_id (Union[Unset, str]):
-        app_inputs (Union[Unset, list['AppAppInput']]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        id (Union[Unset, str]):
-        index (Union[Unset, int]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_input_id (str | Unset):
+        app_inputs (list[AppAppInput] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        description (str | Unset):
+        display_name (str | Unset):
+        id (str | Unset):
+        index (int | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_input_id: Union[Unset, str] = UNSET
-    app_inputs: Union[Unset, list["AppAppInput"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    index: Union[Unset, int] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_input_id: str | Unset = UNSET
+    app_inputs: list[AppAppInput] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    id: str | Unset = UNSET
+    index: int | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_input_id = self.app_input_id
 
-        app_inputs: Union[Unset, list[dict[str, Any]]] = UNSET
+        app_inputs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.app_inputs, Unset):
             app_inputs = []
             for app_inputs_item_data in self.app_inputs:

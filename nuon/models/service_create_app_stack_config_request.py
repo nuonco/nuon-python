@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,16 +20,16 @@ class ServiceCreateAppStackConfigRequest:
         description (str):
         name (str):
         type_ (AppStackType):
-        runner_nested_template_url (Union[Unset, str]):
-        vpc_nested_template_url (Union[Unset, str]):
+        runner_nested_template_url (str | Unset):
+        vpc_nested_template_url (str | Unset):
     """
 
     app_config_id: str
     description: str
     name: str
     type_: AppStackType
-    runner_nested_template_url: Union[Unset, str] = UNSET
-    vpc_nested_template_url: Union[Unset, str] = UNSET
+    runner_nested_template_url: str | Unset = UNSET
+    vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,41 +27,41 @@ T = TypeVar("T", bound="PlantypesSyncSecretsPlan")
 class PlantypesSyncSecretsPlan:
     """
     Attributes:
-        aws_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
-        azure_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]):
-        cluster_info (Union[Unset, KubeClusterInfo]):
-        kubernetes_secrets (Union[Unset, list['PlantypesKubernetesSecretSync']]):
-        sandbox_mode (Union[Unset, PlantypesSandboxMode]):
+        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        cluster_info (KubeClusterInfo | Unset):
+        kubernetes_secrets (list[PlantypesKubernetesSecretSync] | Unset):
+        sandbox_mode (PlantypesSandboxMode | Unset):
     """
 
-    aws_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
-    azure_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig"] = UNSET
-    cluster_info: Union[Unset, "KubeClusterInfo"] = UNSET
-    kubernetes_secrets: Union[Unset, list["PlantypesKubernetesSecretSync"]] = UNSET
-    sandbox_mode: Union[Unset, "PlantypesSandboxMode"] = UNSET
+    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    cluster_info: KubeClusterInfo | Unset = UNSET
+    kubernetes_secrets: list[PlantypesKubernetesSecretSync] | Unset = UNSET
+    sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        aws_auth: Union[Unset, dict[str, Any]] = UNSET
+        aws_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_auth, Unset):
             aws_auth = self.aws_auth.to_dict()
 
-        azure_auth: Union[Unset, dict[str, Any]] = UNSET
+        azure_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_auth, Unset):
             azure_auth = self.azure_auth.to_dict()
 
-        cluster_info: Union[Unset, dict[str, Any]] = UNSET
+        cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
 
-        kubernetes_secrets: Union[Unset, list[dict[str, Any]]] = UNSET
+        kubernetes_secrets: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.kubernetes_secrets, Unset):
             kubernetes_secrets = []
             for kubernetes_secrets_item_data in self.kubernetes_secrets:
                 kubernetes_secrets_item = kubernetes_secrets_item_data.to_dict()
                 kubernetes_secrets.append(kubernetes_secrets_item)
 
-        sandbox_mode: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
@@ -93,21 +95,21 @@ class PlantypesSyncSecretsPlan:
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
             aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]
+        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
             azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _cluster_info = d.pop("cluster_info", UNSET)
-        cluster_info: Union[Unset, KubeClusterInfo]
+        cluster_info: KubeClusterInfo | Unset
         if isinstance(_cluster_info, Unset):
             cluster_info = UNSET
         else:
@@ -121,7 +123,7 @@ class PlantypesSyncSecretsPlan:
             kubernetes_secrets.append(kubernetes_secrets_item)
 
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
-        sandbox_mode: Union[Unset, PlantypesSandboxMode]
+        sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
             sandbox_mode = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,42 +20,41 @@ T = TypeVar("T", bound="AppHelmRelease")
 class AppHelmRelease:
     """
     Attributes:
-        body (Union[Unset, str]): The rspb.Release body, as a base64-encoded string
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        helm_chart (Union[Unset, AppHelmChart]):
-        helm_chart_id (Union[Unset, str]):
-        key (Union[Unset, str]):
-        labels (Union[Unset, AppJSONMap]):
-        name (Union[Unset, str]): Release "labels" that can be used as filters in the storage.Query(labels
-            map[string]string)
+        body (str | Unset): The rspb.Release body, as a base64-encoded string
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        helm_chart (AppHelmChart | Unset):
+        helm_chart_id (str | Unset):
+        key (str | Unset):
+        labels (AppJSONMap | Unset):
+        name (str | Unset): Release "labels" that can be used as filters in the storage.Query(labels map[string]string)
             we implemented. Note that allowing Helm users to filter against new dimensions will require a
             new migration to be added, and the Create and/or update functions to be updated accordingly.
-        namespace (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        owner (Union[Unset, str]):
-        status (Union[Unset, str]):
-        type_ (Union[Unset, str]): See
+        namespace (str | Unset):
+        org_id (str | Unset):
+        owner (str | Unset):
+        status (str | Unset):
+        type_ (str | Unset): See
             https://github.com/helm/helm/blob/c9fe3d118caec699eb2565df9838673af379ce12/pkg/storage/driver/secrets.go#L231
-        updated_at (Union[Unset, str]):
-        version (Union[Unset, int]):
+        updated_at (str | Unset):
+        version (int | Unset):
     """
 
-    body: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    helm_chart: Union[Unset, "AppHelmChart"] = UNSET
-    helm_chart_id: Union[Unset, str] = UNSET
-    key: Union[Unset, str] = UNSET
-    labels: Union[Unset, "AppJSONMap"] = UNSET
-    name: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    owner: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    version: Union[Unset, int] = UNSET
+    body: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    helm_chart: AppHelmChart | Unset = UNSET
+    helm_chart_id: str | Unset = UNSET
+    key: str | Unset = UNSET
+    labels: AppJSONMap | Unset = UNSET
+    name: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    owner: str | Unset = UNSET
+    status: str | Unset = UNSET
+    type_: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    version: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,7 +64,7 @@ class AppHelmRelease:
 
         created_by_id = self.created_by_id
 
-        helm_chart: Union[Unset, dict[str, Any]] = UNSET
+        helm_chart: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_chart, Unset):
             helm_chart = self.helm_chart.to_dict()
 
@@ -71,7 +72,7 @@ class AppHelmRelease:
 
         key = self.key
 
-        labels: Union[Unset, dict[str, Any]] = UNSET
+        labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
 
@@ -140,7 +141,7 @@ class AppHelmRelease:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _helm_chart = d.pop("helmChart", UNSET)
-        helm_chart: Union[Unset, AppHelmChart]
+        helm_chart: AppHelmChart | Unset
         if isinstance(_helm_chart, Unset):
             helm_chart = UNSET
         else:
@@ -151,7 +152,7 @@ class AppHelmRelease:
         key = d.pop("key", UNSET)
 
         _labels = d.pop("labels", UNSET)
-        labels: Union[Unset, AppJSONMap]
+        labels: AppJSONMap | Unset
         if isinstance(_labels, Unset):
             labels = UNSET
         else:

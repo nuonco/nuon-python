@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,32 +20,32 @@ T = TypeVar("T", bound="PlantypesHelmDeployPlan")
 class PlantypesHelmDeployPlan:
     """
     Attributes:
-        cluster_info (Union[Unset, KubeClusterInfo]):
-        create_namespace (Union[Unset, bool]):
-        helm_chart_id (Union[Unset, str]):
-        name (Union[Unset, str]): NOTE(jm): these fields should probably just come from the app config, however we keep
-            them around for
+        cluster_info (KubeClusterInfo | Unset):
+        create_namespace (bool | Unset):
+        helm_chart_id (str | Unset):
+        name (str | Unset): NOTE(jm): these fields should probably just come from the app config, however we keep them
+            around for
             debuggability
-        namespace (Union[Unset, str]):
-        storage_driver (Union[Unset, str]):
-        take_ownership (Union[Unset, bool]):
-        values (Union[Unset, list['PlantypesHelmValue']]):
-        values_files (Union[Unset, list[str]]):
+        namespace (str | Unset):
+        storage_driver (str | Unset):
+        take_ownership (bool | Unset):
+        values (list[PlantypesHelmValue] | Unset):
+        values_files (list[str] | Unset):
     """
 
-    cluster_info: Union[Unset, "KubeClusterInfo"] = UNSET
-    create_namespace: Union[Unset, bool] = UNSET
-    helm_chart_id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    storage_driver: Union[Unset, str] = UNSET
-    take_ownership: Union[Unset, bool] = UNSET
-    values: Union[Unset, list["PlantypesHelmValue"]] = UNSET
-    values_files: Union[Unset, list[str]] = UNSET
+    cluster_info: KubeClusterInfo | Unset = UNSET
+    create_namespace: bool | Unset = UNSET
+    helm_chart_id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    storage_driver: str | Unset = UNSET
+    take_ownership: bool | Unset = UNSET
+    values: list[PlantypesHelmValue] | Unset = UNSET
+    values_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        cluster_info: Union[Unset, dict[str, Any]] = UNSET
+        cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
 
@@ -59,14 +61,14 @@ class PlantypesHelmDeployPlan:
 
         take_ownership = self.take_ownership
 
-        values: Union[Unset, list[dict[str, Any]]] = UNSET
+        values: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = []
             for values_item_data in self.values:
                 values_item = values_item_data.to_dict()
                 values.append(values_item)
 
-        values_files: Union[Unset, list[str]] = UNSET
+        values_files: list[str] | Unset = UNSET
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
 
@@ -101,7 +103,7 @@ class PlantypesHelmDeployPlan:
 
         d = dict(src_dict)
         _cluster_info = d.pop("cluster_info", UNSET)
-        cluster_info: Union[Unset, KubeClusterInfo]
+        cluster_info: KubeClusterInfo | Unset
         if isinstance(_cluster_info, Unset):
             cluster_info = UNSET
         else:

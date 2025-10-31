@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,15 +22,15 @@ class ServiceAppAWSIAMRoleConfig:
         description (str):
         display_name (str):
         name (str):
-        permissions_boundary (Union[Unset, str]):
-        policies (Union[Unset, list['ServiceAppAWSIAMPolicyConfig']]):
+        permissions_boundary (str | Unset):
+        policies (list[ServiceAppAWSIAMPolicyConfig] | Unset):
     """
 
     description: str
     display_name: str
     name: str
-    permissions_boundary: Union[Unset, str] = UNSET
-    policies: Union[Unset, list["ServiceAppAWSIAMPolicyConfig"]] = UNSET
+    permissions_boundary: str | Unset = UNSET
+    policies: list[ServiceAppAWSIAMPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +42,7 @@ class ServiceAppAWSIAMRoleConfig:
 
         permissions_boundary = self.permissions_boundary
 
-        policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = []
             for policies_item_data in self.policies:

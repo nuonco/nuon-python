@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,52 +19,52 @@ T = TypeVar("T", bound="AppOCIArtifact")
 class AppOCIArtifact:
     """
     Attributes:
-        annotations (Union[Unset, AppOCIArtifactAnnotations]):
-        architecture (Union[Unset, str]):
-        artifact_type (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        digest (Union[Unset, str]):
-        id (Union[Unset, str]):
-        media_type (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        os (Union[Unset, str]): Platform fields
-        os_features (Union[Unset, list[str]]):
-        os_version (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        repository (Union[Unset, str]):
-        size (Union[Unset, int]):
-        tag (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        urls (Union[Unset, list[str]]):
-        variant (Union[Unset, str]):
+        annotations (AppOCIArtifactAnnotations | Unset):
+        architecture (str | Unset):
+        artifact_type (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        digest (str | Unset):
+        id (str | Unset):
+        media_type (str | Unset):
+        org_id (str | Unset):
+        os (str | Unset): Platform fields
+        os_features (list[str] | Unset):
+        os_version (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        repository (str | Unset):
+        size (int | Unset):
+        tag (str | Unset):
+        updated_at (str | Unset):
+        urls (list[str] | Unset):
+        variant (str | Unset):
     """
 
-    annotations: Union[Unset, "AppOCIArtifactAnnotations"] = UNSET
-    architecture: Union[Unset, str] = UNSET
-    artifact_type: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    digest: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    media_type: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    os: Union[Unset, str] = UNSET
-    os_features: Union[Unset, list[str]] = UNSET
-    os_version: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    repository: Union[Unset, str] = UNSET
-    size: Union[Unset, int] = UNSET
-    tag: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    urls: Union[Unset, list[str]] = UNSET
-    variant: Union[Unset, str] = UNSET
+    annotations: AppOCIArtifactAnnotations | Unset = UNSET
+    architecture: str | Unset = UNSET
+    artifact_type: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    digest: str | Unset = UNSET
+    id: str | Unset = UNSET
+    media_type: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    os: str | Unset = UNSET
+    os_features: list[str] | Unset = UNSET
+    os_version: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    repository: str | Unset = UNSET
+    size: int | Unset = UNSET
+    tag: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    urls: list[str] | Unset = UNSET
+    variant: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        annotations: Union[Unset, dict[str, Any]] = UNSET
+        annotations: dict[str, Any] | Unset = UNSET
         if not isinstance(self.annotations, Unset):
             annotations = self.annotations.to_dict()
 
@@ -84,7 +86,7 @@ class AppOCIArtifact:
 
         os = self.os
 
-        os_features: Union[Unset, list[str]] = UNSET
+        os_features: list[str] | Unset = UNSET
         if not isinstance(self.os_features, Unset):
             os_features = self.os_features
 
@@ -102,7 +104,7 @@ class AppOCIArtifact:
 
         updated_at = self.updated_at
 
-        urls: Union[Unset, list[str]] = UNSET
+        urls: list[str] | Unset = UNSET
         if not isinstance(self.urls, Unset):
             urls = self.urls
 
@@ -160,7 +162,7 @@ class AppOCIArtifact:
 
         d = dict(src_dict)
         _annotations = d.pop("annotations", UNSET)
-        annotations: Union[Unset, AppOCIArtifactAnnotations]
+        annotations: AppOCIArtifactAnnotations | Unset
         if isinstance(_annotations, Unset):
             annotations = UNSET
         else:

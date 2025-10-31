@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,38 +22,38 @@ T = TypeVar("T", bound="AppInstallComponentSummary")
 class AppInstallComponentSummary:
     """
     Attributes:
-        build_status (Union[Unset, AppComponentBuildStatus]):
-        build_status_description (Union[Unset, str]):
-        component_config (Union[Unset, AppComponentConfigConnection]):
-        component_id (Union[Unset, str]):
-        component_name (Union[Unset, str]):
-        dependencies (Union[Unset, list['AppComponent']]):
-        deploy_status (Union[Unset, AppInstallDeployStatus]):
-        deploy_status_description (Union[Unset, str]):
-        drifted_status (Union[Unset, bool]):
-        id (Union[Unset, str]):
+        build_status (AppComponentBuildStatus | Unset):
+        build_status_description (str | Unset):
+        component_config (AppComponentConfigConnection | Unset):
+        component_id (str | Unset):
+        component_name (str | Unset):
+        dependencies (list[AppComponent] | Unset):
+        deploy_status (AppInstallDeployStatus | Unset):
+        deploy_status_description (str | Unset):
+        drifted_status (bool | Unset):
+        id (str | Unset):
     """
 
-    build_status: Union[Unset, AppComponentBuildStatus] = UNSET
-    build_status_description: Union[Unset, str] = UNSET
-    component_config: Union[Unset, "AppComponentConfigConnection"] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    component_name: Union[Unset, str] = UNSET
-    dependencies: Union[Unset, list["AppComponent"]] = UNSET
-    deploy_status: Union[Unset, AppInstallDeployStatus] = UNSET
-    deploy_status_description: Union[Unset, str] = UNSET
-    drifted_status: Union[Unset, bool] = UNSET
-    id: Union[Unset, str] = UNSET
+    build_status: AppComponentBuildStatus | Unset = UNSET
+    build_status_description: str | Unset = UNSET
+    component_config: AppComponentConfigConnection | Unset = UNSET
+    component_id: str | Unset = UNSET
+    component_name: str | Unset = UNSET
+    dependencies: list[AppComponent] | Unset = UNSET
+    deploy_status: AppInstallDeployStatus | Unset = UNSET
+    deploy_status_description: str | Unset = UNSET
+    drifted_status: bool | Unset = UNSET
+    id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        build_status: Union[Unset, str] = UNSET
+        build_status: str | Unset = UNSET
         if not isinstance(self.build_status, Unset):
             build_status = self.build_status.value
 
         build_status_description = self.build_status_description
 
-        component_config: Union[Unset, dict[str, Any]] = UNSET
+        component_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component_config, Unset):
             component_config = self.component_config.to_dict()
 
@@ -59,14 +61,14 @@ class AppInstallComponentSummary:
 
         component_name = self.component_name
 
-        dependencies: Union[Unset, list[dict[str, Any]]] = UNSET
+        dependencies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = []
             for dependencies_item_data in self.dependencies:
                 dependencies_item = dependencies_item_data.to_dict()
                 dependencies.append(dependencies_item)
 
-        deploy_status: Union[Unset, str] = UNSET
+        deploy_status: str | Unset = UNSET
         if not isinstance(self.deploy_status, Unset):
             deploy_status = self.deploy_status.value
 
@@ -109,7 +111,7 @@ class AppInstallComponentSummary:
 
         d = dict(src_dict)
         _build_status = d.pop("build_status", UNSET)
-        build_status: Union[Unset, AppComponentBuildStatus]
+        build_status: AppComponentBuildStatus | Unset
         if isinstance(_build_status, Unset):
             build_status = UNSET
         else:
@@ -118,7 +120,7 @@ class AppInstallComponentSummary:
         build_status_description = d.pop("build_status_description", UNSET)
 
         _component_config = d.pop("component_config", UNSET)
-        component_config: Union[Unset, AppComponentConfigConnection]
+        component_config: AppComponentConfigConnection | Unset
         if isinstance(_component_config, Unset):
             component_config = UNSET
         else:
@@ -136,7 +138,7 @@ class AppInstallComponentSummary:
             dependencies.append(dependencies_item)
 
         _deploy_status = d.pop("deploy_status", UNSET)
-        deploy_status: Union[Unset, AppInstallDeployStatus]
+        deploy_status: AppInstallDeployStatus | Unset
         if isinstance(_deploy_status, Unset):
             deploy_status = UNSET
         else:

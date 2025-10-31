@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,20 +15,20 @@ T = TypeVar("T", bound="AppLatestRunnerHeartBeat")
 class AppLatestRunnerHeartBeat:
     """
     Attributes:
-        alive_time (Union[Unset, int]):
-        created_at (Union[Unset, str]):
-        process (Union[Unset, str]):
-        runner_id (Union[Unset, str]):
-        started_at (Union[Unset, str]):
-        version (Union[Unset, str]):
+        alive_time (int | Unset):
+        created_at (str | Unset):
+        process (str | Unset):
+        runner_id (str | Unset):
+        started_at (str | Unset):
+        version (str | Unset):
     """
 
-    alive_time: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    process: Union[Unset, str] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    started_at: Union[Unset, str] = UNSET
-    version: Union[Unset, str] = UNSET
+    alive_time: int | Unset = UNSET
+    created_at: str | Unset = UNSET
+    process: str | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    started_at: str | Unset = UNSET
+    version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

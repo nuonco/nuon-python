@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,46 +19,56 @@ T = TypeVar("T", bound="AppAppInput")
 class AppAppInput:
     """
     Attributes:
-        app_input_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        default (Union[Unset, str]):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        group (Union[Unset, AppAppInputGroup]):
-        group_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        index (Union[Unset, int]):
-        internal (Union[Unset, bool]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        required (Union[Unset, bool]):
-        sensitive (Union[Unset, bool]):
-        type_ (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_input_id (str | Unset):
+        cloudformation_stack_name (str | Unset): CloudFormation configuration (computed fields, not stored in DB)
+        cloudformation_stack_parameter_name (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        default (str | Unset):
+        description (str | Unset):
+        display_name (str | Unset):
+        group (AppAppInputGroup | Unset):
+        group_id (str | Unset):
+        id (str | Unset):
+        index (int | Unset):
+        internal (bool | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        required (bool | Unset):
+        sensitive (bool | Unset):
+        source (str | Unset):
+        type_ (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_input_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    default: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    group: Union[Unset, "AppAppInputGroup"] = UNSET
-    group_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    index: Union[Unset, int] = UNSET
-    internal: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    required: Union[Unset, bool] = UNSET
-    sensitive: Union[Unset, bool] = UNSET
-    type_: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_input_id: str | Unset = UNSET
+    cloudformation_stack_name: str | Unset = UNSET
+    cloudformation_stack_parameter_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    default: str | Unset = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    group: AppAppInputGroup | Unset = UNSET
+    group_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    index: int | Unset = UNSET
+    internal: bool | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    required: bool | Unset = UNSET
+    sensitive: bool | Unset = UNSET
+    source: str | Unset = UNSET
+    type_: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_input_id = self.app_input_id
+
+        cloudformation_stack_name = self.cloudformation_stack_name
+
+        cloudformation_stack_parameter_name = self.cloudformation_stack_parameter_name
 
         created_at = self.created_at
 
@@ -68,7 +80,7 @@ class AppAppInput:
 
         display_name = self.display_name
 
-        group: Union[Unset, dict[str, Any]] = UNSET
+        group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.group, Unset):
             group = self.group.to_dict()
 
@@ -88,6 +100,8 @@ class AppAppInput:
 
         sensitive = self.sensitive
 
+        source = self.source
+
         type_ = self.type_
 
         updated_at = self.updated_at
@@ -97,6 +111,10 @@ class AppAppInput:
         field_dict.update({})
         if app_input_id is not UNSET:
             field_dict["app_input_id"] = app_input_id
+        if cloudformation_stack_name is not UNSET:
+            field_dict["cloudformation_stack_name"] = cloudformation_stack_name
+        if cloudformation_stack_parameter_name is not UNSET:
+            field_dict["cloudformation_stack_parameter_name"] = cloudformation_stack_parameter_name
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -125,6 +143,8 @@ class AppAppInput:
             field_dict["required"] = required
         if sensitive is not UNSET:
             field_dict["sensitive"] = sensitive
+        if source is not UNSET:
+            field_dict["source"] = source
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -139,6 +159,10 @@ class AppAppInput:
         d = dict(src_dict)
         app_input_id = d.pop("app_input_id", UNSET)
 
+        cloudformation_stack_name = d.pop("cloudformation_stack_name", UNSET)
+
+        cloudformation_stack_parameter_name = d.pop("cloudformation_stack_parameter_name", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -150,7 +174,7 @@ class AppAppInput:
         display_name = d.pop("display_name", UNSET)
 
         _group = d.pop("group", UNSET)
-        group: Union[Unset, AppAppInputGroup]
+        group: AppAppInputGroup | Unset
         if isinstance(_group, Unset):
             group = UNSET
         else:
@@ -172,12 +196,16 @@ class AppAppInput:
 
         sensitive = d.pop("sensitive", UNSET)
 
+        source = d.pop("source", UNSET)
+
         type_ = d.pop("type", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
         app_app_input = cls(
             app_input_id=app_input_id,
+            cloudformation_stack_name=cloudformation_stack_name,
+            cloudformation_stack_parameter_name=cloudformation_stack_parameter_name,
             created_at=created_at,
             created_by_id=created_by_id,
             default=default,
@@ -192,6 +220,7 @@ class AppAppInput:
             org_id=org_id,
             required=required,
             sensitive=sensitive,
+            source=source,
             type_=type_,
             updated_at=updated_at,
         )

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,26 +20,26 @@ T = TypeVar("T", bound="AppRunnerOperation")
 class AppRunnerOperation:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        log_stream (Union[Unset, AppLogStream]):
-        operation_type (Union[Unset, AppRunnerOperationType]):
-        runner_id (Union[Unset, str]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        log_stream (AppLogStream | Unset):
+        operation_type (AppRunnerOperationType | Unset):
+        runner_id (str | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    log_stream: Union[Unset, "AppLogStream"] = UNSET
-    operation_type: Union[Unset, AppRunnerOperationType] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    log_stream: AppLogStream | Unset = UNSET
+    operation_type: AppRunnerOperationType | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,11 +49,11 @@ class AppRunnerOperation:
 
         id = self.id
 
-        log_stream: Union[Unset, dict[str, Any]] = UNSET
+        log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
             log_stream = self.log_stream.to_dict()
 
-        operation_type: Union[Unset, str] = UNSET
+        operation_type: str | Unset = UNSET
         if not isinstance(self.operation_type, Unset):
             operation_type = self.operation_type.value
 
@@ -99,14 +101,14 @@ class AppRunnerOperation:
         id = d.pop("id", UNSET)
 
         _log_stream = d.pop("log_stream", UNSET)
-        log_stream: Union[Unset, AppLogStream]
+        log_stream: AppLogStream | Unset
         if isinstance(_log_stream, Unset):
             log_stream = UNSET
         else:
             log_stream = AppLogStream.from_dict(_log_stream)
 
         _operation_type = d.pop("operation_type", UNSET)
-        operation_type: Union[Unset, AppRunnerOperationType]
+        operation_type: AppRunnerOperationType | Unset
         if isinstance(_operation_type, Unset):
             operation_type = UNSET
         else:

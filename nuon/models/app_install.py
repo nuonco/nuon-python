@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -34,82 +36,82 @@ T = TypeVar("T", bound="AppInstall")
 class AppInstall:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        app_runner_config (Union[Unset, AppAppRunnerConfig]):
-        app_sandbox_config (Union[Unset, AppAppSandboxConfig]):
-        aws_account (Union[Unset, AppAWSAccount]):
-        azure_account (Union[Unset, AppAzureAccount]):
-        cloud_platform (Union[Unset, str]):
-        component_statuses (Union[Unset, AppInstallComponentStatuses]):
-        composite_component_status (Union[Unset, str]):
-        composite_component_status_description (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        drifted_objects (Union[Unset, list['AppDriftedObject']]):
-        id (Union[Unset, str]):
-        install_action_workflows (Union[Unset, list['AppInstallActionWorkflow']]):
-        install_components (Union[Unset, list['AppInstallComponent']]):
-        install_config (Union[Unset, AppInstallConfig]):
-        install_events (Union[Unset, list['AppInstallEvent']]):
-        install_inputs (Union[Unset, list['AppInstallInputs']]):
-        install_number (Union[Unset, int]):
-        install_sandbox_runs (Union[Unset, list['AppInstallSandboxRun']]):
-        install_stack (Union[Unset, AppInstallStack]):
-        install_states (Union[Unset, list['AppInstallState']]):
-        links (Union[Unset, AppInstallLinks]):
-        metadata (Union[Unset, AppInstallMetadata]):
-        name (Union[Unset, str]):
-        runner_id (Union[Unset, str]):
-        runner_status (Union[Unset, str]):
-        runner_status_description (Union[Unset, str]):
-        runner_type (Union[Unset, str]):
-        sandbox (Union[Unset, AppInstallSandbox]):
-        sandbox_status (Union[Unset, str]):
-        sandbox_status_description (Union[Unset, str]):
-        status (Union[Unset, str]): TODO(jm): deprecate these fields once the terraform provider has been updated
-        status_description (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        workflows (Union[Unset, list['AppWorkflow']]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        app_runner_config (AppAppRunnerConfig | Unset):
+        app_sandbox_config (AppAppSandboxConfig | Unset):
+        aws_account (AppAWSAccount | Unset):
+        azure_account (AppAzureAccount | Unset):
+        cloud_platform (str | Unset):
+        component_statuses (AppInstallComponentStatuses | Unset):
+        composite_component_status (str | Unset):
+        composite_component_status_description (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        drifted_objects (list[AppDriftedObject] | Unset):
+        id (str | Unset):
+        install_action_workflows (list[AppInstallActionWorkflow] | Unset):
+        install_components (list[AppInstallComponent] | Unset):
+        install_config (AppInstallConfig | Unset):
+        install_events (list[AppInstallEvent] | Unset):
+        install_inputs (list[AppInstallInputs] | Unset):
+        install_number (int | Unset):
+        install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
+        install_stack (AppInstallStack | Unset):
+        install_states (list[AppInstallState] | Unset):
+        links (AppInstallLinks | Unset):
+        metadata (AppInstallMetadata | Unset):
+        name (str | Unset):
+        runner_id (str | Unset):
+        runner_status (str | Unset):
+        runner_status_description (str | Unset):
+        runner_type (str | Unset):
+        sandbox (AppInstallSandbox | Unset):
+        sandbox_status (str | Unset):
+        sandbox_status_description (str | Unset):
+        status (str | Unset): TODO(jm): deprecate these fields once the terraform provider has been updated
+        status_description (str | Unset):
+        updated_at (str | Unset):
+        workflows (list[AppWorkflow] | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    app_runner_config: Union[Unset, "AppAppRunnerConfig"] = UNSET
-    app_sandbox_config: Union[Unset, "AppAppSandboxConfig"] = UNSET
-    aws_account: Union[Unset, "AppAWSAccount"] = UNSET
-    azure_account: Union[Unset, "AppAzureAccount"] = UNSET
-    cloud_platform: Union[Unset, str] = UNSET
-    component_statuses: Union[Unset, "AppInstallComponentStatuses"] = UNSET
-    composite_component_status: Union[Unset, str] = UNSET
-    composite_component_status_description: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    drifted_objects: Union[Unset, list["AppDriftedObject"]] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_action_workflows: Union[Unset, list["AppInstallActionWorkflow"]] = UNSET
-    install_components: Union[Unset, list["AppInstallComponent"]] = UNSET
-    install_config: Union[Unset, "AppInstallConfig"] = UNSET
-    install_events: Union[Unset, list["AppInstallEvent"]] = UNSET
-    install_inputs: Union[Unset, list["AppInstallInputs"]] = UNSET
-    install_number: Union[Unset, int] = UNSET
-    install_sandbox_runs: Union[Unset, list["AppInstallSandboxRun"]] = UNSET
-    install_stack: Union[Unset, "AppInstallStack"] = UNSET
-    install_states: Union[Unset, list["AppInstallState"]] = UNSET
-    links: Union[Unset, "AppInstallLinks"] = UNSET
-    metadata: Union[Unset, "AppInstallMetadata"] = UNSET
-    name: Union[Unset, str] = UNSET
-    runner_id: Union[Unset, str] = UNSET
-    runner_status: Union[Unset, str] = UNSET
-    runner_status_description: Union[Unset, str] = UNSET
-    runner_type: Union[Unset, str] = UNSET
-    sandbox: Union[Unset, "AppInstallSandbox"] = UNSET
-    sandbox_status: Union[Unset, str] = UNSET
-    sandbox_status_description: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    workflows: Union[Unset, list["AppWorkflow"]] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    app_runner_config: AppAppRunnerConfig | Unset = UNSET
+    app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
+    aws_account: AppAWSAccount | Unset = UNSET
+    azure_account: AppAzureAccount | Unset = UNSET
+    cloud_platform: str | Unset = UNSET
+    component_statuses: AppInstallComponentStatuses | Unset = UNSET
+    composite_component_status: str | Unset = UNSET
+    composite_component_status_description: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    drifted_objects: list[AppDriftedObject] | Unset = UNSET
+    id: str | Unset = UNSET
+    install_action_workflows: list[AppInstallActionWorkflow] | Unset = UNSET
+    install_components: list[AppInstallComponent] | Unset = UNSET
+    install_config: AppInstallConfig | Unset = UNSET
+    install_events: list[AppInstallEvent] | Unset = UNSET
+    install_inputs: list[AppInstallInputs] | Unset = UNSET
+    install_number: int | Unset = UNSET
+    install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+    install_stack: AppInstallStack | Unset = UNSET
+    install_states: list[AppInstallState] | Unset = UNSET
+    links: AppInstallLinks | Unset = UNSET
+    metadata: AppInstallMetadata | Unset = UNSET
+    name: str | Unset = UNSET
+    runner_id: str | Unset = UNSET
+    runner_status: str | Unset = UNSET
+    runner_status_description: str | Unset = UNSET
+    runner_type: str | Unset = UNSET
+    sandbox: AppInstallSandbox | Unset = UNSET
+    sandbox_status: str | Unset = UNSET
+    sandbox_status_description: str | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -117,25 +119,25 @@ class AppInstall:
 
         app_id = self.app_id
 
-        app_runner_config: Union[Unset, dict[str, Any]] = UNSET
+        app_runner_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_runner_config, Unset):
             app_runner_config = self.app_runner_config.to_dict()
 
-        app_sandbox_config: Union[Unset, dict[str, Any]] = UNSET
+        app_sandbox_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_sandbox_config, Unset):
             app_sandbox_config = self.app_sandbox_config.to_dict()
 
-        aws_account: Union[Unset, dict[str, Any]] = UNSET
+        aws_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_account, Unset):
             aws_account = self.aws_account.to_dict()
 
-        azure_account: Union[Unset, dict[str, Any]] = UNSET
+        azure_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_account, Unset):
             azure_account = self.azure_account.to_dict()
 
         cloud_platform = self.cloud_platform
 
-        component_statuses: Union[Unset, dict[str, Any]] = UNSET
+        component_statuses: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component_statuses, Unset):
             component_statuses = self.component_statuses.to_dict()
 
@@ -147,7 +149,7 @@ class AppInstall:
 
         created_by_id = self.created_by_id
 
-        drifted_objects: Union[Unset, list[dict[str, Any]]] = UNSET
+        drifted_objects: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.drifted_objects, Unset):
             drifted_objects = []
             for drifted_objects_item_data in self.drifted_objects:
@@ -156,32 +158,32 @@ class AppInstall:
 
         id = self.id
 
-        install_action_workflows: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_action_workflows: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_action_workflows, Unset):
             install_action_workflows = []
             for install_action_workflows_item_data in self.install_action_workflows:
                 install_action_workflows_item = install_action_workflows_item_data.to_dict()
                 install_action_workflows.append(install_action_workflows_item)
 
-        install_components: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_components: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_components, Unset):
             install_components = []
             for install_components_item_data in self.install_components:
                 install_components_item = install_components_item_data.to_dict()
                 install_components.append(install_components_item)
 
-        install_config: Union[Unset, dict[str, Any]] = UNSET
+        install_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_config, Unset):
             install_config = self.install_config.to_dict()
 
-        install_events: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_events: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_events, Unset):
             install_events = []
             for install_events_item_data in self.install_events:
                 install_events_item = install_events_item_data.to_dict()
                 install_events.append(install_events_item)
 
-        install_inputs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_inputs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_inputs, Unset):
             install_inputs = []
             for install_inputs_item_data in self.install_inputs:
@@ -190,29 +192,29 @@ class AppInstall:
 
         install_number = self.install_number
 
-        install_sandbox_runs: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_sandbox_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_sandbox_runs, Unset):
             install_sandbox_runs = []
             for install_sandbox_runs_item_data in self.install_sandbox_runs:
                 install_sandbox_runs_item = install_sandbox_runs_item_data.to_dict()
                 install_sandbox_runs.append(install_sandbox_runs_item)
 
-        install_stack: Union[Unset, dict[str, Any]] = UNSET
+        install_stack: dict[str, Any] | Unset = UNSET
         if not isinstance(self.install_stack, Unset):
             install_stack = self.install_stack.to_dict()
 
-        install_states: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_states: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_states, Unset):
             install_states = []
             for install_states_item_data in self.install_states:
                 install_states_item = install_states_item_data.to_dict()
                 install_states.append(install_states_item)
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -226,7 +228,7 @@ class AppInstall:
 
         runner_type = self.runner_type
 
-        sandbox: Union[Unset, dict[str, Any]] = UNSET
+        sandbox: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
@@ -240,7 +242,7 @@ class AppInstall:
 
         updated_at = self.updated_at
 
-        workflows: Union[Unset, list[dict[str, Any]]] = UNSET
+        workflows: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.workflows, Unset):
             workflows = []
             for workflows_item_data in self.workflows:
@@ -354,28 +356,28 @@ class AppInstall:
         app_id = d.pop("app_id", UNSET)
 
         _app_runner_config = d.pop("app_runner_config", UNSET)
-        app_runner_config: Union[Unset, AppAppRunnerConfig]
+        app_runner_config: AppAppRunnerConfig | Unset
         if isinstance(_app_runner_config, Unset):
             app_runner_config = UNSET
         else:
             app_runner_config = AppAppRunnerConfig.from_dict(_app_runner_config)
 
         _app_sandbox_config = d.pop("app_sandbox_config", UNSET)
-        app_sandbox_config: Union[Unset, AppAppSandboxConfig]
+        app_sandbox_config: AppAppSandboxConfig | Unset
         if isinstance(_app_sandbox_config, Unset):
             app_sandbox_config = UNSET
         else:
             app_sandbox_config = AppAppSandboxConfig.from_dict(_app_sandbox_config)
 
         _aws_account = d.pop("aws_account", UNSET)
-        aws_account: Union[Unset, AppAWSAccount]
+        aws_account: AppAWSAccount | Unset
         if isinstance(_aws_account, Unset):
             aws_account = UNSET
         else:
             aws_account = AppAWSAccount.from_dict(_aws_account)
 
         _azure_account = d.pop("azure_account", UNSET)
-        azure_account: Union[Unset, AppAzureAccount]
+        azure_account: AppAzureAccount | Unset
         if isinstance(_azure_account, Unset):
             azure_account = UNSET
         else:
@@ -384,7 +386,7 @@ class AppInstall:
         cloud_platform = d.pop("cloud_platform", UNSET)
 
         _component_statuses = d.pop("component_statuses", UNSET)
-        component_statuses: Union[Unset, AppInstallComponentStatuses]
+        component_statuses: AppInstallComponentStatuses | Unset
         if isinstance(_component_statuses, Unset):
             component_statuses = UNSET
         else:
@@ -422,7 +424,7 @@ class AppInstall:
             install_components.append(install_components_item)
 
         _install_config = d.pop("install_config", UNSET)
-        install_config: Union[Unset, AppInstallConfig]
+        install_config: AppInstallConfig | Unset
         if isinstance(_install_config, Unset):
             install_config = UNSET
         else:
@@ -452,7 +454,7 @@ class AppInstall:
             install_sandbox_runs.append(install_sandbox_runs_item)
 
         _install_stack = d.pop("install_stack", UNSET)
-        install_stack: Union[Unset, AppInstallStack]
+        install_stack: AppInstallStack | Unset
         if isinstance(_install_stack, Unset):
             install_stack = UNSET
         else:
@@ -466,14 +468,14 @@ class AppInstall:
             install_states.append(install_states_item)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppInstallLinks]
+        links: AppInstallLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = AppInstallLinks.from_dict(_links)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppInstallMetadata]
+        metadata: AppInstallMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
@@ -490,7 +492,7 @@ class AppInstall:
         runner_type = d.pop("runner_type", UNSET)
 
         _sandbox = d.pop("sandbox", UNSET)
-        sandbox: Union[Unset, AppInstallSandbox]
+        sandbox: AppInstallSandbox | Unset
         if isinstance(_sandbox, Unset):
             sandbox = UNSET
         else:

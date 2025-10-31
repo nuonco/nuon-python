@@ -1,9 +1,12 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_app_input_source import AppAppInputSource
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ServiceAppInputRequest")
@@ -17,22 +20,24 @@ class ServiceAppInputRequest:
         display_name (str):
         group (str):
         index (int):
-        default (Union[Unset, str]):
-        internal (Union[Unset, bool]): New, optional fields
-        required (Union[Unset, bool]):
-        sensitive (Union[Unset, bool]):
-        type_ (Union[Unset, str]):
+        default (str | Unset):
+        internal (bool | Unset): New, optional fields
+        required (bool | Unset):
+        sensitive (bool | Unset):
+        source (AppAppInputSource | Unset):
+        type_ (str | Unset):
     """
 
     description: str
     display_name: str
     group: str
     index: int
-    default: Union[Unset, str] = UNSET
-    internal: Union[Unset, bool] = UNSET
-    required: Union[Unset, bool] = UNSET
-    sensitive: Union[Unset, bool] = UNSET
-    type_: Union[Unset, str] = UNSET
+    default: str | Unset = UNSET
+    internal: bool | Unset = UNSET
+    required: bool | Unset = UNSET
+    sensitive: bool | Unset = UNSET
+    source: AppAppInputSource | Unset = UNSET
+    type_: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,6 +56,10 @@ class ServiceAppInputRequest:
         required = self.required
 
         sensitive = self.sensitive
+
+        source: str | Unset = UNSET
+        if not isinstance(self.source, Unset):
+            source = self.source.value
 
         type_ = self.type_
 
@@ -72,6 +81,8 @@ class ServiceAppInputRequest:
             field_dict["required"] = required
         if sensitive is not UNSET:
             field_dict["sensitive"] = sensitive
+        if source is not UNSET:
+            field_dict["source"] = source
         if type_ is not UNSET:
             field_dict["type"] = type_
 
@@ -96,6 +107,13 @@ class ServiceAppInputRequest:
 
         sensitive = d.pop("sensitive", UNSET)
 
+        _source = d.pop("source", UNSET)
+        source: AppAppInputSource | Unset
+        if isinstance(_source, Unset):
+            source = UNSET
+        else:
+            source = AppAppInputSource(_source)
+
         type_ = d.pop("type", UNSET)
 
         service_app_input_request = cls(
@@ -107,6 +125,7 @@ class ServiceAppInputRequest:
             internal=internal,
             required=required,
             sensitive=sensitive,
+            source=source,
             type_=type_,
         )
 

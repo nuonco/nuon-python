@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,26 +16,26 @@ T = TypeVar("T", bound="ServiceUpdateAppConfigRequest")
 class ServiceUpdateAppConfigRequest:
     """
     Attributes:
-        component_ids (Union[Unset, list[str]]):
-        state (Union[Unset, str]):
-        status (Union[Unset, AppAppConfigStatus]):
-        status_description (Union[Unset, str]):
+        component_ids (list[str] | Unset):
+        state (str | Unset):
+        status (AppAppConfigStatus | Unset):
+        status_description (str | Unset):
     """
 
-    component_ids: Union[Unset, list[str]] = UNSET
-    state: Union[Unset, str] = UNSET
-    status: Union[Unset, AppAppConfigStatus] = UNSET
-    status_description: Union[Unset, str] = UNSET
+    component_ids: list[str] | Unset = UNSET
+    state: str | Unset = UNSET
+    status: AppAppConfigStatus | Unset = UNSET
+    status_description: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        component_ids: Union[Unset, list[str]] = UNSET
+        component_ids: list[str] | Unset = UNSET
         if not isinstance(self.component_ids, Unset):
             component_ids = self.component_ids
 
         state = self.state
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -61,7 +63,7 @@ class ServiceUpdateAppConfigRequest:
         state = d.pop("state", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppAppConfigStatus]
+        status: AppAppConfigStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,44 +24,44 @@ T = TypeVar("T", bound="PlantypesCompositePlan")
 class PlantypesCompositePlan:
     """
     Attributes:
-        action_workflow_run_plan (Union[Unset, PlantypesActionWorkflowRunPlan]):
-        build_plan (Union[Unset, PlantypesBuildPlan]):
-        deploy_plan (Union[Unset, PlantypesDeployPlan]):
-        sandbox_run_plan (Union[Unset, PlantypesSandboxRunPlan]):
-        sync_oci_plan (Union[Unset, PlantypesSyncOCIPlan]):
-        sync_secrets_plan (Union[Unset, PlantypesSyncSecretsPlan]):
+        action_workflow_run_plan (PlantypesActionWorkflowRunPlan | Unset):
+        build_plan (PlantypesBuildPlan | Unset):
+        deploy_plan (PlantypesDeployPlan | Unset):
+        sandbox_run_plan (PlantypesSandboxRunPlan | Unset):
+        sync_oci_plan (PlantypesSyncOCIPlan | Unset):
+        sync_secrets_plan (PlantypesSyncSecretsPlan | Unset):
     """
 
-    action_workflow_run_plan: Union[Unset, "PlantypesActionWorkflowRunPlan"] = UNSET
-    build_plan: Union[Unset, "PlantypesBuildPlan"] = UNSET
-    deploy_plan: Union[Unset, "PlantypesDeployPlan"] = UNSET
-    sandbox_run_plan: Union[Unset, "PlantypesSandboxRunPlan"] = UNSET
-    sync_oci_plan: Union[Unset, "PlantypesSyncOCIPlan"] = UNSET
-    sync_secrets_plan: Union[Unset, "PlantypesSyncSecretsPlan"] = UNSET
+    action_workflow_run_plan: PlantypesActionWorkflowRunPlan | Unset = UNSET
+    build_plan: PlantypesBuildPlan | Unset = UNSET
+    deploy_plan: PlantypesDeployPlan | Unset = UNSET
+    sandbox_run_plan: PlantypesSandboxRunPlan | Unset = UNSET
+    sync_oci_plan: PlantypesSyncOCIPlan | Unset = UNSET
+    sync_secrets_plan: PlantypesSyncSecretsPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action_workflow_run_plan: Union[Unset, dict[str, Any]] = UNSET
+        action_workflow_run_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.action_workflow_run_plan, Unset):
             action_workflow_run_plan = self.action_workflow_run_plan.to_dict()
 
-        build_plan: Union[Unset, dict[str, Any]] = UNSET
+        build_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.build_plan, Unset):
             build_plan = self.build_plan.to_dict()
 
-        deploy_plan: Union[Unset, dict[str, Any]] = UNSET
+        deploy_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.deploy_plan, Unset):
             deploy_plan = self.deploy_plan.to_dict()
 
-        sandbox_run_plan: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_run_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_run_plan, Unset):
             sandbox_run_plan = self.sandbox_run_plan.to_dict()
 
-        sync_oci_plan: Union[Unset, dict[str, Any]] = UNSET
+        sync_oci_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sync_oci_plan, Unset):
             sync_oci_plan = self.sync_oci_plan.to_dict()
 
-        sync_secrets_plan: Union[Unset, dict[str, Any]] = UNSET
+        sync_secrets_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sync_secrets_plan, Unset):
             sync_secrets_plan = self.sync_secrets_plan.to_dict()
 
@@ -92,42 +94,42 @@ class PlantypesCompositePlan:
 
         d = dict(src_dict)
         _action_workflow_run_plan = d.pop("action_workflow_run_plan", UNSET)
-        action_workflow_run_plan: Union[Unset, PlantypesActionWorkflowRunPlan]
+        action_workflow_run_plan: PlantypesActionWorkflowRunPlan | Unset
         if isinstance(_action_workflow_run_plan, Unset):
             action_workflow_run_plan = UNSET
         else:
             action_workflow_run_plan = PlantypesActionWorkflowRunPlan.from_dict(_action_workflow_run_plan)
 
         _build_plan = d.pop("build_plan", UNSET)
-        build_plan: Union[Unset, PlantypesBuildPlan]
+        build_plan: PlantypesBuildPlan | Unset
         if isinstance(_build_plan, Unset):
             build_plan = UNSET
         else:
             build_plan = PlantypesBuildPlan.from_dict(_build_plan)
 
         _deploy_plan = d.pop("deploy_plan", UNSET)
-        deploy_plan: Union[Unset, PlantypesDeployPlan]
+        deploy_plan: PlantypesDeployPlan | Unset
         if isinstance(_deploy_plan, Unset):
             deploy_plan = UNSET
         else:
             deploy_plan = PlantypesDeployPlan.from_dict(_deploy_plan)
 
         _sandbox_run_plan = d.pop("sandbox_run_plan", UNSET)
-        sandbox_run_plan: Union[Unset, PlantypesSandboxRunPlan]
+        sandbox_run_plan: PlantypesSandboxRunPlan | Unset
         if isinstance(_sandbox_run_plan, Unset):
             sandbox_run_plan = UNSET
         else:
             sandbox_run_plan = PlantypesSandboxRunPlan.from_dict(_sandbox_run_plan)
 
         _sync_oci_plan = d.pop("sync_oci_plan", UNSET)
-        sync_oci_plan: Union[Unset, PlantypesSyncOCIPlan]
+        sync_oci_plan: PlantypesSyncOCIPlan | Unset
         if isinstance(_sync_oci_plan, Unset):
             sync_oci_plan = UNSET
         else:
             sync_oci_plan = PlantypesSyncOCIPlan.from_dict(_sync_oci_plan)
 
         _sync_secrets_plan = d.pop("sync_secrets_plan", UNSET)
-        sync_secrets_plan: Union[Unset, PlantypesSyncSecretsPlan]
+        sync_secrets_plan: PlantypesSyncSecretsPlan | Unset
         if isinstance(_sync_secrets_plan, Unset):
             sync_secrets_plan = UNSET
         else:

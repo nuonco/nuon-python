@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,24 +19,24 @@ T = TypeVar("T", bound="AppRunnerJobExecutionOutputs")
 class AppRunnerJobExecutionOutputs:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        outputs (Union[Unset, AppRunnerJobExecutionOutputsOutputs]):
-        outputs_json (Union[Unset, str]):
-        runner_job_execution_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        outputs (AppRunnerJobExecutionOutputsOutputs | Unset):
+        outputs_json (str | Unset):
+        runner_job_execution_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    outputs: Union[Unset, "AppRunnerJobExecutionOutputsOutputs"] = UNSET
-    outputs_json: Union[Unset, str] = UNSET
-    runner_job_execution_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    outputs: AppRunnerJobExecutionOutputsOutputs | Unset = UNSET
+    outputs_json: str | Unset = UNSET
+    runner_job_execution_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,7 +48,7 @@ class AppRunnerJobExecutionOutputs:
 
         org_id = self.org_id
 
-        outputs: Union[Unset, dict[str, Any]] = UNSET
+        outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
@@ -92,7 +94,7 @@ class AppRunnerJobExecutionOutputs:
         org_id = d.pop("org_id", UNSET)
 
         _outputs = d.pop("outputs", UNSET)
-        outputs: Union[Unset, AppRunnerJobExecutionOutputsOutputs]
+        outputs: AppRunnerJobExecutionOutputsOutputs | Unset
         if isinstance(_outputs, Unset):
             outputs = UNSET
         else:

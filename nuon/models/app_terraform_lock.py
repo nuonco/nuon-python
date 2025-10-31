@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,22 +15,22 @@ T = TypeVar("T", bound="AppTerraformLock")
 class AppTerraformLock:
     """
     Attributes:
-        created (Union[Unset, str]):
-        id (Union[Unset, str]):
-        info (Union[Unset, str]):
-        operation (Union[Unset, str]):
-        path (Union[Unset, str]):
-        version (Union[Unset, Any]):
-        who (Union[Unset, str]):
+        created (str | Unset):
+        id (str | Unset):
+        info (str | Unset):
+        operation (str | Unset):
+        path (str | Unset):
+        version (Any | Unset):
+        who (str | Unset):
     """
 
-    created: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    info: Union[Unset, str] = UNSET
-    operation: Union[Unset, str] = UNSET
-    path: Union[Unset, str] = UNSET
-    version: Union[Unset, Any] = UNSET
-    who: Union[Unset, str] = UNSET
+    created: str | Unset = UNSET
+    id: str | Unset = UNSET
+    info: str | Unset = UNSET
+    operation: str | Unset = UNSET
+    path: str | Unset = UNSET
+    version: Any | Unset = UNSET
+    who: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

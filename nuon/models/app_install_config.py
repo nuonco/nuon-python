@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,26 +16,26 @@ T = TypeVar("T", bound="AppInstallConfig")
 class AppInstallConfig:
     """
     Attributes:
-        approval_option (Union[Unset, AppInstallApprovalOption]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        approval_option (AppInstallApprovalOption | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    approval_option: Union[Unset, AppInstallApprovalOption] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    approval_option: AppInstallApprovalOption | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        approval_option: Union[Unset, str] = UNSET
+        approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
 
@@ -73,7 +75,7 @@ class AppInstallConfig:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
-        approval_option: Union[Unset, AppInstallApprovalOption]
+        approval_option: AppInstallApprovalOption | Unset
         if isinstance(_approval_option, Unset):
             approval_option = UNSET
         else:

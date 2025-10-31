@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -21,31 +21,37 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | StderrErrResponse | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
+
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
+
     if response.status_code == 403:
         response_403 = StderrErrResponse.from_dict(response.json())
 
         return response_403
+
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
 
         return response_404
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
         return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -53,8 +59,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, StderrErrResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,7 +73,7 @@ def sync_detailed(
     connection_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, StderrErrResponse]]:
+) -> Response[Any | StderrErrResponse]:
     """Deletes a VCS connection
 
     Args:
@@ -78,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, StderrErrResponse]]
+        Response[Any | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -96,7 +102,7 @@ def sync(
     connection_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, StderrErrResponse]]:
+) -> Any | StderrErrResponse | None:
     """Deletes a VCS connection
 
     Args:
@@ -107,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, StderrErrResponse]
+        Any | StderrErrResponse
     """
 
     return sync_detailed(
@@ -120,7 +126,7 @@ async def asyncio_detailed(
     connection_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, StderrErrResponse]]:
+) -> Response[Any | StderrErrResponse]:
     """Deletes a VCS connection
 
     Args:
@@ -131,7 +137,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, StderrErrResponse]]
+        Response[Any | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +153,7 @@ async def asyncio(
     connection_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, StderrErrResponse]]:
+) -> Any | StderrErrResponse | None:
     """Deletes a VCS connection
 
     Args:
@@ -158,7 +164,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, StderrErrResponse]
+        Any | StderrErrResponse
     """
 
     return (

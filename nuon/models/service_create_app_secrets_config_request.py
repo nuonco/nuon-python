@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,17 +20,17 @@ class ServiceCreateAppSecretsConfigRequest:
     """
     Attributes:
         app_config_id (str):
-        secrets (Union[Unset, list['ServiceAppSecretConfig']]):
+        secrets (list[ServiceAppSecretConfig] | Unset):
     """
 
     app_config_id: str
-    secrets: Union[Unset, list["ServiceAppSecretConfig"]] = UNSET
+    secrets: list[ServiceAppSecretConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_config_id = self.app_config_id
 
-        secrets: Union[Unset, list[dict[str, Any]]] = UNSET
+        secrets: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.secrets, Unset):
             secrets = []
             for secrets_item_data in self.secrets:

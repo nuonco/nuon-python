@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,18 +21,18 @@ T = TypeVar("T", bound="ServiceCreateInstallActionWorkflowRunRequest")
 class ServiceCreateInstallActionWorkflowRunRequest:
     """
     Attributes:
-        action_workflow_config_id (Union[Unset, str]):
-        run_env_vars (Union[Unset, ServiceCreateInstallActionWorkflowRunRequestRunEnvVars]):
+        action_workflow_config_id (str | Unset):
+        run_env_vars (ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset):
     """
 
-    action_workflow_config_id: Union[Unset, str] = UNSET
-    run_env_vars: Union[Unset, "ServiceCreateInstallActionWorkflowRunRequestRunEnvVars"] = UNSET
+    action_workflow_config_id: str | Unset = UNSET
+    run_env_vars: ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         action_workflow_config_id = self.action_workflow_config_id
 
-        run_env_vars: Union[Unset, dict[str, Any]] = UNSET
+        run_env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.run_env_vars, Unset):
             run_env_vars = self.run_env_vars.to_dict()
 
@@ -54,7 +56,7 @@ class ServiceCreateInstallActionWorkflowRunRequest:
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
 
         _run_env_vars = d.pop("run_env_vars", UNSET)
-        run_env_vars: Union[Unset, ServiceCreateInstallActionWorkflowRunRequestRunEnvVars]
+        run_env_vars: ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset
         if isinstance(_run_env_vars, Unset):
             run_env_vars = UNSET
         else:

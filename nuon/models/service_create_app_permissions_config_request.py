@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,14 +23,14 @@ class ServiceCreateAppPermissionsConfigRequest:
         deprovision_role (ServiceAppAWSIAMRoleConfig):
         maintenance_role (ServiceAppAWSIAMRoleConfig):
         provision_role (ServiceAppAWSIAMRoleConfig):
-        break_glass_roles (Union[Unset, list['ServiceAppAWSIAMRoleConfig']]):
+        break_glass_roles (list[ServiceAppAWSIAMRoleConfig] | Unset):
     """
 
     app_config_id: str
-    deprovision_role: "ServiceAppAWSIAMRoleConfig"
-    maintenance_role: "ServiceAppAWSIAMRoleConfig"
-    provision_role: "ServiceAppAWSIAMRoleConfig"
-    break_glass_roles: Union[Unset, list["ServiceAppAWSIAMRoleConfig"]] = UNSET
+    deprovision_role: ServiceAppAWSIAMRoleConfig
+    maintenance_role: ServiceAppAWSIAMRoleConfig
+    provision_role: ServiceAppAWSIAMRoleConfig
+    break_glass_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +42,7 @@ class ServiceCreateAppPermissionsConfigRequest:
 
         provision_role = self.provision_role.to_dict()
 
-        break_glass_roles: Union[Unset, list[dict[str, Any]]] = UNSET
+        break_glass_roles: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.break_glass_roles, Unset):
             break_glass_roles = []
             for break_glass_roles_item_data in self.break_glass_roles:

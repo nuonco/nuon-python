@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,42 +25,42 @@ T = TypeVar("T", bound="AppInstallComponent")
 class AppInstallComponent:
     """
     Attributes:
-        component (Union[Unset, AppComponent]):
-        component_id (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        drifted_object (Union[Unset, AppDriftedObject]):
-        helm_chart (Union[Unset, AppHelmChart]):
-        id (Union[Unset, str]):
-        install_deploys (Union[Unset, list['AppInstallDeploy']]):
-        install_id (Union[Unset, str]):
-        links (Union[Unset, AppInstallComponentLinks]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        status_v2 (Union[Unset, AppCompositeStatus]):
-        terraform_workspace (Union[Unset, AppTerraformWorkspace]):
-        updated_at (Union[Unset, str]):
+        component (AppComponent | Unset):
+        component_id (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        drifted_object (AppDriftedObject | Unset):
+        helm_chart (AppHelmChart | Unset):
+        id (str | Unset):
+        install_deploys (list[AppInstallDeploy] | Unset):
+        install_id (str | Unset):
+        links (AppInstallComponentLinks | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
+        terraform_workspace (AppTerraformWorkspace | Unset):
+        updated_at (str | Unset):
     """
 
-    component: Union[Unset, "AppComponent"] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    drifted_object: Union[Unset, "AppDriftedObject"] = UNSET
-    helm_chart: Union[Unset, "AppHelmChart"] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_deploys: Union[Unset, list["AppInstallDeploy"]] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    links: Union[Unset, "AppInstallComponentLinks"] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    status_v2: Union[Unset, "AppCompositeStatus"] = UNSET
-    terraform_workspace: Union[Unset, "AppTerraformWorkspace"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    component: AppComponent | Unset = UNSET
+    component_id: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    drifted_object: AppDriftedObject | Unset = UNSET
+    helm_chart: AppHelmChart | Unset = UNSET
+    id: str | Unset = UNSET
+    install_deploys: list[AppInstallDeploy] | Unset = UNSET
+    install_id: str | Unset = UNSET
+    links: AppInstallComponentLinks | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
+    terraform_workspace: AppTerraformWorkspace | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        component: Union[Unset, dict[str, Any]] = UNSET
+        component: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component, Unset):
             component = self.component.to_dict()
 
@@ -68,17 +70,17 @@ class AppInstallComponent:
 
         created_by_id = self.created_by_id
 
-        drifted_object: Union[Unset, dict[str, Any]] = UNSET
+        drifted_object: dict[str, Any] | Unset = UNSET
         if not isinstance(self.drifted_object, Unset):
             drifted_object = self.drifted_object.to_dict()
 
-        helm_chart: Union[Unset, dict[str, Any]] = UNSET
+        helm_chart: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_chart, Unset):
             helm_chart = self.helm_chart.to_dict()
 
         id = self.id
 
-        install_deploys: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_deploys: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_deploys, Unset):
             install_deploys = []
             for install_deploys_item_data in self.install_deploys:
@@ -87,7 +89,7 @@ class AppInstallComponent:
 
         install_id = self.install_id
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
@@ -95,11 +97,11 @@ class AppInstallComponent:
 
         status_description = self.status_description
 
-        status_v2: Union[Unset, dict[str, Any]] = UNSET
+        status_v2: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status_v2, Unset):
             status_v2 = self.status_v2.to_dict()
 
-        terraform_workspace: Union[Unset, dict[str, Any]] = UNSET
+        terraform_workspace: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_workspace, Unset):
             terraform_workspace = self.terraform_workspace.to_dict()
 
@@ -153,7 +155,7 @@ class AppInstallComponent:
 
         d = dict(src_dict)
         _component = d.pop("component", UNSET)
-        component: Union[Unset, AppComponent]
+        component: AppComponent | Unset
         if isinstance(_component, Unset):
             component = UNSET
         else:
@@ -166,14 +168,14 @@ class AppInstallComponent:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _drifted_object = d.pop("drifted_object", UNSET)
-        drifted_object: Union[Unset, AppDriftedObject]
+        drifted_object: AppDriftedObject | Unset
         if isinstance(_drifted_object, Unset):
             drifted_object = UNSET
         else:
             drifted_object = AppDriftedObject.from_dict(_drifted_object)
 
         _helm_chart = d.pop("helm_chart", UNSET)
-        helm_chart: Union[Unset, AppHelmChart]
+        helm_chart: AppHelmChart | Unset
         if isinstance(_helm_chart, Unset):
             helm_chart = UNSET
         else:
@@ -191,7 +193,7 @@ class AppInstallComponent:
         install_id = d.pop("install_id", UNSET)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, AppInstallComponentLinks]
+        links: AppInstallComponentLinks | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
@@ -202,14 +204,14 @@ class AppInstallComponent:
         status_description = d.pop("status_description", UNSET)
 
         _status_v2 = d.pop("status_v2", UNSET)
-        status_v2: Union[Unset, AppCompositeStatus]
+        status_v2: AppCompositeStatus | Unset
         if isinstance(_status_v2, Unset):
             status_v2 = UNSET
         else:
             status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
         _terraform_workspace = d.pop("terraform_workspace", UNSET)
-        terraform_workspace: Union[Unset, AppTerraformWorkspace]
+        terraform_workspace: AppTerraformWorkspace | Unset
         if isinstance(_terraform_workspace, Unset):
             terraform_workspace = UNSET
         else:

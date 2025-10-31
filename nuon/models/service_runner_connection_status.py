@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="ServiceRunnerConnectionStatus")
 class ServiceRunnerConnectionStatus:
     """
     Attributes:
-        connected (Union[Unset, bool]):
-        latest_heartbeat_timestamp (Union[Unset, int]):
+        connected (bool | Unset):
+        latest_heartbeat_timestamp (int | Unset):
     """
 
-    connected: Union[Unset, bool] = UNSET
-    latest_heartbeat_timestamp: Union[Unset, int] = UNSET
+    connected: bool | Unset = UNSET
+    latest_heartbeat_timestamp: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

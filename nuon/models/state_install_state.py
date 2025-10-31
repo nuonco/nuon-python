@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,28 +20,28 @@ T = TypeVar("T", bound="StateInstallState")
 class StateInstallState:
     """
     Attributes:
-        id (Union[Unset, str]):
-        inputs (Union[Unset, StateInstallStateInputs]):
-        internal_domain (Union[Unset, str]):
-        name (Union[Unset, str]):
-        populated (Union[Unset, bool]):
-        public_domain (Union[Unset, str]):
-        sandbox (Union[Unset, StateSandboxState]):
+        id (str | Unset):
+        inputs (StateInstallStateInputs | Unset):
+        internal_domain (str | Unset):
+        name (str | Unset):
+        populated (bool | Unset):
+        public_domain (str | Unset):
+        sandbox (StateSandboxState | Unset):
     """
 
-    id: Union[Unset, str] = UNSET
-    inputs: Union[Unset, "StateInstallStateInputs"] = UNSET
-    internal_domain: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    public_domain: Union[Unset, str] = UNSET
-    sandbox: Union[Unset, "StateSandboxState"] = UNSET
+    id: str | Unset = UNSET
+    inputs: StateInstallStateInputs | Unset = UNSET
+    internal_domain: str | Unset = UNSET
+    name: str | Unset = UNSET
+    populated: bool | Unset = UNSET
+    public_domain: str | Unset = UNSET
+    sandbox: StateSandboxState | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        inputs: Union[Unset, dict[str, Any]] = UNSET
+        inputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
             inputs = self.inputs.to_dict()
 
@@ -51,7 +53,7 @@ class StateInstallState:
 
         public_domain = self.public_domain
 
-        sandbox: Union[Unset, dict[str, Any]] = UNSET
+        sandbox: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
@@ -84,7 +86,7 @@ class StateInstallState:
         id = d.pop("id", UNSET)
 
         _inputs = d.pop("inputs", UNSET)
-        inputs: Union[Unset, StateInstallStateInputs]
+        inputs: StateInstallStateInputs | Unset
         if isinstance(_inputs, Unset):
             inputs = UNSET
         else:
@@ -99,7 +101,7 @@ class StateInstallState:
         public_domain = d.pop("public_domain", UNSET)
 
         _sandbox = d.pop("sandbox", UNSET)
-        sandbox: Union[Unset, StateSandboxState]
+        sandbox: StateSandboxState | Unset
         if isinstance(_sandbox, Unset):
             sandbox = UNSET
         else:

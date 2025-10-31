@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,12 +21,12 @@ class ServiceCreateInstallerRequest:
     Attributes:
         app_ids (list[str]):
         name (str):
-        metadata (Union[Unset, ServiceCreateInstallerRequestMetadata]):
+        metadata (ServiceCreateInstallerRequestMetadata | Unset):
     """
 
     app_ids: list[str]
     name: str
-    metadata: Union[Unset, "ServiceCreateInstallerRequestMetadata"] = UNSET
+    metadata: ServiceCreateInstallerRequestMetadata | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +34,7 @@ class ServiceCreateInstallerRequest:
 
         name = self.name
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -59,7 +61,7 @@ class ServiceCreateInstallerRequest:
         name = d.pop("name")
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, ServiceCreateInstallerRequestMetadata]
+        metadata: ServiceCreateInstallerRequestMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

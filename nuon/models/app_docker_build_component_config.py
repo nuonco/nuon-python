@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,40 +21,40 @@ T = TypeVar("T", bound="AppDockerBuildComponentConfig")
 class AppDockerBuildComponentConfig:
     """
     Attributes:
-        build_args (Union[Unset, list[str]]):
-        component_config_connection_id (Union[Unset, str]): value
-        connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        dockerfile (Union[Unset, str]):
-        env_vars (Union[Unset, AppDockerBuildComponentConfigEnvVars]):
-        id (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
-        target (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        build_args (list[str] | Unset):
+        component_config_connection_id (str | Unset): value
+        connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        dockerfile (str | Unset):
+        env_vars (AppDockerBuildComponentConfigEnvVars | Unset):
+        id (str | Unset):
+        public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        target (str | Unset):
+        updated_at (str | Unset):
     """
 
-    build_args: Union[Unset, list[str]] = UNSET
-    component_config_connection_id: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    dockerfile: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppDockerBuildComponentConfigEnvVars"] = UNSET
-    id: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
-    target: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    build_args: list[str] | Unset = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    dockerfile: str | Unset = UNSET
+    env_vars: AppDockerBuildComponentConfigEnvVars | Unset = UNSET
+    id: str | Unset = UNSET
+    public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    target: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        build_args: Union[Unset, list[str]] = UNSET
+        build_args: list[str] | Unset = UNSET
         if not isinstance(self.build_args, Unset):
             build_args = self.build_args
 
         component_config_connection_id = self.component_config_connection_id
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
@@ -62,13 +64,13 @@ class AppDockerBuildComponentConfig:
 
         dockerfile = self.dockerfile
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
         id = self.id
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
@@ -116,7 +118,7 @@ class AppDockerBuildComponentConfig:
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, AppConnectedGithubVCSConfig]
+        connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -129,7 +131,7 @@ class AppDockerBuildComponentConfig:
         dockerfile = d.pop("dockerfile", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppDockerBuildComponentConfigEnvVars]
+        env_vars: AppDockerBuildComponentConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
@@ -138,7 +140,7 @@ class AppDockerBuildComponentConfig:
         id = d.pop("id", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, AppPublicGitVCSConfig]
+        public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,10 +15,10 @@ T = TypeVar("T", bound="ServiceRetryWorkflowByIDResponse")
 class ServiceRetryWorkflowByIDResponse:
     """
     Attributes:
-        workflow_id (Union[Unset, str]):
+        workflow_id (str | Unset):
     """
 
-    workflow_id: Union[Unset, str] = UNSET
+    workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

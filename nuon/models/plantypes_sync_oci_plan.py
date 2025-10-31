@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,14 +24,14 @@ class PlantypesSyncOCIPlan:
         dst_tag (str):
         src_registry (ConfigsOCIRegistryRepository):
         src_tag (str):
-        sandbox_mode (Union[Unset, PlantypesSandboxMode]):
+        sandbox_mode (PlantypesSandboxMode | Unset):
     """
 
-    dst_registry: "ConfigsOCIRegistryRepository"
+    dst_registry: ConfigsOCIRegistryRepository
     dst_tag: str
-    src_registry: "ConfigsOCIRegistryRepository"
+    src_registry: ConfigsOCIRegistryRepository
     src_tag: str
-    sandbox_mode: Union[Unset, "PlantypesSandboxMode"] = UNSET
+    sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,7 +43,7 @@ class PlantypesSyncOCIPlan:
 
         src_tag = self.src_tag
 
-        sandbox_mode: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
@@ -75,7 +77,7 @@ class PlantypesSyncOCIPlan:
         src_tag = d.pop("src_tag")
 
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
-        sandbox_mode: Union[Unset, PlantypesSandboxMode]
+        sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
             sandbox_mode = UNSET
         else:

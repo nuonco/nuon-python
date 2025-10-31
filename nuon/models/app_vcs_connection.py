@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,24 +19,24 @@ T = TypeVar("T", bound="AppVCSConnection")
 class AppVCSConnection:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        github_account_id (Union[Unset, str]):
-        github_account_name (Union[Unset, str]):
-        github_install_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
-        vcs_connection_commit (Union[Unset, list['AppVCSConnectionCommit']]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        github_account_id (str | Unset):
+        github_account_name (str | Unset):
+        github_install_id (str | Unset):
+        id (str | Unset):
+        updated_at (str | Unset):
+        vcs_connection_commit (list[AppVCSConnectionCommit] | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    github_account_id: Union[Unset, str] = UNSET
-    github_account_name: Union[Unset, str] = UNSET
-    github_install_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connection_commit: Union[Unset, list["AppVCSConnectionCommit"]] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    github_account_id: str | Unset = UNSET
+    github_account_name: str | Unset = UNSET
+    github_install_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connection_commit: list[AppVCSConnectionCommit] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +54,7 @@ class AppVCSConnection:
 
         updated_at = self.updated_at
 
-        vcs_connection_commit: Union[Unset, list[dict[str, Any]]] = UNSET
+        vcs_connection_commit: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.vcs_connection_commit, Unset):
             vcs_connection_commit = []
             for vcs_connection_commit_item_data in self.vcs_connection_commit:

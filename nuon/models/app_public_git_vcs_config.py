@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,26 +15,26 @@ T = TypeVar("T", bound="AppPublicGitVCSConfig")
 class AppPublicGitVCSConfig:
     """
     Attributes:
-        branch (Union[Unset, str]):
-        component_config_id (Union[Unset, str]):
-        component_config_type (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        directory (Union[Unset, str]):
-        id (Union[Unset, str]):
-        repo (Union[Unset, str]): actual configuration
-        updated_at (Union[Unset, str]):
+        branch (str | Unset):
+        component_config_id (str | Unset):
+        component_config_type (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        directory (str | Unset):
+        id (str | Unset):
+        repo (str | Unset): actual configuration
+        updated_at (str | Unset):
     """
 
-    branch: Union[Unset, str] = UNSET
-    component_config_id: Union[Unset, str] = UNSET
-    component_config_type: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    directory: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    repo: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    branch: str | Unset = UNSET
+    component_config_id: str | Unset = UNSET
+    component_config_type: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    directory: str | Unset = UNSET
+    id: str | Unset = UNSET
+    repo: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

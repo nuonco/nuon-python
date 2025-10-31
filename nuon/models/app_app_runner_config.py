@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,33 +21,33 @@ T = TypeVar("T", bound="AppAppRunnerConfig")
 class AppAppRunnerConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        app_runner_type (Union[Unset, AppAppRunnerType]):
-        cloud_platform (Union[Unset, AppCloudPlatform]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        env_vars (Union[Unset, AppAppRunnerConfigEnvVars]):
-        helm_driver (Union[Unset, str]):
-        id (Union[Unset, str]):
-        init_script (Union[Unset, str]): takes a URL to a bash script ⤵  which will be `curl | bash`-ed on the VM.
-            usually via user-data or equivalent.
-        org_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        app_runner_type (AppAppRunnerType | Unset):
+        cloud_platform (AppCloudPlatform | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        env_vars (AppAppRunnerConfigEnvVars | Unset):
+        helm_driver (str | Unset):
+        id (str | Unset):
+        init_script (str | Unset): takes a URL to a bash script ⤵  which will be `curl | bash`-ed on the VM. usually via
+            user-data or equivalent.
+        org_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    app_runner_type: Union[Unset, AppAppRunnerType] = UNSET
-    cloud_platform: Union[Unset, AppCloudPlatform] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    env_vars: Union[Unset, "AppAppRunnerConfigEnvVars"] = UNSET
-    helm_driver: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    init_script: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    app_runner_type: AppAppRunnerType | Unset = UNSET
+    cloud_platform: AppCloudPlatform | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    env_vars: AppAppRunnerConfigEnvVars | Unset = UNSET
+    helm_driver: str | Unset = UNSET
+    id: str | Unset = UNSET
+    init_script: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,11 +55,11 @@ class AppAppRunnerConfig:
 
         app_id = self.app_id
 
-        app_runner_type: Union[Unset, str] = UNSET
+        app_runner_type: str | Unset = UNSET
         if not isinstance(self.app_runner_type, Unset):
             app_runner_type = self.app_runner_type.value
 
-        cloud_platform: Union[Unset, str] = UNSET
+        cloud_platform: str | Unset = UNSET
         if not isinstance(self.cloud_platform, Unset):
             cloud_platform = self.cloud_platform.value
 
@@ -65,7 +67,7 @@ class AppAppRunnerConfig:
 
         created_by_id = self.created_by_id
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
@@ -119,14 +121,14 @@ class AppAppRunnerConfig:
         app_id = d.pop("app_id", UNSET)
 
         _app_runner_type = d.pop("app_runner_type", UNSET)
-        app_runner_type: Union[Unset, AppAppRunnerType]
+        app_runner_type: AppAppRunnerType | Unset
         if isinstance(_app_runner_type, Unset):
             app_runner_type = UNSET
         else:
             app_runner_type = AppAppRunnerType(_app_runner_type)
 
         _cloud_platform = d.pop("cloud_platform", UNSET)
-        cloud_platform: Union[Unset, AppCloudPlatform]
+        cloud_platform: AppCloudPlatform | Unset
         if isinstance(_cloud_platform, Unset):
             cloud_platform = UNSET
         else:
@@ -137,7 +139,7 @@ class AppAppRunnerConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, AppAppRunnerConfigEnvVars]
+        env_vars: AppAppRunnerConfigEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:

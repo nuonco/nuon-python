@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,24 +15,24 @@ T = TypeVar("T", bound="AppAWSECRImageConfig")
 class AppAWSECRImageConfig:
     """
     Attributes:
-        aws_region (Union[Unset, str]):
-        component_config_id (Union[Unset, str]): connection to parent model
-        component_config_type (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        iam_role_arn (Union[Unset, str]): actual configuration
-        id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        aws_region (str | Unset):
+        component_config_id (str | Unset): connection to parent model
+        component_config_type (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        iam_role_arn (str | Unset): actual configuration
+        id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    aws_region: Union[Unset, str] = UNSET
-    component_config_id: Union[Unset, str] = UNSET
-    component_config_type: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    iam_role_arn: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    aws_region: str | Unset = UNSET
+    component_config_id: str | Unset = UNSET
+    component_config_type: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    iam_role_arn: str | Unset = UNSET
+    id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

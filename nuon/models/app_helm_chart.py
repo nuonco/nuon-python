@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,24 +19,24 @@ T = TypeVar("T", bound="AppHelmChart")
 class AppHelmChart:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        helm_releases (Union[Unset, list['AppHelmRelease']]):
-        id (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        helm_releases (list[AppHelmRelease] | Unset):
+        id (str | Unset):
+        org_id (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    helm_releases: Union[Unset, list["AppHelmRelease"]] = UNSET
-    id: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    helm_releases: list[AppHelmRelease] | Unset = UNSET
+    id: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +44,7 @@ class AppHelmChart:
 
         created_by_id = self.created_by_id
 
-        helm_releases: Union[Unset, list[dict[str, Any]]] = UNSET
+        helm_releases: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.helm_releases, Unset):
             helm_releases = []
             for helm_releases_item_data in self.helm_releases:

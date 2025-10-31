@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,24 +16,24 @@ T = TypeVar("T", bound="AppInstallActionWorkflowRunStep")
 class AppInstallActionWorkflowRunStep:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        execution_duration (Union[Unset, int]):
-        id (Union[Unset, str]):
-        install_action_workflow_run_id (Union[Unset, str]):
-        status (Union[Unset, AppInstallActionWorkflowRunStepStatus]):
-        step_id (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        execution_duration (int | Unset):
+        id (str | Unset):
+        install_action_workflow_run_id (str | Unset):
+        status (AppInstallActionWorkflowRunStepStatus | Unset):
+        step_id (str | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    execution_duration: Union[Unset, int] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_action_workflow_run_id: Union[Unset, str] = UNSET
-    status: Union[Unset, AppInstallActionWorkflowRunStepStatus] = UNSET
-    step_id: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    execution_duration: int | Unset = UNSET
+    id: str | Unset = UNSET
+    install_action_workflow_run_id: str | Unset = UNSET
+    status: AppInstallActionWorkflowRunStepStatus | Unset = UNSET
+    step_id: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,7 +47,7 @@ class AppInstallActionWorkflowRunStep:
 
         install_action_workflow_run_id = self.install_action_workflow_run_id
 
-        status: Union[Unset, str] = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -89,7 +91,7 @@ class AppInstallActionWorkflowRunStep:
         install_action_workflow_run_id = d.pop("install_action_workflow_run_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AppInstallActionWorkflowRunStepStatus]
+        status: AppInstallActionWorkflowRunStepStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

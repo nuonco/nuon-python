@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="ServiceCLIConfig")
 class ServiceCLIConfig:
     """
     Attributes:
-        auth_audience (Union[Unset, str]):
-        auth_client_id (Union[Unset, str]):
-        auth_domain (Union[Unset, str]):
-        dashboard_url (Union[Unset, str]):
+        auth_audience (str | Unset):
+        auth_client_id (str | Unset):
+        auth_domain (str | Unset):
+        dashboard_url (str | Unset):
     """
 
-    auth_audience: Union[Unset, str] = UNSET
-    auth_client_id: Union[Unset, str] = UNSET
-    auth_domain: Union[Unset, str] = UNSET
-    dashboard_url: Union[Unset, str] = UNSET
+    auth_audience: str | Unset = UNSET
+    auth_client_id: str | Unset = UNSET
+    auth_domain: str | Unset = UNSET
+    dashboard_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

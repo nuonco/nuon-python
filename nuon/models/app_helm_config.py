@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,20 +19,20 @@ T = TypeVar("T", bound="AppHelmConfig")
 class AppHelmConfig:
     """
     Attributes:
-        chart_name (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        storage_driver (Union[Unset, str]):
-        take_ownership (Union[Unset, bool]): Newer fields that we don't need to store as columns in the database
-        values (Union[Unset, AppHelmConfigValues]):
-        values_files (Union[Unset, list[str]]):
+        chart_name (str | Unset):
+        namespace (str | Unset):
+        storage_driver (str | Unset):
+        take_ownership (bool | Unset): Newer fields that we don't need to store as columns in the database
+        values (AppHelmConfigValues | Unset):
+        values_files (list[str] | Unset):
     """
 
-    chart_name: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    storage_driver: Union[Unset, str] = UNSET
-    take_ownership: Union[Unset, bool] = UNSET
-    values: Union[Unset, "AppHelmConfigValues"] = UNSET
-    values_files: Union[Unset, list[str]] = UNSET
+    chart_name: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    storage_driver: str | Unset = UNSET
+    take_ownership: bool | Unset = UNSET
+    values: AppHelmConfigValues | Unset = UNSET
+    values_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,11 +44,11 @@ class AppHelmConfig:
 
         take_ownership = self.take_ownership
 
-        values: Union[Unset, dict[str, Any]] = UNSET
+        values: dict[str, Any] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values.to_dict()
 
-        values_files: Union[Unset, list[str]] = UNSET
+        values_files: list[str] | Unset = UNSET
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
 
@@ -82,7 +84,7 @@ class AppHelmConfig:
         take_ownership = d.pop("take_ownership", UNSET)
 
         _values = d.pop("values", UNSET)
-        values: Union[Unset, AppHelmConfigValues]
+        values: AppHelmConfigValues | Unset
         if isinstance(_values, Unset):
             values = UNSET
         else:

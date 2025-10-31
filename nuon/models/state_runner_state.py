@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="StateRunnerState")
 class StateRunnerState:
     """
     Attributes:
-        id (Union[Unset, str]):
-        populated (Union[Unset, bool]):
-        runner_group_id (Union[Unset, str]):
-        status (Union[Unset, str]):
+        id (str | Unset):
+        populated (bool | Unset):
+        runner_group_id (str | Unset):
+        status (str | Unset):
     """
 
-    id: Union[Unset, str] = UNSET
-    populated: Union[Unset, bool] = UNSET
-    runner_group_id: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
+    id: str | Unset = UNSET
+    populated: bool | Unset = UNSET
+    runner_group_id: str | Unset = UNSET
+    status: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

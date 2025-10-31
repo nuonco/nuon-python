@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,16 +17,16 @@ T = TypeVar("T", bound="ServiceAppConfigTemplate")
 class ServiceAppConfigTemplate:
     """
     Attributes:
-        content (Union[Unset, str]):
-        filename (Union[Unset, str]):
-        format_ (Union[Unset, AppAppConfigVersion]):
-        type_ (Union[Unset, ServiceAppConfigTemplateType]):
+        content (str | Unset):
+        filename (str | Unset):
+        format_ (AppAppConfigVersion | Unset):
+        type_ (ServiceAppConfigTemplateType | Unset):
     """
 
-    content: Union[Unset, str] = UNSET
-    filename: Union[Unset, str] = UNSET
-    format_: Union[Unset, AppAppConfigVersion] = UNSET
-    type_: Union[Unset, ServiceAppConfigTemplateType] = UNSET
+    content: str | Unset = UNSET
+    filename: str | Unset = UNSET
+    format_: AppAppConfigVersion | Unset = UNSET
+    type_: ServiceAppConfigTemplateType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,11 +34,11 @@ class ServiceAppConfigTemplate:
 
         filename = self.filename
 
-        format_: Union[Unset, str] = UNSET
+        format_: str | Unset = UNSET
         if not isinstance(self.format_, Unset):
             format_ = self.format_.value
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -62,14 +64,14 @@ class ServiceAppConfigTemplate:
         filename = d.pop("filename", UNSET)
 
         _format_ = d.pop("format", UNSET)
-        format_: Union[Unset, AppAppConfigVersion]
+        format_: AppAppConfigVersion | Unset
         if isinstance(_format_, Unset):
             format_ = UNSET
         else:
             format_ = AppAppConfigVersion(_format_)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, ServiceAppConfigTemplateType]
+        type_: ServiceAppConfigTemplateType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

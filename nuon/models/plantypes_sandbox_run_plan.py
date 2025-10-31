@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,43 +35,43 @@ T = TypeVar("T", bound="PlantypesSandboxRunPlan")
 class PlantypesSandboxRunPlan:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        apply_plan_contents (Union[Unset, str]): The following field is for applying a plan that is already saved
-        apply_plan_display (Union[Unset, list[int]]): This field is for storing a human legible plan or corollary
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        apply_plan_contents (str | Unset): The following field is for applying a plan that is already saved
+        apply_plan_display (list[int] | Unset): This field is for storing a human legible plan or corollary
             representation
-        aws_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]):
-        azure_auth (Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]):
-        env_vars (Union[Unset, PlantypesSandboxRunPlanEnvVars]):
-        git_source (Union[Unset, PlantypesGitSource]):
-        hooks (Union[Unset, PlantypesTerraformDeployHooks]):
-        install_id (Union[Unset, str]):
-        local_archive (Union[Unset, PlantypesTerraformLocalArchive]):
-        policies (Union[Unset, PlantypesSandboxRunPlanPolicies]):
-        sandbox_mode (Union[Unset, PlantypesSandboxMode]):
-        state (Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateState]):
-        terraform_backend (Union[Unset, PlantypesTerraformBackend]):
-        vars_ (Union[Unset, PlantypesSandboxRunPlanVars]):
-        vars_files (Union[Unset, list[str]]):
+        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        env_vars (PlantypesSandboxRunPlanEnvVars | Unset):
+        git_source (PlantypesGitSource | Unset):
+        hooks (PlantypesTerraformDeployHooks | Unset):
+        install_id (str | Unset):
+        local_archive (PlantypesTerraformLocalArchive | Unset):
+        policies (PlantypesSandboxRunPlanPolicies | Unset):
+        sandbox_mode (PlantypesSandboxMode | Unset):
+        state (GithubComPowertoolsdevMonoPkgTypesStateState | Unset):
+        terraform_backend (PlantypesTerraformBackend | Unset):
+        vars_ (PlantypesSandboxRunPlanVars | Unset):
+        vars_files (list[str] | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    apply_plan_contents: Union[Unset, str] = UNSET
-    apply_plan_display: Union[Unset, list[int]] = UNSET
-    aws_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAwsCredentialsConfig"] = UNSET
-    azure_auth: Union[Unset, "GithubComPowertoolsdevMonoPkgAzureCredentialsConfig"] = UNSET
-    env_vars: Union[Unset, "PlantypesSandboxRunPlanEnvVars"] = UNSET
-    git_source: Union[Unset, "PlantypesGitSource"] = UNSET
-    hooks: Union[Unset, "PlantypesTerraformDeployHooks"] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    local_archive: Union[Unset, "PlantypesTerraformLocalArchive"] = UNSET
-    policies: Union[Unset, "PlantypesSandboxRunPlanPolicies"] = UNSET
-    sandbox_mode: Union[Unset, "PlantypesSandboxMode"] = UNSET
-    state: Union[Unset, "GithubComPowertoolsdevMonoPkgTypesStateState"] = UNSET
-    terraform_backend: Union[Unset, "PlantypesTerraformBackend"] = UNSET
-    vars_: Union[Unset, "PlantypesSandboxRunPlanVars"] = UNSET
-    vars_files: Union[Unset, list[str]] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    apply_plan_contents: str | Unset = UNSET
+    apply_plan_display: list[int] | Unset = UNSET
+    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    env_vars: PlantypesSandboxRunPlanEnvVars | Unset = UNSET
+    git_source: PlantypesGitSource | Unset = UNSET
+    hooks: PlantypesTerraformDeployHooks | Unset = UNSET
+    install_id: str | Unset = UNSET
+    local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
+    policies: PlantypesSandboxRunPlanPolicies | Unset = UNSET
+    sandbox_mode: PlantypesSandboxMode | Unset = UNSET
+    state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset = UNSET
+    terraform_backend: PlantypesTerraformBackend | Unset = UNSET
+    vars_: PlantypesSandboxRunPlanVars | Unset = UNSET
+    vars_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,57 +81,57 @@ class PlantypesSandboxRunPlan:
 
         apply_plan_contents = self.apply_plan_contents
 
-        apply_plan_display: Union[Unset, list[int]] = UNSET
+        apply_plan_display: list[int] | Unset = UNSET
         if not isinstance(self.apply_plan_display, Unset):
             apply_plan_display = self.apply_plan_display
 
-        aws_auth: Union[Unset, dict[str, Any]] = UNSET
+        aws_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_auth, Unset):
             aws_auth = self.aws_auth.to_dict()
 
-        azure_auth: Union[Unset, dict[str, Any]] = UNSET
+        azure_auth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_auth, Unset):
             azure_auth = self.azure_auth.to_dict()
 
-        env_vars: Union[Unset, dict[str, Any]] = UNSET
+        env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
-        git_source: Union[Unset, dict[str, Any]] = UNSET
+        git_source: dict[str, Any] | Unset = UNSET
         if not isinstance(self.git_source, Unset):
             git_source = self.git_source.to_dict()
 
-        hooks: Union[Unset, dict[str, Any]] = UNSET
+        hooks: dict[str, Any] | Unset = UNSET
         if not isinstance(self.hooks, Unset):
             hooks = self.hooks.to_dict()
 
         install_id = self.install_id
 
-        local_archive: Union[Unset, dict[str, Any]] = UNSET
+        local_archive: dict[str, Any] | Unset = UNSET
         if not isinstance(self.local_archive, Unset):
             local_archive = self.local_archive.to_dict()
 
-        policies: Union[Unset, dict[str, Any]] = UNSET
+        policies: dict[str, Any] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = self.policies.to_dict()
 
-        sandbox_mode: Union[Unset, dict[str, Any]] = UNSET
+        sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
-        state: Union[Unset, dict[str, Any]] = UNSET
+        state: dict[str, Any] | Unset = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.to_dict()
 
-        terraform_backend: Union[Unset, dict[str, Any]] = UNSET
+        terraform_backend: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_backend, Unset):
             terraform_backend = self.terraform_backend.to_dict()
 
-        vars_: Union[Unset, dict[str, Any]] = UNSET
+        vars_: dict[str, Any] | Unset = UNSET
         if not isinstance(self.vars_, Unset):
             vars_ = self.vars_.to_dict()
 
-        vars_files: Union[Unset, list[str]] = UNSET
+        vars_files: list[str] | Unset = UNSET
         if not isinstance(self.vars_files, Unset):
             vars_files = self.vars_files
 
@@ -203,35 +205,35 @@ class PlantypesSandboxRunPlan:
         apply_plan_display = cast(list[int], d.pop("apply_plan_display", UNSET))
 
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAwsCredentialsConfig]
+        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
             aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: Union[Unset, GithubComPowertoolsdevMonoPkgAzureCredentialsConfig]
+        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
             azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: Union[Unset, PlantypesSandboxRunPlanEnvVars]
+        env_vars: PlantypesSandboxRunPlanEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
             env_vars = PlantypesSandboxRunPlanEnvVars.from_dict(_env_vars)
 
         _git_source = d.pop("git_source", UNSET)
-        git_source: Union[Unset, PlantypesGitSource]
+        git_source: PlantypesGitSource | Unset
         if isinstance(_git_source, Unset):
             git_source = UNSET
         else:
             git_source = PlantypesGitSource.from_dict(_git_source)
 
         _hooks = d.pop("hooks", UNSET)
-        hooks: Union[Unset, PlantypesTerraformDeployHooks]
+        hooks: PlantypesTerraformDeployHooks | Unset
         if isinstance(_hooks, Unset):
             hooks = UNSET
         else:
@@ -240,42 +242,42 @@ class PlantypesSandboxRunPlan:
         install_id = d.pop("install_id", UNSET)
 
         _local_archive = d.pop("local_archive", UNSET)
-        local_archive: Union[Unset, PlantypesTerraformLocalArchive]
+        local_archive: PlantypesTerraformLocalArchive | Unset
         if isinstance(_local_archive, Unset):
             local_archive = UNSET
         else:
             local_archive = PlantypesTerraformLocalArchive.from_dict(_local_archive)
 
         _policies = d.pop("policies", UNSET)
-        policies: Union[Unset, PlantypesSandboxRunPlanPolicies]
+        policies: PlantypesSandboxRunPlanPolicies | Unset
         if isinstance(_policies, Unset):
             policies = UNSET
         else:
             policies = PlantypesSandboxRunPlanPolicies.from_dict(_policies)
 
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
-        sandbox_mode: Union[Unset, PlantypesSandboxMode]
+        sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
             sandbox_mode = UNSET
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
         _state = d.pop("state", UNSET)
-        state: Union[Unset, GithubComPowertoolsdevMonoPkgTypesStateState]
+        state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset
         if isinstance(_state, Unset):
             state = UNSET
         else:
             state = GithubComPowertoolsdevMonoPkgTypesStateState.from_dict(_state)
 
         _terraform_backend = d.pop("terraform_backend", UNSET)
-        terraform_backend: Union[Unset, PlantypesTerraformBackend]
+        terraform_backend: PlantypesTerraformBackend | Unset
         if isinstance(_terraform_backend, Unset):
             terraform_backend = UNSET
         else:
             terraform_backend = PlantypesTerraformBackend.from_dict(_terraform_backend)
 
         _vars_ = d.pop("vars", UNSET)
-        vars_: Union[Unset, PlantypesSandboxRunPlanVars]
+        vars_: PlantypesSandboxRunPlanVars | Unset
         if isinstance(_vars_, Unset):
             vars_ = UNSET
         else:

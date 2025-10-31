@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,28 +20,28 @@ T = TypeVar("T", bound="AppInstallEvent")
 class AppInstallEvent:
     """
     Attributes:
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_id (Union[Unset, str]):
-        operation (Union[Unset, str]):
-        operation_name (Union[Unset, str]):
-        operation_status (Union[Unset, AppOperationStatus]):
-        org_id (Union[Unset, str]):
-        payload (Union[Unset, AppInstallEventPayload]):
-        updated_at (Union[Unset, str]):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        install_id (str | Unset):
+        operation (str | Unset):
+        operation_name (str | Unset):
+        operation_status (AppOperationStatus | Unset):
+        org_id (str | Unset):
+        payload (AppInstallEventPayload | Unset):
+        updated_at (str | Unset):
     """
 
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_id: Union[Unset, str] = UNSET
-    operation: Union[Unset, str] = UNSET
-    operation_name: Union[Unset, str] = UNSET
-    operation_status: Union[Unset, AppOperationStatus] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    payload: Union[Unset, "AppInstallEventPayload"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    operation: str | Unset = UNSET
+    operation_name: str | Unset = UNSET
+    operation_status: AppOperationStatus | Unset = UNSET
+    org_id: str | Unset = UNSET
+    payload: AppInstallEventPayload | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,13 +57,13 @@ class AppInstallEvent:
 
         operation_name = self.operation_name
 
-        operation_status: Union[Unset, str] = UNSET
+        operation_status: str | Unset = UNSET
         if not isinstance(self.operation_status, Unset):
             operation_status = self.operation_status.value
 
         org_id = self.org_id
 
-        payload: Union[Unset, dict[str, Any]] = UNSET
+        payload: dict[str, Any] | Unset = UNSET
         if not isinstance(self.payload, Unset):
             payload = self.payload.to_dict()
 
@@ -111,7 +113,7 @@ class AppInstallEvent:
         operation_name = d.pop("operation_name", UNSET)
 
         _operation_status = d.pop("operation_status", UNSET)
-        operation_status: Union[Unset, AppOperationStatus]
+        operation_status: AppOperationStatus | Unset
         if isinstance(_operation_status, Unset):
             operation_status = UNSET
         else:
@@ -120,7 +122,7 @@ class AppInstallEvent:
         org_id = d.pop("org_id", UNSET)
 
         _payload = d.pop("payload", UNSET)
-        payload: Union[Unset, AppInstallEventPayload]
+        payload: AppInstallEventPayload | Unset
         if isinstance(_payload, Unset):
             payload = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,36 +22,36 @@ T = TypeVar("T", bound="AppHelmComponentConfig")
 class AppHelmComponentConfig:
     """
     Attributes:
-        chart_name (Union[Unset, str]): Helm specific configurations
-        component_config_connection_id (Union[Unset, str]): parent reference
-        connected_github_vcs_config (Union[Unset, AppConnectedGithubVCSConfig]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        helm_config_json (Union[Unset, AppHelmConfig]):
-        id (Union[Unset, str]):
-        namespace (Union[Unset, str]):
-        public_git_vcs_config (Union[Unset, AppPublicGitVCSConfig]):
-        storage_driver (Union[Unset, str]):
-        take_ownership (Union[Unset, bool]): Newer config fields that we don't need a column for
-        updated_at (Union[Unset, str]):
-        values (Union[Unset, AppHelmComponentConfigValues]):
-        values_files (Union[Unset, list[str]]):
+        chart_name (str | Unset): Helm specific configurations
+        component_config_connection_id (str | Unset): parent reference
+        connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        helm_config_json (AppHelmConfig | Unset):
+        id (str | Unset):
+        namespace (str | Unset):
+        public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        storage_driver (str | Unset):
+        take_ownership (bool | Unset): Newer config fields that we don't need a column for
+        updated_at (str | Unset):
+        values (AppHelmComponentConfigValues | Unset):
+        values_files (list[str] | Unset):
     """
 
-    chart_name: Union[Unset, str] = UNSET
-    component_config_connection_id: Union[Unset, str] = UNSET
-    connected_github_vcs_config: Union[Unset, "AppConnectedGithubVCSConfig"] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    helm_config_json: Union[Unset, "AppHelmConfig"] = UNSET
-    id: Union[Unset, str] = UNSET
-    namespace: Union[Unset, str] = UNSET
-    public_git_vcs_config: Union[Unset, "AppPublicGitVCSConfig"] = UNSET
-    storage_driver: Union[Unset, str] = UNSET
-    take_ownership: Union[Unset, bool] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    values: Union[Unset, "AppHelmComponentConfigValues"] = UNSET
-    values_files: Union[Unset, list[str]] = UNSET
+    chart_name: str | Unset = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    helm_config_json: AppHelmConfig | Unset = UNSET
+    id: str | Unset = UNSET
+    namespace: str | Unset = UNSET
+    public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    storage_driver: str | Unset = UNSET
+    take_ownership: bool | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    values: AppHelmComponentConfigValues | Unset = UNSET
+    values_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,7 +59,7 @@ class AppHelmComponentConfig:
 
         component_config_connection_id = self.component_config_connection_id
 
-        connected_github_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
@@ -65,7 +67,7 @@ class AppHelmComponentConfig:
 
         created_by_id = self.created_by_id
 
-        helm_config_json: Union[Unset, dict[str, Any]] = UNSET
+        helm_config_json: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_config_json, Unset):
             helm_config_json = self.helm_config_json.to_dict()
 
@@ -73,7 +75,7 @@ class AppHelmComponentConfig:
 
         namespace = self.namespace
 
-        public_git_vcs_config: Union[Unset, dict[str, Any]] = UNSET
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
@@ -83,11 +85,11 @@ class AppHelmComponentConfig:
 
         updated_at = self.updated_at
 
-        values: Union[Unset, dict[str, Any]] = UNSET
+        values: dict[str, Any] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values.to_dict()
 
-        values_files: Union[Unset, list[str]] = UNSET
+        values_files: list[str] | Unset = UNSET
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
 
@@ -138,7 +140,7 @@ class AppHelmComponentConfig:
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: Union[Unset, AppConnectedGithubVCSConfig]
+        connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
@@ -149,7 +151,7 @@ class AppHelmComponentConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         _helm_config_json = d.pop("helm_config_json", UNSET)
-        helm_config_json: Union[Unset, AppHelmConfig]
+        helm_config_json: AppHelmConfig | Unset
         if isinstance(_helm_config_json, Unset):
             helm_config_json = UNSET
         else:
@@ -160,7 +162,7 @@ class AppHelmComponentConfig:
         namespace = d.pop("namespace", UNSET)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: Union[Unset, AppPublicGitVCSConfig]
+        public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:
@@ -173,7 +175,7 @@ class AppHelmComponentConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         _values = d.pop("values", UNSET)
-        values: Union[Unset, AppHelmComponentConfigValues]
+        values: AppHelmComponentConfigValues | Unset
         if isinstance(_values, Unset):
             values = UNSET
         else:

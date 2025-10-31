@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,55 +26,55 @@ T = TypeVar("T", bound="AppComponentBuild")
 class AppComponentBuild:
     """
     Attributes:
-        checksum (Union[Unset, str]): checksum of our intermediate component config
-        component_config_connection (Union[Unset, AppComponentConfigConnection]):
-        component_config_connection_id (Union[Unset, str]): DEPRECATED: will retain the field to connect against the
-            last component config connection that set this build
-        component_config_version (Union[Unset, int]):
-        component_id (Union[Unset, str]): Read-only fields set on the object to de-nest data
-        component_name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by (Union[Unset, AppAccount]):
-        created_by_id (Union[Unset, str]):
-        git_ref (Union[Unset, str]):
-        id (Union[Unset, str]):
-        install_deploys (Union[Unset, list['AppInstallDeploy']]):
-        log_stream (Union[Unset, AppLogStream]):
-        releases (Union[Unset, list['AppComponentRelease']]):
-        runner_job (Union[Unset, AppRunnerJob]):
-        status (Union[Unset, str]):
-        status_description (Union[Unset, str]):
-        status_v2 (Union[Unset, AppCompositeStatus]):
-        updated_at (Union[Unset, str]):
-        vcs_connection_commit (Union[Unset, AppVCSConnectionCommit]):
+        checksum (str | Unset): checksum of our intermediate component config
+        component_config_connection (AppComponentConfigConnection | Unset):
+        component_config_connection_id (str | Unset): DEPRECATED: will retain the field to connect against the last
+            component config connection that set this build
+        component_config_version (int | Unset):
+        component_id (str | Unset): Read-only fields set on the object to de-nest data
+        component_name (str | Unset):
+        created_at (str | Unset):
+        created_by (AppAccount | Unset):
+        created_by_id (str | Unset):
+        git_ref (str | Unset):
+        id (str | Unset):
+        install_deploys (list[AppInstallDeploy] | Unset):
+        log_stream (AppLogStream | Unset):
+        releases (list[AppComponentRelease] | Unset):
+        runner_job (AppRunnerJob | Unset):
+        status (str | Unset):
+        status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
+        updated_at (str | Unset):
+        vcs_connection_commit (AppVCSConnectionCommit | Unset):
     """
 
-    checksum: Union[Unset, str] = UNSET
-    component_config_connection: Union[Unset, "AppComponentConfigConnection"] = UNSET
-    component_config_connection_id: Union[Unset, str] = UNSET
-    component_config_version: Union[Unset, int] = UNSET
-    component_id: Union[Unset, str] = UNSET
-    component_name: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by: Union[Unset, "AppAccount"] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    git_ref: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    install_deploys: Union[Unset, list["AppInstallDeploy"]] = UNSET
-    log_stream: Union[Unset, "AppLogStream"] = UNSET
-    releases: Union[Unset, list["AppComponentRelease"]] = UNSET
-    runner_job: Union[Unset, "AppRunnerJob"] = UNSET
-    status: Union[Unset, str] = UNSET
-    status_description: Union[Unset, str] = UNSET
-    status_v2: Union[Unset, "AppCompositeStatus"] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    vcs_connection_commit: Union[Unset, "AppVCSConnectionCommit"] = UNSET
+    checksum: str | Unset = UNSET
+    component_config_connection: AppComponentConfigConnection | Unset = UNSET
+    component_config_connection_id: str | Unset = UNSET
+    component_config_version: int | Unset = UNSET
+    component_id: str | Unset = UNSET
+    component_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by: AppAccount | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    git_ref: str | Unset = UNSET
+    id: str | Unset = UNSET
+    install_deploys: list[AppInstallDeploy] | Unset = UNSET
+    log_stream: AppLogStream | Unset = UNSET
+    releases: list[AppComponentRelease] | Unset = UNSET
+    runner_job: AppRunnerJob | Unset = UNSET
+    status: str | Unset = UNSET
+    status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         checksum = self.checksum
 
-        component_config_connection: Union[Unset, dict[str, Any]] = UNSET
+        component_config_connection: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component_config_connection, Unset):
             component_config_connection = self.component_config_connection.to_dict()
 
@@ -86,7 +88,7 @@ class AppComponentBuild:
 
         created_at = self.created_at
 
-        created_by: Union[Unset, dict[str, Any]] = UNSET
+        created_by: dict[str, Any] | Unset = UNSET
         if not isinstance(self.created_by, Unset):
             created_by = self.created_by.to_dict()
 
@@ -96,25 +98,25 @@ class AppComponentBuild:
 
         id = self.id
 
-        install_deploys: Union[Unset, list[dict[str, Any]]] = UNSET
+        install_deploys: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_deploys, Unset):
             install_deploys = []
             for install_deploys_item_data in self.install_deploys:
                 install_deploys_item = install_deploys_item_data.to_dict()
                 install_deploys.append(install_deploys_item)
 
-        log_stream: Union[Unset, dict[str, Any]] = UNSET
+        log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
             log_stream = self.log_stream.to_dict()
 
-        releases: Union[Unset, list[dict[str, Any]]] = UNSET
+        releases: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.releases, Unset):
             releases = []
             for releases_item_data in self.releases:
                 releases_item = releases_item_data.to_dict()
                 releases.append(releases_item)
 
-        runner_job: Union[Unset, dict[str, Any]] = UNSET
+        runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
@@ -122,13 +124,13 @@ class AppComponentBuild:
 
         status_description = self.status_description
 
-        status_v2: Union[Unset, dict[str, Any]] = UNSET
+        status_v2: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status_v2, Unset):
             status_v2 = self.status_v2.to_dict()
 
         updated_at = self.updated_at
 
-        vcs_connection_commit: Union[Unset, dict[str, Any]] = UNSET
+        vcs_connection_commit: dict[str, Any] | Unset = UNSET
         if not isinstance(self.vcs_connection_commit, Unset):
             vcs_connection_commit = self.vcs_connection_commit.to_dict()
 
@@ -193,7 +195,7 @@ class AppComponentBuild:
         checksum = d.pop("checksum", UNSET)
 
         _component_config_connection = d.pop("component_config_connection", UNSET)
-        component_config_connection: Union[Unset, AppComponentConfigConnection]
+        component_config_connection: AppComponentConfigConnection | Unset
         if isinstance(_component_config_connection, Unset):
             component_config_connection = UNSET
         else:
@@ -210,7 +212,7 @@ class AppComponentBuild:
         created_at = d.pop("created_at", UNSET)
 
         _created_by = d.pop("created_by", UNSET)
-        created_by: Union[Unset, AppAccount]
+        created_by: AppAccount | Unset
         if isinstance(_created_by, Unset):
             created_by = UNSET
         else:
@@ -230,7 +232,7 @@ class AppComponentBuild:
             install_deploys.append(install_deploys_item)
 
         _log_stream = d.pop("log_stream", UNSET)
-        log_stream: Union[Unset, AppLogStream]
+        log_stream: AppLogStream | Unset
         if isinstance(_log_stream, Unset):
             log_stream = UNSET
         else:
@@ -244,7 +246,7 @@ class AppComponentBuild:
             releases.append(releases_item)
 
         _runner_job = d.pop("runner_job", UNSET)
-        runner_job: Union[Unset, AppRunnerJob]
+        runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:
@@ -255,7 +257,7 @@ class AppComponentBuild:
         status_description = d.pop("status_description", UNSET)
 
         _status_v2 = d.pop("status_v2", UNSET)
-        status_v2: Union[Unset, AppCompositeStatus]
+        status_v2: AppCompositeStatus | Unset
         if isinstance(_status_v2, Unset):
             status_v2 = UNSET
         else:
@@ -264,7 +266,7 @@ class AppComponentBuild:
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
-        vcs_connection_commit: Union[Unset, AppVCSConnectionCommit]
+        vcs_connection_commit: AppVCSConnectionCommit | Unset
         if isinstance(_vcs_connection_commit, Unset):
             vcs_connection_commit = UNSET
         else:

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="ServiceCreateComponentReleaseRequest")
 class ServiceCreateComponentReleaseRequest:
     """
     Attributes:
-        auto_build (Union[Unset, bool]):
-        build_id (Union[Unset, str]):
-        install_ids (Union[Unset, list[str]]):
-        strategy (Union[Unset, ServiceCreateComponentReleaseRequestStrategy]):
+        auto_build (bool | Unset):
+        build_id (str | Unset):
+        install_ids (list[str] | Unset):
+        strategy (ServiceCreateComponentReleaseRequestStrategy | Unset):
     """
 
-    auto_build: Union[Unset, bool] = UNSET
-    build_id: Union[Unset, str] = UNSET
-    install_ids: Union[Unset, list[str]] = UNSET
-    strategy: Union[Unset, "ServiceCreateComponentReleaseRequestStrategy"] = UNSET
+    auto_build: bool | Unset = UNSET
+    build_id: str | Unset = UNSET
+    install_ids: list[str] | Unset = UNSET
+    strategy: ServiceCreateComponentReleaseRequestStrategy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,11 +36,11 @@ class ServiceCreateComponentReleaseRequest:
 
         build_id = self.build_id
 
-        install_ids: Union[Unset, list[str]] = UNSET
+        install_ids: list[str] | Unset = UNSET
         if not isinstance(self.install_ids, Unset):
             install_ids = self.install_ids
 
-        strategy: Union[Unset, dict[str, Any]] = UNSET
+        strategy: dict[str, Any] | Unset = UNSET
         if not isinstance(self.strategy, Unset):
             strategy = self.strategy.to_dict()
 
@@ -70,7 +72,7 @@ class ServiceCreateComponentReleaseRequest:
         install_ids = cast(list[str], d.pop("install_ids", UNSET))
 
         _strategy = d.pop("strategy", UNSET)
-        strategy: Union[Unset, ServiceCreateComponentReleaseRequestStrategy]
+        strategy: ServiceCreateComponentReleaseRequestStrategy | Unset
         if isinstance(_strategy, Unset):
             strategy = UNSET
         else:

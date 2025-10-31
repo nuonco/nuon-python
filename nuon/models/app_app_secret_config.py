@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,48 +15,48 @@ T = TypeVar("T", bound="AppAppSecretConfig")
 class AppAppSecretConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        app_id (Union[Unset, str]):
-        app_secrets_config_id (Union[Unset, str]):
-        auto_generate (Union[Unset, bool]):
-        cloudformation_param_name (Union[Unset, str]):
-        cloudformation_stack_name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        default (Union[Unset, str]):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        format_ (Union[Unset, str]):
-        id (Union[Unset, str]):
-        kubernetes_secret_name (Union[Unset, str]):
-        kubernetes_secret_namespace (Union[Unset, str]):
-        kubernetes_sync (Union[Unset, bool]): for syncing into kubernetes
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        required (Union[Unset, bool]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        app_id (str | Unset):
+        app_secrets_config_id (str | Unset):
+        auto_generate (bool | Unset):
+        cloudformation_param_name (str | Unset):
+        cloudformation_stack_name (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        default (str | Unset):
+        description (str | Unset):
+        display_name (str | Unset):
+        format_ (str | Unset):
+        id (str | Unset):
+        kubernetes_secret_name (str | Unset):
+        kubernetes_secret_namespace (str | Unset):
+        kubernetes_sync (bool | Unset): for syncing into kubernetes
+        name (str | Unset):
+        org_id (str | Unset):
+        required (bool | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    app_id: Union[Unset, str] = UNSET
-    app_secrets_config_id: Union[Unset, str] = UNSET
-    auto_generate: Union[Unset, bool] = UNSET
-    cloudformation_param_name: Union[Unset, str] = UNSET
-    cloudformation_stack_name: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    default: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    format_: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    kubernetes_secret_name: Union[Unset, str] = UNSET
-    kubernetes_secret_namespace: Union[Unset, str] = UNSET
-    kubernetes_sync: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    required: Union[Unset, bool] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    app_secrets_config_id: str | Unset = UNSET
+    auto_generate: bool | Unset = UNSET
+    cloudformation_param_name: str | Unset = UNSET
+    cloudformation_stack_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    default: str | Unset = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    format_: str | Unset = UNSET
+    id: str | Unset = UNSET
+    kubernetes_secret_name: str | Unset = UNSET
+    kubernetes_secret_namespace: str | Unset = UNSET
+    kubernetes_sync: bool | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    required: bool | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

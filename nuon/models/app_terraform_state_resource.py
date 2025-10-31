@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,22 +19,22 @@ T = TypeVar("T", bound="AppTerraformStateResource")
 class AppTerraformStateResource:
     """
     Attributes:
-        instances (Union[Unset, list['AppTerraformStateInstance']]):
-        mode (Union[Unset, str]):
-        name (Union[Unset, str]):
-        provider (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        instances (list[AppTerraformStateInstance] | Unset):
+        mode (str | Unset):
+        name (str | Unset):
+        provider (str | Unset):
+        type_ (str | Unset):
     """
 
-    instances: Union[Unset, list["AppTerraformStateInstance"]] = UNSET
-    mode: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    provider: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
+    instances: list[AppTerraformStateInstance] | Unset = UNSET
+    mode: str | Unset = UNSET
+    name: str | Unset = UNSET
+    provider: str | Unset = UNSET
+    type_: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        instances: Union[Unset, list[dict[str, Any]]] = UNSET
+        instances: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.instances, Unset):
             instances = []
             for instances_item_data in self.instances:

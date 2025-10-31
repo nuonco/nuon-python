@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,16 +21,16 @@ class CredentialsAssumeRoleConfig:
     Attributes:
         role_arn (str):
         session_name (str):
-        session_duration_seconds (Union[Unset, int]):
-        two_step_config (Union[Unset, IamTwoStepConfig]):
-        use_github_oidc (Union[Unset, bool]):
+        session_duration_seconds (int | Unset):
+        two_step_config (IamTwoStepConfig | Unset):
+        use_github_oidc (bool | Unset):
     """
 
     role_arn: str
     session_name: str
-    session_duration_seconds: Union[Unset, int] = UNSET
-    two_step_config: Union[Unset, "IamTwoStepConfig"] = UNSET
-    use_github_oidc: Union[Unset, bool] = UNSET
+    session_duration_seconds: int | Unset = UNSET
+    two_step_config: IamTwoStepConfig | Unset = UNSET
+    use_github_oidc: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +40,7 @@ class CredentialsAssumeRoleConfig:
 
         session_duration_seconds = self.session_duration_seconds
 
-        two_step_config: Union[Unset, dict[str, Any]] = UNSET
+        two_step_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.two_step_config, Unset):
             two_step_config = self.two_step_config.to_dict()
 
@@ -73,7 +75,7 @@ class CredentialsAssumeRoleConfig:
         session_duration_seconds = d.pop("session_duration_seconds", UNSET)
 
         _two_step_config = d.pop("two_step_config", UNSET)
-        two_step_config: Union[Unset, IamTwoStepConfig]
+        two_step_config: IamTwoStepConfig | Unset
         if isinstance(_two_step_config, Unset):
             two_step_config = UNSET
         else:

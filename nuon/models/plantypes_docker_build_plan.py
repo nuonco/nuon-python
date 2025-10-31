@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,20 +19,20 @@ T = TypeVar("T", bound="PlantypesDockerBuildPlan")
 class PlantypesDockerBuildPlan:
     """
     Attributes:
-        build_args (Union[Unset, PlantypesDockerBuildPlanBuildArgs]):
-        context (Union[Unset, str]):
-        dockerfile (Union[Unset, str]):
-        target (Union[Unset, str]):
+        build_args (PlantypesDockerBuildPlanBuildArgs | Unset):
+        context (str | Unset):
+        dockerfile (str | Unset):
+        target (str | Unset):
     """
 
-    build_args: Union[Unset, "PlantypesDockerBuildPlanBuildArgs"] = UNSET
-    context: Union[Unset, str] = UNSET
-    dockerfile: Union[Unset, str] = UNSET
-    target: Union[Unset, str] = UNSET
+    build_args: PlantypesDockerBuildPlanBuildArgs | Unset = UNSET
+    context: str | Unset = UNSET
+    dockerfile: str | Unset = UNSET
+    target: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        build_args: Union[Unset, dict[str, Any]] = UNSET
+        build_args: dict[str, Any] | Unset = UNSET
         if not isinstance(self.build_args, Unset):
             build_args = self.build_args.to_dict()
 
@@ -60,7 +62,7 @@ class PlantypesDockerBuildPlan:
 
         d = dict(src_dict)
         _build_args = d.pop("build_args", UNSET)
-        build_args: Union[Unset, PlantypesDockerBuildPlanBuildArgs]
+        build_args: PlantypesDockerBuildPlanBuildArgs | Unset
         if isinstance(_build_args, Unset):
             build_args = UNSET
         else:

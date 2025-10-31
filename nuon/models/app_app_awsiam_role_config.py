@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,40 +20,40 @@ T = TypeVar("T", bound="AppAppAWSIAMRoleConfig")
 class AppAppAWSIAMRoleConfig:
     """
     Attributes:
-        app_config_id (Union[Unset, str]):
-        cloudformation_param_name (Union[Unset, str]):
-        cloudformation_stack_name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        description (Union[Unset, str]):
-        display_name (Union[Unset, str]):
-        id (Union[Unset, str]):
-        name (Union[Unset, str]):
-        org_id (Union[Unset, str]):
-        owner_id (Union[Unset, str]):
-        owner_type (Union[Unset, str]):
-        permissions_boundary (Union[Unset, str]):
-        policies (Union[Unset, list['AppAppAWSIAMPolicyConfig']]):
-        type_ (Union[Unset, AppAWSIAMRoleType]):
-        updated_at (Union[Unset, str]):
+        app_config_id (str | Unset):
+        cloudformation_param_name (str | Unset):
+        cloudformation_stack_name (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        description (str | Unset):
+        display_name (str | Unset):
+        id (str | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        owner_id (str | Unset):
+        owner_type (str | Unset):
+        permissions_boundary (str | Unset):
+        policies (list[AppAppAWSIAMPolicyConfig] | Unset):
+        type_ (AppAWSIAMRoleType | Unset):
+        updated_at (str | Unset):
     """
 
-    app_config_id: Union[Unset, str] = UNSET
-    cloudformation_param_name: Union[Unset, str] = UNSET
-    cloudformation_stack_name: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    display_name: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    owner_id: Union[Unset, str] = UNSET
-    owner_type: Union[Unset, str] = UNSET
-    permissions_boundary: Union[Unset, str] = UNSET
-    policies: Union[Unset, list["AppAppAWSIAMPolicyConfig"]] = UNSET
-    type_: Union[Unset, AppAWSIAMRoleType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    app_config_id: str | Unset = UNSET
+    cloudformation_param_name: str | Unset = UNSET
+    cloudformation_stack_name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    description: str | Unset = UNSET
+    display_name: str | Unset = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
+    permissions_boundary: str | Unset = UNSET
+    policies: list[AppAppAWSIAMPolicyConfig] | Unset = UNSET
+    type_: AppAWSIAMRoleType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -81,14 +83,14 @@ class AppAppAWSIAMRoleConfig:
 
         permissions_boundary = self.permissions_boundary
 
-        policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policies, Unset):
             policies = []
             for policies_item_data in self.policies:
                 policies_item = policies_item_data.to_dict()
                 policies.append(policies_item)
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -171,7 +173,7 @@ class AppAppAWSIAMRoleConfig:
             policies.append(policies_item)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppAWSIAMRoleType]
+        type_: AppAWSIAMRoleType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

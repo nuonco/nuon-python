@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,28 +21,28 @@ T = TypeVar("T", bound="AppInstaller")
 class AppInstaller:
     """
     Attributes:
-        apps (Union[Unset, list['AppApp']]):
-        created_at (Union[Unset, str]):
-        created_by_id (Union[Unset, str]):
-        id (Union[Unset, str]):
-        metadata (Union[Unset, AppInstallerMetadata]):
-        org_id (Union[Unset, str]):
-        type_ (Union[Unset, AppInstallerType]):
-        updated_at (Union[Unset, str]):
+        apps (list[AppApp] | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        id (str | Unset):
+        metadata (AppInstallerMetadata | Unset):
+        org_id (str | Unset):
+        type_ (AppInstallerType | Unset):
+        updated_at (str | Unset):
     """
 
-    apps: Union[Unset, list["AppApp"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    created_by_id: Union[Unset, str] = UNSET
-    id: Union[Unset, str] = UNSET
-    metadata: Union[Unset, "AppInstallerMetadata"] = UNSET
-    org_id: Union[Unset, str] = UNSET
-    type_: Union[Unset, AppInstallerType] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    apps: list[AppApp] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    id: str | Unset = UNSET
+    metadata: AppInstallerMetadata | Unset = UNSET
+    org_id: str | Unset = UNSET
+    type_: AppInstallerType | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        apps: Union[Unset, list[dict[str, Any]]] = UNSET
+        apps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.apps, Unset):
             apps = []
             for apps_item_data in self.apps:
@@ -53,13 +55,13 @@ class AppInstaller:
 
         id = self.id
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
         org_id = self.org_id
 
-        type_: Union[Unset, str] = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
@@ -107,7 +109,7 @@ class AppInstaller:
         id = d.pop("id", UNSET)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, AppInstallerMetadata]
+        metadata: AppInstallerMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:
@@ -116,7 +118,7 @@ class AppInstaller:
         org_id = d.pop("org_id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, AppInstallerType]
+        type_: AppInstallerType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
