@@ -110,12 +110,14 @@ class AppAppBranch:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        workflows = []
         _workflows = d.pop("workflows", UNSET)
-        for workflows_item_data in _workflows or []:
-            workflows_item = AppWorkflow.from_dict(workflows_item_data)
+        workflows: list[AppWorkflow] | Unset = UNSET
+        if _workflows is not UNSET:
+            workflows = []
+            for workflows_item_data in _workflows:
+                workflows_item = AppWorkflow.from_dict(workflows_item_data)
 
-            workflows.append(workflows_item)
+                workflows.append(workflows_item)
 
         app_app_branch = cls(
             app_id=app_id,

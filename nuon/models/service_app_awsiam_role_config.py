@@ -78,12 +78,14 @@ class ServiceAppAWSIAMRoleConfig:
 
         permissions_boundary = d.pop("permissions_boundary", UNSET)
 
-        policies = []
         _policies = d.pop("policies", UNSET)
-        for policies_item_data in _policies or []:
-            policies_item = ServiceAppAWSIAMPolicyConfig.from_dict(policies_item_data)
+        policies: list[ServiceAppAWSIAMPolicyConfig] | Unset = UNSET
+        if _policies is not UNSET:
+            policies = []
+            for policies_item_data in _policies:
+                policies_item = ServiceAppAWSIAMPolicyConfig.from_dict(policies_item_data)
 
-            policies.append(policies_item)
+                policies.append(policies_item)
 
         service_app_awsiam_role_config = cls(
             description=description,

@@ -250,28 +250,34 @@ class AppWorkflow:
 
         id = d.pop("id", UNSET)
 
-        install_action_workflow_runs = []
         _install_action_workflow_runs = d.pop("install_action_workflow_runs", UNSET)
-        for install_action_workflow_runs_item_data in _install_action_workflow_runs or []:
-            install_action_workflow_runs_item = AppInstallActionWorkflowRun.from_dict(
-                install_action_workflow_runs_item_data
-            )
+        install_action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+        if _install_action_workflow_runs is not UNSET:
+            install_action_workflow_runs = []
+            for install_action_workflow_runs_item_data in _install_action_workflow_runs:
+                install_action_workflow_runs_item = AppInstallActionWorkflowRun.from_dict(
+                    install_action_workflow_runs_item_data
+                )
 
-            install_action_workflow_runs.append(install_action_workflow_runs_item)
+                install_action_workflow_runs.append(install_action_workflow_runs_item)
 
-        install_deploys = []
         _install_deploys = d.pop("install_deploys", UNSET)
-        for install_deploys_item_data in _install_deploys or []:
-            install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
+        install_deploys: list[AppInstallDeploy] | Unset = UNSET
+        if _install_deploys is not UNSET:
+            install_deploys = []
+            for install_deploys_item_data in _install_deploys:
+                install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
 
-            install_deploys.append(install_deploys_item)
+                install_deploys.append(install_deploys_item)
 
-        install_sandbox_runs = []
         _install_sandbox_runs = d.pop("install_sandbox_runs", UNSET)
-        for install_sandbox_runs_item_data in _install_sandbox_runs or []:
-            install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
+        install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+        if _install_sandbox_runs is not UNSET:
+            install_sandbox_runs = []
+            for install_sandbox_runs_item_data in _install_sandbox_runs:
+                install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
 
-            install_sandbox_runs.append(install_sandbox_runs_item)
+                install_sandbox_runs.append(install_sandbox_runs_item)
 
         _links = d.pop("links", UNSET)
         links: AppWorkflowLinks | Unset
@@ -311,12 +317,14 @@ class AppWorkflow:
         else:
             step_error_behavior = AppStepErrorBehavior(_step_error_behavior)
 
-        steps = []
         _steps = d.pop("steps", UNSET)
-        for steps_item_data in _steps or []:
-            steps_item = AppWorkflowStep.from_dict(steps_item_data)
+        steps: list[AppWorkflowStep] | Unset = UNSET
+        if _steps is not UNSET:
+            steps = []
+            for steps_item_data in _steps:
+                steps_item = AppWorkflowStep.from_dict(steps_item_data)
 
-            steps.append(steps_item)
+                steps.append(steps_item)
 
         _type_ = d.pop("type", UNSET)
         type_: AppWorkflowType | Unset

@@ -56,12 +56,14 @@ class ServiceCreateAppSecretsConfigRequest:
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id")
 
-        secrets = []
         _secrets = d.pop("secrets", UNSET)
-        for secrets_item_data in _secrets or []:
-            secrets_item = ServiceAppSecretConfig.from_dict(secrets_item_data)
+        secrets: list[ServiceAppSecretConfig] | Unset = UNSET
+        if _secrets is not UNSET:
+            secrets = []
+            for secrets_item_data in _secrets:
+                secrets_item = ServiceAppSecretConfig.from_dict(secrets_item_data)
 
-            secrets.append(secrets_item)
+                secrets.append(secrets_item)
 
         service_create_app_secrets_config_request = cls(
             app_config_id=app_config_id,

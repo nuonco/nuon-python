@@ -254,12 +254,14 @@ class AppAppConfig:
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
         d = dict(src_dict)
-        action_workflow_configs = []
         _action_workflow_configs = d.pop("action_workflow_configs", UNSET)
-        for action_workflow_configs_item_data in _action_workflow_configs or []:
-            action_workflow_configs_item = AppActionWorkflowConfig.from_dict(action_workflow_configs_item_data)
+        action_workflow_configs: list[AppActionWorkflowConfig] | Unset = UNSET
+        if _action_workflow_configs is not UNSET:
+            action_workflow_configs = []
+            for action_workflow_configs_item_data in _action_workflow_configs:
+                action_workflow_configs_item = AppActionWorkflowConfig.from_dict(action_workflow_configs_item_data)
 
-            action_workflow_configs.append(action_workflow_configs_item)
+                action_workflow_configs.append(action_workflow_configs_item)
 
         _app_branch = d.pop("app_branch", UNSET)
         app_branch: AppAppBranch | Unset
@@ -283,14 +285,16 @@ class AppAppConfig:
 
         cli_version = d.pop("cli_version", UNSET)
 
-        component_config_connections = []
         _component_config_connections = d.pop("component_config_connections", UNSET)
-        for component_config_connections_item_data in _component_config_connections or []:
-            component_config_connections_item = AppComponentConfigConnection.from_dict(
-                component_config_connections_item_data
-            )
+        component_config_connections: list[AppComponentConfigConnection] | Unset = UNSET
+        if _component_config_connections is not UNSET:
+            component_config_connections = []
+            for component_config_connections_item_data in _component_config_connections:
+                component_config_connections_item = AppComponentConfigConnection.from_dict(
+                    component_config_connections_item_data
+                )
 
-            component_config_connections.append(component_config_connections_item)
+                component_config_connections.append(component_config_connections_item)
 
         component_ids = cast(list[str], d.pop("component_ids", UNSET))
 

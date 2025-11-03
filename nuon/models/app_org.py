@@ -186,12 +186,14 @@ class AppOrg:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        vcs_connections = []
         _vcs_connections = d.pop("vcs_connections", UNSET)
-        for vcs_connections_item_data in _vcs_connections or []:
-            vcs_connections_item = AppVCSConnection.from_dict(vcs_connections_item_data)
+        vcs_connections: list[AppVCSConnection] | Unset = UNSET
+        if _vcs_connections is not UNSET:
+            vcs_connections = []
+            for vcs_connections_item_data in _vcs_connections:
+                vcs_connections_item = AppVCSConnection.from_dict(vcs_connections_item_data)
 
-            vcs_connections.append(vcs_connections_item)
+                vcs_connections.append(vcs_connections_item)
 
         app_org = cls(
             created_at=created_at,

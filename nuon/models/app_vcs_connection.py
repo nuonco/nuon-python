@@ -102,12 +102,14 @@ class AppVCSConnection:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        vcs_connection_commit = []
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
-        for vcs_connection_commit_item_data in _vcs_connection_commit or []:
-            vcs_connection_commit_item = AppVCSConnectionCommit.from_dict(vcs_connection_commit_item_data)
+        vcs_connection_commit: list[AppVCSConnectionCommit] | Unset = UNSET
+        if _vcs_connection_commit is not UNSET:
+            vcs_connection_commit = []
+            for vcs_connection_commit_item_data in _vcs_connection_commit:
+                vcs_connection_commit_item = AppVCSConnectionCommit.from_dict(vcs_connection_commit_item_data)
 
-            vcs_connection_commit.append(vcs_connection_commit_item)
+                vcs_connection_commit.append(vcs_connection_commit_item)
 
         app_vcs_connection = cls(
             created_at=created_at,

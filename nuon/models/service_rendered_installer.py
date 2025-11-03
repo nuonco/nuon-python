@@ -62,12 +62,14 @@ class ServiceRenderedInstaller:
         from ..models.app_installer_metadata import AppInstallerMetadata
 
         d = dict(src_dict)
-        apps = []
         _apps = d.pop("apps", UNSET)
-        for apps_item_data in _apps or []:
-            apps_item = AppApp.from_dict(apps_item_data)
+        apps: list[AppApp] | Unset = UNSET
+        if _apps is not UNSET:
+            apps = []
+            for apps_item_data in _apps:
+                apps_item = AppApp.from_dict(apps_item_data)
 
-            apps.append(apps_item)
+                apps.append(apps_item)
 
         _metadata = d.pop("metadata", UNSET)
         metadata: AppInstallerMetadata | Unset

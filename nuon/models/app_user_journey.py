@@ -60,12 +60,14 @@ class AppUserJourney:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        steps = []
         _steps = d.pop("steps", UNSET)
-        for steps_item_data in _steps or []:
-            steps_item = AppUserJourneyStep.from_dict(steps_item_data)
+        steps: list[AppUserJourneyStep] | Unset = UNSET
+        if _steps is not UNSET:
+            steps = []
+            for steps_item_data in _steps:
+                steps_item = AppUserJourneyStep.from_dict(steps_item_data)
 
-            steps.append(steps_item)
+                steps.append(steps_item)
 
         title = d.pop("title", UNSET)
 

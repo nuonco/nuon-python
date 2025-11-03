@@ -111,12 +111,14 @@ class AppInstallStack:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        versions = []
         _versions = d.pop("versions", UNSET)
-        for versions_item_data in _versions or []:
-            versions_item = AppInstallStackVersion.from_dict(versions_item_data)
+        versions: list[AppInstallStackVersion] | Unset = UNSET
+        if _versions is not UNSET:
+            versions = []
+            for versions_item_data in _versions:
+                versions_item = AppInstallStackVersion.from_dict(versions_item_data)
 
-            versions.append(versions_item)
+                versions.append(versions_item)
 
         app_install_stack = cls(
             created_at=created_at,

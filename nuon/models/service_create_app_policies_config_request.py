@@ -56,12 +56,14 @@ class ServiceCreateAppPoliciesConfigRequest:
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id")
 
-        policies = []
         _policies = d.pop("policies", UNSET)
-        for policies_item_data in _policies or []:
-            policies_item = ServiceAppPolicyConfig.from_dict(policies_item_data)
+        policies: list[ServiceAppPolicyConfig] | Unset = UNSET
+        if _policies is not UNSET:
+            policies = []
+            for policies_item_data in _policies:
+                policies_item = ServiceAppPolicyConfig.from_dict(policies_item_data)
 
-            policies.append(policies_item)
+                policies.append(policies_item)
 
         service_create_app_policies_config_request = cls(
             app_config_id=app_config_id,

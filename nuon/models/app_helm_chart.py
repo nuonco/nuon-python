@@ -92,12 +92,14 @@ class AppHelmChart:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
-        helm_releases = []
         _helm_releases = d.pop("helmReleases", UNSET)
-        for helm_releases_item_data in _helm_releases or []:
-            helm_releases_item = AppHelmRelease.from_dict(helm_releases_item_data)
+        helm_releases: list[AppHelmRelease] | Unset = UNSET
+        if _helm_releases is not UNSET:
+            helm_releases = []
+            for helm_releases_item_data in _helm_releases:
+                helm_releases_item = AppHelmRelease.from_dict(helm_releases_item_data)
 
-            helm_releases.append(helm_releases_item)
+                helm_releases.append(helm_releases_item)
 
         id = d.pop("id", UNSET)
 

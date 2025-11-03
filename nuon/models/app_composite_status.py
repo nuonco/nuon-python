@@ -85,12 +85,14 @@ class AppCompositeStatus:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
-        history = []
         _history = d.pop("history", UNSET)
-        for history_item_data in _history or []:
-            history_item = AppCompositeStatus.from_dict(history_item_data)
+        history: list[AppCompositeStatus] | Unset = UNSET
+        if _history is not UNSET:
+            history = []
+            for history_item_data in _history:
+                history_item = AppCompositeStatus.from_dict(history_item_data)
 
-            history.append(history_item)
+                history.append(history_item)
 
         _metadata = d.pop("metadata", UNSET)
         metadata: AppCompositeStatusMetadata | Unset

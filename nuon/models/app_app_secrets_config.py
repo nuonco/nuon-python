@@ -100,12 +100,14 @@ class AppAppSecretsConfig:
 
         org_id = d.pop("org_id", UNSET)
 
-        secrets = []
         _secrets = d.pop("secrets", UNSET)
-        for secrets_item_data in _secrets or []:
-            secrets_item = AppAppSecretConfig.from_dict(secrets_item_data)
+        secrets: list[AppAppSecretConfig] | Unset = UNSET
+        if _secrets is not UNSET:
+            secrets = []
+            for secrets_item_data in _secrets:
+                secrets_item = AppAppSecretConfig.from_dict(secrets_item_data)
 
-            secrets.append(secrets_item)
+                secrets.append(secrets_item)
 
         updated_at = d.pop("updated_at", UNSET)
 

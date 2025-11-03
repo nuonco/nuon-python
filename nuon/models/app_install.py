@@ -400,28 +400,34 @@ class AppInstall:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
-        drifted_objects = []
         _drifted_objects = d.pop("drifted_objects", UNSET)
-        for drifted_objects_item_data in _drifted_objects or []:
-            drifted_objects_item = AppDriftedObject.from_dict(drifted_objects_item_data)
+        drifted_objects: list[AppDriftedObject] | Unset = UNSET
+        if _drifted_objects is not UNSET:
+            drifted_objects = []
+            for drifted_objects_item_data in _drifted_objects:
+                drifted_objects_item = AppDriftedObject.from_dict(drifted_objects_item_data)
 
-            drifted_objects.append(drifted_objects_item)
+                drifted_objects.append(drifted_objects_item)
 
         id = d.pop("id", UNSET)
 
-        install_action_workflows = []
         _install_action_workflows = d.pop("install_action_workflows", UNSET)
-        for install_action_workflows_item_data in _install_action_workflows or []:
-            install_action_workflows_item = AppInstallActionWorkflow.from_dict(install_action_workflows_item_data)
+        install_action_workflows: list[AppInstallActionWorkflow] | Unset = UNSET
+        if _install_action_workflows is not UNSET:
+            install_action_workflows = []
+            for install_action_workflows_item_data in _install_action_workflows:
+                install_action_workflows_item = AppInstallActionWorkflow.from_dict(install_action_workflows_item_data)
 
-            install_action_workflows.append(install_action_workflows_item)
+                install_action_workflows.append(install_action_workflows_item)
 
-        install_components = []
         _install_components = d.pop("install_components", UNSET)
-        for install_components_item_data in _install_components or []:
-            install_components_item = AppInstallComponent.from_dict(install_components_item_data)
+        install_components: list[AppInstallComponent] | Unset = UNSET
+        if _install_components is not UNSET:
+            install_components = []
+            for install_components_item_data in _install_components:
+                install_components_item = AppInstallComponent.from_dict(install_components_item_data)
 
-            install_components.append(install_components_item)
+                install_components.append(install_components_item)
 
         _install_config = d.pop("install_config", UNSET)
         install_config: AppInstallConfig | Unset
@@ -430,28 +436,34 @@ class AppInstall:
         else:
             install_config = AppInstallConfig.from_dict(_install_config)
 
-        install_events = []
         _install_events = d.pop("install_events", UNSET)
-        for install_events_item_data in _install_events or []:
-            install_events_item = AppInstallEvent.from_dict(install_events_item_data)
+        install_events: list[AppInstallEvent] | Unset = UNSET
+        if _install_events is not UNSET:
+            install_events = []
+            for install_events_item_data in _install_events:
+                install_events_item = AppInstallEvent.from_dict(install_events_item_data)
 
-            install_events.append(install_events_item)
+                install_events.append(install_events_item)
 
-        install_inputs = []
         _install_inputs = d.pop("install_inputs", UNSET)
-        for install_inputs_item_data in _install_inputs or []:
-            install_inputs_item = AppInstallInputs.from_dict(install_inputs_item_data)
+        install_inputs: list[AppInstallInputs] | Unset = UNSET
+        if _install_inputs is not UNSET:
+            install_inputs = []
+            for install_inputs_item_data in _install_inputs:
+                install_inputs_item = AppInstallInputs.from_dict(install_inputs_item_data)
 
-            install_inputs.append(install_inputs_item)
+                install_inputs.append(install_inputs_item)
 
         install_number = d.pop("install_number", UNSET)
 
-        install_sandbox_runs = []
         _install_sandbox_runs = d.pop("install_sandbox_runs", UNSET)
-        for install_sandbox_runs_item_data in _install_sandbox_runs or []:
-            install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
+        install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+        if _install_sandbox_runs is not UNSET:
+            install_sandbox_runs = []
+            for install_sandbox_runs_item_data in _install_sandbox_runs:
+                install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
 
-            install_sandbox_runs.append(install_sandbox_runs_item)
+                install_sandbox_runs.append(install_sandbox_runs_item)
 
         _install_stack = d.pop("install_stack", UNSET)
         install_stack: AppInstallStack | Unset
@@ -460,12 +472,14 @@ class AppInstall:
         else:
             install_stack = AppInstallStack.from_dict(_install_stack)
 
-        install_states = []
         _install_states = d.pop("install_states", UNSET)
-        for install_states_item_data in _install_states or []:
-            install_states_item = AppInstallState.from_dict(install_states_item_data)
+        install_states: list[AppInstallState] | Unset = UNSET
+        if _install_states is not UNSET:
+            install_states = []
+            for install_states_item_data in _install_states:
+                install_states_item = AppInstallState.from_dict(install_states_item_data)
 
-            install_states.append(install_states_item)
+                install_states.append(install_states_item)
 
         _links = d.pop("links", UNSET)
         links: AppInstallLinks | Unset
@@ -508,12 +522,14 @@ class AppInstall:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        workflows = []
         _workflows = d.pop("workflows", UNSET)
-        for workflows_item_data in _workflows or []:
-            workflows_item = AppWorkflow.from_dict(workflows_item_data)
+        workflows: list[AppWorkflow] | Unset = UNSET
+        if _workflows is not UNSET:
+            workflows = []
+            for workflows_item_data in _workflows:
+                workflows_item = AppWorkflow.from_dict(workflows_item_data)
 
-            workflows.append(workflows_item)
+                workflows.append(workflows_item)
 
         app_install = cls(
             app_config_id=app_config_id,

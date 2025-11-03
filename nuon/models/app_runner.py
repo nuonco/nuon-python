@@ -145,21 +145,25 @@ class AppRunner:
 
         id = d.pop("id", UNSET)
 
-        jobs = []
         _jobs = d.pop("jobs", UNSET)
-        for jobs_item_data in _jobs or []:
-            jobs_item = AppRunnerJob.from_dict(jobs_item_data)
+        jobs: list[AppRunnerJob] | Unset = UNSET
+        if _jobs is not UNSET:
+            jobs = []
+            for jobs_item_data in _jobs:
+                jobs_item = AppRunnerJob.from_dict(jobs_item_data)
 
-            jobs.append(jobs_item)
+                jobs.append(jobs_item)
 
         name = d.pop("name", UNSET)
 
-        operations = []
         _operations = d.pop("operations", UNSET)
-        for operations_item_data in _operations or []:
-            operations_item = AppRunnerOperation.from_dict(operations_item_data)
+        operations: list[AppRunnerOperation] | Unset = UNSET
+        if _operations is not UNSET:
+            operations = []
+            for operations_item_data in _operations:
+                operations_item = AppRunnerOperation.from_dict(operations_item_data)
 
-            operations.append(operations_item)
+                operations.append(operations_item)
 
         org_id = d.pop("org_id", UNSET)
 

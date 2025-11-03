@@ -187,12 +187,14 @@ class AppInstallStackVersion:
 
         quick_link_url = d.pop("quick_link_url", UNSET)
 
-        runs = []
         _runs = d.pop("runs", UNSET)
-        for runs_item_data in _runs or []:
-            runs_item = AppInstallStackVersionRun.from_dict(runs_item_data)
+        runs: list[AppInstallStackVersionRun] | Unset = UNSET
+        if _runs is not UNSET:
+            runs = []
+            for runs_item_data in _runs:
+                runs_item = AppInstallStackVersionRun.from_dict(runs_item_data)
 
-            runs.append(runs_item)
+                runs.append(runs_item)
 
         template_url = d.pop("template_url", UNSET)
 

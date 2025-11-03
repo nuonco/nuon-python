@@ -209,12 +209,14 @@ class AppAppSandboxConfig:
 
         references = cast(list[str], d.pop("references", UNSET))
 
-        refs = []
         _refs = d.pop("refs", UNSET)
-        for refs_item_data in _refs or []:
-            refs_item = RefsRef.from_dict(refs_item_data)
+        refs: list[RefsRef] | Unset = UNSET
+        if _refs is not UNSET:
+            refs = []
+            for refs_item_data in _refs:
+                refs_item = RefsRef.from_dict(refs_item_data)
 
-            refs.append(refs_item)
+                refs.append(refs_item)
 
         terraform_version = d.pop("terraform_version", UNSET)
 

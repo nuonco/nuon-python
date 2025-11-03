@@ -165,12 +165,14 @@ class AppAppAWSIAMRoleConfig:
 
         permissions_boundary = d.pop("permissions_boundary", UNSET)
 
-        policies = []
         _policies = d.pop("policies", UNSET)
-        for policies_item_data in _policies or []:
-            policies_item = AppAppAWSIAMPolicyConfig.from_dict(policies_item_data)
+        policies: list[AppAppAWSIAMPolicyConfig] | Unset = UNSET
+        if _policies is not UNSET:
+            policies = []
+            for policies_item_data in _policies:
+                policies_item = AppAppAWSIAMPolicyConfig.from_dict(policies_item_data)
 
-            policies.append(policies_item)
+                policies.append(policies_item)
 
         _type_ = d.pop("type", UNSET)
         type_: AppAWSIAMRoleType | Unset

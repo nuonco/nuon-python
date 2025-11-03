@@ -183,12 +183,14 @@ class AppInstallComponent:
 
         id = d.pop("id", UNSET)
 
-        install_deploys = []
         _install_deploys = d.pop("install_deploys", UNSET)
-        for install_deploys_item_data in _install_deploys or []:
-            install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
+        install_deploys: list[AppInstallDeploy] | Unset = UNSET
+        if _install_deploys is not UNSET:
+            install_deploys = []
+            for install_deploys_item_data in _install_deploys:
+                install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
 
-            install_deploys.append(install_deploys_item)
+                install_deploys.append(install_deploys_item)
 
         install_id = d.pop("install_id", UNSET)
 

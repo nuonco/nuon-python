@@ -130,12 +130,14 @@ class AppInstallComponentSummary:
 
         component_name = d.pop("component_name", UNSET)
 
-        dependencies = []
         _dependencies = d.pop("dependencies", UNSET)
-        for dependencies_item_data in _dependencies or []:
-            dependencies_item = AppComponent.from_dict(dependencies_item_data)
+        dependencies: list[AppComponent] | Unset = UNSET
+        if _dependencies is not UNSET:
+            dependencies = []
+            for dependencies_item_data in _dependencies:
+                dependencies_item = AppComponent.from_dict(dependencies_item_data)
 
-            dependencies.append(dependencies_item)
+                dependencies.append(dependencies_item)
 
         _deploy_status = d.pop("deploy_status", UNSET)
         deploy_status: AppInstallDeployStatus | Unset

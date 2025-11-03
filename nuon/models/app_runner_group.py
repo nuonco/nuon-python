@@ -135,12 +135,14 @@ class AppRunnerGroup:
         else:
             platform = AppAppRunnerType(_platform)
 
-        runners = []
         _runners = d.pop("runners", UNSET)
-        for runners_item_data in _runners or []:
-            runners_item = AppRunner.from_dict(runners_item_data)
+        runners: list[AppRunner] | Unset = UNSET
+        if _runners is not UNSET:
+            runners = []
+            for runners_item_data in _runners:
+                runners_item = AppRunner.from_dict(runners_item_data)
 
-            runners.append(runners_item)
+                runners.append(runners_item)
 
         _settings = d.pop("settings", UNSET)
         settings: AppRunnerGroupSettings | Unset

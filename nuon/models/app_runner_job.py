@@ -242,12 +242,14 @@ class AppRunnerJob:
 
         execution_timeout = d.pop("execution_timeout", UNSET)
 
-        executions = []
         _executions = d.pop("executions", UNSET)
-        for executions_item_data in _executions or []:
-            executions_item = AppRunnerJobExecution.from_dict(executions_item_data)
+        executions: list[AppRunnerJobExecution] | Unset = UNSET
+        if _executions is not UNSET:
+            executions = []
+            for executions_item_data in _executions:
+                executions_item = AppRunnerJobExecution.from_dict(executions_item_data)
 
-            executions.append(executions_item)
+                executions.append(executions_item)
 
         final_runner_job_execution_id = d.pop("final_runner_job_execution_id", UNSET)
 
