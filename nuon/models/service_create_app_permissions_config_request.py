@@ -77,12 +77,14 @@ class ServiceCreateAppPermissionsConfigRequest:
 
         provision_role = ServiceAppAWSIAMRoleConfig.from_dict(d.pop("provision_role"))
 
-        break_glass_roles = []
         _break_glass_roles = d.pop("break_glass_roles", UNSET)
-        for break_glass_roles_item_data in _break_glass_roles or []:
-            break_glass_roles_item = ServiceAppAWSIAMRoleConfig.from_dict(break_glass_roles_item_data)
+        break_glass_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
+        if _break_glass_roles is not UNSET:
+            break_glass_roles = []
+            for break_glass_roles_item_data in _break_glass_roles:
+                break_glass_roles_item = ServiceAppAWSIAMRoleConfig.from_dict(break_glass_roles_item_data)
 
-            break_glass_roles.append(break_glass_roles_item)
+                break_glass_roles.append(break_glass_roles_item)
 
         service_create_app_permissions_config_request = cls(
             app_config_id=app_config_id,

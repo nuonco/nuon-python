@@ -180,12 +180,14 @@ class AppApp:
         from ..models.app_notifications_config import AppNotificationsConfig
 
         d = dict(src_dict)
-        app_configs = []
         _app_configs = d.pop("app_configs", UNSET)
-        for app_configs_item_data in _app_configs or []:
-            app_configs_item = AppAppConfig.from_dict(app_configs_item_data)
+        app_configs: list[AppAppConfig] | Unset = UNSET
+        if _app_configs is not UNSET:
+            app_configs = []
+            for app_configs_item_data in _app_configs:
+                app_configs_item = AppAppConfig.from_dict(app_configs_item_data)
 
-            app_configs.append(app_configs_item)
+                app_configs.append(app_configs_item)
 
         cloud_platform = d.pop("cloud_platform", UNSET)
 

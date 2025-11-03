@@ -102,12 +102,14 @@ class AppComponentRelease:
 
         id = d.pop("id", UNSET)
 
-        release_steps = []
         _release_steps = d.pop("release_steps", UNSET)
-        for release_steps_item_data in _release_steps or []:
-            release_steps_item = AppComponentReleaseStep.from_dict(release_steps_item_data)
+        release_steps: list[AppComponentReleaseStep] | Unset = UNSET
+        if _release_steps is not UNSET:
+            release_steps = []
+            for release_steps_item_data in _release_steps:
+                release_steps_item = AppComponentReleaseStep.from_dict(release_steps_item_data)
 
-            release_steps.append(release_steps_item)
+                release_steps.append(release_steps_item)
 
         status = d.pop("status", UNSET)
 

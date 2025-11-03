@@ -116,12 +116,14 @@ class AppInstallSandbox:
 
         install_id = d.pop("install_id", UNSET)
 
-        install_sandbox_runs = []
         _install_sandbox_runs = d.pop("install_sandbox_runs", UNSET)
-        for install_sandbox_runs_item_data in _install_sandbox_runs or []:
-            install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
+        install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
+        if _install_sandbox_runs is not UNSET:
+            install_sandbox_runs = []
+            for install_sandbox_runs_item_data in _install_sandbox_runs:
+                install_sandbox_runs_item = AppInstallSandboxRun.from_dict(install_sandbox_runs_item_data)
 
-            install_sandbox_runs.append(install_sandbox_runs_item)
+                install_sandbox_runs.append(install_sandbox_runs_item)
 
         status = d.pop("status", UNSET)
 

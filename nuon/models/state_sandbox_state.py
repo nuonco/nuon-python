@@ -87,12 +87,14 @@ class StateSandboxState:
 
         populated = d.pop("populated", UNSET)
 
-        recent_runs = []
         _recent_runs = d.pop("recent_runs", UNSET)
-        for recent_runs_item_data in _recent_runs or []:
-            recent_runs_item = StateSandboxState.from_dict(recent_runs_item_data)
+        recent_runs: list[StateSandboxState] | Unset = UNSET
+        if _recent_runs is not UNSET:
+            recent_runs = []
+            for recent_runs_item_data in _recent_runs:
+                recent_runs_item = StateSandboxState.from_dict(recent_runs_item_data)
 
-            recent_runs.append(recent_runs_item)
+                recent_runs.append(recent_runs_item)
 
         status = d.pop("status", UNSET)
 

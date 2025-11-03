@@ -161,28 +161,34 @@ class AppActionWorkflowConfig:
 
         references = cast(list[str], d.pop("references", UNSET))
 
-        refs = []
         _refs = d.pop("refs", UNSET)
-        for refs_item_data in _refs or []:
-            refs_item = RefsRef.from_dict(refs_item_data)
+        refs: list[RefsRef] | Unset = UNSET
+        if _refs is not UNSET:
+            refs = []
+            for refs_item_data in _refs:
+                refs_item = RefsRef.from_dict(refs_item_data)
 
-            refs.append(refs_item)
+                refs.append(refs_item)
 
-        steps = []
         _steps = d.pop("steps", UNSET)
-        for steps_item_data in _steps or []:
-            steps_item = AppActionWorkflowStepConfig.from_dict(steps_item_data)
+        steps: list[AppActionWorkflowStepConfig] | Unset = UNSET
+        if _steps is not UNSET:
+            steps = []
+            for steps_item_data in _steps:
+                steps_item = AppActionWorkflowStepConfig.from_dict(steps_item_data)
 
-            steps.append(steps_item)
+                steps.append(steps_item)
 
         timeout = d.pop("timeout", UNSET)
 
-        triggers = []
         _triggers = d.pop("triggers", UNSET)
-        for triggers_item_data in _triggers or []:
-            triggers_item = AppActionWorkflowTriggerConfig.from_dict(triggers_item_data)
+        triggers: list[AppActionWorkflowTriggerConfig] | Unset = UNSET
+        if _triggers is not UNSET:
+            triggers = []
+            for triggers_item_data in _triggers:
+                triggers_item = AppActionWorkflowTriggerConfig.from_dict(triggers_item_data)
 
-            triggers.append(triggers_item)
+                triggers.append(triggers_item)
 
         updated_at = d.pop("updated_at", UNSET)
 

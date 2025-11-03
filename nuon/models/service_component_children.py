@@ -46,12 +46,14 @@ class ServiceComponentChildren:
         from ..models.app_component import AppComponent
 
         d = dict(src_dict)
-        children = []
         _children = d.pop("children", UNSET)
-        for children_item_data in _children or []:
-            children_item = AppComponent.from_dict(children_item_data)
+        children: list[AppComponent] | Unset = UNSET
+        if _children is not UNSET:
+            children = []
+            for children_item_data in _children:
+                children_item = AppComponent.from_dict(children_item_data)
 
-            children.append(children_item)
+                children.append(children_item)
 
         service_component_children = cls(
             children=children,

@@ -138,23 +138,27 @@ class AppAccount:
         else:
             permissions = PermissionsSet.from_dict(_permissions)
 
-        roles = []
         _roles = d.pop("roles", UNSET)
-        for roles_item_data in _roles or []:
-            roles_item = AppRole.from_dict(roles_item_data)
+        roles: list[AppRole] | Unset = UNSET
+        if _roles is not UNSET:
+            roles = []
+            for roles_item_data in _roles:
+                roles_item = AppRole.from_dict(roles_item_data)
 
-            roles.append(roles_item)
+                roles.append(roles_item)
 
         subject = d.pop("subject", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
-        user_journeys = []
         _user_journeys = d.pop("user_journeys", UNSET)
-        for user_journeys_item_data in _user_journeys or []:
-            user_journeys_item = AppUserJourney.from_dict(user_journeys_item_data)
+        user_journeys: list[AppUserJourney] | Unset = UNSET
+        if _user_journeys is not UNSET:
+            user_journeys = []
+            for user_journeys_item_data in _user_journeys:
+                user_journeys_item = AppUserJourney.from_dict(user_journeys_item_data)
 
-            user_journeys.append(user_journeys_item)
+                user_journeys.append(user_journeys_item)
 
         app_account = cls(
             account_type=account_type,

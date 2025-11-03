@@ -70,12 +70,14 @@ class AppTerraformStateResource:
         from ..models.app_terraform_state_instance import AppTerraformStateInstance
 
         d = dict(src_dict)
-        instances = []
         _instances = d.pop("instances", UNSET)
-        for instances_item_data in _instances or []:
-            instances_item = AppTerraformStateInstance.from_dict(instances_item_data)
+        instances: list[AppTerraformStateInstance] | Unset = UNSET
+        if _instances is not UNSET:
+            instances = []
+            for instances_item_data in _instances:
+                instances_item = AppTerraformStateInstance.from_dict(instances_item_data)
 
-            instances.append(instances_item)
+                instances.append(instances_item)
 
         mode = d.pop("mode", UNSET)
 

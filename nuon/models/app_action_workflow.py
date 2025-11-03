@@ -104,12 +104,14 @@ class AppActionWorkflow:
 
         config_count = d.pop("config_count", UNSET)
 
-        configs = []
         _configs = d.pop("configs", UNSET)
-        for configs_item_data in _configs or []:
-            configs_item = AppActionWorkflowConfig.from_dict(configs_item_data)
+        configs: list[AppActionWorkflowConfig] | Unset = UNSET
+        if _configs is not UNSET:
+            configs = []
+            for configs_item_data in _configs:
+                configs_item = AppActionWorkflowConfig.from_dict(configs_item_data)
 
-            configs.append(configs_item)
+                configs.append(configs_item)
 
         created_at = d.pop("created_at", UNSET)
 

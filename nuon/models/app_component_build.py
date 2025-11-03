@@ -224,12 +224,14 @@ class AppComponentBuild:
 
         id = d.pop("id", UNSET)
 
-        install_deploys = []
         _install_deploys = d.pop("install_deploys", UNSET)
-        for install_deploys_item_data in _install_deploys or []:
-            install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
+        install_deploys: list[AppInstallDeploy] | Unset = UNSET
+        if _install_deploys is not UNSET:
+            install_deploys = []
+            for install_deploys_item_data in _install_deploys:
+                install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
 
-            install_deploys.append(install_deploys_item)
+                install_deploys.append(install_deploys_item)
 
         _log_stream = d.pop("log_stream", UNSET)
         log_stream: AppLogStream | Unset
@@ -238,12 +240,14 @@ class AppComponentBuild:
         else:
             log_stream = AppLogStream.from_dict(_log_stream)
 
-        releases = []
         _releases = d.pop("releases", UNSET)
-        for releases_item_data in _releases or []:
-            releases_item = AppComponentRelease.from_dict(releases_item_data)
+        releases: list[AppComponentRelease] | Unset = UNSET
+        if _releases is not UNSET:
+            releases = []
+            for releases_item_data in _releases:
+                releases_item = AppComponentRelease.from_dict(releases_item_data)
 
-            releases.append(releases_item)
+                releases.append(releases_item)
 
         _runner_job = d.pop("runner_job", UNSET)
         runner_job: AppRunnerJob | Unset

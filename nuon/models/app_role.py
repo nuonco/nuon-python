@@ -102,12 +102,14 @@ class AppRole:
 
         id = d.pop("id", UNSET)
 
-        policies = []
         _policies = d.pop("policies", UNSET)
-        for policies_item_data in _policies or []:
-            policies_item = AppPolicy.from_dict(policies_item_data)
+        policies: list[AppPolicy] | Unset = UNSET
+        if _policies is not UNSET:
+            policies = []
+            for policies_item_data in _policies:
+                policies_item = AppPolicy.from_dict(policies_item_data)
 
-            policies.append(policies_item)
+                policies.append(policies_item)
 
         _role_type = d.pop("role_type", UNSET)
         role_type: AppRoleType | Unset

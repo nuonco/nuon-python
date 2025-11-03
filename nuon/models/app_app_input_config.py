@@ -124,26 +124,32 @@ class AppAppInputConfig:
 
         id = d.pop("id", UNSET)
 
-        input_groups = []
         _input_groups = d.pop("input_groups", UNSET)
-        for input_groups_item_data in _input_groups or []:
-            input_groups_item = AppAppInputGroup.from_dict(input_groups_item_data)
+        input_groups: list[AppAppInputGroup] | Unset = UNSET
+        if _input_groups is not UNSET:
+            input_groups = []
+            for input_groups_item_data in _input_groups:
+                input_groups_item = AppAppInputGroup.from_dict(input_groups_item_data)
 
-            input_groups.append(input_groups_item)
+                input_groups.append(input_groups_item)
 
-        inputs = []
         _inputs = d.pop("inputs", UNSET)
-        for inputs_item_data in _inputs or []:
-            inputs_item = AppAppInput.from_dict(inputs_item_data)
+        inputs: list[AppAppInput] | Unset = UNSET
+        if _inputs is not UNSET:
+            inputs = []
+            for inputs_item_data in _inputs:
+                inputs_item = AppAppInput.from_dict(inputs_item_data)
 
-            inputs.append(inputs_item)
+                inputs.append(inputs_item)
 
-        install_inputs = []
         _install_inputs = d.pop("install_inputs", UNSET)
-        for install_inputs_item_data in _install_inputs or []:
-            install_inputs_item = AppInstallInputs.from_dict(install_inputs_item_data)
+        install_inputs: list[AppInstallInputs] | Unset = UNSET
+        if _install_inputs is not UNSET:
+            install_inputs = []
+            for install_inputs_item_data in _install_inputs:
+                install_inputs_item = AppInstallInputs.from_dict(install_inputs_item_data)
 
-            install_inputs.append(install_inputs_item)
+                install_inputs.append(install_inputs_item)
 
         org_id = d.pop("org_id", UNSET)
 

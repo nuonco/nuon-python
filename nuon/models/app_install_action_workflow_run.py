@@ -305,12 +305,14 @@ class AppInstallActionWorkflowRun:
         else:
             status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
-        steps = []
         _steps = d.pop("steps", UNSET)
-        for steps_item_data in _steps or []:
-            steps_item = AppInstallActionWorkflowRunStep.from_dict(steps_item_data)
+        steps: list[AppInstallActionWorkflowRunStep] | Unset = UNSET
+        if _steps is not UNSET:
+            steps = []
+            for steps_item_data in _steps:
+                steps_item = AppInstallActionWorkflowRunStep.from_dict(steps_item_data)
 
-            steps.append(steps_item)
+                steps.append(steps_item)
 
         _trigger_type = d.pop("trigger_type", UNSET)
         trigger_type: AppActionWorkflowTriggerType | Unset

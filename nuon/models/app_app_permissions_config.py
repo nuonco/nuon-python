@@ -124,12 +124,14 @@ class AppAppPermissionsConfig:
 
         app_id = d.pop("app_id", UNSET)
 
-        aws_iam_roles = []
         _aws_iam_roles = d.pop("aws_iam_roles", UNSET)
-        for aws_iam_roles_item_data in _aws_iam_roles or []:
-            aws_iam_roles_item = AppAppAWSIAMRoleConfig.from_dict(aws_iam_roles_item_data)
+        aws_iam_roles: list[AppAppAWSIAMRoleConfig] | Unset = UNSET
+        if _aws_iam_roles is not UNSET:
+            aws_iam_roles = []
+            for aws_iam_roles_item_data in _aws_iam_roles:
+                aws_iam_roles_item = AppAppAWSIAMRoleConfig.from_dict(aws_iam_roles_item_data)
 
-            aws_iam_roles.append(aws_iam_roles_item)
+                aws_iam_roles.append(aws_iam_roles_item)
 
         _break_glass_aws_iam_role = d.pop("break_glass_aws_iam_role", UNSET)
         break_glass_aws_iam_role: AppAppAWSIAMRoleConfig | Unset

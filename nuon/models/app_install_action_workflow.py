@@ -115,12 +115,14 @@ class AppInstallActionWorkflow:
 
         install_id = d.pop("install_id", UNSET)
 
-        runs = []
         _runs = d.pop("runs", UNSET)
-        for runs_item_data in _runs or []:
-            runs_item = AppInstallActionWorkflowRun.from_dict(runs_item_data)
+        runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+        if _runs is not UNSET:
+            runs = []
+            for runs_item_data in _runs:
+                runs_item = AppInstallActionWorkflowRun.from_dict(runs_item_data)
 
-            runs.append(runs_item)
+                runs.append(runs_item)
 
         status = d.pop("status", UNSET)
 

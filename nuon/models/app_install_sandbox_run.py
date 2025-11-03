@@ -188,12 +188,14 @@ class AppInstallSandboxRun:
         from ..models.app_workflow import AppWorkflow
 
         d = dict(src_dict)
-        action_workflow_runs = []
         _action_workflow_runs = d.pop("action_workflow_runs", UNSET)
-        for action_workflow_runs_item_data in _action_workflow_runs or []:
-            action_workflow_runs_item = AppInstallActionWorkflowRun.from_dict(action_workflow_runs_item_data)
+        action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+        if _action_workflow_runs is not UNSET:
+            action_workflow_runs = []
+            for action_workflow_runs_item_data in _action_workflow_runs:
+                action_workflow_runs_item = AppInstallActionWorkflowRun.from_dict(action_workflow_runs_item_data)
 
-            action_workflow_runs.append(action_workflow_runs_item)
+                action_workflow_runs.append(action_workflow_runs_item)
 
         _app_sandbox_config = d.pop("app_sandbox_config", UNSET)
         app_sandbox_config: AppAppSandboxConfig | Unset
@@ -242,12 +244,14 @@ class AppInstallSandboxRun:
         else:
             run_type = AppSandboxRunType(_run_type)
 
-        runner_jobs = []
         _runner_jobs = d.pop("runner_jobs", UNSET)
-        for runner_jobs_item_data in _runner_jobs or []:
-            runner_jobs_item = AppRunnerJob.from_dict(runner_jobs_item_data)
+        runner_jobs: list[AppRunnerJob] | Unset = UNSET
+        if _runner_jobs is not UNSET:
+            runner_jobs = []
+            for runner_jobs_item_data in _runner_jobs:
+                runner_jobs_item = AppRunnerJob.from_dict(runner_jobs_item_data)
 
-            runner_jobs.append(runner_jobs_item)
+                runner_jobs.append(runner_jobs_item)
 
         status = d.pop("status", UNSET)
 

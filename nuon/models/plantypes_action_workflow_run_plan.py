@@ -176,12 +176,14 @@ class PlantypesActionWorkflowRunPlan:
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
-        steps = []
         _steps = d.pop("steps", UNSET)
-        for steps_item_data in _steps or []:
-            steps_item = PlantypesActionWorkflowRunStepPlan.from_dict(steps_item_data)
+        steps: list[PlantypesActionWorkflowRunStepPlan] | Unset = UNSET
+        if _steps is not UNSET:
+            steps = []
+            for steps_item_data in _steps:
+                steps_item = PlantypesActionWorkflowRunStepPlan.from_dict(steps_item_data)
 
-            steps.append(steps_item)
+                steps.append(steps_item)
 
         plantypes_action_workflow_run_plan = cls(
             attrs=attrs,

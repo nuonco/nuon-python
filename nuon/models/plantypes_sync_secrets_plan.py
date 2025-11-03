@@ -115,12 +115,14 @@ class PlantypesSyncSecretsPlan:
         else:
             cluster_info = KubeClusterInfo.from_dict(_cluster_info)
 
-        kubernetes_secrets = []
         _kubernetes_secrets = d.pop("kubernetes_secrets", UNSET)
-        for kubernetes_secrets_item_data in _kubernetes_secrets or []:
-            kubernetes_secrets_item = PlantypesKubernetesSecretSync.from_dict(kubernetes_secrets_item_data)
+        kubernetes_secrets: list[PlantypesKubernetesSecretSync] | Unset = UNSET
+        if _kubernetes_secrets is not UNSET:
+            kubernetes_secrets = []
+            for kubernetes_secrets_item_data in _kubernetes_secrets:
+                kubernetes_secrets_item = PlantypesKubernetesSecretSync.from_dict(kubernetes_secrets_item_data)
 
-            kubernetes_secrets.append(kubernetes_secrets_item)
+                kubernetes_secrets.append(kubernetes_secrets_item)
 
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
         sandbox_mode: PlantypesSandboxMode | Unset

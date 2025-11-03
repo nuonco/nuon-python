@@ -121,12 +121,14 @@ class PlantypesHelmDeployPlan:
 
         take_ownership = d.pop("take_ownership", UNSET)
 
-        values = []
         _values = d.pop("values", UNSET)
-        for values_item_data in _values or []:
-            values_item = PlantypesHelmValue.from_dict(values_item_data)
+        values: list[PlantypesHelmValue] | Unset = UNSET
+        if _values is not UNSET:
+            values = []
+            for values_item_data in _values:
+                values_item = PlantypesHelmValue.from_dict(values_item_data)
 
-            values.append(values_item)
+                values.append(values_item)
 
         values_files = cast(list[str], d.pop("values_files", UNSET))
 

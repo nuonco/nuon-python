@@ -108,12 +108,14 @@ class AppAppInputGroup:
         d = dict(src_dict)
         app_input_id = d.pop("app_input_id", UNSET)
 
-        app_inputs = []
         _app_inputs = d.pop("app_inputs", UNSET)
-        for app_inputs_item_data in _app_inputs or []:
-            app_inputs_item = AppAppInput.from_dict(app_inputs_item_data)
+        app_inputs: list[AppAppInput] | Unset = UNSET
+        if _app_inputs is not UNSET:
+            app_inputs = []
+            for app_inputs_item_data in _app_inputs:
+                app_inputs_item = AppAppInput.from_dict(app_inputs_item_data)
 
-            app_inputs.append(app_inputs_item)
+                app_inputs.append(app_inputs_item)
 
         created_at = d.pop("created_at", UNSET)
 
