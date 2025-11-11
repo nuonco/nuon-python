@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.service_create_helm_component_config_request_values import (
         ServiceCreateHelmComponentConfigRequestValues,
     )
+    from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest
     from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
 
@@ -30,6 +31,7 @@ class ServiceCreateHelmComponentConfigRequest:
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
         dependencies (list[str] | Unset):
         drift_schedule (str | Unset):
+        helm_repo_config (ServiceHelmRepoConfigRequest | Unset):
         namespace (str | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
@@ -45,6 +47,7 @@ class ServiceCreateHelmComponentConfigRequest:
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    helm_repo_config: ServiceHelmRepoConfigRequest | Unset = UNSET
     namespace: str | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
@@ -71,6 +74,10 @@ class ServiceCreateHelmComponentConfigRequest:
             dependencies = self.dependencies
 
         drift_schedule = self.drift_schedule
+
+        helm_repo_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.helm_repo_config, Unset):
+            helm_repo_config = self.helm_repo_config.to_dict()
 
         namespace = self.namespace
 
@@ -108,6 +115,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["dependencies"] = dependencies
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if helm_repo_config is not UNSET:
+            field_dict["helm_repo_config"] = helm_repo_config
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
         if public_git_vcs_config is not UNSET:
@@ -129,6 +138,7 @@ class ServiceCreateHelmComponentConfigRequest:
         from ..models.service_create_helm_component_config_request_values import (
             ServiceCreateHelmComponentConfigRequestValues,
         )
+        from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest
         from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
         d = dict(src_dict)
@@ -150,6 +160,13 @@ class ServiceCreateHelmComponentConfigRequest:
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         drift_schedule = d.pop("drift_schedule", UNSET)
+
+        _helm_repo_config = d.pop("helm_repo_config", UNSET)
+        helm_repo_config: ServiceHelmRepoConfigRequest | Unset
+        if isinstance(_helm_repo_config, Unset):
+            helm_repo_config = UNSET
+        else:
+            helm_repo_config = ServiceHelmRepoConfigRequest.from_dict(_helm_repo_config)
 
         namespace = d.pop("namespace", UNSET)
 
@@ -176,6 +193,7 @@ class ServiceCreateHelmComponentConfigRequest:
             connected_github_vcs_config=connected_github_vcs_config,
             dependencies=dependencies,
             drift_schedule=drift_schedule,
+            helm_repo_config=helm_repo_config,
             namespace=namespace,
             public_git_vcs_config=public_git_vcs_config,
             references=references,

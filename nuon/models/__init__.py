@@ -65,6 +65,7 @@ from .app_helm_component_config_values import AppHelmComponentConfigValues
 from .app_helm_config import AppHelmConfig
 from .app_helm_config_values import AppHelmConfigValues
 from .app_helm_release import AppHelmRelease
+from .app_helm_repo_config import AppHelmRepoConfig
 from .app_install import AppInstall
 from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
@@ -192,6 +193,7 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .config_app_policy_type import ConfigAppPolicyType
+from .config_helm_repo_config import ConfigHelmRepoConfig
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
 from .configs_oci_registry_type import ConfigsOCIRegistryType
@@ -376,6 +378,7 @@ from .service_deprovision_install_sandbox_request import ServiceDeprovisionInsta
 from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
+from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
@@ -507,6 +510,7 @@ __all__ = (
     "AppHelmConfig",
     "AppHelmConfigValues",
     "AppHelmRelease",
+    "AppHelmRepoConfig",
     "AppInstall",
     "AppInstallActionWorkflow",
     "AppInstallActionWorkflowRun",
@@ -632,6 +636,7 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "ConfigAppPolicyType",
+    "ConfigHelmRepoConfig",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
     "ConfigsOCIRegistryType",
@@ -792,6 +797,7 @@ __all__ = (
     "ServiceForceShutdownRequest",
     "ServiceForgetInstallRequest",
     "ServiceGracefulShutdownRequest",
+    "ServiceHelmRepoConfigRequest",
     "ServiceInstallPhoneHomeRequest",
     "ServiceLatestRunnerHeartBeats",
     "ServiceMngShutDownRequest",
