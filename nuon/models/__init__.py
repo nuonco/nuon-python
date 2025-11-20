@@ -46,7 +46,6 @@ from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
-from .app_component_build_status import AppComponentBuildStatus
 from .app_component_config_connection import AppComponentConfigConnection
 from .app_component_links import AppComponentLinks
 from .app_component_release import AppComponentRelease
@@ -78,11 +77,9 @@ from .app_install_audit_log import AppInstallAuditLog
 from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
-from .app_install_component_summary import AppInstallComponentSummary
 from .app_install_config import AppInstallConfig
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
-from .app_install_deploy_status import AppInstallDeployStatus
 from .app_install_deploy_type import AppInstallDeployType
 from .app_install_event import AppInstallEvent
 from .app_install_event_payload import AppInstallEventPayload
@@ -141,6 +138,7 @@ from .app_runner_health_check import AppRunnerHealthCheck
 from .app_runner_heart_beat import AppRunnerHeartBeat
 from .app_runner_job import AppRunnerJob
 from .app_runner_job_execution import AppRunnerJobExecution
+from .app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
 from .app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
 from .app_runner_job_execution_outputs_outputs import AppRunnerJobExecutionOutputsOutputs
 from .app_runner_job_execution_outputs_outputs_additional_property import (
@@ -491,7 +489,6 @@ __all__ = (
     "AppCloudPlatformRegion",
     "AppComponent",
     "AppComponentBuild",
-    "AppComponentBuildStatus",
     "AppComponentConfigConnection",
     "AppComponentLinks",
     "AppComponentRelease",
@@ -523,11 +520,9 @@ __all__ = (
     "AppInstallComponent",
     "AppInstallComponentLinks",
     "AppInstallComponentStatuses",
-    "AppInstallComponentSummary",
     "AppInstallConfig",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
-    "AppInstallDeployStatus",
     "AppInstallDeployType",
     "AppInstaller",
     "AppInstallerMetadata",
@@ -586,6 +581,7 @@ __all__ = (
     "AppRunnerHeartBeat",
     "AppRunnerJob",
     "AppRunnerJobExecution",
+    "AppRunnerJobExecutionMetadata",
     "AppRunnerJobExecutionOutputs",
     "AppRunnerJobExecutionOutputsOutputs",
     "AppRunnerJobExecutionOutputsOutputsAdditionalProperty",
