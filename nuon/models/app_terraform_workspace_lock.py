@@ -24,6 +24,7 @@ class AppTerraformWorkspaceLock:
         created_by_id (str | Unset):
         id (str | Unset):
         lock (AppTerraformLock | Unset):
+        org_id (str | Unset):
         runner_job (AppRunnerJob | Unset):
         runner_job_id (str | Unset):
         updated_at (str | Unset):
@@ -35,6 +36,7 @@ class AppTerraformWorkspaceLock:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     lock: AppTerraformLock | Unset = UNSET
+    org_id: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     runner_job_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -51,6 +53,8 @@ class AppTerraformWorkspaceLock:
         lock: dict[str, Any] | Unset = UNSET
         if not isinstance(self.lock, Unset):
             lock = self.lock.to_dict()
+
+        org_id = self.org_id
 
         runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
@@ -73,6 +77,8 @@ class AppTerraformWorkspaceLock:
             field_dict["id"] = id
         if lock is not UNSET:
             field_dict["lock"] = lock
+        if org_id is not UNSET:
+            field_dict["org_id"] = org_id
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
         if runner_job_id is not UNSET:
@@ -103,6 +109,8 @@ class AppTerraformWorkspaceLock:
         else:
             lock = AppTerraformLock.from_dict(_lock)
 
+        org_id = d.pop("org_id", UNSET)
+
         _runner_job = d.pop("runner_job", UNSET)
         runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
@@ -121,6 +129,7 @@ class AppTerraformWorkspaceLock:
             created_by_id=created_by_id,
             id=id,
             lock=lock,
+            org_id=org_id,
             runner_job=runner_job,
             runner_job_id=runner_job_id,
             updated_at=updated_at,
