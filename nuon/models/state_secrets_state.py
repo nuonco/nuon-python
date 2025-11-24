@@ -28,6 +28,8 @@ class StateSecretsState:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.outputs_secret_sync_output import OutputsSecretSyncOutput
 
+        if src_dict is None:
+            src_dict = {}
         d = dict(src_dict)
         state_secrets_state = cls()
 
