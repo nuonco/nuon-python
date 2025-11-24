@@ -5,32 +5,30 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_otel_log_record import AppOtelLogRecord
+from ...models.app_external_image_component_config import AppExternalImageComponentConfig
+from ...models.service_create_external_image_component_config_request import (
+    ServiceCreateExternalImageComponentConfigRequest,
+)
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    log_stream_id: str,
+    app_id: str,
+    component_id: str,
     *,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
+    body: ServiceCreateExternalImageComponentConfigRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_api_offset, Unset):
-        headers["X-Nuon-API-Offset"] = x_nuon_api_offset
-
-    params: dict[str, Any] = {}
-
-    params["order"] = order
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/v1/log-streams/{log_stream_id}/logs",
-        "params": params,
+        "method": "post",
+        "url": f"/v1/apps/{app_id}/components/{component_id}/configs/external-image",
     }
+
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -38,16 +36,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
-    if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = AppOtelLogRecord.from_dict(response_200_item_data)
+) -> AppExternalImageComponentConfig | StderrErrResponse | None:
+    if response.status_code == 201:
+        response_201 = AppExternalImageComponentConfig.from_dict(response.json())
 
-            response_200.append(response_200_item)
-
-        return response_200
+        return response_201
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -82,7 +75,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
+) -> Response[AppExternalImageComponentConfig | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,33 +85,31 @@ def _build_response(
 
 
 def sync_detailed(
-    log_stream_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    body: ServiceCreateExternalImageComponentConfigRequest,
+) -> Response[AppExternalImageComponentConfig | StderrErrResponse]:
+    """create an external image component config
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateExternalImageComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppOtelLogRecord]]
+        Response[AppExternalImageComponentConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        app_id=app_id,
+        component_id=component_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -129,65 +120,61 @@ def sync_detailed(
 
 
 def sync(
-    log_stream_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    body: ServiceCreateExternalImageComponentConfigRequest,
+) -> AppExternalImageComponentConfig | StderrErrResponse | None:
+    """create an external image component config
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateExternalImageComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppOtelLogRecord]
+        AppExternalImageComponentConfig | StderrErrResponse
     """
 
     return sync_detailed(
-        log_stream_id=log_stream_id,
+        app_id=app_id,
+        component_id=component_id,
         client=client,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    log_stream_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    body: ServiceCreateExternalImageComponentConfigRequest,
+) -> Response[AppExternalImageComponentConfig | StderrErrResponse]:
+    """create an external image component config
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateExternalImageComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppOtelLogRecord]]
+        Response[AppExternalImageComponentConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        app_id=app_id,
+        component_id=component_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -196,34 +183,32 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    log_stream_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    body: ServiceCreateExternalImageComponentConfigRequest,
+) -> AppExternalImageComponentConfig | StderrErrResponse | None:
+    """create an external image component config
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateExternalImageComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppOtelLogRecord]
+        AppExternalImageComponentConfig | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            log_stream_id=log_stream_id,
+            app_id=app_id,
+            component_id=component_id,
             client=client,
-            order=order,
-            x_nuon_api_offset=x_nuon_api_offset,
+            body=body,
         )
     ).parsed
