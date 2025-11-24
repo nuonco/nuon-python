@@ -6,38 +6,39 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_app_config import AppAppConfig
+from ...models.service_update_app_config_request import ServiceUpdateAppConfigRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
-    recurse: bool | Unset = False,
+    body: ServiceUpdateAppConfigRequest,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    params["recurse"] = recurse
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/v1/apps/{app_id}/configs/{app_config_id}",
-        "params": params,
+        "method": "patch",
+        "url": f"/v1/apps/{app_id}/config/{config_id}",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> AppAppConfig | StderrErrResponse | None:
-    if response.status_code == 200:
-        response_200 = AppAppConfig.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = AppAppConfig.from_dict(response.json())
 
-        return response_200
+        return response_201
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -83,19 +84,17 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
+    body: ServiceUpdateAppConfigRequest,
 ) -> Response[AppAppConfig | StderrErrResponse]:
-    """get an app config
-
-     Fetch an app config by id.
+    """Update an app config, setting status and state.
 
     Args:
         app_id (str):
-        app_config_id (str):
-        recurse (bool | Unset):  Default: False.
+        config_id (str):
+        body (ServiceUpdateAppConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -107,8 +106,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_config_id=app_config_id,
-        recurse=recurse,
+        config_id=config_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -120,19 +119,17 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
+    body: ServiceUpdateAppConfigRequest,
 ) -> AppAppConfig | StderrErrResponse | None:
-    """get an app config
-
-     Fetch an app config by id.
+    """Update an app config, setting status and state.
 
     Args:
         app_id (str):
-        app_config_id (str):
-        recurse (bool | Unset):  Default: False.
+        config_id (str):
+        body (ServiceUpdateAppConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -144,27 +141,25 @@ def sync(
 
     return sync_detailed(
         app_id=app_id,
-        app_config_id=app_config_id,
+        config_id=config_id,
         client=client,
-        recurse=recurse,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
+    body: ServiceUpdateAppConfigRequest,
 ) -> Response[AppAppConfig | StderrErrResponse]:
-    """get an app config
-
-     Fetch an app config by id.
+    """Update an app config, setting status and state.
 
     Args:
         app_id (str):
-        app_config_id (str):
-        recurse (bool | Unset):  Default: False.
+        config_id (str):
+        body (ServiceUpdateAppConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,8 +171,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_config_id=app_config_id,
-        recurse=recurse,
+        config_id=config_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -187,19 +182,17 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
+    body: ServiceUpdateAppConfigRequest,
 ) -> AppAppConfig | StderrErrResponse | None:
-    """get an app config
-
-     Fetch an app config by id.
+    """Update an app config, setting status and state.
 
     Args:
         app_id (str):
-        app_config_id (str):
-        recurse (bool | Unset):  Default: False.
+        config_id (str):
+        body (ServiceUpdateAppConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -212,8 +205,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             app_id=app_id,
-            app_config_id=app_config_id,
+            config_id=config_id,
             client=client,
-            recurse=recurse,
+            body=body,
         )
     ).parsed

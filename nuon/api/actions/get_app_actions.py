@@ -5,45 +5,48 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_otel_log_record import AppOtelLogRecord
+from ...models.app_action_workflow import AppActionWorkflow
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    log_stream_id: str,
+    app_id: str,
     *,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
+    q: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-    if not isinstance(x_nuon_api_offset, Unset):
-        headers["X-Nuon-API-Offset"] = x_nuon_api_offset
-
     params: dict[str, Any] = {}
 
-    params["order"] = order
+    params["q"] = q
+
+    params["offset"] = offset
+
+    params["limit"] = limit
+
+    params["page"] = page
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/log-streams/{log_stream_id}/logs",
+        "url": f"/v1/apps/{app_id}/actions",
         "params": params,
     }
 
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
+) -> StderrErrResponse | list[AppActionWorkflow] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppOtelLogRecord.from_dict(response_200_item_data)
+            response_200_item = AppActionWorkflow.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -82,7 +85,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
+) -> Response[StderrErrResponse | list[AppActionWorkflow]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,33 +95,37 @@ def _build_response(
 
 
 def sync_detailed(
-    log_stream_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    q: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppActionWorkflow]]:
+    """get action workflows for an app
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        q (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppOtelLogRecord]]
+        Response[StderrErrResponse | list[AppActionWorkflow]]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        app_id=app_id,
+        q=q,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = client.get_httpx_client().request(
@@ -129,65 +136,73 @@ def sync_detailed(
 
 
 def sync(
-    log_stream_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    q: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppActionWorkflow] | None:
+    """get action workflows for an app
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        q (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppOtelLogRecord]
+        StderrErrResponse | list[AppActionWorkflow]
     """
 
     return sync_detailed(
-        log_stream_id=log_stream_id,
+        app_id=app_id,
         client=client,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        q=q,
+        offset=offset,
+        limit=limit,
+        page=page,
     ).parsed
 
 
 async def asyncio_detailed(
-    log_stream_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    q: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppActionWorkflow]]:
+    """get action workflows for an app
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        q (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppOtelLogRecord]]
+        Response[StderrErrResponse | list[AppActionWorkflow]]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        order=order,
-        x_nuon_api_offset=x_nuon_api_offset,
+        app_id=app_id,
+        q=q,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -196,34 +211,38 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    log_stream_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    order: str | Unset = "asc",
-    x_nuon_api_offset: str | Unset = UNSET,
-) -> StderrErrResponse | list[AppOtelLogRecord] | None:
-    """read a log stream's logs
-
-     Read OTEL formatted logs for a log stream.
+    q: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppActionWorkflow] | None:
+    """get action workflows for an app
 
     Args:
-        log_stream_id (str):
-        order (str | Unset):  Default: 'asc'.
-        x_nuon_api_offset (str | Unset):
+        app_id (str):
+        q (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppOtelLogRecord]
+        StderrErrResponse | list[AppActionWorkflow]
     """
 
     return (
         await asyncio_detailed(
-            log_stream_id=log_stream_id,
+            app_id=app_id,
             client=client,
-            order=order,
-            x_nuon_api_offset=x_nuon_api_offset,
+            q=q,
+            offset=offset,
+            limit=limit,
+            page=page,
         )
     ).parsed

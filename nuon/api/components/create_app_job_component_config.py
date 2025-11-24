@@ -5,29 +5,40 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_runner import AppRunner
+from ...models.app_job_component_config import AppJobComponentConfig
+from ...models.service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    runner_id: str,
+    app_id: str,
+    component_id: str,
+    *,
+    body: ServiceCreateJobComponentConfigRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/v1/runners/{runner_id}",
+        "method": "post",
+        "url": f"/v1/apps/{app_id}/components/{component_id}/configs/job",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppRunner | StderrErrResponse | None:
-    if response.status_code == 200:
-        response_200 = AppRunner.from_dict(response.json())
+) -> AppJobComponentConfig | StderrErrResponse | None:
+    if response.status_code == 201:
+        response_201 = AppJobComponentConfig.from_dict(response.json())
 
-        return response_200
+        return response_201
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -62,7 +73,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppRunner | StderrErrResponse]:
+) -> Response[AppJobComponentConfig | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,27 +83,31 @@ def _build_response(
 
 
 def sync_detailed(
-    runner_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppRunner | StderrErrResponse]:
-    """get a runner by id
-
-     Return a runner.
+    body: ServiceCreateJobComponentConfigRequest,
+) -> Response[AppJobComponentConfig | StderrErrResponse]:
+    """create a job component config
 
     Args:
-        runner_id (str):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateJobComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppRunner | StderrErrResponse]
+        Response[AppJobComponentConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        runner_id=runner_id,
+        app_id=app_id,
+        component_id=component_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -103,53 +118,61 @@ def sync_detailed(
 
 
 def sync(
-    runner_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppRunner | StderrErrResponse | None:
-    """get a runner by id
-
-     Return a runner.
+    body: ServiceCreateJobComponentConfigRequest,
+) -> AppJobComponentConfig | StderrErrResponse | None:
+    """create a job component config
 
     Args:
-        runner_id (str):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateJobComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppRunner | StderrErrResponse
+        AppJobComponentConfig | StderrErrResponse
     """
 
     return sync_detailed(
-        runner_id=runner_id,
+        app_id=app_id,
+        component_id=component_id,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    runner_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppRunner | StderrErrResponse]:
-    """get a runner by id
-
-     Return a runner.
+    body: ServiceCreateJobComponentConfigRequest,
+) -> Response[AppJobComponentConfig | StderrErrResponse]:
+    """create a job component config
 
     Args:
-        runner_id (str):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateJobComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppRunner | StderrErrResponse]
+        Response[AppJobComponentConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        runner_id=runner_id,
+        app_id=app_id,
+        component_id=component_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -158,28 +181,32 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    runner_id: str,
+    app_id: str,
+    component_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppRunner | StderrErrResponse | None:
-    """get a runner by id
-
-     Return a runner.
+    body: ServiceCreateJobComponentConfigRequest,
+) -> AppJobComponentConfig | StderrErrResponse | None:
+    """create a job component config
 
     Args:
-        runner_id (str):
+        app_id (str):
+        component_id (str):
+        body (ServiceCreateJobComponentConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppRunner | StderrErrResponse
+        AppJobComponentConfig | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            runner_id=runner_id,
+            app_id=app_id,
+            component_id=component_id,
             client=client,
+            body=body,
         )
     ).parsed

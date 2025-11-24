@@ -396,6 +396,7 @@ from .service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDRespo
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
 from .service_retry_workflow_step_request import ServiceRetryWorkflowStepRequest
+from .service_runner_card_details_response import ServiceRunnerCardDetailsResponse
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
@@ -813,6 +814,7 @@ __all__ = (
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
     "ServiceRetryWorkflowStepRequest",
+    "ServiceRunnerCardDetailsResponse",
     "ServiceRunnerConnectionStatus",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
