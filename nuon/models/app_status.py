@@ -34,6 +34,7 @@ class AppStatus(str, Enum):
     USER_SKIPPED = "user-skipped"
     # manual addition
     EXECUTING = "executing"
+    PENDING_APPROVAL = "pending-approval"
 
     def __str__(self) -> str:
         return str(self.value)
