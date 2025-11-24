@@ -32,6 +32,8 @@ class AppStatus(str, Enum):
     RETRYING = "retrying"
     SUCCESS = "success"
     USER_SKIPPED = "user-skipped"
+    # manual addition
+    EXECUTING = "executing"
 
     def __str__(self) -> str:
         return str(self.value)
