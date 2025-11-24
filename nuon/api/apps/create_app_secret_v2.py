@@ -5,31 +5,39 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval import AppWorkflowStepApproval
+from ...models.app_app_secret import AppAppSecret
+from ...models.service_create_app_secret_request import ServiceCreateAppSecretRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    *,
+    body: ServiceCreateAppSecretRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}",
+        "method": "post",
+        "url": f"/v1/apps/{app_id}/secrets",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    if response.status_code == 200:
-        response_200 = AppWorkflowStepApproval.from_dict(response.json())
+) -> Optional[Union[AppAppSecret, StderrErrResponse]]:
+    if response.status_code == 201:
+        response_201 = AppAppSecret.from_dict(response.json())
 
-        return response_200
+        return response_201
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
 
@@ -58,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Response[Union[AppAppSecret, StderrErrResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,31 +76,33 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    body: ServiceCreateAppSecretRequest,
+) -> Response[Union[AppAppSecret, StderrErrResponse]]:
+    """create an app secret
+
+     Create an app secret that can be used to configure components. To reference an app secret, use
+    `.nuon.secrets.<secret_name>`.
+
+    **NOTE** secrets can only be written, or deleted, not read.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        body (ServiceCreateAppSecretRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[AppAppSecret, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -103,61 +113,65 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    body: ServiceCreateAppSecretRequest,
+) -> Optional[Union[AppAppSecret, StderrErrResponse]]:
+    """create an app secret
+
+     Create an app secret that can be used to configure components. To reference an app secret, use
+    `.nuon.secrets.<secret_name>`.
+
+    **NOTE** secrets can only be written, or deleted, not read.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        body (ServiceCreateAppSecretRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[AppAppSecret, StderrErrResponse]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    body: ServiceCreateAppSecretRequest,
+) -> Response[Union[AppAppSecret, StderrErrResponse]]:
+    """create an app secret
+
+     Create an app secret that can be used to configure components. To reference an app secret, use
+    `.nuon.secrets.<secret_name>`.
+
+    **NOTE** secrets can only be written, or deleted, not read.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        body (ServiceCreateAppSecretRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[AppAppSecret, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -166,32 +180,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    body: ServiceCreateAppSecretRequest,
+) -> Optional[Union[AppAppSecret, StderrErrResponse]]:
+    """create an app secret
+
+     Create an app secret that can be used to configure components. To reference an app secret, use
+    `.nuon.secrets.<secret_name>`.
+
+    **NOTE** secrets can only be written, or deleted, not read.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        body (ServiceCreateAppSecretRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[AppAppSecret, StderrErrResponse]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
-            step_id=step_id,
-            approval_id=approval_id,
+            app_id=app_id,
             client=client,
+            body=body,
         )
     ).parsed

@@ -6,41 +6,59 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ConfigHelmRepoConfig")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ConfigHelmRepoConfig:
     """
     Attributes:
-        plan_only (Union[Unset, bool]):
+        chart (Union[Unset, str]):
+        repo_url (Union[Unset, str]):
+        version (Union[Unset, str]):
     """
 
-    plan_only: Union[Unset, bool] = UNSET
+    chart: Union[Unset, str] = UNSET
+    repo_url: Union[Unset, str] = UNSET
+    version: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        chart = self.chart
+
+        repo_url = self.repo_url
+
+        version = self.version
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        if chart is not UNSET:
+            field_dict["chart"] = chart
+        if repo_url is not UNSET:
+            field_dict["repoURL"] = repo_url
+        if version is not UNSET:
+            field_dict["version"] = version
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        chart = d.pop("chart", UNSET)
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
+        repo_url = d.pop("repoURL", UNSET)
+
+        version = d.pop("version", UNSET)
+
+        config_helm_repo_config = cls(
+            chart=chart,
+            repo_url=repo_url,
+            version=version,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        config_helm_repo_config.additional_properties = d
+        return config_helm_repo_config
 
     @property
     def additional_keys(self) -> list[str]:

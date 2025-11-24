@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+    from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
 
 T = TypeVar("T", bound="AppAWSStackOutputs")
@@ -20,6 +21,7 @@ class AppAWSStackOutputs:
         account_id (Union[Unset, str]):
         break_glass_role_arns (Union[Unset, AppAWSStackOutputsBreakGlassRoleArns]):
         deprovision_iam_role_arn (Union[Unset, str]):
+        install_inputs (Union[Unset, AppAWSStackOutputsInstallInputs]):
         maintenance_iam_role_arn (Union[Unset, str]):
         private_subnets (Union[Unset, list[str]]):
         provision_iam_role_arn (Union[Unset, str]):
@@ -33,6 +35,7 @@ class AppAWSStackOutputs:
     account_id: Union[Unset, str] = UNSET
     break_glass_role_arns: Union[Unset, "AppAWSStackOutputsBreakGlassRoleArns"] = UNSET
     deprovision_iam_role_arn: Union[Unset, str] = UNSET
+    install_inputs: Union[Unset, "AppAWSStackOutputsInstallInputs"] = UNSET
     maintenance_iam_role_arn: Union[Unset, str] = UNSET
     private_subnets: Union[Unset, list[str]] = UNSET
     provision_iam_role_arn: Union[Unset, str] = UNSET
@@ -51,6 +54,10 @@ class AppAWSStackOutputs:
             break_glass_role_arns = self.break_glass_role_arns.to_dict()
 
         deprovision_iam_role_arn = self.deprovision_iam_role_arn
+
+        install_inputs: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.install_inputs, Unset):
+            install_inputs = self.install_inputs.to_dict()
 
         maintenance_iam_role_arn = self.maintenance_iam_role_arn
 
@@ -81,6 +88,8 @@ class AppAWSStackOutputs:
             field_dict["break_glass_role_arns"] = break_glass_role_arns
         if deprovision_iam_role_arn is not UNSET:
             field_dict["deprovision_iam_role_arn"] = deprovision_iam_role_arn
+        if install_inputs is not UNSET:
+            field_dict["install_inputs"] = install_inputs
         if maintenance_iam_role_arn is not UNSET:
             field_dict["maintenance_iam_role_arn"] = maintenance_iam_role_arn
         if private_subnets is not UNSET:
@@ -103,6 +112,7 @@ class AppAWSStackOutputs:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+        from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
         d = dict(src_dict)
         account_id = d.pop("account_id", UNSET)
@@ -115,6 +125,13 @@ class AppAWSStackOutputs:
             break_glass_role_arns = AppAWSStackOutputsBreakGlassRoleArns.from_dict(_break_glass_role_arns)
 
         deprovision_iam_role_arn = d.pop("deprovision_iam_role_arn", UNSET)
+
+        _install_inputs = d.pop("install_inputs", UNSET)
+        install_inputs: Union[Unset, AppAWSStackOutputsInstallInputs]
+        if isinstance(_install_inputs, Unset):
+            install_inputs = UNSET
+        else:
+            install_inputs = AppAWSStackOutputsInstallInputs.from_dict(_install_inputs)
 
         maintenance_iam_role_arn = d.pop("maintenance_iam_role_arn", UNSET)
 
@@ -136,6 +153,7 @@ class AppAWSStackOutputs:
             account_id=account_id,
             break_glass_role_arns=break_glass_role_arns,
             deprovision_iam_role_arn=deprovision_iam_role_arn,
+            install_inputs=install_inputs,
             maintenance_iam_role_arn=maintenance_iam_role_arn,
             private_subnets=private_subnets,
             provision_iam_role_arn=provision_iam_role_arn,

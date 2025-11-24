@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
-from ...models.service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
+from ...models.service_retry_workflow_step_request import ServiceRetryWorkflowStepRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     workflow_id: str,
     step_id: str,
     *,
-    body: ServiceRetryWorkflowStepResponse,
+    body: ServiceRetryWorkflowStepRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -81,14 +81,14 @@ def sync_detailed(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepResponse,
+    body: ServiceRetryWorkflowStepRequest,
 ) -> Response[Union[ServiceRetryWorkflowByIDResponse, StderrErrResponse]]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepResponse):
+        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,14 +116,14 @@ def sync(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepResponse,
+    body: ServiceRetryWorkflowStepRequest,
 ) -> Optional[Union[ServiceRetryWorkflowByIDResponse, StderrErrResponse]]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepResponse):
+        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,14 +146,14 @@ async def asyncio_detailed(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepResponse,
+    body: ServiceRetryWorkflowStepRequest,
 ) -> Response[Union[ServiceRetryWorkflowByIDResponse, StderrErrResponse]]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepResponse):
+        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,14 +179,14 @@ async def asyncio(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepResponse,
+    body: ServiceRetryWorkflowStepRequest,
 ) -> Optional[Union[ServiceRetryWorkflowByIDResponse, StderrErrResponse]]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepResponse):
+        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

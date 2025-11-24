@@ -19,6 +19,7 @@ from .app_app_config_version import AppAppConfigVersion
 from .app_app_input import AppAppInput
 from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
+from .app_app_input_source import AppAppInputSource
 from .app_app_links import AppAppLinks
 from .app_app_permissions_config import AppAppPermissionsConfig
 from .app_app_policies_config import AppAppPoliciesConfig
@@ -36,6 +37,7 @@ from .app_app_stack_config import AppAppStackConfig
 from .app_aws_account import AppAWSAccount
 from .app_aws_stack_outputs import AppAWSStackOutputs
 from .app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+from .app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 from .app_awsecr_image_config import AppAWSECRImageConfig
 from .app_awsiam_role_type import AppAWSIAMRoleType
 from .app_azure_account import AppAzureAccount
@@ -44,7 +46,6 @@ from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
-from .app_component_build_status import AppComponentBuildStatus
 from .app_component_config_connection import AppComponentConfigConnection
 from .app_component_links import AppComponentLinks
 from .app_component_release import AppComponentRelease
@@ -63,6 +64,7 @@ from .app_helm_component_config_values import AppHelmComponentConfigValues
 from .app_helm_config import AppHelmConfig
 from .app_helm_config_values import AppHelmConfigValues
 from .app_helm_release import AppHelmRelease
+from .app_helm_repo_config import AppHelmRepoConfig
 from .app_install import AppInstall
 from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
@@ -75,11 +77,9 @@ from .app_install_audit_log import AppInstallAuditLog
 from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
-from .app_install_component_summary import AppInstallComponentSummary
 from .app_install_config import AppInstallConfig
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
-from .app_install_deploy_status import AppInstallDeployStatus
 from .app_install_deploy_type import AppInstallDeployType
 from .app_install_event import AppInstallEvent
 from .app_install_event_payload import AppInstallEventPayload
@@ -138,6 +138,7 @@ from .app_runner_health_check import AppRunnerHealthCheck
 from .app_runner_heart_beat import AppRunnerHeartBeat
 from .app_runner_job import AppRunnerJob
 from .app_runner_job_execution import AppRunnerJobExecution
+from .app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
 from .app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
 from .app_runner_job_execution_outputs_outputs import AppRunnerJobExecutionOutputsOutputs
 from .app_runner_job_execution_outputs_outputs_additional_property import (
@@ -190,6 +191,7 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .config_app_policy_type import ConfigAppPolicyType
+from .config_helm_repo_config import ConfigHelmRepoConfig
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
 from .configs_oci_registry_type import ConfigsOCIRegistryType
@@ -342,6 +344,10 @@ from .service_create_install_request import ServiceCreateInstallRequest
 from .service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
 from .service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
 from .service_create_install_request_inputs import ServiceCreateInstallRequestInputs
+from .service_create_install_v2_request import ServiceCreateInstallV2Request
+from .service_create_install_v2_request_aws_account import ServiceCreateInstallV2RequestAwsAccount
+from .service_create_install_v2_request_azure_account import ServiceCreateInstallV2RequestAzureAccount
+from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
 from .service_create_installer_request import ServiceCreateInstallerRequest
 from .service_create_installer_request_metadata import ServiceCreateInstallerRequestMetadata
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
@@ -370,6 +376,7 @@ from .service_deprovision_install_sandbox_request import ServiceDeprovisionInsta
 from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
+from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
@@ -388,7 +395,7 @@ from .service_retry_workflow_by_id_request import ServiceRetryWorkflowByIDReques
 from .service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
-from .service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
+from .service_retry_workflow_step_request import ServiceRetryWorkflowStepRequest
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
@@ -455,6 +462,7 @@ __all__ = (
     "AppAppInput",
     "AppAppInputConfig",
     "AppAppInputGroup",
+    "AppAppInputSource",
     "AppAppLinks",
     "AppAppPermissionsConfig",
     "AppAppPoliciesConfig",
@@ -474,13 +482,13 @@ __all__ = (
     "AppAWSIAMRoleType",
     "AppAWSStackOutputs",
     "AppAWSStackOutputsBreakGlassRoleArns",
+    "AppAWSStackOutputsInstallInputs",
     "AppAzureAccount",
     "AppAzureStackOutputs",
     "AppCloudPlatform",
     "AppCloudPlatformRegion",
     "AppComponent",
     "AppComponentBuild",
-    "AppComponentBuildStatus",
     "AppComponentConfigConnection",
     "AppComponentLinks",
     "AppComponentRelease",
@@ -499,6 +507,7 @@ __all__ = (
     "AppHelmConfig",
     "AppHelmConfigValues",
     "AppHelmRelease",
+    "AppHelmRepoConfig",
     "AppInstall",
     "AppInstallActionWorkflow",
     "AppInstallActionWorkflowRun",
@@ -511,11 +520,9 @@ __all__ = (
     "AppInstallComponent",
     "AppInstallComponentLinks",
     "AppInstallComponentStatuses",
-    "AppInstallComponentSummary",
     "AppInstallConfig",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
-    "AppInstallDeployStatus",
     "AppInstallDeployType",
     "AppInstaller",
     "AppInstallerMetadata",
@@ -574,6 +581,7 @@ __all__ = (
     "AppRunnerHeartBeat",
     "AppRunnerJob",
     "AppRunnerJobExecution",
+    "AppRunnerJobExecutionMetadata",
     "AppRunnerJobExecutionOutputs",
     "AppRunnerJobExecutionOutputsOutputs",
     "AppRunnerJobExecutionOutputsOutputsAdditionalProperty",
@@ -624,6 +632,7 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "ConfigAppPolicyType",
+    "ConfigHelmRepoConfig",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
     "ConfigsOCIRegistryType",
@@ -760,6 +769,10 @@ __all__ = (
     "ServiceCreateInstallRequestAwsAccount",
     "ServiceCreateInstallRequestAzureAccount",
     "ServiceCreateInstallRequestInputs",
+    "ServiceCreateInstallV2Request",
+    "ServiceCreateInstallV2RequestAwsAccount",
+    "ServiceCreateInstallV2RequestAzureAccount",
+    "ServiceCreateInstallV2RequestInputs",
     "ServiceCreateJobComponentConfigRequest",
     "ServiceCreateJobComponentConfigRequestEnvVars",
     "ServiceCreateKubernetesManifestComponentConfigRequest",
@@ -780,6 +793,7 @@ __all__ = (
     "ServiceForceShutdownRequest",
     "ServiceForgetInstallRequest",
     "ServiceGracefulShutdownRequest",
+    "ServiceHelmRepoConfigRequest",
     "ServiceInstallPhoneHomeRequest",
     "ServiceLatestRunnerHeartBeats",
     "ServiceMngShutDownRequest",
@@ -798,7 +812,7 @@ __all__ = (
     "ServiceRetryWorkflowByIDResponse",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
-    "ServiceRetryWorkflowStepResponse",
+    "ServiceRetryWorkflowStepRequest",
     "ServiceRunnerConnectionStatus",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",

@@ -1,23 +1,21 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval import AppWorkflowStepApproval
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    secret_id: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}",
+        "method": "delete",
+        "url": f"/v1/apps/{app_id}/secrets/{secret_id}",
     }
 
     return _kwargs
@@ -25,10 +23,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Optional[Union[StderrErrResponse, bool]]:
     if response.status_code == 200:
-        response_200 = AppWorkflowStepApproval.from_dict(response.json())
-
+        response_200 = cast(bool, response.json())
         return response_200
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -58,7 +55,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Response[Union[StderrErrResponse, bool]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,31 +65,30 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    secret_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Response[Union[StderrErrResponse, bool]]:
+    """delete an app secret
+
+     Delete an app secret.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        secret_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[StderrErrResponse, bool]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        secret_id=secret_id,
     )
 
     response = client.get_httpx_client().request(
@@ -103,61 +99,59 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    secret_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Optional[Union[StderrErrResponse, bool]]:
+    """delete an app secret
+
+     Delete an app secret.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        secret_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[StderrErrResponse, bool]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        secret_id=secret_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    secret_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Response[Union[StderrErrResponse, bool]]:
+    """delete an app secret
+
+     Delete an app secret.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        secret_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[StderrErrResponse, bool]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        secret_id=secret_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -166,32 +160,31 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    secret_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Optional[Union[StderrErrResponse, bool]]:
+    """delete an app secret
+
+     Delete an app secret.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        secret_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[StderrErrResponse, bool]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
-            step_id=step_id,
-            approval_id=approval_id,
+            app_id=app_id,
+            secret_id=secret_id,
             client=client,
         )
     ).parsed

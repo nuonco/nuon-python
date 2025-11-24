@@ -4,6 +4,7 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_app_input_source import AppAppInputSource
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ServiceAppInputRequest")
@@ -21,6 +22,7 @@ class ServiceAppInputRequest:
         internal (Union[Unset, bool]): New, optional fields
         required (Union[Unset, bool]):
         sensitive (Union[Unset, bool]):
+        source (Union[Unset, AppAppInputSource]):
         type_ (Union[Unset, str]):
     """
 
@@ -32,6 +34,7 @@ class ServiceAppInputRequest:
     internal: Union[Unset, bool] = UNSET
     required: Union[Unset, bool] = UNSET
     sensitive: Union[Unset, bool] = UNSET
+    source: Union[Unset, AppAppInputSource] = UNSET
     type_: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -51,6 +54,10 @@ class ServiceAppInputRequest:
         required = self.required
 
         sensitive = self.sensitive
+
+        source: Union[Unset, str] = UNSET
+        if not isinstance(self.source, Unset):
+            source = self.source.value
 
         type_ = self.type_
 
@@ -72,6 +79,8 @@ class ServiceAppInputRequest:
             field_dict["required"] = required
         if sensitive is not UNSET:
             field_dict["sensitive"] = sensitive
+        if source is not UNSET:
+            field_dict["source"] = source
         if type_ is not UNSET:
             field_dict["type"] = type_
 
@@ -96,6 +105,13 @@ class ServiceAppInputRequest:
 
         sensitive = d.pop("sensitive", UNSET)
 
+        _source = d.pop("source", UNSET)
+        source: Union[Unset, AppAppInputSource]
+        if isinstance(_source, Unset):
+            source = UNSET
+        else:
+            source = AppAppInputSource(_source)
+
         type_ = d.pop("type", UNSET)
 
         service_app_input_request = cls(
@@ -107,6 +123,7 @@ class ServiceAppInputRequest:
             internal=internal,
             required=required,
             sensitive=sensitive,
+            source=source,
             type_=type_,
         )
 

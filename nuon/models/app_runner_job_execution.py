@@ -8,6 +8,7 @@ from ..models.app_runner_job_execution_status import AppRunnerJobExecutionStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
     from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
     from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult
 
@@ -22,6 +23,8 @@ class AppRunnerJobExecution:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         id (Union[Unset, str]):
+        metadata (Union[Unset, AppRunnerJobExecutionMetadata]): Metadata is used to store additional information about
+            the execution {e.g., client version.}
         org_id (Union[Unset, str]):
         outputs (Union[Unset, AppRunnerJobExecutionOutputs]):
         result (Union[Unset, AppRunnerJobExecutionResult]):
@@ -33,6 +36,7 @@ class AppRunnerJobExecution:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
+    metadata: Union[Unset, "AppRunnerJobExecutionMetadata"] = UNSET
     org_id: Union[Unset, str] = UNSET
     outputs: Union[Unset, "AppRunnerJobExecutionOutputs"] = UNSET
     result: Union[Unset, "AppRunnerJobExecutionResult"] = UNSET
@@ -47,6 +51,10 @@ class AppRunnerJobExecution:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         org_id = self.org_id
 
@@ -75,6 +83,8 @@ class AppRunnerJobExecution:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if outputs is not UNSET:
@@ -92,6 +102,7 @@ class AppRunnerJobExecution:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
         from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
         from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult
 
@@ -101,6 +112,13 @@ class AppRunnerJobExecution:
         created_by_id = d.pop("created_by_id", UNSET)
 
         id = d.pop("id", UNSET)
+
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, AppRunnerJobExecutionMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppRunnerJobExecutionMetadata.from_dict(_metadata)
 
         org_id = d.pop("org_id", UNSET)
 
@@ -133,6 +151,7 @@ class AppRunnerJobExecution:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            metadata=metadata,
             org_id=org_id,
             outputs=outputs,
             result=result,

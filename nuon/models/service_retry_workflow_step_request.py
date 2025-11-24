@@ -6,41 +6,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ServiceRetryWorkflowStepRequest")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ServiceRetryWorkflowStepRequest:
     """
     Attributes:
-        plan_only (Union[Unset, bool]):
+        operation (Union[Unset, str]): Retry indicates whether to retry the current step or not
     """
 
-    plan_only: Union[Unset, bool] = UNSET
+    operation: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        operation = self.operation
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        if operation is not UNSET:
+            field_dict["operation"] = operation
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        operation = d.pop("operation", UNSET)
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
+        service_retry_workflow_step_request = cls(
+            operation=operation,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        service_retry_workflow_step_request.additional_properties = d
+        return service_retry_workflow_step_request
 
     @property
     def additional_keys(self) -> list[str]:

@@ -5,19 +5,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval import AppWorkflowStepApproval
+from ...models.app_app_config import AppAppConfig
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
+    *,
+    recurse: Union[Unset, bool] = False,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["recurse"] = recurse
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}",
+        "url": f"/v1/apps/{app_id}/configs/{app_config_id}",
+        "params": params,
     }
 
     return _kwargs
@@ -25,9 +33,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Optional[Union[AppAppConfig, StderrErrResponse]]:
     if response.status_code == 200:
-        response_200 = AppWorkflowStepApproval.from_dict(response.json())
+        response_200 = AppAppConfig.from_dict(response.json())
 
         return response_200
     if response.status_code == 400:
@@ -58,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Response[Union[AppAppConfig, StderrErrResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,31 +76,33 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    recurse: Union[Unset, bool] = False,
+) -> Response[Union[AppAppConfig, StderrErrResponse]]:
+    """get an app config
+
+     Fetch an app config by id.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
+        recurse (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[AppAppConfig, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
+        recurse=recurse,
     )
 
     response = client.get_httpx_client().request(
@@ -103,61 +113,65 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    recurse: Union[Unset, bool] = False,
+) -> Optional[Union[AppAppConfig, StderrErrResponse]]:
+    """get an app config
+
+     Fetch an app config by id.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
+        recurse (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[AppAppConfig, StderrErrResponse]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
         client=client,
+        recurse=recurse,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    recurse: Union[Unset, bool] = False,
+) -> Response[Union[AppAppConfig, StderrErrResponse]]:
+    """get an app config
+
+     Fetch an app config by id.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
+        recurse (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[AppAppConfig, StderrErrResponse]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
+        recurse=recurse,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -166,32 +180,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+    recurse: Union[Unset, bool] = False,
+) -> Optional[Union[AppAppConfig, StderrErrResponse]]:
+    """get an app config
+
+     Fetch an app config by id.
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
+        recurse (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[AppAppConfig, StderrErrResponse]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
-            step_id=step_id,
-            approval_id=approval_id,
+            app_id=app_id,
+            app_config_id=app_config_id,
             client=client,
+            recurse=recurse,
         )
     ).parsed

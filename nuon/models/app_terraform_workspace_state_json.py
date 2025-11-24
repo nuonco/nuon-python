@@ -21,6 +21,7 @@ class AppTerraformWorkspaceStateJSON:
         created_at (Union[Unset, str]):
         created_by_id (Union[Unset, str]):
         id (Union[Unset, str]):
+        org_id (Union[Unset, str]):
         runner_job (Union[Unset, AppRunnerJob]):
         runner_job_id (Union[Unset, str]):
         updated_at (Union[Unset, str]):
@@ -32,6 +33,7 @@ class AppTerraformWorkspaceStateJSON:
     created_at: Union[Unset, str] = UNSET
     created_by_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
+    org_id: Union[Unset, str] = UNSET
     runner_job: Union[Unset, "AppRunnerJob"] = UNSET
     runner_job_id: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
@@ -48,6 +50,8 @@ class AppTerraformWorkspaceStateJSON:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        org_id = self.org_id
 
         runner_job: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.runner_job, Unset):
@@ -70,6 +74,8 @@ class AppTerraformWorkspaceStateJSON:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if org_id is not UNSET:
+            field_dict["org_id"] = org_id
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
         if runner_job_id is not UNSET:
@@ -94,6 +100,8 @@ class AppTerraformWorkspaceStateJSON:
 
         id = d.pop("id", UNSET)
 
+        org_id = d.pop("org_id", UNSET)
+
         _runner_job = d.pop("runner_job", UNSET)
         runner_job: Union[Unset, AppRunnerJob]
         if isinstance(_runner_job, Unset):
@@ -112,6 +120,7 @@ class AppTerraformWorkspaceStateJSON:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            org_id=org_id,
             runner_job=runner_job,
             runner_job_id=runner_job_id,
             updated_at=updated_at,

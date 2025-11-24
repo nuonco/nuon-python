@@ -6,41 +6,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ServiceCreateInstallV2RequestAzureAccount")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ServiceCreateInstallV2RequestAzureAccount:
     """
     Attributes:
-        plan_only (Union[Unset, bool]):
+        location (Union[Unset, str]):
     """
 
-    plan_only: Union[Unset, bool] = UNSET
+    location: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        location = self.location
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        if location is not UNSET:
+            field_dict["location"] = location
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        location = d.pop("location", UNSET)
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
+        service_create_install_v2_request_azure_account = cls(
+            location=location,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        service_create_install_v2_request_azure_account.additional_properties = d
+        return service_create_install_v2_request_azure_account
 
     @property
     def additional_keys(self) -> list[str]:

@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_helm_config_values import AppHelmConfigValues
+    from ..models.app_helm_repo_config import AppHelmRepoConfig
 
 
 T = TypeVar("T", bound="AppHelmConfig")
@@ -18,6 +19,7 @@ class AppHelmConfig:
     """
     Attributes:
         chart_name (Union[Unset, str]):
+        helm_repo_config (Union[Unset, AppHelmRepoConfig]):
         namespace (Union[Unset, str]):
         storage_driver (Union[Unset, str]):
         take_ownership (Union[Unset, bool]): Newer fields that we don't need to store as columns in the database
@@ -26,6 +28,7 @@ class AppHelmConfig:
     """
 
     chart_name: Union[Unset, str] = UNSET
+    helm_repo_config: Union[Unset, "AppHelmRepoConfig"] = UNSET
     namespace: Union[Unset, str] = UNSET
     storage_driver: Union[Unset, str] = UNSET
     take_ownership: Union[Unset, bool] = UNSET
@@ -35,6 +38,10 @@ class AppHelmConfig:
 
     def to_dict(self) -> dict[str, Any]:
         chart_name = self.chart_name
+
+        helm_repo_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.helm_repo_config, Unset):
+            helm_repo_config = self.helm_repo_config.to_dict()
 
         namespace = self.namespace
 
@@ -55,6 +62,8 @@ class AppHelmConfig:
         field_dict.update({})
         if chart_name is not UNSET:
             field_dict["chart_name"] = chart_name
+        if helm_repo_config is not UNSET:
+            field_dict["helm_repo_config"] = helm_repo_config
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
         if storage_driver is not UNSET:
@@ -71,9 +80,17 @@ class AppHelmConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_helm_config_values import AppHelmConfigValues
+        from ..models.app_helm_repo_config import AppHelmRepoConfig
 
         d = dict(src_dict)
         chart_name = d.pop("chart_name", UNSET)
+
+        _helm_repo_config = d.pop("helm_repo_config", UNSET)
+        helm_repo_config: Union[Unset, AppHelmRepoConfig]
+        if isinstance(_helm_repo_config, Unset):
+            helm_repo_config = UNSET
+        else:
+            helm_repo_config = AppHelmRepoConfig.from_dict(_helm_repo_config)
 
         namespace = d.pop("namespace", UNSET)
 
@@ -92,6 +109,7 @@ class AppHelmConfig:
 
         app_helm_config = cls(
             chart_name=chart_name,
+            helm_repo_config=helm_repo_config,
             namespace=namespace,
             storage_driver=storage_driver,
             take_ownership=take_ownership,

@@ -1,8 +1,9 @@
 from enum import Enum
 
 
-class AppStepErrorBehavior(str, Enum):
-    ABORT = "abort"
+class AppAppInputSource(str, Enum):
+    CUSTOMER = "customer"
+    VENDOR = "vendor"
 
     def __str__(self) -> str:
         return str(self.value)

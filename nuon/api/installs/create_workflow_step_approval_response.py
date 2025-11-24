@@ -17,7 +17,7 @@ from ...types import Response
 
 def _get_kwargs(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     body: ServiceCreateWorkflowStepApprovalResponseRequest,
@@ -26,7 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/workflows/{workflow_id}/steps/{workflow_step_id}/approvals/{approval_id}/response",
+        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}/response",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -83,7 +83,7 @@ def _build_response(
 
 def sync_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
@@ -95,7 +95,7 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
         body (ServiceCreateWorkflowStepApprovalResponseRequest):
 
@@ -109,7 +109,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
         body=body,
     )
@@ -123,7 +123,7 @@ def sync_detailed(
 
 def sync(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
@@ -135,7 +135,7 @@ def sync(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
         body (ServiceCreateWorkflowStepApprovalResponseRequest):
 
@@ -149,7 +149,7 @@ def sync(
 
     return sync_detailed(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
         client=client,
         body=body,
@@ -158,7 +158,7 @@ def sync(
 
 async def asyncio_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
@@ -170,7 +170,7 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
         body (ServiceCreateWorkflowStepApprovalResponseRequest):
 
@@ -184,7 +184,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         approval_id=approval_id,
         body=body,
     )
@@ -196,7 +196,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     approval_id: str,
     *,
     client: AuthenticatedClient,
@@ -208,7 +208,7 @@ async def asyncio(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
         approval_id (str):
         body (ServiceCreateWorkflowStepApprovalResponseRequest):
 
@@ -223,7 +223,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             workflow_id=workflow_id,
-            workflow_step_id=workflow_step_id,
+            step_id=step_id,
             approval_id=approval_id,
             client=client,
             body=body,

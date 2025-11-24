@@ -12,11 +12,11 @@ from ...types import Response
 
 def _get_kwargs(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{workflow_step_id}",
+        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}",
     }
 
     return _kwargs
@@ -68,7 +68,7 @@ def _build_response(
 
 def sync_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppWorkflowStep, StderrErrResponse]]:
@@ -78,7 +78,7 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -90,7 +90,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
     )
 
     response = client.get_httpx_client().request(
@@ -102,7 +102,7 @@ def sync_detailed(
 
 def sync(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppWorkflowStep, StderrErrResponse]]:
@@ -112,7 +112,7 @@ def sync(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,14 +124,14 @@ def sync(
 
     return sync_detailed(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[AppWorkflowStep, StderrErrResponse]]:
@@ -141,7 +141,7 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -153,7 +153,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        workflow_step_id=workflow_step_id,
+        step_id=step_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -163,7 +163,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     workflow_id: str,
-    workflow_step_id: str,
+    step_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[AppWorkflowStep, StderrErrResponse]]:
@@ -173,7 +173,7 @@ async def asyncio(
 
     Args:
         workflow_id (str):
-        workflow_step_id (str):
+        step_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,7 +186,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             workflow_id=workflow_id,
-            workflow_step_id=workflow_step_id,
+            step_id=step_id,
             client=client,
         )
     ).parsed

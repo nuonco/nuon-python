@@ -1,23 +1,21 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step_approval import AppWorkflowStepApproval
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/steps/{step_id}/approvals/{approval_id}",
+        "url": f"/v1/apps/{app_id}/configs/{app_config_id}/graph",
     }
 
     return _kwargs
@@ -25,10 +23,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Optional[Union[StderrErrResponse, str]]:
     if response.status_code == 200:
-        response_200 = AppWorkflowStepApproval.from_dict(response.json())
-
+        response_200 = cast(str, response.json())
         return response_200
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -58,7 +55,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
+) -> Response[Union[StderrErrResponse, str]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,31 +65,33 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Response[Union[StderrErrResponse, str]]:
+    """get an app config graph
+
+     Return raw graphviz data as a string that can be used to visualize a graph for an app.
+
+    Note, for more complex viewing recommend to copy this output directly into [Graphviz
+    viewer](https://dreampuf.github.io/GraphvizOnline).
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[StderrErrResponse, str]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
     )
 
     response = client.get_httpx_client().request(
@@ -103,61 +102,65 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Optional[Union[StderrErrResponse, str]]:
+    """get an app config graph
+
+     Return raw graphviz data as a string that can be used to visualize a graph for an app.
+
+    Note, for more complex viewing recommend to copy this output directly into [Graphviz
+    viewer](https://dreampuf.github.io/GraphvizOnline).
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[StderrErrResponse, str]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Response[Union[StderrErrResponse, str]]:
+    """get an app config graph
+
+     Return raw graphviz data as a string that can be used to visualize a graph for an app.
+
+    Note, for more complex viewing recommend to copy this output directly into [Graphviz
+    viewer](https://dreampuf.github.io/GraphvizOnline).
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AppWorkflowStepApproval, StderrErrResponse]]
+        Response[Union[StderrErrResponse, str]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        step_id=step_id,
-        approval_id=approval_id,
+        app_id=app_id,
+        app_config_id=app_config_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -166,32 +169,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
-    step_id: str,
-    approval_id: str,
+    app_id: str,
+    app_config_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AppWorkflowStepApproval, StderrErrResponse]]:
-    """get an workflow step approval
+) -> Optional[Union[StderrErrResponse, str]]:
+    """get an app config graph
+
+     Return raw graphviz data as a string that can be used to visualize a graph for an app.
+
+    Note, for more complex viewing recommend to copy this output directly into [Graphviz
+    viewer](https://dreampuf.github.io/GraphvizOnline).
 
     Args:
-        workflow_id (str):
-        step_id (str):
-        approval_id (str):
+        app_id (str):
+        app_config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AppWorkflowStepApproval, StderrErrResponse]
+        Union[StderrErrResponse, str]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
-            step_id=step_id,
-            approval_id=approval_id,
+            app_id=app_id,
+            app_config_id=app_config_id,
             client=client,
         )
     ).parsed

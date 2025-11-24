@@ -13,24 +13,18 @@ T = TypeVar("T", bound="ServiceDeprovisionInstallSandboxRequest")
 class ServiceDeprovisionInstallSandboxRequest:
     """
     Attributes:
-        error_behavior (Union[Unset, str]):
         plan_only (Union[Unset, bool]):
     """
 
-    error_behavior: Union[Unset, str] = UNSET
     plan_only: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        error_behavior = self.error_behavior
-
         plan_only = self.plan_only
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if error_behavior is not UNSET:
-            field_dict["error_behavior"] = error_behavior
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
 
@@ -39,12 +33,9 @@ class ServiceDeprovisionInstallSandboxRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        error_behavior = d.pop("error_behavior", UNSET)
-
         plan_only = d.pop("plan_only", UNSET)
 
         service_deprovision_install_sandbox_request = cls(
-            error_behavior=error_behavior,
             plan_only=plan_only,
         )
 

@@ -6,41 +6,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceRetryWorkflowStepResponse")
+T = TypeVar("T", bound="ServiceCreateInstallV2RequestAwsAccount")
 
 
 @_attrs_define
-class ServiceRetryWorkflowStepResponse:
+class ServiceCreateInstallV2RequestAwsAccount:
     """
     Attributes:
-        workflow_id (Union[Unset, str]):
+        region (Union[Unset, str]):
     """
 
-    workflow_id: Union[Unset, str] = UNSET
+    region: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        workflow_id = self.workflow_id
+        region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if workflow_id is not UNSET:
-            field_dict["workflow_id"] = workflow_id
+        if region is not UNSET:
+            field_dict["region"] = region
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        workflow_id = d.pop("workflow_id", UNSET)
+        region = d.pop("region", UNSET)
 
-        service_retry_workflow_step_response = cls(
-            workflow_id=workflow_id,
+        service_create_install_v2_request_aws_account = cls(
+            region=region,
         )
 
-        service_retry_workflow_step_response.additional_properties = d
-        return service_retry_workflow_step_response
+        service_create_install_v2_request_aws_account.additional_properties = d
+        return service_create_install_v2_request_aws_account
 
     @property
     def additional_keys(self) -> list[str]:

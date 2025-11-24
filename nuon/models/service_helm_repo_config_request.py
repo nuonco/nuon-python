@@ -6,41 +6,60 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ServiceHelmRepoConfigRequest")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ServiceHelmRepoConfigRequest:
     """
     Attributes:
-        plan_only (Union[Unset, bool]):
+        chart (str):
+        repo_url (str):
+        version (Union[Unset, str]):
     """
 
-    plan_only: Union[Unset, bool] = UNSET
+    chart: str
+    repo_url: str
+    version: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        chart = self.chart
+
+        repo_url = self.repo_url
+
+        version = self.version
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        field_dict.update(
+            {
+                "chart": chart,
+                "repo_url": repo_url,
+            }
+        )
+        if version is not UNSET:
+            field_dict["version"] = version
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        chart = d.pop("chart")
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
+        repo_url = d.pop("repo_url")
+
+        version = d.pop("version", UNSET)
+
+        service_helm_repo_config_request = cls(
+            chart=chart,
+            repo_url=repo_url,
+            version=version,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        service_helm_repo_config_request.additional_properties = d
+        return service_helm_repo_config_request
 
     @property
     def additional_keys(self) -> list[str]:
