@@ -1,41 +1,42 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
+from ...models.app_app_config import AppAppConfig
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     app_id: str,
     config_id: str,
     *,
-    body: ServiceUpdateAppConfigInstallsRequest,
+    recurse: bool | Unset = False,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
+    params: dict[str, Any] = {}
+
+    params["recurse"] = recurse
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/v1/apps/{app_id}/configs/{config_id}/update-installs",
+        "method": "get",
+        "url": f"/v1/apps/{app_id}/configs/{config_id}",
+        "params": params,
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | str | None:
+) -> AppAppConfig | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = cast(str, response.json())
+        response_200 = AppAppConfig.from_dict(response.json())
+
         return response_200
 
     if response.status_code == 400:
@@ -71,7 +72,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | str]:
+) -> Response[AppAppConfig | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,26 +86,29 @@ def sync_detailed(
     config_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceUpdateAppConfigInstallsRequest,
-) -> Response[StderrErrResponse | str]:
-    """
+    recurse: bool | Unset = False,
+) -> Response[AppAppConfig | StderrErrResponse]:
+    """get an app config
+
+     Fetch an app config by id.
+
     Args:
         app_id (str):
         config_id (str):
-        body (ServiceUpdateAppConfigInstallsRequest):
+        recurse (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | str]
+        Response[AppAppConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
         config_id=config_id,
-        body=body,
+        recurse=recurse,
     )
 
     response = client.get_httpx_client().request(
@@ -119,27 +123,30 @@ def sync(
     config_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceUpdateAppConfigInstallsRequest,
-) -> StderrErrResponse | str | None:
-    """
+    recurse: bool | Unset = False,
+) -> AppAppConfig | StderrErrResponse | None:
+    """get an app config
+
+     Fetch an app config by id.
+
     Args:
         app_id (str):
         config_id (str):
-        body (ServiceUpdateAppConfigInstallsRequest):
+        recurse (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | str
+        AppAppConfig | StderrErrResponse
     """
 
     return sync_detailed(
         app_id=app_id,
         config_id=config_id,
         client=client,
-        body=body,
+        recurse=recurse,
     ).parsed
 
 
@@ -148,26 +155,29 @@ async def asyncio_detailed(
     config_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceUpdateAppConfigInstallsRequest,
-) -> Response[StderrErrResponse | str]:
-    """
+    recurse: bool | Unset = False,
+) -> Response[AppAppConfig | StderrErrResponse]:
+    """get an app config
+
+     Fetch an app config by id.
+
     Args:
         app_id (str):
         config_id (str):
-        body (ServiceUpdateAppConfigInstallsRequest):
+        recurse (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | str]
+        Response[AppAppConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
         config_id=config_id,
-        body=body,
+        recurse=recurse,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -180,20 +190,23 @@ async def asyncio(
     config_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceUpdateAppConfigInstallsRequest,
-) -> StderrErrResponse | str | None:
-    """
+    recurse: bool | Unset = False,
+) -> AppAppConfig | StderrErrResponse | None:
+    """get an app config
+
+     Fetch an app config by id.
+
     Args:
         app_id (str):
         config_id (str):
-        body (ServiceUpdateAppConfigInstallsRequest):
+        recurse (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | str
+        AppAppConfig | StderrErrResponse
     """
 
     return (
@@ -201,6 +214,6 @@ async def asyncio(
             app_id=app_id,
             config_id=config_id,
             client=client,
-            body=body,
+            recurse=recurse,
         )
     ).parsed
