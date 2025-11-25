@@ -11,11 +11,11 @@ from ...types import Response
 
 def _get_kwargs(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/apps/{app_id}/configs/{app_config_id}/graph",
+        "url": f"/v1/apps/{app_id}/configs/{config_id}/graph",
     }
 
     return _kwargs
@@ -72,7 +72,7 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | str]:
@@ -85,7 +85,7 @@ def sync_detailed(
 
     Args:
         app_id (str):
-        app_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,7 +97,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_config_id=app_config_id,
+        config_id=config_id,
     )
 
     response = client.get_httpx_client().request(
@@ -109,7 +109,7 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | str | None:
@@ -122,7 +122,7 @@ def sync(
 
     Args:
         app_id (str):
-        app_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,14 +134,14 @@ def sync(
 
     return sync_detailed(
         app_id=app_id,
-        app_config_id=app_config_id,
+        config_id=config_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | str]:
@@ -154,7 +154,7 @@ async def asyncio_detailed(
 
     Args:
         app_id (str):
-        app_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -166,7 +166,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_config_id=app_config_id,
+        config_id=config_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -176,7 +176,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    app_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | str | None:
@@ -189,7 +189,7 @@ async def asyncio(
 
     Args:
         app_id (str):
-        app_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -202,7 +202,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             app_id=app_id,
-            app_config_id=app_config_id,
+            config_id=config_id,
             client=client,
         )
     ).parsed
