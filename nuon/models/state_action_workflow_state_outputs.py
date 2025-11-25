@@ -21,6 +21,8 @@ class StateActionWorkflowStateOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        if src_dict is None:
+            src_dict = {}
         d = dict(src_dict)
         state_action_workflow_state_outputs = cls()
 
