@@ -1,6 +1,6 @@
 [project]
 name = "nuon"
-version = "0.19.707"
+version = "0.19.708"
 description = "A client library for accessing Nuon"
 authors = []
 requires-python = ">=3.10"
