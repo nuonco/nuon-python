@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
@@ -19,7 +20,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/installs/{install_id}/actions/runs",
+        "url": "/v1/installs/{install_id}/actions/runs".format(
+            install_id=quote(str(install_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -85,10 +88,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateInstallActionWorkflowRunRequest,
 ) -> Response[StderrErrResponse | str]:
-    """create an action workflow run for an install
+    """create an action run for an install
 
-     AppWorkflowConfigId param has been deprecated and is no longer being consumed, the api uses
-    currently install id to lookup related appworkflowconfigId
+
 
     Args:
         install_id (str):
@@ -120,10 +122,9 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceCreateInstallActionWorkflowRunRequest,
 ) -> StderrErrResponse | str | None:
-    """create an action workflow run for an install
+    """create an action run for an install
 
-     AppWorkflowConfigId param has been deprecated and is no longer being consumed, the api uses
-    currently install id to lookup related appworkflowconfigId
+
 
     Args:
         install_id (str):
@@ -150,10 +151,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateInstallActionWorkflowRunRequest,
 ) -> Response[StderrErrResponse | str]:
-    """create an action workflow run for an install
+    """create an action run for an install
 
-     AppWorkflowConfigId param has been deprecated and is no longer being consumed, the api uses
-    currently install id to lookup related appworkflowconfigId
+
 
     Args:
         install_id (str):
@@ -183,10 +183,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceCreateInstallActionWorkflowRunRequest,
 ) -> StderrErrResponse | str | None:
-    """create an action workflow run for an install
+    """create an action run for an install
 
-     AppWorkflowConfigId param has been deprecated and is no longer being consumed, the api uses
-    currently install id to lookup related appworkflowconfigId
+
 
     Args:
         install_id (str):

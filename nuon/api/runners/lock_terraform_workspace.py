@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -27,7 +28,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/terraform-workspaces/{workspace_id}/lock",
+        "url": "/v1/terraform-workspaces/{workspace_id}/lock".format(
+            workspace_id=quote(str(workspace_id), safe=""),
+        ),
         "params": params,
     }
 
