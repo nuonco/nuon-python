@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
@@ -7,23 +8,27 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
     component_id: str,
     *,
-    body: ServiceTeardownInstallComponentRequest,
+    body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/installs/{install_id}/components/{component_id}/teardown",
+        "url": "/v1/installs/{install_id}/components/{component_id}/teardown".format(
+            install_id=quote(str(install_id), safe=""),
+            component_id=quote(str(component_id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -85,14 +90,14 @@ def sync_detailed(
     component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceTeardownInstallComponentRequest,
+    body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> Response[StderrErrResponse | str]:
     """teardown an install component
 
     Args:
         install_id (str):
         component_id (str):
-        body (ServiceTeardownInstallComponentRequest):
+        body (ServiceTeardownInstallComponentRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,14 +125,14 @@ def sync(
     component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceTeardownInstallComponentRequest,
+    body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> StderrErrResponse | str | None:
     """teardown an install component
 
     Args:
         install_id (str):
         component_id (str):
-        body (ServiceTeardownInstallComponentRequest):
+        body (ServiceTeardownInstallComponentRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,14 +155,14 @@ async def asyncio_detailed(
     component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceTeardownInstallComponentRequest,
+    body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> Response[StderrErrResponse | str]:
     """teardown an install component
 
     Args:
         install_id (str):
         component_id (str):
-        body (ServiceTeardownInstallComponentRequest):
+        body (ServiceTeardownInstallComponentRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,14 +188,14 @@ async def asyncio(
     component_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceTeardownInstallComponentRequest,
+    body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> StderrErrResponse | str | None:
     """teardown an install component
 
     Args:
         install_id (str):
         component_id (str):
-        body (ServiceTeardownInstallComponentRequest):
+        body (ServiceTeardownInstallComponentRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
