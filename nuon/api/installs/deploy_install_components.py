@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
@@ -7,22 +8,25 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
     *,
-    body: ServiceDeployInstallComponentsRequest,
+    body: ServiceDeployInstallComponentsRequest | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/installs/{install_id}/components/deploy-all",
+        "url": "/v1/installs/{install_id}/components/deploy-all".format(
+            install_id=quote(str(install_id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -83,7 +87,7 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceDeployInstallComponentsRequest,
+    body: ServiceDeployInstallComponentsRequest | Unset = UNSET,
 ) -> Response[StderrErrResponse | str]:
     """deploy all components on an install
 
@@ -94,7 +98,7 @@ def sync_detailed(
 
     Args:
         install_id (str):
-        body (ServiceDeployInstallComponentsRequest):
+        body (ServiceDeployInstallComponentsRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,7 +124,7 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceDeployInstallComponentsRequest,
+    body: ServiceDeployInstallComponentsRequest | Unset = UNSET,
 ) -> StderrErrResponse | str | None:
     """deploy all components on an install
 
@@ -131,7 +135,7 @@ def sync(
 
     Args:
         install_id (str):
-        body (ServiceDeployInstallComponentsRequest):
+        body (ServiceDeployInstallComponentsRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -152,7 +156,7 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceDeployInstallComponentsRequest,
+    body: ServiceDeployInstallComponentsRequest | Unset = UNSET,
 ) -> Response[StderrErrResponse | str]:
     """deploy all components on an install
 
@@ -163,7 +167,7 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
-        body (ServiceDeployInstallComponentsRequest):
+        body (ServiceDeployInstallComponentsRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -187,7 +191,7 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceDeployInstallComponentsRequest,
+    body: ServiceDeployInstallComponentsRequest | Unset = UNSET,
 ) -> StderrErrResponse | str | None:
     """deploy all components on an install
 
@@ -198,7 +202,7 @@ async def asyncio(
 
     Args:
         install_id (str):
-        body (ServiceDeployInstallComponentsRequest):
+        body (ServiceDeployInstallComponentsRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

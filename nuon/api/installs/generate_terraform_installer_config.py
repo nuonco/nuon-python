@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from io import BytesIO
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -15,7 +16,9 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/installs/{install_id}/generate-terraform-installer-config",
+        "url": "/v1/installs/{install_id}/generate-terraform-installer-config".format(
+            install_id=quote(str(install_id), safe=""),
+        ),
     }
 
     return _kwargs
