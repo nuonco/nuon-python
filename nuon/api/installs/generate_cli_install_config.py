@@ -14,6 +14,7 @@ from ...types import File, Response
 def _get_kwargs(
     install_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/generate-cli-install-config".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[File | StderrErrResponse]:
     """generate an install config to be used with CLI
 
+     Generate CLI configuration for an install.
+
     Args:
         install_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> File | StderrErrResponse | None:
     """generate an install config to be used with CLI
 
+     Generate CLI configuration for an install.
+
     Args:
         install_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[File | StderrErrResponse]:
     """generate an install config to be used with CLI
+
+     Generate CLI configuration for an install.
 
     Args:
         install_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> File | StderrErrResponse | None:
     """generate an install config to be used with CLI
+
+     Generate CLI configuration for an install.
 
     Args:
         install_id (str):

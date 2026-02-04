@@ -18,6 +18,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -104,6 +105,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppComponentConfigConnection]]:
     """get all configs for a component
 
+     Returns all configurations for the provided component.
+
     Args:
         component_id (str):
         offset (int | Unset):  Default: 0.
@@ -142,6 +145,8 @@ def sync(
 ) -> StderrErrResponse | list[AppComponentConfigConnection] | None:
     """get all configs for a component
 
+     Returns all configurations for the provided component.
+
     Args:
         component_id (str):
         offset (int | Unset):  Default: 0.
@@ -174,6 +179,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppComponentConfigConnection]]:
     """get all configs for a component
+
+     Returns all configurations for the provided component.
 
     Args:
         component_id (str):
@@ -210,6 +217,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppComponentConfigConnection] | None:
     """get all configs for a component
+
+     Returns all configurations for the provided component.
 
     Args:
         component_id (str):

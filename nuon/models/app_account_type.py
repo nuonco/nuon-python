@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class AppAccountType(str, Enum):
+    AUTH = "auth"
     AUTH0 = "auth0"
     CANARY = "canary"
     INTEGRATION = "integration"

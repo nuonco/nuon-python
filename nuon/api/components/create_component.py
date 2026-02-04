@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppComponent | StderrErrResponse]:
     """create a component
 
+     Create a new component for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateComponentRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppComponent | StderrErrResponse | None:
     """create a component
 
+     Create a new component for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateComponentRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateComponentRequest,
 ) -> Response[AppComponent | StderrErrResponse]:
     """create a component
+
+     Create a new component for an app.
 
     Args:
         app_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateComponentRequest,
 ) -> AppComponent | StderrErrResponse | None:
     """create a component
+
+     Create a new component for an app.
 
     Args:
         app_id (str):

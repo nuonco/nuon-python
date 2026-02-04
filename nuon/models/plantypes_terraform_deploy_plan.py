@@ -9,15 +9,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
-    from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
-    )
-    from ..models.github_com_powertoolsdev_mono_pkg_types_state_state import (
-        GithubComPowertoolsdevMonoPkgTypesStateState,
-    )
+    from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_terraform_backend import PlantypesTerraformBackend
     from ..models.plantypes_terraform_deploy_hooks import PlantypesTerraformDeployHooks
@@ -33,27 +29,27 @@ T = TypeVar("T", bound="PlantypesTerraformDeployPlan")
 class PlantypesTerraformDeployPlan:
     """
     Attributes:
-        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
-        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         cluster_info (KubeClusterInfo | Unset):
         env_vars (PlantypesTerraformDeployPlanEnvVars | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
         plan_json (list[int] | Unset):
         policies (PlantypesTerraformDeployPlanPolicies | Unset):
-        state (GithubComPowertoolsdevMonoPkgTypesStateState | Unset):
+        state (GithubComNuoncoNuonPkgTypesStateState | Unset):
         terraform_backend (PlantypesTerraformBackend | Unset):
         vars_ (PlantypesTerraformDeployPlanVars | Unset):
         vars_files (list[str] | Unset):
     """
 
-    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
-    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
     env_vars: PlantypesTerraformDeployPlanEnvVars | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
     plan_json: list[int] | Unset = UNSET
     policies: PlantypesTerraformDeployPlanPolicies | Unset = UNSET
-    state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset = UNSET
+    state: GithubComNuoncoNuonPkgTypesStateState | Unset = UNSET
     terraform_backend: PlantypesTerraformBackend | Unset = UNSET
     vars_: PlantypesTerraformDeployPlanVars | Unset = UNSET
     vars_files: list[str] | Unset = UNSET
@@ -134,15 +130,13 @@ class PlantypesTerraformDeployPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_types_state_state import (
-            GithubComPowertoolsdevMonoPkgTypesStateState,
-        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_terraform_backend import PlantypesTerraformBackend
         from ..models.plantypes_terraform_deploy_hooks import PlantypesTerraformDeployHooks
@@ -152,18 +146,18 @@ class PlantypesTerraformDeployPlan:
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
-            aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
-            azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _cluster_info = d.pop("cluster_info", UNSET)
         cluster_info: KubeClusterInfo | Unset
@@ -196,11 +190,11 @@ class PlantypesTerraformDeployPlan:
             policies = PlantypesTerraformDeployPlanPolicies.from_dict(_policies)
 
         _state = d.pop("state", UNSET)
-        state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset
+        state: GithubComNuoncoNuonPkgTypesStateState | Unset
         if isinstance(_state, Unset):
             state = UNSET
         else:
-            state = GithubComPowertoolsdevMonoPkgTypesStateState.from_dict(_state)
+            state = GithubComNuoncoNuonPkgTypesStateState.from_dict(_state)
 
         _terraform_backend = d.pop("terraform_backend", UNSET)
         terraform_backend: PlantypesTerraformBackend | Unset

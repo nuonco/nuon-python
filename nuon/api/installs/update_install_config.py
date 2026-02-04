@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppInstallConfig | StderrErrResponse]:
     """update an install config
 
+     Update an install's configuration.
+
     Args:
         install_id (str):
         config_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> AppInstallConfig | StderrErrResponse | None:
     """update an install config
 
+     Update an install's configuration.
+
     Args:
         install_id (str):
         config_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceUpdateInstallConfigRequest,
 ) -> Response[AppInstallConfig | StderrErrResponse]:
     """update an install config
+
+     Update an install's configuration.
 
     Args:
         install_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceUpdateInstallConfigRequest,
 ) -> AppInstallConfig | StderrErrResponse | None:
     """update an install config
+
+     Update an install's configuration.
 
     Args:
         install_id (str):

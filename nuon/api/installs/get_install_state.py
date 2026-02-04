@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_powertoolsdev_mono_pkg_types_state_state import GithubComPowertoolsdevMonoPkgTypesStateState
+from ...models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     install_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/state".format(
@@ -26,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse | None:
+) -> GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = GithubComPowertoolsdevMonoPkgTypesStateState.from_dict(response.json())
+        response_200 = GithubComNuoncoNuonPkgTypesStateState.from_dict(response.json())
 
         return response_200
 
@@ -65,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse]:
+) -> Response[GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,8 +79,10 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse]:
+) -> Response[GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse]:
     """Get the current state of an install.
+
+     Returns the current state for an install.
 
     Args:
         install_id (str):
@@ -89,7 +92,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse]
+        Response[GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -107,8 +110,10 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
-) -> GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse | None:
+) -> GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse | None:
     """Get the current state of an install.
+
+     Returns the current state for an install.
 
     Args:
         install_id (str):
@@ -118,7 +123,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse
+        GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse
     """
 
     return sync_detailed(
@@ -131,8 +136,10 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse]:
+) -> Response[GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse]:
     """Get the current state of an install.
+
+     Returns the current state for an install.
 
     Args:
         install_id (str):
@@ -142,7 +149,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse]
+        Response[GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,8 +165,10 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
-) -> GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse | None:
+) -> GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse | None:
     """Get the current state of an install.
+
+     Returns the current state for an install.
 
     Args:
         install_id (str):
@@ -169,7 +178,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComPowertoolsdevMonoPkgTypesStateState | StderrErrResponse
+        GithubComNuoncoNuonPkgTypesStateState | StderrErrResponse
     """
 
     return (

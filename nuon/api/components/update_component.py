@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppComponent | StderrErrResponse]:
     """update a component
 
+     Update a component's configuration.
+
     Args:
         component_id (str):
         body (ServiceUpdateComponentRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppComponent | StderrErrResponse | None:
     """update a component
 
+     Update a component's configuration.
+
     Args:
         component_id (str):
         body (ServiceUpdateComponentRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateComponentRequest,
 ) -> Response[AppComponent | StderrErrResponse]:
     """update a component
+
+     Update a component's configuration.
 
     Args:
         component_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateComponentRequest,
 ) -> AppComponent | StderrErrResponse | None:
     """update a component
+
+     Update a component's configuration.
 
     Args:
         component_id (str):

@@ -23,8 +23,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
         tag (str):
         app_config_id (str | Unset):
         aws_ecr_image_config (ServiceAwsECRImageConfigRequest | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         dependencies (list[str] | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         references (list[str] | Unset):
     """
 
@@ -32,8 +34,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
     tag: str
     app_config_id: str | Unset = UNSET
     aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,11 +52,15 @@ class ServiceCreateExternalImageComponentConfigRequest:
         if not isinstance(self.aws_ecr_image_config, Unset):
             aws_ecr_image_config = self.aws_ecr_image_config.to_dict()
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        deploy_timeout = self.deploy_timeout
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -70,10 +78,14 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["app_config_id"] = app_config_id
         if aws_ecr_image_config is not UNSET:
             field_dict["aws_ecr_image_config"] = aws_ecr_image_config
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if references is not UNSET:
             field_dict["references"] = references
 
@@ -97,9 +109,13 @@ class ServiceCreateExternalImageComponentConfigRequest:
         else:
             aws_ecr_image_config = ServiceAwsECRImageConfigRequest.from_dict(_aws_ecr_image_config)
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
+
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         references = cast(list[str], d.pop("references", UNSET))
 
@@ -108,8 +124,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
             tag=tag,
             app_config_id=app_config_id,
             aws_ecr_image_config=aws_ecr_image_config,
+            build_timeout=build_timeout,
             checksum=checksum,
             dependencies=dependencies,
+            deploy_timeout=deploy_timeout,
             references=references,
         )
 

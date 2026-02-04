@@ -9,11 +9,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
-    )
-    from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
@@ -27,15 +25,15 @@ T = TypeVar("T", bound="PlantypesSyncSecretsPlan")
 class PlantypesSyncSecretsPlan:
     """
     Attributes:
-        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
-        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         cluster_info (KubeClusterInfo | Unset):
         kubernetes_secrets (list[PlantypesKubernetesSecretSync] | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
     """
 
-    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
-    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
     kubernetes_secrets: list[PlantypesKubernetesSecretSync] | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
@@ -83,11 +81,11 @@ class PlantypesSyncSecretsPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
         )
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
@@ -95,18 +93,18 @@ class PlantypesSyncSecretsPlan:
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
-            aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
-            azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _cluster_info = d.pop("cluster_info", UNSET)
         cluster_info: KubeClusterInfo | Unset

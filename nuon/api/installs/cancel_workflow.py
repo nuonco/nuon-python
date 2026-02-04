@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     workflow_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/v1/workflows/{workflow_id}/cancel".format(
@@ -79,6 +80,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | bool]:
     """cancel an ongoing workflow
 
+     Cancel a running workflow execution.
+
     Args:
         workflow_id (str):
 
@@ -108,6 +111,8 @@ def sync(
 ) -> StderrErrResponse | bool | None:
     """cancel an ongoing workflow
 
+     Cancel a running workflow execution.
+
     Args:
         workflow_id (str):
 
@@ -131,6 +136,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | bool]:
     """cancel an ongoing workflow
+
+     Cancel a running workflow execution.
 
     Args:
         workflow_id (str):
@@ -158,6 +165,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | bool | None:
     """cancel an ongoing workflow
+
+     Cancel a running workflow execution.
 
     Args:
         workflow_id (str):

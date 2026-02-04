@@ -16,6 +16,7 @@ def _get_kwargs(
     component_id: str,
     deploy_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/components/{component_id}/deploys/{deploy_id}".format(
@@ -87,6 +88,8 @@ def sync_detailed(
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get an install deploy
 
+     Return a deployment for an install by id.
+
     Args:
         install_id (str):
         component_id (str):
@@ -122,6 +125,8 @@ def sync(
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get an install deploy
 
+     Return a deployment for an install by id.
+
     Args:
         install_id (str):
         component_id (str):
@@ -151,6 +156,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get an install deploy
+
+     Return a deployment for an install by id.
 
     Args:
         install_id (str):
@@ -184,6 +191,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get an install deploy
+
+     Return a deployment for an install by id.
 
     Args:
         install_id (str):

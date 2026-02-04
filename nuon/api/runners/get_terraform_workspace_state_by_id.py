@@ -15,6 +15,7 @@ def _get_kwargs(
     workspace_id: str,
     state_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/runners/terraform-workspace/{workspace_id}/states/{state_id}".format(
@@ -84,6 +85,8 @@ def sync_detailed(
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """get terraform state by ID
 
+     Return a terraform state by id.
+
     Args:
         workspace_id (str):
         state_id (str):
@@ -116,6 +119,8 @@ def sync(
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """get terraform state by ID
 
+     Return a terraform state by id.
+
     Args:
         workspace_id (str):
         state_id (str):
@@ -142,6 +147,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """get terraform state by ID
+
+     Return a terraform state by id.
 
     Args:
         workspace_id (str):
@@ -172,6 +179,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """get terraform state by ID
+
+     Return a terraform state by id.
 
     Args:
         workspace_id (str):

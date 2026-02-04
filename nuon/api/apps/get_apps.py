@@ -17,6 +17,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -103,6 +104,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppApp]]:
     """get all apps for the current org
 
+     Returns all apps for the authenticated user.
+
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
@@ -141,6 +144,8 @@ def sync(
 ) -> StderrErrResponse | list[AppApp] | None:
     """get all apps for the current org
 
+     Returns all apps for the authenticated user.
+
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
@@ -173,6 +178,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppApp]]:
     """get all apps for the current org
+
+     Returns all apps for the authenticated user.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -209,6 +216,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppApp] | None:
     """get all apps for the current org
+
+     Returns all apps for the authenticated user.
 
     Args:
         offset (int | Unset):  Default: 0.

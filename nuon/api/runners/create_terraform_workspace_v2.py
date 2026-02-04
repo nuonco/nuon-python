@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppTerraformWorkspace | StderrErrResponse]:
     """create terraform workspace
 
+     Create a terraform workspace.
+
     Args:
         body (ServiceCreateTerraformWorkspaceRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppTerraformWorkspace | StderrErrResponse | None:
     """create terraform workspace
 
+     Create a terraform workspace.
+
     Args:
         body (ServiceCreateTerraformWorkspaceRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateTerraformWorkspaceRequest,
 ) -> Response[AppTerraformWorkspace | StderrErrResponse]:
     """create terraform workspace
+
+     Create a terraform workspace.
 
     Args:
         body (ServiceCreateTerraformWorkspaceRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateTerraformWorkspaceRequest,
 ) -> AppTerraformWorkspace | StderrErrResponse | None:
     """create terraform workspace
+
+     Create a terraform workspace.
 
     Args:
         body (ServiceCreateTerraformWorkspaceRequest):

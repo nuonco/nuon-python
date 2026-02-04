@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     runner_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/runners/{runner_id}/card-details".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[ServiceRunnerCardDetailsResponse | StderrErrResponse]:
     """get runner card details
 
+     Returns runner card details for monitoring and status.
+
     Args:
         runner_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> ServiceRunnerCardDetailsResponse | StderrErrResponse | None:
     """get runner card details
 
+     Returns runner card details for monitoring and status.
+
     Args:
         runner_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[ServiceRunnerCardDetailsResponse | StderrErrResponse]:
     """get runner card details
+
+     Returns runner card details for monitoring and status.
 
     Args:
         runner_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> ServiceRunnerCardDetailsResponse | StderrErrResponse | None:
     """get runner card details
+
+     Returns runner card details for monitoring and status.
 
     Args:
         runner_id (str):

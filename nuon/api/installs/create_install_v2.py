@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """create an app install
 
+     Create a new install for an app.
+
     Args:
         body (ServiceCreateInstallV2Request):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppInstall | StderrErrResponse | None:
     """create an app install
 
+     Create a new install for an app.
+
     Args:
         body (ServiceCreateInstallV2Request):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateInstallV2Request,
 ) -> Response[AppInstall | StderrErrResponse]:
     """create an app install
+
+     Create a new install for an app.
 
     Args:
         body (ServiceCreateInstallV2Request):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateInstallV2Request,
 ) -> AppInstall | StderrErrResponse | None:
     """create an app install
+
+     Create a new install for an app.
 
     Args:
         body (ServiceCreateInstallV2Request):

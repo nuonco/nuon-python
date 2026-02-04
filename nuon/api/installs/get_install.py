@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     include_drifted_objects: bool | Unset = False,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include_drifted_objects"] = include_drifted_objects
@@ -91,10 +92,7 @@ def sync_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """get an install
 
-     Forget an install that has been deleted outside of nuon.
-
-    This should only be used in cases where an install was broken in an unordinary way and needs to be
-    manually deleted so the parent resources can be deleted.
+     Return an install by id.
 
     Args:
         install_id (str):
@@ -128,10 +126,7 @@ def sync(
 ) -> AppInstall | StderrErrResponse | None:
     """get an install
 
-     Forget an install that has been deleted outside of nuon.
-
-    This should only be used in cases where an install was broken in an unordinary way and needs to be
-    manually deleted so the parent resources can be deleted.
+     Return an install by id.
 
     Args:
         install_id (str):
@@ -160,10 +155,7 @@ async def asyncio_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """get an install
 
-     Forget an install that has been deleted outside of nuon.
-
-    This should only be used in cases where an install was broken in an unordinary way and needs to be
-    manually deleted so the parent resources can be deleted.
+     Return an install by id.
 
     Args:
         install_id (str):
@@ -195,10 +187,7 @@ async def asyncio(
 ) -> AppInstall | StderrErrResponse | None:
     """get an install
 
-     Forget an install that has been deleted outside of nuon.
-
-    This should only be used in cases where an install was broken in an unordinary way and needs to be
-    manually deleted so the parent resources can be deleted.
+     Return an install by id.
 
     Args:
         install_id (str):

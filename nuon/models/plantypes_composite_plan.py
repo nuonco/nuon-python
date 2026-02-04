@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.plantypes_action_workflow_run_plan import PlantypesActionWorkflowRunPlan
     from ..models.plantypes_build_plan import PlantypesBuildPlan
     from ..models.plantypes_deploy_plan import PlantypesDeployPlan
+    from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
     from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
     from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan
     from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
@@ -27,6 +28,7 @@ class PlantypesCompositePlan:
         action_workflow_run_plan (PlantypesActionWorkflowRunPlan | Unset):
         build_plan (PlantypesBuildPlan | Unset):
         deploy_plan (PlantypesDeployPlan | Unset):
+        fetch_image_metadata_plan (PlantypesFetchImageMetadataPlan | Unset):
         sandbox_run_plan (PlantypesSandboxRunPlan | Unset):
         sync_oci_plan (PlantypesSyncOCIPlan | Unset):
         sync_secrets_plan (PlantypesSyncSecretsPlan | Unset):
@@ -35,6 +37,7 @@ class PlantypesCompositePlan:
     action_workflow_run_plan: PlantypesActionWorkflowRunPlan | Unset = UNSET
     build_plan: PlantypesBuildPlan | Unset = UNSET
     deploy_plan: PlantypesDeployPlan | Unset = UNSET
+    fetch_image_metadata_plan: PlantypesFetchImageMetadataPlan | Unset = UNSET
     sandbox_run_plan: PlantypesSandboxRunPlan | Unset = UNSET
     sync_oci_plan: PlantypesSyncOCIPlan | Unset = UNSET
     sync_secrets_plan: PlantypesSyncSecretsPlan | Unset = UNSET
@@ -52,6 +55,10 @@ class PlantypesCompositePlan:
         deploy_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.deploy_plan, Unset):
             deploy_plan = self.deploy_plan.to_dict()
+
+        fetch_image_metadata_plan: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.fetch_image_metadata_plan, Unset):
+            fetch_image_metadata_plan = self.fetch_image_metadata_plan.to_dict()
 
         sandbox_run_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_run_plan, Unset):
@@ -74,6 +81,8 @@ class PlantypesCompositePlan:
             field_dict["build_plan"] = build_plan
         if deploy_plan is not UNSET:
             field_dict["deploy_plan"] = deploy_plan
+        if fetch_image_metadata_plan is not UNSET:
+            field_dict["fetch_image_metadata_plan"] = fetch_image_metadata_plan
         if sandbox_run_plan is not UNSET:
             field_dict["sandbox_run_plan"] = sandbox_run_plan
         if sync_oci_plan is not UNSET:
@@ -88,6 +97,7 @@ class PlantypesCompositePlan:
         from ..models.plantypes_action_workflow_run_plan import PlantypesActionWorkflowRunPlan
         from ..models.plantypes_build_plan import PlantypesBuildPlan
         from ..models.plantypes_deploy_plan import PlantypesDeployPlan
+        from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
         from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
         from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan
         from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
@@ -114,6 +124,13 @@ class PlantypesCompositePlan:
         else:
             deploy_plan = PlantypesDeployPlan.from_dict(_deploy_plan)
 
+        _fetch_image_metadata_plan = d.pop("fetch_image_metadata_plan", UNSET)
+        fetch_image_metadata_plan: PlantypesFetchImageMetadataPlan | Unset
+        if isinstance(_fetch_image_metadata_plan, Unset):
+            fetch_image_metadata_plan = UNSET
+        else:
+            fetch_image_metadata_plan = PlantypesFetchImageMetadataPlan.from_dict(_fetch_image_metadata_plan)
+
         _sandbox_run_plan = d.pop("sandbox_run_plan", UNSET)
         sandbox_run_plan: PlantypesSandboxRunPlan | Unset
         if isinstance(_sandbox_run_plan, Unset):
@@ -139,6 +156,7 @@ class PlantypesCompositePlan:
             action_workflow_run_plan=action_workflow_run_plan,
             build_plan=build_plan,
             deploy_plan=deploy_plan,
+            fetch_image_metadata_plan=fetch_image_metadata_plan,
             sandbox_run_plan=sandbox_run_plan,
             sync_oci_plan=sync_oci_plan,
             sync_secrets_plan=sync_secrets_plan,

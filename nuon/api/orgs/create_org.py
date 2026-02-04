@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppOrg | StderrErrResponse]:
     """create a new org
 
+     Create a new organization.
+
     Args:
         body (ServiceCreateOrgRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppOrg | StderrErrResponse | None:
     """create a new org
 
+     Create a new organization.
+
     Args:
         body (ServiceCreateOrgRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateOrgRequest,
 ) -> Response[AppOrg | StderrErrResponse]:
     """create a new org
+
+     Create a new organization.
 
     Args:
         body (ServiceCreateOrgRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateOrgRequest,
 ) -> AppOrg | StderrErrResponse | None:
     """create a new org
+
+     Create a new organization.
 
     Args:
         body (ServiceCreateOrgRequest):

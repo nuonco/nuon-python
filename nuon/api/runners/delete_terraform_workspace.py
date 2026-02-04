@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     workspace_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/v1/terraform-workspaces/{workspace_id}".format(
@@ -86,6 +87,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppTerraformWorkspace]]:
     """delete terraform workspace
 
+     Delete a terraform workspace.
+
     Args:
         workspace_id (str):
 
@@ -115,6 +118,8 @@ def sync(
 ) -> StderrErrResponse | list[AppTerraformWorkspace] | None:
     """delete terraform workspace
 
+     Delete a terraform workspace.
+
     Args:
         workspace_id (str):
 
@@ -138,6 +143,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppTerraformWorkspace]]:
     """delete terraform workspace
+
+     Delete a terraform workspace.
 
     Args:
         workspace_id (str):
@@ -165,6 +172,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppTerraformWorkspace] | None:
     """delete terraform workspace
+
+     Delete a terraform workspace.
 
     Args:
         workspace_id (str):

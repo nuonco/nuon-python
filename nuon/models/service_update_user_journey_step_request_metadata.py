@@ -6,16 +6,17 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="UnlockTerraformWorkspaceBody")
+T = TypeVar("T", bound="ServiceUpdateUserJourneyStepRequestMetadata")
 
 
 @_attrs_define
-class UnlockTerraformWorkspaceBody:
+class ServiceUpdateUserJourneyStepRequestMetadata:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
 
@@ -24,10 +25,10 @@ class UnlockTerraformWorkspaceBody:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        unlock_terraform_workspace_body = cls()
+        service_update_user_journey_step_request_metadata = cls()
 
-        unlock_terraform_workspace_body.additional_properties = d
-        return unlock_terraform_workspace_body
+        service_update_user_journey_step_request_metadata.additional_properties = d
+        return service_update_user_journey_step_request_metadata
 
     @property
     def additional_keys(self) -> list[str]:

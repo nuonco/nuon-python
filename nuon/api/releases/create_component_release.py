@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppComponentRelease | StderrErrResponse]:
     """create a release
 
+     Create a release for a component.
+
     Args:
         component_id (str):
         body (ServiceCreateComponentReleaseRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppComponentRelease | StderrErrResponse | None:
     """create a release
 
+     Create a release for a component.
+
     Args:
         component_id (str):
         body (ServiceCreateComponentReleaseRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateComponentReleaseRequest,
 ) -> Response[AppComponentRelease | StderrErrResponse]:
     """create a release
+
+     Create a release for a component.
 
     Args:
         component_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateComponentReleaseRequest,
 ) -> AppComponentRelease | StderrErrResponse | None:
     """create a release
+
+     Create a release for a component.
 
     Args:
         component_id (str):

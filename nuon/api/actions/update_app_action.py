@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppActionWorkflow | StderrErrResponse]:
     """patch an app action
 
+     Update an app action workflow configuration.
+
     Args:
         app_id (str):
         action_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> AppActionWorkflow | StderrErrResponse | None:
     """patch an app action
 
+     Update an app action workflow configuration.
+
     Args:
         app_id (str):
         action_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceUpdateActionWorkflowRequest,
 ) -> Response[AppActionWorkflow | StderrErrResponse]:
     """patch an app action
+
+     Update an app action workflow configuration.
 
     Args:
         app_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceUpdateActionWorkflowRequest,
 ) -> AppActionWorkflow | StderrErrResponse | None:
     """patch an app action
+
+     Update an app action workflow configuration.
 
     Args:
         app_id (str):

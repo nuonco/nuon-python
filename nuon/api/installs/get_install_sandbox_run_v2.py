@@ -15,6 +15,7 @@ def _get_kwargs(
     install_id: str,
     run_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/sandbox-runs/{run_id}".format(
@@ -84,6 +85,8 @@ def sync_detailed(
 ) -> Response[AppInstallSandboxRun | StderrErrResponse]:
     """get an install sandbox run
 
+     Return a sandbox run for an install by id.
+
     Args:
         install_id (str):
         run_id (str):
@@ -116,6 +119,8 @@ def sync(
 ) -> AppInstallSandboxRun | StderrErrResponse | None:
     """get an install sandbox run
 
+     Return a sandbox run for an install by id.
+
     Args:
         install_id (str):
         run_id (str):
@@ -142,6 +147,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallSandboxRun | StderrErrResponse]:
     """get an install sandbox run
+
+     Return a sandbox run for an install by id.
 
     Args:
         install_id (str):
@@ -172,6 +179,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallSandboxRun | StderrErrResponse | None:
     """get an install sandbox run
+
+     Return a sandbox run for an install by id.
 
     Args:
         install_id (str):

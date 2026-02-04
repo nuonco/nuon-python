@@ -16,6 +16,7 @@ def _get_kwargs(
     action_id: str,
     action_config_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/actions/{action_id}/configs/{action_config_id}".format(
@@ -87,6 +88,8 @@ def sync_detailed(
 ) -> Response[AppActionWorkflowConfig | StderrErrResponse]:
     """get an app action config
 
+     Return an action workflow configuration by id.
+
     Args:
         app_id (str):
         action_id (str):
@@ -122,6 +125,8 @@ def sync(
 ) -> AppActionWorkflowConfig | StderrErrResponse | None:
     """get an app action config
 
+     Return an action workflow configuration by id.
+
     Args:
         app_id (str):
         action_id (str):
@@ -151,6 +156,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppActionWorkflowConfig | StderrErrResponse]:
     """get an app action config
+
+     Return an action workflow configuration by id.
 
     Args:
         app_id (str):
@@ -184,6 +191,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppActionWorkflowConfig | StderrErrResponse | None:
     """get an app action config
+
+     Return an action workflow configuration by id.
 
     Args:
         app_id (str):

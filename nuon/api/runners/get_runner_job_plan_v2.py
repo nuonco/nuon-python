@@ -14,6 +14,7 @@ def _get_kwargs(
     runner_id: str,
     job_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/runner/{runner_id}/jobs/{job_id}/plan".format(

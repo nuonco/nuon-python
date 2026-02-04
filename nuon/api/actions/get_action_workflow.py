@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     action_workflow_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/action-workflows/{action_workflow_id}".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppActionWorkflow | StderrErrResponse]:
     """get an app action workflow by action workflow id
 
+     Return an app action workflow by id.
+
     Args:
         action_workflow_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppActionWorkflow | StderrErrResponse | None:
     """get an app action workflow by action workflow id
 
+     Return an app action workflow by id.
+
     Args:
         action_workflow_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppActionWorkflow | StderrErrResponse]:
     """get an app action workflow by action workflow id
+
+     Return an app action workflow by id.
 
     Args:
         action_workflow_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppActionWorkflow | StderrErrResponse | None:
     """get an app action workflow by action workflow id
+
+     Return an app action workflow by id.
 
     Args:
         action_workflow_id (str):

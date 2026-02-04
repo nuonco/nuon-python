@@ -17,6 +17,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["q"] = q
@@ -103,6 +104,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppOrg]]:
     """Return current user's orgs
 
+     Returns all organizations for the authenticated user.
+
     Args:
         q (str | Unset):
         offset (int | Unset):  Default: 0.
@@ -141,6 +144,8 @@ def sync(
 ) -> StderrErrResponse | list[AppOrg] | None:
     """Return current user's orgs
 
+     Returns all organizations for the authenticated user.
+
     Args:
         q (str | Unset):
         offset (int | Unset):  Default: 0.
@@ -173,6 +178,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppOrg]]:
     """Return current user's orgs
+
+     Returns all organizations for the authenticated user.
 
     Args:
         q (str | Unset):
@@ -209,6 +216,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppOrg] | None:
     """Return current user's orgs
+
+     Returns all organizations for the authenticated user.
 
     Args:
         q (str | Unset):

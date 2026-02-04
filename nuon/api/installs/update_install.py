@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """update an install
 
+     Update an install's settings.
+
     Args:
         install_id (str):
         body (ServiceUpdateInstallRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppInstall | StderrErrResponse | None:
     """update an install
 
+     Update an install's settings.
+
     Args:
         install_id (str):
         body (ServiceUpdateInstallRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateInstallRequest,
 ) -> Response[AppInstall | StderrErrResponse]:
     """update an install
+
+     Update an install's settings.
 
     Args:
         install_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateInstallRequest,
 ) -> AppInstall | StderrErrResponse | None:
     """update an install
+
+     Update an install's settings.
 
     Args:
         install_id (str):

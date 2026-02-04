@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """deploy a build to an install
 
+     Create a new deployment for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallDeployRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """deploy a build to an install
 
+     Create a new deployment for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallDeployRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateInstallDeployRequest,
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """deploy a build to an install
+
+     Create a new deployment for an install.
 
     Args:
         install_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateInstallDeployRequest,
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """deploy a build to an install
+
+     Create a new deployment for an install.
 
     Args:
         install_id (str):

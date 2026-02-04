@@ -17,6 +17,7 @@ def _get_kwargs(
     start: str,
     end: str,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["start"] = start
@@ -100,6 +101,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppInstallAuditLog]]:
     """get install audit logs
 
+     Returns audit logs for an install.
+
     Args:
         install_id (str):
         start (str):
@@ -135,6 +138,8 @@ def sync(
 ) -> StderrErrResponse | list[AppInstallAuditLog] | None:
     """get install audit logs
 
+     Returns audit logs for an install.
+
     Args:
         install_id (str):
         start (str):
@@ -164,6 +169,8 @@ async def asyncio_detailed(
     end: str,
 ) -> Response[StderrErrResponse | list[AppInstallAuditLog]]:
     """get install audit logs
+
+     Returns audit logs for an install.
 
     Args:
         install_id (str):
@@ -197,6 +204,8 @@ async def asyncio(
     end: str,
 ) -> StderrErrResponse | list[AppInstallAuditLog] | None:
     """get install audit logs
+
+     Returns audit logs for an install.
 
     Args:
         install_id (str):

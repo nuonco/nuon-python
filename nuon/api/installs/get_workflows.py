@@ -22,6 +22,7 @@ def _get_kwargs(
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset

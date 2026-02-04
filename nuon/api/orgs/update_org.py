@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppOrg | StderrErrResponse]:
     """Update current org
 
+     Update an organization's settings.
+
     Args:
         body (ServiceUpdateOrgRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppOrg | StderrErrResponse | None:
     """Update current org
 
+     Update an organization's settings.
+
     Args:
         body (ServiceUpdateOrgRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceUpdateOrgRequest,
 ) -> Response[AppOrg | StderrErrResponse]:
     """Update current org
+
+     Update an organization's settings.
 
     Args:
         body (ServiceUpdateOrgRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceUpdateOrgRequest,
 ) -> AppOrg | StderrErrResponse | None:
     """Update current org
+
+     Update an organization's settings.
 
     Args:
         body (ServiceUpdateOrgRequest):

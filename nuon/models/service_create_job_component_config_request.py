@@ -25,8 +25,10 @@ class ServiceCreateJobComponentConfigRequest:
         tag (str):
         app_config_id (str | Unset):
         args (list[str] | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         cmd (list[str] | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateJobComponentConfigRequestEnvVars | Unset):
         references (list[str] | Unset):
     """
@@ -35,8 +37,10 @@ class ServiceCreateJobComponentConfigRequest:
     tag: str
     app_config_id: str | Unset = UNSET
     args: list[str] | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     cmd: list[str] | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,11 +56,15 @@ class ServiceCreateJobComponentConfigRequest:
         if not isinstance(self.args, Unset):
             args = self.args
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
 
         cmd: list[str] | Unset = UNSET
         if not isinstance(self.cmd, Unset):
             cmd = self.cmd
+
+        deploy_timeout = self.deploy_timeout
 
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -78,10 +86,14 @@ class ServiceCreateJobComponentConfigRequest:
             field_dict["app_config_id"] = app_config_id
         if args is not UNSET:
             field_dict["args"] = args
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if cmd is not UNSET:
             field_dict["cmd"] = cmd
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if references is not UNSET:
@@ -104,9 +116,13 @@ class ServiceCreateJobComponentConfigRequest:
 
         args = cast(list[str], d.pop("args", UNSET))
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         cmd = cast(list[str], d.pop("cmd", UNSET))
+
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset
@@ -122,8 +138,10 @@ class ServiceCreateJobComponentConfigRequest:
             tag=tag,
             app_config_id=app_config_id,
             args=args,
+            build_timeout=build_timeout,
             checksum=checksum,
             cmd=cmd,
+            deploy_timeout=deploy_timeout,
             env_vars=env_vars,
             references=references,
         )

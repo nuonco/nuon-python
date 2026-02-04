@@ -11,6 +11,7 @@ from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/general/current-user",
@@ -75,6 +76,8 @@ def sync_detailed(
 ) -> Response[AppAccount | StderrErrResponse]:
     """Get current user
 
+     Returns the current authenticated user account.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -98,6 +101,8 @@ def sync(
 ) -> AppAccount | StderrErrResponse | None:
     """Get current user
 
+     Returns the current authenticated user account.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -116,6 +121,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppAccount | StderrErrResponse]:
     """Get current user
+
+     Returns the current authenticated user account.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,6 +144,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppAccount | StderrErrResponse | None:
     """Get current user
+
+     Returns the current authenticated user account.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -2,10 +2,13 @@ from enum import Enum
 
 
 class ConfigAppPolicyType(str, Enum):
+    CONTAINER_IMAGE = "container_image"
+    DOCKER_BUILD = "docker_build"
+    HELM_CHART = "helm_chart"
     KUBERNETES_CLUSTER = "kubernetes_cluster"
-    RUNNER_JOB_ACTION_WORKFLOW = "runner_job_action_workflow"
-    RUNNER_JOB_HELM_DEPLOY = "runner_job_helm_deploy"
-    RUNNER_JOB_TERRAFORM_DEPLOY = "runner_job_terraform_deploy"
+    KUBERNETES_MANIFEST = "kubernetes_manifest"
+    SANDBOX = "sandbox"
+    TERRAFORM_MODULE = "terraform_module"
 
     def __str__(self) -> str:
         return str(self.value)

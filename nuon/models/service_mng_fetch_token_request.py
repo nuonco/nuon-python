@@ -6,16 +6,17 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="UpdateTerraformStateBody")
+T = TypeVar("T", bound="ServiceMngFetchTokenRequest")
 
 
 @_attrs_define
-class UpdateTerraformStateBody:
+class ServiceMngFetchTokenRequest:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
 
@@ -24,10 +25,10 @@ class UpdateTerraformStateBody:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        update_terraform_state_body = cls()
+        service_mng_fetch_token_request = cls()
 
-        update_terraform_state_body.additional_properties = d
-        return update_terraform_state_body
+        service_mng_fetch_token_request.additional_properties = d
+        return service_mng_fetch_token_request
 
     @property
     def additional_keys(self) -> list[str]:

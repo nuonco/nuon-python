@@ -7,7 +7,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.app_install_approval_option import AppInstallApprovalOption
-from ..models.app_step_error_behavior import AppStepErrorBehavior
 from ..models.app_workflow_type import AppWorkflowType
 from ..types import UNSET, Unset
 
@@ -48,7 +47,7 @@ class AppWorkflow:
         plan_only (bool | Unset):
         started_at (str | Unset):
         status (AppCompositeStatus | Unset):
-        step_error_behavior (AppStepErrorBehavior | Unset):
+        step_error_behavior (str | Unset): DEPRECATED: for now we always abort on step errors
         steps (list[AppWorkflowStep] | Unset): steps represent each piece of the workflow
         type_ (AppWorkflowType | Unset):
         updated_at (str | Unset):
@@ -73,7 +72,7 @@ class AppWorkflow:
     plan_only: bool | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
-    step_error_behavior: AppStepErrorBehavior | Unset = UNSET
+    step_error_behavior: str | Unset = UNSET
     steps: list[AppWorkflowStep] | Unset = UNSET
     type_: AppWorkflowType | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -143,9 +142,7 @@ class AppWorkflow:
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
-        step_error_behavior: str | Unset = UNSET
-        if not isinstance(self.step_error_behavior, Unset):
-            step_error_behavior = self.step_error_behavior.value
+        step_error_behavior = self.step_error_behavior
 
         steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
@@ -310,12 +307,7 @@ class AppWorkflow:
         else:
             status = AppCompositeStatus.from_dict(_status)
 
-        _step_error_behavior = d.pop("step_error_behavior", UNSET)
-        step_error_behavior: AppStepErrorBehavior | Unset
-        if isinstance(_step_error_behavior, Unset):
-            step_error_behavior = UNSET
-        else:
-            step_error_behavior = AppStepErrorBehavior(_step_error_behavior)
+        step_error_behavior = d.pop("step_error_behavior", UNSET)
 
         _steps = d.pop("steps", UNSET)
         steps: list[AppWorkflowStep] | Unset = UNSET

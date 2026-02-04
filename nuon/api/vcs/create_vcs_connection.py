@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """create a vcs connection for Github
 
+     Create a VCS connection for version control integration.
+
     Args:
         body (ServiceCreateConnectionRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppVCSConnection | StderrErrResponse | None:
     """create a vcs connection for Github
 
+     Create a VCS connection for version control integration.
+
     Args:
         body (ServiceCreateConnectionRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateConnectionRequest,
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """create a vcs connection for Github
+
+     Create a VCS connection for version control integration.
 
     Args:
         body (ServiceCreateConnectionRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateConnectionRequest,
 ) -> AppVCSConnection | StderrErrResponse | None:
     """create a vcs connection for Github
+
+     Create a VCS connection for version control integration.
 
     Args:
         body (ServiceCreateConnectionRequest):

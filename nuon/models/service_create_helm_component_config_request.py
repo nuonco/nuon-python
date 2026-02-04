@@ -27,9 +27,11 @@ class ServiceCreateHelmComponentConfigRequest:
         chart_name (str):
         values (ServiceCreateHelmComponentConfigRequestValues):
         app_config_id (str | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
         dependencies (list[str] | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
         helm_repo_config (ServiceHelmRepoConfigRequest | Unset):
         namespace (str | Unset):
@@ -43,9 +45,11 @@ class ServiceCreateHelmComponentConfigRequest:
     chart_name: str
     values: ServiceCreateHelmComponentConfigRequestValues
     app_config_id: str | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     helm_repo_config: ServiceHelmRepoConfigRequest | Unset = UNSET
     namespace: str | Unset = UNSET
@@ -63,6 +67,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         app_config_id = self.app_config_id
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
 
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
@@ -72,6 +78,8 @@ class ServiceCreateHelmComponentConfigRequest:
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        deploy_timeout = self.deploy_timeout
 
         drift_schedule = self.drift_schedule
 
@@ -107,12 +115,16 @@ class ServiceCreateHelmComponentConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
         if helm_repo_config is not UNSET:
@@ -148,6 +160,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         app_config_id = d.pop("app_config_id", UNSET)
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
@@ -158,6 +172,8 @@ class ServiceCreateHelmComponentConfigRequest:
             connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
+
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
@@ -189,9 +205,11 @@ class ServiceCreateHelmComponentConfigRequest:
             chart_name=chart_name,
             values=values,
             app_config_id=app_config_id,
+            build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
             dependencies=dependencies,
+            deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
             helm_repo_config=helm_repo_config,
             namespace=namespace,

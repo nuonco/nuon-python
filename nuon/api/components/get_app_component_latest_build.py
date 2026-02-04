@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/components/{component_id}/builds/latest".format(
@@ -84,6 +85,8 @@ def sync_detailed(
 ) -> Response[AppComponentBuild | StderrErrResponse]:
     """get latest build for a component
 
+     Returns the most recent build for the provided component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -116,6 +119,8 @@ def sync(
 ) -> AppComponentBuild | StderrErrResponse | None:
     """get latest build for a component
 
+     Returns the most recent build for the provided component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -142,6 +147,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppComponentBuild | StderrErrResponse]:
     """get latest build for a component
+
+     Returns the most recent build for the provided component.
 
     Args:
         app_id (str):
@@ -172,6 +179,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppComponentBuild | StderrErrResponse | None:
     """get latest build for a component
+
+     Returns the most recent build for the provided component.
 
     Args:
         app_id (str):

@@ -19,6 +19,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -102,6 +103,8 @@ def sync_detailed(
 ) -> Response[AppInstallActionWorkflow | StderrErrResponse]:
     """get recent runs for an action workflow by install id
 
+     Returns recent workflow runs for an install action workflow.
+
     Args:
         install_id (str):
         action_workflow_id (str):
@@ -143,6 +146,8 @@ def sync(
 ) -> AppInstallActionWorkflow | StderrErrResponse | None:
     """get recent runs for an action workflow by install id
 
+     Returns recent workflow runs for an install action workflow.
+
     Args:
         install_id (str):
         action_workflow_id (str):
@@ -178,6 +183,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[AppInstallActionWorkflow | StderrErrResponse]:
     """get recent runs for an action workflow by install id
+
+     Returns recent workflow runs for an install action workflow.
 
     Args:
         install_id (str):
@@ -217,6 +224,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> AppInstallActionWorkflow | StderrErrResponse | None:
     """get recent runs for an action workflow by install id
+
+     Returns recent workflow runs for an install action workflow.
 
     Args:
         install_id (str):

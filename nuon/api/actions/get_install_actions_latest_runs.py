@@ -20,6 +20,7 @@ def _get_kwargs(
     page: int | Unset = 0,
     q: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["trigger_types"] = trigger_types
@@ -112,6 +113,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppInstallActionWorkflow]]:
     """get latest runs for all action workflows by install id
 
+     Returns the most recent workflow run for each install action workflow.
+
     Args:
         install_id (str):
         trigger_types (str | Unset):
@@ -156,6 +159,8 @@ def sync(
 ) -> StderrErrResponse | list[AppInstallActionWorkflow] | None:
     """get latest runs for all action workflows by install id
 
+     Returns the most recent workflow run for each install action workflow.
+
     Args:
         install_id (str):
         trigger_types (str | Unset):
@@ -194,6 +199,8 @@ async def asyncio_detailed(
     q: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppInstallActionWorkflow]]:
     """get latest runs for all action workflows by install id
+
+     Returns the most recent workflow run for each install action workflow.
 
     Args:
         install_id (str):
@@ -236,6 +243,8 @@ async def asyncio(
     q: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppInstallActionWorkflow] | None:
     """get latest runs for all action workflows by install id
+
+     Returns the most recent workflow run for each install action workflow.
 
     Args:
         install_id (str):

@@ -11,11 +11,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.configs_oci_registry_auth import ConfigsOCIRegistryAuth
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
-    )
-    from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
 
 
@@ -26,8 +24,8 @@ T = TypeVar("T", bound="ConfigsOCIRegistryRepository")
 class ConfigsOCIRegistryRepository:
     """
     Attributes:
-        acrauth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
-        ecrauth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        acrauth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
+        ecrauth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
         login_server (str | Unset):
         ociauth (ConfigsOCIRegistryAuth | Unset):
         plugin (str | Unset):
@@ -37,8 +35,8 @@ class ConfigsOCIRegistryRepository:
             provided.
     """
 
-    acrauth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
-    ecrauth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    acrauth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
+    ecrauth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     login_server: str | Unset = UNSET
     ociauth: ConfigsOCIRegistryAuth | Unset = UNSET
     plugin: str | Unset = UNSET
@@ -97,27 +95,27 @@ class ConfigsOCIRegistryRepository:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.configs_oci_registry_auth import ConfigsOCIRegistryAuth
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
         )
 
         d = dict(src_dict)
         _acrauth = d.pop("acrauth", UNSET)
-        acrauth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
+        acrauth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_acrauth, Unset):
             acrauth = UNSET
         else:
-            acrauth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_acrauth)
+            acrauth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_acrauth)
 
         _ecrauth = d.pop("ecrauth", UNSET)
-        ecrauth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        ecrauth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_ecrauth, Unset):
             ecrauth = UNSET
         else:
-            ecrauth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_ecrauth)
+            ecrauth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_ecrauth)
 
         login_server = d.pop("loginServer", UNSET)
 

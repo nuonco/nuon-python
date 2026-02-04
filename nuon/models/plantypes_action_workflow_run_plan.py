@@ -9,9 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
-    )
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs
     from ..models.plantypes_action_workflow_run_plan_builtin_env_vars import (
@@ -32,7 +30,7 @@ class PlantypesActionWorkflowRunPlan:
     """
     Attributes:
         attrs (PlantypesActionWorkflowRunPlanAttrs | Unset):
-        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
         builtin_env_vars (PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset):
         cluster_info (KubeClusterInfo | Unset):
         id (str | Unset):
@@ -43,7 +41,7 @@ class PlantypesActionWorkflowRunPlan:
     """
 
     attrs: PlantypesActionWorkflowRunPlanAttrs | Unset = UNSET
-    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     builtin_env_vars: PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
     id: str | Unset = UNSET
@@ -115,8 +113,8 @@ class PlantypesActionWorkflowRunPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs
@@ -138,11 +136,11 @@ class PlantypesActionWorkflowRunPlan:
             attrs = PlantypesActionWorkflowRunPlanAttrs.from_dict(_attrs)
 
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
-            aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _builtin_env_vars = d.pop("builtin_env_vars", UNSET)
         builtin_env_vars: PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset

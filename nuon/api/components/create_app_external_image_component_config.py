@@ -97,6 +97,8 @@ def sync_detailed(
 ) -> Response[AppExternalImageComponentConfig | StderrErrResponse]:
     """create an external image component config
 
+     Create an external image component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -132,6 +134,8 @@ def sync(
 ) -> AppExternalImageComponentConfig | StderrErrResponse | None:
     """create an external image component config
 
+     Create an external image component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -161,6 +165,8 @@ async def asyncio_detailed(
     body: ServiceCreateExternalImageComponentConfigRequest,
 ) -> Response[AppExternalImageComponentConfig | StderrErrResponse]:
     """create an external image component config
+
+     Create an external image component config.
 
     Args:
         app_id (str):
@@ -194,6 +200,8 @@ async def asyncio(
     body: ServiceCreateExternalImageComponentConfigRequest,
 ) -> AppExternalImageComponentConfig | StderrErrResponse | None:
     """create an external image component config
+
+     Create an external image component config.
 
     Args:
         app_id (str):

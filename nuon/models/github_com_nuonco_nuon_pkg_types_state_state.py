@@ -9,8 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_types_state_state_components import (
-        GithubComPowertoolsdevMonoPkgTypesStateStateComponents,
+    from ..models.github_com_nuonco_nuon_pkg_types_state_state_components import (
+        GithubComNuoncoNuonPkgTypesStateStateComponents,
     )
     from ..models.state_actions_state import StateActionsState
     from ..models.state_app_state import StateAppState
@@ -25,17 +25,17 @@ if TYPE_CHECKING:
     from ..models.state_secrets_state import StateSecretsState
 
 
-T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgTypesStateState")
+T = TypeVar("T", bound="GithubComNuoncoNuonPkgTypesStateState")
 
 
 @_attrs_define
-class GithubComPowertoolsdevMonoPkgTypesStateState:
+class GithubComNuoncoNuonPkgTypesStateState:
     """
     Attributes:
         actions (StateActionsState | Unset):
         app (StateAppState | Unset):
         cloud_account (StateCloudAccount | Unset):
-        components (GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset):
+        components (GithubComNuoncoNuonPkgTypesStateStateComponents | Unset):
         domain (StateDomainState | Unset):
         id (str | Unset):
         inputs (StateInputsState | Unset):
@@ -52,7 +52,7 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
     actions: StateActionsState | Unset = UNSET
     app: StateAppState | Unset = UNSET
     cloud_account: StateCloudAccount | Unset = UNSET
-    components: GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset = UNSET
+    components: GithubComNuoncoNuonPkgTypesStateStateComponents | Unset = UNSET
     domain: StateDomainState | Unset = UNSET
     id: str | Unset = UNSET
     inputs: StateInputsState | Unset = UNSET
@@ -159,8 +159,8 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_types_state_state_components import (
-            GithubComPowertoolsdevMonoPkgTypesStateStateComponents,
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state_components import (
+            GithubComNuoncoNuonPkgTypesStateStateComponents,
         )
         from ..models.state_actions_state import StateActionsState
         from ..models.state_app_state import StateAppState
@@ -197,11 +197,11 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
             cloud_account = StateCloudAccount.from_dict(_cloud_account)
 
         _components = d.pop("components", UNSET)
-        components: GithubComPowertoolsdevMonoPkgTypesStateStateComponents | Unset
+        components: GithubComNuoncoNuonPkgTypesStateStateComponents | Unset
         if isinstance(_components, Unset):
             components = UNSET
         else:
-            components = GithubComPowertoolsdevMonoPkgTypesStateStateComponents.from_dict(_components)
+            components = GithubComNuoncoNuonPkgTypesStateStateComponents.from_dict(_components)
 
         _domain = d.pop("domain", UNSET)
         domain: StateDomainState | Unset
@@ -265,7 +265,7 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
 
         stale_at = d.pop("stale_at", UNSET)
 
-        github_com_powertoolsdev_mono_pkg_types_state_state = cls(
+        github_com_nuonco_nuon_pkg_types_state_state = cls(
             actions=actions,
             app=app,
             cloud_account=cloud_account,
@@ -283,8 +283,8 @@ class GithubComPowertoolsdevMonoPkgTypesStateState:
             stale_at=stale_at,
         )
 
-        github_com_powertoolsdev_mono_pkg_types_state_state.additional_properties = d
-        return github_com_powertoolsdev_mono_pkg_types_state_state
+        github_com_nuonco_nuon_pkg_types_state_state.additional_properties = d
+        return github_com_nuonco_nuon_pkg_types_state_state
 
     @property
     def additional_keys(self) -> list[str]:

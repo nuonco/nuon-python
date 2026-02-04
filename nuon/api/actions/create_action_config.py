@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppActionWorkflowConfig | StderrErrResponse]:
     """create action config
 
+     Create an action workflow configuration.
+
     Args:
         app_id (str):
         action_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> AppActionWorkflowConfig | StderrErrResponse | None:
     """create action config
 
+     Create an action workflow configuration.
+
     Args:
         app_id (str):
         action_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceCreateActionWorkflowConfigRequest,
 ) -> Response[AppActionWorkflowConfig | StderrErrResponse]:
     """create action config
+
+     Create an action workflow configuration.
 
     Args:
         app_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceCreateActionWorkflowConfigRequest,
 ) -> AppActionWorkflowConfig | StderrErrResponse | None:
     """create action config
+
+     Create an action workflow configuration.
 
     Args:
         app_id (str):

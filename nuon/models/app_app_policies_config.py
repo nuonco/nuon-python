@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_app_policy_config import AppAppPolicyConfig
+
 
 T = TypeVar("T", bound="AppAppPoliciesConfig")
 
@@ -21,6 +25,7 @@ class AppAppPoliciesConfig:
         created_by_id (str | Unset):
         id (str | Unset):
         org_id (str | Unset):
+        policies (list[AppAppPolicyConfig] | Unset):
         updated_at (str | Unset):
     """
 
@@ -30,6 +35,7 @@ class AppAppPoliciesConfig:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    policies: list[AppAppPolicyConfig] | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -45,6 +51,13 @@ class AppAppPoliciesConfig:
         id = self.id
 
         org_id = self.org_id
+
+        policies: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.policies, Unset):
+            policies = []
+            for policies_item_data in self.policies:
+                policies_item = policies_item_data.to_dict()
+                policies.append(policies_item)
 
         updated_at = self.updated_at
 
@@ -63,6 +76,8 @@ class AppAppPoliciesConfig:
             field_dict["id"] = id
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if policies is not UNSET:
+            field_dict["policies"] = policies
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -70,6 +85,8 @@ class AppAppPoliciesConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_policy_config import AppAppPolicyConfig
+
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
 
@@ -83,6 +100,15 @@ class AppAppPoliciesConfig:
 
         org_id = d.pop("org_id", UNSET)
 
+        _policies = d.pop("policies", UNSET)
+        policies: list[AppAppPolicyConfig] | Unset = UNSET
+        if _policies is not UNSET:
+            policies = []
+            for policies_item_data in _policies:
+                policies_item = AppAppPolicyConfig.from_dict(policies_item_data)
+
+                policies.append(policies_item)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_app_policies_config = cls(
@@ -92,6 +118,7 @@ class AppAppPoliciesConfig:
             created_by_id=created_by_id,
             id=id,
             org_id=org_id,
+            policies=policies,
             updated_at=updated_at,
         )
 

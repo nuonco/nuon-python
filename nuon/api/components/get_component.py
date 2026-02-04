@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/components/{component_id}".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppComponent | StderrErrResponse]:
     """get a component
 
+     Return a component by id.
+
     Args:
         component_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppComponent | StderrErrResponse | None:
     """get a component
 
+     Return a component by id.
+
     Args:
         component_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppComponent | StderrErrResponse]:
     """get a component
+
+     Return a component by id.
 
     Args:
         component_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppComponent | StderrErrResponse | None:
     """get a component
+
+     Return a component by id.
 
     Args:
         component_id (str):

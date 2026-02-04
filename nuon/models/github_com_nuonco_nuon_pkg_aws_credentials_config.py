@@ -13,11 +13,11 @@ if TYPE_CHECKING:
     from ..models.credentials_static_credentials import CredentialsStaticCredentials
 
 
-T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgAwsCredentialsConfig")
+T = TypeVar("T", bound="GithubComNuoncoNuonPkgAwsCredentialsConfig")
 
 
 @_attrs_define
-class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
+class GithubComNuoncoNuonPkgAwsCredentialsConfig:
     """
     Attributes:
         assume_role (CredentialsAssumeRoleConfig | Unset):
@@ -100,7 +100,7 @@ class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
 
         use_default = d.pop("use_default", UNSET)
 
-        github_com_powertoolsdev_mono_pkg_aws_credentials_config = cls(
+        github_com_nuonco_nuon_pkg_aws_credentials_config = cls(
             assume_role=assume_role,
             cache_id=cache_id,
             profile=profile,
@@ -109,8 +109,8 @@ class GithubComPowertoolsdevMonoPkgAwsCredentialsConfig:
             use_default=use_default,
         )
 
-        github_com_powertoolsdev_mono_pkg_aws_credentials_config.additional_properties = d
-        return github_com_powertoolsdev_mono_pkg_aws_credentials_config
+        github_com_nuonco_nuon_pkg_aws_credentials_config.additional_properties = d
+        return github_com_nuonco_nuon_pkg_aws_credentials_config
 
     @property
     def additional_keys(self) -> list[str]:

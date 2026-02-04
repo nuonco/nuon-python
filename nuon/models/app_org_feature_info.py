@@ -6,28 +6,52 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="LockTerraformWorkspaceBody")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="AppOrgFeatureInfo")
 
 
 @_attrs_define
-class LockTerraformWorkspaceBody:
-    """ """
+class AppOrgFeatureInfo:
+    """
+    Attributes:
+        description (str | Unset):
+        name (str | Unset):
+    """
 
+    description: str | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        description = self.description
+
+        name = self.name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if description is not UNSET:
+            field_dict["description"] = description
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        lock_terraform_workspace_body = cls()
+        description = d.pop("description", UNSET)
 
-        lock_terraform_workspace_body.additional_properties = d
-        return lock_terraform_workspace_body
+        name = d.pop("name", UNSET)
+
+        app_org_feature_info = cls(
+            description=description,
+            name=name,
+        )
+
+        app_org_feature_info.additional_properties = d
+        return app_org_feature_info
 
     @property
     def additional_keys(self) -> list[str]:

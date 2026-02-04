@@ -11,6 +11,7 @@ from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/terraform-workspaces",
@@ -80,6 +81,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppTerraformWorkspace]]:
     """get  terraform workspaces
 
+     Returns all terraform workspaces.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,6 +106,8 @@ def sync(
 ) -> StderrErrResponse | list[AppTerraformWorkspace] | None:
     """get  terraform workspaces
 
+     Returns all terraform workspaces.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -121,6 +126,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppTerraformWorkspace]]:
     """get  terraform workspaces
+
+     Returns all terraform workspaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,6 +149,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppTerraformWorkspace] | None:
     """get  terraform workspaces
+
+     Returns all terraform workspaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

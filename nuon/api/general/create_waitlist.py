@@ -57,6 +57,8 @@ def sync_detailed(
 ) -> Response[AppWaitlist]:
     """Allow user to be added to an org waitlist.
 
+     Add an entry to the waitlist.
+
     Args:
         body (ServiceWaitlistRequest):
 
@@ -86,6 +88,8 @@ def sync(
 ) -> AppWaitlist | None:
     """Allow user to be added to an org waitlist.
 
+     Add an entry to the waitlist.
+
     Args:
         body (ServiceWaitlistRequest):
 
@@ -109,6 +113,8 @@ async def asyncio_detailed(
     body: ServiceWaitlistRequest,
 ) -> Response[AppWaitlist]:
     """Allow user to be added to an org waitlist.
+
+     Add an entry to the waitlist.
 
     Args:
         body (ServiceWaitlistRequest):
@@ -136,6 +142,8 @@ async def asyncio(
     body: ServiceWaitlistRequest,
 ) -> AppWaitlist | None:
     """Allow user to be added to an org waitlist.
+
+     Add an entry to the waitlist.
 
     Args:
         body (ServiceWaitlistRequest):

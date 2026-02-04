@@ -11,6 +11,7 @@ from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/general/cli-config",
@@ -75,6 +76,8 @@ def sync_detailed(
 ) -> Response[ServiceCLIConfig | StderrErrResponse]:
     """Get config for cli
 
+     Returns CLI configuration and settings.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -98,6 +101,8 @@ def sync(
 ) -> ServiceCLIConfig | StderrErrResponse | None:
     """Get config for cli
 
+     Returns CLI configuration and settings.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -116,6 +121,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
 ) -> Response[ServiceCLIConfig | StderrErrResponse]:
     """Get config for cli
+
+     Returns CLI configuration and settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,6 +144,8 @@ async def asyncio(
     client: AuthenticatedClient | Client,
 ) -> ServiceCLIConfig | StderrErrResponse | None:
     """Get config for cli
+
+     Returns CLI configuration and settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

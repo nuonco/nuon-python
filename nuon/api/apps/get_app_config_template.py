@@ -17,6 +17,7 @@ def _get_kwargs(
     *,
     type_: GetAppConfigTemplateType,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     json_type_ = type_.value

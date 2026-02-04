@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppAppRunnerConfig | StderrErrResponse]:
     """create an app runner config
 
+     Create a runner configuration for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateAppRunnerConfigRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppAppRunnerConfig | StderrErrResponse | None:
     """create an app runner config
 
+     Create a runner configuration for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateAppRunnerConfigRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateAppRunnerConfigRequest,
 ) -> Response[AppAppRunnerConfig | StderrErrResponse]:
     """create an app runner config
+
+     Create a runner configuration for an app.
 
     Args:
         app_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateAppRunnerConfigRequest,
 ) -> AppAppRunnerConfig | StderrErrResponse | None:
     """create an app runner config
+
+     Create a runner configuration for an app.
 
     Args:
         app_id (str):

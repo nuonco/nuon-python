@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     break_glass_config_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/break-glass-configs/{break_glass_config_id}".format(

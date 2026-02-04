@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     action_workflow_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/action-workflows/{action_workflow_id}/latest-config".format(

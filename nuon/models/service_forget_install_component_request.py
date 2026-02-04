@@ -6,16 +6,17 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetTerraformWorkspaceStateJSONResourcesResponse200")
+T = TypeVar("T", bound="ServiceForgetInstallComponentRequest")
 
 
 @_attrs_define
-class GetTerraformWorkspaceStateJSONResourcesResponse200:
+class ServiceForgetInstallComponentRequest:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
 
@@ -24,10 +25,10 @@ class GetTerraformWorkspaceStateJSONResourcesResponse200:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        get_terraform_workspace_state_json_resources_response_200 = cls()
+        service_forget_install_component_request = cls()
 
-        get_terraform_workspace_state_json_resources_response_200.additional_properties = d
-        return get_terraform_workspace_state_json_resources_response_200
+        service_forget_install_component_request.additional_properties = d
+        return service_forget_install_component_request
 
     @property
     def additional_keys(self) -> list[str]:

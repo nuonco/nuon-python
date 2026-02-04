@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+    from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest
+    from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+
 
 T = TypeVar("T", bound="ServiceCreateKubernetesManifestComponentConfigRequest")
 
@@ -16,37 +22,63 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     """
     Attributes:
         app_config_id (str | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
+        connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
         dependencies (list[str] | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
-        manifest (str | Unset):
+        kustomize (ServiceKustomizeConfigRequest | Unset):
+        manifest (str | Unset): Inline manifest (mutually exclusive with Kustomize)
         namespace (str | Unset):
+        public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
     """
 
     app_config_id: str | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
+    connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    kustomize: ServiceKustomizeConfigRequest | Unset = UNSET
     manifest: str | Unset = UNSET
     namespace: str | Unset = UNSET
+    public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_config_id = self.app_config_id
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
+
+        connected_github_vcs_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.connected_github_vcs_config, Unset):
+            connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
+        deploy_timeout = self.deploy_timeout
+
         drift_schedule = self.drift_schedule
+
+        kustomize: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.kustomize, Unset):
+            kustomize = self.kustomize.to_dict()
 
         manifest = self.manifest
 
         namespace = self.namespace
+
+        public_git_vcs_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.public_git_vcs_config, Unset):
+            public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -57,16 +89,26 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         field_dict.update({})
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
+        if connected_github_vcs_config is not UNSET:
+            field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if kustomize is not UNSET:
+            field_dict["kustomize"] = kustomize
         if manifest is not UNSET:
             field_dict["manifest"] = manifest
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
+        if public_git_vcs_config is not UNSET:
+            field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
             field_dict["references"] = references
 
@@ -74,28 +116,62 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+        from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest
+        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
+
+        _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
+        connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset
+        if isinstance(_connected_github_vcs_config, Unset):
+            connected_github_vcs_config = UNSET
+        else:
+            connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
+
         drift_schedule = d.pop("drift_schedule", UNSET)
+
+        _kustomize = d.pop("kustomize", UNSET)
+        kustomize: ServiceKustomizeConfigRequest | Unset
+        if isinstance(_kustomize, Unset):
+            kustomize = UNSET
+        else:
+            kustomize = ServiceKustomizeConfigRequest.from_dict(_kustomize)
 
         manifest = d.pop("manifest", UNSET)
 
         namespace = d.pop("namespace", UNSET)
 
+        _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
+        public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
+        if isinstance(_public_git_vcs_config, Unset):
+            public_git_vcs_config = UNSET
+        else:
+            public_git_vcs_config = ServicePublicGitVCSConfigRequest.from_dict(_public_git_vcs_config)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         service_create_kubernetes_manifest_component_config_request = cls(
             app_config_id=app_config_id,
+            build_timeout=build_timeout,
             checksum=checksum,
+            connected_github_vcs_config=connected_github_vcs_config,
             dependencies=dependencies,
+            deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
+            kustomize=kustomize,
             manifest=manifest,
             namespace=namespace,
+            public_git_vcs_config=public_git_vcs_config,
             references=references,
         )
 

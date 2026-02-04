@@ -8,14 +8,13 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_terraform_workspace_state import AppTerraformWorkspaceState
 from ...models.stderr_err_response import StderrErrResponse
-from ...models.unlock_terraform_workspace_body import UnlockTerraformWorkspaceBody
 from ...types import Response
 
 
 def _get_kwargs(
     workspace_id: str,
     *,
-    body: UnlockTerraformWorkspaceBody,
+    body: Any,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,7 +25,7 @@ def _get_kwargs(
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body
 
     headers["Content-Type"] = "application/json"
 
@@ -88,13 +87,15 @@ def sync_detailed(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: UnlockTerraformWorkspaceBody,
+    body: Any,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """unlock terraform workspace
 
+     Unlock a terraform workspace.
+
     Args:
         workspace_id (str):
-        body (UnlockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,13 +121,15 @@ def sync(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: UnlockTerraformWorkspaceBody,
+    body: Any,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """unlock terraform workspace
 
+     Unlock a terraform workspace.
+
     Args:
         workspace_id (str):
-        body (UnlockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -147,13 +150,15 @@ async def asyncio_detailed(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: UnlockTerraformWorkspaceBody,
+    body: Any,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """unlock terraform workspace
 
+     Unlock a terraform workspace.
+
     Args:
         workspace_id (str):
-        body (UnlockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,13 +182,15 @@ async def asyncio(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: UnlockTerraformWorkspaceBody,
+    body: Any,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """unlock terraform workspace
 
+     Unlock a terraform workspace.
+
     Args:
         workspace_id (str):
-        body (UnlockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

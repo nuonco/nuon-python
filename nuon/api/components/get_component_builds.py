@@ -18,6 +18,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["component_id"] = component_id
@@ -107,6 +108,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppComponentBuild]]:
     """get builds for components
 
+     Returns all builds for the provided component.
+
     Args:
         component_id (str | Unset):
         app_id (str | Unset):
@@ -148,6 +151,8 @@ def sync(
 ) -> StderrErrResponse | list[AppComponentBuild] | None:
     """get builds for components
 
+     Returns all builds for the provided component.
+
     Args:
         component_id (str | Unset):
         app_id (str | Unset):
@@ -183,6 +188,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppComponentBuild]]:
     """get builds for components
+
+     Returns all builds for the provided component.
 
     Args:
         component_id (str | Unset):
@@ -222,6 +229,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppComponentBuild] | None:
     """get builds for components
+
+     Returns all builds for the provided component.
 
     Args:
         component_id (str | Unset):

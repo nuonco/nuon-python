@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppComponentBuild | StderrErrResponse]:
     """create component build
 
+     Create a build for a component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> AppComponentBuild | StderrErrResponse | None:
     """create component build
 
+     Create a build for a component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceCreateComponentBuildRequest,
 ) -> Response[AppComponentBuild | StderrErrResponse]:
     """create component build
+
+     Create a build for a component.
 
     Args:
         app_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceCreateComponentBuildRequest,
 ) -> AppComponentBuild | StderrErrResponse | None:
     """create component build
+
+     Create a build for a component.
 
     Args:
         app_id (str):

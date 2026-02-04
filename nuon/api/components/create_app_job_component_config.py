@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppJobComponentConfig | StderrErrResponse]:
     """create a job component config
 
+     Create a job component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> AppJobComponentConfig | StderrErrResponse | None:
     """create a job component config
 
+     Create a job component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceCreateJobComponentConfigRequest,
 ) -> Response[AppJobComponentConfig | StderrErrResponse]:
     """create a job component config
+
+     Create a job component config.
 
     Args:
         app_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceCreateJobComponentConfigRequest,
 ) -> AppJobComponentConfig | StderrErrResponse | None:
     """create a job component config
+
+     Create a job component config.
 
     Args:
         app_id (str):
