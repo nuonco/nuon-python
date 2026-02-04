@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppApp | StderrErrResponse]:
     """create an app
 
+     Create a new app.
+
     Args:
         body (ServiceCreateAppRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppApp | StderrErrResponse | None:
     """create an app
 
+     Create a new app.
+
     Args:
         body (ServiceCreateAppRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateAppRequest,
 ) -> Response[AppApp | StderrErrResponse]:
     """create an app
+
+     Create a new app.
 
     Args:
         body (ServiceCreateAppRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateAppRequest,
 ) -> AppApp | StderrErrResponse | None:
     """create an app
+
+     Create a new app.
 
     Args:
         body (ServiceCreateAppRequest):

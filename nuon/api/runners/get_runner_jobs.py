@@ -22,6 +22,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["group"] = group

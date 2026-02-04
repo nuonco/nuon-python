@@ -15,6 +15,7 @@ def _get_kwargs(
     workflow_id: str,
     step_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/workflows/{workflow_id}/steps/{step_id}".format(

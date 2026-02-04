@@ -90,6 +90,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | str]:
     """deprovision an install
 
+     Deprovision a sandbox environment for an install.
+
     Args:
         install_id (str):
         body (ServiceDeprovisionInstallSandboxRequest):
@@ -122,6 +124,8 @@ def sync(
 ) -> StderrErrResponse | str | None:
     """deprovision an install
 
+     Deprovision a sandbox environment for an install.
+
     Args:
         install_id (str):
         body (ServiceDeprovisionInstallSandboxRequest):
@@ -148,6 +152,8 @@ async def asyncio_detailed(
     body: ServiceDeprovisionInstallSandboxRequest,
 ) -> Response[StderrErrResponse | str]:
     """deprovision an install
+
+     Deprovision a sandbox environment for an install.
 
     Args:
         install_id (str):
@@ -178,6 +184,8 @@ async def asyncio(
     body: ServiceDeprovisionInstallSandboxRequest,
 ) -> StderrErrResponse | str | None:
     """deprovision an install
+
+     Deprovision a sandbox environment for an install.
 
     Args:
         install_id (str):

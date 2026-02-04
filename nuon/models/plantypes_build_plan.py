@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan
     from ..models.plantypes_git_source import PlantypesGitSource
     from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan
+    from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
 
@@ -33,6 +34,7 @@ class PlantypesBuildPlan:
         docker_build_plan (PlantypesDockerBuildPlan | Unset):
         git_source (PlantypesGitSource | Unset):
         helm_build_plan (PlantypesHelmBuildPlan | Unset):
+        kubernetes_manifest_build_plan (PlantypesKubernetesManifestBuildPlan | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
         terraform_build_plan (PlantypesTerraformBuildPlan | Unset):
     """
@@ -45,6 +47,7 @@ class PlantypesBuildPlan:
     docker_build_plan: PlantypesDockerBuildPlan | Unset = UNSET
     git_source: PlantypesGitSource | Unset = UNSET
     helm_build_plan: PlantypesHelmBuildPlan | Unset = UNSET
+    kubernetes_manifest_build_plan: PlantypesKubernetesManifestBuildPlan | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     terraform_build_plan: PlantypesTerraformBuildPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -74,6 +77,10 @@ class PlantypesBuildPlan:
         if not isinstance(self.helm_build_plan, Unset):
             helm_build_plan = self.helm_build_plan.to_dict()
 
+        kubernetes_manifest_build_plan: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.kubernetes_manifest_build_plan, Unset):
+            kubernetes_manifest_build_plan = self.kubernetes_manifest_build_plan.to_dict()
+
         sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
@@ -102,6 +109,8 @@ class PlantypesBuildPlan:
             field_dict["git_source"] = git_source
         if helm_build_plan is not UNSET:
             field_dict["helm_build_plan"] = helm_build_plan
+        if kubernetes_manifest_build_plan is not UNSET:
+            field_dict["kubernetes_manifest_build_plan"] = kubernetes_manifest_build_plan
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
         if terraform_build_plan is not UNSET:
@@ -116,6 +125,7 @@ class PlantypesBuildPlan:
         from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan
         from ..models.plantypes_git_source import PlantypesGitSource
         from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan
+        from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
         from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
 
@@ -156,6 +166,15 @@ class PlantypesBuildPlan:
         else:
             helm_build_plan = PlantypesHelmBuildPlan.from_dict(_helm_build_plan)
 
+        _kubernetes_manifest_build_plan = d.pop("kubernetes_manifest_build_plan", UNSET)
+        kubernetes_manifest_build_plan: PlantypesKubernetesManifestBuildPlan | Unset
+        if isinstance(_kubernetes_manifest_build_plan, Unset):
+            kubernetes_manifest_build_plan = UNSET
+        else:
+            kubernetes_manifest_build_plan = PlantypesKubernetesManifestBuildPlan.from_dict(
+                _kubernetes_manifest_build_plan
+            )
+
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
         sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
@@ -179,6 +198,7 @@ class PlantypesBuildPlan:
             docker_build_plan=docker_build_plan,
             git_source=git_source,
             helm_build_plan=helm_build_plan,
+            kubernetes_manifest_build_plan=kubernetes_manifest_build_plan,
             sandbox_mode=sandbox_mode,
             terraform_build_plan=terraform_build_plan,
         )

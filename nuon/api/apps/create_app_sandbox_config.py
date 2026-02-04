@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppAppSandboxConfig | StderrErrResponse]:
     """create an app sandbox config
 
+     Create a sandbox configuration for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateAppSandboxConfigRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppAppSandboxConfig | StderrErrResponse | None:
     """create an app sandbox config
 
+     Create a sandbox configuration for an app.
+
     Args:
         app_id (str):
         body (ServiceCreateAppSandboxConfigRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateAppSandboxConfigRequest,
 ) -> Response[AppAppSandboxConfig | StderrErrResponse]:
     """create an app sandbox config
+
+     Create a sandbox configuration for an app.
 
     Args:
         app_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateAppSandboxConfigRequest,
 ) -> AppAppSandboxConfig | StderrErrResponse | None:
     """create an app sandbox config
+
+     Create a sandbox configuration for an app.
 
     Args:
         app_id (str):

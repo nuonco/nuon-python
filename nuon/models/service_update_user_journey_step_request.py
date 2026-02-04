@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_update_user_journey_step_request_metadata import ServiceUpdateUserJourneyStepRequestMetadata
+
 
 T = TypeVar("T", bound="ServiceUpdateUserJourneyStepRequest")
 
@@ -16,29 +20,49 @@ class ServiceUpdateUserJourneyStepRequest:
     """
     Attributes:
         complete (bool | Unset):
+        metadata (ServiceUpdateUserJourneyStepRequestMetadata | Unset):
     """
 
     complete: bool | Unset = UNSET
+    metadata: ServiceUpdateUserJourneyStepRequestMetadata | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         complete = self.complete
+
+        metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if complete is not UNSET:
             field_dict["complete"] = complete
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_update_user_journey_step_request_metadata import (
+            ServiceUpdateUserJourneyStepRequestMetadata,
+        )
+
         d = dict(src_dict)
         complete = d.pop("complete", UNSET)
 
+        _metadata = d.pop("metadata", UNSET)
+        metadata: ServiceUpdateUserJourneyStepRequestMetadata | Unset
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = ServiceUpdateUserJourneyStepRequestMetadata.from_dict(_metadata)
+
         service_update_user_journey_step_request = cls(
             complete=complete,
+            metadata=metadata,
         )
 
         service_update_user_journey_step_request.additional_properties = d

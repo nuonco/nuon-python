@@ -9,15 +9,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
-    from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
-    )
-    from ..models.github_com_powertoolsdev_mono_pkg_types_state_state import (
-        GithubComPowertoolsdevMonoPkgTypesStateState,
-    )
+    from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.plantypes_git_source import PlantypesGitSource
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
@@ -40,8 +36,8 @@ class PlantypesSandboxRunPlan:
         apply_plan_contents (str | Unset): The following field is for applying a plan that is already saved
         apply_plan_display (list[int] | Unset): This field is for storing a human legible plan or corollary
             representation
-        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
-        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         env_vars (PlantypesSandboxRunPlanEnvVars | Unset):
         git_source (PlantypesGitSource | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
@@ -49,7 +45,7 @@ class PlantypesSandboxRunPlan:
         local_archive (PlantypesTerraformLocalArchive | Unset):
         policies (PlantypesSandboxRunPlanPolicies | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
-        state (GithubComPowertoolsdevMonoPkgTypesStateState | Unset):
+        state (GithubComNuoncoNuonPkgTypesStateState | Unset):
         terraform_backend (PlantypesTerraformBackend | Unset):
         vars_ (PlantypesSandboxRunPlanVars | Unset):
         vars_files (list[str] | Unset):
@@ -59,8 +55,8 @@ class PlantypesSandboxRunPlan:
     app_id: str | Unset = UNSET
     apply_plan_contents: str | Unset = UNSET
     apply_plan_display: list[int] | Unset = UNSET
-    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
-    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     env_vars: PlantypesSandboxRunPlanEnvVars | Unset = UNSET
     git_source: PlantypesGitSource | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
@@ -68,7 +64,7 @@ class PlantypesSandboxRunPlan:
     local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
     policies: PlantypesSandboxRunPlanPolicies | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
-    state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset = UNSET
+    state: GithubComNuoncoNuonPkgTypesStateState | Unset = UNSET
     terraform_backend: PlantypesTerraformBackend | Unset = UNSET
     vars_: PlantypesSandboxRunPlanVars | Unset = UNSET
     vars_files: list[str] | Unset = UNSET
@@ -177,15 +173,13 @@ class PlantypesSandboxRunPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_types_state_state import (
-            GithubComPowertoolsdevMonoPkgTypesStateState,
-        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.plantypes_git_source import PlantypesGitSource
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
         from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
@@ -205,18 +199,18 @@ class PlantypesSandboxRunPlan:
         apply_plan_display = cast(list[int], d.pop("apply_plan_display", UNSET))
 
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
-            aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
-            azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: PlantypesSandboxRunPlanEnvVars | Unset
@@ -263,11 +257,11 @@ class PlantypesSandboxRunPlan:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
         _state = d.pop("state", UNSET)
-        state: GithubComPowertoolsdevMonoPkgTypesStateState | Unset
+        state: GithubComNuoncoNuonPkgTypesStateState | Unset
         if isinstance(_state, Unset):
             state = UNSET
         else:
-            state = GithubComPowertoolsdevMonoPkgTypesStateState.from_dict(_state)
+            state = GithubComNuoncoNuonPkgTypesStateState.from_dict(_state)
 
         _terraform_backend = d.pop("terraform_backend", UNSET)
         terraform_backend: PlantypesTerraformBackend | Unset

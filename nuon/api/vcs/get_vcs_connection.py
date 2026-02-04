@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     connection_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/vcs/connections/{connection_id}".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """returns a vcs connection for an org
 
+     Return a VCS connection by id.
+
     Args:
         connection_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppVCSConnection | StderrErrResponse | None:
     """returns a vcs connection for an org
 
+     Return a VCS connection by id.
+
     Args:
         connection_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """returns a vcs connection for an org
+
+     Return a VCS connection by id.
 
     Args:
         connection_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppVCSConnection | StderrErrResponse | None:
     """returns a vcs connection for an org
+
+     Return a VCS connection by id.
 
     Args:
         connection_id (str):

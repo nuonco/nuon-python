@@ -15,6 +15,7 @@ def _get_kwargs(
     install_id: str,
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/components/{component_id}/deploys/latest".format(
@@ -84,6 +85,8 @@ def sync_detailed(
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get the latest deploy for an install component
 
+     Returns the most recent deployment for an install component.
+
     Args:
         install_id (str):
         component_id (str):
@@ -116,6 +119,8 @@ def sync(
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get the latest deploy for an install component
 
+     Returns the most recent deployment for an install component.
+
     Args:
         install_id (str):
         component_id (str):
@@ -142,6 +147,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get the latest deploy for an install component
+
+     Returns the most recent deployment for an install component.
 
     Args:
         install_id (str):
@@ -172,6 +179,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get the latest deploy for an install component
+
+     Returns the most recent deployment for an install component.
 
     Args:
         install_id (str):

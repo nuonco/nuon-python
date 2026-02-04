@@ -15,6 +15,7 @@ def _get_kwargs(
     install_id: str,
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/components/{component_id}/outputs".format(

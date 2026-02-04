@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     install_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/inputs/current".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """get an installs current inputs
 
+     Returns input values for an install.
+
     Args:
         install_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppInstallInputs | StderrErrResponse | None:
     """get an installs current inputs
 
+     Returns input values for an install.
+
     Args:
         install_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """get an installs current inputs
+
+     Returns input values for an install.
 
     Args:
         install_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallInputs | StderrErrResponse | None:
     """get an installs current inputs
+
+     Returns input values for an install.
 
     Args:
         install_id (str):

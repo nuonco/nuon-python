@@ -97,6 +97,8 @@ def sync_detailed(
 ) -> Response[AppKubernetesManifestComponentConfig | StderrErrResponse]:
     """create a kubernetes manifest component config
 
+     Create a Kubernetes manifest component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -132,6 +134,8 @@ def sync(
 ) -> AppKubernetesManifestComponentConfig | StderrErrResponse | None:
     """create a kubernetes manifest component config
 
+     Create a Kubernetes manifest component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -161,6 +165,8 @@ async def asyncio_detailed(
     body: ServiceCreateKubernetesManifestComponentConfigRequest,
 ) -> Response[AppKubernetesManifestComponentConfig | StderrErrResponse]:
     """create a kubernetes manifest component config
+
+     Create a Kubernetes manifest component config.
 
     Args:
         app_id (str):
@@ -194,6 +200,8 @@ async def asyncio(
     body: ServiceCreateKubernetesManifestComponentConfigRequest,
 ) -> AppKubernetesManifestComponentConfig | StderrErrResponse | None:
     """create a kubernetes manifest component config
+
+     Create a Kubernetes manifest component config.
 
     Args:
         app_id (str):

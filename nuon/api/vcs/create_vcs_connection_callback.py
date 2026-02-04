@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """public connection to create a vcs connection via a callback
 
+     Handle VCS connection callback for OAuth flow.
+
     Args:
         body (ServiceCreateConnectionCallbackRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppVCSConnection | StderrErrResponse | None:
     """public connection to create a vcs connection via a callback
 
+     Handle VCS connection callback for OAuth flow.
+
     Args:
         body (ServiceCreateConnectionCallbackRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateConnectionCallbackRequest,
 ) -> Response[AppVCSConnection | StderrErrResponse]:
     """public connection to create a vcs connection via a callback
+
+     Handle VCS connection callback for OAuth flow.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateConnectionCallbackRequest,
 ) -> AppVCSConnection | StderrErrResponse | None:
     """public connection to create a vcs connection via a callback
+
+     Handle VCS connection callback for OAuth flow.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):

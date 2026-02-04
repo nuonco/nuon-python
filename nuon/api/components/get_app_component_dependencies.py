@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/components/{component_id}/dependencies".format(
@@ -89,6 +90,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppComponent]]:
     """get a component's dependencies
 
+     Returns all dependencies for the provided component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -121,6 +124,8 @@ def sync(
 ) -> StderrErrResponse | list[AppComponent] | None:
     """get a component's dependencies
 
+     Returns all dependencies for the provided component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -147,6 +152,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppComponent]]:
     """get a component's dependencies
+
+     Returns all dependencies for the provided component.
 
     Args:
         app_id (str):
@@ -177,6 +184,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppComponent] | None:
     """get a component's dependencies
+
+     Returns all dependencies for the provided component.
 
     Args:
         app_id (str):

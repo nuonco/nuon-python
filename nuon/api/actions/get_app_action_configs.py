@@ -19,6 +19,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -107,6 +108,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppActionWorkflowConfig]]:
     """get action workflow for an app
 
+     Returns all action workflow configurations.
+
     Args:
         app_id (str):
         action_id (str):
@@ -148,6 +151,8 @@ def sync(
 ) -> StderrErrResponse | list[AppActionWorkflowConfig] | None:
     """get action workflow for an app
 
+     Returns all action workflow configurations.
+
     Args:
         app_id (str):
         action_id (str):
@@ -183,6 +188,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppActionWorkflowConfig]]:
     """get action workflow for an app
+
+     Returns all action workflow configurations.
 
     Args:
         app_id (str):
@@ -222,6 +229,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppActionWorkflowConfig] | None:
     """get action workflow for an app
+
+     Returns all action workflow configurations.
 
     Args:
         app_id (str):

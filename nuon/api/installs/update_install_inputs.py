@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """Updates install input config for app
 
+     Update input values for an install.
+
     Args:
         install_id (str):
         body (ServiceUpdateInstallInputsRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppInstallInputs | StderrErrResponse | None:
     """Updates install input config for app
 
+     Update input values for an install.
+
     Args:
         install_id (str):
         body (ServiceUpdateInstallInputsRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateInstallInputsRequest,
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """Updates install input config for app
+
+     Update input values for an install.
 
     Args:
         install_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateInstallInputsRequest,
 ) -> AppInstallInputs | StderrErrResponse | None:
     """Updates install input config for app
+
+     Update input values for an install.
 
     Args:
         install_id (str):

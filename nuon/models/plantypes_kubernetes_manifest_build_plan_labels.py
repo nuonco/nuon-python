@@ -6,16 +6,17 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GithubComPowertoolsdevMonoPkgTypesStateStateComponents")
+T = TypeVar("T", bound="PlantypesKubernetesManifestBuildPlanLabels")
 
 
 @_attrs_define
-class GithubComPowertoolsdevMonoPkgTypesStateStateComponents:
-    """ """
+class PlantypesKubernetesManifestBuildPlanLabels:
+    """Labels for the OCI artifact"""
 
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
 
@@ -24,19 +25,19 @@ class GithubComPowertoolsdevMonoPkgTypesStateStateComponents:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        github_com_powertoolsdev_mono_pkg_types_state_state_components = cls()
+        plantypes_kubernetes_manifest_build_plan_labels = cls()
 
-        github_com_powertoolsdev_mono_pkg_types_state_state_components.additional_properties = d
-        return github_com_powertoolsdev_mono_pkg_types_state_state_components
+        plantypes_kubernetes_manifest_build_plan_labels.additional_properties = d
+        return plantypes_kubernetes_manifest_build_plan_labels
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

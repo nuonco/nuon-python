@@ -87,6 +87,8 @@ def sync_detailed(
 ) -> Response[AppAccount | StderrErrResponse]:
     """Add a user to the current org
 
+     Add a user to an organization.
+
     Args:
         body (ServiceCreateOrgUserRequest):
 
@@ -116,6 +118,8 @@ def sync(
 ) -> AppAccount | StderrErrResponse | None:
     """Add a user to the current org
 
+     Add a user to an organization.
+
     Args:
         body (ServiceCreateOrgUserRequest):
 
@@ -139,6 +143,8 @@ async def asyncio_detailed(
     body: ServiceCreateOrgUserRequest,
 ) -> Response[AppAccount | StderrErrResponse]:
     """Add a user to the current org
+
+     Add a user to an organization.
 
     Args:
         body (ServiceCreateOrgUserRequest):
@@ -166,6 +172,8 @@ async def asyncio(
     body: ServiceCreateOrgUserRequest,
 ) -> AppAccount | StderrErrResponse | None:
     """Add a user to the current org
+
+     Add a user to an organization.
 
     Args:
         body (ServiceCreateOrgUserRequest):

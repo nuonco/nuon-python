@@ -7,7 +7,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_terraform_workspace_state import AppTerraformWorkspaceState
-from ...models.lock_terraform_workspace_body import LockTerraformWorkspaceBody
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
@@ -15,7 +14,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     workspace_id: str,
     *,
-    body: LockTerraformWorkspaceBody,
+    body: Any,
     job_id: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -34,7 +33,7 @@ def _get_kwargs(
         "params": params,
     }
 
-    _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body
 
     headers["Content-Type"] = "application/json"
 
@@ -96,15 +95,17 @@ def sync_detailed(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: LockTerraformWorkspaceBody,
+    body: Any,
     job_id: str | Unset = UNSET,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """lock terraform state
 
+     Lock a terraform workspace to prevent concurrent modifications.
+
     Args:
         workspace_id (str):
         job_id (str | Unset):
-        body (LockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,15 +132,17 @@ def sync(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: LockTerraformWorkspaceBody,
+    body: Any,
     job_id: str | Unset = UNSET,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """lock terraform state
 
+     Lock a terraform workspace to prevent concurrent modifications.
+
     Args:
         workspace_id (str):
         job_id (str | Unset):
-        body (LockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,15 +164,17 @@ async def asyncio_detailed(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: LockTerraformWorkspaceBody,
+    body: Any,
     job_id: str | Unset = UNSET,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """lock terraform state
 
+     Lock a terraform workspace to prevent concurrent modifications.
+
     Args:
         workspace_id (str):
         job_id (str | Unset):
-        body (LockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -194,15 +199,17 @@ async def asyncio(
     workspace_id: str,
     *,
     client: AuthenticatedClient,
-    body: LockTerraformWorkspaceBody,
+    body: Any,
     job_id: str | Unset = UNSET,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """lock terraform state
 
+     Lock a terraform workspace to prevent concurrent modifications.
+
     Args:
         workspace_id (str):
         job_id (str | Unset):
-        body (LockTerraformWorkspaceBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

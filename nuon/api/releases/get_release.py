@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     release_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/releases/{release_id}".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppComponentRelease | StderrErrResponse]:
     """get a release
 
+     Return a release by id.
+
     Args:
         release_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppComponentRelease | StderrErrResponse | None:
     """get a release
 
+     Return a release by id.
+
     Args:
         release_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppComponentRelease | StderrErrResponse]:
     """get a release
+
+     Return a release by id.
 
     Args:
         release_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppComponentRelease | StderrErrResponse | None:
     """get a release
+
+     Return a release by id.
 
     Args:
         release_id (str):

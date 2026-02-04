@@ -19,6 +19,7 @@ def _get_kwargs(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["types"] = types
@@ -108,6 +109,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
     """get an installs components
 
+     Returns all components for an install.
+
     Args:
         install_id (str):
         types (str | Unset):
@@ -149,6 +152,8 @@ def sync(
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
     """get an installs components
 
+     Returns all components for an install.
+
     Args:
         install_id (str):
         types (str | Unset):
@@ -184,6 +189,8 @@ async def asyncio_detailed(
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
     """get an installs components
+
+     Returns all components for an install.
 
     Args:
         install_id (str):
@@ -223,6 +230,8 @@ async def asyncio(
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
     """get an installs components
+
+     Returns all components for an install.
 
     Args:
         install_id (str):

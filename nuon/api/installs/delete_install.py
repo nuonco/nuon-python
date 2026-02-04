@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     install_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/v1/installs/{install_id}".format(
@@ -79,6 +80,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | bool]:
     """delete an install
 
+     Delete an install.
+
     Args:
         install_id (str):
 
@@ -108,6 +111,8 @@ def sync(
 ) -> StderrErrResponse | bool | None:
     """delete an install
 
+     Delete an install.
+
     Args:
         install_id (str):
 
@@ -131,6 +136,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | bool]:
     """delete an install
+
+     Delete an install.
 
     Args:
         install_id (str):
@@ -158,6 +165,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | bool | None:
     """delete an install
+
+     Delete an install.
 
     Args:
         install_id (str):

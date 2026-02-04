@@ -19,6 +19,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -107,6 +108,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppAppConfig]]:
     """get app branch app configs
 
+     Returns all branch configurations for the provided app.
+
     Args:
         app_id (str):
         app_branch_id (str):
@@ -148,6 +151,8 @@ def sync(
 ) -> StderrErrResponse | list[AppAppConfig] | None:
     """get app branch app configs
 
+     Returns all branch configurations for the provided app.
+
     Args:
         app_id (str):
         app_branch_id (str):
@@ -183,6 +188,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppAppConfig]]:
     """get app branch app configs
+
+     Returns all branch configurations for the provided app.
 
     Args:
         app_id (str):
@@ -222,6 +229,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppAppConfig] | None:
     """get app branch app configs
+
+     Returns all branch configurations for the provided app.
 
     Args:
         app_id (str):

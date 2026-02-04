@@ -1,33 +1,54 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetWorkflowStepApprovalContentsResponse200")
+if TYPE_CHECKING:
+    from ..models.service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
+
+
+T = TypeVar("T", bound="ServiceUpdateOrgFeaturesRequest")
 
 
 @_attrs_define
-class GetWorkflowStepApprovalContentsResponse200:
-    """ """
+class ServiceUpdateOrgFeaturesRequest:
+    """
+    Attributes:
+        features (ServiceUpdateOrgFeaturesRequestFeatures):
+    """
 
+    features: ServiceUpdateOrgFeaturesRequestFeatures
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        features = self.features.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "features": features,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
-        get_workflow_step_approval_contents_response_200 = cls()
+        from ..models.service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 
-        get_workflow_step_approval_contents_response_200.additional_properties = d
-        return get_workflow_step_approval_contents_response_200
+        d = dict(src_dict)
+        features = ServiceUpdateOrgFeaturesRequestFeatures.from_dict(d.pop("features"))
+
+        service_update_org_features_request = cls(
+            features=features,
+        )
+
+        service_update_org_features_request.additional_properties = d
+        return service_update_org_features_request
 
     @property
     def additional_keys(self) -> list[str]:

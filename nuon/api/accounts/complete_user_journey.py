@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     journey_name: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/v1/account/user-journeys/{journey_name}/complete".format(

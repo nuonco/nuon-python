@@ -94,6 +94,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | str]:
     """teardown an install component
 
+     Teardown and remove an install component's resources.
+
     Args:
         install_id (str):
         component_id (str):
@@ -129,6 +131,8 @@ def sync(
 ) -> StderrErrResponse | str | None:
     """teardown an install component
 
+     Teardown and remove an install component's resources.
+
     Args:
         install_id (str):
         component_id (str):
@@ -158,6 +162,8 @@ async def asyncio_detailed(
     body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> Response[StderrErrResponse | str]:
     """teardown an install component
+
+     Teardown and remove an install component's resources.
 
     Args:
         install_id (str):
@@ -191,6 +197,8 @@ async def asyncio(
     body: ServiceTeardownInstallComponentRequest | Unset = UNSET,
 ) -> StderrErrResponse | str | None:
     """teardown an install component
+
+     Teardown and remove an install component's resources.
 
     Args:
         install_id (str):

@@ -7,13 +7,12 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_terraform_workspace_state import AppTerraformWorkspaceState
 from ...models.stderr_err_response import StderrErrResponse
-from ...models.update_terraform_state_body import UpdateTerraformStateBody
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: UpdateTerraformStateBody,
+    body: Any,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -22,7 +21,7 @@ def _get_kwargs(
         "url": "/v1/terraform-backend",
     }
 
-    _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body
 
     headers["Content-Type"] = "application/json"
 
@@ -83,12 +82,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: UpdateTerraformStateBody,
+    body: Any,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """update terraform state
 
+     Update a terraform state.
+
     Args:
-        body (UpdateTerraformStateBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,12 +113,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: UpdateTerraformStateBody,
+    body: Any,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """update terraform state
 
+     Update a terraform state.
+
     Args:
-        body (UpdateTerraformStateBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -136,12 +139,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: UpdateTerraformStateBody,
+    body: Any,
 ) -> Response[AppTerraformWorkspaceState | StderrErrResponse]:
     """update terraform state
 
+     Update a terraform state.
+
     Args:
-        body (UpdateTerraformStateBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,12 +168,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: UpdateTerraformStateBody,
+    body: Any,
 ) -> AppTerraformWorkspaceState | StderrErrResponse | None:
     """update terraform state
 
+     Update a terraform state.
+
     Args:
-        body (UpdateTerraformStateBody):
+        body (Any):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

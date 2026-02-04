@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstallConfig | StderrErrResponse]:
     """create an install config
 
+     Create a configuration for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallConfigRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppInstallConfig | StderrErrResponse | None:
     """create an install config
 
+     Create a configuration for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallConfigRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateInstallConfigRequest,
 ) -> Response[AppInstallConfig | StderrErrResponse]:
     """create an install config
+
+     Create a configuration for an install.
 
     Args:
         install_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateInstallConfigRequest,
 ) -> AppInstallConfig | StderrErrResponse | None:
     """create an install config
+
+     Create a configuration for an install.
 
     Args:
         install_id (str):

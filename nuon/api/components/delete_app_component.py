@@ -14,6 +14,7 @@ def _get_kwargs(
     app_id: str,
     component_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/v1/apps/{app_id}/components/{component_id}".format(
@@ -82,6 +83,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | bool]:
     """delete a component
 
+     Delete a component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -114,6 +117,8 @@ def sync(
 ) -> StderrErrResponse | bool | None:
     """delete a component
 
+     Delete a component.
+
     Args:
         app_id (str):
         component_id (str):
@@ -140,6 +145,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | bool]:
     """delete a component
+
+     Delete a component.
 
     Args:
         app_id (str):
@@ -170,6 +177,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> StderrErrResponse | bool | None:
     """delete a component
+
+     Delete a component.
 
     Args:
         app_id (str):

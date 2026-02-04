@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     install_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/{install_id}/deploys/latest".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get an install's latest deploy
 
+     Returns the most recent deployment for an install.
+
     Args:
         install_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get an install's latest deploy
 
+     Returns the most recent deployment for an install.
+
     Args:
         install_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallDeploy | StderrErrResponse]:
     """get an install's latest deploy
+
+     Returns the most recent deployment for an install.
 
     Args:
         install_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallDeploy | StderrErrResponse | None:
     """get an install's latest deploy
+
+     Returns the most recent deployment for an install.
 
     Args:
         install_id (str):

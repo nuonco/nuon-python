@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     action_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/actions/{action_id}/latest-config".format(

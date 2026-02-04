@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppWorkflow | StderrErrResponse]:
     """update an install workflow
 
+     Update a workflow configuration.
+
     Args:
         install_workflow_id (str):
         body (ServiceUpdateWorkflowRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppWorkflow | StderrErrResponse | None:
     """update an install workflow
 
+     Update a workflow configuration.
+
     Args:
         install_workflow_id (str):
         body (ServiceUpdateWorkflowRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateWorkflowRequest,
 ) -> Response[AppWorkflow | StderrErrResponse]:
     """update an install workflow
+
+     Update a workflow configuration.
 
     Args:
         install_workflow_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateWorkflowRequest,
 ) -> AppWorkflow | StderrErrResponse | None:
     """update an install workflow
+
+     Update a workflow configuration.
 
     Args:
         install_workflow_id (str):

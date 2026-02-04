@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     stack_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/installs/stacks/{stack_id}".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppInstallStack | StderrErrResponse]:
     """get an install stack by stack ID
 
+     Returns the deployment stack for an install.
+
     Args:
         stack_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppInstallStack | StderrErrResponse | None:
     """get an install stack by stack ID
 
+     Returns the deployment stack for an install.
+
     Args:
         stack_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppInstallStack | StderrErrResponse]:
     """get an install stack by stack ID
+
+     Returns the deployment stack for an install.
 
     Args:
         stack_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppInstallStack | StderrErrResponse | None:
     """get an install stack by stack ID
+
+     Returns the deployment stack for an install.
 
     Args:
         stack_id (str):

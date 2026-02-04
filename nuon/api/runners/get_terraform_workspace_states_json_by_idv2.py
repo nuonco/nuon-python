@@ -17,6 +17,7 @@ def _get_kwargs(
     workspace_id: str,
     state_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/terraform-workspaces/{workspace_id}/state-json/{state_id}".format(
@@ -86,6 +87,8 @@ def sync_detailed(
 ) -> Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]:
     r"""get terraform state json by id. This output is same as \"terraform show --json\"
 
+     Return a terraform state in JSON format by id.
+
     Args:
         workspace_id (str):
         state_id (str):
@@ -118,6 +121,8 @@ def sync(
 ) -> GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse | None:
     r"""get terraform state json by id. This output is same as \"terraform show --json\"
 
+     Return a terraform state in JSON format by id.
+
     Args:
         workspace_id (str):
         state_id (str):
@@ -144,6 +149,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]:
     r"""get terraform state json by id. This output is same as \"terraform show --json\"
+
+     Return a terraform state in JSON format by id.
 
     Args:
         workspace_id (str):
@@ -174,6 +181,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse | None:
     r"""get terraform state json by id. This output is same as \"terraform show --json\"
+
+     Return a terraform state in JSON format by id.
 
     Args:
         workspace_id (str):

@@ -9,11 +9,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
-    )
-    from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
     from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 
@@ -25,8 +23,8 @@ T = TypeVar("T", bound="KubeClusterInfo")
 class KubeClusterInfo:
     """
     Attributes:
-        aws_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
-        azure_auth (GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset):
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         ca_data (str | Unset): CAData is the base64 encoded public certificate
         endpoint (str | Unset): Endpoint is the URL of the k8s api server
         env_vars (KubeClusterInfoEnvVars | Unset):
@@ -40,8 +38,8 @@ class KubeClusterInfo:
             NOTE(JM): we are deprecating this
     """
 
-    aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
-    azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset = UNSET
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     ca_data: str | Unset = UNSET
     endpoint: str | Unset = UNSET
     env_vars: KubeClusterInfoEnvVars | Unset = UNSET
@@ -102,28 +100,28 @@ class KubeClusterInfo:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
-        from ..models.github_com_powertoolsdev_mono_pkg_azure_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAzureCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
         )
         from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)
-        aws_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_aws_auth, Unset):
             aws_auth = UNSET
         else:
-            aws_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_aws_auth)
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
         _azure_auth = d.pop("azure_auth", UNSET)
-        azure_auth: GithubComPowertoolsdevMonoPkgAzureCredentialsConfig | Unset
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_azure_auth, Unset):
             azure_auth = UNSET
         else:
-            azure_auth = GithubComPowertoolsdevMonoPkgAzureCredentialsConfig.from_dict(_azure_auth)
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
 
         ca_data = d.pop("ca_data", UNSET)
 

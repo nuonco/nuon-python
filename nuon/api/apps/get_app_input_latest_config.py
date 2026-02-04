@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     app_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/input-latest-config".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppAppInputConfig | StderrErrResponse]:
     """get latest app input config
 
+     Returns the most recent input config for the provided app.
+
     Args:
         app_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppAppInputConfig | StderrErrResponse | None:
     """get latest app input config
 
+     Returns the most recent input config for the provided app.
+
     Args:
         app_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppAppInputConfig | StderrErrResponse]:
     """get latest app input config
+
+     Returns the most recent input config for the provided app.
 
     Args:
         app_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppAppInputConfig | StderrErrResponse | None:
     """get latest app input config
+
+     Returns the most recent input config for the provided app.
 
     Args:
         app_id (str):

@@ -9,9 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-        GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
-    )
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
     from ..models.plantypes_terraform_deploy_hooks_env_vars import PlantypesTerraformDeployHooksEnvVars
 
 
@@ -24,12 +22,12 @@ class PlantypesTerraformDeployHooks:
     Attributes:
         enabled (bool | Unset):
         env_vars (PlantypesTerraformDeployHooksEnvVars | Unset):
-        run_auth (GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset):
+        run_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
     """
 
     enabled: bool | Unset = UNSET
     env_vars: PlantypesTerraformDeployHooksEnvVars | Unset = UNSET
-    run_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset = UNSET
+    run_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,8 +55,8 @@ class PlantypesTerraformDeployHooks:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_powertoolsdev_mono_pkg_aws_credentials_config import (
-            GithubComPowertoolsdevMonoPkgAwsCredentialsConfig,
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
         from ..models.plantypes_terraform_deploy_hooks_env_vars import PlantypesTerraformDeployHooksEnvVars
 
@@ -73,11 +71,11 @@ class PlantypesTerraformDeployHooks:
             env_vars = PlantypesTerraformDeployHooksEnvVars.from_dict(_env_vars)
 
         _run_auth = d.pop("runAuth", UNSET)
-        run_auth: GithubComPowertoolsdevMonoPkgAwsCredentialsConfig | Unset
+        run_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
         if isinstance(_run_auth, Unset):
             run_auth = UNSET
         else:
-            run_auth = GithubComPowertoolsdevMonoPkgAwsCredentialsConfig.from_dict(_run_auth)
+            run_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_run_auth)
 
         plantypes_terraform_deploy_hooks = cls(
             enabled=enabled,

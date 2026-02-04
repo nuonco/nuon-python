@@ -6,28 +6,43 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetTerraformWorkspaceStateJSONResourcesV2Response200")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="GithubTimestamp")
 
 
 @_attrs_define
-class GetTerraformWorkspaceStateJSONResourcesV2Response200:
-    """ """
+class GithubTimestamp:
+    """
+    Attributes:
+        time_time (str | Unset):
+    """
 
+    time_time: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        time_time = self.time_time
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if time_time is not UNSET:
+            field_dict["time.Time"] = time_time
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        get_terraform_workspace_state_json_resources_v2_response_200 = cls()
+        time_time = d.pop("time.Time", UNSET)
 
-        get_terraform_workspace_state_json_resources_v2_response_200.additional_properties = d
-        return get_terraform_workspace_state_json_resources_v2_response_200
+        github_timestamp = cls(
+            time_time=time_time,
+        )
+
+        github_timestamp.additional_properties = d
+        return github_timestamp
 
     @property
     def additional_keys(self) -> list[str]:

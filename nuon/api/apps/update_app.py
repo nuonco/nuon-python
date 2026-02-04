@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppApp | StderrErrResponse]:
     """update an app
 
+     Update an app's configuration.
+
     Args:
         app_id (str):
         body (ServiceUpdateAppRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppApp | StderrErrResponse | None:
     """update an app
 
+     Update an app's configuration.
+
     Args:
         app_id (str):
         body (ServiceUpdateAppRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateAppRequest,
 ) -> Response[AppApp | StderrErrResponse]:
     """update an app
+
+     Update an app's configuration.
 
     Args:
         app_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateAppRequest,
 ) -> AppApp | StderrErrResponse | None:
     """update an app
+
+     Update an app's configuration.
 
     Args:
         app_id (str):

@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """create install inputs
 
+     Create input values for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallInputsRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppInstallInputs | StderrErrResponse | None:
     """create install inputs
 
+     Create input values for an install.
+
     Args:
         install_id (str):
         body (ServiceCreateInstallInputsRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceCreateInstallInputsRequest,
 ) -> Response[AppInstallInputs | StderrErrResponse]:
     """create install inputs
+
+     Create input values for an install.
 
     Args:
         install_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceCreateInstallInputsRequest,
 ) -> AppInstallInputs | StderrErrResponse | None:
     """create install inputs
+
+     Create input values for an install.
 
     Args:
         install_id (str):

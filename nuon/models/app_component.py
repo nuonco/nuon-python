@@ -10,6 +10,7 @@ from ..models.app_component_type import AppComponentType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_component_build import AppComponentBuild
     from ..models.app_component_links import AppComponentLinks
 
 
@@ -26,6 +27,7 @@ class AppComponent:
         created_by_id (str | Unset):
         dependencies (list[str] | Unset):
         id (str | Unset):
+        latest_build (AppComponentBuild | Unset):
         links (AppComponentLinks | Unset):
         name (str | Unset):
         resolved_var_name (str | Unset):
@@ -42,6 +44,7 @@ class AppComponent:
     created_by_id: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     id: str | Unset = UNSET
+    latest_build: AppComponentBuild | Unset = UNSET
     links: AppComponentLinks | Unset = UNSET
     name: str | Unset = UNSET
     resolved_var_name: str | Unset = UNSET
@@ -66,6 +69,10 @@ class AppComponent:
             dependencies = self.dependencies
 
         id = self.id
+
+        latest_build: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.latest_build, Unset):
+            latest_build = self.latest_build.to_dict()
 
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
@@ -102,6 +109,8 @@ class AppComponent:
             field_dict["dependencies"] = dependencies
         if id is not UNSET:
             field_dict["id"] = id
+        if latest_build is not UNSET:
+            field_dict["latest_build"] = latest_build
         if links is not UNSET:
             field_dict["links"] = links
         if name is not UNSET:
@@ -123,6 +132,7 @@ class AppComponent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_component_build import AppComponentBuild
         from ..models.app_component_links import AppComponentLinks
 
         d = dict(src_dict)
@@ -137,6 +147,13 @@ class AppComponent:
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         id = d.pop("id", UNSET)
+
+        _latest_build = d.pop("latest_build", UNSET)
+        latest_build: AppComponentBuild | Unset
+        if isinstance(_latest_build, Unset):
+            latest_build = UNSET
+        else:
+            latest_build = AppComponentBuild.from_dict(_latest_build)
 
         _links = d.pop("links", UNSET)
         links: AppComponentLinks | Unset
@@ -171,6 +188,7 @@ class AppComponent:
             created_by_id=created_by_id,
             dependencies=dependencies,
             id=id,
+            latest_build=latest_build,
             links=links,
             name=name,
             resolved_var_name=resolved_var_name,

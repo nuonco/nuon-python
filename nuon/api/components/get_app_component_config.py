@@ -16,6 +16,7 @@ def _get_kwargs(
     component_id: str,
     config_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/apps/{app_id}/components/{component_id}/configs/{config_id}".format(
@@ -87,6 +88,8 @@ def sync_detailed(
 ) -> Response[AppComponentConfigConnection | StderrErrResponse]:
     """get a config for a component
 
+     Return a component configuration by id.
+
     Args:
         app_id (str):
         component_id (str):
@@ -122,6 +125,8 @@ def sync(
 ) -> AppComponentConfigConnection | StderrErrResponse | None:
     """get a config for a component
 
+     Return a component configuration by id.
+
     Args:
         app_id (str):
         component_id (str):
@@ -151,6 +156,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppComponentConfigConnection | StderrErrResponse]:
     """get a config for a component
+
+     Return a component configuration by id.
 
     Args:
         app_id (str):
@@ -184,6 +191,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppComponentConfigConnection | StderrErrResponse | None:
     """get a config for a component
+
+     Return a component configuration by id.
 
     Args:
         app_id (str):

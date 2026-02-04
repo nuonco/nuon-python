@@ -13,6 +13,7 @@ from ...types import Response
 def _get_kwargs(
     connection_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": "/v1/vcs/connections/{connection_id}".format(
@@ -79,6 +80,8 @@ def sync_detailed(
 ) -> Response[Any | StderrErrResponse]:
     """Deletes a VCS connection
 
+     Delete a VCS connection.
+
     Args:
         connection_id (str):
 
@@ -108,6 +111,8 @@ def sync(
 ) -> Any | StderrErrResponse | None:
     """Deletes a VCS connection
 
+     Delete a VCS connection.
+
     Args:
         connection_id (str):
 
@@ -131,6 +136,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any | StderrErrResponse]:
     """Deletes a VCS connection
+
+     Delete a VCS connection.
 
     Args:
         connection_id (str):
@@ -158,6 +165,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Any | StderrErrResponse | None:
     """Deletes a VCS connection
+
+     Delete a VCS connection.
 
     Args:
         connection_id (str):

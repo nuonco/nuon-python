@@ -16,6 +16,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -94,6 +95,8 @@ def sync_detailed(
 ) -> Response[AppAccount | StderrErrResponse]:
     """Get user accounts for current org
 
+     Return an organization by id.
+
     Args:
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -129,6 +132,8 @@ def sync(
 ) -> AppAccount | StderrErrResponse | None:
     """Get user accounts for current org
 
+     Return an organization by id.
+
     Args:
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -158,6 +163,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[AppAccount | StderrErrResponse]:
     """Get user accounts for current org
+
+     Return an organization by id.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -191,6 +198,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> AppAccount | StderrErrResponse | None:
     """Get user accounts for current org
+
+     Return an organization by id.
 
     Args:
         offset (int | Unset):  Default: 0.

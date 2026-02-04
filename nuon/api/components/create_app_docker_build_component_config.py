@@ -97,6 +97,8 @@ def sync_detailed(
 ) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
     """create a docker build component config
 
+     Create a Docker build component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -132,6 +134,8 @@ def sync(
 ) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
     """create a docker build component config
 
+     Create a Docker build component config.
+
     Args:
         app_id (str):
         component_id (str):
@@ -161,6 +165,8 @@ async def asyncio_detailed(
     body: ServiceCreateDockerBuildComponentConfigRequest,
 ) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
     """create a docker build component config
+
+     Create a Docker build component config.
 
     Args:
         app_id (str):
@@ -194,6 +200,8 @@ async def asyncio(
     body: ServiceCreateDockerBuildComponentConfigRequest,
 ) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
     """create a docker build component config
+
+     Create a Docker build component config.
 
     Args:
         app_id (str):

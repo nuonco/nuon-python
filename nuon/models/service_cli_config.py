@@ -19,12 +19,16 @@ class ServiceCLIConfig:
         auth_client_id (str | Unset):
         auth_domain (str | Unset):
         dashboard_url (str | Unset):
+        nuon_auth_enabled (bool | Unset):
+        root_domain (str | Unset):
     """
 
     auth_audience: str | Unset = UNSET
     auth_client_id: str | Unset = UNSET
     auth_domain: str | Unset = UNSET
     dashboard_url: str | Unset = UNSET
+    nuon_auth_enabled: bool | Unset = UNSET
+    root_domain: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,6 +39,10 @@ class ServiceCLIConfig:
         auth_domain = self.auth_domain
 
         dashboard_url = self.dashboard_url
+
+        nuon_auth_enabled = self.nuon_auth_enabled
+
+        root_domain = self.root_domain
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -47,6 +55,10 @@ class ServiceCLIConfig:
             field_dict["auth_domain"] = auth_domain
         if dashboard_url is not UNSET:
             field_dict["dashboard_url"] = dashboard_url
+        if nuon_auth_enabled is not UNSET:
+            field_dict["nuon_auth_enabled"] = nuon_auth_enabled
+        if root_domain is not UNSET:
+            field_dict["root_domain"] = root_domain
 
         return field_dict
 
@@ -61,11 +73,17 @@ class ServiceCLIConfig:
 
         dashboard_url = d.pop("dashboard_url", UNSET)
 
+        nuon_auth_enabled = d.pop("nuon_auth_enabled", UNSET)
+
+        root_domain = d.pop("root_domain", UNSET)
+
         service_cli_config = cls(
             auth_audience=auth_audience,
             auth_client_id=auth_client_id,
             auth_domain=auth_domain,
             dashboard_url=dashboard_url,
+            nuon_auth_enabled=nuon_auth_enabled,
+            root_domain=root_domain,
         )
 
         service_cli_config.additional_properties = d

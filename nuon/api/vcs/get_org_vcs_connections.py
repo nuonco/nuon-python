@@ -16,6 +16,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -99,6 +100,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppVCSConnection]]:
     """get vcs connection for an org
 
+     Returns all VCS connections for the provided organization.
+
     Args:
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -134,6 +137,8 @@ def sync(
 ) -> StderrErrResponse | list[AppVCSConnection] | None:
     """get vcs connection for an org
 
+     Returns all VCS connections for the provided organization.
+
     Args:
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -163,6 +168,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppVCSConnection]]:
     """get vcs connection for an org
+
+     Returns all VCS connections for the provided organization.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -196,6 +203,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppVCSConnection] | None:
     """get vcs connection for an org
+
+     Returns all VCS connections for the provided organization.
 
     Args:
         offset (int | Unset):  Default: 0.

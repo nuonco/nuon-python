@@ -91,7 +91,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateAppConfigInstallsRequest,
 ) -> Response[StderrErrResponse | str]:
-    """
+    """Update app configuration across multiple installs.
+
     Args:
         app_id (str):
         config_id (str):
@@ -125,7 +126,8 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceUpdateAppConfigInstallsRequest,
 ) -> StderrErrResponse | str | None:
-    """
+    """Update app configuration across multiple installs.
+
     Args:
         app_id (str):
         config_id (str):
@@ -154,7 +156,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateAppConfigInstallsRequest,
 ) -> Response[StderrErrResponse | str]:
-    """
+    """Update app configuration across multiple installs.
+
     Args:
         app_id (str):
         config_id (str):
@@ -186,7 +189,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceUpdateAppConfigInstallsRequest,
 ) -> StderrErrResponse | str | None:
-    """
+    """Update app configuration across multiple installs.
+
     Args:
         app_id (str):
         config_id (str):

@@ -95,6 +95,8 @@ def sync_detailed(
 ) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
+     Retry a workflow execution by id.
+
     Args:
         workflow_id (str):
         step_id (str):
@@ -130,6 +132,8 @@ def sync(
 ) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
 
+     Retry a workflow execution by id.
+
     Args:
         workflow_id (str):
         step_id (str):
@@ -159,6 +163,8 @@ async def asyncio_detailed(
     body: ServiceRetryWorkflowStepRequest,
 ) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
+
+     Retry a workflow execution by id.
 
     Args:
         workflow_id (str):
@@ -192,6 +198,8 @@ async def asyncio(
     body: ServiceRetryWorkflowStepRequest,
 ) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
     """rerun the workflow steps starting from input step id, can be used to retry a failed step
+
+     Retry a workflow execution by id.
 
     Args:
         workflow_id (str):

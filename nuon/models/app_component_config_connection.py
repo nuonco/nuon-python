@@ -28,12 +28,14 @@ class AppComponentConfigConnection:
     Attributes:
         app_config_id (str | Unset):
         app_config_version (int | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h"). Max 1h.
         checksum (str | Unset):
         component_dependency_ids (list[str] | Unset):
         component_id (str | Unset):
         component_name (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h"). Max 1h.
         docker_build (AppDockerBuildComponentConfig | Unset):
         drift_schedule (str | Unset):
         external_image (AppExternalImageComponentConfig | Unset):
@@ -51,12 +53,14 @@ class AppComponentConfigConnection:
 
     app_config_id: str | Unset = UNSET
     app_config_version: int | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     component_dependency_ids: list[str] | Unset = UNSET
     component_id: str | Unset = UNSET
     component_name: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     docker_build: AppDockerBuildComponentConfig | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     external_image: AppExternalImageComponentConfig | Unset = UNSET
@@ -77,6 +81,8 @@ class AppComponentConfigConnection:
 
         app_config_version = self.app_config_version
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
 
         component_dependency_ids: list[str] | Unset = UNSET
@@ -90,6 +96,8 @@ class AppComponentConfigConnection:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        deploy_timeout = self.deploy_timeout
 
         docker_build: dict[str, Any] | Unset = UNSET
         if not isinstance(self.docker_build, Unset):
@@ -145,6 +153,8 @@ class AppComponentConfigConnection:
             field_dict["app_config_id"] = app_config_id
         if app_config_version is not UNSET:
             field_dict["app_config_version"] = app_config_version
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if component_dependency_ids is not UNSET:
@@ -157,6 +167,8 @@ class AppComponentConfigConnection:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if docker_build is not UNSET:
             field_dict["docker_build"] = docker_build
         if drift_schedule is not UNSET:
@@ -201,6 +213,8 @@ class AppComponentConfigConnection:
 
         app_config_version = d.pop("app_config_version", UNSET)
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         component_dependency_ids = cast(list[str], d.pop("component_dependency_ids", UNSET))
@@ -212,6 +226,8 @@ class AppComponentConfigConnection:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         _docker_build = d.pop("docker_build", UNSET)
         docker_build: AppDockerBuildComponentConfig | Unset
@@ -284,12 +300,14 @@ class AppComponentConfigConnection:
         app_component_config_connection = cls(
             app_config_id=app_config_id,
             app_config_version=app_config_version,
+            build_timeout=build_timeout,
             checksum=checksum,
             component_dependency_ids=component_dependency_ids,
             component_id=component_id,
             component_name=component_name,
             created_at=created_at,
             created_by_id=created_by_id,
+            deploy_timeout=deploy_timeout,
             docker_build=docker_build,
             drift_schedule=drift_schedule,
             external_image=external_image,

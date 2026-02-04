@@ -16,6 +16,7 @@ def _get_kwargs(
     install_workflow_step_id: str,
     approval_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/install-workflows/{install_workflow_id}/steps/{install_workflow_step_id}/approvals/{approval_id}".format(
@@ -87,6 +88,8 @@ def sync_detailed(
 ) -> Response[AppWorkflowStepApproval | StderrErrResponse]:
     """get an install workflow step approval
 
+     Return a workflow step approval by id.
+
     Args:
         install_workflow_id (str):
         install_workflow_step_id (str):
@@ -122,6 +125,8 @@ def sync(
 ) -> AppWorkflowStepApproval | StderrErrResponse | None:
     """get an install workflow step approval
 
+     Return a workflow step approval by id.
+
     Args:
         install_workflow_id (str):
         install_workflow_step_id (str):
@@ -151,6 +156,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppWorkflowStepApproval | StderrErrResponse]:
     """get an install workflow step approval
+
+     Return a workflow step approval by id.
 
     Args:
         install_workflow_id (str):
@@ -184,6 +191,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppWorkflowStepApproval | StderrErrResponse | None:
     """get an install workflow step approval
+
+     Return a workflow step approval by id.
 
     Args:
         install_workflow_id (str):

@@ -14,6 +14,7 @@ from ...types import Response
 def _get_kwargs(
     workspace_id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/terraform-workspaces/{workspace_id}/lock".format(
@@ -81,6 +82,8 @@ def sync_detailed(
 ) -> Response[AppTerraformWorkspaceLock | StderrErrResponse]:
     """get terraform workspace lock
 
+     Returns the lock status for a terraform workspace.
+
     Args:
         workspace_id (str):
 
@@ -110,6 +113,8 @@ def sync(
 ) -> AppTerraformWorkspaceLock | StderrErrResponse | None:
     """get terraform workspace lock
 
+     Returns the lock status for a terraform workspace.
+
     Args:
         workspace_id (str):
 
@@ -133,6 +138,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[AppTerraformWorkspaceLock | StderrErrResponse]:
     """get terraform workspace lock
+
+     Returns the lock status for a terraform workspace.
 
     Args:
         workspace_id (str):
@@ -160,6 +167,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> AppTerraformWorkspaceLock | StderrErrResponse | None:
     """get terraform workspace lock
+
+     Returns the lock status for a terraform workspace.
 
     Args:
         workspace_id (str):

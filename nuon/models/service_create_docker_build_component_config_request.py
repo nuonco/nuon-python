@@ -26,9 +26,11 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dockerfile (str):
         app_config_id (str | Unset):
         build_args (list[str] | Unset):
+        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
         dependencies (list[str] | Unset):
+        deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
@@ -38,9 +40,11 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     dockerfile: str
     app_config_id: str | Unset = UNSET
     build_args: list[str] | Unset = UNSET
+    build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
+    deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
@@ -56,6 +60,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         if not isinstance(self.build_args, Unset):
             build_args = self.build_args
 
+        build_timeout = self.build_timeout
+
         checksum = self.checksum
 
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
@@ -65,6 +71,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        deploy_timeout = self.deploy_timeout
 
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -91,12 +99,16 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             field_dict["app_config_id"] = app_config_id
         if build_args is not UNSET:
             field_dict["build_args"] = build_args
+        if build_timeout is not UNSET:
+            field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if deploy_timeout is not UNSET:
+            field_dict["deploy_timeout"] = deploy_timeout
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if public_git_vcs_config is not UNSET:
@@ -123,6 +135,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
         build_args = cast(list[str], d.pop("build_args", UNSET))
 
+        build_timeout = d.pop("build_timeout", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
@@ -133,6 +147,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
+
+        deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset
@@ -156,9 +172,11 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             dockerfile=dockerfile,
             app_config_id=app_config_id,
             build_args=build_args,
+            build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
             dependencies=dependencies,
+            deploy_timeout=deploy_timeout,
             env_vars=env_vars,
             public_git_vcs_config=public_git_vcs_config,
             references=references,

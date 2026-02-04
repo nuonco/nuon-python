@@ -17,6 +17,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["offset"] = offset
@@ -103,6 +104,8 @@ def sync_detailed(
 ) -> Response[StderrErrResponse | list[AppInstall]]:
     """get all installs for an org
 
+     Returns all installs for the provided organization.
+
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
@@ -141,6 +144,8 @@ def sync(
 ) -> StderrErrResponse | list[AppInstall] | None:
     """get all installs for an org
 
+     Returns all installs for the provided organization.
+
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
@@ -173,6 +178,8 @@ async def asyncio_detailed(
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
     """get all installs for an org
+
+     Returns all installs for the provided organization.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -209,6 +216,8 @@ async def asyncio(
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
     """get all installs for an org
+
+     Returns all installs for the provided organization.
 
     Args:
         offset (int | Unset):  Default: 0.

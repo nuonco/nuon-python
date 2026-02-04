@@ -92,6 +92,8 @@ def sync_detailed(
 ) -> Response[AppRunnerJobExecution | StderrErrResponse]:
     """update a runner's settings via its runner settings group
 
+     Update runner settings and configuration.
+
     Args:
         runner_id (str):
         body (ServiceUpdateRunnerSettingsRequest):
@@ -124,6 +126,8 @@ def sync(
 ) -> AppRunnerJobExecution | StderrErrResponse | None:
     """update a runner's settings via its runner settings group
 
+     Update runner settings and configuration.
+
     Args:
         runner_id (str):
         body (ServiceUpdateRunnerSettingsRequest):
@@ -150,6 +154,8 @@ async def asyncio_detailed(
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> Response[AppRunnerJobExecution | StderrErrResponse]:
     """update a runner's settings via its runner settings group
+
+     Update runner settings and configuration.
 
     Args:
         runner_id (str):
@@ -180,6 +186,8 @@ async def asyncio(
     body: ServiceUpdateRunnerSettingsRequest,
 ) -> AppRunnerJobExecution | StderrErrResponse | None:
     """update a runner's settings via its runner settings group
+
+     Update runner settings and configuration.
 
     Args:
         runner_id (str):

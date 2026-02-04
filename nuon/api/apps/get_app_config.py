@@ -17,6 +17,7 @@ def _get_kwargs(
     *,
     recurse: bool | Unset = False,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["recurse"] = recurse
