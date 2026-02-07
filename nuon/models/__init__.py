@@ -386,6 +386,7 @@ from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
 from .service_mng_vm_shut_down_request import ServiceMngVMShutDownRequest
 from .service_patch_install_config_params import ServicePatchInstallConfigParams
+from .service_prune_tokens_response import ServicePruneTokensResponse
 from .service_public_git_vcs_action_workflow_config_request import ServicePublicGitVCSActionWorkflowConfigRequest
 from .service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 from .service_public_git_vcs_sandbox_config_request import ServicePublicGitVCSSandboxConfigRequest
@@ -818,6 +819,7 @@ __all__ = (
     "ServiceMngUpdateRequest",
     "ServiceMngVMShutDownRequest",
     "ServicePatchInstallConfigParams",
+    "ServicePruneTokensResponse",
     "ServicePublicGitVCSActionWorkflowConfigRequest",
     "ServicePublicGitVCSConfigRequest",
     "ServicePublicGitVCSSandboxConfigRequest",
