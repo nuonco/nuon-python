@@ -23,7 +23,7 @@ class AppWorkflowStepPolicyValidation:
         created_by_id (str | Unset):
         id (str | Unset):
         install_workflow_step_id (str | Unset): install workflow step is the install step that this was performed within
-        response (str | Unset): response is the kyverno response
+        response (str | Unset): response is the kyverno response (deprecated: use Reports for detailed results)
         runner_job_id (str | Unset): runnerJobID is the runner job that this was performed within
         status (AppCompositeStatus | Unset):
         updated_at (str | Unset):

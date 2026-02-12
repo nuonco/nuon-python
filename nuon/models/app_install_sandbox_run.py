@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
     from ..models.app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
     from ..models.app_log_stream import AppLogStream
+    from ..models.app_policy_report import AppPolicyReport
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
 
@@ -38,6 +39,7 @@ class AppInstallSandboxRun:
         install_workflow_id (str | Unset):
         log_stream (AppLogStream | Unset):
         outputs (AppInstallSandboxRunOutputs | Unset):
+        policy_reports (list[AppPolicyReport] | Unset):
         run_type (AppSandboxRunType | Unset):
         runner_jobs (list[AppRunnerJob] | Unset): runner details
         status (str | Unset):
@@ -59,6 +61,7 @@ class AppInstallSandboxRun:
     install_workflow_id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     outputs: AppInstallSandboxRunOutputs | Unset = UNSET
+    policy_reports: list[AppPolicyReport] | Unset = UNSET
     run_type: AppSandboxRunType | Unset = UNSET
     runner_jobs: list[AppRunnerJob] | Unset = UNSET
     status: str | Unset = UNSET
@@ -104,6 +107,13 @@ class AppInstallSandboxRun:
         outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
+
+        policy_reports: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.policy_reports, Unset):
+            policy_reports = []
+            for policy_reports_item_data in self.policy_reports:
+                policy_reports_item = policy_reports_item_data.to_dict()
+                policy_reports.append(policy_reports_item)
 
         run_type: str | Unset = UNSET
         if not isinstance(self.run_type, Unset):
@@ -157,6 +167,8 @@ class AppInstallSandboxRun:
             field_dict["log_stream"] = log_stream
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
+        if policy_reports is not UNSET:
+            field_dict["policy_reports"] = policy_reports
         if run_type is not UNSET:
             field_dict["run_type"] = run_type
         if runner_jobs is not UNSET:
@@ -184,6 +196,7 @@ class AppInstallSandboxRun:
         from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
         from ..models.app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
         from ..models.app_log_stream import AppLogStream
+        from ..models.app_policy_report import AppPolicyReport
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
 
@@ -237,6 +250,15 @@ class AppInstallSandboxRun:
         else:
             outputs = AppInstallSandboxRunOutputs.from_dict(_outputs)
 
+        _policy_reports = d.pop("policy_reports", UNSET)
+        policy_reports: list[AppPolicyReport] | Unset = UNSET
+        if _policy_reports is not UNSET:
+            policy_reports = []
+            for policy_reports_item_data in _policy_reports:
+                policy_reports_item = AppPolicyReport.from_dict(policy_reports_item_data)
+
+                policy_reports.append(policy_reports_item)
+
         _run_type = d.pop("run_type", UNSET)
         run_type: AppSandboxRunType | Unset
         if isinstance(_run_type, Unset):
@@ -287,6 +309,7 @@ class AppInstallSandboxRun:
             install_workflow_id=install_workflow_id,
             log_stream=log_stream,
             outputs=outputs,
+            policy_reports=policy_reports,
             run_type=run_type,
             runner_jobs=runner_jobs,
             status=status,
