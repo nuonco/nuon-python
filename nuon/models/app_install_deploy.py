@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.app_install_deploy_outputs import AppInstallDeployOutputs
     from ..models.app_log_stream import AppLogStream
     from ..models.app_oci_artifact import AppOCIArtifact
+    from ..models.app_policy_report import AppPolicyReport
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
 
@@ -46,6 +47,7 @@ class AppInstallDeploy:
         oci_artifact (AppOCIArtifact | Unset):
         outputs (AppInstallDeployOutputs | Unset):
         plan_only (bool | Unset):
+        policy_reports (list[AppPolicyReport] | Unset):
         release_id (str | Unset):
         runner_jobs (list[AppRunnerJob] | Unset): runner details
         status (str | Unset):
@@ -74,6 +76,7 @@ class AppInstallDeploy:
     oci_artifact: AppOCIArtifact | Unset = UNSET
     outputs: AppInstallDeployOutputs | Unset = UNSET
     plan_only: bool | Unset = UNSET
+    policy_reports: list[AppPolicyReport] | Unset = UNSET
     release_id: str | Unset = UNSET
     runner_jobs: list[AppRunnerJob] | Unset = UNSET
     status: str | Unset = UNSET
@@ -137,6 +140,13 @@ class AppInstallDeploy:
             outputs = self.outputs.to_dict()
 
         plan_only = self.plan_only
+
+        policy_reports: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.policy_reports, Unset):
+            policy_reports = []
+            for policy_reports_item_data in self.policy_reports:
+                policy_reports_item = policy_reports_item_data.to_dict()
+                policy_reports.append(policy_reports_item)
 
         release_id = self.release_id
 
@@ -202,6 +212,8 @@ class AppInstallDeploy:
             field_dict["outputs"] = outputs
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if policy_reports is not UNSET:
+            field_dict["policy_reports"] = policy_reports
         if release_id is not UNSET:
             field_dict["release_id"] = release_id
         if runner_jobs is not UNSET:
@@ -230,6 +242,7 @@ class AppInstallDeploy:
         from ..models.app_install_deploy_outputs import AppInstallDeployOutputs
         from ..models.app_log_stream import AppLogStream
         from ..models.app_oci_artifact import AppOCIArtifact
+        from ..models.app_policy_report import AppPolicyReport
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
 
@@ -307,6 +320,15 @@ class AppInstallDeploy:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        _policy_reports = d.pop("policy_reports", UNSET)
+        policy_reports: list[AppPolicyReport] | Unset = UNSET
+        if _policy_reports is not UNSET:
+            policy_reports = []
+            for policy_reports_item_data in _policy_reports:
+                policy_reports_item = AppPolicyReport.from_dict(policy_reports_item_data)
+
+                policy_reports.append(policy_reports_item)
+
         release_id = d.pop("release_id", UNSET)
 
         _runner_jobs = d.pop("runner_jobs", UNSET)
@@ -359,6 +381,7 @@ class AppInstallDeploy:
             oci_artifact=oci_artifact,
             outputs=outputs,
             plan_only=plan_only,
+            policy_reports=policy_reports,
             release_id=release_id,
             runner_jobs=runner_jobs,
             status=status,

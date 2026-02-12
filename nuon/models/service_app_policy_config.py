@@ -20,13 +20,17 @@ class ServiceAppPolicyConfig:
         contents (str):
         type_ (ConfigAppPolicyType):
         components (list[str] | Unset):
+        description (str | Unset):
         engine (ConfigAppPolicyEngine | Unset):
+        name (str | Unset):
     """
 
     contents: str
     type_: ConfigAppPolicyType
     components: list[str] | Unset = UNSET
+    description: str | Unset = UNSET
     engine: ConfigAppPolicyEngine | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,9 +42,13 @@ class ServiceAppPolicyConfig:
         if not isinstance(self.components, Unset):
             components = self.components
 
+        description = self.description
+
         engine: str | Unset = UNSET
         if not isinstance(self.engine, Unset):
             engine = self.engine.value
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,8 +60,12 @@ class ServiceAppPolicyConfig:
         )
         if components is not UNSET:
             field_dict["components"] = components
+        if description is not UNSET:
+            field_dict["description"] = description
         if engine is not UNSET:
             field_dict["engine"] = engine
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
@@ -66,6 +78,8 @@ class ServiceAppPolicyConfig:
 
         components = cast(list[str], d.pop("components", UNSET))
 
+        description = d.pop("description", UNSET)
+
         _engine = d.pop("engine", UNSET)
         engine: ConfigAppPolicyEngine | Unset
         if isinstance(_engine, Unset):
@@ -73,11 +87,15 @@ class ServiceAppPolicyConfig:
         else:
             engine = ConfigAppPolicyEngine(_engine)
 
+        name = d.pop("name", UNSET)
+
         service_app_policy_config = cls(
             contents=contents,
             type_=type_,
             components=components,
+            description=description,
             engine=engine,
+            name=name,
         )
 
         service_app_policy_config.additional_properties = d

@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_deploy import AppInstallDeploy
     from ..models.app_log_stream import AppLogStream
+    from ..models.app_policy_report import AppPolicyReport
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
@@ -40,6 +41,7 @@ class AppComponentBuild:
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
         log_stream (AppLogStream | Unset):
+        policy_reports (list[AppPolicyReport] | Unset):
         releases (list[AppComponentRelease] | Unset):
         runner_job (AppRunnerJob | Unset):
         status (str | Unset):
@@ -62,6 +64,7 @@ class AppComponentBuild:
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
+    policy_reports: list[AppPolicyReport] | Unset = UNSET
     releases: list[AppComponentRelease] | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     status: str | Unset = UNSET
@@ -108,6 +111,13 @@ class AppComponentBuild:
         log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
             log_stream = self.log_stream.to_dict()
+
+        policy_reports: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.policy_reports, Unset):
+            policy_reports = []
+            for policy_reports_item_data in self.policy_reports:
+                policy_reports_item = policy_reports_item_data.to_dict()
+                policy_reports.append(policy_reports_item)
 
         releases: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.releases, Unset):
@@ -163,6 +173,8 @@ class AppComponentBuild:
             field_dict["install_deploys"] = install_deploys
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
+        if policy_reports is not UNSET:
+            field_dict["policy_reports"] = policy_reports
         if releases is not UNSET:
             field_dict["releases"] = releases
         if runner_job is not UNSET:
@@ -188,6 +200,7 @@ class AppComponentBuild:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_deploy import AppInstallDeploy
         from ..models.app_log_stream import AppLogStream
+        from ..models.app_policy_report import AppPolicyReport
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
@@ -240,6 +253,15 @@ class AppComponentBuild:
         else:
             log_stream = AppLogStream.from_dict(_log_stream)
 
+        _policy_reports = d.pop("policy_reports", UNSET)
+        policy_reports: list[AppPolicyReport] | Unset = UNSET
+        if _policy_reports is not UNSET:
+            policy_reports = []
+            for policy_reports_item_data in _policy_reports:
+                policy_reports_item = AppPolicyReport.from_dict(policy_reports_item_data)
+
+                policy_reports.append(policy_reports_item)
+
         _releases = d.pop("releases", UNSET)
         releases: list[AppComponentRelease] | Unset = UNSET
         if _releases is not UNSET:
@@ -290,6 +312,7 @@ class AppComponentBuild:
             id=id,
             install_deploys=install_deploys,
             log_stream=log_stream,
+            policy_reports=policy_reports,
             releases=releases,
             runner_job=runner_job,
             status=status,

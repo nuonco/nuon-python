@@ -24,8 +24,10 @@ class AppAppPolicyConfig:
         contents (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        description (str | Unset):
         engine (ConfigAppPolicyEngine | Unset):
         id (str | Unset):
+        name (str | Unset):
         org_id (str | Unset):
         type_ (ConfigAppPolicyType | Unset):
         updated_at (str | Unset):
@@ -38,8 +40,10 @@ class AppAppPolicyConfig:
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    description: str | Unset = UNSET
     engine: ConfigAppPolicyEngine | Unset = UNSET
     id: str | Unset = UNSET
+    name: str | Unset = UNSET
     org_id: str | Unset = UNSET
     type_: ConfigAppPolicyType | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -62,11 +66,15 @@ class AppAppPolicyConfig:
 
         created_by_id = self.created_by_id
 
+        description = self.description
+
         engine: str | Unset = UNSET
         if not isinstance(self.engine, Unset):
             engine = self.engine.value
 
         id = self.id
+
+        name = self.name
 
         org_id = self.org_id
 
@@ -93,10 +101,14 @@ class AppAppPolicyConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if description is not UNSET:
+            field_dict["description"] = description
         if engine is not UNSET:
             field_dict["engine"] = engine
         if id is not UNSET:
             field_dict["id"] = id
+        if name is not UNSET:
+            field_dict["name"] = name
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if type_ is not UNSET:
@@ -123,6 +135,8 @@ class AppAppPolicyConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        description = d.pop("description", UNSET)
+
         _engine = d.pop("engine", UNSET)
         engine: ConfigAppPolicyEngine | Unset
         if isinstance(_engine, Unset):
@@ -131,6 +145,8 @@ class AppAppPolicyConfig:
             engine = ConfigAppPolicyEngine(_engine)
 
         id = d.pop("id", UNSET)
+
+        name = d.pop("name", UNSET)
 
         org_id = d.pop("org_id", UNSET)
 
@@ -151,8 +167,10 @@ class AppAppPolicyConfig:
             contents=contents,
             created_at=created_at,
             created_by_id=created_by_id,
+            description=description,
             engine=engine,
             id=id,
+            name=name,
             org_id=org_id,
             type_=type_,
             updated_at=updated_at,

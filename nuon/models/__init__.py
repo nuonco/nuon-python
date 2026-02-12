@@ -123,8 +123,13 @@ from .app_otel_log_record_log_attributes import AppOtelLogRecordLogAttributes
 from .app_otel_log_record_resource_attributes import AppOtelLogRecordResourceAttributes
 from .app_otel_log_record_scope_attributes import AppOtelLogRecordScopeAttributes
 from .app_policy import AppPolicy
+from .app_policy_input_ref import AppPolicyInputRef
 from .app_policy_name import AppPolicyName
 from .app_policy_permissions import AppPolicyPermissions
+from .app_policy_report import AppPolicyReport
+from .app_policy_report_owner_type import AppPolicyReportOwnerType
+from .app_policy_result import AppPolicyResult
+from .app_policy_violation import AppPolicyViolation
 from .app_provider_type import AppProviderType
 from .app_public_git_vcs_config import AppPublicGitVCSConfig
 from .app_role import AppRole
@@ -574,8 +579,13 @@ __all__ = (
     "AppOtelLogRecordResourceAttributes",
     "AppOtelLogRecordScopeAttributes",
     "AppPolicy",
+    "AppPolicyInputRef",
     "AppPolicyName",
     "AppPolicyPermissions",
+    "AppPolicyReport",
+    "AppPolicyReportOwnerType",
+    "AppPolicyResult",
+    "AppPolicyViolation",
     "AppProviderType",
     "AppPublicGitVCSConfig",
     "AppRole",
