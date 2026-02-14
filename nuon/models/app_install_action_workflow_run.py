@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from ..models.app_log_stream import AppLogStream
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
+    from ..models.generics_null_string import GenericsNullString
 
 
 T = TypeVar("T", bound="AppInstallActionWorkflowRun")
@@ -29,7 +30,7 @@ T = TypeVar("T", bound="AppInstallActionWorkflowRun")
 class AppInstallActionWorkflowRun:
     """
     Attributes:
-        action_workflow_config_id (str | Unset):
+        action_workflow_config_id (GenericsNullString | Unset):
         config (AppActionWorkflowConfig | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
@@ -37,7 +38,7 @@ class AppInstallActionWorkflowRun:
         execution_time (int | Unset): after query
         id (str | Unset):
         install_action_workflow (AppInstallActionWorkflow | Unset):
-        install_action_workflow_id (str | Unset):
+        install_action_workflow_id (GenericsNullString | Unset):
         install_id (str | Unset):
         install_workflow_id (str | Unset):
         log_stream (AppLogStream | Unset):
@@ -56,7 +57,7 @@ class AppInstallActionWorkflowRun:
         workflow_id (str | Unset):
     """
 
-    action_workflow_config_id: str | Unset = UNSET
+    action_workflow_config_id: GenericsNullString | Unset = UNSET
     config: AppActionWorkflowConfig | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
@@ -64,7 +65,7 @@ class AppInstallActionWorkflowRun:
     execution_time: int | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflow: AppInstallActionWorkflow | Unset = UNSET
-    install_action_workflow_id: str | Unset = UNSET
+    install_action_workflow_id: GenericsNullString | Unset = UNSET
     install_id: str | Unset = UNSET
     install_workflow_id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
@@ -84,7 +85,9 @@ class AppInstallActionWorkflowRun:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action_workflow_config_id = self.action_workflow_config_id
+        action_workflow_config_id: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.action_workflow_config_id, Unset):
+            action_workflow_config_id = self.action_workflow_config_id.to_dict()
 
         config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.config, Unset):
@@ -106,7 +109,9 @@ class AppInstallActionWorkflowRun:
         if not isinstance(self.install_action_workflow, Unset):
             install_action_workflow = self.install_action_workflow.to_dict()
 
-        install_action_workflow_id = self.install_action_workflow_id
+        install_action_workflow_id: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.install_action_workflow_id, Unset):
+            install_action_workflow_id = self.install_action_workflow_id.to_dict()
 
         install_id = self.install_id
 
@@ -227,9 +232,15 @@ class AppInstallActionWorkflowRun:
         from ..models.app_log_stream import AppLogStream
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
+        from ..models.generics_null_string import GenericsNullString
 
         d = dict(src_dict)
-        action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
+        _action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
+        action_workflow_config_id: GenericsNullString | Unset
+        if isinstance(_action_workflow_config_id, Unset):
+            action_workflow_config_id = UNSET
+        else:
+            action_workflow_config_id = GenericsNullString.from_dict(_action_workflow_config_id)
 
         _config = d.pop("config", UNSET)
         config: AppActionWorkflowConfig | Unset
@@ -260,7 +271,12 @@ class AppInstallActionWorkflowRun:
         else:
             install_action_workflow = AppInstallActionWorkflow.from_dict(_install_action_workflow)
 
-        install_action_workflow_id = d.pop("install_action_workflow_id", UNSET)
+        _install_action_workflow_id = d.pop("install_action_workflow_id", UNSET)
+        install_action_workflow_id: GenericsNullString | Unset
+        if isinstance(_install_action_workflow_id, Unset):
+            install_action_workflow_id = UNSET
+        else:
+            install_action_workflow_id = GenericsNullString.from_dict(_install_action_workflow_id)
 
         install_id = d.pop("install_id", UNSET)
 

@@ -8,6 +8,8 @@ from .app_action_workflow_step_config import AppActionWorkflowStepConfig
 from .app_action_workflow_step_config_env_vars import AppActionWorkflowStepConfigEnvVars
 from .app_action_workflow_trigger_config import AppActionWorkflowTriggerConfig
 from .app_action_workflow_trigger_type import AppActionWorkflowTriggerType
+from .app_ad_hoc_step_config import AppAdHocStepConfig
+from .app_ad_hoc_step_config_env_vars import AppAdHocStepConfigEnvVars
 from .app_app import AppApp
 from .app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
 from .app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
@@ -71,6 +73,7 @@ from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
 from .app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
 from .app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
+from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunStatus
 from .app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
 from .app_install_action_workflow_run_step_status import AppInstallActionWorkflowRunStepStatus
 from .app_install_approval_option import AppInstallApprovalOption
@@ -197,6 +200,8 @@ from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
+from .config_custom_nested_stack import ConfigCustomNestedStack
+from .config_custom_nested_stack_parameters import ConfigCustomNestedStackParameters
 from .config_helm_repo_config import ConfigHelmRepoConfig
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
@@ -204,6 +209,7 @@ from .configs_oci_registry_type import ConfigsOCIRegistryType
 from .credentials_assume_role_config import CredentialsAssumeRoleConfig
 from .credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
 from .credentials_static_credentials import CredentialsStaticCredentials
+from .generics_null_string import GenericsNullString
 from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
@@ -306,6 +312,9 @@ from .service_create_action_workflow_config_step_request_env_vars import (
     ServiceCreateActionWorkflowConfigStepRequestEnvVars,
 )
 from .service_create_action_workflow_config_trigger_request import ServiceCreateActionWorkflowConfigTriggerRequest
+from .service_create_ad_hoc_action_request import ServiceCreateAdHocActionRequest
+from .service_create_ad_hoc_action_request_env_vars import ServiceCreateAdHocActionRequestEnvVars
+from .service_create_ad_hoc_action_response import ServiceCreateAdHocActionResponse
 from .service_create_app_action_request import ServiceCreateAppActionRequest
 from .service_create_app_action_workflow_request import ServiceCreateAppActionWorkflowRequest
 from .service_create_app_branch_request import ServiceCreateAppBranchRequest
@@ -464,6 +473,8 @@ __all__ = (
     "AppActionWorkflowStepConfigEnvVars",
     "AppActionWorkflowTriggerConfig",
     "AppActionWorkflowTriggerType",
+    "AppAdHocStepConfig",
+    "AppAdHocStepConfigEnvVars",
     "AppApp",
     "AppAppAWSIAMPolicyConfig",
     "AppAppAWSIAMRoleConfig",
@@ -527,6 +538,7 @@ __all__ = (
     "AppInstallActionWorkflowRun",
     "AppInstallActionWorkflowRunOutputs",
     "AppInstallActionWorkflowRunRunEnvVars",
+    "AppInstallActionWorkflowRunStatus",
     "AppInstallActionWorkflowRunStep",
     "AppInstallActionWorkflowRunStepStatus",
     "AppInstallApprovalOption",
@@ -651,6 +663,8 @@ __all__ = (
     "AppWorkflowType",
     "ConfigAppPolicyEngine",
     "ConfigAppPolicyType",
+    "ConfigCustomNestedStack",
+    "ConfigCustomNestedStackParameters",
     "ConfigHelmRepoConfig",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
@@ -658,6 +672,7 @@ __all__ = (
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",
+    "GenericsNullString",
     "GenericsNullTime",
     "GetAppConfigTemplateType",
     "GetCurrentOrgFeaturesResponse200",
@@ -754,6 +769,9 @@ __all__ = (
     "ServiceCreateActionWorkflowConfigStepRequest",
     "ServiceCreateActionWorkflowConfigStepRequestEnvVars",
     "ServiceCreateActionWorkflowConfigTriggerRequest",
+    "ServiceCreateAdHocActionRequest",
+    "ServiceCreateAdHocActionRequestEnvVars",
+    "ServiceCreateAdHocActionResponse",
     "ServiceCreateAppActionRequest",
     "ServiceCreateAppActionWorkflowRequest",
     "ServiceCreateAppBranchRequest",

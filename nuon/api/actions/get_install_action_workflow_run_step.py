@@ -13,15 +13,15 @@ from ...types import Response
 
 def _get_kwargs(
     install_id: str,
-    workflow_run_id: str,
+    run_id: str,
     step_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/installs/{install_id}/action-workflows/runs/{workflow_run_id}/steps/{step_id}".format(
+        "url": "/v1/installs/{install_id}/action-workflows/runs/{run_id}/steps/{step_id}".format(
             install_id=quote(str(install_id), safe=""),
-            workflow_run_id=quote(str(workflow_run_id), safe=""),
+            run_id=quote(str(run_id), safe=""),
             step_id=quote(str(step_id), safe=""),
         ),
     }
@@ -81,7 +81,7 @@ def _build_response(
 
 def sync_detailed(
     install_id: str,
-    workflow_run_id: str,
+    run_id: str,
     step_id: str,
     *,
     client: AuthenticatedClient,
@@ -92,7 +92,7 @@ def sync_detailed(
 
     Args:
         install_id (str):
-        workflow_run_id (str):
+        run_id (str):
         step_id (str):
 
     Raises:
@@ -105,7 +105,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        workflow_run_id=workflow_run_id,
+        run_id=run_id,
         step_id=step_id,
     )
 
@@ -118,7 +118,7 @@ def sync_detailed(
 
 def sync(
     install_id: str,
-    workflow_run_id: str,
+    run_id: str,
     step_id: str,
     *,
     client: AuthenticatedClient,
@@ -129,7 +129,7 @@ def sync(
 
     Args:
         install_id (str):
-        workflow_run_id (str):
+        run_id (str):
         step_id (str):
 
     Raises:
@@ -142,7 +142,7 @@ def sync(
 
     return sync_detailed(
         install_id=install_id,
-        workflow_run_id=workflow_run_id,
+        run_id=run_id,
         step_id=step_id,
         client=client,
     ).parsed
@@ -150,7 +150,7 @@ def sync(
 
 async def asyncio_detailed(
     install_id: str,
-    workflow_run_id: str,
+    run_id: str,
     step_id: str,
     *,
     client: AuthenticatedClient,
@@ -161,7 +161,7 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
-        workflow_run_id (str):
+        run_id (str):
         step_id (str):
 
     Raises:
@@ -174,7 +174,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        workflow_run_id=workflow_run_id,
+        run_id=run_id,
         step_id=step_id,
     )
 
@@ -185,7 +185,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     install_id: str,
-    workflow_run_id: str,
+    run_id: str,
     step_id: str,
     *,
     client: AuthenticatedClient,
@@ -196,7 +196,7 @@ async def asyncio(
 
     Args:
         install_id (str):
-        workflow_run_id (str):
+        run_id (str):
         step_id (str):
 
     Raises:
@@ -210,7 +210,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             install_id=install_id,
-            workflow_run_id=workflow_run_id,
+            run_id=run_id,
             step_id=step_id,
             client=client,
         )

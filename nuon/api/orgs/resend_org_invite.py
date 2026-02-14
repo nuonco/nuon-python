@@ -6,35 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_runner_job_execution import AppRunnerJobExecution
+from ...models.app_org_invite import AppOrgInvite
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    runner_job_id: str,
-    *,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
+    invite_id: str,
 ) -> dict[str, Any]:
 
-    params: dict[str, Any] = {}
-
-    params["offset"] = offset
-
-    params["limit"] = limit
-
-    params["page"] = page
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/v1/runner-jobs/{runner_job_id}/executions".format(
-            runner_job_id=quote(str(runner_job_id), safe=""),
+        "method": "post",
+        "url": "/v1/orgs/current/invites/{invite_id}/resend".format(
+            invite_id=quote(str(invite_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -42,14 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppRunnerJobExecution] | None:
+) -> AppOrgInvite | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = AppRunnerJobExecution.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = AppOrgInvite.from_dict(response.json())
 
         return response_200
 
@@ -86,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppRunnerJobExecution]]:
+) -> Response[AppOrgInvite | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -96,36 +76,29 @@ def _build_response(
 
 
 def sync_detailed(
-    runner_job_id: str,
+    invite_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppRunnerJobExecution]]:
-    """get runner job executions
+) -> Response[AppOrgInvite | StderrErrResponse]:
+    r"""Resend an org invite
 
-     Return executions for a runner job.
+     Resend the invite email for an existing pending org invite.
+
+    The invite must be in \"pending\" status. Accepted invites cannot be resent.
 
     Args:
-        runner_job_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        invite_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppRunnerJobExecution]]
+        Response[AppOrgInvite | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        runner_job_id=runner_job_id,
-        offset=offset,
-        limit=limit,
-        page=page,
+        invite_id=invite_id,
     )
 
     response = client.get_httpx_client().request(
@@ -136,71 +109,57 @@ def sync_detailed(
 
 
 def sync(
-    runner_job_id: str,
+    invite_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppRunnerJobExecution] | None:
-    """get runner job executions
+) -> AppOrgInvite | StderrErrResponse | None:
+    r"""Resend an org invite
 
-     Return executions for a runner job.
+     Resend the invite email for an existing pending org invite.
+
+    The invite must be in \"pending\" status. Accepted invites cannot be resent.
 
     Args:
-        runner_job_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        invite_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppRunnerJobExecution]
+        AppOrgInvite | StderrErrResponse
     """
 
     return sync_detailed(
-        runner_job_id=runner_job_id,
+        invite_id=invite_id,
         client=client,
-        offset=offset,
-        limit=limit,
-        page=page,
     ).parsed
 
 
 async def asyncio_detailed(
-    runner_job_id: str,
+    invite_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppRunnerJobExecution]]:
-    """get runner job executions
+) -> Response[AppOrgInvite | StderrErrResponse]:
+    r"""Resend an org invite
 
-     Return executions for a runner job.
+     Resend the invite email for an existing pending org invite.
+
+    The invite must be in \"pending\" status. Accepted invites cannot be resent.
 
     Args:
-        runner_job_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        invite_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppRunnerJobExecution]]
+        Response[AppOrgInvite | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        runner_job_id=runner_job_id,
-        offset=offset,
-        limit=limit,
-        page=page,
+        invite_id=invite_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -209,37 +168,30 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    runner_job_id: str,
+    invite_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppRunnerJobExecution] | None:
-    """get runner job executions
+) -> AppOrgInvite | StderrErrResponse | None:
+    r"""Resend an org invite
 
-     Return executions for a runner job.
+     Resend the invite email for an existing pending org invite.
+
+    The invite must be in \"pending\" status. Accepted invites cannot be resent.
 
     Args:
-        runner_job_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        invite_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppRunnerJobExecution]
+        AppOrgInvite | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            runner_job_id=runner_job_id,
+            invite_id=invite_id,
             client=client,
-            offset=offset,
-            limit=limit,
-            page=page,
         )
     ).parsed

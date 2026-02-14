@@ -13,7 +13,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
+    limit: int | Unset = 60,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
 
@@ -95,7 +95,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
+    limit: int | Unset = 60,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppOrgInvite]]:
     """Return org invites
@@ -104,7 +104,7 @@ def sync_detailed(
 
     Args:
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
+        limit (int | Unset):  Default: 60.
         page (int | Unset):  Default: 0.
 
     Raises:
@@ -132,7 +132,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
+    limit: int | Unset = 60,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppOrgInvite] | None:
     """Return org invites
@@ -141,7 +141,7 @@ def sync(
 
     Args:
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
+        limit (int | Unset):  Default: 60.
         page (int | Unset):  Default: 0.
 
     Raises:
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
+    limit: int | Unset = 60,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppOrgInvite]]:
     """Return org invites
@@ -173,7 +173,7 @@ async def asyncio_detailed(
 
     Args:
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
+        limit (int | Unset):  Default: 60.
         page (int | Unset):  Default: 0.
 
     Raises:
@@ -199,7 +199,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
+    limit: int | Unset = 60,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppOrgInvite] | None:
     """Return org invites
@@ -208,7 +208,7 @@ async def asyncio(
 
     Args:
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
+        limit (int | Unset):  Default: 60.
         page (int | Unset):  Default: 0.
 
     Raises:
