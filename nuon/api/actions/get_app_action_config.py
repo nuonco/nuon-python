@@ -13,15 +13,13 @@ from ...types import Response
 
 def _get_kwargs(
     app_id: str,
-    action_id: str,
     action_config_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/actions/{action_id}/configs/{action_config_id}".format(
+        "url": "/v1/apps/{app_id}/actions/configs/{action_config_id}".format(
             app_id=quote(str(app_id), safe=""),
-            action_id=quote(str(action_id), safe=""),
             action_config_id=quote(str(action_config_id), safe=""),
         ),
     }
@@ -81,7 +79,6 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    action_id: str,
     action_config_id: str,
     *,
     client: AuthenticatedClient,
@@ -92,7 +89,6 @@ def sync_detailed(
 
     Args:
         app_id (str):
-        action_id (str):
         action_config_id (str):
 
     Raises:
@@ -105,7 +101,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        action_id=action_id,
         action_config_id=action_config_id,
     )
 
@@ -118,7 +113,6 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    action_id: str,
     action_config_id: str,
     *,
     client: AuthenticatedClient,
@@ -129,7 +123,6 @@ def sync(
 
     Args:
         app_id (str):
-        action_id (str):
         action_config_id (str):
 
     Raises:
@@ -142,7 +135,6 @@ def sync(
 
     return sync_detailed(
         app_id=app_id,
-        action_id=action_id,
         action_config_id=action_config_id,
         client=client,
     ).parsed
@@ -150,7 +142,6 @@ def sync(
 
 async def asyncio_detailed(
     app_id: str,
-    action_id: str,
     action_config_id: str,
     *,
     client: AuthenticatedClient,
@@ -161,7 +152,6 @@ async def asyncio_detailed(
 
     Args:
         app_id (str):
-        action_id (str):
         action_config_id (str):
 
     Raises:
@@ -174,7 +164,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        action_id=action_id,
         action_config_id=action_config_id,
     )
 
@@ -185,7 +174,6 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    action_id: str,
     action_config_id: str,
     *,
     client: AuthenticatedClient,
@@ -196,7 +184,6 @@ async def asyncio(
 
     Args:
         app_id (str):
-        action_id (str):
         action_config_id (str):
 
     Raises:
@@ -210,7 +197,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             app_id=app_id,
-            action_id=action_id,
             action_config_id=action_config_id,
             client=client,
         )

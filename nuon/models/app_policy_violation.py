@@ -19,6 +19,7 @@ class AppPolicyViolation:
         input_index (int | Unset):
         message (str | Unset):
         policy_id (str | Unset):
+        policy_name (str | Unset):
         severity (str | Unset): "deny" or "warn"
     """
 
@@ -26,6 +27,7 @@ class AppPolicyViolation:
     input_index: int | Unset = UNSET
     message: str | Unset = UNSET
     policy_id: str | Unset = UNSET
+    policy_name: str | Unset = UNSET
     severity: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,6 +39,8 @@ class AppPolicyViolation:
         message = self.message
 
         policy_id = self.policy_id
+
+        policy_name = self.policy_name
 
         severity = self.severity
 
@@ -51,6 +55,8 @@ class AppPolicyViolation:
             field_dict["message"] = message
         if policy_id is not UNSET:
             field_dict["policy_id"] = policy_id
+        if policy_name is not UNSET:
+            field_dict["policy_name"] = policy_name
         if severity is not UNSET:
             field_dict["severity"] = severity
 
@@ -67,6 +73,8 @@ class AppPolicyViolation:
 
         policy_id = d.pop("policy_id", UNSET)
 
+        policy_name = d.pop("policy_name", UNSET)
+
         severity = d.pop("severity", UNSET)
 
         app_policy_violation = cls(
@@ -74,6 +82,7 @@ class AppPolicyViolation:
             input_index=input_index,
             message=message,
             policy_id=policy_id,
+            policy_name=policy_name,
             severity=severity,
         )
 

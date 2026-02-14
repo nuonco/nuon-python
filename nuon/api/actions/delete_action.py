@@ -11,12 +11,14 @@ from ...types import Response
 
 
 def _get_kwargs(
+    app_id: str,
     action_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/actions/{action_id}".format(
+        "url": "/v1/apps/{app_id}/actions/{action_id}".format(
+            app_id=quote(str(app_id), safe=""),
             action_id=quote(str(action_id), safe=""),
         ),
     }
@@ -74,6 +76,7 @@ def _build_response(
 
 
 def sync_detailed(
+    app_id: str,
     action_id: str,
     *,
     client: AuthenticatedClient,
@@ -83,6 +86,7 @@ def sync_detailed(
      Delete an action workflow.
 
     Args:
+        app_id (str):
         action_id (str):
 
     Raises:
@@ -94,6 +98,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        app_id=app_id,
         action_id=action_id,
     )
 
@@ -105,6 +110,7 @@ def sync_detailed(
 
 
 def sync(
+    app_id: str,
     action_id: str,
     *,
     client: AuthenticatedClient,
@@ -114,6 +120,7 @@ def sync(
      Delete an action workflow.
 
     Args:
+        app_id (str):
         action_id (str):
 
     Raises:
@@ -125,12 +132,14 @@ def sync(
     """
 
     return sync_detailed(
+        app_id=app_id,
         action_id=action_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
+    app_id: str,
     action_id: str,
     *,
     client: AuthenticatedClient,
@@ -140,6 +149,7 @@ async def asyncio_detailed(
      Delete an action workflow.
 
     Args:
+        app_id (str):
         action_id (str):
 
     Raises:
@@ -151,6 +161,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        app_id=app_id,
         action_id=action_id,
     )
 
@@ -160,6 +171,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    app_id: str,
     action_id: str,
     *,
     client: AuthenticatedClient,
@@ -169,6 +181,7 @@ async def asyncio(
      Delete an action workflow.
 
     Args:
+        app_id (str):
         action_id (str):
 
     Raises:
@@ -181,6 +194,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
+            app_id=app_id,
             action_id=action_id,
             client=client,
         )

@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class AppActionWorkflowTriggerType(str, Enum):
+    ADHOC = "adhoc"
     CRON = "cron"
     MANUAL = "manual"
     POST_DEPLOY_ALL_COMPONENTS = "post-deploy-all-components"

@@ -17,7 +17,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/terraform-workspace/{workspace_id}/state-json/{state_id}/resources".format(
+        "url": "/v1/terraform-workspaces/{workspace_id}/state-json/{state_id}/resources".format(
             workspace_id=quote(str(workspace_id), safe=""),
             state_id=quote(str(state_id), safe=""),
         ),

@@ -31,7 +31,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/terraform-workspace/{workspace_id}/states".format(
+        "url": "/v1/terraform-workspaces/{workspace_id}/states".format(
             workspace_id=quote(str(workspace_id), safe=""),
         ),
         "params": params,

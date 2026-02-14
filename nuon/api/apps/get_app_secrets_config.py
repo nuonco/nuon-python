@@ -13,14 +13,14 @@ from ...types import Response
 
 def _get_kwargs(
     app_id: str,
-    app_secrets_config_id: str,
+    config_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/secrets-configs/{app_secrets_config_id}".format(
+        "url": "/v1/apps/{app_id}/secrets-configs/{config_id}".format(
             app_id=quote(str(app_id), safe=""),
-            app_secrets_config_id=quote(str(app_secrets_config_id), safe=""),
+            config_id=quote(str(config_id), safe=""),
         ),
     }
 
@@ -79,7 +79,7 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    app_secrets_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[AppAppSecretsConfig | StderrErrResponse]:
@@ -89,7 +89,7 @@ def sync_detailed(
 
     Args:
         app_id (str):
-        app_secrets_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -101,7 +101,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_secrets_config_id=app_secrets_config_id,
+        config_id=config_id,
     )
 
     response = client.get_httpx_client().request(
@@ -113,7 +113,7 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    app_secrets_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> AppAppSecretsConfig | StderrErrResponse | None:
@@ -123,7 +123,7 @@ def sync(
 
     Args:
         app_id (str):
-        app_secrets_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -135,14 +135,14 @@ def sync(
 
     return sync_detailed(
         app_id=app_id,
-        app_secrets_config_id=app_secrets_config_id,
+        config_id=config_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
     app_id: str,
-    app_secrets_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[AppAppSecretsConfig | StderrErrResponse]:
@@ -152,7 +152,7 @@ async def asyncio_detailed(
 
     Args:
         app_id (str):
-        app_secrets_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,7 +164,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_secrets_config_id=app_secrets_config_id,
+        config_id=config_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -174,7 +174,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    app_secrets_config_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
 ) -> AppAppSecretsConfig | StderrErrResponse | None:
@@ -184,7 +184,7 @@ async def asyncio(
 
     Args:
         app_id (str):
-        app_secrets_config_id (str):
+        config_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -197,7 +197,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             app_id=app_id,
-            app_secrets_config_id=app_secrets_config_id,
+            config_id=config_id,
             client=client,
         )
     ).parsed

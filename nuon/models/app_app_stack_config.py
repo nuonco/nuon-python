@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.app_stack_type import AppStackType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+
 
 T = TypeVar("T", bound="AppAppStackConfig")
 
@@ -20,6 +24,7 @@ class AppAppStackConfig:
         app_id (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
         description (str | Unset):
         id (str | Unset):
         name (str | Unset):
@@ -34,6 +39,7 @@ class AppAppStackConfig:
     app_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
     description: str | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -52,6 +58,13 @@ class AppAppStackConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        custom_nested_stacks: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.custom_nested_stacks, Unset):
+            custom_nested_stacks = []
+            for custom_nested_stacks_item_data in self.custom_nested_stacks:
+                custom_nested_stacks_item = custom_nested_stacks_item_data.to_dict()
+                custom_nested_stacks.append(custom_nested_stacks_item)
 
         description = self.description
 
@@ -82,6 +95,8 @@ class AppAppStackConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if custom_nested_stacks is not UNSET:
+            field_dict["custom_nested_stacks"] = custom_nested_stacks
         if description is not UNSET:
             field_dict["description"] = description
         if id is not UNSET:
@@ -103,6 +118,8 @@ class AppAppStackConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
 
@@ -111,6 +128,15 @@ class AppAppStackConfig:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        _custom_nested_stacks = d.pop("custom_nested_stacks", UNSET)
+        custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
+        if _custom_nested_stacks is not UNSET:
+            custom_nested_stacks = []
+            for custom_nested_stacks_item_data in _custom_nested_stacks:
+                custom_nested_stacks_item = ConfigCustomNestedStack.from_dict(custom_nested_stacks_item_data)
+
+                custom_nested_stacks.append(custom_nested_stacks_item)
 
         description = d.pop("description", UNSET)
 
@@ -138,6 +164,7 @@ class AppAppStackConfig:
             app_id=app_id,
             created_at=created_at,
             created_by_id=created_by_id,
+            custom_nested_stacks=custom_nested_stacks,
             description=description,
             id=id,
             name=name,

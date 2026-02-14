@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -35,6 +35,7 @@ class AppOrg:
         sandbox_mode (bool | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        tags (list[str] | Unset):
         updated_at (str | Unset):
         vcs_connections (list[AppVCSConnection] | Unset):
     """
@@ -51,6 +52,7 @@ class AppOrg:
     sandbox_mode: bool | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    tags: list[str] | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connections: list[AppVCSConnection] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -88,6 +90,10 @@ class AppOrg:
 
         status_description = self.status_description
 
+        tags: list[str] | Unset = UNSET
+        if not isinstance(self.tags, Unset):
+            tags = self.tags
+
         updated_at = self.updated_at
 
         vcs_connections: list[dict[str, Any]] | Unset = UNSET
@@ -124,6 +130,8 @@ class AppOrg:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if tags is not UNSET:
+            field_dict["tags"] = tags
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connections is not UNSET:
@@ -184,6 +192,8 @@ class AppOrg:
 
         status_description = d.pop("status_description", UNSET)
 
+        tags = cast(list[str], d.pop("tags", UNSET))
+
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connections = d.pop("vcs_connections", UNSET)
@@ -208,6 +218,7 @@ class AppOrg:
             sandbox_mode=sandbox_mode,
             status=status,
             status_description=status_description,
+            tags=tags,
             updated_at=updated_at,
             vcs_connections=vcs_connections,
         )
