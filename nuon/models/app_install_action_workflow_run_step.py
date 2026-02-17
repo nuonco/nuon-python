@@ -11,7 +11,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_ad_hoc_step_config import AppAdHocStepConfig
-    from ..models.generics_null_string import GenericsNullString
 
 
 T = TypeVar("T", bound="AppInstallActionWorkflowRunStep")
@@ -28,7 +27,7 @@ class AppInstallActionWorkflowRunStep:
         id (str | Unset):
         install_action_workflow_run_id (str | Unset):
         status (AppInstallActionWorkflowRunStepStatus | Unset):
-        step_id (GenericsNullString | Unset):
+        step_id (str | Unset):
         updated_at (str | Unset):
     """
 
@@ -39,7 +38,7 @@ class AppInstallActionWorkflowRunStep:
     id: str | Unset = UNSET
     install_action_workflow_run_id: str | Unset = UNSET
     status: AppInstallActionWorkflowRunStepStatus | Unset = UNSET
-    step_id: GenericsNullString | Unset = UNSET
+    step_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -62,9 +61,7 @@ class AppInstallActionWorkflowRunStep:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
-        step_id: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.step_id, Unset):
-            step_id = self.step_id.to_dict()
+        step_id = self.step_id
 
         updated_at = self.updated_at
 
@@ -95,7 +92,6 @@ class AppInstallActionWorkflowRunStep:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_ad_hoc_step_config import AppAdHocStepConfig
-        from ..models.generics_null_string import GenericsNullString
 
         d = dict(src_dict)
         _adhoc_config = d.pop("adhoc_config", UNSET)
@@ -122,12 +118,7 @@ class AppInstallActionWorkflowRunStep:
         else:
             status = AppInstallActionWorkflowRunStepStatus(_status)
 
-        _step_id = d.pop("step_id", UNSET)
-        step_id: GenericsNullString | Unset
-        if isinstance(_step_id, Unset):
-            step_id = UNSET
-        else:
-            step_id = GenericsNullString.from_dict(_step_id)
+        step_id = d.pop("step_id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
