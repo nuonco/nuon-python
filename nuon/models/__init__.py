@@ -209,7 +209,6 @@ from .configs_oci_registry_type import ConfigsOCIRegistryType
 from .credentials_assume_role_config import CredentialsAssumeRoleConfig
 from .credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
 from .credentials_static_credentials import CredentialsStaticCredentials
-from .generics_null_string import GenericsNullString
 from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
@@ -672,7 +671,6 @@ __all__ = (
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",
-    "GenericsNullString",
     "GenericsNullTime",
     "GetAppConfigTemplateType",
     "GetCurrentOrgFeaturesResponse200",
