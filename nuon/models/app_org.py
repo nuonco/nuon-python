@@ -23,10 +23,12 @@ T = TypeVar("T", bound="AppOrg")
 class AppOrg:
     """
     Attributes:
+        app_count (int | Unset): Transient fields for counts (not persisted to database)
         created_at (str | Unset):
         created_by_id (str | Unset):
         features (TypesStringBoolMap | Unset):
         id (str | Unset):
+        install_count (int | Unset):
         links (AppOrgLinks | Unset):
         logo_url (str | Unset):
         name (str | Unset):
@@ -40,10 +42,12 @@ class AppOrg:
         vcs_connections (list[AppVCSConnection] | Unset):
     """
 
+    app_count: int | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     features: TypesStringBoolMap | Unset = UNSET
     id: str | Unset = UNSET
+    install_count: int | Unset = UNSET
     links: AppOrgLinks | Unset = UNSET
     logo_url: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -58,6 +62,8 @@ class AppOrg:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_count = self.app_count
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -67,6 +73,8 @@ class AppOrg:
             features = self.features.to_dict()
 
         id = self.id
+
+        install_count = self.install_count
 
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
@@ -106,6 +114,8 @@ class AppOrg:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_count is not UNSET:
+            field_dict["app_count"] = app_count
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -114,6 +124,8 @@ class AppOrg:
             field_dict["features"] = features
         if id is not UNSET:
             field_dict["id"] = id
+        if install_count is not UNSET:
+            field_dict["install_count"] = install_count
         if links is not UNSET:
             field_dict["links"] = links
         if logo_url is not UNSET:
@@ -148,6 +160,8 @@ class AppOrg:
         from ..models.types_string_bool_map import TypesStringBoolMap
 
         d = dict(src_dict)
+        app_count = d.pop("app_count", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -160,6 +174,8 @@ class AppOrg:
             features = TypesStringBoolMap.from_dict(_features)
 
         id = d.pop("id", UNSET)
+
+        install_count = d.pop("install_count", UNSET)
 
         _links = d.pop("links", UNSET)
         links: AppOrgLinks | Unset
@@ -206,10 +222,12 @@ class AppOrg:
                 vcs_connections.append(vcs_connections_item)
 
         app_org = cls(
+            app_count=app_count,
             created_at=created_at,
             created_by_id=created_by_id,
             features=features,
             id=id,
+            install_count=install_count,
             links=links,
             logo_url=logo_url,
             name=name,
