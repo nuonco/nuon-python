@@ -26,6 +26,7 @@ class AppApp:
     Attributes:
         app_configs (list[AppAppConfig] | Unset):
         cloud_platform (str | Unset):
+        config_count (int | Unset): Transient field for config count (not persisted to database)
         config_directory (str | Unset):
         config_repo (str | Unset):
         created_at (str | Unset):
@@ -48,6 +49,7 @@ class AppApp:
 
     app_configs: list[AppAppConfig] | Unset = UNSET
     cloud_platform: str | Unset = UNSET
+    config_count: int | Unset = UNSET
     config_directory: str | Unset = UNSET
     config_repo: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -77,6 +79,8 @@ class AppApp:
                 app_configs.append(app_configs_item)
 
         cloud_platform = self.cloud_platform
+
+        config_count = self.config_count
 
         config_directory = self.config_directory
 
@@ -131,6 +135,8 @@ class AppApp:
             field_dict["app_configs"] = app_configs
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
+        if config_count is not UNSET:
+            field_dict["config_count"] = config_count
         if config_directory is not UNSET:
             field_dict["config_directory"] = config_directory
         if config_repo is not UNSET:
@@ -190,6 +196,8 @@ class AppApp:
                 app_configs.append(app_configs_item)
 
         cloud_platform = d.pop("cloud_platform", UNSET)
+
+        config_count = d.pop("config_count", UNSET)
 
         config_directory = d.pop("config_directory", UNSET)
 
@@ -255,6 +263,7 @@ class AppApp:
         app_app = cls(
             app_configs=app_configs,
             cloud_platform=cloud_platform,
+            config_count=config_count,
             config_directory=config_directory,
             config_repo=config_repo,
             created_at=created_at,
