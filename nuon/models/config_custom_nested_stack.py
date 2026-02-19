@@ -19,12 +19,16 @@ T = TypeVar("T", bound="ConfigCustomNestedStack")
 class ConfigCustomNestedStack:
     """
     Attributes:
+        contents (str | Unset):
+        contents_hash (str | Unset):
         index (int | Unset):
         name (str | Unset):
         parameters (ConfigCustomNestedStackParameters | Unset):
         template_url (str | Unset):
     """
 
+    contents: str | Unset = UNSET
+    contents_hash: str | Unset = UNSET
     index: int | Unset = UNSET
     name: str | Unset = UNSET
     parameters: ConfigCustomNestedStackParameters | Unset = UNSET
@@ -32,6 +36,10 @@ class ConfigCustomNestedStack:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        contents = self.contents
+
+        contents_hash = self.contents_hash
+
         index = self.index
 
         name = self.name
@@ -45,6 +53,10 @@ class ConfigCustomNestedStack:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if contents is not UNSET:
+            field_dict["contents"] = contents
+        if contents_hash is not UNSET:
+            field_dict["contents_hash"] = contents_hash
         if index is not UNSET:
             field_dict["index"] = index
         if name is not UNSET:
@@ -61,6 +73,10 @@ class ConfigCustomNestedStack:
         from ..models.config_custom_nested_stack_parameters import ConfigCustomNestedStackParameters
 
         d = dict(src_dict)
+        contents = d.pop("contents", UNSET)
+
+        contents_hash = d.pop("contents_hash", UNSET)
+
         index = d.pop("index", UNSET)
 
         name = d.pop("name", UNSET)
@@ -75,6 +91,8 @@ class ConfigCustomNestedStack:
         template_url = d.pop("template_url", UNSET)
 
         config_custom_nested_stack = cls(
+            contents=contents,
+            contents_hash=contents_hash,
             index=index,
             name=name,
             parameters=parameters,
