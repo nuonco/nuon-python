@@ -21,16 +21,20 @@ T = TypeVar("T", bound="ServiceCreateInstallActionWorkflowRunRequest")
 class ServiceCreateInstallActionWorkflowRunRequest:
     """
     Attributes:
-        action_workflow_config_id (str | Unset):
+        action_workflow_config_id (str):
+        role (str | Unset):
         run_env_vars (ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset):
     """
 
-    action_workflow_config_id: str | Unset = UNSET
+    action_workflow_config_id: str
+    role: str | Unset = UNSET
     run_env_vars: ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         action_workflow_config_id = self.action_workflow_config_id
+
+        role = self.role
 
         run_env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.run_env_vars, Unset):
@@ -38,9 +42,13 @@ class ServiceCreateInstallActionWorkflowRunRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if action_workflow_config_id is not UNSET:
-            field_dict["action_workflow_config_id"] = action_workflow_config_id
+        field_dict.update(
+            {
+                "action_workflow_config_id": action_workflow_config_id,
+            }
+        )
+        if role is not UNSET:
+            field_dict["role"] = role
         if run_env_vars is not UNSET:
             field_dict["run_env_vars"] = run_env_vars
 
@@ -53,7 +61,9 @@ class ServiceCreateInstallActionWorkflowRunRequest:
         )
 
         d = dict(src_dict)
-        action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
+        action_workflow_config_id = d.pop("action_workflow_config_id")
+
+        role = d.pop("role", UNSET)
 
         _run_env_vars = d.pop("run_env_vars", UNSET)
         run_env_vars: ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset
@@ -64,6 +74,7 @@ class ServiceCreateInstallActionWorkflowRunRequest:
 
         service_create_install_action_workflow_run_request = cls(
             action_workflow_config_id=action_workflow_config_id,
+            role=role,
             run_env_vars=run_env_vars,
         )
 

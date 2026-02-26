@@ -25,6 +25,7 @@ class AppAppPermissionsConfig:
         break_glass_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        custom_aws_iam_roles (list[AppAppAWSIAMRoleConfig] | Unset):
         deprovision_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
         id (str | Unset):
         maintenance_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
@@ -39,6 +40,7 @@ class AppAppPermissionsConfig:
     break_glass_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    custom_aws_iam_roles: list[AppAppAWSIAMRoleConfig] | Unset = UNSET
     deprovision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
     id: str | Unset = UNSET
     maintenance_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
@@ -66,6 +68,13 @@ class AppAppPermissionsConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        custom_aws_iam_roles: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.custom_aws_iam_roles, Unset):
+            custom_aws_iam_roles = []
+            for custom_aws_iam_roles_item_data in self.custom_aws_iam_roles:
+                custom_aws_iam_roles_item = custom_aws_iam_roles_item_data.to_dict()
+                custom_aws_iam_roles.append(custom_aws_iam_roles_item)
 
         deprovision_aws_iam_role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.deprovision_aws_iam_role, Unset):
@@ -100,6 +109,8 @@ class AppAppPermissionsConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if custom_aws_iam_roles is not UNSET:
+            field_dict["custom_aws_iam_roles"] = custom_aws_iam_roles
         if deprovision_aws_iam_role is not UNSET:
             field_dict["deprovision_aws_iam_role"] = deprovision_aws_iam_role
         if id is not UNSET:
@@ -144,6 +155,15 @@ class AppAppPermissionsConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        _custom_aws_iam_roles = d.pop("custom_aws_iam_roles", UNSET)
+        custom_aws_iam_roles: list[AppAppAWSIAMRoleConfig] | Unset = UNSET
+        if _custom_aws_iam_roles is not UNSET:
+            custom_aws_iam_roles = []
+            for custom_aws_iam_roles_item_data in _custom_aws_iam_roles:
+                custom_aws_iam_roles_item = AppAppAWSIAMRoleConfig.from_dict(custom_aws_iam_roles_item_data)
+
+                custom_aws_iam_roles.append(custom_aws_iam_roles_item)
+
         _deprovision_aws_iam_role = d.pop("deprovision_aws_iam_role", UNSET)
         deprovision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset
         if isinstance(_deprovision_aws_iam_role, Unset):
@@ -178,6 +198,7 @@ class AppAppPermissionsConfig:
             break_glass_aws_iam_role=break_glass_aws_iam_role,
             created_at=created_at,
             created_by_id=created_by_id,
+            custom_aws_iam_roles=custom_aws_iam_roles,
             deprovision_aws_iam_role=deprovision_aws_iam_role,
             id=id,
             maintenance_aws_iam_role=maintenance_aws_iam_role,

@@ -6,52 +6,61 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+from ..models.app_operation_type import AppOperationType
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ServiceOperationRoleRuleRequest")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ServiceOperationRoleRuleRequest:
     """
     Attributes:
-        plan_only (bool | Unset):
-        role (str | Unset):
+        operation (AppOperationType):
+        principal (str):
+        role (str):
     """
 
-    plan_only: bool | Unset = UNSET
-    role: str | Unset = UNSET
+    operation: AppOperationType
+    principal: str
+    role: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        operation = self.operation.value
+
+        principal = self.principal
 
         role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
-        if role is not UNSET:
-            field_dict["role"] = role
+        field_dict.update(
+            {
+                "operation": operation,
+                "principal": principal,
+                "role": role,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        operation = AppOperationType(d.pop("operation"))
 
-        role = d.pop("role", UNSET)
+        principal = d.pop("principal")
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
+        role = d.pop("role")
+
+        service_operation_role_rule_request = cls(
+            operation=operation,
+            principal=principal,
             role=role,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        service_operation_role_rule_request.additional_properties = d
+        return service_operation_role_rule_request
 
     @property
     def additional_keys(self) -> list[str]:

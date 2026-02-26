@@ -13,6 +13,9 @@ if TYPE_CHECKING:
         ServiceConnectedGithubVCSSandboxConfigRequest,
     )
     from ..models.service_create_app_sandbox_config_request_env_vars import ServiceCreateAppSandboxConfigRequestEnvVars
+    from ..models.service_create_app_sandbox_config_request_operation_roles import (
+        ServiceCreateAppSandboxConfigRequestOperationRoles,
+    )
     from ..models.service_create_app_sandbox_config_request_variables import (
         ServiceCreateAppSandboxConfigRequestVariables,
     )
@@ -32,6 +35,7 @@ class ServiceCreateAppSandboxConfigRequest:
         app_config_id (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSSandboxConfigRequest | Unset):
         drift_schedule (str | Unset):
+        operation_roles (ServiceCreateAppSandboxConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSSandboxConfigRequest | Unset):
         references (list[str] | Unset):
         variables_files (list[str] | Unset):
@@ -43,6 +47,7 @@ class ServiceCreateAppSandboxConfigRequest:
     app_config_id: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSSandboxConfigRequest | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSSandboxConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
@@ -62,6 +67,10 @@ class ServiceCreateAppSandboxConfigRequest:
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
         drift_schedule = self.drift_schedule
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
@@ -90,6 +99,8 @@ class ServiceCreateAppSandboxConfigRequest:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
@@ -106,6 +117,9 @@ class ServiceCreateAppSandboxConfigRequest:
         )
         from ..models.service_create_app_sandbox_config_request_env_vars import (
             ServiceCreateAppSandboxConfigRequestEnvVars,
+        )
+        from ..models.service_create_app_sandbox_config_request_operation_roles import (
+            ServiceCreateAppSandboxConfigRequestOperationRoles,
         )
         from ..models.service_create_app_sandbox_config_request_variables import (
             ServiceCreateAppSandboxConfigRequestVariables,
@@ -132,6 +146,13 @@ class ServiceCreateAppSandboxConfigRequest:
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = ServiceCreateAppSandboxConfigRequestOperationRoles.from_dict(_operation_roles)
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: ServicePublicGitVCSSandboxConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -150,6 +171,7 @@ class ServiceCreateAppSandboxConfigRequest:
             app_config_id=app_config_id,
             connected_github_vcs_config=connected_github_vcs_config,
             drift_schedule=drift_schedule,
+            operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
             variables_files=variables_files,

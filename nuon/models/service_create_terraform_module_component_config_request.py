@@ -13,6 +13,9 @@ if TYPE_CHECKING:
     from ..models.service_create_terraform_module_component_config_request_env_vars import (
         ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
     )
+    from ..models.service_create_terraform_module_component_config_request_operation_roles import (
+        ServiceCreateTerraformModuleComponentConfigRequestOperationRoles,
+    )
     from ..models.service_create_terraform_module_component_config_request_variables import (
         ServiceCreateTerraformModuleComponentConfigRequestVariables,
     )
@@ -35,6 +38,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
+        operation_roles (ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
         variables_files (list[str] | Unset):
@@ -50,6 +54,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    operation_roles: ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
@@ -78,6 +83,10 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         deploy_timeout = self.deploy_timeout
 
         drift_schedule = self.drift_schedule
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
@@ -115,6 +124,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             field_dict["deploy_timeout"] = deploy_timeout
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
@@ -131,6 +142,9 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
         from ..models.service_create_terraform_module_component_config_request_env_vars import (
             ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
+        )
+        from ..models.service_create_terraform_module_component_config_request_operation_roles import (
+            ServiceCreateTerraformModuleComponentConfigRequestOperationRoles,
         )
         from ..models.service_create_terraform_module_component_config_request_variables import (
             ServiceCreateTerraformModuleComponentConfigRequestVariables,
@@ -161,6 +175,15 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = ServiceCreateTerraformModuleComponentConfigRequestOperationRoles.from_dict(
+                _operation_roles
+            )
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -184,6 +207,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
+            operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
             variables_files=variables_files,

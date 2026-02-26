@@ -3,6 +3,7 @@ from enum import Enum
 
 class AppAWSIAMRoleType(str, Enum):
     BREAKGLASS = "breakglass"
+    CUSTOM = "custom"
     RUNNER_BREAKGLASS = "runner_breakglass"
     RUNNER_DEPROVISION = "runner_deprovision"
     RUNNER_MAINTENANCE = "runner_maintenance"

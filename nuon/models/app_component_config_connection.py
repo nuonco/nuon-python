@@ -10,6 +10,7 @@ from ..models.app_component_type import AppComponentType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
     from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig
     from ..models.app_external_image_component_config import AppExternalImageComponentConfig
     from ..models.app_helm_component_config import AppHelmComponentConfig
@@ -43,6 +44,8 @@ class AppComponentConfigConnection:
         id (str | Unset):
         job (AppJobComponentConfig | Unset):
         kubernetes_manifest (AppKubernetesManifestComponentConfig | Unset):
+        operation_roles (AppComponentConfigConnectionOperationRoles | Unset): Operation roles map: operation type ->
+            role name
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
         terraform_module (AppTerraformModuleComponentConfig | Unset):
@@ -68,6 +71,7 @@ class AppComponentConfigConnection:
     id: str | Unset = UNSET
     job: AppJobComponentConfig | Unset = UNSET
     kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset = UNSET
+    operation_roles: AppComponentConfigConnectionOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
     terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
@@ -122,6 +126,10 @@ class AppComponentConfigConnection:
         kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -183,6 +191,8 @@ class AppComponentConfigConnection:
             field_dict["job"] = job
         if kubernetes_manifest is not UNSET:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if references is not UNSET:
             field_dict["references"] = references
         if refs is not UNSET:
@@ -200,6 +210,7 @@ class AppComponentConfigConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
         from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig
         from ..models.app_external_image_component_config import AppExternalImageComponentConfig
         from ..models.app_helm_component_config import AppHelmComponentConfig
@@ -268,6 +279,13 @@ class AppComponentConfigConnection:
         else:
             kubernetes_manifest = AppKubernetesManifestComponentConfig.from_dict(_kubernetes_manifest)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: AppComponentConfigConnectionOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = AppComponentConfigConnectionOperationRoles.from_dict(_operation_roles)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         _refs = d.pop("refs", UNSET)
@@ -315,6 +333,7 @@ class AppComponentConfigConnection:
             id=id,
             job=job,
             kubernetes_manifest=kubernetes_manifest,
+            operation_roles=operation_roles,
             references=references,
             refs=refs,
             terraform_module=terraform_module,

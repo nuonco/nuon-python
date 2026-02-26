@@ -31,6 +31,7 @@ class AppActionWorkflowConfig:
         id (str | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
+        role (str | Unset):
         steps (list[AppActionWorkflowStepConfig] | Unset):
         timeout (int | Unset):
         triggers (list[AppActionWorkflowTriggerConfig] | Unset): INFO: if adding new associations here, ensure they are
@@ -48,6 +49,7 @@ class AppActionWorkflowConfig:
     id: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
+    role: str | Unset = UNSET
     steps: list[AppActionWorkflowStepConfig] | Unset = UNSET
     timeout: int | Unset = UNSET
     triggers: list[AppActionWorkflowTriggerConfig] | Unset = UNSET
@@ -83,6 +85,8 @@ class AppActionWorkflowConfig:
             for refs_item_data in self.refs:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
+
+        role = self.role
 
         steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
@@ -125,6 +129,8 @@ class AppActionWorkflowConfig:
             field_dict["references"] = references
         if refs is not UNSET:
             field_dict["refs"] = refs
+        if role is not UNSET:
+            field_dict["role"] = role
         if steps is not UNSET:
             field_dict["steps"] = steps
         if timeout is not UNSET:
@@ -170,6 +176,8 @@ class AppActionWorkflowConfig:
 
                 refs.append(refs_item)
 
+        role = d.pop("role", UNSET)
+
         _steps = d.pop("steps", UNSET)
         steps: list[AppActionWorkflowStepConfig] | Unset = UNSET
         if _steps is not UNSET:
@@ -203,6 +211,7 @@ class AppActionWorkflowConfig:
             id=id,
             references=references,
             refs=refs,
+            role=role,
             steps=steps,
             timeout=timeout,
             triggers=triggers,

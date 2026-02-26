@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.plantypes_build_plan import PlantypesBuildPlan
     from ..models.plantypes_deploy_plan import PlantypesDeployPlan
     from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
+    from ..models.plantypes_plan_auth import PlantypesPlanAuth
     from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
     from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan
     from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
@@ -29,6 +30,7 @@ class PlantypesCompositePlan:
         build_plan (PlantypesBuildPlan | Unset):
         deploy_plan (PlantypesDeployPlan | Unset):
         fetch_image_metadata_plan (PlantypesFetchImageMetadataPlan | Unset):
+        plan_auth (PlantypesPlanAuth | Unset):
         sandbox_run_plan (PlantypesSandboxRunPlan | Unset):
         sync_oci_plan (PlantypesSyncOCIPlan | Unset):
         sync_secrets_plan (PlantypesSyncSecretsPlan | Unset):
@@ -38,6 +40,7 @@ class PlantypesCompositePlan:
     build_plan: PlantypesBuildPlan | Unset = UNSET
     deploy_plan: PlantypesDeployPlan | Unset = UNSET
     fetch_image_metadata_plan: PlantypesFetchImageMetadataPlan | Unset = UNSET
+    plan_auth: PlantypesPlanAuth | Unset = UNSET
     sandbox_run_plan: PlantypesSandboxRunPlan | Unset = UNSET
     sync_oci_plan: PlantypesSyncOCIPlan | Unset = UNSET
     sync_secrets_plan: PlantypesSyncSecretsPlan | Unset = UNSET
@@ -59,6 +62,10 @@ class PlantypesCompositePlan:
         fetch_image_metadata_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.fetch_image_metadata_plan, Unset):
             fetch_image_metadata_plan = self.fetch_image_metadata_plan.to_dict()
+
+        plan_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.plan_auth, Unset):
+            plan_auth = self.plan_auth.to_dict()
 
         sandbox_run_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_run_plan, Unset):
@@ -83,6 +90,8 @@ class PlantypesCompositePlan:
             field_dict["deploy_plan"] = deploy_plan
         if fetch_image_metadata_plan is not UNSET:
             field_dict["fetch_image_metadata_plan"] = fetch_image_metadata_plan
+        if plan_auth is not UNSET:
+            field_dict["plan_auth"] = plan_auth
         if sandbox_run_plan is not UNSET:
             field_dict["sandbox_run_plan"] = sandbox_run_plan
         if sync_oci_plan is not UNSET:
@@ -98,6 +107,7 @@ class PlantypesCompositePlan:
         from ..models.plantypes_build_plan import PlantypesBuildPlan
         from ..models.plantypes_deploy_plan import PlantypesDeployPlan
         from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
+        from ..models.plantypes_plan_auth import PlantypesPlanAuth
         from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
         from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan
         from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
@@ -131,6 +141,13 @@ class PlantypesCompositePlan:
         else:
             fetch_image_metadata_plan = PlantypesFetchImageMetadataPlan.from_dict(_fetch_image_metadata_plan)
 
+        _plan_auth = d.pop("plan_auth", UNSET)
+        plan_auth: PlantypesPlanAuth | Unset
+        if isinstance(_plan_auth, Unset):
+            plan_auth = UNSET
+        else:
+            plan_auth = PlantypesPlanAuth.from_dict(_plan_auth)
+
         _sandbox_run_plan = d.pop("sandbox_run_plan", UNSET)
         sandbox_run_plan: PlantypesSandboxRunPlan | Unset
         if isinstance(_sandbox_run_plan, Unset):
@@ -157,6 +174,7 @@ class PlantypesCompositePlan:
             build_plan=build_plan,
             deploy_plan=deploy_plan,
             fetch_image_metadata_plan=fetch_image_metadata_plan,
+            plan_auth=plan_auth,
             sandbox_run_plan=sandbox_run_plan,
             sync_oci_plan=sync_oci_plan,
             sync_secrets_plan=sync_secrets_plan,

@@ -49,6 +49,7 @@ class AppInstallDeploy:
         plan_only (bool | Unset):
         policy_reports (list[AppPolicyReport] | Unset):
         release_id (str | Unset):
+        role (str | Unset): Role to be used when running this component
         runner_jobs (list[AppRunnerJob] | Unset): runner details
         status (str | Unset):
         status_description (str | Unset):
@@ -78,6 +79,7 @@ class AppInstallDeploy:
     plan_only: bool | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
     release_id: str | Unset = UNSET
+    role: str | Unset = UNSET
     runner_jobs: list[AppRunnerJob] | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
@@ -150,6 +152,8 @@ class AppInstallDeploy:
 
         release_id = self.release_id
 
+        role = self.role
+
         runner_jobs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.runner_jobs, Unset):
             runner_jobs = []
@@ -216,6 +220,8 @@ class AppInstallDeploy:
             field_dict["policy_reports"] = policy_reports
         if release_id is not UNSET:
             field_dict["release_id"] = release_id
+        if role is not UNSET:
+            field_dict["role"] = role
         if runner_jobs is not UNSET:
             field_dict["runner_jobs"] = runner_jobs
         if status is not UNSET:
@@ -331,6 +337,8 @@ class AppInstallDeploy:
 
         release_id = d.pop("release_id", UNSET)
 
+        role = d.pop("role", UNSET)
+
         _runner_jobs = d.pop("runner_jobs", UNSET)
         runner_jobs: list[AppRunnerJob] | Unset = UNSET
         if _runner_jobs is not UNSET:
@@ -383,6 +391,7 @@ class AppInstallDeploy:
             plan_only=plan_only,
             policy_reports=policy_reports,
             release_id=release_id,
+            role=role,
             runner_jobs=runner_jobs,
             status=status,
             status_description=status_description,
