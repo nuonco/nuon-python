@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.app_app_branch import AppAppBranch
     from ..models.app_app_break_glass_config import AppAppBreakGlassConfig
     from ..models.app_app_input_config import AppAppInputConfig
+    from ..models.app_app_operation_role_config import AppAppOperationRoleConfig
     from ..models.app_app_permissions_config import AppAppPermissionsConfig
     from ..models.app_app_policies_config import AppAppPoliciesConfig
     from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -44,6 +45,7 @@ class AppAppConfig:
         created_by_id (str | Unset):
         id (str | Unset):
         input_ (AppAppInputConfig | Unset):
+        operation_role_config (AppAppOperationRoleConfig | Unset):
         org_id (str | Unset):
         permissions (AppAppPermissionsConfig | Unset):
         policies (AppAppPoliciesConfig | Unset):
@@ -73,6 +75,7 @@ class AppAppConfig:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     input_: AppAppInputConfig | Unset = UNSET
+    operation_role_config: AppAppOperationRoleConfig | Unset = UNSET
     org_id: str | Unset = UNSET
     permissions: AppAppPermissionsConfig | Unset = UNSET
     policies: AppAppPoliciesConfig | Unset = UNSET
@@ -133,6 +136,10 @@ class AppAppConfig:
         input_: dict[str, Any] | Unset = UNSET
         if not isinstance(self.input_, Unset):
             input_ = self.input_.to_dict()
+
+        operation_role_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_role_config, Unset):
+            operation_role_config = self.operation_role_config.to_dict()
 
         org_id = self.org_id
 
@@ -207,6 +214,8 @@ class AppAppConfig:
             field_dict["id"] = id
         if input_ is not UNSET:
             field_dict["input"] = input_
+        if operation_role_config is not UNSET:
+            field_dict["operation_role_config"] = operation_role_config
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if permissions is not UNSET:
@@ -244,6 +253,7 @@ class AppAppConfig:
         from ..models.app_app_branch import AppAppBranch
         from ..models.app_app_break_glass_config import AppAppBreakGlassConfig
         from ..models.app_app_input_config import AppAppInputConfig
+        from ..models.app_app_operation_role_config import AppAppOperationRoleConfig
         from ..models.app_app_permissions_config import AppAppPermissionsConfig
         from ..models.app_app_policies_config import AppAppPoliciesConfig
         from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -310,6 +320,13 @@ class AppAppConfig:
             input_ = UNSET
         else:
             input_ = AppAppInputConfig.from_dict(_input_)
+
+        _operation_role_config = d.pop("operation_role_config", UNSET)
+        operation_role_config: AppAppOperationRoleConfig | Unset
+        if isinstance(_operation_role_config, Unset):
+            operation_role_config = UNSET
+        else:
+            operation_role_config = AppAppOperationRoleConfig.from_dict(_operation_role_config)
 
         org_id = d.pop("org_id", UNSET)
 
@@ -393,6 +410,7 @@ class AppAppConfig:
             created_by_id=created_by_id,
             id=id,
             input_=input_,
+            operation_role_config=operation_role_config,
             org_id=org_id,
             permissions=permissions,
             policies=policies,

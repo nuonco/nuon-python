@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_runner_job_execution import AppRunnerJobExecution
     from ..models.app_runner_job_metadata import AppRunnerJobMetadata
     from ..models.app_runner_job_outputs import AppRunnerJobOutputs
+    from ..models.app_runner_job_plan import AppRunnerJobPlan
 
 
 T = TypeVar("T", bound="AppRunnerJob")
@@ -38,6 +39,7 @@ class AppRunnerJob:
         finished_at (str | Unset):
         group (AppRunnerJobGroup | Unset):
         id (str | Unset):
+        json (AppRunnerJobPlan | Unset):
         log_stream_id (str | Unset):
         max_executions (int | Unset):
         metadata (AppRunnerJobMetadata | Unset):
@@ -68,6 +70,7 @@ class AppRunnerJob:
     finished_at: str | Unset = UNSET
     group: AppRunnerJobGroup | Unset = UNSET
     id: str | Unset = UNSET
+    json: AppRunnerJobPlan | Unset = UNSET
     log_stream_id: str | Unset = UNSET
     max_executions: int | Unset = UNSET
     metadata: AppRunnerJobMetadata | Unset = UNSET
@@ -116,6 +119,10 @@ class AppRunnerJob:
             group = self.group.value
 
         id = self.id
+
+        json: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.json, Unset):
+            json = self.json.to_dict()
 
         log_stream_id = self.log_stream_id
 
@@ -186,6 +193,8 @@ class AppRunnerJob:
             field_dict["group"] = group
         if id is not UNSET:
             field_dict["id"] = id
+        if json is not UNSET:
+            field_dict["json"] = json
         if log_stream_id is not UNSET:
             field_dict["log_stream_id"] = log_stream_id
         if max_executions is not UNSET:
@@ -228,6 +237,7 @@ class AppRunnerJob:
         from ..models.app_runner_job_execution import AppRunnerJobExecution
         from ..models.app_runner_job_metadata import AppRunnerJobMetadata
         from ..models.app_runner_job_outputs import AppRunnerJobOutputs
+        from ..models.app_runner_job_plan import AppRunnerJobPlan
 
         d = dict(src_dict)
         available_timeout = d.pop("available_timeout", UNSET)
@@ -263,6 +273,13 @@ class AppRunnerJob:
             group = AppRunnerJobGroup(_group)
 
         id = d.pop("id", UNSET)
+
+        _json = d.pop("json", UNSET)
+        json: AppRunnerJobPlan | Unset
+        if isinstance(_json, Unset):
+            json = UNSET
+        else:
+            json = AppRunnerJobPlan.from_dict(_json)
 
         log_stream_id = d.pop("log_stream_id", UNSET)
 
@@ -335,6 +352,7 @@ class AppRunnerJob:
             finished_at=finished_at,
             group=group,
             id=id,
+            json=json,
             log_stream_id=log_stream_id,
             max_executions=max_executions,
             metadata=metadata,

@@ -12,6 +12,9 @@ if TYPE_CHECKING:
     from ..models.service_create_job_component_config_request_env_vars import (
         ServiceCreateJobComponentConfigRequestEnvVars,
     )
+    from ..models.service_create_job_component_config_request_operation_roles import (
+        ServiceCreateJobComponentConfigRequestOperationRoles,
+    )
 
 
 T = TypeVar("T", bound="ServiceCreateJobComponentConfigRequest")
@@ -30,6 +33,7 @@ class ServiceCreateJobComponentConfigRequest:
         cmd (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateJobComponentConfigRequestEnvVars | Unset):
+        operation_roles (ServiceCreateJobComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
     """
 
@@ -42,6 +46,7 @@ class ServiceCreateJobComponentConfigRequest:
     cmd: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset = UNSET
+    operation_roles: ServiceCreateJobComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -70,6 +75,10 @@ class ServiceCreateJobComponentConfigRequest:
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
+
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
@@ -96,6 +105,8 @@ class ServiceCreateJobComponentConfigRequest:
             field_dict["deploy_timeout"] = deploy_timeout
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if references is not UNSET:
             field_dict["references"] = references
 
@@ -105,6 +116,9 @@ class ServiceCreateJobComponentConfigRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_job_component_config_request_env_vars import (
             ServiceCreateJobComponentConfigRequestEnvVars,
+        )
+        from ..models.service_create_job_component_config_request_operation_roles import (
+            ServiceCreateJobComponentConfigRequestOperationRoles,
         )
 
         d = dict(src_dict)
@@ -131,6 +145,13 @@ class ServiceCreateJobComponentConfigRequest:
         else:
             env_vars = ServiceCreateJobComponentConfigRequestEnvVars.from_dict(_env_vars)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: ServiceCreateJobComponentConfigRequestOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = ServiceCreateJobComponentConfigRequestOperationRoles.from_dict(_operation_roles)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         service_create_job_component_config_request = cls(
@@ -143,6 +164,7 @@ class ServiceCreateJobComponentConfigRequest:
             cmd=cmd,
             deploy_timeout=deploy_timeout,
             env_vars=env_vars,
+            operation_roles=operation_roles,
             references=references,
         )
 

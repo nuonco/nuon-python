@@ -28,6 +28,7 @@ class ServiceCreateActionWorkflowConfigRequest:
         break_glass_role_arn (str | Unset):
         dependencies (list[str] | Unset):
         references (list[str] | Unset):
+        role (str | Unset):
         timeout (int | Unset):
     """
 
@@ -37,6 +38,7 @@ class ServiceCreateActionWorkflowConfigRequest:
     break_glass_role_arn: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     references: list[str] | Unset = UNSET
+    role: str | Unset = UNSET
     timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -63,6 +65,8 @@ class ServiceCreateActionWorkflowConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        role = self.role
+
         timeout = self.timeout
 
         field_dict: dict[str, Any] = {}
@@ -80,6 +84,8 @@ class ServiceCreateActionWorkflowConfigRequest:
             field_dict["dependencies"] = dependencies
         if references is not UNSET:
             field_dict["references"] = references
+        if role is not UNSET:
+            field_dict["role"] = role
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
 
@@ -117,6 +123,8 @@ class ServiceCreateActionWorkflowConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        role = d.pop("role", UNSET)
+
         timeout = d.pop("timeout", UNSET)
 
         service_create_action_workflow_config_request = cls(
@@ -126,6 +134,7 @@ class ServiceCreateActionWorkflowConfigRequest:
             break_glass_role_arn=break_glass_role_arn,
             dependencies=dependencies,
             references=references,
+            role=role,
             timeout=timeout,
         )
 

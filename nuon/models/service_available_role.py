@@ -8,50 +8,59 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTeardownInstallComponentsRequest")
+T = TypeVar("T", bound="ServiceAvailableRole")
 
 
 @_attrs_define
-class ServiceTeardownInstallComponentsRequest:
+class ServiceAvailableRole:
     """
     Attributes:
-        plan_only (bool | Unset):
-        role (str | Unset):
+        arn (str | Unset):
+        name (str | Unset):
+        role_type (str | Unset):
     """
 
-    plan_only: bool | Unset = UNSET
-    role: str | Unset = UNSET
+    arn: str | Unset = UNSET
+    name: str | Unset = UNSET
+    role_type: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan_only = self.plan_only
+        arn = self.arn
 
-        role = self.role
+        name = self.name
+
+        role_type = self.role_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
-        if role is not UNSET:
-            field_dict["role"] = role
+        if arn is not UNSET:
+            field_dict["arn"] = arn
+        if name is not UNSET:
+            field_dict["name"] = name
+        if role_type is not UNSET:
+            field_dict["role_type"] = role_type
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan_only = d.pop("plan_only", UNSET)
+        arn = d.pop("arn", UNSET)
 
-        role = d.pop("role", UNSET)
+        name = d.pop("name", UNSET)
 
-        service_teardown_install_components_request = cls(
-            plan_only=plan_only,
-            role=role,
+        role_type = d.pop("role_type", UNSET)
+
+        service_available_role = cls(
+            arn=arn,
+            name=name,
+            role_type=role_type,
         )
 
-        service_teardown_install_components_request.additional_properties = d
-        return service_teardown_install_components_request
+        service_available_role.additional_properties = d
+        return service_available_role
 
     @property
     def additional_keys(self) -> list[str]:

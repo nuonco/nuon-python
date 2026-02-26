@@ -45,6 +45,7 @@ class AppWorkflow:
         owner_id (str | Unset):
         owner_type (str | Unset):
         plan_only (bool | Unset):
+        role (str | Unset):
         started_at (str | Unset):
         status (AppCompositeStatus | Unset):
         step_error_behavior (str | Unset): DEPRECATED: for now we always abort on step errors
@@ -70,6 +71,7 @@ class AppWorkflow:
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
+    role: str | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
     step_error_behavior: str | Unset = UNSET
@@ -136,6 +138,8 @@ class AppWorkflow:
 
         plan_only = self.plan_only
 
+        role = self.role
+
         started_at = self.started_at
 
         status: dict[str, Any] | Unset = UNSET
@@ -194,6 +198,8 @@ class AppWorkflow:
             field_dict["owner_type"] = owner_type
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if role is not UNSET:
+            field_dict["role"] = role
         if started_at is not UNSET:
             field_dict["started_at"] = started_at
         if status is not UNSET:
@@ -298,6 +304,8 @@ class AppWorkflow:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        role = d.pop("role", UNSET)
+
         started_at = d.pop("started_at", UNSET)
 
         _status = d.pop("status", UNSET)
@@ -345,6 +353,7 @@ class AppWorkflow:
             owner_id=owner_id,
             owner_type=owner_type,
             plan_only=plan_only,
+            role=role,
             started_at=started_at,
             status=status,
             step_error_behavior=step_error_behavior,

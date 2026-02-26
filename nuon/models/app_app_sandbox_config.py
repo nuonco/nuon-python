@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
+    from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
     from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
     from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
     from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
@@ -33,6 +34,7 @@ class AppAppSandboxConfig:
         drift_schedule (str | Unset):
         env_vars (AppAppSandboxConfigEnvVars | Unset):
         id (str | Unset):
+        operation_roles (AppAppSandboxConfigOperationRoles | Unset): Operation roles map: operation type -> role name
         org_id (str | Unset):
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
         references (list[str] | Unset):
@@ -53,6 +55,7 @@ class AppAppSandboxConfig:
     drift_schedule: str | Unset = UNSET
     env_vars: AppAppSandboxConfigEnvVars | Unset = UNSET
     id: str | Unset = UNSET
+    operation_roles: AppAppSandboxConfigOperationRoles | Unset = UNSET
     org_id: str | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
     references: list[str] | Unset = UNSET
@@ -87,6 +90,10 @@ class AppAppSandboxConfig:
             env_vars = self.env_vars.to_dict()
 
         id = self.id
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         org_id = self.org_id
 
@@ -140,6 +147,8 @@ class AppAppSandboxConfig:
             field_dict["env_vars"] = env_vars
         if id is not UNSET:
             field_dict["id"] = id
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if public_git_vcs_config is not UNSET:
@@ -162,6 +171,7 @@ class AppAppSandboxConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
+        from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
         from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
         from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
         from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
@@ -197,6 +207,13 @@ class AppAppSandboxConfig:
             env_vars = AppAppSandboxConfigEnvVars.from_dict(_env_vars)
 
         id = d.pop("id", UNSET)
+
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: AppAppSandboxConfigOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = AppAppSandboxConfigOperationRoles.from_dict(_operation_roles)
 
         org_id = d.pop("org_id", UNSET)
 
@@ -242,6 +259,7 @@ class AppAppSandboxConfig:
             drift_schedule=drift_schedule,
             env_vars=env_vars,
             id=id,
+            operation_roles=operation_roles,
             org_id=org_id,
             public_git_vcs_config=public_git_vcs_config,
             references=references,

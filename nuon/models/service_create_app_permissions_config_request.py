@@ -24,6 +24,7 @@ class ServiceCreateAppPermissionsConfigRequest:
         maintenance_role (ServiceAppAWSIAMRoleConfig):
         provision_role (ServiceAppAWSIAMRoleConfig):
         break_glass_roles (list[ServiceAppAWSIAMRoleConfig] | Unset):
+        custom_roles (list[ServiceAppAWSIAMRoleConfig] | Unset):
     """
 
     app_config_id: str
@@ -31,6 +32,7 @@ class ServiceCreateAppPermissionsConfigRequest:
     maintenance_role: ServiceAppAWSIAMRoleConfig
     provision_role: ServiceAppAWSIAMRoleConfig
     break_glass_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
+    custom_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +51,13 @@ class ServiceCreateAppPermissionsConfigRequest:
                 break_glass_roles_item = break_glass_roles_item_data.to_dict()
                 break_glass_roles.append(break_glass_roles_item)
 
+        custom_roles: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.custom_roles, Unset):
+            custom_roles = []
+            for custom_roles_item_data in self.custom_roles:
+                custom_roles_item = custom_roles_item_data.to_dict()
+                custom_roles.append(custom_roles_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -61,6 +70,8 @@ class ServiceCreateAppPermissionsConfigRequest:
         )
         if break_glass_roles is not UNSET:
             field_dict["break_glass_roles"] = break_glass_roles
+        if custom_roles is not UNSET:
+            field_dict["custom_roles"] = custom_roles
 
         return field_dict
 
@@ -86,12 +97,22 @@ class ServiceCreateAppPermissionsConfigRequest:
 
                 break_glass_roles.append(break_glass_roles_item)
 
+        _custom_roles = d.pop("custom_roles", UNSET)
+        custom_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
+        if _custom_roles is not UNSET:
+            custom_roles = []
+            for custom_roles_item_data in _custom_roles:
+                custom_roles_item = ServiceAppAWSIAMRoleConfig.from_dict(custom_roles_item_data)
+
+                custom_roles.append(custom_roles_item)
+
         service_create_app_permissions_config_request = cls(
             app_config_id=app_config_id,
             deprovision_role=deprovision_role,
             maintenance_role=maintenance_role,
             provision_role=provision_role,
             break_glass_roles=break_glass_roles,
+            custom_roles=custom_roles,
         )
 
         service_create_app_permissions_config_request.additional_properties = d

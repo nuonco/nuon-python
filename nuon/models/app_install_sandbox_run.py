@@ -40,6 +40,7 @@ class AppInstallSandboxRun:
         log_stream (AppLogStream | Unset):
         outputs (AppInstallSandboxRunOutputs | Unset):
         policy_reports (list[AppPolicyReport] | Unset):
+        role (str | Unset): Role to be used when planning and applying sandbox runs
         run_type (AppSandboxRunType | Unset):
         runner_jobs (list[AppRunnerJob] | Unset): runner details
         status (str | Unset):
@@ -62,6 +63,7 @@ class AppInstallSandboxRun:
     log_stream: AppLogStream | Unset = UNSET
     outputs: AppInstallSandboxRunOutputs | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
+    role: str | Unset = UNSET
     run_type: AppSandboxRunType | Unset = UNSET
     runner_jobs: list[AppRunnerJob] | Unset = UNSET
     status: str | Unset = UNSET
@@ -114,6 +116,8 @@ class AppInstallSandboxRun:
             for policy_reports_item_data in self.policy_reports:
                 policy_reports_item = policy_reports_item_data.to_dict()
                 policy_reports.append(policy_reports_item)
+
+        role = self.role
 
         run_type: str | Unset = UNSET
         if not isinstance(self.run_type, Unset):
@@ -169,6 +173,8 @@ class AppInstallSandboxRun:
             field_dict["outputs"] = outputs
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
+        if role is not UNSET:
+            field_dict["role"] = role
         if run_type is not UNSET:
             field_dict["run_type"] = run_type
         if runner_jobs is not UNSET:
@@ -259,6 +265,8 @@ class AppInstallSandboxRun:
 
                 policy_reports.append(policy_reports_item)
 
+        role = d.pop("role", UNSET)
+
         _run_type = d.pop("run_type", UNSET)
         run_type: AppSandboxRunType | Unset
         if isinstance(_run_type, Unset):
@@ -310,6 +318,7 @@ class AppInstallSandboxRun:
             log_stream=log_stream,
             outputs=outputs,
             policy_reports=policy_reports,
+            role=role,
             run_type=run_type,
             runner_jobs=runner_jobs,
             status=status,

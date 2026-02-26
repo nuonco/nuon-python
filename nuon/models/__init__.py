@@ -23,6 +23,8 @@ from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
 from .app_app_input_source import AppAppInputSource
 from .app_app_links import AppAppLinks
+from .app_app_operation_role_config import AppAppOperationRoleConfig
+from .app_app_operation_role_rule import AppAppOperationRoleRule
 from .app_app_permissions_config import AppAppPermissionsConfig
 from .app_app_policies_config import AppAppPoliciesConfig
 from .app_app_policy_config import AppAppPolicyConfig
@@ -32,6 +34,7 @@ from .app_app_runner_config_helm_driver_type import AppAppRunnerConfigHelmDriver
 from .app_app_runner_type import AppAppRunnerType
 from .app_app_sandbox_config import AppAppSandboxConfig
 from .app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
+from .app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
 from .app_app_sandbox_config_variables import AppAppSandboxConfigVariables
 from .app_app_secret import AppAppSecret
 from .app_app_secret_config import AppAppSecretConfig
@@ -40,6 +43,7 @@ from .app_app_stack_config import AppAppStackConfig
 from .app_aws_account import AppAWSAccount
 from .app_aws_stack_outputs import AppAWSStackOutputs
 from .app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+from .app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
 from .app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 from .app_awsecr_image_config import AppAWSECRImageConfig
 from .app_awsiam_role_type import AppAWSIAMRoleType
@@ -50,6 +54,7 @@ from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
 from .app_component_config_connection import AppComponentConfigConnection
+from .app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
 from .app_component_links import AppComponentLinks
 from .app_component_release import AppComponentRelease
 from .app_component_release_step import AppComponentReleaseStep
@@ -116,6 +121,7 @@ from .app_notifications_config import AppNotificationsConfig
 from .app_oci_artifact import AppOCIArtifact
 from .app_oci_artifact_annotations import AppOCIArtifactAnnotations
 from .app_operation_status import AppOperationStatus
+from .app_operation_type import AppOperationType
 from .app_org import AppOrg
 from .app_org_feature_info import AppOrgFeatureInfo
 from .app_org_invite import AppOrgInvite
@@ -160,6 +166,7 @@ from .app_runner_job_group import AppRunnerJobGroup
 from .app_runner_job_metadata import AppRunnerJobMetadata
 from .app_runner_job_operation_type import AppRunnerJobOperationType
 from .app_runner_job_outputs import AppRunnerJobOutputs
+from .app_runner_job_plan import AppRunnerJobPlan
 from .app_runner_job_status import AppRunnerJobStatus
 from .app_runner_job_type import AppRunnerJobType
 from .app_runner_operation import AppRunnerOperation
@@ -211,6 +218,7 @@ from .credentials_service_principal_credentials import CredentialsServicePrincip
 from .credentials_static_credentials import CredentialsStaticCredentials
 from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
+from .get_available_roles_principal_type import GetAvailableRolesPrincipalType
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
@@ -264,6 +272,7 @@ from .plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
 from .plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig
 from .plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
 from .plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
+from .plantypes_plan_auth import PlantypesPlanAuth
 from .plantypes_sandbox_mode import PlantypesSandboxMode
 from .plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
 from .plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
@@ -295,6 +304,8 @@ from .service_app_policy_config import ServiceAppPolicyConfig
 from .service_app_secret_config import ServiceAppSecretConfig
 from .service_auth_me_identity import ServiceAuthMeIdentity
 from .service_auth_me_response import ServiceAuthMeResponse
+from .service_available_role import ServiceAvailableRole
+from .service_available_roles_response import ServiceAvailableRolesResponse
 from .service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
 from .service_build_all_components_request import ServiceBuildAllComponentsRequest
 from .service_cancel_runner_job_request import ServiceCancelRunnerJobRequest
@@ -322,6 +333,7 @@ from .service_create_app_config_request import ServiceCreateAppConfigRequest
 from .service_create_app_input_config_request import ServiceCreateAppInputConfigRequest
 from .service_create_app_input_config_request_groups import ServiceCreateAppInputConfigRequestGroups
 from .service_create_app_input_config_request_inputs import ServiceCreateAppInputConfigRequestInputs
+from .service_create_app_operation_role_config_request import ServiceCreateAppOperationRoleConfigRequest
 from .service_create_app_permissions_config_request import ServiceCreateAppPermissionsConfigRequest
 from .service_create_app_policies_config_request import ServiceCreateAppPoliciesConfigRequest
 from .service_create_app_request import ServiceCreateAppRequest
@@ -329,6 +341,9 @@ from .service_create_app_runner_config_request import ServiceCreateAppRunnerConf
 from .service_create_app_runner_config_request_env_vars import ServiceCreateAppRunnerConfigRequestEnvVars
 from .service_create_app_sandbox_config_request import ServiceCreateAppSandboxConfigRequest
 from .service_create_app_sandbox_config_request_env_vars import ServiceCreateAppSandboxConfigRequestEnvVars
+from .service_create_app_sandbox_config_request_operation_roles import (
+    ServiceCreateAppSandboxConfigRequestOperationRoles,
+)
 from .service_create_app_sandbox_config_request_variables import ServiceCreateAppSandboxConfigRequestVariables
 from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
@@ -343,8 +358,17 @@ from .service_create_docker_build_component_config_request import ServiceCreateD
 from .service_create_docker_build_component_config_request_env_vars import (
     ServiceCreateDockerBuildComponentConfigRequestEnvVars,
 )
+from .service_create_docker_build_component_config_request_operation_roles import (
+    ServiceCreateDockerBuildComponentConfigRequestOperationRoles,
+)
 from .service_create_external_image_component_config_request import ServiceCreateExternalImageComponentConfigRequest
+from .service_create_external_image_component_config_request_operation_roles import (
+    ServiceCreateExternalImageComponentConfigRequestOperationRoles,
+)
 from .service_create_helm_component_config_request import ServiceCreateHelmComponentConfigRequest
+from .service_create_helm_component_config_request_operation_roles import (
+    ServiceCreateHelmComponentConfigRequestOperationRoles,
+)
 from .service_create_helm_component_config_request_values import ServiceCreateHelmComponentConfigRequestValues
 from .service_create_install_action_workflow_run_request import ServiceCreateInstallActionWorkflowRunRequest
 from .service_create_install_action_workflow_run_request_run_env_vars import (
@@ -365,8 +389,14 @@ from .service_create_install_v2_request_azure_account import ServiceCreateInstal
 from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
 from .service_create_job_component_config_request_env_vars import ServiceCreateJobComponentConfigRequestEnvVars
+from .service_create_job_component_config_request_operation_roles import (
+    ServiceCreateJobComponentConfigRequestOperationRoles,
+)
 from .service_create_kubernetes_manifest_component_config_request import (
     ServiceCreateKubernetesManifestComponentConfigRequest,
+)
+from .service_create_kubernetes_manifest_component_config_request_operation_roles import (
+    ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
 )
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
 from .service_create_org_request import ServiceCreateOrgRequest
@@ -374,6 +404,9 @@ from .service_create_org_user_request import ServiceCreateOrgUserRequest
 from .service_create_terraform_module_component_config_request import ServiceCreateTerraformModuleComponentConfigRequest
 from .service_create_terraform_module_component_config_request_env_vars import (
     ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
+)
+from .service_create_terraform_module_component_config_request_operation_roles import (
+    ServiceCreateTerraformModuleComponentConfigRequestOperationRoles,
 )
 from .service_create_terraform_module_component_config_request_variables import (
     ServiceCreateTerraformModuleComponentConfigRequestVariables,
@@ -398,6 +431,7 @@ from .service_mng_fetch_token_request import ServiceMngFetchTokenRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
 from .service_mng_vm_shut_down_request import ServiceMngVMShutDownRequest
+from .service_operation_role_rule_request import ServiceOperationRoleRuleRequest
 from .service_patch_install_config_params import ServicePatchInstallConfigParams
 from .service_prune_tokens_response import ServicePruneTokensResponse
 from .service_public_git_vcs_action_workflow_config_request import ServicePublicGitVCSActionWorkflowConfigRequest
@@ -487,6 +521,8 @@ __all__ = (
     "AppAppInputGroup",
     "AppAppInputSource",
     "AppAppLinks",
+    "AppAppOperationRoleConfig",
+    "AppAppOperationRoleRule",
     "AppAppPermissionsConfig",
     "AppAppPoliciesConfig",
     "AppAppPolicyConfig",
@@ -496,6 +532,7 @@ __all__ = (
     "AppAppRunnerType",
     "AppAppSandboxConfig",
     "AppAppSandboxConfigEnvVars",
+    "AppAppSandboxConfigOperationRoles",
     "AppAppSandboxConfigVariables",
     "AppAppSecret",
     "AppAppSecretConfig",
@@ -506,6 +543,7 @@ __all__ = (
     "AppAWSIAMRoleType",
     "AppAWSStackOutputs",
     "AppAWSStackOutputsBreakGlassRoleArns",
+    "AppAWSStackOutputsCustomRoleArns",
     "AppAWSStackOutputsInstallInputs",
     "AppAzureAccount",
     "AppAzureStackOutputs",
@@ -514,6 +552,7 @@ __all__ = (
     "AppComponent",
     "AppComponentBuild",
     "AppComponentConfigConnection",
+    "AppComponentConfigConnectionOperationRoles",
     "AppComponentLinks",
     "AppComponentRelease",
     "AppComponentReleaseStep",
@@ -580,6 +619,7 @@ __all__ = (
     "AppOCIArtifact",
     "AppOCIArtifactAnnotations",
     "AppOperationStatus",
+    "AppOperationType",
     "AppOrg",
     "AppOrgFeatureInfo",
     "AppOrgInvite",
@@ -622,6 +662,7 @@ __all__ = (
     "AppRunnerJobMetadata",
     "AppRunnerJobOperationType",
     "AppRunnerJobOutputs",
+    "AppRunnerJobPlan",
     "AppRunnerJobStatus",
     "AppRunnerJobType",
     "AppRunnerOperation",
@@ -673,6 +714,7 @@ __all__ = (
     "CredentialsStaticCredentials",
     "GenericsNullTime",
     "GetAppConfigTemplateType",
+    "GetAvailableRolesPrincipalType",
     "GetCurrentOrgFeaturesResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetTerraformWorkspaceStatesJSONByIDResponse200",
@@ -724,6 +766,7 @@ __all__ = (
     "PlantypesKustomizeBuildConfig",
     "PlantypesNoopDeployPlan",
     "PlantypesOCIArtifactReference",
+    "PlantypesPlanAuth",
     "PlantypesSandboxMode",
     "PlantypesSandboxModeOutputs",
     "PlantypesSandboxRunPlan",
@@ -755,6 +798,8 @@ __all__ = (
     "ServiceAppSecretConfig",
     "ServiceAuthMeIdentity",
     "ServiceAuthMeResponse",
+    "ServiceAvailableRole",
+    "ServiceAvailableRolesResponse",
     "ServiceAwsECRImageConfigRequest",
     "ServiceBuildAllComponentsRequest",
     "ServiceCancelRunnerJobRequest",
@@ -778,6 +823,7 @@ __all__ = (
     "ServiceCreateAppInputConfigRequest",
     "ServiceCreateAppInputConfigRequestGroups",
     "ServiceCreateAppInputConfigRequestInputs",
+    "ServiceCreateAppOperationRoleConfigRequest",
     "ServiceCreateAppPermissionsConfigRequest",
     "ServiceCreateAppPoliciesConfigRequest",
     "ServiceCreateAppRequest",
@@ -785,6 +831,7 @@ __all__ = (
     "ServiceCreateAppRunnerConfigRequestEnvVars",
     "ServiceCreateAppSandboxConfigRequest",
     "ServiceCreateAppSandboxConfigRequestEnvVars",
+    "ServiceCreateAppSandboxConfigRequestOperationRoles",
     "ServiceCreateAppSandboxConfigRequestVariables",
     "ServiceCreateAppSecretRequest",
     "ServiceCreateAppSecretsConfigRequest",
@@ -797,8 +844,11 @@ __all__ = (
     "ServiceCreateConnectionRequest",
     "ServiceCreateDockerBuildComponentConfigRequest",
     "ServiceCreateDockerBuildComponentConfigRequestEnvVars",
+    "ServiceCreateDockerBuildComponentConfigRequestOperationRoles",
     "ServiceCreateExternalImageComponentConfigRequest",
+    "ServiceCreateExternalImageComponentConfigRequestOperationRoles",
     "ServiceCreateHelmComponentConfigRequest",
+    "ServiceCreateHelmComponentConfigRequestOperationRoles",
     "ServiceCreateHelmComponentConfigRequestValues",
     "ServiceCreateInstallActionWorkflowRunRequest",
     "ServiceCreateInstallActionWorkflowRunRequestRunEnvVars",
@@ -817,12 +867,15 @@ __all__ = (
     "ServiceCreateInstallV2RequestInputs",
     "ServiceCreateJobComponentConfigRequest",
     "ServiceCreateJobComponentConfigRequestEnvVars",
+    "ServiceCreateJobComponentConfigRequestOperationRoles",
     "ServiceCreateKubernetesManifestComponentConfigRequest",
+    "ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles",
     "ServiceCreateOrgInviteRequest",
     "ServiceCreateOrgRequest",
     "ServiceCreateOrgUserRequest",
     "ServiceCreateTerraformModuleComponentConfigRequest",
     "ServiceCreateTerraformModuleComponentConfigRequestEnvVars",
+    "ServiceCreateTerraformModuleComponentConfigRequestOperationRoles",
     "ServiceCreateTerraformModuleComponentConfigRequestVariables",
     "ServiceCreateTerraformWorkspaceRequest",
     "ServiceCreateUserJourneyRequest",
@@ -844,6 +897,7 @@ __all__ = (
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
     "ServiceMngVMShutDownRequest",
+    "ServiceOperationRoleRuleRequest",
     "ServicePatchInstallConfigParams",
     "ServicePruneTokensResponse",
     "ServicePublicGitVCSActionWorkflowConfigRequest",

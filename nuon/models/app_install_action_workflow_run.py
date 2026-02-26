@@ -42,6 +42,7 @@ class AppInstallActionWorkflowRun:
         install_workflow_id (str | Unset):
         log_stream (AppLogStream | Unset):
         outputs (AppInstallActionWorkflowRunOutputs | Unset):
+        role (str | Unset): Role to be used when running this action
         run_env_vars (AppInstallActionWorkflowRunRunEnvVars | Unset):
         runner_job (AppRunnerJob | Unset):
         status (str | Unset):
@@ -69,6 +70,7 @@ class AppInstallActionWorkflowRun:
     install_workflow_id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     outputs: AppInstallActionWorkflowRunOutputs | Unset = UNSET
+    role: str | Unset = UNSET
     run_env_vars: AppInstallActionWorkflowRunRunEnvVars | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     status: str | Unset = UNSET
@@ -119,6 +121,8 @@ class AppInstallActionWorkflowRun:
         outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
+
+        role = self.role
 
         run_env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.run_env_vars, Unset):
@@ -188,6 +192,8 @@ class AppInstallActionWorkflowRun:
             field_dict["log_stream"] = log_stream
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
+        if role is not UNSET:
+            field_dict["role"] = role
         if run_env_vars is not UNSET:
             field_dict["run_env_vars"] = run_env_vars
         if runner_job is not UNSET:
@@ -280,6 +286,8 @@ class AppInstallActionWorkflowRun:
         else:
             outputs = AppInstallActionWorkflowRunOutputs.from_dict(_outputs)
 
+        role = d.pop("role", UNSET)
+
         _run_env_vars = d.pop("run_env_vars", UNSET)
         run_env_vars: AppInstallActionWorkflowRunRunEnvVars | Unset
         if isinstance(_run_env_vars, Unset):
@@ -350,6 +358,7 @@ class AppInstallActionWorkflowRun:
             install_workflow_id=install_workflow_id,
             log_stream=log_stream,
             outputs=outputs,
+            role=role,
             run_env_vars=run_env_vars,
             runner_job=runner_job,
             status=status,

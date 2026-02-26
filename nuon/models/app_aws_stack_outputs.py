@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+    from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
     from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
 
@@ -22,6 +23,7 @@ class AppAWSStackOutputs:
     Attributes:
         account_id (str | Unset):
         break_glass_role_arns (AppAWSStackOutputsBreakGlassRoleArns | Unset):
+        custom_role_arns (AppAWSStackOutputsCustomRoleArns | Unset):
         deprovision_iam_role_arn (str | Unset):
         install_inputs (AppAWSStackOutputsInstallInputs | Unset):
         maintenance_iam_role_arn (str | Unset):
@@ -36,6 +38,7 @@ class AppAWSStackOutputs:
 
     account_id: str | Unset = UNSET
     break_glass_role_arns: AppAWSStackOutputsBreakGlassRoleArns | Unset = UNSET
+    custom_role_arns: AppAWSStackOutputsCustomRoleArns | Unset = UNSET
     deprovision_iam_role_arn: str | Unset = UNSET
     install_inputs: AppAWSStackOutputsInstallInputs | Unset = UNSET
     maintenance_iam_role_arn: str | Unset = UNSET
@@ -54,6 +57,10 @@ class AppAWSStackOutputs:
         break_glass_role_arns: dict[str, Any] | Unset = UNSET
         if not isinstance(self.break_glass_role_arns, Unset):
             break_glass_role_arns = self.break_glass_role_arns.to_dict()
+
+        custom_role_arns: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.custom_role_arns, Unset):
+            custom_role_arns = self.custom_role_arns.to_dict()
 
         deprovision_iam_role_arn = self.deprovision_iam_role_arn
 
@@ -88,6 +95,8 @@ class AppAWSStackOutputs:
             field_dict["account_id"] = account_id
         if break_glass_role_arns is not UNSET:
             field_dict["break_glass_role_arns"] = break_glass_role_arns
+        if custom_role_arns is not UNSET:
+            field_dict["custom_role_arns"] = custom_role_arns
         if deprovision_iam_role_arn is not UNSET:
             field_dict["deprovision_iam_role_arn"] = deprovision_iam_role_arn
         if install_inputs is not UNSET:
@@ -114,6 +123,7 @@ class AppAWSStackOutputs:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
+        from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
         from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
 
         d = dict(src_dict)
@@ -125,6 +135,13 @@ class AppAWSStackOutputs:
             break_glass_role_arns = UNSET
         else:
             break_glass_role_arns = AppAWSStackOutputsBreakGlassRoleArns.from_dict(_break_glass_role_arns)
+
+        _custom_role_arns = d.pop("custom_role_arns", UNSET)
+        custom_role_arns: AppAWSStackOutputsCustomRoleArns | Unset
+        if isinstance(_custom_role_arns, Unset):
+            custom_role_arns = UNSET
+        else:
+            custom_role_arns = AppAWSStackOutputsCustomRoleArns.from_dict(_custom_role_arns)
 
         deprovision_iam_role_arn = d.pop("deprovision_iam_role_arn", UNSET)
 
@@ -154,6 +171,7 @@ class AppAWSStackOutputs:
         app_aws_stack_outputs = cls(
             account_id=account_id,
             break_glass_role_arns=break_glass_role_arns,
+            custom_role_arns=custom_role_arns,
             deprovision_iam_role_arn=deprovision_iam_role_arn,
             install_inputs=install_inputs,
             maintenance_iam_role_arn=maintenance_iam_role_arn,

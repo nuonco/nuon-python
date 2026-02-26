@@ -10,6 +10,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+    from ..models.service_create_kubernetes_manifest_component_config_request_operation_roles import (
+        ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
+    )
     from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest
     from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
@@ -31,6 +34,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         kustomize (ServiceKustomizeConfigRequest | Unset):
         manifest (str | Unset): Inline manifest (mutually exclusive with Kustomize)
         namespace (str | Unset):
+        operation_roles (ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
     """
@@ -45,6 +49,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     kustomize: ServiceKustomizeConfigRequest | Unset = UNSET
     manifest: str | Unset = UNSET
     namespace: str | Unset = UNSET
+    operation_roles: ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -75,6 +80,10 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         manifest = self.manifest
 
         namespace = self.namespace
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
@@ -107,6 +116,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             field_dict["manifest"] = manifest
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
@@ -117,6 +128,9 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+        from ..models.service_create_kubernetes_manifest_component_config_request_operation_roles import (
+            ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
+        )
         from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest
         from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
@@ -151,6 +165,15 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
         namespace = d.pop("namespace", UNSET)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles.from_dict(
+                _operation_roles
+            )
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -171,6 +194,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             kustomize=kustomize,
             manifest=manifest,
             namespace=namespace,
+            operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
         )

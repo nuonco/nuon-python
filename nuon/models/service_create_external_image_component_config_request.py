@@ -10,6 +10,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
+    from ..models.service_create_external_image_component_config_request_operation_roles import (
+        ServiceCreateExternalImageComponentConfigRequestOperationRoles,
+    )
 
 
 T = TypeVar("T", bound="ServiceCreateExternalImageComponentConfigRequest")
@@ -27,6 +30,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         checksum (str | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
+        operation_roles (ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
     """
 
@@ -38,6 +42,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
     checksum: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
+    operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,6 +66,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
             dependencies = self.dependencies
 
         deploy_timeout = self.deploy_timeout
+
+        operation_roles: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.operation_roles, Unset):
+            operation_roles = self.operation_roles.to_dict()
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -86,6 +95,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
             field_dict["deploy_timeout"] = deploy_timeout
+        if operation_roles is not UNSET:
+            field_dict["operation_roles"] = operation_roles
         if references is not UNSET:
             field_dict["references"] = references
 
@@ -94,6 +105,9 @@ class ServiceCreateExternalImageComponentConfigRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
+        from ..models.service_create_external_image_component_config_request_operation_roles import (
+            ServiceCreateExternalImageComponentConfigRequestOperationRoles,
+        )
 
         d = dict(src_dict)
         image_url = d.pop("image_url")
@@ -117,6 +131,13 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
 
+        _operation_roles = d.pop("operation_roles", UNSET)
+        operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset
+        if isinstance(_operation_roles, Unset):
+            operation_roles = UNSET
+        else:
+            operation_roles = ServiceCreateExternalImageComponentConfigRequestOperationRoles.from_dict(_operation_roles)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         service_create_external_image_component_config_request = cls(
@@ -128,6 +149,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
             checksum=checksum,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
+            operation_roles=operation_roles,
             references=references,
         )
 
