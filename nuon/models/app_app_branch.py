@@ -9,6 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_branch_config import AppAppBranchConfig
+    from ..models.app_queue import AppQueue
     from ..models.app_workflow import AppWorkflow
 
 
@@ -20,23 +22,25 @@ class AppAppBranch:
     """
     Attributes:
         app_id (str | Unset):
-        connected_github_vcs_config_id (str | Unset):
+        configs (list[AppAppBranchConfig] | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
+        queue (AppQueue | Unset):
         updated_at (str | Unset):
         workflows (list[AppWorkflow] | Unset):
     """
 
     app_id: str | Unset = UNSET
-    connected_github_vcs_config_id: str | Unset = UNSET
+    configs: list[AppAppBranchConfig] | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    queue: AppQueue | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -44,7 +48,12 @@ class AppAppBranch:
     def to_dict(self) -> dict[str, Any]:
         app_id = self.app_id
 
-        connected_github_vcs_config_id = self.connected_github_vcs_config_id
+        configs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.configs, Unset):
+            configs = []
+            for configs_item_data in self.configs:
+                configs_item = configs_item_data.to_dict()
+                configs.append(configs_item)
 
         created_at = self.created_at
 
@@ -55,6 +64,10 @@ class AppAppBranch:
         name = self.name
 
         org_id = self.org_id
+
+        queue: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.queue, Unset):
+            queue = self.queue.to_dict()
 
         updated_at = self.updated_at
 
@@ -70,8 +83,8 @@ class AppAppBranch:
         field_dict.update({})
         if app_id is not UNSET:
             field_dict["app_id"] = app_id
-        if connected_github_vcs_config_id is not UNSET:
-            field_dict["connected_github_vcs_config_id"] = connected_github_vcs_config_id
+        if configs is not UNSET:
+            field_dict["configs"] = configs
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -82,6 +95,8 @@ class AppAppBranch:
             field_dict["name"] = name
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if queue is not UNSET:
+            field_dict["queue"] = queue
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflows is not UNSET:
@@ -91,12 +106,21 @@ class AppAppBranch:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_branch_config import AppAppBranchConfig
+        from ..models.app_queue import AppQueue
         from ..models.app_workflow import AppWorkflow
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)
 
-        connected_github_vcs_config_id = d.pop("connected_github_vcs_config_id", UNSET)
+        _configs = d.pop("configs", UNSET)
+        configs: list[AppAppBranchConfig] | Unset = UNSET
+        if _configs is not UNSET:
+            configs = []
+            for configs_item_data in _configs:
+                configs_item = AppAppBranchConfig.from_dict(configs_item_data)
+
+                configs.append(configs_item)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -107,6 +131,13 @@ class AppAppBranch:
         name = d.pop("name", UNSET)
 
         org_id = d.pop("org_id", UNSET)
+
+        _queue = d.pop("queue", UNSET)
+        queue: AppQueue | Unset
+        if isinstance(_queue, Unset):
+            queue = UNSET
+        else:
+            queue = AppQueue.from_dict(_queue)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -121,12 +152,13 @@ class AppAppBranch:
 
         app_app_branch = cls(
             app_id=app_id,
-            connected_github_vcs_config_id=connected_github_vcs_config_id,
+            configs=configs,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
             name=name,
             org_id=org_id,
+            queue=queue,
             updated_at=updated_at,
             workflows=workflows,
         )

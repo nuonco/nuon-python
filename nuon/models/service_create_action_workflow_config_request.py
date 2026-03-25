@@ -27,6 +27,7 @@ class ServiceCreateActionWorkflowConfigRequest:
         triggers (list[ServiceCreateActionWorkflowConfigTriggerRequest]):
         break_glass_role_arn (str | Unset):
         dependencies (list[str] | Unset):
+        enable_kube_config (bool | None | Unset):
         references (list[str] | Unset):
         role (str | Unset):
         timeout (int | Unset):
@@ -37,6 +38,7 @@ class ServiceCreateActionWorkflowConfigRequest:
     triggers: list[ServiceCreateActionWorkflowConfigTriggerRequest]
     break_glass_role_arn: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
+    enable_kube_config: bool | None | Unset = UNSET
     references: list[str] | Unset = UNSET
     role: str | Unset = UNSET
     timeout: int | Unset = UNSET
@@ -61,6 +63,12 @@ class ServiceCreateActionWorkflowConfigRequest:
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
+        enable_kube_config: bool | None | Unset
+        if isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = self.enable_kube_config
+
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
@@ -82,6 +90,8 @@ class ServiceCreateActionWorkflowConfigRequest:
             field_dict["break_glass_role_arn"] = break_glass_role_arn
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
         if references is not UNSET:
             field_dict["references"] = references
         if role is not UNSET:
@@ -121,6 +131,15 @@ class ServiceCreateActionWorkflowConfigRequest:
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
+        def _parse_enable_kube_config(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        enable_kube_config = _parse_enable_kube_config(d.pop("enable_kube_config", UNSET))
+
         references = cast(list[str], d.pop("references", UNSET))
 
         role = d.pop("role", UNSET)
@@ -133,6 +152,7 @@ class ServiceCreateActionWorkflowConfigRequest:
             triggers=triggers,
             break_glass_role_arn=break_glass_role_arn,
             dependencies=dependencies,
+            enable_kube_config=enable_kube_config,
             references=references,
             role=role,
             timeout=timeout,

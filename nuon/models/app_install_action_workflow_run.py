@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from ..models.app_log_stream import AppLogStream
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
+    from ..models.sql_null_bool import SqlNullBool
 
 
 T = TypeVar("T", bound="AppInstallActionWorkflowRun")
@@ -34,6 +35,7 @@ class AppInstallActionWorkflowRun:
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
+        enable_kube_config (SqlNullBool | Unset):
         execution_time (int | Unset): after query
         id (str | Unset):
         install_action_workflow (AppInstallActionWorkflow | Unset):
@@ -62,6 +64,7 @@ class AppInstallActionWorkflowRun:
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    enable_kube_config: SqlNullBool | Unset = UNSET
     execution_time: int | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflow: AppInstallActionWorkflow | Unset = UNSET
@@ -99,6 +102,10 @@ class AppInstallActionWorkflowRun:
             created_by = self.created_by.to_dict()
 
         created_by_id = self.created_by_id
+
+        enable_kube_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = self.enable_kube_config.to_dict()
 
         execution_time = self.execution_time
 
@@ -176,6 +183,8 @@ class AppInstallActionWorkflowRun:
             field_dict["created_by"] = created_by
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
         if execution_time is not UNSET:
             field_dict["execution_time"] = execution_time
         if id is not UNSET:
@@ -233,6 +242,7 @@ class AppInstallActionWorkflowRun:
         from ..models.app_log_stream import AppLogStream
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
@@ -254,6 +264,13 @@ class AppInstallActionWorkflowRun:
             created_by = AppAccount.from_dict(_created_by)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        _enable_kube_config = d.pop("enable_kube_config", UNSET)
+        enable_kube_config: SqlNullBool | Unset
+        if isinstance(_enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = SqlNullBool.from_dict(_enable_kube_config)
 
         execution_time = d.pop("execution_time", UNSET)
 
@@ -350,6 +367,7 @@ class AppInstallActionWorkflowRun:
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
+            enable_kube_config=enable_kube_config,
             execution_time=execution_time,
             id=id,
             install_action_workflow=install_action_workflow,

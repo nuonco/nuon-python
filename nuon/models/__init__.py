@@ -14,6 +14,9 @@ from .app_app import AppApp
 from .app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
 from .app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
 from .app_app_branch import AppAppBranch
+from .app_app_branch_config import AppAppBranchConfig
+from .app_app_branch_install_group import AppAppBranchInstallGroup
+from .app_app_branch_run import AppAppBranchRun
 from .app_app_break_glass_config import AppAppBreakGlassConfig
 from .app_app_config import AppAppConfig
 from .app_app_config_status import AppAppConfigStatus
@@ -32,6 +35,7 @@ from .app_app_runner_config import AppAppRunnerConfig
 from .app_app_runner_config_env_vars import AppAppRunnerConfigEnvVars
 from .app_app_runner_config_helm_driver_type import AppAppRunnerConfigHelmDriverType
 from .app_app_runner_type import AppAppRunnerType
+from .app_app_sandbox_build import AppAppSandboxBuild
 from .app_app_sandbox_config import AppAppSandboxConfig
 from .app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
 from .app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
@@ -66,6 +70,11 @@ from .app_docker_build_component_config import AppDockerBuildComponentConfig
 from .app_docker_build_component_config_env_vars import AppDockerBuildComponentConfigEnvVars
 from .app_drifted_object import AppDriftedObject
 from .app_external_image_component_config import AppExternalImageComponentConfig
+from .app_gcp_account import AppGCPAccount
+from .app_gcp_stack_outputs import AppGCPStackOutputs
+from .app_gcp_stack_outputs_break_glass_sa_emails import AppGCPStackOutputsBreakGlassSaEmails
+from .app_gcp_stack_outputs_custom_sa_emails import AppGCPStackOutputsCustomSaEmails
+from .app_gcp_stack_outputs_install_inputs import AppGCPStackOutputsInstallInputs
 from .app_helm_chart import AppHelmChart
 from .app_helm_component_config import AppHelmComponentConfig
 from .app_helm_component_config_values import AppHelmComponentConfigValues
@@ -120,6 +129,7 @@ from .app_log_stream_attrs import AppLogStreamAttrs
 from .app_notifications_config import AppNotificationsConfig
 from .app_oci_artifact import AppOCIArtifact
 from .app_oci_artifact_annotations import AppOCIArtifactAnnotations
+from .app_onboarding import AppOnboarding
 from .app_operation_status import AppOperationStatus
 from .app_operation_type import AppOperationType
 from .app_org import AppOrg
@@ -141,6 +151,10 @@ from .app_policy_result import AppPolicyResult
 from .app_policy_violation import AppPolicyViolation
 from .app_provider_type import AppProviderType
 from .app_public_git_vcs_config import AppPublicGitVCSConfig
+from .app_queue import AppQueue
+from .app_queue_emitter import AppQueueEmitter
+from .app_queue_emitter_mode import AppQueueEmitterMode
+from .app_queue_signal import AppQueueSignal
 from .app_role import AppRole
 from .app_role_type import AppRoleType
 from .app_runner import AppRunner
@@ -205,6 +219,7 @@ from .app_workflow_step_metadata import AppWorkflowStepMetadata
 from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
+from .blobstore_blob import BlobstoreBlob
 from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
 from .config_custom_nested_stack import ConfigCustomNestedStack
@@ -220,11 +235,13 @@ from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_available_roles_principal_type import GetAvailableRolesPrincipalType
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
+from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
 from .get_terraform_workspace_states_json_by_idv2_response_200 import GetTerraformWorkspaceStatesJSONByIDV2Response200
 from .github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
 from .github_com_nuonco_nuon_pkg_azure_credentials_config import GithubComNuoncoNuonPkgAzureCredentialsConfig
+from .github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
 from .github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
 from .github_com_nuonco_nuon_pkg_types_state_state_components import GithubComNuoncoNuonPkgTypesStateStateComponents
 from .github_match import GithubMatch
@@ -233,8 +250,10 @@ from .github_text_match import GithubTextMatch
 from .github_timestamp import GithubTimestamp
 from .github_user import GithubUser
 from .github_user_permissions import GithubUserPermissions
+from .helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
 from .helpers_create_install_config_params import HelpersCreateInstallConfigParams
 from .helpers_install_metadata import HelpersInstallMetadata
+from .helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
 from .iam_static_credentials import IamStaticCredentials
 from .iam_two_step_config import IamTwoStepConfig
 from .kube_cluster_info import KubeClusterInfo
@@ -272,7 +291,6 @@ from .plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
 from .plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig
 from .plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
 from .plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
-from .plantypes_plan_auth import PlantypesPlanAuth
 from .plantypes_sandbox_mode import PlantypesSandboxMode
 from .plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
 from .plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
@@ -296,6 +314,7 @@ from .refs_ref import RefsRef
 from .refs_ref_type import RefsRefType
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
 from .service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
+from .service_app_awsiam_role_config_cloud_platform import ServiceAppAWSIAMRoleConfigCloudPlatform
 from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
 from .service_app_group_request import ServiceAppGroupRequest
@@ -307,15 +326,24 @@ from .service_auth_me_response import ServiceAuthMeResponse
 from .service_available_role import ServiceAvailableRole
 from .service_available_roles_response import ServiceAvailableRolesResponse
 from .service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
+from .service_branch import ServiceBranch
 from .service_build_all_components_request import ServiceBuildAllComponentsRequest
 from .service_cancel_runner_job_request import ServiceCancelRunnerJobRequest
 from .service_cli_config import ServiceCLIConfig
+from .service_complete_install_step_request import ServiceCompleteInstallStepRequest
+from .service_complete_install_step_request_aws_account import ServiceCompleteInstallStepRequestAwsAccount
+from .service_complete_install_step_request_azure_account import ServiceCompleteInstallStepRequestAzureAccount
+from .service_complete_install_step_request_inputs import ServiceCompleteInstallStepRequestInputs
+from .service_complete_install_step_request_install_mode import ServiceCompleteInstallStepRequestInstallMode
+from .service_complete_install_step_request_metadata import ServiceCompleteInstallStepRequestMetadata
+from .service_complete_organization_step_request import ServiceCompleteOrganizationStepRequest
+from .service_complete_your_stack_step_request import ServiceCompleteYourStackStepRequest
+from .service_complete_your_stack_step_request_app_type import ServiceCompleteYourStackStepRequestAppType
 from .service_component_children import ServiceComponentChildren
 from .service_connected_github_vcs_action_workflow_config_request import (
     ServiceConnectedGithubVCSActionWorkflowConfigRequest,
 )
 from .service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
-from .service_connected_github_vcs_sandbox_config_request import ServiceConnectedGithubVCSSandboxConfigRequest
 from .service_create_action_workflow_config_request import ServiceCreateActionWorkflowConfigRequest
 from .service_create_action_workflow_config_step_request import ServiceCreateActionWorkflowConfigStepRequest
 from .service_create_action_workflow_config_step_request_env_vars import (
@@ -327,6 +355,7 @@ from .service_create_ad_hoc_action_request_env_vars import ServiceCreateAdHocAct
 from .service_create_ad_hoc_action_response import ServiceCreateAdHocActionResponse
 from .service_create_app_action_request import ServiceCreateAppActionRequest
 from .service_create_app_action_workflow_request import ServiceCreateAppActionWorkflowRequest
+from .service_create_app_branch_config_request import ServiceCreateAppBranchConfigRequest
 from .service_create_app_branch_request import ServiceCreateAppBranchRequest
 from .service_create_app_break_glass_config_request import ServiceCreateAppBreakGlassConfigRequest
 from .service_create_app_config_request import ServiceCreateAppConfigRequest
@@ -349,8 +378,6 @@ from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
 from .service_create_app_stack_config_request import ServiceCreateAppStackConfigRequest
 from .service_create_component_build_request import ServiceCreateComponentBuildRequest
-from .service_create_component_release_request import ServiceCreateComponentReleaseRequest
-from .service_create_component_release_request_strategy import ServiceCreateComponentReleaseRequestStrategy
 from .service_create_component_request import ServiceCreateComponentRequest
 from .service_create_connection_callback_request import ServiceCreateConnectionCallbackRequest
 from .service_create_connection_request import ServiceCreateConnectionRequest
@@ -382,10 +409,12 @@ from .service_create_install_inputs_request_inputs import ServiceCreateInstallIn
 from .service_create_install_request import ServiceCreateInstallRequest
 from .service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
 from .service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
+from .service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
 from .service_create_install_request_inputs import ServiceCreateInstallRequestInputs
 from .service_create_install_v2_request import ServiceCreateInstallV2Request
 from .service_create_install_v2_request_aws_account import ServiceCreateInstallV2RequestAwsAccount
 from .service_create_install_v2_request_azure_account import ServiceCreateInstallV2RequestAzureAccount
+from .service_create_install_v2_request_gcp_account import ServiceCreateInstallV2RequestGcpAccount
 from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
 from .service_create_job_component_config_request_env_vars import ServiceCreateJobComponentConfigRequestEnvVars
@@ -401,6 +430,7 @@ from .service_create_kubernetes_manifest_component_config_request_operation_role
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
 from .service_create_org_request import ServiceCreateOrgRequest
 from .service_create_org_user_request import ServiceCreateOrgUserRequest
+from .service_create_runner_bootstrap_token_response import ServiceCreateRunnerBootstrapTokenResponse
 from .service_create_terraform_module_component_config_request import ServiceCreateTerraformModuleComponentConfigRequest
 from .service_create_terraform_module_component_config_request_env_vars import (
     ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
@@ -419,15 +449,20 @@ from .service_create_workflow_step_approval_response_response import ServiceCrea
 from .service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
+from .service_example_app import ServiceExampleApp
 from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
 from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
+from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
+from .service_install_group_request import ServiceInstallGroupRequest
+from .service_install_permissions_role_status import ServiceInstallPermissionsRoleStatus
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from .service_kustomize_config_request import ServiceKustomizeConfigRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_mng_fetch_token_request import ServiceMngFetchTokenRequest
+from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
 from .service_mng_vm_shut_down_request import ServiceMngVMShutDownRequest
@@ -436,7 +471,6 @@ from .service_patch_install_config_params import ServicePatchInstallConfigParams
 from .service_prune_tokens_response import ServicePruneTokensResponse
 from .service_public_git_vcs_action_workflow_config_request import ServicePublicGitVCSActionWorkflowConfigRequest
 from .service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
-from .service_public_git_vcs_sandbox_config_request import ServicePublicGitVCSSandboxConfigRequest
 from .service_readme import ServiceReadme
 from .service_remove_org_user_request import ServiceRemoveOrgUserRequest
 from .service_reprovision_install_request import ServiceReprovisionInstallRequest
@@ -451,7 +485,9 @@ from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from .service_teardown_install_components_request import ServiceTeardownInstallComponentsRequest
+from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
+from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
 from .service_update_app_request import ServiceUpdateAppRequest
@@ -473,6 +509,9 @@ from .service_vcs_connection_repos_response import ServiceVCSConnectionReposResp
 from .service_vcs_connection_status_response import ServiceVCSConnectionStatusResponse
 from .service_vcs_connection_status_response_permissions import ServiceVCSConnectionStatusResponsePermissions
 from .service_waitlist_request import ServiceWaitlistRequest
+from .signaldb_signal_data import SignaldbSignalData
+from .signaldb_workflow_ref import SignaldbWorkflowRef
+from .sql_null_bool import SqlNullBool
 from .state_action_workflow_state import StateActionWorkflowState
 from .state_action_workflow_state_outputs import StateActionWorkflowStateOutputs
 from .state_actions_state import StateActionsState
@@ -483,6 +522,7 @@ from .state_aws_cloud_account import StateAWSCloudAccount
 from .state_azure_cloud_account import StateAzureCloudAccount
 from .state_cloud_account import StateCloudAccount
 from .state_domain_state import StateDomainState
+from .state_gcp_cloud_account import StateGCPCloudAccount
 from .state_inputs_state import StateInputsState
 from .state_inputs_state_inputs import StateInputsStateInputs
 from .state_install_stack_state import StateInstallStackState
@@ -512,6 +552,9 @@ __all__ = (
     "AppAppAWSIAMPolicyConfig",
     "AppAppAWSIAMRoleConfig",
     "AppAppBranch",
+    "AppAppBranchConfig",
+    "AppAppBranchInstallGroup",
+    "AppAppBranchRun",
     "AppAppBreakGlassConfig",
     "AppAppConfig",
     "AppAppConfigStatus",
@@ -530,6 +573,7 @@ __all__ = (
     "AppAppRunnerConfigEnvVars",
     "AppAppRunnerConfigHelmDriverType",
     "AppAppRunnerType",
+    "AppAppSandboxBuild",
     "AppAppSandboxConfig",
     "AppAppSandboxConfigEnvVars",
     "AppAppSandboxConfigOperationRoles",
@@ -564,6 +608,11 @@ __all__ = (
     "AppDockerBuildComponentConfigEnvVars",
     "AppDriftedObject",
     "AppExternalImageComponentConfig",
+    "AppGCPAccount",
+    "AppGCPStackOutputs",
+    "AppGCPStackOutputsBreakGlassSaEmails",
+    "AppGCPStackOutputsCustomSaEmails",
+    "AppGCPStackOutputsInstallInputs",
     "AppHelmChart",
     "AppHelmComponentConfig",
     "AppHelmComponentConfigValues",
@@ -618,6 +667,7 @@ __all__ = (
     "AppNotificationsConfig",
     "AppOCIArtifact",
     "AppOCIArtifactAnnotations",
+    "AppOnboarding",
     "AppOperationStatus",
     "AppOperationType",
     "AppOrg",
@@ -639,6 +689,10 @@ __all__ = (
     "AppPolicyViolation",
     "AppProviderType",
     "AppPublicGitVCSConfig",
+    "AppQueue",
+    "AppQueueEmitter",
+    "AppQueueEmitterMode",
+    "AppQueueSignal",
     "AppRole",
     "AppRoleType",
     "AppRunner",
@@ -701,6 +755,7 @@ __all__ = (
     "AppWorkflowStepPolicyValidation",
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
+    "BlobstoreBlob",
     "ConfigAppPolicyEngine",
     "ConfigAppPolicyType",
     "ConfigCustomNestedStack",
@@ -716,11 +771,13 @@ __all__ = (
     "GetAppConfigTemplateType",
     "GetAvailableRolesPrincipalType",
     "GetCurrentOrgFeaturesResponse200",
+    "GetInstallActionWorkflowOutputsResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetTerraformWorkspaceStatesJSONByIDResponse200",
     "GetTerraformWorkspaceStatesJSONByIDV2Response200",
     "GithubComNuoncoNuonPkgAwsCredentialsConfig",
     "GithubComNuoncoNuonPkgAzureCredentialsConfig",
+    "GithubComNuoncoNuonPkgGcpCredentialsConfig",
     "GithubComNuoncoNuonPkgTypesStateState",
     "GithubComNuoncoNuonPkgTypesStateStateComponents",
     "GithubMatch",
@@ -729,8 +786,10 @@ __all__ = (
     "GithubTimestamp",
     "GithubUser",
     "GithubUserPermissions",
+    "HelpersConnectedGithubVCSConfigRequest",
     "HelpersCreateInstallConfigParams",
     "HelpersInstallMetadata",
+    "HelpersPublicGitVCSConfigRequest",
     "IamStaticCredentials",
     "IamTwoStepConfig",
     "KubeClusterInfo",
@@ -766,7 +825,6 @@ __all__ = (
     "PlantypesKustomizeBuildConfig",
     "PlantypesNoopDeployPlan",
     "PlantypesOCIArtifactReference",
-    "PlantypesPlanAuth",
     "PlantypesSandboxMode",
     "PlantypesSandboxModeOutputs",
     "PlantypesSandboxRunPlan",
@@ -790,6 +848,7 @@ __all__ = (
     "RefsRefType",
     "ServiceAppAWSIAMPolicyConfig",
     "ServiceAppAWSIAMRoleConfig",
+    "ServiceAppAWSIAMRoleConfigCloudPlatform",
     "ServiceAppConfigTemplate",
     "ServiceAppConfigTemplateType",
     "ServiceAppGroupRequest",
@@ -801,13 +860,22 @@ __all__ = (
     "ServiceAvailableRole",
     "ServiceAvailableRolesResponse",
     "ServiceAwsECRImageConfigRequest",
+    "ServiceBranch",
     "ServiceBuildAllComponentsRequest",
     "ServiceCancelRunnerJobRequest",
     "ServiceCLIConfig",
+    "ServiceCompleteInstallStepRequest",
+    "ServiceCompleteInstallStepRequestAwsAccount",
+    "ServiceCompleteInstallStepRequestAzureAccount",
+    "ServiceCompleteInstallStepRequestInputs",
+    "ServiceCompleteInstallStepRequestInstallMode",
+    "ServiceCompleteInstallStepRequestMetadata",
+    "ServiceCompleteOrganizationStepRequest",
+    "ServiceCompleteYourStackStepRequest",
+    "ServiceCompleteYourStackStepRequestAppType",
     "ServiceComponentChildren",
     "ServiceConnectedGithubVCSActionWorkflowConfigRequest",
     "ServiceConnectedGithubVCSConfigRequest",
-    "ServiceConnectedGithubVCSSandboxConfigRequest",
     "ServiceCreateActionWorkflowConfigRequest",
     "ServiceCreateActionWorkflowConfigStepRequest",
     "ServiceCreateActionWorkflowConfigStepRequestEnvVars",
@@ -817,6 +885,7 @@ __all__ = (
     "ServiceCreateAdHocActionResponse",
     "ServiceCreateAppActionRequest",
     "ServiceCreateAppActionWorkflowRequest",
+    "ServiceCreateAppBranchConfigRequest",
     "ServiceCreateAppBranchRequest",
     "ServiceCreateAppBreakGlassConfigRequest",
     "ServiceCreateAppConfigRequest",
@@ -837,8 +906,6 @@ __all__ = (
     "ServiceCreateAppSecretsConfigRequest",
     "ServiceCreateAppStackConfigRequest",
     "ServiceCreateComponentBuildRequest",
-    "ServiceCreateComponentReleaseRequest",
-    "ServiceCreateComponentReleaseRequestStrategy",
     "ServiceCreateComponentRequest",
     "ServiceCreateConnectionCallbackRequest",
     "ServiceCreateConnectionRequest",
@@ -860,10 +927,12 @@ __all__ = (
     "ServiceCreateInstallRequest",
     "ServiceCreateInstallRequestAwsAccount",
     "ServiceCreateInstallRequestAzureAccount",
+    "ServiceCreateInstallRequestGcpAccount",
     "ServiceCreateInstallRequestInputs",
     "ServiceCreateInstallV2Request",
     "ServiceCreateInstallV2RequestAwsAccount",
     "ServiceCreateInstallV2RequestAzureAccount",
+    "ServiceCreateInstallV2RequestGcpAccount",
     "ServiceCreateInstallV2RequestInputs",
     "ServiceCreateJobComponentConfigRequest",
     "ServiceCreateJobComponentConfigRequestEnvVars",
@@ -873,6 +942,7 @@ __all__ = (
     "ServiceCreateOrgInviteRequest",
     "ServiceCreateOrgRequest",
     "ServiceCreateOrgUserRequest",
+    "ServiceCreateRunnerBootstrapTokenResponse",
     "ServiceCreateTerraformModuleComponentConfigRequest",
     "ServiceCreateTerraformModuleComponentConfigRequestEnvVars",
     "ServiceCreateTerraformModuleComponentConfigRequestOperationRoles",
@@ -885,15 +955,20 @@ __all__ = (
     "ServiceDeployInstallComponentsRequest",
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
+    "ServiceExampleApp",
     "ServiceForceShutdownRequest",
     "ServiceForgetInstallComponentRequest",
     "ServiceForgetInstallRequest",
     "ServiceGracefulShutdownRequest",
     "ServiceHelmRepoConfigRequest",
+    "ServiceInstallAppPermissionsConfigResponse",
+    "ServiceInstallGroupRequest",
+    "ServiceInstallPermissionsRoleStatus",
     "ServiceInstallPhoneHomeRequest",
     "ServiceKustomizeConfigRequest",
     "ServiceLatestRunnerHeartBeats",
     "ServiceMngFetchTokenRequest",
+    "ServiceMngRestartRequest",
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
     "ServiceMngVMShutDownRequest",
@@ -902,7 +977,6 @@ __all__ = (
     "ServicePruneTokensResponse",
     "ServicePublicGitVCSActionWorkflowConfigRequest",
     "ServicePublicGitVCSConfigRequest",
-    "ServicePublicGitVCSSandboxConfigRequest",
     "ServiceReadme",
     "ServiceRemoveOrgUserRequest",
     "ServiceReprovisionInstallRequest",
@@ -917,7 +991,9 @@ __all__ = (
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
     "ServiceTeardownInstallComponentsRequest",
+    "ServiceTriggerAppBranchRunRequest",
     "ServiceUpdateActionWorkflowRequest",
+    "ServiceUpdateAppBranchRequest",
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",
     "ServiceUpdateAppRequest",
@@ -939,6 +1015,9 @@ __all__ = (
     "ServiceVCSConnectionStatusResponse",
     "ServiceVCSConnectionStatusResponsePermissions",
     "ServiceWaitlistRequest",
+    "SignaldbSignalData",
+    "SignaldbWorkflowRef",
+    "SqlNullBool",
     "StateActionsState",
     "StateActionsStateWorkflows",
     "StateActionWorkflowState",
@@ -949,6 +1028,7 @@ __all__ = (
     "StateAzureCloudAccount",
     "StateCloudAccount",
     "StateDomainState",
+    "StateGCPCloudAccount",
     "StateInputsState",
     "StateInputsStateInputs",
     "StateInstallStackState",

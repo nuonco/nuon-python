@@ -31,7 +31,7 @@ class AppAppInput:
         group_id (str | Unset):
         id (str | Unset):
         index (int | Unset):
-        internal (bool | Unset):
+        internal (bool | Unset): Deprecated: this field was never enforced and has no effect.
         name (str | Unset):
         org_id (str | Unset):
         required (bool | Unset):

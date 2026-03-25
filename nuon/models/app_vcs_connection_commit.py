@@ -21,6 +21,8 @@ class AppVCSConnectionCommit:
         created_by_id (str | Unset):
         id (str | Unset):
         message (str | Unset):
+        owner_id (str | Unset): Polymorphic ownership - references VCS config that owns this commit
+        owner_type (str | Unset):
         sha (str | Unset):
         updated_at (str | Unset):
         vcs_connection_id (str | Unset):
@@ -32,6 +34,8 @@ class AppVCSConnectionCommit:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     message: str | Unset = UNSET
+    owner_id: str | Unset = UNSET
+    owner_type: str | Unset = UNSET
     sha: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_id: str | Unset = UNSET
@@ -49,6 +53,10 @@ class AppVCSConnectionCommit:
         id = self.id
 
         message = self.message
+
+        owner_id = self.owner_id
+
+        owner_type = self.owner_type
 
         sha = self.sha
 
@@ -71,6 +79,10 @@ class AppVCSConnectionCommit:
             field_dict["id"] = id
         if message is not UNSET:
             field_dict["message"] = message
+        if owner_id is not UNSET:
+            field_dict["owner_id"] = owner_id
+        if owner_type is not UNSET:
+            field_dict["owner_type"] = owner_type
         if sha is not UNSET:
             field_dict["sha"] = sha
         if updated_at is not UNSET:
@@ -95,6 +107,10 @@ class AppVCSConnectionCommit:
 
         message = d.pop("message", UNSET)
 
+        owner_id = d.pop("owner_id", UNSET)
+
+        owner_type = d.pop("owner_type", UNSET)
+
         sha = d.pop("sha", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -108,6 +124,8 @@ class AppVCSConnectionCommit:
             created_by_id=created_by_id,
             id=id,
             message=message,
+            owner_id=owner_id,
+            owner_type=owner_type,
             sha=sha,
             updated_at=updated_at,
             vcs_connection_id=vcs_connection_id,

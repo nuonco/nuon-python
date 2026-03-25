@@ -9,9 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.service_connected_github_vcs_sandbox_config_request import (
-        ServiceConnectedGithubVCSSandboxConfigRequest,
-    )
+    from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
+    from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
     from ..models.service_create_app_sandbox_config_request_env_vars import ServiceCreateAppSandboxConfigRequestEnvVars
     from ..models.service_create_app_sandbox_config_request_operation_roles import (
         ServiceCreateAppSandboxConfigRequestOperationRoles,
@@ -19,7 +18,6 @@ if TYPE_CHECKING:
     from ..models.service_create_app_sandbox_config_request_variables import (
         ServiceCreateAppSandboxConfigRequestVariables,
     )
-    from ..models.service_public_git_vcs_sandbox_config_request import ServicePublicGitVCSSandboxConfigRequest
 
 
 T = TypeVar("T", bound="ServiceCreateAppSandboxConfigRequest")
@@ -33,10 +31,10 @@ class ServiceCreateAppSandboxConfigRequest:
         terraform_version (str):
         variables (ServiceCreateAppSandboxConfigRequestVariables):
         app_config_id (str | Unset):
-        connected_github_vcs_config (ServiceConnectedGithubVCSSandboxConfigRequest | Unset):
+        connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
         drift_schedule (str | Unset):
         operation_roles (ServiceCreateAppSandboxConfigRequestOperationRoles | Unset):
-        public_git_vcs_config (ServicePublicGitVCSSandboxConfigRequest | Unset):
+        public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
         variables_files (list[str] | Unset):
     """
@@ -45,10 +43,10 @@ class ServiceCreateAppSandboxConfigRequest:
     terraform_version: str
     variables: ServiceCreateAppSandboxConfigRequestVariables
     app_config_id: str | Unset = UNSET
-    connected_github_vcs_config: ServiceConnectedGithubVCSSandboxConfigRequest | Unset = UNSET
+    connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset = UNSET
-    public_git_vcs_config: ServicePublicGitVCSSandboxConfigRequest | Unset = UNSET
+    public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -112,9 +110,8 @@ class ServiceCreateAppSandboxConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_sandbox_config_request import (
-            ServiceConnectedGithubVCSSandboxConfigRequest,
-        )
+        from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
+        from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
         from ..models.service_create_app_sandbox_config_request_env_vars import (
             ServiceCreateAppSandboxConfigRequestEnvVars,
         )
@@ -124,7 +121,6 @@ class ServiceCreateAppSandboxConfigRequest:
         from ..models.service_create_app_sandbox_config_request_variables import (
             ServiceCreateAppSandboxConfigRequestVariables,
         )
-        from ..models.service_public_git_vcs_sandbox_config_request import ServicePublicGitVCSSandboxConfigRequest
 
         d = dict(src_dict)
         env_vars = ServiceCreateAppSandboxConfigRequestEnvVars.from_dict(d.pop("env_vars"))
@@ -136,13 +132,11 @@ class ServiceCreateAppSandboxConfigRequest:
         app_config_id = d.pop("app_config_id", UNSET)
 
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
-        connected_github_vcs_config: ServiceConnectedGithubVCSSandboxConfigRequest | Unset
+        connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset
         if isinstance(_connected_github_vcs_config, Unset):
             connected_github_vcs_config = UNSET
         else:
-            connected_github_vcs_config = ServiceConnectedGithubVCSSandboxConfigRequest.from_dict(
-                _connected_github_vcs_config
-            )
+            connected_github_vcs_config = HelpersConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
@@ -154,11 +148,11 @@ class ServiceCreateAppSandboxConfigRequest:
             operation_roles = ServiceCreateAppSandboxConfigRequestOperationRoles.from_dict(_operation_roles)
 
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
-        public_git_vcs_config: ServicePublicGitVCSSandboxConfigRequest | Unset
+        public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
             public_git_vcs_config = UNSET
         else:
-            public_git_vcs_config = ServicePublicGitVCSSandboxConfigRequest.from_dict(_public_git_vcs_config)
+            public_git_vcs_config = HelpersPublicGitVCSConfigRequest.from_dict(_public_git_vcs_config)
 
         references = cast(list[str], d.pop("references", UNSET))
 

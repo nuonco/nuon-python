@@ -6,13 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_component_release import AppComponentRelease
+from ...models.app_workflow import AppWorkflow
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     app_id: str,
+    app_branch_id: str,
     *,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -31,8 +32,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/releases".format(
+        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs".format(
             app_id=quote(str(app_id), safe=""),
+            app_branch_id=quote(str(app_branch_id), safe=""),
         ),
         "params": params,
     }
@@ -42,12 +44,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppComponentRelease] | None:
+) -> StderrErrResponse | list[AppWorkflow] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppComponentRelease.from_dict(response_200_item_data)
+            response_200_item = AppWorkflow.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -86,7 +88,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
+) -> Response[StderrErrResponse | list[AppWorkflow]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -97,18 +99,20 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
+    app_branch_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
-    """get all releases for an app
+) -> Response[StderrErrResponse | list[AppWorkflow]]:
+    """get app branch workflow runs
 
-     Returns all releases for the provided app.
+     Returns workflow runs for an app branch ordered by creation time (descending)
 
     Args:
         app_id (str):
+        app_branch_id (str):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -118,11 +122,12 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppComponentRelease]]
+        Response[StderrErrResponse | list[AppWorkflow]]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        app_branch_id=app_branch_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -137,18 +142,20 @@ def sync_detailed(
 
 def sync(
     app_id: str,
+    app_branch_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
-) -> StderrErrResponse | list[AppComponentRelease] | None:
-    """get all releases for an app
+) -> StderrErrResponse | list[AppWorkflow] | None:
+    """get app branch workflow runs
 
-     Returns all releases for the provided app.
+     Returns workflow runs for an app branch ordered by creation time (descending)
 
     Args:
         app_id (str):
+        app_branch_id (str):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -158,11 +165,12 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppComponentRelease]
+        StderrErrResponse | list[AppWorkflow]
     """
 
     return sync_detailed(
         app_id=app_id,
+        app_branch_id=app_branch_id,
         client=client,
         offset=offset,
         limit=limit,
@@ -172,18 +180,20 @@ def sync(
 
 async def asyncio_detailed(
     app_id: str,
+    app_branch_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
-    """get all releases for an app
+) -> Response[StderrErrResponse | list[AppWorkflow]]:
+    """get app branch workflow runs
 
-     Returns all releases for the provided app.
+     Returns workflow runs for an app branch ordered by creation time (descending)
 
     Args:
         app_id (str):
+        app_branch_id (str):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -193,11 +203,12 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppComponentRelease]]
+        Response[StderrErrResponse | list[AppWorkflow]]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        app_branch_id=app_branch_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -210,18 +221,20 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
+    app_branch_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
-) -> StderrErrResponse | list[AppComponentRelease] | None:
-    """get all releases for an app
+) -> StderrErrResponse | list[AppWorkflow] | None:
+    """get app branch workflow runs
 
-     Returns all releases for the provided app.
+     Returns workflow runs for an app branch ordered by creation time (descending)
 
     Args:
         app_id (str):
+        app_branch_id (str):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -231,12 +244,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppComponentRelease]
+        StderrErrResponse | list[AppWorkflow]
     """
 
     return (
         await asyncio_detailed(
             app_id=app_id,
+            app_branch_id=app_branch_id,
             client=client,
             offset=offset,
             limit=limit,

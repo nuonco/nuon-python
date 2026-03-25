@@ -15,7 +15,8 @@ T = TypeVar("T", bound="ServiceUpdateRunnerSettingsRequest")
 class ServiceUpdateRunnerSettingsRequest:
     """
     Attributes:
-        aws_max_instance_lifetime (int | Unset):
+        aws_max_instance_lifetime (int | Unset): Deprecated: no longer used. Instance refresh is handled by a backend
+            cron.
         container_image_tag (str | Unset):
         container_image_url (str | Unset):
         org_awsiam_role_arn (str | Unset):

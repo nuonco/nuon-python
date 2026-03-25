@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,6 +21,8 @@ class AppAppAWSIAMPolicyConfig:
         contents (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        gcp_permissions (list[str] | Unset):
+        gcp_predefined_role (str | Unset):
         id (str | Unset):
         managed_policy_name (str | Unset):
         name (str | Unset):
@@ -34,6 +36,8 @@ class AppAppAWSIAMPolicyConfig:
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    gcp_permissions: list[str] | Unset = UNSET
+    gcp_predefined_role: str | Unset = UNSET
     id: str | Unset = UNSET
     managed_policy_name: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -53,6 +57,12 @@ class AppAppAWSIAMPolicyConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        gcp_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.gcp_permissions, Unset):
+            gcp_permissions = self.gcp_permissions
+
+        gcp_predefined_role = self.gcp_predefined_role
 
         id = self.id
 
@@ -79,6 +89,10 @@ class AppAppAWSIAMPolicyConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if gcp_permissions is not UNSET:
+            field_dict["gcp_permissions"] = gcp_permissions
+        if gcp_predefined_role is not UNSET:
+            field_dict["gcp_predefined_role"] = gcp_predefined_role
         if id is not UNSET:
             field_dict["id"] = id
         if managed_policy_name is not UNSET:
@@ -107,6 +121,10 @@ class AppAppAWSIAMPolicyConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        gcp_permissions = cast(list[str], d.pop("gcp_permissions", UNSET))
+
+        gcp_predefined_role = d.pop("gcp_predefined_role", UNSET)
+
         id = d.pop("id", UNSET)
 
         managed_policy_name = d.pop("managed_policy_name", UNSET)
@@ -124,6 +142,8 @@ class AppAppAWSIAMPolicyConfig:
             contents=contents,
             created_at=created_at,
             created_by_id=created_by_id,
+            gcp_permissions=gcp_permissions,
+            gcp_predefined_role=gcp_predefined_role,
             id=id,
             managed_policy_name=managed_policy_name,
             name=name,

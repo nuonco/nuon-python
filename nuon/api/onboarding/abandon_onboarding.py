@@ -1,25 +1,20 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_component_release import AppComponentRelease
+from ...models.app_onboarding import AppOnboarding
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
-def _get_kwargs(
-    release_id: str,
-) -> dict[str, Any]:
+def _get_kwargs() -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/v1/releases/{release_id}".format(
-            release_id=quote(str(release_id), safe=""),
-        ),
+        "method": "delete",
+        "url": "/v1/onboarding/current",
     }
 
     return _kwargs
@@ -27,26 +22,16 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppComponentRelease | StderrErrResponse | None:
+) -> AppOnboarding | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = AppComponentRelease.from_dict(response.json())
+        response_200 = AppOnboarding.from_dict(response.json())
 
         return response_200
-
-    if response.status_code == 400:
-        response_400 = StderrErrResponse.from_dict(response.json())
-
-        return response_400
 
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
 
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
@@ -66,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppComponentRelease | StderrErrResponse]:
+) -> Response[AppOnboarding | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,28 +61,22 @@ def _build_response(
 
 
 def sync_detailed(
-    release_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppComponentRelease | StderrErrResponse]:
-    """get a release
+) -> Response[AppOnboarding | StderrErrResponse]:
+    """Abandon onboarding session
 
-     Return a release by id.
-
-    Args:
-        release_id (str):
+     Marks the current active onboarding session as abandoned
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppComponentRelease | StderrErrResponse]
+        Response[AppOnboarding | StderrErrResponse]
     """
 
-    kwargs = _get_kwargs(
-        release_id=release_id,
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -107,54 +86,43 @@ def sync_detailed(
 
 
 def sync(
-    release_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppComponentRelease | StderrErrResponse | None:
-    """get a release
+) -> AppOnboarding | StderrErrResponse | None:
+    """Abandon onboarding session
 
-     Return a release by id.
-
-    Args:
-        release_id (str):
+     Marks the current active onboarding session as abandoned
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppComponentRelease | StderrErrResponse
+        AppOnboarding | StderrErrResponse
     """
 
     return sync_detailed(
-        release_id=release_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    release_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppComponentRelease | StderrErrResponse]:
-    """get a release
+) -> Response[AppOnboarding | StderrErrResponse]:
+    """Abandon onboarding session
 
-     Return a release by id.
-
-    Args:
-        release_id (str):
+     Marks the current active onboarding session as abandoned
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppComponentRelease | StderrErrResponse]
+        Response[AppOnboarding | StderrErrResponse]
     """
 
-    kwargs = _get_kwargs(
-        release_id=release_id,
-    )
+    kwargs = _get_kwargs()
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -162,28 +130,23 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    release_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppComponentRelease | StderrErrResponse | None:
-    """get a release
+) -> AppOnboarding | StderrErrResponse | None:
+    """Abandon onboarding session
 
-     Return a release by id.
-
-    Args:
-        release_id (str):
+     Marks the current active onboarding session as abandoned
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppComponentRelease | StderrErrResponse
+        AppOnboarding | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            release_id=release_id,
             client=client,
         )
     ).parsed

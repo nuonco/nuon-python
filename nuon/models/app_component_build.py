@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_install_deploy import AppInstallDeploy
     from ..models.app_log_stream import AppLogStream
     from ..models.app_policy_report import AppPolicyReport
+    from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
@@ -42,6 +43,7 @@ class AppComponentBuild:
         install_deploys (list[AppInstallDeploy] | Unset):
         log_stream (AppLogStream | Unset):
         policy_reports (list[AppPolicyReport] | Unset):
+        queue_signal (AppQueueSignal | Unset):
         releases (list[AppComponentRelease] | Unset):
         runner_job (AppRunnerJob | Unset):
         status (str | Unset):
@@ -65,6 +67,7 @@ class AppComponentBuild:
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
+    queue_signal: AppQueueSignal | Unset = UNSET
     releases: list[AppComponentRelease] | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     status: str | Unset = UNSET
@@ -118,6 +121,10 @@ class AppComponentBuild:
             for policy_reports_item_data in self.policy_reports:
                 policy_reports_item = policy_reports_item_data.to_dict()
                 policy_reports.append(policy_reports_item)
+
+        queue_signal: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.queue_signal, Unset):
+            queue_signal = self.queue_signal.to_dict()
 
         releases: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.releases, Unset):
@@ -175,6 +182,8 @@ class AppComponentBuild:
             field_dict["log_stream"] = log_stream
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
+        if queue_signal is not UNSET:
+            field_dict["queue_signal"] = queue_signal
         if releases is not UNSET:
             field_dict["releases"] = releases
         if runner_job is not UNSET:
@@ -201,6 +210,7 @@ class AppComponentBuild:
         from ..models.app_install_deploy import AppInstallDeploy
         from ..models.app_log_stream import AppLogStream
         from ..models.app_policy_report import AppPolicyReport
+        from ..models.app_queue_signal import AppQueueSignal
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
@@ -262,6 +272,13 @@ class AppComponentBuild:
 
                 policy_reports.append(policy_reports_item)
 
+        _queue_signal = d.pop("queue_signal", UNSET)
+        queue_signal: AppQueueSignal | Unset
+        if isinstance(_queue_signal, Unset):
+            queue_signal = UNSET
+        else:
+            queue_signal = AppQueueSignal.from_dict(_queue_signal)
+
         _releases = d.pop("releases", UNSET)
         releases: list[AppComponentRelease] | Unset = UNSET
         if _releases is not UNSET:
@@ -313,6 +330,7 @@ class AppComponentBuild:
             install_deploys=install_deploys,
             log_stream=log_stream,
             policy_reports=policy_reports,
+            queue_signal=queue_signal,
             releases=releases,
             runner_job=runner_job,
             status=status,

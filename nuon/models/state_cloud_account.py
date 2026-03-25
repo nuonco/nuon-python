@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.state_aws_cloud_account import StateAWSCloudAccount
     from ..models.state_azure_cloud_account import StateAzureCloudAccount
+    from ..models.state_gcp_cloud_account import StateGCPCloudAccount
 
 
 T = TypeVar("T", bound="StateCloudAccount")
@@ -22,10 +23,12 @@ class StateCloudAccount:
     Attributes:
         aws (StateAWSCloudAccount | Unset):
         azure (StateAzureCloudAccount | Unset):
+        gcp (StateGCPCloudAccount | Unset):
     """
 
     aws: StateAWSCloudAccount | Unset = UNSET
     azure: StateAzureCloudAccount | Unset = UNSET
+    gcp: StateGCPCloudAccount | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,6 +40,10 @@ class StateCloudAccount:
         if not isinstance(self.azure, Unset):
             azure = self.azure.to_dict()
 
+        gcp: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp, Unset):
+            gcp = self.gcp.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -44,6 +51,8 @@ class StateCloudAccount:
             field_dict["aws"] = aws
         if azure is not UNSET:
             field_dict["azure"] = azure
+        if gcp is not UNSET:
+            field_dict["gcp"] = gcp
 
         return field_dict
 
@@ -51,6 +60,7 @@ class StateCloudAccount:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.state_aws_cloud_account import StateAWSCloudAccount
         from ..models.state_azure_cloud_account import StateAzureCloudAccount
+        from ..models.state_gcp_cloud_account import StateGCPCloudAccount
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)
@@ -67,9 +77,17 @@ class StateCloudAccount:
         else:
             azure = StateAzureCloudAccount.from_dict(_azure)
 
+        _gcp = d.pop("gcp", UNSET)
+        gcp: StateGCPCloudAccount | Unset
+        if isinstance(_gcp, Unset):
+            gcp = UNSET
+        else:
+            gcp = StateGCPCloudAccount.from_dict(_gcp)
+
         state_cloud_account = cls(
             aws=aws,
             azure=azure,
+            gcp=gcp,
         )
 
         state_cloud_account.additional_properties = d

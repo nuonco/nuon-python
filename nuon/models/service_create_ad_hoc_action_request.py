@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,6 +20,7 @@ class ServiceCreateAdHocActionRequest:
     """
     Attributes:
         command (str | Unset):
+        enable_kube_config (bool | None | Unset):
         env_vars (ServiceCreateAdHocActionRequestEnvVars | Unset):
         inline_contents (str | Unset):
         name (str | Unset):
@@ -28,6 +29,7 @@ class ServiceCreateAdHocActionRequest:
     """
 
     command: str | Unset = UNSET
+    enable_kube_config: bool | None | Unset = UNSET
     env_vars: ServiceCreateAdHocActionRequestEnvVars | Unset = UNSET
     inline_contents: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -37,6 +39,12 @@ class ServiceCreateAdHocActionRequest:
 
     def to_dict(self) -> dict[str, Any]:
         command = self.command
+
+        enable_kube_config: bool | None | Unset
+        if isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = self.enable_kube_config
 
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -55,6 +63,8 @@ class ServiceCreateAdHocActionRequest:
         field_dict.update({})
         if command is not UNSET:
             field_dict["command"] = command
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if inline_contents is not UNSET:
@@ -75,6 +85,15 @@ class ServiceCreateAdHocActionRequest:
         d = dict(src_dict)
         command = d.pop("command", UNSET)
 
+        def _parse_enable_kube_config(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        enable_kube_config = _parse_enable_kube_config(d.pop("enable_kube_config", UNSET))
+
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: ServiceCreateAdHocActionRequestEnvVars | Unset
         if isinstance(_env_vars, Unset):
@@ -92,6 +111,7 @@ class ServiceCreateAdHocActionRequest:
 
         service_create_ad_hoc_action_request = cls(
             command=command,
+            enable_kube_config=enable_kube_config,
             env_vars=env_vars,
             inline_contents=inline_contents,
             name=name,

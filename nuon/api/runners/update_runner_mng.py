@@ -88,7 +88,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Response[StderrErrResponse | bool]:
-    """update an install runner via the mng process
+    """update an install runner via the mng process. this is practically a restart.
 
     Args:
         runner_id (str):
@@ -120,7 +120,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> StderrErrResponse | bool | None:
-    """update an install runner via the mng process
+    """update an install runner via the mng process. this is practically a restart.
 
     Args:
         runner_id (str):
@@ -147,7 +147,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> Response[StderrErrResponse | bool]:
-    """update an install runner via the mng process
+    """update an install runner via the mng process. this is practically a restart.
 
     Args:
         runner_id (str):
@@ -177,7 +177,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceMngUpdateRequest,
 ) -> StderrErrResponse | bool | None:
-    """update an install runner via the mng process
+    """update an install runner via the mng process. this is practically a restart.
 
     Args:
         runner_id (str):

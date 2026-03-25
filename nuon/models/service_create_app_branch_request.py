@@ -13,24 +13,19 @@ T = TypeVar("T", bound="ServiceCreateAppBranchRequest")
 class ServiceCreateAppBranchRequest:
     """
     Attributes:
-        connected_github_vcs_config_id (str):
         name (str):
     """
 
-    connected_github_vcs_config_id: str
     name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connected_github_vcs_config_id = self.connected_github_vcs_config_id
-
         name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "connected_github_vcs_config_id": connected_github_vcs_config_id,
                 "name": name,
             }
         )
@@ -40,12 +35,9 @@ class ServiceCreateAppBranchRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connected_github_vcs_config_id = d.pop("connected_github_vcs_config_id")
-
         name = d.pop("name")
 
         service_create_app_branch_request = cls(
-            connected_github_vcs_config_id=connected_github_vcs_config_id,
             name=name,
         )
 

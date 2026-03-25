@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,15 +16,21 @@ class ServiceCreateOrgRequest:
     """
     Attributes:
         name (str):
-        use_sandbox_mode (bool | Unset): These fields are used to control the behaviour of the org.
+        tags (list[str] | Unset):
+        use_sandbox_mode (bool | Unset):
     """
 
     name: str
+    tags: list[str] | Unset = UNSET
     use_sandbox_mode: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
+
+        tags: list[str] | Unset = UNSET
+        if not isinstance(self.tags, Unset):
+            tags = self.tags
 
         use_sandbox_mode = self.use_sandbox_mode
 
@@ -35,6 +41,8 @@ class ServiceCreateOrgRequest:
                 "name": name,
             }
         )
+        if tags is not UNSET:
+            field_dict["tags"] = tags
         if use_sandbox_mode is not UNSET:
             field_dict["use_sandbox_mode"] = use_sandbox_mode
 
@@ -45,10 +53,13 @@ class ServiceCreateOrgRequest:
         d = dict(src_dict)
         name = d.pop("name")
 
+        tags = cast(list[str], d.pop("tags", UNSET))
+
         use_sandbox_mode = d.pop("use_sandbox_mode", UNSET)
 
         service_create_org_request = cls(
             name=name,
+            tags=tags,
             use_sandbox_mode=use_sandbox_mode,
         )
 

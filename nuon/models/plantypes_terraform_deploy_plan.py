@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_terraform_backend import PlantypesTerraformBackend
@@ -33,6 +34,7 @@ class PlantypesTerraformDeployPlan:
         azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         cluster_info (KubeClusterInfo | Unset):
         env_vars (PlantypesTerraformDeployPlanEnvVars | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
         plan_json (list[int] | Unset):
         policies (PlantypesTerraformDeployPlanPolicies | Unset):
@@ -46,6 +48,7 @@ class PlantypesTerraformDeployPlan:
     azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
     env_vars: PlantypesTerraformDeployPlanEnvVars | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
     plan_json: list[int] | Unset = UNSET
     policies: PlantypesTerraformDeployPlanPolicies | Unset = UNSET
@@ -71,6 +74,10 @@ class PlantypesTerraformDeployPlan:
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
+
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
 
         hooks: dict[str, Any] | Unset = UNSET
         if not isinstance(self.hooks, Unset):
@@ -111,6 +118,8 @@ class PlantypesTerraformDeployPlan:
             field_dict["cluster_info"] = cluster_info
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if hooks is not UNSET:
             field_dict["hooks"] = hooks
         if plan_json is not UNSET:
@@ -135,6 +144,9 @@ class PlantypesTerraformDeployPlan:
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
             GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
         from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.kube_cluster_info import KubeClusterInfo
@@ -172,6 +184,13 @@ class PlantypesTerraformDeployPlan:
             env_vars = UNSET
         else:
             env_vars = PlantypesTerraformDeployPlanEnvVars.from_dict(_env_vars)
+
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
 
         _hooks = d.pop("hooks", UNSET)
         hooks: PlantypesTerraformDeployHooks | Unset
@@ -217,6 +236,7 @@ class PlantypesTerraformDeployPlan:
             azure_auth=azure_auth,
             cluster_info=cluster_info,
             env_vars=env_vars,
+            gcp_auth=gcp_auth,
             hooks=hooks,
             plan_json=plan_json,
             policies=policies,
