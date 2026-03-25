@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs import AppAWSStackOutputs
     from ..models.app_azure_stack_outputs import AppAzureStackOutputs
+    from ..models.app_gcp_stack_outputs import AppGCPStackOutputs
     from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData
     from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 
@@ -28,6 +29,7 @@ class AppInstallStackOutputs:
         created_by_id (str | Unset):
         data (AppInstallStackOutputsData | Unset):
         data_contents (AppInstallStackOutputsDataContents | Unset):
+        gcp (AppGCPStackOutputs | Unset):
         id (str | Unset):
         install_stack_id (str | Unset):
         install_version_run_id (str | Unset):
@@ -41,6 +43,7 @@ class AppInstallStackOutputs:
     created_by_id: str | Unset = UNSET
     data: AppInstallStackOutputsData | Unset = UNSET
     data_contents: AppInstallStackOutputsDataContents | Unset = UNSET
+    gcp: AppGCPStackOutputs | Unset = UNSET
     id: str | Unset = UNSET
     install_stack_id: str | Unset = UNSET
     install_version_run_id: str | Unset = UNSET
@@ -69,6 +72,10 @@ class AppInstallStackOutputs:
         if not isinstance(self.data_contents, Unset):
             data_contents = self.data_contents.to_dict()
 
+        gcp: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp, Unset):
+            gcp = self.gcp.to_dict()
+
         id = self.id
 
         install_stack_id = self.install_stack_id
@@ -94,6 +101,8 @@ class AppInstallStackOutputs:
             field_dict["data"] = data
         if data_contents is not UNSET:
             field_dict["data_contents"] = data_contents
+        if gcp is not UNSET:
+            field_dict["gcp"] = gcp
         if id is not UNSET:
             field_dict["id"] = id
         if install_stack_id is not UNSET:
@@ -111,6 +120,7 @@ class AppInstallStackOutputs:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_aws_stack_outputs import AppAWSStackOutputs
         from ..models.app_azure_stack_outputs import AppAzureStackOutputs
+        from ..models.app_gcp_stack_outputs import AppGCPStackOutputs
         from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData
         from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 
@@ -147,6 +157,13 @@ class AppInstallStackOutputs:
         else:
             data_contents = AppInstallStackOutputsDataContents.from_dict(_data_contents)
 
+        _gcp = d.pop("gcp", UNSET)
+        gcp: AppGCPStackOutputs | Unset
+        if isinstance(_gcp, Unset):
+            gcp = UNSET
+        else:
+            gcp = AppGCPStackOutputs.from_dict(_gcp)
+
         id = d.pop("id", UNSET)
 
         install_stack_id = d.pop("install_stack_id", UNSET)
@@ -164,6 +181,7 @@ class AppInstallStackOutputs:
             created_by_id=created_by_id,
             data=data,
             data_contents=data_contents,
+            gcp=gcp,
             id=id,
             install_stack_id=install_stack_id,
             install_version_run_id=install_version_run_id,

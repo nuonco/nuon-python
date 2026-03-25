@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.app_action_workflow_step_config import AppActionWorkflowStepConfig
     from ..models.app_action_workflow_trigger_config import AppActionWorkflowTriggerConfig
     from ..models.refs_ref import RefsRef
+    from ..models.sql_null_bool import SqlNullBool
 
 
 T = TypeVar("T", bound="AppActionWorkflowConfig")
@@ -28,6 +29,7 @@ class AppActionWorkflowConfig:
         component_dependency_ids (list[str] | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        enable_kube_config (SqlNullBool | Unset):
         id (str | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
@@ -46,6 +48,7 @@ class AppActionWorkflowConfig:
     component_dependency_ids: list[str] | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    enable_kube_config: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
@@ -72,6 +75,10 @@ class AppActionWorkflowConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        enable_kube_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = self.enable_kube_config.to_dict()
 
         id = self.id
 
@@ -123,6 +130,8 @@ class AppActionWorkflowConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
         if id is not UNSET:
             field_dict["id"] = id
         if references is not UNSET:
@@ -147,6 +156,7 @@ class AppActionWorkflowConfig:
         from ..models.app_action_workflow_step_config import AppActionWorkflowStepConfig
         from ..models.app_action_workflow_trigger_config import AppActionWorkflowTriggerConfig
         from ..models.refs_ref import RefsRef
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         action_workflow_id = d.pop("action_workflow_id", UNSET)
@@ -162,6 +172,13 @@ class AppActionWorkflowConfig:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        _enable_kube_config = d.pop("enable_kube_config", UNSET)
+        enable_kube_config: SqlNullBool | Unset
+        if isinstance(_enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = SqlNullBool.from_dict(_enable_kube_config)
 
         id = d.pop("id", UNSET)
 
@@ -208,6 +225,7 @@ class AppActionWorkflowConfig:
             component_dependency_ids=component_dependency_ids,
             created_at=created_at,
             created_by_id=created_by_id,
+            enable_kube_config=enable_kube_config,
             id=id,
             references=references,
             refs=refs,

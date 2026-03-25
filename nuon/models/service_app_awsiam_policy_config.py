@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,17 +16,27 @@ class ServiceAppAWSIAMPolicyConfig:
     """
     Attributes:
         contents (str | Unset):
+        gcp_permissions (list[str] | Unset):
+        gcp_predefined_role (str | Unset):
         managed_policy_name (str | Unset):
         name (str | Unset):
     """
 
     contents: str | Unset = UNSET
+    gcp_permissions: list[str] | Unset = UNSET
+    gcp_predefined_role: str | Unset = UNSET
     managed_policy_name: str | Unset = UNSET
     name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         contents = self.contents
+
+        gcp_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.gcp_permissions, Unset):
+            gcp_permissions = self.gcp_permissions
+
+        gcp_predefined_role = self.gcp_predefined_role
 
         managed_policy_name = self.managed_policy_name
 
@@ -37,6 +47,10 @@ class ServiceAppAWSIAMPolicyConfig:
         field_dict.update({})
         if contents is not UNSET:
             field_dict["contents"] = contents
+        if gcp_permissions is not UNSET:
+            field_dict["gcp_permissions"] = gcp_permissions
+        if gcp_predefined_role is not UNSET:
+            field_dict["gcp_predefined_role"] = gcp_predefined_role
         if managed_policy_name is not UNSET:
             field_dict["managed_policy_name"] = managed_policy_name
         if name is not UNSET:
@@ -49,12 +63,18 @@ class ServiceAppAWSIAMPolicyConfig:
         d = dict(src_dict)
         contents = d.pop("contents", UNSET)
 
+        gcp_permissions = cast(list[str], d.pop("gcp_permissions", UNSET))
+
+        gcp_predefined_role = d.pop("gcp_predefined_role", UNSET)
+
         managed_policy_name = d.pop("managed_policy_name", UNSET)
 
         name = d.pop("name", UNSET)
 
         service_app_awsiam_policy_config = cls(
             contents=contents,
+            gcp_permissions=gcp_permissions,
+            gcp_predefined_role=gcp_predefined_role,
             managed_policy_name=managed_policy_name,
             name=name,
         )

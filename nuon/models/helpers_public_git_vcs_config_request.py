@@ -8,69 +8,68 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceConnectedGithubVCSSandboxConfigRequest")
+T = TypeVar("T", bound="HelpersPublicGitVCSConfigRequest")
 
 
 @_attrs_define
-class ServiceConnectedGithubVCSSandboxConfigRequest:
+class HelpersPublicGitVCSConfigRequest:
     """
     Attributes:
+        branch (str):
         directory (str):
         repo (str):
-        branch (str | Unset):
-        git_ref (str | Unset):
+        path_filter (str | Unset):
     """
 
+    branch: str
     directory: str
     repo: str
-    branch: str | Unset = UNSET
-    git_ref: str | Unset = UNSET
+    path_filter: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        branch = self.branch
+
         directory = self.directory
 
         repo = self.repo
 
-        branch = self.branch
-
-        git_ref = self.git_ref
+        path_filter = self.path_filter
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "branch": branch,
                 "directory": directory,
                 "repo": repo,
             }
         )
-        if branch is not UNSET:
-            field_dict["branch"] = branch
-        if git_ref is not UNSET:
-            field_dict["gitRef"] = git_ref
+        if path_filter is not UNSET:
+            field_dict["pathFilter"] = path_filter
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        branch = d.pop("branch")
+
         directory = d.pop("directory")
 
         repo = d.pop("repo")
 
-        branch = d.pop("branch", UNSET)
+        path_filter = d.pop("pathFilter", UNSET)
 
-        git_ref = d.pop("gitRef", UNSET)
-
-        service_connected_github_vcs_sandbox_config_request = cls(
+        helpers_public_git_vcs_config_request = cls(
+            branch=branch,
             directory=directory,
             repo=repo,
-            branch=branch,
-            git_ref=git_ref,
+            path_filter=path_filter,
         )
 
-        service_connected_github_vcs_sandbox_config_request.additional_properties = d
-        return service_connected_github_vcs_sandbox_config_request
+        helpers_public_git_vcs_config_request.additional_properties = d
+        return helpers_public_git_vcs_config_request
 
     @property
     def additional_keys(self) -> list[str]:

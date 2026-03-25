@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
+    from ..models.app_app_branch_run import AppAppBranchRun
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
     from ..models.app_install_deploy import AppInstallDeploy
@@ -28,6 +29,7 @@ T = TypeVar("T", bound="AppWorkflow")
 class AppWorkflow:
     """
     Attributes:
+        app_branch_runs (list[AppAppBranchRun] | Unset):
         approval_option (AppInstallApprovalOption | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
@@ -54,6 +56,7 @@ class AppWorkflow:
         updated_at (str | Unset):
     """
 
+    app_branch_runs: list[AppAppBranchRun] | Unset = UNSET
     approval_option: AppInstallApprovalOption | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
@@ -81,6 +84,13 @@ class AppWorkflow:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_runs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.app_branch_runs, Unset):
+            app_branch_runs = []
+            for app_branch_runs_item_data in self.app_branch_runs:
+                app_branch_runs_item = app_branch_runs_item_data.to_dict()
+                app_branch_runs.append(app_branch_runs_item)
+
         approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
@@ -164,6 +174,8 @@ class AppWorkflow:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_runs is not UNSET:
+            field_dict["app_branch_runs"] = app_branch_runs
         if approval_option is not UNSET:
             field_dict["approval_option"] = approval_option
         if created_at is not UNSET:
@@ -218,6 +230,7 @@ class AppWorkflow:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_account import AppAccount
+        from ..models.app_app_branch_run import AppAppBranchRun
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
         from ..models.app_install_deploy import AppInstallDeploy
@@ -227,6 +240,15 @@ class AppWorkflow:
         from ..models.app_workflow_step import AppWorkflowStep
 
         d = dict(src_dict)
+        _app_branch_runs = d.pop("app_branch_runs", UNSET)
+        app_branch_runs: list[AppAppBranchRun] | Unset = UNSET
+        if _app_branch_runs is not UNSET:
+            app_branch_runs = []
+            for app_branch_runs_item_data in _app_branch_runs:
+                app_branch_runs_item = AppAppBranchRun.from_dict(app_branch_runs_item_data)
+
+                app_branch_runs.append(app_branch_runs_item)
+
         _approval_option = d.pop("approval_option", UNSET)
         approval_option: AppInstallApprovalOption | Unset
         if isinstance(_approval_option, Unset):
@@ -336,6 +358,7 @@ class AppWorkflow:
         updated_at = d.pop("updated_at", UNSET)
 
         app_workflow = cls(
+            app_branch_runs=app_branch_runs,
             approval_option=approval_option,
             created_at=created_at,
             created_by=created_by,

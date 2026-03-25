@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 if TYPE_CHECKING:
     from ..models.service_update_install_inputs_request_inputs import ServiceUpdateInstallInputsRequestInputs
 
@@ -18,13 +20,17 @@ class ServiceUpdateInstallInputsRequest:
     """
     Attributes:
         inputs (ServiceUpdateInstallInputsRequestInputs):
+        role (str | Unset):
     """
 
     inputs: ServiceUpdateInstallInputsRequestInputs
+    role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         inputs = self.inputs.to_dict()
+
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -33,6 +39,8 @@ class ServiceUpdateInstallInputsRequest:
                 "inputs": inputs,
             }
         )
+        if role is not UNSET:
+            field_dict["role"] = role
 
         return field_dict
 
@@ -43,8 +51,11 @@ class ServiceUpdateInstallInputsRequest:
         d = dict(src_dict)
         inputs = ServiceUpdateInstallInputsRequestInputs.from_dict(d.pop("inputs"))
 
+        role = d.pop("role", UNSET)
+
         service_update_install_inputs_request = cls(
             inputs=inputs,
+            role=role,
         )
 
         service_update_install_inputs_request.additional_properties = d

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 
 
@@ -28,6 +29,7 @@ class KubeClusterInfo:
         ca_data (str | Unset): CAData is the base64 encoded public certificate
         endpoint (str | Unset): Endpoint is the URL of the k8s api server
         env_vars (KubeClusterInfoEnvVars | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         id (str | Unset): ID is the ID of the EKS cluster
         inline (bool | Unset): If this is set, we will _not_ use aws-iam-authenticator, but rather inline create the
             token
@@ -43,6 +45,7 @@ class KubeClusterInfo:
     ca_data: str | Unset = UNSET
     endpoint: str | Unset = UNSET
     env_vars: KubeClusterInfoEnvVars | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     id: str | Unset = UNSET
     inline: bool | Unset = UNSET
     kube_config: str | Unset = UNSET
@@ -66,6 +69,10 @@ class KubeClusterInfo:
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
+
         id = self.id
 
         inline = self.inline
@@ -87,6 +94,8 @@ class KubeClusterInfo:
             field_dict["endpoint"] = endpoint
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if id is not UNSET:
             field_dict["id"] = id
         if inline is not UNSET:
@@ -105,6 +114,9 @@ class KubeClusterInfo:
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
             GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
         from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 
@@ -134,6 +146,13 @@ class KubeClusterInfo:
         else:
             env_vars = KubeClusterInfoEnvVars.from_dict(_env_vars)
 
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
+
         id = d.pop("id", UNSET)
 
         inline = d.pop("inline", UNSET)
@@ -148,6 +167,7 @@ class KubeClusterInfo:
             ca_data=ca_data,
             endpoint=endpoint,
             env_vars=env_vars,
+            gcp_auth=gcp_auth,
             id=id,
             inline=inline,
             kube_config=kube_config,

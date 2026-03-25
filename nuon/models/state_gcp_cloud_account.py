@@ -6,59 +6,52 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ServicePublicGitVCSSandboxConfigRequest")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="StateGCPCloudAccount")
 
 
 @_attrs_define
-class ServicePublicGitVCSSandboxConfigRequest:
+class StateGCPCloudAccount:
     """
     Attributes:
-        branch (str):
-        directory (str):
-        repo (str):
+        project_id (str | Unset):
+        region (str | Unset):
     """
 
-    branch: str
-    directory: str
-    repo: str
+    project_id: str | Unset = UNSET
+    region: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        branch = self.branch
+        project_id = self.project_id
 
-        directory = self.directory
-
-        repo = self.repo
+        region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "branch": branch,
-                "directory": directory,
-                "repo": repo,
-            }
-        )
+        field_dict.update({})
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
+        if region is not UNSET:
+            field_dict["region"] = region
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        branch = d.pop("branch")
+        project_id = d.pop("project_id", UNSET)
 
-        directory = d.pop("directory")
+        region = d.pop("region", UNSET)
 
-        repo = d.pop("repo")
-
-        service_public_git_vcs_sandbox_config_request = cls(
-            branch=branch,
-            directory=directory,
-            repo=repo,
+        state_gcp_cloud_account = cls(
+            project_id=project_id,
+            region=region,
         )
 
-        service_public_git_vcs_sandbox_config_request.additional_properties = d
-        return service_public_git_vcs_sandbox_config_request
+        state_gcp_cloud_account.additional_properties = d
+        return state_gcp_cloud_account
 
     @property
     def additional_keys(self) -> list[str]:

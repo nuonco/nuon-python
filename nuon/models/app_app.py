@@ -39,6 +39,7 @@ class AppApp:
         name (str | Unset):
         notifications_config (AppNotificationsConfig | Unset):
         org_id (str | Unset):
+        queue_id (str | Unset):
         runner_config (AppAppRunnerConfig | Unset):
         runner_type (str | Unset):
         sandbox_config (AppAppSandboxConfig | Unset):
@@ -62,6 +63,7 @@ class AppApp:
     name: str | Unset = UNSET
     notifications_config: AppNotificationsConfig | Unset = UNSET
     org_id: str | Unset = UNSET
+    queue_id: str | Unset = UNSET
     runner_config: AppAppRunnerConfig | Unset = UNSET
     runner_type: str | Unset = UNSET
     sandbox_config: AppAppSandboxConfig | Unset = UNSET
@@ -112,6 +114,8 @@ class AppApp:
 
         org_id = self.org_id
 
+        queue_id = self.queue_id
+
         runner_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_config, Unset):
             runner_config = self.runner_config.to_dict()
@@ -161,6 +165,8 @@ class AppApp:
             field_dict["notifications_config"] = notifications_config
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if queue_id is not UNSET:
+            field_dict["queue_id"] = queue_id
         if runner_config is not UNSET:
             field_dict["runner_config"] = runner_config
         if runner_type is not UNSET:
@@ -238,6 +244,8 @@ class AppApp:
 
         org_id = d.pop("org_id", UNSET)
 
+        queue_id = d.pop("queue_id", UNSET)
+
         _runner_config = d.pop("runner_config", UNSET)
         runner_config: AppAppRunnerConfig | Unset
         if isinstance(_runner_config, Unset):
@@ -276,6 +284,7 @@ class AppApp:
             name=name,
             notifications_config=notifications_config,
             org_id=org_id,
+            queue_id=queue_id,
             runner_config=runner_config,
             runner_type=runner_type,
             sandbox_config=sandbox_config,

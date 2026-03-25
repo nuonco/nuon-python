@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from ..models.app_app_stack_config import AppAppStackConfig
     from ..models.app_component_config_connection import AppComponentConfigConnection
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+    from ..models.blobstore_blob import BlobstoreBlob
 
 
 T = TypeVar("T", bound="AppAppConfig")
@@ -32,6 +33,7 @@ T = TypeVar("T", bound="AppAppConfig")
 class AppAppConfig:
     """
     Attributes:
+        action_ids (list[str] | Unset):
         action_workflow_configs (list[AppActionWorkflowConfig] | Unset):
         app_branch (AppAppBranch | Unset):
         app_branch_id (str | Unset):
@@ -45,6 +47,7 @@ class AppAppConfig:
         created_by_id (str | Unset):
         id (str | Unset):
         input_ (AppAppInputConfig | Unset):
+        intermediate_config (BlobstoreBlob | Unset):
         operation_role_config (AppAppOperationRoleConfig | Unset):
         org_id (str | Unset):
         permissions (AppAppPermissionsConfig | Unset):
@@ -62,6 +65,7 @@ class AppAppConfig:
         version (int | Unset): fields that are filled in via after query or views
     """
 
+    action_ids: list[str] | Unset = UNSET
     action_workflow_configs: list[AppActionWorkflowConfig] | Unset = UNSET
     app_branch: AppAppBranch | Unset = UNSET
     app_branch_id: str | Unset = UNSET
@@ -75,6 +79,7 @@ class AppAppConfig:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     input_: AppAppInputConfig | Unset = UNSET
+    intermediate_config: BlobstoreBlob | Unset = UNSET
     operation_role_config: AppAppOperationRoleConfig | Unset = UNSET
     org_id: str | Unset = UNSET
     permissions: AppAppPermissionsConfig | Unset = UNSET
@@ -93,6 +98,10 @@ class AppAppConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        action_ids: list[str] | Unset = UNSET
+        if not isinstance(self.action_ids, Unset):
+            action_ids = self.action_ids
+
         action_workflow_configs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.action_workflow_configs, Unset):
             action_workflow_configs = []
@@ -136,6 +145,10 @@ class AppAppConfig:
         input_: dict[str, Any] | Unset = UNSET
         if not isinstance(self.input_, Unset):
             input_ = self.input_.to_dict()
+
+        intermediate_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.intermediate_config, Unset):
+            intermediate_config = self.intermediate_config.to_dict()
 
         operation_role_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_role_config, Unset):
@@ -188,6 +201,8 @@ class AppAppConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if action_ids is not UNSET:
+            field_dict["action_ids"] = action_ids
         if action_workflow_configs is not UNSET:
             field_dict["action_workflow_configs"] = action_workflow_configs
         if app_branch is not UNSET:
@@ -214,6 +229,8 @@ class AppAppConfig:
             field_dict["id"] = id
         if input_ is not UNSET:
             field_dict["input"] = input_
+        if intermediate_config is not UNSET:
+            field_dict["intermediate_config"] = intermediate_config
         if operation_role_config is not UNSET:
             field_dict["operation_role_config"] = operation_role_config
         if org_id is not UNSET:
@@ -262,8 +279,11 @@ class AppAppConfig:
         from ..models.app_app_stack_config import AppAppStackConfig
         from ..models.app_component_config_connection import AppComponentConfigConnection
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+        from ..models.blobstore_blob import BlobstoreBlob
 
         d = dict(src_dict)
+        action_ids = cast(list[str], d.pop("action_ids", UNSET))
+
         _action_workflow_configs = d.pop("action_workflow_configs", UNSET)
         action_workflow_configs: list[AppActionWorkflowConfig] | Unset = UNSET
         if _action_workflow_configs is not UNSET:
@@ -320,6 +340,13 @@ class AppAppConfig:
             input_ = UNSET
         else:
             input_ = AppAppInputConfig.from_dict(_input_)
+
+        _intermediate_config = d.pop("intermediate_config", UNSET)
+        intermediate_config: BlobstoreBlob | Unset
+        if isinstance(_intermediate_config, Unset):
+            intermediate_config = UNSET
+        else:
+            intermediate_config = BlobstoreBlob.from_dict(_intermediate_config)
 
         _operation_role_config = d.pop("operation_role_config", UNSET)
         operation_role_config: AppAppOperationRoleConfig | Unset
@@ -397,6 +424,7 @@ class AppAppConfig:
         version = d.pop("version", UNSET)
 
         app_app_config = cls(
+            action_ids=action_ids,
             action_workflow_configs=action_workflow_configs,
             app_branch=app_branch,
             app_branch_id=app_branch_id,
@@ -410,6 +438,7 @@ class AppAppConfig:
             created_by_id=created_by_id,
             id=id,
             input_=input_,
+            intermediate_config=intermediate_config,
             operation_role_config=operation_role_config,
             org_id=org_id,
             permissions=permissions,

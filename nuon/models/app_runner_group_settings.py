@@ -22,7 +22,8 @@ class AppRunnerGroupSettings:
     Attributes:
         aws_cloudformation_stack_type (str | Unset):
         aws_instance_type (str | Unset): aws runner specifics runner-v2
-        aws_max_instance_lifetime (int | Unset): Default: 7 days
+        aws_max_instance_lifetime (int | Unset): Deprecated: instance refresh is now handled by a backend cron, not ASG
+            MaxInstanceLifetime.
         aws_tags (AppRunnerGroupSettingsAwsTags | Unset):
         container_image_tag (str | Unset):
         container_image_url (str | Unset): configuration for deploying the runner

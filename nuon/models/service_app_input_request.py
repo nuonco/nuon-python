@@ -21,11 +21,10 @@ class ServiceAppInputRequest:
         group (str):
         index (int):
         default (str | Unset):
-        internal (bool | Unset): New, optional fields
         required (bool | Unset):
         sensitive (bool | Unset):
         source (AppAppInputSource | Unset):
-        type_ (str | Unset):
+        type_ (str | Unset): New, optional fields
     """
 
     description: str
@@ -33,7 +32,6 @@ class ServiceAppInputRequest:
     group: str
     index: int
     default: str | Unset = UNSET
-    internal: bool | Unset = UNSET
     required: bool | Unset = UNSET
     sensitive: bool | Unset = UNSET
     source: AppAppInputSource | Unset = UNSET
@@ -50,8 +48,6 @@ class ServiceAppInputRequest:
         index = self.index
 
         default = self.default
-
-        internal = self.internal
 
         required = self.required
 
@@ -75,8 +71,6 @@ class ServiceAppInputRequest:
         )
         if default is not UNSET:
             field_dict["default"] = default
-        if internal is not UNSET:
-            field_dict["internal"] = internal
         if required is not UNSET:
             field_dict["required"] = required
         if sensitive is not UNSET:
@@ -101,8 +95,6 @@ class ServiceAppInputRequest:
 
         default = d.pop("default", UNSET)
 
-        internal = d.pop("internal", UNSET)
-
         required = d.pop("required", UNSET)
 
         sensitive = d.pop("sensitive", UNSET)
@@ -122,7 +114,6 @@ class ServiceAppInputRequest:
             group=group,
             index=index,
             default=default,
-            internal=internal,
             required=required,
             sensitive=sensitive,
             source=source,

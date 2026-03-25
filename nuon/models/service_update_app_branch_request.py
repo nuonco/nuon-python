@@ -6,52 +6,43 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceCreateComponentReleaseRequestStrategy")
+T = TypeVar("T", bound="ServiceUpdateAppBranchRequest")
 
 
 @_attrs_define
-class ServiceCreateComponentReleaseRequestStrategy:
+class ServiceUpdateAppBranchRequest:
     """
     Attributes:
-        delay (str | Unset):
-        installs_per_step (int | Unset):
+        name (str):
     """
 
-    delay: str | Unset = UNSET
-    installs_per_step: int | Unset = UNSET
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        delay = self.delay
-
-        installs_per_step = self.installs_per_step
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if delay is not UNSET:
-            field_dict["delay"] = delay
-        if installs_per_step is not UNSET:
-            field_dict["installs_per_step"] = installs_per_step
+        field_dict.update(
+            {
+                "name": name,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        delay = d.pop("delay", UNSET)
+        name = d.pop("name")
 
-        installs_per_step = d.pop("installs_per_step", UNSET)
-
-        service_create_component_release_request_strategy = cls(
-            delay=delay,
-            installs_per_step=installs_per_step,
+        service_update_app_branch_request = cls(
+            name=name,
         )
 
-        service_create_component_release_request_strategy.additional_properties = d
-        return service_create_component_release_request_strategy
+        service_update_app_branch_request.additional_properties = d
+        return service_update_app_branch_request
 
     @property
     def additional_keys(self) -> list[str]:

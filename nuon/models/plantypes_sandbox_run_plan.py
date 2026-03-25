@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.plantypes_git_source import PlantypesGitSource
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
@@ -39,6 +40,7 @@ class PlantypesSandboxRunPlan:
         aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
         azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         env_vars (PlantypesSandboxRunPlanEnvVars | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         git_source (PlantypesGitSource | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
         install_id (str | Unset):
@@ -58,6 +60,7 @@ class PlantypesSandboxRunPlan:
     aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     env_vars: PlantypesSandboxRunPlanEnvVars | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     git_source: PlantypesGitSource | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
     install_id: str | Unset = UNSET
@@ -92,6 +95,10 @@ class PlantypesSandboxRunPlan:
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
+
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
 
         git_source: dict[str, Any] | Unset = UNSET
         if not isinstance(self.git_source, Unset):
@@ -148,6 +155,8 @@ class PlantypesSandboxRunPlan:
             field_dict["azure_auth"] = azure_auth
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if git_source is not UNSET:
             field_dict["git_source"] = git_source
         if hooks is not UNSET:
@@ -178,6 +187,9 @@ class PlantypesSandboxRunPlan:
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
             GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
         from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.plantypes_git_source import PlantypesGitSource
@@ -218,6 +230,13 @@ class PlantypesSandboxRunPlan:
             env_vars = UNSET
         else:
             env_vars = PlantypesSandboxRunPlanEnvVars.from_dict(_env_vars)
+
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
 
         _git_source = d.pop("git_source", UNSET)
         git_source: PlantypesGitSource | Unset
@@ -287,6 +306,7 @@ class PlantypesSandboxRunPlan:
             aws_auth=aws_auth,
             azure_auth=azure_auth,
             env_vars=env_vars,
+            gcp_auth=gcp_auth,
             git_source=git_source,
             hooks=hooks,
             install_id=install_id,

@@ -21,6 +21,7 @@ class AppAppAWSIAMRoleConfig:
     """
     Attributes:
         app_config_id (str | Unset):
+        cloud_platform (str | Unset):
         cloudformation_param_name (str | Unset):
         cloudformation_stack_name (str | Unset):
         created_at (str | Unset):
@@ -39,6 +40,7 @@ class AppAppAWSIAMRoleConfig:
     """
 
     app_config_id: str | Unset = UNSET
+    cloud_platform: str | Unset = UNSET
     cloudformation_param_name: str | Unset = UNSET
     cloudformation_stack_name: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -58,6 +60,8 @@ class AppAppAWSIAMRoleConfig:
 
     def to_dict(self) -> dict[str, Any]:
         app_config_id = self.app_config_id
+
+        cloud_platform = self.cloud_platform
 
         cloudformation_param_name = self.cloudformation_param_name
 
@@ -101,6 +105,8 @@ class AppAppAWSIAMRoleConfig:
         field_dict.update({})
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if cloud_platform is not UNSET:
+            field_dict["cloud_platform"] = cloud_platform
         if cloudformation_param_name is not UNSET:
             field_dict["cloudformation_param_name"] = cloudformation_param_name
         if cloudformation_stack_name is not UNSET:
@@ -140,6 +146,8 @@ class AppAppAWSIAMRoleConfig:
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
+
+        cloud_platform = d.pop("cloud_platform", UNSET)
 
         cloudformation_param_name = d.pop("cloudformation_param_name", UNSET)
 
@@ -185,6 +193,7 @@ class AppAppAWSIAMRoleConfig:
 
         app_app_awsiam_role_config = cls(
             app_config_id=app_config_id,
+            cloud_platform=cloud_platform,
             cloudformation_param_name=cloudformation_param_name,
             cloudformation_stack_name=cloudformation_stack_name,
             created_at=created_at,

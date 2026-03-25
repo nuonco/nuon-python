@@ -26,6 +26,7 @@ class AppConnectedGithubVCSConfig:
         created_by_id (str | Unset):
         directory (str | Unset):
         id (str | Unset):
+        path_filter (str | Unset):
         repo (str | Unset):
         repo_name (str | Unset):
         repo_owner (str | Unset):
@@ -41,6 +42,7 @@ class AppConnectedGithubVCSConfig:
     created_by_id: str | Unset = UNSET
     directory: str | Unset = UNSET
     id: str | Unset = UNSET
+    path_filter: str | Unset = UNSET
     repo: str | Unset = UNSET
     repo_name: str | Unset = UNSET
     repo_owner: str | Unset = UNSET
@@ -63,6 +65,8 @@ class AppConnectedGithubVCSConfig:
         directory = self.directory
 
         id = self.id
+
+        path_filter = self.path_filter
 
         repo = self.repo
 
@@ -95,6 +99,8 @@ class AppConnectedGithubVCSConfig:
             field_dict["directory"] = directory
         if id is not UNSET:
             field_dict["id"] = id
+        if path_filter is not UNSET:
+            field_dict["path_filter"] = path_filter
         if repo is not UNSET:
             field_dict["repo"] = repo
         if repo_name is not UNSET:
@@ -129,6 +135,8 @@ class AppConnectedGithubVCSConfig:
 
         id = d.pop("id", UNSET)
 
+        path_filter = d.pop("path_filter", UNSET)
+
         repo = d.pop("repo", UNSET)
 
         repo_name = d.pop("repo_name", UNSET)
@@ -154,6 +162,7 @@ class AppConnectedGithubVCSConfig:
             created_by_id=created_by_id,
             directory=directory,
             id=id,
+            path_filter=path_filter,
             repo=repo,
             repo_name=repo_name,
             repo_owner=repo_owner,

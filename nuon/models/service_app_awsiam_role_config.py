@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.service_app_awsiam_role_config_cloud_platform import ServiceAppAWSIAMRoleConfigCloudPlatform
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -22,6 +23,7 @@ class ServiceAppAWSIAMRoleConfig:
         description (str):
         display_name (str):
         name (str):
+        cloud_platform (ServiceAppAWSIAMRoleConfigCloudPlatform | Unset):
         permissions_boundary (str | Unset):
         policies (list[ServiceAppAWSIAMPolicyConfig] | Unset):
     """
@@ -29,6 +31,7 @@ class ServiceAppAWSIAMRoleConfig:
     description: str
     display_name: str
     name: str
+    cloud_platform: ServiceAppAWSIAMRoleConfigCloudPlatform | Unset = UNSET
     permissions_boundary: str | Unset = UNSET
     policies: list[ServiceAppAWSIAMPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,6 +42,10 @@ class ServiceAppAWSIAMRoleConfig:
         display_name = self.display_name
 
         name = self.name
+
+        cloud_platform: str | Unset = UNSET
+        if not isinstance(self.cloud_platform, Unset):
+            cloud_platform = self.cloud_platform.value
 
         permissions_boundary = self.permissions_boundary
 
@@ -58,6 +65,8 @@ class ServiceAppAWSIAMRoleConfig:
                 "name": name,
             }
         )
+        if cloud_platform is not UNSET:
+            field_dict["cloud_platform"] = cloud_platform
         if permissions_boundary is not UNSET:
             field_dict["permissions_boundary"] = permissions_boundary
         if policies is not UNSET:
@@ -76,6 +85,13 @@ class ServiceAppAWSIAMRoleConfig:
 
         name = d.pop("name")
 
+        _cloud_platform = d.pop("cloud_platform", UNSET)
+        cloud_platform: ServiceAppAWSIAMRoleConfigCloudPlatform | Unset
+        if isinstance(_cloud_platform, Unset):
+            cloud_platform = UNSET
+        else:
+            cloud_platform = ServiceAppAWSIAMRoleConfigCloudPlatform(_cloud_platform)
+
         permissions_boundary = d.pop("permissions_boundary", UNSET)
 
         _policies = d.pop("policies", UNSET)
@@ -91,6 +107,7 @@ class ServiceAppAWSIAMRoleConfig:
             description=description,
             display_name=display_name,
             name=name,
+            cloud_platform=cloud_platform,
             permissions_boundary=permissions_boundary,
             policies=policies,
         )

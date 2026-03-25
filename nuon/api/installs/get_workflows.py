@@ -19,6 +19,7 @@ def _get_kwargs(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -34,6 +35,8 @@ def _get_kwargs(
     params["planonly"] = planonly
 
     params["type"] = type_
+
+    params["finished"] = finished
 
     params["created_at_gte"] = created_at_gte
 
@@ -116,6 +119,7 @@ def sync_detailed(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
@@ -130,6 +134,7 @@ def sync_detailed(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -148,6 +153,7 @@ def sync_detailed(
         page=page,
         planonly=planonly,
         type_=type_,
+        finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     )
@@ -168,6 +174,7 @@ def sync(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
@@ -182,6 +189,7 @@ def sync(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -201,6 +209,7 @@ def sync(
         page=page,
         planonly=planonly,
         type_=type_,
+        finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     ).parsed
@@ -215,6 +224,7 @@ async def asyncio_detailed(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
@@ -229,6 +239,7 @@ async def asyncio_detailed(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -247,6 +258,7 @@ async def asyncio_detailed(
         page=page,
         planonly=planonly,
         type_=type_,
+        finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     )
@@ -265,6 +277,7 @@ async def asyncio(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
@@ -279,6 +292,7 @@ async def asyncio(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -299,6 +313,7 @@ async def asyncio(
             page=page,
             planonly=planonly,
             type_=type_,
+            finished=finished,
             created_at_gte=created_at_gte,
             created_at_lte=created_at_lte,
         )

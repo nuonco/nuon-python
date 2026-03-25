@@ -16,19 +16,25 @@ class ServiceReprovisionInstallRequest:
     """
     Attributes:
         plan_only (bool | Unset):
+        role (str | Unset):
     """
 
     plan_only: bool | Unset = UNSET
+    role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         plan_only = self.plan_only
+
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if role is not UNSET:
+            field_dict["role"] = role
 
         return field_dict
 
@@ -37,8 +43,11 @@ class ServiceReprovisionInstallRequest:
         d = dict(src_dict)
         plan_only = d.pop("plan_only", UNSET)
 
+        role = d.pop("role", UNSET)
+
         service_reprovision_install_request = cls(
             plan_only=plan_only,
+            role=role,
         )
 
         service_reprovision_install_request.additional_properties = d

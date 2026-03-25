@@ -88,7 +88,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceMngShutDownRequest,
 ) -> Response[StderrErrResponse | bool]:
-    """shut down an install runner management process
+    """shut down an install runner's mng process. does not shut down the install runner process.
 
     Args:
         runner_id (str):
@@ -120,7 +120,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceMngShutDownRequest,
 ) -> StderrErrResponse | bool | None:
-    """shut down an install runner management process
+    """shut down an install runner's mng process. does not shut down the install runner process.
 
     Args:
         runner_id (str):
@@ -147,7 +147,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceMngShutDownRequest,
 ) -> Response[StderrErrResponse | bool]:
-    """shut down an install runner management process
+    """shut down an install runner's mng process. does not shut down the install runner process.
 
     Args:
         runner_id (str):
@@ -177,7 +177,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceMngShutDownRequest,
 ) -> StderrErrResponse | bool | None:
-    """shut down an install runner management process
+    """shut down an install runner's mng process. does not shut down the install runner process.
 
     Args:
         runner_id (str):

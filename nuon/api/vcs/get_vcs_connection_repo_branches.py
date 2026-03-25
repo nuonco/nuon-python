@@ -6,33 +6,30 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_component_release import AppComponentRelease
+from ...models.service_branch import ServiceBranch
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
-    component_id: str,
+    connection_id: str,
     *,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
+    owner: str,
+    repo: str,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["offset"] = offset
+    params["owner"] = owner
 
-    params["limit"] = limit
-
-    params["page"] = page
+    params["repo"] = repo
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/components/{component_id}/releases".format(
-            component_id=quote(str(component_id), safe=""),
+        "url": "/v1/vcs/connections/{connection_id}/branches".format(
+            connection_id=quote(str(connection_id), safe=""),
         ),
         "params": params,
     }
@@ -42,12 +39,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppComponentRelease] | None:
+) -> StderrErrResponse | list[ServiceBranch] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppComponentRelease.from_dict(response_200_item_data)
+            response_200_item = ServiceBranch.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -86,7 +83,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
+) -> Response[StderrErrResponse | list[ServiceBranch]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -96,36 +93,33 @@ def _build_response(
 
 
 def sync_detailed(
-    component_id: str,
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
-    """get all releases for a component
+    owner: str,
+    repo: str,
+) -> Response[StderrErrResponse | list[ServiceBranch]]:
+    """List branches for a repository
 
-     Returns all releases for the provided component.
+     Returns list of branches for the specified repository
 
     Args:
-        component_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        connection_id (str):
+        owner (str):
+        repo (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppComponentRelease]]
+        Response[StderrErrResponse | list[ServiceBranch]]
     """
 
     kwargs = _get_kwargs(
-        component_id=component_id,
-        offset=offset,
-        limit=limit,
-        page=page,
+        connection_id=connection_id,
+        owner=owner,
+        repo=repo,
     )
 
     response = client.get_httpx_client().request(
@@ -136,71 +130,65 @@ def sync_detailed(
 
 
 def sync(
-    component_id: str,
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppComponentRelease] | None:
-    """get all releases for a component
+    owner: str,
+    repo: str,
+) -> StderrErrResponse | list[ServiceBranch] | None:
+    """List branches for a repository
 
-     Returns all releases for the provided component.
+     Returns list of branches for the specified repository
 
     Args:
-        component_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        connection_id (str):
+        owner (str):
+        repo (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppComponentRelease]
+        StderrErrResponse | list[ServiceBranch]
     """
 
     return sync_detailed(
-        component_id=component_id,
+        connection_id=connection_id,
         client=client,
-        offset=offset,
-        limit=limit,
-        page=page,
+        owner=owner,
+        repo=repo,
     ).parsed
 
 
 async def asyncio_detailed(
-    component_id: str,
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppComponentRelease]]:
-    """get all releases for a component
+    owner: str,
+    repo: str,
+) -> Response[StderrErrResponse | list[ServiceBranch]]:
+    """List branches for a repository
 
-     Returns all releases for the provided component.
+     Returns list of branches for the specified repository
 
     Args:
-        component_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        connection_id (str):
+        owner (str):
+        repo (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppComponentRelease]]
+        Response[StderrErrResponse | list[ServiceBranch]]
     """
 
     kwargs = _get_kwargs(
-        component_id=component_id,
-        offset=offset,
-        limit=limit,
-        page=page,
+        connection_id=connection_id,
+        owner=owner,
+        repo=repo,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -209,37 +197,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    component_id: str,
+    connection_id: str,
     *,
     client: AuthenticatedClient,
-    offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppComponentRelease] | None:
-    """get all releases for a component
+    owner: str,
+    repo: str,
+) -> StderrErrResponse | list[ServiceBranch] | None:
+    """List branches for a repository
 
-     Returns all releases for the provided component.
+     Returns list of branches for the specified repository
 
     Args:
-        component_id (str):
-        offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        connection_id (str):
+        owner (str):
+        repo (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppComponentRelease]
+        StderrErrResponse | list[ServiceBranch]
     """
 
     return (
         await asyncio_detailed(
-            component_id=component_id,
+            connection_id=connection_id,
             client=client,
-            offset=offset,
-            limit=limit,
-            page=page,
+            owner=owner,
+            repo=repo,
         )
     ).parsed

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.app_aws_account import AppAWSAccount
     from ..models.app_azure_account import AppAzureAccount
     from ..models.app_drifted_object import AppDriftedObject
+    from ..models.app_gcp_account import AppGCPAccount
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
     from ..models.app_install_component import AppInstallComponent
     from ..models.app_install_component_statuses import AppInstallComponentStatuses
@@ -49,6 +50,7 @@ class AppInstall:
         created_at (str | Unset):
         created_by_id (str | Unset):
         drifted_objects (list[AppDriftedObject] | Unset):
+        gcp_account (AppGCPAccount | Unset):
         id (str | Unset):
         install_action_workflows (list[AppInstallActionWorkflow] | Unset):
         install_components (list[AppInstallComponent] | Unset):
@@ -88,6 +90,7 @@ class AppInstall:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     drifted_objects: list[AppDriftedObject] | Unset = UNSET
+    gcp_account: AppGCPAccount | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflows: list[AppInstallActionWorkflow] | Unset = UNSET
     install_components: list[AppInstallComponent] | Unset = UNSET
@@ -155,6 +158,10 @@ class AppInstall:
             for drifted_objects_item_data in self.drifted_objects:
                 drifted_objects_item = drifted_objects_item_data.to_dict()
                 drifted_objects.append(drifted_objects_item)
+
+        gcp_account: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_account, Unset):
+            gcp_account = self.gcp_account.to_dict()
 
         id = self.id
 
@@ -278,6 +285,8 @@ class AppInstall:
             field_dict["created_by_id"] = created_by_id
         if drifted_objects is not UNSET:
             field_dict["drifted_objects"] = drifted_objects
+        if gcp_account is not UNSET:
+            field_dict["gcp_account"] = gcp_account
         if id is not UNSET:
             field_dict["id"] = id
         if install_action_workflows is not UNSET:
@@ -336,6 +345,7 @@ class AppInstall:
         from ..models.app_aws_account import AppAWSAccount
         from ..models.app_azure_account import AppAzureAccount
         from ..models.app_drifted_object import AppDriftedObject
+        from ..models.app_gcp_account import AppGCPAccount
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
         from ..models.app_install_component import AppInstallComponent
         from ..models.app_install_component_statuses import AppInstallComponentStatuses
@@ -408,6 +418,13 @@ class AppInstall:
                 drifted_objects_item = AppDriftedObject.from_dict(drifted_objects_item_data)
 
                 drifted_objects.append(drifted_objects_item)
+
+        _gcp_account = d.pop("gcp_account", UNSET)
+        gcp_account: AppGCPAccount | Unset
+        if isinstance(_gcp_account, Unset):
+            gcp_account = UNSET
+        else:
+            gcp_account = AppGCPAccount.from_dict(_gcp_account)
 
         id = d.pop("id", UNSET)
 
@@ -545,6 +562,7 @@ class AppInstall:
             created_at=created_at,
             created_by_id=created_by_id,
             drifted_objects=drifted_objects,
+            gcp_account=gcp_account,
             id=id,
             install_action_workflows=install_action_workflows,
             install_components=install_components,

@@ -9,6 +9,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
+    )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_helm_value import PlantypesHelmValue
 
@@ -20,8 +25,11 @@ T = TypeVar("T", bound="PlantypesHelmDeployPlan")
 class PlantypesHelmDeployPlan:
     """
     Attributes:
+        aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         cluster_info (KubeClusterInfo | Unset):
         create_namespace (bool | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         helm_chart_id (str | Unset):
         name (str | Unset): NOTE(jm): these fields should probably just come from the app config, however we keep them
             around for
@@ -33,8 +41,11 @@ class PlantypesHelmDeployPlan:
         values_files (list[str] | Unset):
     """
 
+    aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
     create_namespace: bool | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     helm_chart_id: str | Unset = UNSET
     name: str | Unset = UNSET
     namespace: str | Unset = UNSET
@@ -45,11 +56,23 @@ class PlantypesHelmDeployPlan:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        aws_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.aws_auth, Unset):
+            aws_auth = self.aws_auth.to_dict()
+
+        azure_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.azure_auth, Unset):
+            azure_auth = self.azure_auth.to_dict()
+
         cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
 
         create_namespace = self.create_namespace
+
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
 
         helm_chart_id = self.helm_chart_id
 
@@ -75,10 +98,16 @@ class PlantypesHelmDeployPlan:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if aws_auth is not UNSET:
+            field_dict["aws_auth"] = aws_auth
+        if azure_auth is not UNSET:
+            field_dict["azure_auth"] = azure_auth
         if cluster_info is not UNSET:
             field_dict["cluster_info"] = cluster_info
         if create_namespace is not UNSET:
             field_dict["create_namespace"] = create_namespace
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if helm_chart_id is not UNSET:
             field_dict["helm_chart_id"] = helm_chart_id
         if name is not UNSET:
@@ -98,10 +127,33 @@ class PlantypesHelmDeployPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
+        )
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_helm_value import PlantypesHelmValue
 
         d = dict(src_dict)
+        _aws_auth = d.pop("aws_auth", UNSET)
+        aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset
+        if isinstance(_aws_auth, Unset):
+            aws_auth = UNSET
+        else:
+            aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
+
+        _azure_auth = d.pop("azure_auth", UNSET)
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
+        if isinstance(_azure_auth, Unset):
+            azure_auth = UNSET
+        else:
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
+
         _cluster_info = d.pop("cluster_info", UNSET)
         cluster_info: KubeClusterInfo | Unset
         if isinstance(_cluster_info, Unset):
@@ -110,6 +162,13 @@ class PlantypesHelmDeployPlan:
             cluster_info = KubeClusterInfo.from_dict(_cluster_info)
 
         create_namespace = d.pop("create_namespace", UNSET)
+
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
 
         helm_chart_id = d.pop("helm_chart_id", UNSET)
 
@@ -133,8 +192,11 @@ class PlantypesHelmDeployPlan:
         values_files = cast(list[str], d.pop("values_files", UNSET))
 
         plantypes_helm_deploy_plan = cls(
+            aws_auth=aws_auth,
+            azure_auth=azure_auth,
             cluster_info=cluster_info,
             create_namespace=create_namespace,
+            gcp_auth=gcp_auth,
             helm_chart_id=helm_chart_id,
             name=name,
             namespace=namespace,

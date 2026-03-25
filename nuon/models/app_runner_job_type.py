@@ -25,6 +25,7 @@ class AppRunnerJobType(str, Enum):
     RUNNER_HELM = "runner-helm"
     RUNNER_LOCAL = "runner-local"
     RUNNER_TERRAFORM = "runner-terraform"
+    SANDBOX_BUILD = "sandbox-build"
     SANDBOX_SYNC_SECRETS = "sandbox-sync-secrets"
     SANDBOX_TERRAFORM = "sandbox-terraform"
     SANDBOX_TERRAFORM_PLAN = "sandbox-terraform-plan"

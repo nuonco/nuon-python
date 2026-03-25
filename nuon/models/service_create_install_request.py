@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.helpers_install_metadata import HelpersInstallMetadata
     from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
     from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
+    from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
     from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
 
 
@@ -26,6 +27,7 @@ class ServiceCreateInstallRequest:
         name (str):
         aws_account (ServiceCreateInstallRequestAwsAccount | Unset):
         azure_account (ServiceCreateInstallRequestAzureAccount | Unset):
+        gcp_account (ServiceCreateInstallRequestGcpAccount | Unset):
         inputs (ServiceCreateInstallRequestInputs | Unset):
         install_config (HelpersCreateInstallConfigParams | Unset):
         metadata (HelpersInstallMetadata | Unset):
@@ -34,6 +36,7 @@ class ServiceCreateInstallRequest:
     name: str
     aws_account: ServiceCreateInstallRequestAwsAccount | Unset = UNSET
     azure_account: ServiceCreateInstallRequestAzureAccount | Unset = UNSET
+    gcp_account: ServiceCreateInstallRequestGcpAccount | Unset = UNSET
     inputs: ServiceCreateInstallRequestInputs | Unset = UNSET
     install_config: HelpersCreateInstallConfigParams | Unset = UNSET
     metadata: HelpersInstallMetadata | Unset = UNSET
@@ -49,6 +52,10 @@ class ServiceCreateInstallRequest:
         azure_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_account, Unset):
             azure_account = self.azure_account.to_dict()
+
+        gcp_account: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_account, Unset):
+            gcp_account = self.gcp_account.to_dict()
 
         inputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
@@ -73,6 +80,8 @@ class ServiceCreateInstallRequest:
             field_dict["aws_account"] = aws_account
         if azure_account is not UNSET:
             field_dict["azure_account"] = azure_account
+        if gcp_account is not UNSET:
+            field_dict["gcp_account"] = gcp_account
         if inputs is not UNSET:
             field_dict["inputs"] = inputs
         if install_config is not UNSET:
@@ -88,6 +97,7 @@ class ServiceCreateInstallRequest:
         from ..models.helpers_install_metadata import HelpersInstallMetadata
         from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
         from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
+        from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
         from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
 
         d = dict(src_dict)
@@ -106,6 +116,13 @@ class ServiceCreateInstallRequest:
             azure_account = UNSET
         else:
             azure_account = ServiceCreateInstallRequestAzureAccount.from_dict(_azure_account)
+
+        _gcp_account = d.pop("gcp_account", UNSET)
+        gcp_account: ServiceCreateInstallRequestGcpAccount | Unset
+        if isinstance(_gcp_account, Unset):
+            gcp_account = UNSET
+        else:
+            gcp_account = ServiceCreateInstallRequestGcpAccount.from_dict(_gcp_account)
 
         _inputs = d.pop("inputs", UNSET)
         inputs: ServiceCreateInstallRequestInputs | Unset
@@ -132,6 +149,7 @@ class ServiceCreateInstallRequest:
             name=name,
             aws_account=aws_account,
             azure_account=azure_account,
+            gcp_account=gcp_account,
             inputs=inputs,
             install_config=install_config,
             metadata=metadata,

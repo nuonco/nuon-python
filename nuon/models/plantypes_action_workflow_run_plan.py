@@ -10,6 +10,10 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+        GithubComNuoncoNuonPkgAzureCredentialsConfig,
+    )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs
     from ..models.plantypes_action_workflow_run_plan_builtin_env_vars import (
@@ -31,8 +35,10 @@ class PlantypesActionWorkflowRunPlan:
     Attributes:
         attrs (PlantypesActionWorkflowRunPlanAttrs | Unset):
         aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
+        azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         builtin_env_vars (PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset):
         cluster_info (KubeClusterInfo | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         id (str | Unset):
         install_id (str | Unset):
         override_env_vars (PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset):
@@ -42,8 +48,10 @@ class PlantypesActionWorkflowRunPlan:
 
     attrs: PlantypesActionWorkflowRunPlanAttrs | Unset = UNSET
     aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
+    azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     builtin_env_vars: PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     id: str | Unset = UNSET
     install_id: str | Unset = UNSET
     override_env_vars: PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset = UNSET
@@ -60,6 +68,10 @@ class PlantypesActionWorkflowRunPlan:
         if not isinstance(self.aws_auth, Unset):
             aws_auth = self.aws_auth.to_dict()
 
+        azure_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.azure_auth, Unset):
+            azure_auth = self.azure_auth.to_dict()
+
         builtin_env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.builtin_env_vars, Unset):
             builtin_env_vars = self.builtin_env_vars.to_dict()
@@ -67,6 +79,10 @@ class PlantypesActionWorkflowRunPlan:
         cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
+
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
 
         id = self.id
 
@@ -94,10 +110,14 @@ class PlantypesActionWorkflowRunPlan:
             field_dict["attrs"] = attrs
         if aws_auth is not UNSET:
             field_dict["aws_auth"] = aws_auth
+        if azure_auth is not UNSET:
+            field_dict["azure_auth"] = azure_auth
         if builtin_env_vars is not UNSET:
             field_dict["builtin_env_vars"] = builtin_env_vars
         if cluster_info is not UNSET:
             field_dict["cluster_info"] = cluster_info
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if id is not UNSET:
             field_dict["id"] = id
         if install_id is not UNSET:
@@ -115,6 +135,12 @@ class PlantypesActionWorkflowRunPlan:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
             GithubComNuoncoNuonPkgAwsCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs
@@ -142,6 +168,13 @@ class PlantypesActionWorkflowRunPlan:
         else:
             aws_auth = GithubComNuoncoNuonPkgAwsCredentialsConfig.from_dict(_aws_auth)
 
+        _azure_auth = d.pop("azure_auth", UNSET)
+        azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
+        if isinstance(_azure_auth, Unset):
+            azure_auth = UNSET
+        else:
+            azure_auth = GithubComNuoncoNuonPkgAzureCredentialsConfig.from_dict(_azure_auth)
+
         _builtin_env_vars = d.pop("builtin_env_vars", UNSET)
         builtin_env_vars: PlantypesActionWorkflowRunPlanBuiltinEnvVars | Unset
         if isinstance(_builtin_env_vars, Unset):
@@ -155,6 +188,13 @@ class PlantypesActionWorkflowRunPlan:
             cluster_info = UNSET
         else:
             cluster_info = KubeClusterInfo.from_dict(_cluster_info)
+
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
 
         id = d.pop("id", UNSET)
 
@@ -186,8 +226,10 @@ class PlantypesActionWorkflowRunPlan:
         plantypes_action_workflow_run_plan = cls(
             attrs=attrs,
             aws_auth=aws_auth,
+            azure_auth=azure_auth,
             builtin_env_vars=builtin_env_vars,
             cluster_info=cluster_info,
+            gcp_auth=gcp_auth,
             id=id,
             install_id=install_id,
             override_env_vars=override_env_vars,
