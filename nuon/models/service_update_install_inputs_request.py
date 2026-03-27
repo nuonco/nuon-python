@@ -20,15 +20,19 @@ class ServiceUpdateInstallInputsRequest:
     """
     Attributes:
         inputs (ServiceUpdateInstallInputsRequestInputs):
+        deploy_dependents (bool | Unset):
         role (str | Unset):
     """
 
     inputs: ServiceUpdateInstallInputsRequestInputs
+    deploy_dependents: bool | Unset = UNSET
     role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         inputs = self.inputs.to_dict()
+
+        deploy_dependents = self.deploy_dependents
 
         role = self.role
 
@@ -39,6 +43,8 @@ class ServiceUpdateInstallInputsRequest:
                 "inputs": inputs,
             }
         )
+        if deploy_dependents is not UNSET:
+            field_dict["deploy_dependents"] = deploy_dependents
         if role is not UNSET:
             field_dict["role"] = role
 
@@ -51,10 +57,13 @@ class ServiceUpdateInstallInputsRequest:
         d = dict(src_dict)
         inputs = ServiceUpdateInstallInputsRequestInputs.from_dict(d.pop("inputs"))
 
+        deploy_dependents = d.pop("deploy_dependents", UNSET)
+
         role = d.pop("role", UNSET)
 
         service_update_install_inputs_request = cls(
             inputs=inputs,
+            deploy_dependents=deploy_dependents,
             role=role,
         )
 
