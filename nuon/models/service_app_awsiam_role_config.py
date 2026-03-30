@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,6 +24,7 @@ class ServiceAppAWSIAMRoleConfig:
         display_name (str):
         name (str):
         cloud_platform (ServiceAppAWSIAMRoleConfigCloudPlatform | Unset):
+        enabled_in_stack (bool | None | Unset):
         permissions_boundary (str | Unset):
         policies (list[ServiceAppAWSIAMPolicyConfig] | Unset):
     """
@@ -32,6 +33,7 @@ class ServiceAppAWSIAMRoleConfig:
     display_name: str
     name: str
     cloud_platform: ServiceAppAWSIAMRoleConfigCloudPlatform | Unset = UNSET
+    enabled_in_stack: bool | None | Unset = UNSET
     permissions_boundary: str | Unset = UNSET
     policies: list[ServiceAppAWSIAMPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -46,6 +48,12 @@ class ServiceAppAWSIAMRoleConfig:
         cloud_platform: str | Unset = UNSET
         if not isinstance(self.cloud_platform, Unset):
             cloud_platform = self.cloud_platform.value
+
+        enabled_in_stack: bool | None | Unset
+        if isinstance(self.enabled_in_stack, Unset):
+            enabled_in_stack = UNSET
+        else:
+            enabled_in_stack = self.enabled_in_stack
 
         permissions_boundary = self.permissions_boundary
 
@@ -67,6 +75,8 @@ class ServiceAppAWSIAMRoleConfig:
         )
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
+        if enabled_in_stack is not UNSET:
+            field_dict["enabled_in_stack"] = enabled_in_stack
         if permissions_boundary is not UNSET:
             field_dict["permissions_boundary"] = permissions_boundary
         if policies is not UNSET:
@@ -92,6 +102,15 @@ class ServiceAppAWSIAMRoleConfig:
         else:
             cloud_platform = ServiceAppAWSIAMRoleConfigCloudPlatform(_cloud_platform)
 
+        def _parse_enabled_in_stack(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        enabled_in_stack = _parse_enabled_in_stack(d.pop("enabled_in_stack", UNSET))
+
         permissions_boundary = d.pop("permissions_boundary", UNSET)
 
         _policies = d.pop("policies", UNSET)
@@ -108,6 +127,7 @@ class ServiceAppAWSIAMRoleConfig:
             display_name=display_name,
             name=name,
             cloud_platform=cloud_platform,
+            enabled_in_stack=enabled_in_stack,
             permissions_boundary=permissions_boundary,
             policies=policies,
         )

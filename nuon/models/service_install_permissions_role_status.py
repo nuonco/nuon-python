@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
+    from ..models.sql_null_bool import SqlNullBool
 
 
 T = TypeVar("T", bound="ServiceInstallPermissionsRoleStatus")
@@ -30,6 +31,7 @@ class ServiceInstallPermissionsRoleStatus:
         description (str | Unset):
         display_name (str | Unset):
         enabled (bool | Unset):
+        enabled_in_stack (SqlNullBool | Unset):
         id (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
@@ -51,6 +53,7 @@ class ServiceInstallPermissionsRoleStatus:
     description: str | Unset = UNSET
     display_name: str | Unset = UNSET
     enabled: bool | Unset = UNSET
+    enabled_in_stack: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -82,6 +85,10 @@ class ServiceInstallPermissionsRoleStatus:
         display_name = self.display_name
 
         enabled = self.enabled
+
+        enabled_in_stack: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.enabled_in_stack, Unset):
+            enabled_in_stack = self.enabled_in_stack.to_dict()
 
         id = self.id
 
@@ -131,6 +138,8 @@ class ServiceInstallPermissionsRoleStatus:
             field_dict["display_name"] = display_name
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if enabled_in_stack is not UNSET:
+            field_dict["enabled_in_stack"] = enabled_in_stack
         if id is not UNSET:
             field_dict["id"] = id
         if name is not UNSET:
@@ -155,6 +164,7 @@ class ServiceInstallPermissionsRoleStatus:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -176,6 +186,13 @@ class ServiceInstallPermissionsRoleStatus:
         display_name = d.pop("display_name", UNSET)
 
         enabled = d.pop("enabled", UNSET)
+
+        _enabled_in_stack = d.pop("enabled_in_stack", UNSET)
+        enabled_in_stack: SqlNullBool | Unset
+        if isinstance(_enabled_in_stack, Unset):
+            enabled_in_stack = UNSET
+        else:
+            enabled_in_stack = SqlNullBool.from_dict(_enabled_in_stack)
 
         id = d.pop("id", UNSET)
 
@@ -218,6 +235,7 @@ class ServiceInstallPermissionsRoleStatus:
             description=description,
             display_name=display_name,
             enabled=enabled,
+            enabled_in_stack=enabled_in_stack,
             id=id,
             name=name,
             org_id=org_id,

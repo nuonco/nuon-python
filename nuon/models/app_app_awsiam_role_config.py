@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
+    from ..models.sql_null_bool import SqlNullBool
 
 
 T = TypeVar("T", bound="AppAppAWSIAMRoleConfig")
@@ -28,6 +29,7 @@ class AppAppAWSIAMRoleConfig:
         created_by_id (str | Unset):
         description (str | Unset):
         display_name (str | Unset):
+        enabled_in_stack (SqlNullBool | Unset):
         id (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
@@ -47,6 +49,7 @@ class AppAppAWSIAMRoleConfig:
     created_by_id: str | Unset = UNSET
     description: str | Unset = UNSET
     display_name: str | Unset = UNSET
+    enabled_in_stack: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -74,6 +77,10 @@ class AppAppAWSIAMRoleConfig:
         description = self.description
 
         display_name = self.display_name
+
+        enabled_in_stack: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.enabled_in_stack, Unset):
+            enabled_in_stack = self.enabled_in_stack.to_dict()
 
         id = self.id
 
@@ -119,6 +126,8 @@ class AppAppAWSIAMRoleConfig:
             field_dict["description"] = description
         if display_name is not UNSET:
             field_dict["display_name"] = display_name
+        if enabled_in_stack is not UNSET:
+            field_dict["enabled_in_stack"] = enabled_in_stack
         if id is not UNSET:
             field_dict["id"] = id
         if name is not UNSET:
@@ -143,6 +152,7 @@ class AppAppAWSIAMRoleConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -160,6 +170,13 @@ class AppAppAWSIAMRoleConfig:
         description = d.pop("description", UNSET)
 
         display_name = d.pop("display_name", UNSET)
+
+        _enabled_in_stack = d.pop("enabled_in_stack", UNSET)
+        enabled_in_stack: SqlNullBool | Unset
+        if isinstance(_enabled_in_stack, Unset):
+            enabled_in_stack = UNSET
+        else:
+            enabled_in_stack = SqlNullBool.from_dict(_enabled_in_stack)
 
         id = d.pop("id", UNSET)
 
@@ -200,6 +217,7 @@ class AppAppAWSIAMRoleConfig:
             created_by_id=created_by_id,
             description=description,
             display_name=display_name,
+            enabled_in_stack=enabled_in_stack,
             id=id,
             name=name,
             org_id=org_id,
