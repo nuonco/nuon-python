@@ -130,6 +130,7 @@ from .app_notifications_config import AppNotificationsConfig
 from .app_oci_artifact import AppOCIArtifact
 from .app_oci_artifact_annotations import AppOCIArtifactAnnotations
 from .app_onboarding import AppOnboarding
+from .app_onboarding_app_config import AppOnboardingAppConfig
 from .app_operation_status import AppOperationStatus
 from .app_operation_type import AppOperationType
 from .app_org import AppOrg
@@ -668,6 +669,7 @@ __all__ = (
     "AppOCIArtifact",
     "AppOCIArtifactAnnotations",
     "AppOnboarding",
+    "AppOnboardingAppConfig",
     "AppOperationStatus",
     "AppOperationType",
     "AppOrg",

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
+    from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
@@ -28,6 +29,7 @@ class PlantypesSyncSecretsPlan:
         aws_auth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
         azure_auth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         cluster_info (KubeClusterInfo | Unset):
+        gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         kubernetes_secrets (list[PlantypesKubernetesSecretSync] | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
     """
@@ -35,6 +37,7 @@ class PlantypesSyncSecretsPlan:
     aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     azure_auth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     cluster_info: KubeClusterInfo | Unset = UNSET
+    gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     kubernetes_secrets: list[PlantypesKubernetesSecretSync] | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -51,6 +54,10 @@ class PlantypesSyncSecretsPlan:
         cluster_info: dict[str, Any] | Unset = UNSET
         if not isinstance(self.cluster_info, Unset):
             cluster_info = self.cluster_info.to_dict()
+
+        gcp_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_auth, Unset):
+            gcp_auth = self.gcp_auth.to_dict()
 
         kubernetes_secrets: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.kubernetes_secrets, Unset):
@@ -72,6 +79,8 @@ class PlantypesSyncSecretsPlan:
             field_dict["azure_auth"] = azure_auth
         if cluster_info is not UNSET:
             field_dict["cluster_info"] = cluster_info
+        if gcp_auth is not UNSET:
+            field_dict["gcp_auth"] = gcp_auth
         if kubernetes_secrets is not UNSET:
             field_dict["kubernetes_secrets"] = kubernetes_secrets
         if sandbox_mode is not UNSET:
@@ -86,6 +95,9 @@ class PlantypesSyncSecretsPlan:
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
             GithubComNuoncoNuonPkgAzureCredentialsConfig,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
@@ -113,6 +125,13 @@ class PlantypesSyncSecretsPlan:
         else:
             cluster_info = KubeClusterInfo.from_dict(_cluster_info)
 
+        _gcp_auth = d.pop("gcp_auth", UNSET)
+        gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset
+        if isinstance(_gcp_auth, Unset):
+            gcp_auth = UNSET
+        else:
+            gcp_auth = GithubComNuoncoNuonPkgGcpCredentialsConfig.from_dict(_gcp_auth)
+
         _kubernetes_secrets = d.pop("kubernetes_secrets", UNSET)
         kubernetes_secrets: list[PlantypesKubernetesSecretSync] | Unset = UNSET
         if _kubernetes_secrets is not UNSET:
@@ -133,6 +152,7 @@ class PlantypesSyncSecretsPlan:
             aws_auth=aws_auth,
             azure_auth=azure_auth,
             cluster_info=cluster_info,
+            gcp_auth=gcp_auth,
             kubernetes_secrets=kubernetes_secrets,
             sandbox_mode=sandbox_mode,
         )

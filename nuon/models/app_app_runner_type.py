@@ -9,6 +9,7 @@ class AppAppRunnerType(str, Enum):
     AZURE_ACS = "azure-acs"
     AZURE_AKS = "azure-aks"
     GCP = "gcp"
+    GCP_GKE = "gcp-gke"
     LOCAL = "local"
     UNKNOWN = "unknown"
 

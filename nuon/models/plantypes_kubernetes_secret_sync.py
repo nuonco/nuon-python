@@ -18,6 +18,7 @@ class PlantypesKubernetesSecretSync:
         format_ (str | Unset): NOTE(jm): this should probably come from the app config, but for now we just use string
             parsing to avoid
             updating the runner job and save time.
+        gcp_secret_name (str | Unset): projects/{project}/secrets/{id}/versions/latest
         key_name (str | Unset):
         name (str | Unset):
         namespace (str | Unset):
@@ -26,6 +27,7 @@ class PlantypesKubernetesSecretSync:
     """
 
     format_: str | Unset = UNSET
+    gcp_secret_name: str | Unset = UNSET
     key_name: str | Unset = UNSET
     name: str | Unset = UNSET
     namespace: str | Unset = UNSET
@@ -35,6 +37,8 @@ class PlantypesKubernetesSecretSync:
 
     def to_dict(self) -> dict[str, Any]:
         format_ = self.format_
+
+        gcp_secret_name = self.gcp_secret_name
 
         key_name = self.key_name
 
@@ -51,6 +55,8 @@ class PlantypesKubernetesSecretSync:
         field_dict.update({})
         if format_ is not UNSET:
             field_dict["format"] = format_
+        if gcp_secret_name is not UNSET:
+            field_dict["gcp_secret_name"] = gcp_secret_name
         if key_name is not UNSET:
             field_dict["key_name"] = key_name
         if name is not UNSET:
@@ -69,6 +75,8 @@ class PlantypesKubernetesSecretSync:
         d = dict(src_dict)
         format_ = d.pop("format", UNSET)
 
+        gcp_secret_name = d.pop("gcp_secret_name", UNSET)
+
         key_name = d.pop("key_name", UNSET)
 
         name = d.pop("name", UNSET)
@@ -81,6 +89,7 @@ class PlantypesKubernetesSecretSync:
 
         plantypes_kubernetes_secret_sync = cls(
             format_=format_,
+            gcp_secret_name=gcp_secret_name,
             key_name=key_name,
             name=name,
             namespace=namespace,
