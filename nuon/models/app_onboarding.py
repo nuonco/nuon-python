@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_onboarding_app_config import AppOnboardingAppConfig
+
 
 T = TypeVar("T", bound="AppOnboarding")
 
@@ -18,6 +23,7 @@ class AppOnboarding:
         account_id (str | Unset):
         app_attributes (list[str] | Unset):
         app_branch_id (str | Unset):
+        app_config (AppOnboardingAppConfig | Unset):
         app_id (str | Unset):
         app_type (str | Unset): Step 2: Your Stack
         cloud_provider (str | Unset):
@@ -30,6 +36,7 @@ class AppOnboarding:
         install_mode (str | Unset): Step 3: Install
         org_id (str | Unset): Step 1: Organization
         status (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         step_error (str | Unset):
         step_status (str | Unset): Async step status (for queue-based signal processing)
         updated_at (str | Unset):
@@ -39,6 +46,7 @@ class AppOnboarding:
     account_id: str | Unset = UNSET
     app_attributes: list[str] | Unset = UNSET
     app_branch_id: str | Unset = UNSET
+    app_config: AppOnboardingAppConfig | Unset = UNSET
     app_id: str | Unset = UNSET
     app_type: str | Unset = UNSET
     cloud_provider: str | Unset = UNSET
@@ -51,6 +59,7 @@ class AppOnboarding:
     install_mode: str | Unset = UNSET
     org_id: str | Unset = UNSET
     status: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     step_error: str | Unset = UNSET
     step_status: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -65,6 +74,10 @@ class AppOnboarding:
             app_attributes = self.app_attributes
 
         app_branch_id = self.app_branch_id
+
+        app_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config, Unset):
+            app_config = self.app_config.to_dict()
 
         app_id = self.app_id
 
@@ -90,6 +103,10 @@ class AppOnboarding:
 
         status = self.status
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         step_error = self.step_error
 
         step_status = self.step_status
@@ -107,6 +124,8 @@ class AppOnboarding:
             field_dict["app_attributes"] = app_attributes
         if app_branch_id is not UNSET:
             field_dict["app_branch_id"] = app_branch_id
+        if app_config is not UNSET:
+            field_dict["app_config"] = app_config
         if app_id is not UNSET:
             field_dict["app_id"] = app_id
         if app_type is not UNSET:
@@ -131,6 +150,8 @@ class AppOnboarding:
             field_dict["org_id"] = org_id
         if status is not UNSET:
             field_dict["status"] = status
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if step_error is not UNSET:
             field_dict["step_error"] = step_error
         if step_status is not UNSET:
@@ -144,12 +165,22 @@ class AppOnboarding:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_onboarding_app_config import AppOnboardingAppConfig
+
         d = dict(src_dict)
         account_id = d.pop("account_id", UNSET)
 
         app_attributes = cast(list[str], d.pop("app_attributes", UNSET))
 
         app_branch_id = d.pop("app_branch_id", UNSET)
+
+        _app_config = d.pop("app_config", UNSET)
+        app_config: AppOnboardingAppConfig | Unset
+        if isinstance(_app_config, Unset):
+            app_config = UNSET
+        else:
+            app_config = AppOnboardingAppConfig.from_dict(_app_config)
 
         app_id = d.pop("app_id", UNSET)
 
@@ -175,6 +206,13 @@ class AppOnboarding:
 
         status = d.pop("status", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         step_error = d.pop("step_error", UNSET)
 
         step_status = d.pop("step_status", UNSET)
@@ -187,6 +225,7 @@ class AppOnboarding:
             account_id=account_id,
             app_attributes=app_attributes,
             app_branch_id=app_branch_id,
+            app_config=app_config,
             app_id=app_id,
             app_type=app_type,
             cloud_provider=cloud_provider,
@@ -199,6 +238,7 @@ class AppOnboarding:
             install_mode=install_mode,
             org_id=org_id,
             status=status,
+            status_v2=status_v2,
             step_error=step_error,
             step_status=step_status,
             updated_at=updated_at,

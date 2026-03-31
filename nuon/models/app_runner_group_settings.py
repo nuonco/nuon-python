@@ -40,6 +40,7 @@ class AppRunnerGroupSettings:
         metadata (AppRunnerGroupSettingsMetadata | Unset): Metadata is used as both log and metric tags/attributes in
             the runner when emitting data
         org_aws_iam_role_arn (str | Unset): org runner specifics
+        org_gcp_service_account (str | Unset):
         org_id (str | Unset):
         org_k8s_service_account_name (str | Unset):
         otel_collector_config (str | Unset):
@@ -68,6 +69,7 @@ class AppRunnerGroupSettings:
     logging_level: str | Unset = UNSET
     metadata: AppRunnerGroupSettingsMetadata | Unset = UNSET
     org_aws_iam_role_arn: str | Unset = UNSET
+    org_gcp_service_account: str | Unset = UNSET
     org_id: str | Unset = UNSET
     org_k8s_service_account_name: str | Unset = UNSET
     otel_collector_config: str | Unset = UNSET
@@ -120,6 +122,8 @@ class AppRunnerGroupSettings:
             metadata = self.metadata.to_dict()
 
         org_aws_iam_role_arn = self.org_aws_iam_role_arn
+
+        org_gcp_service_account = self.org_gcp_service_account
 
         org_id = self.org_id
 
@@ -176,6 +180,8 @@ class AppRunnerGroupSettings:
             field_dict["metadata"] = metadata
         if org_aws_iam_role_arn is not UNSET:
             field_dict["org_aws_iam_role_arn"] = org_aws_iam_role_arn
+        if org_gcp_service_account is not UNSET:
+            field_dict["org_gcp_service_account"] = org_gcp_service_account
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if org_k8s_service_account_name is not UNSET:
@@ -247,6 +253,8 @@ class AppRunnerGroupSettings:
 
         org_aws_iam_role_arn = d.pop("org_aws_iam_role_arn", UNSET)
 
+        org_gcp_service_account = d.pop("org_gcp_service_account", UNSET)
+
         org_id = d.pop("org_id", UNSET)
 
         org_k8s_service_account_name = d.pop("org_k8s_service_account_name", UNSET)
@@ -282,6 +290,7 @@ class AppRunnerGroupSettings:
             logging_level=logging_level,
             metadata=metadata,
             org_aws_iam_role_arn=org_aws_iam_role_arn,
+            org_gcp_service_account=org_gcp_service_account,
             org_id=org_id,
             org_k8s_service_account_name=org_k8s_service_account_name,
             otel_collector_config=otel_collector_config,

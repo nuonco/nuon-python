@@ -17,6 +17,7 @@ class OutputsSecretSyncOutput:
     Attributes:
         arn (str | Unset):
         exists (bool | Unset):
+        gcp_secret_name (str | Unset):
         kubernetes_key (str | Unset):
         kubernetes_name (str | Unset):
         kubernetes_namespace (str | Unset):
@@ -27,6 +28,7 @@ class OutputsSecretSyncOutput:
 
     arn: str | Unset = UNSET
     exists: bool | Unset = UNSET
+    gcp_secret_name: str | Unset = UNSET
     kubernetes_key: str | Unset = UNSET
     kubernetes_name: str | Unset = UNSET
     kubernetes_namespace: str | Unset = UNSET
@@ -39,6 +41,8 @@ class OutputsSecretSyncOutput:
         arn = self.arn
 
         exists = self.exists
+
+        gcp_secret_name = self.gcp_secret_name
 
         kubernetes_key = self.kubernetes_key
 
@@ -59,6 +63,8 @@ class OutputsSecretSyncOutput:
             field_dict["arn"] = arn
         if exists is not UNSET:
             field_dict["exists"] = exists
+        if gcp_secret_name is not UNSET:
+            field_dict["gcp_secret_name"] = gcp_secret_name
         if kubernetes_key is not UNSET:
             field_dict["kubernetes_key"] = kubernetes_key
         if kubernetes_name is not UNSET:
@@ -81,6 +87,8 @@ class OutputsSecretSyncOutput:
 
         exists = d.pop("exists", UNSET)
 
+        gcp_secret_name = d.pop("gcp_secret_name", UNSET)
+
         kubernetes_key = d.pop("kubernetes_key", UNSET)
 
         kubernetes_name = d.pop("kubernetes_name", UNSET)
@@ -96,6 +104,7 @@ class OutputsSecretSyncOutput:
         outputs_secret_sync_output = cls(
             arn=arn,
             exists=exists,
+            gcp_secret_name=gcp_secret_name,
             kubernetes_key=kubernetes_key,
             kubernetes_name=kubernetes_name,
             kubernetes_namespace=kubernetes_namespace,
