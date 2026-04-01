@@ -33,6 +33,8 @@ class ConfigsOCIRegistryRepository:
         registry_type (ConfigsOCIRegistryType | Unset):
         repository (str | Unset): based on the type of access, either the repository (ecr) or login server (acr) will be
             provided.
+        service_account_email (str | Unset):
+        workload_identity_provider (str | Unset):
     """
 
     acrauth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
@@ -43,6 +45,8 @@ class ConfigsOCIRegistryRepository:
     region: str | Unset = UNSET
     registry_type: ConfigsOCIRegistryType | Unset = UNSET
     repository: str | Unset = UNSET
+    service_account_email: str | Unset = UNSET
+    workload_identity_provider: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +74,10 @@ class ConfigsOCIRegistryRepository:
 
         repository = self.repository
 
+        service_account_email = self.service_account_email
+
+        workload_identity_provider = self.workload_identity_provider
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -89,6 +97,10 @@ class ConfigsOCIRegistryRepository:
             field_dict["registryType"] = registry_type
         if repository is not UNSET:
             field_dict["repository"] = repository
+        if service_account_email is not UNSET:
+            field_dict["serviceAccountEmail"] = service_account_email
+        if workload_identity_provider is not UNSET:
+            field_dict["workloadIdentityProvider"] = workload_identity_provider
 
         return field_dict
 
@@ -139,6 +151,10 @@ class ConfigsOCIRegistryRepository:
 
         repository = d.pop("repository", UNSET)
 
+        service_account_email = d.pop("serviceAccountEmail", UNSET)
+
+        workload_identity_provider = d.pop("workloadIdentityProvider", UNSET)
+
         configs_oci_registry_repository = cls(
             acrauth=acrauth,
             ecrauth=ecrauth,
@@ -148,6 +164,8 @@ class ConfigsOCIRegistryRepository:
             region=region,
             registry_type=registry_type,
             repository=repository,
+            service_account_email=service_account_email,
+            workload_identity_provider=workload_identity_provider,
         )
 
         configs_oci_registry_repository.additional_properties = d

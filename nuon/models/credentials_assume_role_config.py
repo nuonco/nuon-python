@@ -23,6 +23,7 @@ class CredentialsAssumeRoleConfig:
         session_name (str):
         session_duration_seconds (int | Unset):
         two_step_config (IamTwoStepConfig | Unset):
+        use_gcp_oidc (bool | Unset):
         use_github_oidc (bool | Unset):
     """
 
@@ -30,6 +31,7 @@ class CredentialsAssumeRoleConfig:
     session_name: str
     session_duration_seconds: int | Unset = UNSET
     two_step_config: IamTwoStepConfig | Unset = UNSET
+    use_gcp_oidc: bool | Unset = UNSET
     use_github_oidc: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -43,6 +45,8 @@ class CredentialsAssumeRoleConfig:
         two_step_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.two_step_config, Unset):
             two_step_config = self.two_step_config.to_dict()
+
+        use_gcp_oidc = self.use_gcp_oidc
 
         use_github_oidc = self.use_github_oidc
 
@@ -58,6 +62,8 @@ class CredentialsAssumeRoleConfig:
             field_dict["session_duration_seconds"] = session_duration_seconds
         if two_step_config is not UNSET:
             field_dict["two_step_config"] = two_step_config
+        if use_gcp_oidc is not UNSET:
+            field_dict["use_gcp_oidc"] = use_gcp_oidc
         if use_github_oidc is not UNSET:
             field_dict["use_github_oidc"] = use_github_oidc
 
@@ -81,6 +87,8 @@ class CredentialsAssumeRoleConfig:
         else:
             two_step_config = IamTwoStepConfig.from_dict(_two_step_config)
 
+        use_gcp_oidc = d.pop("use_gcp_oidc", UNSET)
+
         use_github_oidc = d.pop("use_github_oidc", UNSET)
 
         credentials_assume_role_config = cls(
@@ -88,6 +96,7 @@ class CredentialsAssumeRoleConfig:
             session_name=session_name,
             session_duration_seconds=session_duration_seconds,
             two_step_config=two_step_config,
+            use_gcp_oidc=use_gcp_oidc,
             use_github_oidc=use_github_oidc,
         )
 
