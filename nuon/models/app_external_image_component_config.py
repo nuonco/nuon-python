@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_awsecr_image_config import AppAWSECRImageConfig
+    from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
 
 
 T = TypeVar("T", bound="AppExternalImageComponentConfig")
@@ -23,6 +24,7 @@ class AppExternalImageComponentConfig:
         component_config_connection_id (str | Unset): value
         created_at (str | Unset):
         created_by_id (str | Unset):
+        gcp_gar_image_config (AppGCPGARImageConfig | Unset):
         id (str | Unset):
         image_url (str | Unset):
         tag (str | Unset):
@@ -33,6 +35,7 @@ class AppExternalImageComponentConfig:
     component_config_connection_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    gcp_gar_image_config: AppGCPGARImageConfig | Unset = UNSET
     id: str | Unset = UNSET
     image_url: str | Unset = UNSET
     tag: str | Unset = UNSET
@@ -49,6 +52,10 @@ class AppExternalImageComponentConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        gcp_gar_image_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_gar_image_config, Unset):
+            gcp_gar_image_config = self.gcp_gar_image_config.to_dict()
 
         id = self.id
 
@@ -69,6 +76,8 @@ class AppExternalImageComponentConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if gcp_gar_image_config is not UNSET:
+            field_dict["gcp_gar_image_config"] = gcp_gar_image_config
         if id is not UNSET:
             field_dict["id"] = id
         if image_url is not UNSET:
@@ -83,6 +92,7 @@ class AppExternalImageComponentConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_awsecr_image_config import AppAWSECRImageConfig
+        from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
 
         d = dict(src_dict)
         _aws_ecr_image_config = d.pop("aws_ecr_image_config", UNSET)
@@ -98,6 +108,13 @@ class AppExternalImageComponentConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        _gcp_gar_image_config = d.pop("gcp_gar_image_config", UNSET)
+        gcp_gar_image_config: AppGCPGARImageConfig | Unset
+        if isinstance(_gcp_gar_image_config, Unset):
+            gcp_gar_image_config = UNSET
+        else:
+            gcp_gar_image_config = AppGCPGARImageConfig.from_dict(_gcp_gar_image_config)
+
         id = d.pop("id", UNSET)
 
         image_url = d.pop("image_url", UNSET)
@@ -111,6 +128,7 @@ class AppExternalImageComponentConfig:
             component_config_connection_id=component_config_connection_id,
             created_at=created_at,
             created_by_id=created_by_id,
+            gcp_gar_image_config=gcp_gar_image_config,
             id=id,
             image_url=image_url,
             tag=tag,

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.service_create_external_image_component_config_request_operation_roles import (
         ServiceCreateExternalImageComponentConfigRequestOperationRoles,
     )
+    from ..models.service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
 
 
 T = TypeVar("T", bound="ServiceCreateExternalImageComponentConfigRequest")
@@ -30,6 +31,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         checksum (str | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
+        gcp_gar_image_config (ServiceGcpGARImageConfigRequest | Unset):
         operation_roles (ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
     """
@@ -42,6 +44,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
     checksum: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
+    gcp_gar_image_config: ServiceGcpGARImageConfigRequest | Unset = UNSET
     operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -66,6 +69,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
             dependencies = self.dependencies
 
         deploy_timeout = self.deploy_timeout
+
+        gcp_gar_image_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.gcp_gar_image_config, Unset):
+            gcp_gar_image_config = self.gcp_gar_image_config.to_dict()
 
         operation_roles: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_roles, Unset):
@@ -95,6 +102,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
             field_dict["deploy_timeout"] = deploy_timeout
+        if gcp_gar_image_config is not UNSET:
+            field_dict["gcp_gar_image_config"] = gcp_gar_image_config
         if operation_roles is not UNSET:
             field_dict["operation_roles"] = operation_roles
         if references is not UNSET:
@@ -108,6 +117,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         from ..models.service_create_external_image_component_config_request_operation_roles import (
             ServiceCreateExternalImageComponentConfigRequestOperationRoles,
         )
+        from ..models.service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
 
         d = dict(src_dict)
         image_url = d.pop("image_url")
@@ -131,6 +141,13 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
 
+        _gcp_gar_image_config = d.pop("gcp_gar_image_config", UNSET)
+        gcp_gar_image_config: ServiceGcpGARImageConfigRequest | Unset
+        if isinstance(_gcp_gar_image_config, Unset):
+            gcp_gar_image_config = UNSET
+        else:
+            gcp_gar_image_config = ServiceGcpGARImageConfigRequest.from_dict(_gcp_gar_image_config)
+
         _operation_roles = d.pop("operation_roles", UNSET)
         operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset
         if isinstance(_operation_roles, Unset):
@@ -149,6 +166,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
             checksum=checksum,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
+            gcp_gar_image_config=gcp_gar_image_config,
             operation_roles=operation_roles,
             references=references,
         )

@@ -75,6 +75,7 @@ from .app_gcp_stack_outputs import AppGCPStackOutputs
 from .app_gcp_stack_outputs_break_glass_sa_emails import AppGCPStackOutputsBreakGlassSaEmails
 from .app_gcp_stack_outputs_custom_sa_emails import AppGCPStackOutputsCustomSaEmails
 from .app_gcp_stack_outputs_install_inputs import AppGCPStackOutputsInstallInputs
+from .app_gcpgar_image_config import AppGCPGARImageConfig
 from .app_helm_chart import AppHelmChart
 from .app_helm_component_config import AppHelmComponentConfig
 from .app_helm_component_config_values import AppHelmComponentConfigValues
@@ -454,6 +455,7 @@ from .service_example_app import ServiceExampleApp
 from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
+from .service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
 from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
@@ -610,6 +612,7 @@ __all__ = (
     "AppDriftedObject",
     "AppExternalImageComponentConfig",
     "AppGCPAccount",
+    "AppGCPGARImageConfig",
     "AppGCPStackOutputs",
     "AppGCPStackOutputsBreakGlassSaEmails",
     "AppGCPStackOutputsCustomSaEmails",
@@ -961,6 +964,7 @@ __all__ = (
     "ServiceForceShutdownRequest",
     "ServiceForgetInstallComponentRequest",
     "ServiceForgetInstallRequest",
+    "ServiceGcpGARImageConfigRequest",
     "ServiceGracefulShutdownRequest",
     "ServiceHelmRepoConfigRequest",
     "ServiceInstallAppPermissionsConfigResponse",
