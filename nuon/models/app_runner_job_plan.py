@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_runner_job_permission_info import AppRunnerJobPermissionInfo
     from ..models.plantypes_composite_plan import PlantypesCompositePlan
 
 
@@ -24,6 +25,7 @@ class AppRunnerJobPlan:
         created_by_id (str | Unset):
         id (str | Unset):
         org_id (str | Unset):
+        permission_info (AppRunnerJobPermissionInfo | Unset):
         plan_json (str | Unset):
         runner_job_id (str | Unset):
         updated_at (str | Unset):
@@ -34,6 +36,7 @@ class AppRunnerJobPlan:
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    permission_info: AppRunnerJobPermissionInfo | Unset = UNSET
     plan_json: str | Unset = UNSET
     runner_job_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -51,6 +54,10 @@ class AppRunnerJobPlan:
         id = self.id
 
         org_id = self.org_id
+
+        permission_info: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.permission_info, Unset):
+            permission_info = self.permission_info.to_dict()
 
         plan_json = self.plan_json
 
@@ -71,6 +78,8 @@ class AppRunnerJobPlan:
             field_dict["id"] = id
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if permission_info is not UNSET:
+            field_dict["permission_info"] = permission_info
         if plan_json is not UNSET:
             field_dict["plan_json"] = plan_json
         if runner_job_id is not UNSET:
@@ -82,6 +91,7 @@ class AppRunnerJobPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_runner_job_permission_info import AppRunnerJobPermissionInfo
         from ..models.plantypes_composite_plan import PlantypesCompositePlan
 
         d = dict(src_dict)
@@ -100,6 +110,13 @@ class AppRunnerJobPlan:
 
         org_id = d.pop("org_id", UNSET)
 
+        _permission_info = d.pop("permission_info", UNSET)
+        permission_info: AppRunnerJobPermissionInfo | Unset
+        if isinstance(_permission_info, Unset):
+            permission_info = UNSET
+        else:
+            permission_info = AppRunnerJobPermissionInfo.from_dict(_permission_info)
+
         plan_json = d.pop("plan_json", UNSET)
 
         runner_job_id = d.pop("runner_job_id", UNSET)
@@ -112,6 +129,7 @@ class AppRunnerJobPlan:
             created_by_id=created_by_id,
             id=id,
             org_id=org_id,
+            permission_info=permission_info,
             plan_json=plan_json,
             runner_job_id=runner_job_id,
             updated_at=updated_at,

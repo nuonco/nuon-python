@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_queue import AppQueue
     from ..models.app_runner_group import AppRunnerGroup
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_runner_operation import AppRunnerOperation
@@ -29,6 +30,8 @@ class AppRunner:
         name (str | Unset):
         operations (list[AppRunnerOperation] | Unset):
         org_id (str | Unset):
+        queues (list[AppQueue] | Unset): Queues holds per-job-group queues created when parallel-runner-jobs feature
+            flag is enabled.
         runner_group (AppRunnerGroup | Unset):
         runner_group_id (str | Unset):
         runner_job (AppRunnerJob | Unset):
@@ -45,6 +48,7 @@ class AppRunner:
     name: str | Unset = UNSET
     operations: list[AppRunnerOperation] | Unset = UNSET
     org_id: str | Unset = UNSET
+    queues: list[AppQueue] | Unset = UNSET
     runner_group: AppRunnerGroup | Unset = UNSET
     runner_group_id: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
@@ -79,6 +83,13 @@ class AppRunner:
                 operations.append(operations_item)
 
         org_id = self.org_id
+
+        queues: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.queues, Unset):
+            queues = []
+            for queues_item_data in self.queues:
+                queues_item = queues_item_data.to_dict()
+                queues.append(queues_item)
 
         runner_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_group, Unset):
@@ -115,6 +126,8 @@ class AppRunner:
             field_dict["operations"] = operations
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if queues is not UNSET:
+            field_dict["queues"] = queues
         if runner_group is not UNSET:
             field_dict["runner_group"] = runner_group
         if runner_group_id is not UNSET:
@@ -132,6 +145,7 @@ class AppRunner:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_queue import AppQueue
         from ..models.app_runner_group import AppRunnerGroup
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_runner_operation import AppRunnerOperation
@@ -167,6 +181,15 @@ class AppRunner:
 
         org_id = d.pop("org_id", UNSET)
 
+        _queues = d.pop("queues", UNSET)
+        queues: list[AppQueue] | Unset = UNSET
+        if _queues is not UNSET:
+            queues = []
+            for queues_item_data in _queues:
+                queues_item = AppQueue.from_dict(queues_item_data)
+
+                queues.append(queues_item)
+
         _runner_group = d.pop("runner_group", UNSET)
         runner_group: AppRunnerGroup | Unset
         if isinstance(_runner_group, Unset):
@@ -198,6 +221,7 @@ class AppRunner:
             name=name,
             operations=operations,
             org_id=org_id,
+            queues=queues,
             runner_group=runner_group,
             runner_group_id=runner_group_id,
             runner_job=runner_job,

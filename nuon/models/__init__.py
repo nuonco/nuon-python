@@ -156,6 +156,7 @@ from .app_public_git_vcs_config import AppPublicGitVCSConfig
 from .app_queue import AppQueue
 from .app_queue_emitter import AppQueueEmitter
 from .app_queue_emitter_mode import AppQueueEmitterMode
+from .app_queue_metadata import AppQueueMetadata
 from .app_queue_signal import AppQueueSignal
 from .app_role import AppRole
 from .app_role_type import AppRoleType
@@ -163,6 +164,7 @@ from .app_runner import AppRunner
 from .app_runner_group import AppRunnerGroup
 from .app_runner_group_settings import AppRunnerGroupSettings
 from .app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
+from .app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
 from .app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
 from .app_runner_group_type import AppRunnerGroupType
 from .app_runner_health_check import AppRunnerHealthCheck
@@ -182,6 +184,8 @@ from .app_runner_job_group import AppRunnerJobGroup
 from .app_runner_job_metadata import AppRunnerJobMetadata
 from .app_runner_job_operation_type import AppRunnerJobOperationType
 from .app_runner_job_outputs import AppRunnerJobOutputs
+from .app_runner_job_permission_info import AppRunnerJobPermissionInfo
+from .app_runner_job_permission_trace_record import AppRunnerJobPermissionTraceRecord
 from .app_runner_job_plan import AppRunnerJobPlan
 from .app_runner_job_status import AppRunnerJobStatus
 from .app_runner_job_type import AppRunnerJobType
@@ -235,6 +239,7 @@ from .credentials_service_principal_credentials import CredentialsServicePrincip
 from .credentials_static_credentials import CredentialsStaticCredentials
 from .generics_null_time import GenericsNullTime
 from .get_app_config_template_type import GetAppConfigTemplateType
+from .get_available_roles_operation_type import GetAvailableRolesOperationType
 from .get_available_roles_principal_type import GetAvailableRolesPrincipalType
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
@@ -312,6 +317,7 @@ from .plantypes_terraform_deploy_plan_policies import PlantypesTerraformDeployPl
 from .plantypes_terraform_deploy_plan_vars import PlantypesTerraformDeployPlanVars
 from .plantypes_terraform_local_archive import PlantypesTerraformLocalArchive
 from .plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
+from .queue_status_response import QueueStatusResponse
 from .refs_ref import RefsRef
 from .refs_ref_type import RefsRefType
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
@@ -503,6 +509,9 @@ from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 from .service_update_org_request import ServiceUpdateOrgRequest
 from .service_update_runner_settings_request import ServiceUpdateRunnerSettingsRequest
+from .service_update_runner_settings_request_job_group_parallelism import (
+    ServiceUpdateRunnerSettingsRequestJobGroupParallelism,
+)
 from .service_update_user_journey_step_request import ServiceUpdateUserJourneyStepRequest
 from .service_update_user_journey_step_request_metadata import ServiceUpdateUserJourneyStepRequestMetadata
 from .service_update_workflow_request import ServiceUpdateWorkflowRequest
@@ -697,6 +706,7 @@ __all__ = (
     "AppQueue",
     "AppQueueEmitter",
     "AppQueueEmitterMode",
+    "AppQueueMetadata",
     "AppQueueSignal",
     "AppRole",
     "AppRoleType",
@@ -704,6 +714,7 @@ __all__ = (
     "AppRunnerGroup",
     "AppRunnerGroupSettings",
     "AppRunnerGroupSettingsAwsTags",
+    "AppRunnerGroupSettingsJobGroupParallelism",
     "AppRunnerGroupSettingsMetadata",
     "AppRunnerGroupType",
     "AppRunnerHealthCheck",
@@ -721,6 +732,8 @@ __all__ = (
     "AppRunnerJobMetadata",
     "AppRunnerJobOperationType",
     "AppRunnerJobOutputs",
+    "AppRunnerJobPermissionInfo",
+    "AppRunnerJobPermissionTraceRecord",
     "AppRunnerJobPlan",
     "AppRunnerJobStatus",
     "AppRunnerJobType",
@@ -774,6 +787,7 @@ __all__ = (
     "CredentialsStaticCredentials",
     "GenericsNullTime",
     "GetAppConfigTemplateType",
+    "GetAvailableRolesOperationType",
     "GetAvailableRolesPrincipalType",
     "GetCurrentOrgFeaturesResponse200",
     "GetInstallActionWorkflowOutputsResponse200",
@@ -849,6 +863,7 @@ __all__ = (
     "PlantypesTerraformDeployPlanVars",
     "PlantypesTerraformLocalArchive",
     "PlantypesTerraformSandboxMode",
+    "QueueStatusResponse",
     "RefsRef",
     "RefsRefType",
     "ServiceAppAWSIAMPolicyConfig",
@@ -1012,6 +1027,7 @@ __all__ = (
     "ServiceUpdateOrgFeaturesRequestFeatures",
     "ServiceUpdateOrgRequest",
     "ServiceUpdateRunnerSettingsRequest",
+    "ServiceUpdateRunnerSettingsRequestJobGroupParallelism",
     "ServiceUpdateUserJourneyStepRequest",
     "ServiceUpdateUserJourneyStepRequestMetadata",
     "ServiceUpdateWorkflowRequest",
