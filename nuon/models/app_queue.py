@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_queue_emitter import AppQueueEmitter
+    from ..models.app_queue_metadata import AppQueueMetadata
     from ..models.app_queue_signal import AppQueueSignal
     from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
 
@@ -27,6 +28,8 @@ class AppQueue:
         id (str | Unset):
         max_depth (int | Unset):
         max_in_flight (int | Unset):
+        metadata (AppQueueMetadata | Unset):
+        name (str | Unset):
         org_id (str | Unset):
         owner_id (str | Unset):
         owner_type (str | Unset):
@@ -41,6 +44,8 @@ class AppQueue:
     id: str | Unset = UNSET
     max_depth: int | Unset = UNSET
     max_in_flight: int | Unset = UNSET
+    metadata: AppQueueMetadata | Unset = UNSET
+    name: str | Unset = UNSET
     org_id: str | Unset = UNSET
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
@@ -66,6 +71,12 @@ class AppQueue:
         max_depth = self.max_depth
 
         max_in_flight = self.max_in_flight
+
+        metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
+
+        name = self.name
 
         org_id = self.org_id
 
@@ -101,6 +112,10 @@ class AppQueue:
             field_dict["max_depth"] = max_depth
         if max_in_flight is not UNSET:
             field_dict["max_in_flight"] = max_in_flight
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
+        if name is not UNSET:
+            field_dict["name"] = name
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if owner_id is not UNSET:
@@ -119,6 +134,7 @@ class AppQueue:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_queue_emitter import AppQueueEmitter
+        from ..models.app_queue_metadata import AppQueueMetadata
         from ..models.app_queue_signal import AppQueueSignal
         from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
 
@@ -141,6 +157,15 @@ class AppQueue:
         max_depth = d.pop("max_depth", UNSET)
 
         max_in_flight = d.pop("max_in_flight", UNSET)
+
+        _metadata = d.pop("metadata", UNSET)
+        metadata: AppQueueMetadata | Unset
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppQueueMetadata.from_dict(_metadata)
+
+        name = d.pop("name", UNSET)
 
         org_id = d.pop("org_id", UNSET)
 
@@ -173,6 +198,8 @@ class AppQueue:
             id=id,
             max_depth=max_depth,
             max_in_flight=max_in_flight,
+            metadata=metadata,
+            name=name,
             org_id=org_id,
             owner_id=owner_id,
             owner_type=owner_type,
