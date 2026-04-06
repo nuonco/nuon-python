@@ -16,21 +16,17 @@ class ServiceAvailableRole:
     """
     Attributes:
         arn (str | Unset):
-        default (bool | Unset):
         name (str | Unset):
         role_type (str | Unset):
     """
 
     arn: str | Unset = UNSET
-    default: bool | Unset = UNSET
     name: str | Unset = UNSET
     role_type: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         arn = self.arn
-
-        default = self.default
 
         name = self.name
 
@@ -41,8 +37,6 @@ class ServiceAvailableRole:
         field_dict.update({})
         if arn is not UNSET:
             field_dict["arn"] = arn
-        if default is not UNSET:
-            field_dict["default"] = default
         if name is not UNSET:
             field_dict["name"] = name
         if role_type is not UNSET:
@@ -55,15 +49,12 @@ class ServiceAvailableRole:
         d = dict(src_dict)
         arn = d.pop("arn", UNSET)
 
-        default = d.pop("default", UNSET)
-
         name = d.pop("name", UNSET)
 
         role_type = d.pop("role_type", UNSET)
 
         service_available_role = cls(
             arn=arn,
-            default=default,
             name=name,
             role_type=role_type,
         )
