@@ -10,7 +10,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
-    from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
     from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
 
 
@@ -36,9 +35,6 @@ class AppRunnerGroupSettings:
         groups (list[str] | Unset): the job loop groups the runner should poll for
         heart_beat_timeout (int | Unset): Various settings for the runner to handle internally
         id (str | Unset):
-        job_group_parallelism (AppRunnerGroupSettingsJobGroupParallelism | Unset): JobGroupParallelism maps
-            RunnerJobGroup names to max-in-flight counts for queue-based job routing.
-            e.g., {"build": "2", "deploy": "1"}. Only used when parallel-runner-jobs feature flag is on.
         local_aws_iam_role_arn (str | Unset):
         logging_level (str | Unset):
         metadata (AppRunnerGroupSettingsMetadata | Unset): Metadata is used as both log and metric tags/attributes in
@@ -69,7 +65,6 @@ class AppRunnerGroupSettings:
     groups: list[str] | Unset = UNSET
     heart_beat_timeout: int | Unset = UNSET
     id: str | Unset = UNSET
-    job_group_parallelism: AppRunnerGroupSettingsJobGroupParallelism | Unset = UNSET
     local_aws_iam_role_arn: str | Unset = UNSET
     logging_level: str | Unset = UNSET
     metadata: AppRunnerGroupSettingsMetadata | Unset = UNSET
@@ -117,10 +112,6 @@ class AppRunnerGroupSettings:
         heart_beat_timeout = self.heart_beat_timeout
 
         id = self.id
-
-        job_group_parallelism: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.job_group_parallelism, Unset):
-            job_group_parallelism = self.job_group_parallelism.to_dict()
 
         local_aws_iam_role_arn = self.local_aws_iam_role_arn
 
@@ -181,8 +172,6 @@ class AppRunnerGroupSettings:
             field_dict["heart_beat_timeout"] = heart_beat_timeout
         if id is not UNSET:
             field_dict["id"] = id
-        if job_group_parallelism is not UNSET:
-            field_dict["job_group_parallelism"] = job_group_parallelism
         if local_aws_iam_role_arn is not UNSET:
             field_dict["local_aws_iam_role_arn"] = local_aws_iam_role_arn
         if logging_level is not UNSET:
@@ -215,7 +204,6 @@ class AppRunnerGroupSettings:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
-        from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
         from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
 
         d = dict(src_dict)
@@ -251,13 +239,6 @@ class AppRunnerGroupSettings:
         heart_beat_timeout = d.pop("heart_beat_timeout", UNSET)
 
         id = d.pop("id", UNSET)
-
-        _job_group_parallelism = d.pop("job_group_parallelism", UNSET)
-        job_group_parallelism: AppRunnerGroupSettingsJobGroupParallelism | Unset
-        if isinstance(_job_group_parallelism, Unset):
-            job_group_parallelism = UNSET
-        else:
-            job_group_parallelism = AppRunnerGroupSettingsJobGroupParallelism.from_dict(_job_group_parallelism)
 
         local_aws_iam_role_arn = d.pop("local_aws_iam_role_arn", UNSET)
 
@@ -305,7 +286,6 @@ class AppRunnerGroupSettings:
             groups=groups,
             heart_beat_timeout=heart_beat_timeout,
             id=id,
-            job_group_parallelism=job_group_parallelism,
             local_aws_iam_role_arn=local_aws_iam_role_arn,
             logging_level=logging_level,
             metadata=metadata,

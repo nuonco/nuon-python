@@ -6,36 +6,25 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_available_roles_operation_type import GetAvailableRolesOperationType
 from ...models.get_available_roles_principal_type import GetAvailableRolesPrincipalType
 from ...models.service_available_roles_response import ServiceAvailableRolesResponse
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     install_id: str,
     *,
-    principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
-    operation_type: GetAvailableRolesOperationType | Unset = UNSET,
-    principal_id: str | Unset = UNSET,
+    principal_type: GetAvailableRolesPrincipalType,
+    app_operation_type: str,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    json_principal_type: str | Unset = UNSET
-    if not isinstance(principal_type, Unset):
-        json_principal_type = principal_type.value
-
+    json_principal_type = principal_type.value
     params["principal_type"] = json_principal_type
 
-    json_operation_type: str | Unset = UNSET
-    if not isinstance(operation_type, Unset):
-        json_operation_type = operation_type.value
-
-    params["operation_type"] = json_operation_type
-
-    params["principal_id"] = principal_id
+    params["app.operationType"] = app_operation_type
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -104,9 +93,8 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
-    operation_type: GetAvailableRolesOperationType | Unset = UNSET,
-    principal_id: str | Unset = UNSET,
+    principal_type: GetAvailableRolesPrincipalType,
+    app_operation_type: str,
 ) -> Response[ServiceAvailableRolesResponse | StderrErrResponse]:
     """get available IAM roles for a specific operation
 
@@ -122,9 +110,8 @@ def sync_detailed(
 
     Args:
         install_id (str):
-        principal_type (GetAvailableRolesPrincipalType | Unset):
-        operation_type (GetAvailableRolesOperationType | Unset):
-        principal_id (str | Unset):
+        principal_type (GetAvailableRolesPrincipalType):
+        app_operation_type (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,8 +124,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         principal_type=principal_type,
-        operation_type=operation_type,
-        principal_id=principal_id,
+        app_operation_type=app_operation_type,
     )
 
     response = client.get_httpx_client().request(
@@ -152,9 +138,8 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
-    operation_type: GetAvailableRolesOperationType | Unset = UNSET,
-    principal_id: str | Unset = UNSET,
+    principal_type: GetAvailableRolesPrincipalType,
+    app_operation_type: str,
 ) -> ServiceAvailableRolesResponse | StderrErrResponse | None:
     """get available IAM roles for a specific operation
 
@@ -170,9 +155,8 @@ def sync(
 
     Args:
         install_id (str):
-        principal_type (GetAvailableRolesPrincipalType | Unset):
-        operation_type (GetAvailableRolesOperationType | Unset):
-        principal_id (str | Unset):
+        principal_type (GetAvailableRolesPrincipalType):
+        app_operation_type (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,8 +170,7 @@ def sync(
         install_id=install_id,
         client=client,
         principal_type=principal_type,
-        operation_type=operation_type,
-        principal_id=principal_id,
+        app_operation_type=app_operation_type,
     ).parsed
 
 
@@ -195,9 +178,8 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
-    operation_type: GetAvailableRolesOperationType | Unset = UNSET,
-    principal_id: str | Unset = UNSET,
+    principal_type: GetAvailableRolesPrincipalType,
+    app_operation_type: str,
 ) -> Response[ServiceAvailableRolesResponse | StderrErrResponse]:
     """get available IAM roles for a specific operation
 
@@ -213,9 +195,8 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
-        principal_type (GetAvailableRolesPrincipalType | Unset):
-        operation_type (GetAvailableRolesOperationType | Unset):
-        principal_id (str | Unset):
+        principal_type (GetAvailableRolesPrincipalType):
+        app_operation_type (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -228,8 +209,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         principal_type=principal_type,
-        operation_type=operation_type,
-        principal_id=principal_id,
+        app_operation_type=app_operation_type,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -241,9 +221,8 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
-    operation_type: GetAvailableRolesOperationType | Unset = UNSET,
-    principal_id: str | Unset = UNSET,
+    principal_type: GetAvailableRolesPrincipalType,
+    app_operation_type: str,
 ) -> ServiceAvailableRolesResponse | StderrErrResponse | None:
     """get available IAM roles for a specific operation
 
@@ -259,9 +238,8 @@ async def asyncio(
 
     Args:
         install_id (str):
-        principal_type (GetAvailableRolesPrincipalType | Unset):
-        operation_type (GetAvailableRolesOperationType | Unset):
-        principal_id (str | Unset):
+        principal_type (GetAvailableRolesPrincipalType):
+        app_operation_type (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -276,7 +254,6 @@ async def asyncio(
             install_id=install_id,
             client=client,
             principal_type=principal_type,
-            operation_type=operation_type,
-            principal_id=principal_id,
+            app_operation_type=app_operation_type,
         )
     ).parsed
