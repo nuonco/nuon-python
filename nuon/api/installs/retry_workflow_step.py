@@ -6,8 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
-from ...models.service_retry_workflow_step_request import ServiceRetryWorkflowStepRequest
+from ...models.service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
@@ -15,10 +14,7 @@ from ...types import Response
 def _get_kwargs(
     workflow_id: str,
     step_id: str,
-    *,
-    body: ServiceRetryWorkflowStepRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -28,19 +24,14 @@ def _get_kwargs(
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
+) -> ServiceRetryWorkflowStepResponse | StderrErrResponse | None:
     if response.status_code == 201:
-        response_201 = ServiceRetryWorkflowByIDResponse.from_dict(response.json())
+        response_201 = ServiceRetryWorkflowStepResponse.from_dict(response.json())
 
         return response_201
 
@@ -77,7 +68,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
+) -> Response[ServiceRetryWorkflowStepResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -91,29 +82,26 @@ def sync_detailed(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepRequest,
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
+) -> Response[ServiceRetryWorkflowStepResponse | StderrErrResponse]:
+    """retry a failed or awaiting-approval workflow step
 
      Retry a workflow execution by id.
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]
+        Response[ServiceRetryWorkflowStepResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
         step_id=step_id,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -128,30 +116,27 @@ def sync(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepRequest,
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
+) -> ServiceRetryWorkflowStepResponse | StderrErrResponse | None:
+    """retry a failed or awaiting-approval workflow step
 
      Retry a workflow execution by id.
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceRetryWorkflowByIDResponse | StderrErrResponse
+        ServiceRetryWorkflowStepResponse | StderrErrResponse
     """
 
     return sync_detailed(
         workflow_id=workflow_id,
         step_id=step_id,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -160,29 +145,26 @@ async def asyncio_detailed(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepRequest,
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
+) -> Response[ServiceRetryWorkflowStepResponse | StderrErrResponse]:
+    """retry a failed or awaiting-approval workflow step
 
      Retry a workflow execution by id.
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]
+        Response[ServiceRetryWorkflowStepResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
         step_id=step_id,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -195,23 +177,21 @@ async def asyncio(
     step_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowStepRequest,
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
+) -> ServiceRetryWorkflowStepResponse | StderrErrResponse | None:
+    """retry a failed or awaiting-approval workflow step
 
      Retry a workflow execution by id.
 
     Args:
         workflow_id (str):
         step_id (str):
-        body (ServiceRetryWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceRetryWorkflowByIDResponse | StderrErrResponse
+        ServiceRetryWorkflowStepResponse | StderrErrResponse
     """
 
     return (
@@ -219,6 +199,5 @@ async def asyncio(
             workflow_id=workflow_id,
             step_id=step_id,
             client=client,
-            body=body,
         )
     ).parsed

@@ -7,6 +7,7 @@ class AppComponentType(str, Enum):
     HELM_CHART = "helm_chart"
     JOB = "job"
     KUBERNETES_MANIFEST = "kubernetes_manifest"
+    PULUMI = "pulumi"
     TERRAFORM_MODULE = "terraform_module"
     UNKNOWN = "unknown"
 

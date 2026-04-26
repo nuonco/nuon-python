@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
@@ -23,6 +24,8 @@ def _get_kwargs(
     params["offset"] = offset
 
     params["q"] = q
+
+    params["labels"] = labels
 
     params["limit"] = limit
 
@@ -99,6 +102,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -109,6 +113,7 @@ def sync_detailed(
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -123,6 +128,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         offset=offset,
         q=q,
+        labels=labels,
         limit=limit,
         page=page,
     )
@@ -139,6 +145,7 @@ def sync(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -149,6 +156,7 @@ def sync(
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -164,6 +172,7 @@ def sync(
         client=client,
         offset=offset,
         q=q,
+        labels=labels,
         limit=limit,
         page=page,
     ).parsed
@@ -174,6 +183,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -184,6 +194,7 @@ async def asyncio_detailed(
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -198,6 +209,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         offset=offset,
         q=q,
+        labels=labels,
         limit=limit,
         page=page,
     )
@@ -212,6 +224,7 @@ async def asyncio(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -222,6 +235,7 @@ async def asyncio(
     Args:
         offset (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -238,6 +252,7 @@ async def asyncio(
             client=client,
             offset=offset,
             q=q,
+            labels=labels,
             limit=limit,
             page=page,
         )

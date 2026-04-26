@@ -6,52 +6,43 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceRetryWorkflowByIDRequest")
+T = TypeVar("T", bound="ServiceShutdownRunnerProcessRequest")
 
 
 @_attrs_define
-class ServiceRetryWorkflowByIDRequest:
+class ServiceShutdownRunnerProcessRequest:
     """
     Attributes:
-        operation (str | Unset): Retry indicates whether to retry the current step or not
-        step_id (str | Unset): StepID is the ID of the step to start the retry from
+        shutdown_type (str):
     """
 
-    operation: str | Unset = UNSET
-    step_id: str | Unset = UNSET
+    shutdown_type: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation = self.operation
-
-        step_id = self.step_id
+        shutdown_type = self.shutdown_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if operation is not UNSET:
-            field_dict["operation"] = operation
-        if step_id is not UNSET:
-            field_dict["step_id"] = step_id
+        field_dict.update(
+            {
+                "shutdown_type": shutdown_type,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        operation = d.pop("operation", UNSET)
+        shutdown_type = d.pop("shutdown_type")
 
-        step_id = d.pop("step_id", UNSET)
-
-        service_retry_workflow_by_id_request = cls(
-            operation=operation,
-            step_id=step_id,
+        service_shutdown_runner_process_request = cls(
+            shutdown_type=shutdown_type,
         )
 
-        service_retry_workflow_by_id_request.additional_properties = d
-        return service_retry_workflow_by_id_request
+        service_shutdown_runner_process_request.additional_properties = d
+        return service_shutdown_runner_process_request
 
     @property
     def additional_keys(self) -> list[str]:

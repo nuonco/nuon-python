@@ -15,6 +15,7 @@ def _get_kwargs(
     runner_id: str,
     *,
     window: str | Unset = "1h",
+    process_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     x_nuon_pagination_enabled: bool | Unset = UNSET,
@@ -26,6 +27,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["window"] = window
+
+    params["process_id"] = process_id
 
     params["offset"] = offset
 
@@ -105,6 +108,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     window: str | Unset = "1h",
+    process_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     x_nuon_pagination_enabled: bool | Unset = UNSET,
@@ -116,6 +120,7 @@ def sync_detailed(
     Args:
         runner_id (str):
         window (str | Unset):  Default: '1h'.
+        process_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         x_nuon_pagination_enabled (bool | Unset):
@@ -131,6 +136,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         runner_id=runner_id,
         window=window,
+        process_id=process_id,
         offset=offset,
         limit=limit,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
@@ -148,6 +154,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     window: str | Unset = "1h",
+    process_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     x_nuon_pagination_enabled: bool | Unset = UNSET,
@@ -159,6 +166,7 @@ def sync(
     Args:
         runner_id (str):
         window (str | Unset):  Default: '1h'.
+        process_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         x_nuon_pagination_enabled (bool | Unset):
@@ -175,6 +183,7 @@ def sync(
         runner_id=runner_id,
         client=client,
         window=window,
+        process_id=process_id,
         offset=offset,
         limit=limit,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
@@ -186,6 +195,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     window: str | Unset = "1h",
+    process_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     x_nuon_pagination_enabled: bool | Unset = UNSET,
@@ -197,6 +207,7 @@ async def asyncio_detailed(
     Args:
         runner_id (str):
         window (str | Unset):  Default: '1h'.
+        process_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         x_nuon_pagination_enabled (bool | Unset):
@@ -212,6 +223,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         runner_id=runner_id,
         window=window,
+        process_id=process_id,
         offset=offset,
         limit=limit,
         x_nuon_pagination_enabled=x_nuon_pagination_enabled,
@@ -227,6 +239,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     window: str | Unset = "1h",
+    process_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     x_nuon_pagination_enabled: bool | Unset = UNSET,
@@ -238,6 +251,7 @@ async def asyncio(
     Args:
         runner_id (str):
         window (str | Unset):  Default: '1h'.
+        process_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         x_nuon_pagination_enabled (bool | Unset):
@@ -255,6 +269,7 @@ async def asyncio(
             runner_id=runner_id,
             client=client,
             window=window,
+            process_id=process_id,
             offset=offset,
             limit=limit,
             x_nuon_pagination_enabled=x_nuon_pagination_enabled,

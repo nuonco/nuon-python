@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_helm_component_config import AppHelmComponentConfig
     from ..models.app_job_component_config import AppJobComponentConfig
     from ..models.app_kubernetes_manifest_component_config import AppKubernetesManifestComponentConfig
+    from ..models.app_pulumi_component_config import AppPulumiComponentConfig
     from ..models.app_terraform_module_component_config import AppTerraformModuleComponentConfig
     from ..models.refs_ref import RefsRef
 
@@ -44,8 +45,10 @@ class AppComponentConfigConnection:
         id (str | Unset):
         job (AppJobComponentConfig | Unset):
         kubernetes_manifest (AppKubernetesManifestComponentConfig | Unset):
+        max_auto_retries (int | Unset):
         operation_roles (AppComponentConfigConnectionOperationRoles | Unset): Operation roles map: operation type ->
             role name
+        pulumi (AppPulumiComponentConfig | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
         terraform_module (AppTerraformModuleComponentConfig | Unset):
@@ -71,7 +74,9 @@ class AppComponentConfigConnection:
     id: str | Unset = UNSET
     job: AppJobComponentConfig | Unset = UNSET
     kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     operation_roles: AppComponentConfigConnectionOperationRoles | Unset = UNSET
+    pulumi: AppPulumiComponentConfig | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
     terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
@@ -127,9 +132,15 @@ class AppComponentConfigConnection:
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
 
+        max_auto_retries = self.max_auto_retries
+
         operation_roles: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_roles, Unset):
             operation_roles = self.operation_roles.to_dict()
+
+        pulumi: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi, Unset):
+            pulumi = self.pulumi.to_dict()
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -191,8 +202,12 @@ class AppComponentConfigConnection:
             field_dict["job"] = job
         if kubernetes_manifest is not UNSET:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
             field_dict["operation_roles"] = operation_roles
+        if pulumi is not UNSET:
+            field_dict["pulumi"] = pulumi
         if references is not UNSET:
             field_dict["references"] = references
         if refs is not UNSET:
@@ -216,6 +231,7 @@ class AppComponentConfigConnection:
         from ..models.app_helm_component_config import AppHelmComponentConfig
         from ..models.app_job_component_config import AppJobComponentConfig
         from ..models.app_kubernetes_manifest_component_config import AppKubernetesManifestComponentConfig
+        from ..models.app_pulumi_component_config import AppPulumiComponentConfig
         from ..models.app_terraform_module_component_config import AppTerraformModuleComponentConfig
         from ..models.refs_ref import RefsRef
 
@@ -279,12 +295,21 @@ class AppComponentConfigConnection:
         else:
             kubernetes_manifest = AppKubernetesManifestComponentConfig.from_dict(_kubernetes_manifest)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         _operation_roles = d.pop("operation_roles", UNSET)
         operation_roles: AppComponentConfigConnectionOperationRoles | Unset
         if isinstance(_operation_roles, Unset):
             operation_roles = UNSET
         else:
             operation_roles = AppComponentConfigConnectionOperationRoles.from_dict(_operation_roles)
+
+        _pulumi = d.pop("pulumi", UNSET)
+        pulumi: AppPulumiComponentConfig | Unset
+        if isinstance(_pulumi, Unset):
+            pulumi = UNSET
+        else:
+            pulumi = AppPulumiComponentConfig.from_dict(_pulumi)
 
         references = cast(list[str], d.pop("references", UNSET))
 
@@ -333,7 +358,9 @@ class AppComponentConfigConnection:
             id=id,
             job=job,
             kubernetes_manifest=kubernetes_manifest,
+            max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
+            pulumi=pulumi,
             references=references,
             refs=refs,
             terraform_module=terraform_module,

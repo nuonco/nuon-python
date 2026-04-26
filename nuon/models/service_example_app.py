@@ -15,33 +15,27 @@ T = TypeVar("T", bound="ServiceExampleApp")
 class ServiceExampleApp:
     """
     Attributes:
-        branch (str | Unset):
         category (str | Unset):
         cloud_provider (str | Unset):
         description (str | Unset):
         difficulty (str | Unset):
         directory (str | Unset):
         display_name (str | Unset):
-        repo (str | Unset):
         slug (str | Unset):
         tags (list[str] | Unset):
     """
 
-    branch: str | Unset = UNSET
     category: str | Unset = UNSET
     cloud_provider: str | Unset = UNSET
     description: str | Unset = UNSET
     difficulty: str | Unset = UNSET
     directory: str | Unset = UNSET
     display_name: str | Unset = UNSET
-    repo: str | Unset = UNSET
     slug: str | Unset = UNSET
     tags: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        branch = self.branch
-
         category = self.category
 
         cloud_provider = self.cloud_provider
@@ -54,8 +48,6 @@ class ServiceExampleApp:
 
         display_name = self.display_name
 
-        repo = self.repo
-
         slug = self.slug
 
         tags: list[str] | Unset = UNSET
@@ -65,8 +57,6 @@ class ServiceExampleApp:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if branch is not UNSET:
-            field_dict["branch"] = branch
         if category is not UNSET:
             field_dict["category"] = category
         if cloud_provider is not UNSET:
@@ -79,8 +69,6 @@ class ServiceExampleApp:
             field_dict["directory"] = directory
         if display_name is not UNSET:
             field_dict["display_name"] = display_name
-        if repo is not UNSET:
-            field_dict["repo"] = repo
         if slug is not UNSET:
             field_dict["slug"] = slug
         if tags is not UNSET:
@@ -91,8 +79,6 @@ class ServiceExampleApp:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        branch = d.pop("branch", UNSET)
-
         category = d.pop("category", UNSET)
 
         cloud_provider = d.pop("cloud_provider", UNSET)
@@ -105,21 +91,17 @@ class ServiceExampleApp:
 
         display_name = d.pop("display_name", UNSET)
 
-        repo = d.pop("repo", UNSET)
-
         slug = d.pop("slug", UNSET)
 
         tags = cast(list[str], d.pop("tags", UNSET))
 
         service_example_app = cls(
-            branch=branch,
             category=category,
             cloud_provider=cloud_provider,
             description=description,
             difficulty=difficulty,
             directory=directory,
             display_name=display_name,
-            repo=repo,
             slug=slug,
             tags=tags,
         )

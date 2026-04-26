@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.app_install_approval_option import AppInstallApprovalOption
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+    from ..models.service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
+
 
 T = TypeVar("T", bound="ServiceUpdateInstallConfigRequest")
 
@@ -17,9 +22,17 @@ class ServiceUpdateInstallConfigRequest:
     """
     Attributes:
         approval_option (AppInstallApprovalOption | Unset):
+        custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
+        labels (ServiceUpdateInstallConfigRequestLabels | Unset):
+        runner_nested_template_url (str | Unset):
+        vpc_nested_template_url (str | Unset):
     """
 
     approval_option: AppInstallApprovalOption | Unset = UNSET
+    custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
+    labels: ServiceUpdateInstallConfigRequestLabels | Unset = UNSET
+    runner_nested_template_url: str | Unset = UNSET
+    vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -27,16 +40,42 @@ class ServiceUpdateInstallConfigRequest:
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
 
+        custom_nested_stacks: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.custom_nested_stacks, Unset):
+            custom_nested_stacks = []
+            for custom_nested_stacks_item_data in self.custom_nested_stacks:
+                custom_nested_stacks_item = custom_nested_stacks_item_data.to_dict()
+                custom_nested_stacks.append(custom_nested_stacks_item)
+
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
+        runner_nested_template_url = self.runner_nested_template_url
+
+        vpc_nested_template_url = self.vpc_nested_template_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if approval_option is not UNSET:
             field_dict["approval_option"] = approval_option
+        if custom_nested_stacks is not UNSET:
+            field_dict["custom_nested_stacks"] = custom_nested_stacks
+        if labels is not UNSET:
+            field_dict["labels"] = labels
+        if runner_nested_template_url is not UNSET:
+            field_dict["runner_nested_template_url"] = runner_nested_template_url
+        if vpc_nested_template_url is not UNSET:
+            field_dict["vpc_nested_template_url"] = vpc_nested_template_url
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+        from ..models.service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
+
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
         approval_option: AppInstallApprovalOption | Unset
@@ -45,8 +84,32 @@ class ServiceUpdateInstallConfigRequest:
         else:
             approval_option = AppInstallApprovalOption(_approval_option)
 
+        _custom_nested_stacks = d.pop("custom_nested_stacks", UNSET)
+        custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
+        if _custom_nested_stacks is not UNSET:
+            custom_nested_stacks = []
+            for custom_nested_stacks_item_data in _custom_nested_stacks:
+                custom_nested_stacks_item = ConfigCustomNestedStack.from_dict(custom_nested_stacks_item_data)
+
+                custom_nested_stacks.append(custom_nested_stacks_item)
+
+        _labels = d.pop("labels", UNSET)
+        labels: ServiceUpdateInstallConfigRequestLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = ServiceUpdateInstallConfigRequestLabels.from_dict(_labels)
+
+        runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
+
+        vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
+
         service_update_install_config_request = cls(
             approval_option=approval_option,
+            custom_nested_stacks=custom_nested_stacks,
+            labels=labels,
+            runner_nested_template_url=runner_nested_template_url,
+            vpc_nested_template_url=vpc_nested_template_url,
         )
 
         service_update_install_config_request.additional_properties = d

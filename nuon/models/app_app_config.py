@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from ..models.app_app_secrets_config import AppAppSecretsConfig
     from ..models.app_app_stack_config import AppAppStackConfig
     from ..models.app_component_config_connection import AppComponentConfigConnection
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.blobstore_blob import BlobstoreBlob
 
@@ -60,6 +61,7 @@ class AppAppConfig:
         state (str | Unset):
         status (AppAppConfigStatus | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
         version (int | Unset): fields that are filled in via after query or views
@@ -92,6 +94,7 @@ class AppAppConfig:
     state: str | Unset = UNSET
     status: AppAppConfigStatus | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
     version: int | Unset = UNSET
@@ -190,6 +193,10 @@ class AppAppConfig:
 
         status_description = self.status_description
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         vcs_connection_commit: dict[str, Any] | Unset = UNSET
@@ -255,6 +262,8 @@ class AppAppConfig:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connection_commit is not UNSET:
@@ -278,6 +287,7 @@ class AppAppConfig:
         from ..models.app_app_secrets_config import AppAppSecretsConfig
         from ..models.app_app_stack_config import AppAppStackConfig
         from ..models.app_component_config_connection import AppComponentConfigConnection
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
         from ..models.blobstore_blob import BlobstoreBlob
 
@@ -412,6 +422,13 @@ class AppAppConfig:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
@@ -451,6 +468,7 @@ class AppAppConfig:
             state=state,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             updated_at=updated_at,
             vcs_connection_commit=vcs_connection_commit,
             version=version,

@@ -25,6 +25,7 @@ class AppRunnerHealthCheck:
         id (str | Unset):
         minute_bucket (str | Unset):
         process (str | Unset):
+        process_id (str | Unset):
         runner_id (str | Unset):
         runner_job (AppRunnerJob | Unset):
         status (AppRunnerStatus | Unset):
@@ -37,6 +38,7 @@ class AppRunnerHealthCheck:
     id: str | Unset = UNSET
     minute_bucket: str | Unset = UNSET
     process: str | Unset = UNSET
+    process_id: str | Unset = UNSET
     runner_id: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     status: AppRunnerStatus | Unset = UNSET
@@ -54,6 +56,8 @@ class AppRunnerHealthCheck:
         minute_bucket = self.minute_bucket
 
         process = self.process
+
+        process_id = self.process_id
 
         runner_id = self.runner_id
 
@@ -82,6 +86,8 @@ class AppRunnerHealthCheck:
             field_dict["minute_bucket"] = minute_bucket
         if process is not UNSET:
             field_dict["process"] = process
+        if process_id is not UNSET:
+            field_dict["process_id"] = process_id
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if runner_job is not UNSET:
@@ -110,6 +116,8 @@ class AppRunnerHealthCheck:
 
         process = d.pop("process", UNSET)
 
+        process_id = d.pop("process_id", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         _runner_job = d.pop("runner_job", UNSET)
@@ -136,6 +144,7 @@ class AppRunnerHealthCheck:
             id=id,
             minute_bucket=minute_bucket,
             process=process,
+            process_id=process_id,
             runner_id=runner_id,
             runner_job=runner_job,
             status=status,

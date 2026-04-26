@@ -16,6 +16,7 @@ class OutputsSecretSyncOutput:
     """
     Attributes:
         arn (str | Unset):
+        azure_key_vault_secret_id (str | Unset):
         exists (bool | Unset):
         gcp_secret_name (str | Unset):
         kubernetes_key (str | Unset):
@@ -27,6 +28,7 @@ class OutputsSecretSyncOutput:
     """
 
     arn: str | Unset = UNSET
+    azure_key_vault_secret_id: str | Unset = UNSET
     exists: bool | Unset = UNSET
     gcp_secret_name: str | Unset = UNSET
     kubernetes_key: str | Unset = UNSET
@@ -39,6 +41,8 @@ class OutputsSecretSyncOutput:
 
     def to_dict(self) -> dict[str, Any]:
         arn = self.arn
+
+        azure_key_vault_secret_id = self.azure_key_vault_secret_id
 
         exists = self.exists
 
@@ -61,6 +65,8 @@ class OutputsSecretSyncOutput:
         field_dict.update({})
         if arn is not UNSET:
             field_dict["arn"] = arn
+        if azure_key_vault_secret_id is not UNSET:
+            field_dict["azure_key_vault_secret_id"] = azure_key_vault_secret_id
         if exists is not UNSET:
             field_dict["exists"] = exists
         if gcp_secret_name is not UNSET:
@@ -85,6 +91,8 @@ class OutputsSecretSyncOutput:
         d = dict(src_dict)
         arn = d.pop("arn", UNSET)
 
+        azure_key_vault_secret_id = d.pop("azure_key_vault_secret_id", UNSET)
+
         exists = d.pop("exists", UNSET)
 
         gcp_secret_name = d.pop("gcp_secret_name", UNSET)
@@ -103,6 +111,7 @@ class OutputsSecretSyncOutput:
 
         outputs_secret_sync_output = cls(
             arn=arn,
+            azure_key_vault_secret_id=azure_key_vault_secret_id,
             exists=exists,
             gcp_secret_name=gcp_secret_name,
             kubernetes_key=kubernetes_key,

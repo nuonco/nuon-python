@@ -12,6 +12,8 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_component_build import AppComponentBuild
     from ..models.app_component_links import AppComponentLinks
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
 T = TypeVar("T", bound="AppComponent")
@@ -27,12 +29,14 @@ class AppComponent:
         created_by_id (str | Unset):
         dependencies (list[str] | Unset):
         id (str | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         latest_build (AppComponentBuild | Unset):
         links (AppComponentLinks | Unset):
         name (str | Unset):
         resolved_var_name (str | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         type_ (AppComponentType | Unset):
         updated_at (str | Unset):
         var_name (str | Unset):
@@ -44,12 +48,14 @@ class AppComponent:
     created_by_id: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     id: str | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     latest_build: AppComponentBuild | Unset = UNSET
     links: AppComponentLinks | Unset = UNSET
     name: str | Unset = UNSET
     resolved_var_name: str | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     type_: AppComponentType | Unset = UNSET
     updated_at: str | Unset = UNSET
     var_name: str | Unset = UNSET
@@ -70,6 +76,10 @@ class AppComponent:
 
         id = self.id
 
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         latest_build: dict[str, Any] | Unset = UNSET
         if not isinstance(self.latest_build, Unset):
             latest_build = self.latest_build.to_dict()
@@ -85,6 +95,10 @@ class AppComponent:
         status = self.status
 
         status_description = self.status_description
+
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
@@ -109,6 +123,8 @@ class AppComponent:
             field_dict["dependencies"] = dependencies
         if id is not UNSET:
             field_dict["id"] = id
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if latest_build is not UNSET:
             field_dict["latest_build"] = latest_build
         if links is not UNSET:
@@ -121,6 +137,8 @@ class AppComponent:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -134,6 +152,8 @@ class AppComponent:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_component_build import AppComponentBuild
         from ..models.app_component_links import AppComponentLinks
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)
@@ -147,6 +167,13 @@ class AppComponent:
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         id = d.pop("id", UNSET)
+
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
         _latest_build = d.pop("latest_build", UNSET)
         latest_build: AppComponentBuild | Unset
@@ -170,6 +197,13 @@ class AppComponent:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         _type_ = d.pop("type", UNSET)
         type_: AppComponentType | Unset
         if isinstance(_type_, Unset):
@@ -188,12 +222,14 @@ class AppComponent:
             created_by_id=created_by_id,
             dependencies=dependencies,
             id=id,
+            labels=labels,
             latest_build=latest_build,
             links=links,
             name=name,
             resolved_var_name=resolved_var_name,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             type_=type_,
             updated_at=updated_at,
             var_name=var_name,

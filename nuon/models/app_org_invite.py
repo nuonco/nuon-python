@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,10 @@ from attrs import field as _attrs_field
 from ..models.app_org_invite_status import AppOrgInviteStatus
 from ..models.app_role_type import AppRoleType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
+
 
 T = TypeVar("T", bound="AppOrgInvite")
 
@@ -24,6 +28,7 @@ class AppOrgInvite:
         org_id (str | Unset): parent relationship
         role_type (AppRoleType | Unset):
         status (AppOrgInviteStatus | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -34,6 +39,7 @@ class AppOrgInvite:
     org_id: str | Unset = UNSET
     role_type: AppRoleType | Unset = UNSET
     status: AppOrgInviteStatus | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -56,6 +62,10 @@ class AppOrgInvite:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -75,6 +85,8 @@ class AppOrgInvite:
             field_dict["role_type"] = role_type
         if status is not UNSET:
             field_dict["status"] = status
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -82,6 +94,8 @@ class AppOrgInvite:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
+
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
 
@@ -107,6 +121,13 @@ class AppOrgInvite:
         else:
             status = AppOrgInviteStatus(_status)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_org_invite = cls(
@@ -117,6 +138,7 @@ class AppOrgInvite:
             org_id=org_id,
             role_type=role_type,
             status=status,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

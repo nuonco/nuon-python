@@ -6,52 +6,38 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceRetryWorkflowByIDResponse")
+T = TypeVar("T", bound="ServiceUpdateInstallConfigRequestLabels")
 
 
 @_attrs_define
-class ServiceRetryWorkflowByIDResponse:
-    """
-    Attributes:
-        workflow_id (str | Unset):
-    """
+class ServiceUpdateInstallConfigRequestLabels:
+    """ """
 
-    workflow_id: str | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        workflow_id = self.workflow_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if workflow_id is not UNSET:
-            field_dict["workflow_id"] = workflow_id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        workflow_id = d.pop("workflow_id", UNSET)
+        service_update_install_config_request_labels = cls()
 
-        service_retry_workflow_by_id_response = cls(
-            workflow_id=workflow_id,
-        )
-
-        service_retry_workflow_by_id_response.additional_properties = d
-        return service_retry_workflow_by_id_response
+        service_update_install_config_request_labels.additional_properties = d
+        return service_update_install_config_request_labels
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

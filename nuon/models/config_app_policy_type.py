@@ -7,6 +7,7 @@ class ConfigAppPolicyType(str, Enum):
     HELM_CHART = "helm_chart"
     KUBERNETES_CLUSTER = "kubernetes_cluster"
     KUBERNETES_MANIFEST = "kubernetes_manifest"
+    PULUMI = "pulumi"
     SANDBOX = "sandbox"
     TERRAFORM_MODULE = "terraform_module"
 

@@ -10,6 +10,7 @@ from ..models.app_runner_operation_type import AppRunnerOperationType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_log_stream import AppLogStream
 
 
@@ -28,6 +29,7 @@ class AppRunnerOperation:
         runner_id (str | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -39,6 +41,7 @@ class AppRunnerOperation:
     runner_id: str | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -63,6 +66,10 @@ class AppRunnerOperation:
 
         status_description = self.status_description
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -84,6 +91,8 @@ class AppRunnerOperation:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -91,6 +100,7 @@ class AppRunnerOperation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_log_stream import AppLogStream
 
         d = dict(src_dict)
@@ -120,6 +130,13 @@ class AppRunnerOperation:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_runner_operation = cls(
@@ -131,6 +148,7 @@ class AppRunnerOperation:
             runner_id=runner_id,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

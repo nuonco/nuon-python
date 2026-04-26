@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_types_state_state_components import (
         GithubComNuoncoNuonPkgTypesStateStateComponents,
     )
+    from ..models.github_com_nuonco_nuon_pkg_types_state_state_labels import GithubComNuoncoNuonPkgTypesStateStateLabels
     from ..models.state_actions_state import StateActionsState
     from ..models.state_app_state import StateAppState
     from ..models.state_cloud_account import StateCloudAccount
@@ -41,6 +42,7 @@ class GithubComNuoncoNuonPkgTypesStateState:
         inputs (StateInputsState | Unset):
         install (StateInstallState | Unset):
         install_stack (StateInstallStackState | Unset):
+        labels (GithubComNuoncoNuonPkgTypesStateStateLabels | Unset):
         name (str | Unset):
         org (StateOrgState | Unset):
         runner (StateRunnerState | Unset):
@@ -58,6 +60,7 @@ class GithubComNuoncoNuonPkgTypesStateState:
     inputs: StateInputsState | Unset = UNSET
     install: StateInstallState | Unset = UNSET
     install_stack: StateInstallStackState | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgTypesStateStateLabels | Unset = UNSET
     name: str | Unset = UNSET
     org: StateOrgState | Unset = UNSET
     runner: StateRunnerState | Unset = UNSET
@@ -101,6 +104,10 @@ class GithubComNuoncoNuonPkgTypesStateState:
         if not isinstance(self.install_stack, Unset):
             install_stack = self.install_stack.to_dict()
 
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         name = self.name
 
         org: dict[str, Any] | Unset = UNSET
@@ -142,6 +149,8 @@ class GithubComNuoncoNuonPkgTypesStateState:
             field_dict["install"] = install
         if install_stack is not UNSET:
             field_dict["install_stack"] = install_stack
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if name is not UNSET:
             field_dict["name"] = name
         if org is not UNSET:
@@ -161,6 +170,9 @@ class GithubComNuoncoNuonPkgTypesStateState:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_types_state_state_components import (
             GithubComNuoncoNuonPkgTypesStateStateComponents,
+        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state_labels import (
+            GithubComNuoncoNuonPkgTypesStateStateLabels,
         )
         from ..models.state_actions_state import StateActionsState
         from ..models.state_app_state import StateAppState
@@ -233,6 +245,13 @@ class GithubComNuoncoNuonPkgTypesStateState:
         else:
             install_stack = StateInstallStackState.from_dict(_install_stack)
 
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgTypesStateStateLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgTypesStateStateLabels.from_dict(_labels)
+
         name = d.pop("name", UNSET)
 
         _org = d.pop("org", UNSET)
@@ -275,6 +294,7 @@ class GithubComNuoncoNuonPkgTypesStateState:
             inputs=inputs,
             install=install,
             install_stack=install_stack,
+            labels=labels,
             name=name,
             org=org,
             runner=runner,

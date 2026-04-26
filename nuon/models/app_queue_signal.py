@@ -25,6 +25,7 @@ class AppQueueSignal:
         created_at (str | Unset):
         created_by_id (str | Unset):
         emitter_id (str | Unset): Optional: if this signal was emitted by an emitter
+        execution_count (int | Unset):
         id (str | Unset):
         org_id (str | Unset):
         owner_id (str | Unset):
@@ -41,6 +42,7 @@ class AppQueueSignal:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     emitter_id: str | Unset = UNSET
+    execution_count: int | Unset = UNSET
     id: str | Unset = UNSET
     org_id: str | Unset = UNSET
     owner_id: str | Unset = UNSET
@@ -60,6 +62,8 @@ class AppQueueSignal:
         created_by_id = self.created_by_id
 
         emitter_id = self.emitter_id
+
+        execution_count = self.execution_count
 
         id = self.id
 
@@ -100,6 +104,8 @@ class AppQueueSignal:
             field_dict["created_by_id"] = created_by_id
         if emitter_id is not UNSET:
             field_dict["emitter_id"] = emitter_id
+        if execution_count is not UNSET:
+            field_dict["execution_count"] = execution_count
         if id is not UNSET:
             field_dict["id"] = id
         if org_id is not UNSET:
@@ -138,6 +144,8 @@ class AppQueueSignal:
         created_by_id = d.pop("created_by_id", UNSET)
 
         emitter_id = d.pop("emitter_id", UNSET)
+
+        execution_count = d.pop("execution_count", UNSET)
 
         id = d.pop("id", UNSET)
 
@@ -185,6 +193,7 @@ class AppQueueSignal:
             created_at=created_at,
             created_by_id=created_by_id,
             emitter_id=emitter_id,
+            execution_count=execution_count,
             id=id,
             org_id=org_id,
             owner_id=owner_id,

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.plantypes_helm_deploy_plan import PlantypesHelmDeployPlan
     from ..models.plantypes_kubernetes_manifest_deploy_plan import PlantypesKubernetesManifestDeployPlan
     from ..models.plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
+    from ..models.plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_terraform_deploy_plan import PlantypesTerraformDeployPlan
 
@@ -36,6 +37,7 @@ class PlantypesDeployPlan:
         install_id (str | Unset):
         kubernetes_manifest (PlantypesKubernetesManifestDeployPlan | Unset):
         noop (PlantypesNoopDeployPlan | Unset):
+        pulumi (PlantypesPulumiDeployPlan | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
         terraform (PlantypesTerraformDeployPlan | Unset):
     """
@@ -52,6 +54,7 @@ class PlantypesDeployPlan:
     install_id: str | Unset = UNSET
     kubernetes_manifest: PlantypesKubernetesManifestDeployPlan | Unset = UNSET
     noop: PlantypesNoopDeployPlan | Unset = UNSET
+    pulumi: PlantypesPulumiDeployPlan | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     terraform: PlantypesTerraformDeployPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -86,6 +89,10 @@ class PlantypesDeployPlan:
         noop: dict[str, Any] | Unset = UNSET
         if not isinstance(self.noop, Unset):
             noop = self.noop.to_dict()
+
+        pulumi: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi, Unset):
+            pulumi = self.pulumi.to_dict()
 
         sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
@@ -123,6 +130,8 @@ class PlantypesDeployPlan:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
         if noop is not UNSET:
             field_dict["noop"] = noop
+        if pulumi is not UNSET:
+            field_dict["pulumi"] = pulumi
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
         if terraform is not UNSET:
@@ -136,6 +145,7 @@ class PlantypesDeployPlan:
         from ..models.plantypes_helm_deploy_plan import PlantypesHelmDeployPlan
         from ..models.plantypes_kubernetes_manifest_deploy_plan import PlantypesKubernetesManifestDeployPlan
         from ..models.plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
+        from ..models.plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
         from ..models.plantypes_terraform_deploy_plan import PlantypesTerraformDeployPlan
 
@@ -179,6 +189,13 @@ class PlantypesDeployPlan:
         else:
             noop = PlantypesNoopDeployPlan.from_dict(_noop)
 
+        _pulumi = d.pop("pulumi", UNSET)
+        pulumi: PlantypesPulumiDeployPlan | Unset
+        if isinstance(_pulumi, Unset):
+            pulumi = UNSET
+        else:
+            pulumi = PlantypesPulumiDeployPlan.from_dict(_pulumi)
+
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
         sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
@@ -206,6 +223,7 @@ class PlantypesDeployPlan:
             install_id=install_id,
             kubernetes_manifest=kubernetes_manifest,
             noop=noop,
+            pulumi=pulumi,
             sandbox_mode=sandbox_mode,
             terraform=terraform,
         )

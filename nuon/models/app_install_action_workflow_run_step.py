@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_ad_hoc_step_config import AppAdHocStepConfig
+    from ..models.app_composite_status import AppCompositeStatus
 
 
 T = TypeVar("T", bound="AppInstallActionWorkflowRunStep")
@@ -27,6 +28,7 @@ class AppInstallActionWorkflowRunStep:
         id (str | Unset):
         install_action_workflow_run_id (str | Unset):
         status (AppInstallActionWorkflowRunStepStatus | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         step_id (str | Unset):
         updated_at (str | Unset):
     """
@@ -38,6 +40,7 @@ class AppInstallActionWorkflowRunStep:
     id: str | Unset = UNSET
     install_action_workflow_run_id: str | Unset = UNSET
     status: AppInstallActionWorkflowRunStepStatus | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     step_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -61,6 +64,10 @@ class AppInstallActionWorkflowRunStep:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         step_id = self.step_id
 
         updated_at = self.updated_at
@@ -82,6 +89,8 @@ class AppInstallActionWorkflowRunStep:
             field_dict["install_action_workflow_run_id"] = install_action_workflow_run_id
         if status is not UNSET:
             field_dict["status"] = status
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if step_id is not UNSET:
             field_dict["step_id"] = step_id
         if updated_at is not UNSET:
@@ -92,6 +101,7 @@ class AppInstallActionWorkflowRunStep:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_ad_hoc_step_config import AppAdHocStepConfig
+        from ..models.app_composite_status import AppCompositeStatus
 
         d = dict(src_dict)
         _adhoc_config = d.pop("adhoc_config", UNSET)
@@ -118,6 +128,13 @@ class AppInstallActionWorkflowRunStep:
         else:
             status = AppInstallActionWorkflowRunStepStatus(_status)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         step_id = d.pop("step_id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -130,6 +147,7 @@ class AppInstallActionWorkflowRunStep:
             id=id,
             install_action_workflow_run_id=install_action_workflow_run_id,
             status=status,
+            status_v2=status_v2,
             step_id=step_id,
             updated_at=updated_at,
         )

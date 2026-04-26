@@ -46,6 +46,7 @@ class AppAppBranchRun:
         updated_at (str | Unset):
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
         workflow (AppWorkflow | Unset):
+        workflow_id (str | Unset):
     """
 
     app_branch: AppAppBranch | Unset = UNSET
@@ -67,6 +68,7 @@ class AppAppBranchRun:
     updated_at: str | Unset = UNSET
     vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
     workflow: AppWorkflow | Unset = UNSET
+    workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -122,6 +124,8 @@ class AppAppBranchRun:
         if not isinstance(self.workflow, Unset):
             workflow = self.workflow.to_dict()
 
+        workflow_id = self.workflow_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -163,6 +167,8 @@ class AppAppBranchRun:
             field_dict["vcs_connection_commit"] = vcs_connection_commit
         if workflow is not UNSET:
             field_dict["workflow"] = workflow
+        if workflow_id is not UNSET:
+            field_dict["workflow_id"] = workflow_id
 
         return field_dict
 
@@ -250,6 +256,8 @@ class AppAppBranchRun:
         else:
             workflow = AppWorkflow.from_dict(_workflow)
 
+        workflow_id = d.pop("workflow_id", UNSET)
+
         app_app_branch_run = cls(
             app_branch=app_branch,
             app_branch_config=app_branch_config,
@@ -270,6 +278,7 @@ class AppAppBranchRun:
             updated_at=updated_at,
             vcs_connection_commit=vcs_connection_commit,
             workflow=workflow,
+            workflow_id=workflow_id,
         )
 
         app_app_branch_run.additional_properties = d

@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_create_app_action_workflow_request_labels import ServiceCreateAppActionWorkflowRequestLabels
+
 
 T = TypeVar("T", bound="ServiceCreateAppActionWorkflowRequest")
 
@@ -15,18 +19,26 @@ T = TypeVar("T", bound="ServiceCreateAppActionWorkflowRequest")
 class ServiceCreateAppActionWorkflowRequest:
     """
     Attributes:
+        labels (ServiceCreateAppActionWorkflowRequestLabels | Unset):
         name (str | Unset):
     """
 
+    labels: ServiceCreateAppActionWorkflowRequestLabels | Unset = UNSET
     name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if name is not UNSET:
             field_dict["name"] = name
 
@@ -34,10 +46,22 @@ class ServiceCreateAppActionWorkflowRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_create_app_action_workflow_request_labels import (
+            ServiceCreateAppActionWorkflowRequestLabels,
+        )
+
         d = dict(src_dict)
+        _labels = d.pop("labels", UNSET)
+        labels: ServiceCreateAppActionWorkflowRequestLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = ServiceCreateAppActionWorkflowRequestLabels.from_dict(_labels)
+
         name = d.pop("name", UNSET)
 
         service_create_app_action_workflow_request = cls(
+            labels=labels,
             name=name,
         )
 
