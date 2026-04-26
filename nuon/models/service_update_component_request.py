@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_update_component_request_labels import ServiceUpdateComponentRequestLabels
+
 
 T = TypeVar("T", bound="ServiceUpdateComponentRequest")
 
@@ -17,11 +21,13 @@ class ServiceUpdateComponentRequest:
     Attributes:
         name (str):
         dependencies (list[str] | Unset):
+        labels (ServiceUpdateComponentRequestLabels | Unset):
         var_name (str | Unset):
     """
 
     name: str
     dependencies: list[str] | Unset = UNSET
+    labels: ServiceUpdateComponentRequestLabels | Unset = UNSET
     var_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -31,6 +37,10 @@ class ServiceUpdateComponentRequest:
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
+
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
 
         var_name = self.var_name
 
@@ -43,6 +53,8 @@ class ServiceUpdateComponentRequest:
         )
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if var_name is not UNSET:
             field_dict["var_name"] = var_name
 
@@ -50,16 +62,26 @@ class ServiceUpdateComponentRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_update_component_request_labels import ServiceUpdateComponentRequestLabels
+
         d = dict(src_dict)
         name = d.pop("name")
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
+
+        _labels = d.pop("labels", UNSET)
+        labels: ServiceUpdateComponentRequestLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = ServiceUpdateComponentRequestLabels.from_dict(_labels)
 
         var_name = d.pop("var_name", UNSET)
 
         service_update_component_request = cls(
             name=name,
             dependencies=dependencies,
+            labels=labels,
             var_name=var_name,
         )
 

@@ -1,46 +1,37 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_retry_workflow_by_id_request import ServiceRetryWorkflowByIDRequest
-from ...models.service_retry_workflow_by_id_response import ServiceRetryWorkflowByIDResponse
+from ...models.service_current_org_webhook_response import ServiceCurrentOrgWebhookResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
-def _get_kwargs(
-    workflow_id: str,
-    *,
-    body: ServiceRetryWorkflowByIDRequest,
-) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
+def _get_kwargs() -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/v1/workflows/{workflow_id}/retry".format(
-            workflow_id=quote(str(workflow_id), safe=""),
-        ),
+        "method": "get",
+        "url": "/v1/orgs/current/webhooks",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
-    if response.status_code == 201:
-        response_201 = ServiceRetryWorkflowByIDResponse.from_dict(response.json())
+) -> StderrErrResponse | list[ServiceCurrentOrgWebhookResponse] | None:
+    if response.status_code == 200:
+        response_200 = []
+        _response_200 = response.json()
+        for response_200_item_data in _response_200:
+            response_200_item = ServiceCurrentOrgWebhookResponse.from_dict(response_200_item_data)
 
-        return response_201
+            response_200.append(response_200_item)
+
+        return response_200
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -57,11 +48,6 @@ def _parse_response(
 
         return response_403
 
-    if response.status_code == 404:
-        response_404 = StderrErrResponse.from_dict(response.json())
-
-        return response_404
-
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -75,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
+) -> Response[StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,31 +71,20 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowByIDRequest,
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
-
-     Retry a workflow execution by id.
-
-    Args:
-        workflow_id (str):
-        body (ServiceRetryWorkflowByIDRequest):
+) -> Response[StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]]:
+    """list webhooks for the current org
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]
+        Response[StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]]
     """
 
-    kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        body=body,
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -119,60 +94,39 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowByIDRequest,
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
-
-     Retry a workflow execution by id.
-
-    Args:
-        workflow_id (str):
-        body (ServiceRetryWorkflowByIDRequest):
+) -> StderrErrResponse | list[ServiceCurrentOrgWebhookResponse] | None:
+    """list webhooks for the current org
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceRetryWorkflowByIDResponse | StderrErrResponse
+        StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowByIDRequest,
-) -> Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
-
-     Retry a workflow execution by id.
-
-    Args:
-        workflow_id (str):
-        body (ServiceRetryWorkflowByIDRequest):
+) -> Response[StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]]:
+    """list webhooks for the current org
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceRetryWorkflowByIDResponse | StderrErrResponse]
+        Response[StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]]
     """
 
-    kwargs = _get_kwargs(
-        workflow_id=workflow_id,
-        body=body,
-    )
+    kwargs = _get_kwargs()
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -180,31 +134,21 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceRetryWorkflowByIDRequest,
-) -> ServiceRetryWorkflowByIDResponse | StderrErrResponse | None:
-    """rerun the workflow steps starting from input step id, can be used to retry a failed step
-
-     Retry a workflow execution by id.
-
-    Args:
-        workflow_id (str):
-        body (ServiceRetryWorkflowByIDRequest):
+) -> StderrErrResponse | list[ServiceCurrentOrgWebhookResponse] | None:
+    """list webhooks for the current org
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceRetryWorkflowByIDResponse | StderrErrResponse
+        StderrErrResponse | list[ServiceCurrentOrgWebhookResponse]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
             client=client,
-            body=body,
         )
     ).parsed

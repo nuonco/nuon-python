@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.app_log_stream import AppLogStream
     from ..models.app_oci_artifact import AppOCIArtifact
     from ..models.app_policy_report import AppPolicyReport
+    from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
 
@@ -48,6 +49,7 @@ class AppInstallDeploy:
         outputs (AppInstallDeployOutputs | Unset):
         plan_only (bool | Unset):
         policy_reports (list[AppPolicyReport] | Unset):
+        queue_signals (list[AppQueueSignal] | Unset):
         release_id (str | Unset):
         role (str | Unset): Role to be used when running this component
         runner_jobs (list[AppRunnerJob] | Unset): runner details
@@ -78,6 +80,7 @@ class AppInstallDeploy:
     outputs: AppInstallDeployOutputs | Unset = UNSET
     plan_only: bool | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
+    queue_signals: list[AppQueueSignal] | Unset = UNSET
     release_id: str | Unset = UNSET
     role: str | Unset = UNSET
     runner_jobs: list[AppRunnerJob] | Unset = UNSET
@@ -150,6 +153,13 @@ class AppInstallDeploy:
                 policy_reports_item = policy_reports_item_data.to_dict()
                 policy_reports.append(policy_reports_item)
 
+        queue_signals: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.queue_signals, Unset):
+            queue_signals = []
+            for queue_signals_item_data in self.queue_signals:
+                queue_signals_item = queue_signals_item_data.to_dict()
+                queue_signals.append(queue_signals_item)
+
         release_id = self.release_id
 
         role = self.role
@@ -218,6 +228,8 @@ class AppInstallDeploy:
             field_dict["plan_only"] = plan_only
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
+        if queue_signals is not UNSET:
+            field_dict["queue_signals"] = queue_signals
         if release_id is not UNSET:
             field_dict["release_id"] = release_id
         if role is not UNSET:
@@ -249,6 +261,7 @@ class AppInstallDeploy:
         from ..models.app_log_stream import AppLogStream
         from ..models.app_oci_artifact import AppOCIArtifact
         from ..models.app_policy_report import AppPolicyReport
+        from ..models.app_queue_signal import AppQueueSignal
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
 
@@ -335,6 +348,15 @@ class AppInstallDeploy:
 
                 policy_reports.append(policy_reports_item)
 
+        _queue_signals = d.pop("queue_signals", UNSET)
+        queue_signals: list[AppQueueSignal] | Unset = UNSET
+        if _queue_signals is not UNSET:
+            queue_signals = []
+            for queue_signals_item_data in _queue_signals:
+                queue_signals_item = AppQueueSignal.from_dict(queue_signals_item_data)
+
+                queue_signals.append(queue_signals_item)
+
         release_id = d.pop("release_id", UNSET)
 
         role = d.pop("role", UNSET)
@@ -390,6 +412,7 @@ class AppInstallDeploy:
             outputs=outputs,
             plan_only=plan_only,
             policy_reports=policy_reports,
+            queue_signals=queue_signals,
             release_id=release_id,
             role=role,
             runner_jobs=runner_jobs,

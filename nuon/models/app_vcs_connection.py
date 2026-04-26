@@ -9,6 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_queue import AppQueue
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
 
@@ -25,6 +27,8 @@ class AppVCSConnection:
         github_account_name (str | Unset):
         github_install_id (str | Unset):
         id (str | Unset):
+        queues (list[AppQueue] | Unset):
+        status (AppCompositeStatus | Unset):
         updated_at (str | Unset):
         vcs_connection_commit (list[AppVCSConnectionCommit] | Unset):
     """
@@ -35,6 +39,8 @@ class AppVCSConnection:
     github_account_name: str | Unset = UNSET
     github_install_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    queues: list[AppQueue] | Unset = UNSET
+    status: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_commit: list[AppVCSConnectionCommit] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -51,6 +57,17 @@ class AppVCSConnection:
         github_install_id = self.github_install_id
 
         id = self.id
+
+        queues: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.queues, Unset):
+            queues = []
+            for queues_item_data in self.queues:
+                queues_item = queues_item_data.to_dict()
+                queues.append(queues_item)
+
+        status: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.to_dict()
 
         updated_at = self.updated_at
 
@@ -76,6 +93,10 @@ class AppVCSConnection:
             field_dict["github_install_id"] = github_install_id
         if id is not UNSET:
             field_dict["id"] = id
+        if queues is not UNSET:
+            field_dict["queues"] = queues
+        if status is not UNSET:
+            field_dict["status"] = status
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connection_commit is not UNSET:
@@ -85,6 +106,8 @@ class AppVCSConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_queue import AppQueue
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
         d = dict(src_dict)
@@ -99,6 +122,22 @@ class AppVCSConnection:
         github_install_id = d.pop("github_install_id", UNSET)
 
         id = d.pop("id", UNSET)
+
+        _queues = d.pop("queues", UNSET)
+        queues: list[AppQueue] | Unset = UNSET
+        if _queues is not UNSET:
+            queues = []
+            for queues_item_data in _queues:
+                queues_item = AppQueue.from_dict(queues_item_data)
+
+                queues.append(queues_item)
+
+        _status = d.pop("status", UNSET)
+        status: AppCompositeStatus | Unset
+        if isinstance(_status, Unset):
+            status = UNSET
+        else:
+            status = AppCompositeStatus.from_dict(_status)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -118,6 +157,8 @@ class AppVCSConnection:
             github_account_name=github_account_name,
             github_install_id=github_install_id,
             id=id,
+            queues=queues,
+            status=status,
             updated_at=updated_at,
             vcs_connection_commit=vcs_connection_commit,
         )

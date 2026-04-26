@@ -1,48 +1,54 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+if TYPE_CHECKING:
+    from ..models.service_add_action_labels_request_labels import ServiceAddActionLabelsRequestLabels
 
-T = TypeVar("T", bound="ServiceRetryWorkflowStepRequest")
+
+T = TypeVar("T", bound="ServiceAddActionLabelsRequest")
 
 
 @_attrs_define
-class ServiceRetryWorkflowStepRequest:
+class ServiceAddActionLabelsRequest:
     """
     Attributes:
-        operation (str | Unset): Retry indicates whether to retry the current step or not
+        labels (ServiceAddActionLabelsRequestLabels):
     """
 
-    operation: str | Unset = UNSET
+    labels: ServiceAddActionLabelsRequestLabels
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation = self.operation
+        labels = self.labels.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if operation is not UNSET:
-            field_dict["operation"] = operation
+        field_dict.update(
+            {
+                "labels": labels,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
-        operation = d.pop("operation", UNSET)
+        from ..models.service_add_action_labels_request_labels import ServiceAddActionLabelsRequestLabels
 
-        service_retry_workflow_step_request = cls(
-            operation=operation,
+        d = dict(src_dict)
+        labels = ServiceAddActionLabelsRequestLabels.from_dict(d.pop("labels"))
+
+        service_add_action_labels_request = cls(
+            labels=labels,
         )
 
-        service_retry_workflow_step_request.additional_properties = d
-        return service_retry_workflow_step_request
+        service_add_action_labels_request.additional_properties = d
+        return service_add_action_labels_request
 
     @property
     def additional_keys(self) -> list[str]:

@@ -19,6 +19,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -32,6 +33,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["q"] = q
+
+    params["labels"] = labels
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -110,6 +113,7 @@ def sync_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppInstallActionWorkflow]]:
     """get latest runs for all action workflows by install id
 
@@ -122,6 +126,7 @@ def sync_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -138,6 +143,7 @@ def sync_detailed(
         limit=limit,
         page=page,
         q=q,
+        labels=labels,
     )
 
     response = client.get_httpx_client().request(
@@ -156,6 +162,7 @@ def sync(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppInstallActionWorkflow] | None:
     """get latest runs for all action workflows by install id
 
@@ -168,6 +175,7 @@ def sync(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,6 +193,7 @@ def sync(
         limit=limit,
         page=page,
         q=q,
+        labels=labels,
     ).parsed
 
 
@@ -197,6 +206,7 @@ async def asyncio_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppInstallActionWorkflow]]:
     """get latest runs for all action workflows by install id
 
@@ -209,6 +219,7 @@ async def asyncio_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -225,6 +236,7 @@ async def asyncio_detailed(
         limit=limit,
         page=page,
         q=q,
+        labels=labels,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -241,6 +253,7 @@ async def asyncio(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppInstallActionWorkflow] | None:
     """get latest runs for all action workflows by install id
 
@@ -253,6 +266,7 @@ async def asyncio(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        labels (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -271,5 +285,6 @@ async def asyncio(
             limit=limit,
             page=page,
             q=q,
+            labels=labels,
         )
     ).parsed

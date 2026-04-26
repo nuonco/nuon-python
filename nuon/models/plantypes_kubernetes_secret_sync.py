@@ -15,6 +15,7 @@ T = TypeVar("T", bound="PlantypesKubernetesSecretSync")
 class PlantypesKubernetesSecretSync:
     """
     Attributes:
+        azure_key_vault_secret_id (str | Unset): https://{vault-name}.vault.azure.net/secrets/{secret-name}
         format_ (str | Unset): NOTE(jm): this should probably come from the app config, but for now we just use string
             parsing to avoid
             updating the runner job and save time.
@@ -26,6 +27,7 @@ class PlantypesKubernetesSecretSync:
         secret_name (str | Unset): the name of the secret from the config
     """
 
+    azure_key_vault_secret_id: str | Unset = UNSET
     format_: str | Unset = UNSET
     gcp_secret_name: str | Unset = UNSET
     key_name: str | Unset = UNSET
@@ -36,6 +38,8 @@ class PlantypesKubernetesSecretSync:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        azure_key_vault_secret_id = self.azure_key_vault_secret_id
+
         format_ = self.format_
 
         gcp_secret_name = self.gcp_secret_name
@@ -53,6 +57,8 @@ class PlantypesKubernetesSecretSync:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if azure_key_vault_secret_id is not UNSET:
+            field_dict["azure_key_vault_secret_id"] = azure_key_vault_secret_id
         if format_ is not UNSET:
             field_dict["format"] = format_
         if gcp_secret_name is not UNSET:
@@ -73,6 +79,8 @@ class PlantypesKubernetesSecretSync:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        azure_key_vault_secret_id = d.pop("azure_key_vault_secret_id", UNSET)
+
         format_ = d.pop("format", UNSET)
 
         gcp_secret_name = d.pop("gcp_secret_name", UNSET)
@@ -88,6 +96,7 @@ class PlantypesKubernetesSecretSync:
         secret_name = d.pop("secret_name", UNSET)
 
         plantypes_kubernetes_secret_sync = cls(
+            azure_key_vault_secret_id=azure_key_vault_secret_id,
             format_=format_,
             gcp_secret_name=gcp_secret_name,
             key_name=key_name,

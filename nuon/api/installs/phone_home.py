@@ -1,11 +1,12 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.app_empty_response import AppEmptyResponse
 from ...models.service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
@@ -37,9 +38,10 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | str | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     if response.status_code == 201:
-        response_201 = cast(str, response.json())
+        response_201 = AppEmptyResponse.from_dict(response.json())
+
         return response_201
 
     if response.status_code == 400:
@@ -75,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | str]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -90,7 +92,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceInstallPhoneHomeRequest,
-) -> Response[StderrErrResponse | str]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     """phone home for an install
 
      A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
@@ -106,7 +108,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | str]
+        Response[AppEmptyResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -128,7 +130,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceInstallPhoneHomeRequest,
-) -> StderrErrResponse | str | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     """phone home for an install
 
      A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
@@ -144,7 +146,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | str
+        AppEmptyResponse | StderrErrResponse
     """
 
     return sync_detailed(
@@ -161,7 +163,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceInstallPhoneHomeRequest,
-) -> Response[StderrErrResponse | str]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     """phone home for an install
 
      A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
@@ -177,7 +179,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | str]
+        Response[AppEmptyResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -197,7 +199,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceInstallPhoneHomeRequest,
-) -> StderrErrResponse | str | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     """phone home for an install
 
      A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
@@ -213,7 +215,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | str
+        AppEmptyResponse | StderrErrResponse
     """
 
     return (

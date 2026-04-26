@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
     from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_log_stream import AppLogStream
     from ..models.app_workflow_step_approval import AppWorkflowStepApproval
     from ..models.app_workflow_step_links import AppWorkflowStepLinks
     from ..models.app_workflow_step_metadata import AppWorkflowStepMetadata
@@ -34,17 +35,23 @@ class AppWorkflowStep:
         finished (bool | Unset):
         finished_at (str | Unset):
         group_idx (int | Unset): to group steps which belong to same logical group, eg, plan/apply
+        group_parallel (bool | Unset): GroupParallel indicates whether steps in this group should execute in parallel.
         group_retry_idx (int | Unset): counter for every retry attempted on a group
         id (str | Unset):
         idx (int | Unset):
         install_workflow_id (str | Unset): DEPRECATED: this is the install workflow ID, which is now the workflow ID.
         links (AppWorkflowStepLinks | Unset):
+        log_stream (AppLogStream | Unset):
         metadata (AppWorkflowStepMetadata | Unset):
         name (str | Unset):
         owner_id (str | Unset):
         owner_type (str | Unset):
         policy_validation (AppWorkflowStepPolicyValidation | Unset):
+        result_directive (str | Unset): ResultDirective is set by the execute-workflow-step signal to communicate
+            the step's outcome directive back to the group signal. Values: continue,
+            stop, retry, retry-group, skip-group, await-approval.
         retried (bool | Unset):
+        retry_index (int | Unset):
         retryable (bool | Unset):
         skippable (bool | Unset):
         started_at (str | Unset):
@@ -62,6 +69,7 @@ class AppWorkflowStep:
         step_target_type (str | Unset):
         updated_at (str | Unset):
         workflow_id (str | Unset): Fields that are de-nested at read time using AfterQuery
+        workflow_step_group_id (str | Unset): WorkflowStepGroupID links this step to its parent WorkflowStepGroup.
     """
 
     approval: AppWorkflowStepApproval | Unset = UNSET
@@ -73,17 +81,21 @@ class AppWorkflowStep:
     finished: bool | Unset = UNSET
     finished_at: str | Unset = UNSET
     group_idx: int | Unset = UNSET
+    group_parallel: bool | Unset = UNSET
     group_retry_idx: int | Unset = UNSET
     id: str | Unset = UNSET
     idx: int | Unset = UNSET
     install_workflow_id: str | Unset = UNSET
     links: AppWorkflowStepLinks | Unset = UNSET
+    log_stream: AppLogStream | Unset = UNSET
     metadata: AppWorkflowStepMetadata | Unset = UNSET
     name: str | Unset = UNSET
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
     policy_validation: AppWorkflowStepPolicyValidation | Unset = UNSET
+    result_directive: str | Unset = UNSET
     retried: bool | Unset = UNSET
+    retry_index: int | Unset = UNSET
     retryable: bool | Unset = UNSET
     skippable: bool | Unset = UNSET
     started_at: str | Unset = UNSET
@@ -92,6 +104,7 @@ class AppWorkflowStep:
     step_target_type: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
+    workflow_step_group_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -119,6 +132,8 @@ class AppWorkflowStep:
 
         group_idx = self.group_idx
 
+        group_parallel = self.group_parallel
+
         group_retry_idx = self.group_retry_idx
 
         id = self.id
@@ -130,6 +145,10 @@ class AppWorkflowStep:
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
+
+        log_stream: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.log_stream, Unset):
+            log_stream = self.log_stream.to_dict()
 
         metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
@@ -145,7 +164,11 @@ class AppWorkflowStep:
         if not isinstance(self.policy_validation, Unset):
             policy_validation = self.policy_validation.to_dict()
 
+        result_directive = self.result_directive
+
         retried = self.retried
+
+        retry_index = self.retry_index
 
         retryable = self.retryable
 
@@ -164,6 +187,8 @@ class AppWorkflowStep:
         updated_at = self.updated_at
 
         workflow_id = self.workflow_id
+
+        workflow_step_group_id = self.workflow_step_group_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -186,6 +211,8 @@ class AppWorkflowStep:
             field_dict["finished_at"] = finished_at
         if group_idx is not UNSET:
             field_dict["group_idx"] = group_idx
+        if group_parallel is not UNSET:
+            field_dict["group_parallel"] = group_parallel
         if group_retry_idx is not UNSET:
             field_dict["group_retry_idx"] = group_retry_idx
         if id is not UNSET:
@@ -196,6 +223,8 @@ class AppWorkflowStep:
             field_dict["install_workflow_id"] = install_workflow_id
         if links is not UNSET:
             field_dict["links"] = links
+        if log_stream is not UNSET:
+            field_dict["log_stream"] = log_stream
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if name is not UNSET:
@@ -206,8 +235,12 @@ class AppWorkflowStep:
             field_dict["owner_type"] = owner_type
         if policy_validation is not UNSET:
             field_dict["policy_validation"] = policy_validation
+        if result_directive is not UNSET:
+            field_dict["result_directive"] = result_directive
         if retried is not UNSET:
             field_dict["retried"] = retried
+        if retry_index is not UNSET:
+            field_dict["retry_index"] = retry_index
         if retryable is not UNSET:
             field_dict["retryable"] = retryable
         if skippable is not UNSET:
@@ -224,6 +257,8 @@ class AppWorkflowStep:
             field_dict["updated_at"] = updated_at
         if workflow_id is not UNSET:
             field_dict["workflow_id"] = workflow_id
+        if workflow_step_group_id is not UNSET:
+            field_dict["workflow_step_group_id"] = workflow_step_group_id
 
         return field_dict
 
@@ -231,6 +266,7 @@ class AppWorkflowStep:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_account import AppAccount
         from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_log_stream import AppLogStream
         from ..models.app_workflow_step_approval import AppWorkflowStepApproval
         from ..models.app_workflow_step_links import AppWorkflowStepLinks
         from ..models.app_workflow_step_metadata import AppWorkflowStepMetadata
@@ -270,6 +306,8 @@ class AppWorkflowStep:
 
         group_idx = d.pop("group_idx", UNSET)
 
+        group_parallel = d.pop("group_parallel", UNSET)
+
         group_retry_idx = d.pop("group_retry_idx", UNSET)
 
         id = d.pop("id", UNSET)
@@ -284,6 +322,13 @@ class AppWorkflowStep:
             links = UNSET
         else:
             links = AppWorkflowStepLinks.from_dict(_links)
+
+        _log_stream = d.pop("log_stream", UNSET)
+        log_stream: AppLogStream | Unset
+        if isinstance(_log_stream, Unset):
+            log_stream = UNSET
+        else:
+            log_stream = AppLogStream.from_dict(_log_stream)
 
         _metadata = d.pop("metadata", UNSET)
         metadata: AppWorkflowStepMetadata | Unset
@@ -305,7 +350,11 @@ class AppWorkflowStep:
         else:
             policy_validation = AppWorkflowStepPolicyValidation.from_dict(_policy_validation)
 
+        result_directive = d.pop("result_directive", UNSET)
+
         retried = d.pop("retried", UNSET)
+
+        retry_index = d.pop("retry_index", UNSET)
 
         retryable = d.pop("retryable", UNSET)
 
@@ -328,6 +377,8 @@ class AppWorkflowStep:
 
         workflow_id = d.pop("workflow_id", UNSET)
 
+        workflow_step_group_id = d.pop("workflow_step_group_id", UNSET)
+
         app_workflow_step = cls(
             approval=approval,
             created_at=created_at,
@@ -338,17 +389,21 @@ class AppWorkflowStep:
             finished=finished,
             finished_at=finished_at,
             group_idx=group_idx,
+            group_parallel=group_parallel,
             group_retry_idx=group_retry_idx,
             id=id,
             idx=idx,
             install_workflow_id=install_workflow_id,
             links=links,
+            log_stream=log_stream,
             metadata=metadata,
             name=name,
             owner_id=owner_id,
             owner_type=owner_type,
             policy_validation=policy_validation,
+            result_directive=result_directive,
             retried=retried,
+            retry_index=retry_index,
             retryable=retryable,
             skippable=skippable,
             started_at=started_at,
@@ -357,6 +412,7 @@ class AppWorkflowStep:
             step_target_type=step_target_type,
             updated_at=updated_at,
             workflow_id=workflow_id,
+            workflow_step_group_id=workflow_step_group_id,
         )
 
         app_workflow_step.additional_properties = d

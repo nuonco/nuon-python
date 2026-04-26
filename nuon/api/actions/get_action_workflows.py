@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     *,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -23,6 +24,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["q"] = q
+
+    params["labels"] = labels
 
     params["offset"] = offset
 
@@ -103,6 +106,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -114,6 +118,7 @@ def sync_detailed(
     Args:
         app_id (str):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -129,6 +134,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         app_id=app_id,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
         page=page,
@@ -146,6 +152,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -157,6 +164,7 @@ def sync(
     Args:
         app_id (str):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -173,6 +181,7 @@ def sync(
         app_id=app_id,
         client=client,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
         page=page,
@@ -184,6 +193,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -195,6 +205,7 @@ async def asyncio_detailed(
     Args:
         app_id (str):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -210,6 +221,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         app_id=app_id,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
         page=page,
@@ -225,6 +237,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -236,6 +249,7 @@ async def asyncio(
     Args:
         app_id (str):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -253,6 +267,7 @@ async def asyncio(
             app_id=app_id,
             client=client,
             q=q,
+            labels=labels,
             offset=offset,
             limit=limit,
             page=page,

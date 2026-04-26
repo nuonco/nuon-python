@@ -37,6 +37,7 @@ class ServiceCreateHelmComponentConfigRequest:
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
         helm_repo_config (ServiceHelmRepoConfigRequest | Unset):
+        max_auto_retries (int | Unset):
         namespace (str | Unset):
         operation_roles (ServiceCreateHelmComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
@@ -56,6 +57,7 @@ class ServiceCreateHelmComponentConfigRequest:
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     helm_repo_config: ServiceHelmRepoConfigRequest | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     namespace: str | Unset = UNSET
     operation_roles: ServiceCreateHelmComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
@@ -91,6 +93,8 @@ class ServiceCreateHelmComponentConfigRequest:
         helm_repo_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_repo_config, Unset):
             helm_repo_config = self.helm_repo_config.to_dict()
+
+        max_auto_retries = self.max_auto_retries
 
         namespace = self.namespace
 
@@ -138,6 +142,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["drift_schedule"] = drift_schedule
         if helm_repo_config is not UNSET:
             field_dict["helm_repo_config"] = helm_repo_config
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
         if operation_roles is not UNSET:
@@ -198,6 +204,8 @@ class ServiceCreateHelmComponentConfigRequest:
         else:
             helm_repo_config = ServiceHelmRepoConfigRequest.from_dict(_helm_repo_config)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         namespace = d.pop("namespace", UNSET)
 
         _operation_roles = d.pop("operation_roles", UNSET)
@@ -233,6 +241,7 @@ class ServiceCreateHelmComponentConfigRequest:
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
             helm_repo_config=helm_repo_config,
+            max_auto_retries=max_auto_retries,
             namespace=namespace,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,

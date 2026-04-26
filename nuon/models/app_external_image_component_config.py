@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_awsecr_image_config import AppAWSECRImageConfig
+    from ..models.app_azure_acr_image_config import AppAzureACRImageConfig
     from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
 
 
@@ -21,6 +22,7 @@ class AppExternalImageComponentConfig:
     """
     Attributes:
         aws_ecr_image_config (AppAWSECRImageConfig | Unset):
+        azure_acr_image_config (AppAzureACRImageConfig | Unset):
         component_config_connection_id (str | Unset): value
         created_at (str | Unset):
         created_by_id (str | Unset):
@@ -32,6 +34,7 @@ class AppExternalImageComponentConfig:
     """
 
     aws_ecr_image_config: AppAWSECRImageConfig | Unset = UNSET
+    azure_acr_image_config: AppAzureACRImageConfig | Unset = UNSET
     component_config_connection_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -46,6 +49,10 @@ class AppExternalImageComponentConfig:
         aws_ecr_image_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_ecr_image_config, Unset):
             aws_ecr_image_config = self.aws_ecr_image_config.to_dict()
+
+        azure_acr_image_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.azure_acr_image_config, Unset):
+            azure_acr_image_config = self.azure_acr_image_config.to_dict()
 
         component_config_connection_id = self.component_config_connection_id
 
@@ -70,6 +77,8 @@ class AppExternalImageComponentConfig:
         field_dict.update({})
         if aws_ecr_image_config is not UNSET:
             field_dict["aws_ecr_image_config"] = aws_ecr_image_config
+        if azure_acr_image_config is not UNSET:
+            field_dict["azure_acr_image_config"] = azure_acr_image_config
         if component_config_connection_id is not UNSET:
             field_dict["component_config_connection_id"] = component_config_connection_id
         if created_at is not UNSET:
@@ -92,6 +101,7 @@ class AppExternalImageComponentConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_awsecr_image_config import AppAWSECRImageConfig
+        from ..models.app_azure_acr_image_config import AppAzureACRImageConfig
         from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
 
         d = dict(src_dict)
@@ -101,6 +111,13 @@ class AppExternalImageComponentConfig:
             aws_ecr_image_config = UNSET
         else:
             aws_ecr_image_config = AppAWSECRImageConfig.from_dict(_aws_ecr_image_config)
+
+        _azure_acr_image_config = d.pop("azure_acr_image_config", UNSET)
+        azure_acr_image_config: AppAzureACRImageConfig | Unset
+        if isinstance(_azure_acr_image_config, Unset):
+            azure_acr_image_config = UNSET
+        else:
+            azure_acr_image_config = AppAzureACRImageConfig.from_dict(_azure_acr_image_config)
 
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)
 
@@ -125,6 +142,7 @@ class AppExternalImageComponentConfig:
 
         app_external_image_component_config = cls(
             aws_ecr_image_config=aws_ecr_image_config,
+            azure_acr_image_config=azure_acr_image_config,
             component_config_connection_id=component_config_connection_id,
             created_at=created_at,
             created_by_id=created_by_id,

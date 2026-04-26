@@ -12,8 +12,10 @@ if TYPE_CHECKING:
     from ..models.app_app_config import AppAppConfig
     from ..models.app_app_input_config import AppAppInputConfig
     from ..models.app_app_links import AppAppLinks
+    from ..models.app_app_permissions_config import AppAppPermissionsConfig
     from ..models.app_app_runner_config import AppAppRunnerConfig
     from ..models.app_app_sandbox_config import AppAppSandboxConfig
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_notifications_config import AppNotificationsConfig
 
 
@@ -39,12 +41,14 @@ class AppApp:
         name (str | Unset):
         notifications_config (AppNotificationsConfig | Unset):
         org_id (str | Unset):
+        permissions_config (AppAppPermissionsConfig | Unset):
         queue_id (str | Unset):
         runner_config (AppAppRunnerConfig | Unset):
         runner_type (str | Unset):
         sandbox_config (AppAppSandboxConfig | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -63,12 +67,14 @@ class AppApp:
     name: str | Unset = UNSET
     notifications_config: AppNotificationsConfig | Unset = UNSET
     org_id: str | Unset = UNSET
+    permissions_config: AppAppPermissionsConfig | Unset = UNSET
     queue_id: str | Unset = UNSET
     runner_config: AppAppRunnerConfig | Unset = UNSET
     runner_type: str | Unset = UNSET
     sandbox_config: AppAppSandboxConfig | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -114,6 +120,10 @@ class AppApp:
 
         org_id = self.org_id
 
+        permissions_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.permissions_config, Unset):
+            permissions_config = self.permissions_config.to_dict()
+
         queue_id = self.queue_id
 
         runner_config: dict[str, Any] | Unset = UNSET
@@ -129,6 +139,10 @@ class AppApp:
         status = self.status
 
         status_description = self.status_description
+
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
 
         updated_at = self.updated_at
 
@@ -165,6 +179,8 @@ class AppApp:
             field_dict["notifications_config"] = notifications_config
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if permissions_config is not UNSET:
+            field_dict["permissions_config"] = permissions_config
         if queue_id is not UNSET:
             field_dict["queue_id"] = queue_id
         if runner_config is not UNSET:
@@ -177,6 +193,8 @@ class AppApp:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -187,8 +205,10 @@ class AppApp:
         from ..models.app_app_config import AppAppConfig
         from ..models.app_app_input_config import AppAppInputConfig
         from ..models.app_app_links import AppAppLinks
+        from ..models.app_app_permissions_config import AppAppPermissionsConfig
         from ..models.app_app_runner_config import AppAppRunnerConfig
         from ..models.app_app_sandbox_config import AppAppSandboxConfig
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_notifications_config import AppNotificationsConfig
 
         d = dict(src_dict)
@@ -244,6 +264,13 @@ class AppApp:
 
         org_id = d.pop("org_id", UNSET)
 
+        _permissions_config = d.pop("permissions_config", UNSET)
+        permissions_config: AppAppPermissionsConfig | Unset
+        if isinstance(_permissions_config, Unset):
+            permissions_config = UNSET
+        else:
+            permissions_config = AppAppPermissionsConfig.from_dict(_permissions_config)
+
         queue_id = d.pop("queue_id", UNSET)
 
         _runner_config = d.pop("runner_config", UNSET)
@@ -266,6 +293,13 @@ class AppApp:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_app = cls(
@@ -284,12 +318,14 @@ class AppApp:
             name=name,
             notifications_config=notifications_config,
             org_id=org_id,
+            permissions_config=permissions_config,
             queue_id=queue_id,
             runner_config=runner_config,
             runner_type=runner_type,
             sandbox_config=sandbox_config,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

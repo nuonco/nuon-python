@@ -18,6 +18,7 @@ class AppLatestRunnerHeartBeat:
         alive_time (int | Unset):
         created_at (str | Unset):
         process (str | Unset):
+        process_id (str | Unset):
         runner_id (str | Unset):
         started_at (str | Unset):
         version (str | Unset):
@@ -26,6 +27,7 @@ class AppLatestRunnerHeartBeat:
     alive_time: int | Unset = UNSET
     created_at: str | Unset = UNSET
     process: str | Unset = UNSET
+    process_id: str | Unset = UNSET
     runner_id: str | Unset = UNSET
     started_at: str | Unset = UNSET
     version: str | Unset = UNSET
@@ -37,6 +39,8 @@ class AppLatestRunnerHeartBeat:
         created_at = self.created_at
 
         process = self.process
+
+        process_id = self.process_id
 
         runner_id = self.runner_id
 
@@ -53,6 +57,8 @@ class AppLatestRunnerHeartBeat:
             field_dict["created_at"] = created_at
         if process is not UNSET:
             field_dict["process"] = process
+        if process_id is not UNSET:
+            field_dict["process_id"] = process_id
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if started_at is not UNSET:
@@ -71,6 +77,8 @@ class AppLatestRunnerHeartBeat:
 
         process = d.pop("process", UNSET)
 
+        process_id = d.pop("process_id", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         started_at = d.pop("started_at", UNSET)
@@ -81,6 +89,7 @@ class AppLatestRunnerHeartBeat:
             alive_time=alive_time,
             created_at=created_at,
             process=process,
+            process_id=process_id,
             runner_id=runner_id,
             started_at=started_at,
             version=version,

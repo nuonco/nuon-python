@@ -10,6 +10,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_action_workflow_config import AppActionWorkflowConfig
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
 T = TypeVar("T", bound="AppActionWorkflow")
@@ -25,9 +27,11 @@ class AppActionWorkflow:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         name (str | Unset): metadata
         status (str | Unset): TODO: change to default null after migration & after initial pr
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -37,9 +41,11 @@ class AppActionWorkflow:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     name: str | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,11 +67,19 @@ class AppActionWorkflow:
 
         id = self.id
 
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         name = self.name
 
         status = self.status
 
         status_description = self.status_description
+
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
 
         updated_at = self.updated_at
 
@@ -84,12 +98,16 @@ class AppActionWorkflow:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if name is not UNSET:
             field_dict["name"] = name
         if status is not UNSET:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -98,6 +116,8 @@ class AppActionWorkflow:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_action_workflow_config import AppActionWorkflowConfig
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)
@@ -119,11 +139,25 @@ class AppActionWorkflow:
 
         id = d.pop("id", UNSET)
 
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
+
         name = d.pop("name", UNSET)
 
         status = d.pop("status", UNSET)
 
         status_description = d.pop("status_description", UNSET)
+
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -134,9 +168,11 @@ class AppActionWorkflow:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            labels=labels,
             name=name,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

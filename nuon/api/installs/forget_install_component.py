@@ -1,11 +1,12 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.app_empty_response import AppEmptyResponse
 from ...models.service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
@@ -37,9 +38,10 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | bool | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = cast(bool, response.json())
+        response_200 = AppEmptyResponse.from_dict(response.json())
+
         return response_200
 
     if response.status_code == 400:
@@ -65,7 +67,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | bool]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,7 +82,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallComponentRequest,
-) -> Response[StderrErrResponse | bool]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     """forget an install component
 
      # Forget Install Component
@@ -148,7 +150,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | bool]
+        Response[AppEmptyResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -170,7 +172,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallComponentRequest,
-) -> StderrErrResponse | bool | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     """forget an install component
 
      # Forget Install Component
@@ -238,7 +240,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | bool
+        AppEmptyResponse | StderrErrResponse
     """
 
     return sync_detailed(
@@ -255,7 +257,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallComponentRequest,
-) -> Response[StderrErrResponse | bool]:
+) -> Response[AppEmptyResponse | StderrErrResponse]:
     """forget an install component
 
      # Forget Install Component
@@ -323,7 +325,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | bool]
+        Response[AppEmptyResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -343,7 +345,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceForgetInstallComponentRequest,
-) -> StderrErrResponse | bool | None:
+) -> AppEmptyResponse | StderrErrResponse | None:
     """forget an install component
 
      # Forget Install Component
@@ -411,7 +413,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | bool
+        AppEmptyResponse | StderrErrResponse
     """
 
     return (

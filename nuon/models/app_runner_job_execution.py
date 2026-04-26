@@ -10,6 +10,7 @@ from ..models.app_runner_job_execution_status import AppRunnerJobExecutionStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
     from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
     from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult
@@ -32,6 +33,7 @@ class AppRunnerJobExecution:
         result (AppRunnerJobExecutionResult | Unset):
         runner_job_id (str | Unset):
         status (AppRunnerJobExecutionStatus | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -44,6 +46,7 @@ class AppRunnerJobExecution:
     result: AppRunnerJobExecutionResult | Unset = UNSET
     runner_job_id: str | Unset = UNSET
     status: AppRunnerJobExecutionStatus | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -74,6 +77,10 @@ class AppRunnerJobExecution:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -97,6 +104,8 @@ class AppRunnerJobExecution:
             field_dict["runner_job_id"] = runner_job_id
         if status is not UNSET:
             field_dict["status"] = status
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -104,6 +113,7 @@ class AppRunnerJobExecution:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
         from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
         from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult
@@ -147,6 +157,13 @@ class AppRunnerJobExecution:
         else:
             status = AppRunnerJobExecutionStatus(_status)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_runner_job_execution = cls(
@@ -159,6 +176,7 @@ class AppRunnerJobExecution:
             result=result,
             runner_job_id=runner_job_id,
             status=status,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

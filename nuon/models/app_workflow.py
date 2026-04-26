@@ -19,7 +19,10 @@ if TYPE_CHECKING:
     from ..models.app_install_sandbox_run import AppInstallSandboxRun
     from ..models.app_workflow_links import AppWorkflowLinks
     from ..models.app_workflow_metadata import AppWorkflowMetadata
+    from ..models.app_workflow_run import AppWorkflowRun
     from ..models.app_workflow_step import AppWorkflowStep
+    from ..models.app_workflow_step_group import AppWorkflowStepGroup
+    from ..models.signaldb_signal_data import SignaldbSignalData
 
 
 T = TypeVar("T", bound="AppWorkflow")
@@ -37,6 +40,7 @@ class AppWorkflow:
         execution_time (int | Unset):
         finished (bool | Unset):
         finished_at (str | Unset):
+        generate_steps_signal (SignaldbSignalData | Unset):
         id (str | Unset):
         install_action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
@@ -47,13 +51,19 @@ class AppWorkflow:
         owner_id (str | Unset):
         owner_type (str | Unset):
         plan_only (bool | Unset):
+        result_directive (str | Unset): ResultDirective is set by the currently executing group signal to communicate
+            the group outcome back to the flow signal. Values: continue, stop, retry-group,
+            skip-group, await-approval.
         role (str | Unset):
         started_at (str | Unset):
         status (AppCompositeStatus | Unset):
         step_error_behavior (str | Unset): DEPRECATED: for now we always abort on step errors
+        step_groups (list[AppWorkflowStepGroup] | Unset): step groups represent logical groupings of steps within the
+            workflow
         steps (list[AppWorkflowStep] | Unset): steps represent each piece of the workflow
         type_ (AppWorkflowType | Unset):
         updated_at (str | Unset):
+        workflow_runs (list[AppWorkflowRun] | Unset):
     """
 
     app_branch_runs: list[AppAppBranchRun] | Unset = UNSET
@@ -64,6 +74,7 @@ class AppWorkflow:
     execution_time: int | Unset = UNSET
     finished: bool | Unset = UNSET
     finished_at: str | Unset = UNSET
+    generate_steps_signal: SignaldbSignalData | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
@@ -74,13 +85,16 @@ class AppWorkflow:
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
+    result_directive: str | Unset = UNSET
     role: str | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
     step_error_behavior: str | Unset = UNSET
+    step_groups: list[AppWorkflowStepGroup] | Unset = UNSET
     steps: list[AppWorkflowStep] | Unset = UNSET
     type_: AppWorkflowType | Unset = UNSET
     updated_at: str | Unset = UNSET
+    workflow_runs: list[AppWorkflowRun] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -108,6 +122,10 @@ class AppWorkflow:
         finished = self.finished
 
         finished_at = self.finished_at
+
+        generate_steps_signal: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.generate_steps_signal, Unset):
+            generate_steps_signal = self.generate_steps_signal.to_dict()
 
         id = self.id
 
@@ -148,6 +166,8 @@ class AppWorkflow:
 
         plan_only = self.plan_only
 
+        result_directive = self.result_directive
+
         role = self.role
 
         started_at = self.started_at
@@ -157,6 +177,13 @@ class AppWorkflow:
             status = self.status.to_dict()
 
         step_error_behavior = self.step_error_behavior
+
+        step_groups: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.step_groups, Unset):
+            step_groups = []
+            for step_groups_item_data in self.step_groups:
+                step_groups_item = step_groups_item_data.to_dict()
+                step_groups.append(step_groups_item)
 
         steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
@@ -170,6 +197,13 @@ class AppWorkflow:
             type_ = self.type_.value
 
         updated_at = self.updated_at
+
+        workflow_runs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.workflow_runs, Unset):
+            workflow_runs = []
+            for workflow_runs_item_data in self.workflow_runs:
+                workflow_runs_item = workflow_runs_item_data.to_dict()
+                workflow_runs.append(workflow_runs_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -190,6 +224,8 @@ class AppWorkflow:
             field_dict["finished"] = finished
         if finished_at is not UNSET:
             field_dict["finished_at"] = finished_at
+        if generate_steps_signal is not UNSET:
+            field_dict["generate_steps_signal"] = generate_steps_signal
         if id is not UNSET:
             field_dict["id"] = id
         if install_action_workflow_runs is not UNSET:
@@ -210,6 +246,8 @@ class AppWorkflow:
             field_dict["owner_type"] = owner_type
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if result_directive is not UNSET:
+            field_dict["result_directive"] = result_directive
         if role is not UNSET:
             field_dict["role"] = role
         if started_at is not UNSET:
@@ -218,12 +256,16 @@ class AppWorkflow:
             field_dict["status"] = status
         if step_error_behavior is not UNSET:
             field_dict["step_error_behavior"] = step_error_behavior
+        if step_groups is not UNSET:
+            field_dict["step_groups"] = step_groups
         if steps is not UNSET:
             field_dict["steps"] = steps
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if workflow_runs is not UNSET:
+            field_dict["workflow_runs"] = workflow_runs
 
         return field_dict
 
@@ -237,7 +279,10 @@ class AppWorkflow:
         from ..models.app_install_sandbox_run import AppInstallSandboxRun
         from ..models.app_workflow_links import AppWorkflowLinks
         from ..models.app_workflow_metadata import AppWorkflowMetadata
+        from ..models.app_workflow_run import AppWorkflowRun
         from ..models.app_workflow_step import AppWorkflowStep
+        from ..models.app_workflow_step_group import AppWorkflowStepGroup
+        from ..models.signaldb_signal_data import SignaldbSignalData
 
         d = dict(src_dict)
         _app_branch_runs = d.pop("app_branch_runs", UNSET)
@@ -272,6 +317,13 @@ class AppWorkflow:
         finished = d.pop("finished", UNSET)
 
         finished_at = d.pop("finished_at", UNSET)
+
+        _generate_steps_signal = d.pop("generate_steps_signal", UNSET)
+        generate_steps_signal: SignaldbSignalData | Unset
+        if isinstance(_generate_steps_signal, Unset):
+            generate_steps_signal = UNSET
+        else:
+            generate_steps_signal = SignaldbSignalData.from_dict(_generate_steps_signal)
 
         id = d.pop("id", UNSET)
 
@@ -326,6 +378,8 @@ class AppWorkflow:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        result_directive = d.pop("result_directive", UNSET)
+
         role = d.pop("role", UNSET)
 
         started_at = d.pop("started_at", UNSET)
@@ -338,6 +392,15 @@ class AppWorkflow:
             status = AppCompositeStatus.from_dict(_status)
 
         step_error_behavior = d.pop("step_error_behavior", UNSET)
+
+        _step_groups = d.pop("step_groups", UNSET)
+        step_groups: list[AppWorkflowStepGroup] | Unset = UNSET
+        if _step_groups is not UNSET:
+            step_groups = []
+            for step_groups_item_data in _step_groups:
+                step_groups_item = AppWorkflowStepGroup.from_dict(step_groups_item_data)
+
+                step_groups.append(step_groups_item)
 
         _steps = d.pop("steps", UNSET)
         steps: list[AppWorkflowStep] | Unset = UNSET
@@ -357,6 +420,15 @@ class AppWorkflow:
 
         updated_at = d.pop("updated_at", UNSET)
 
+        _workflow_runs = d.pop("workflow_runs", UNSET)
+        workflow_runs: list[AppWorkflowRun] | Unset = UNSET
+        if _workflow_runs is not UNSET:
+            workflow_runs = []
+            for workflow_runs_item_data in _workflow_runs:
+                workflow_runs_item = AppWorkflowRun.from_dict(workflow_runs_item_data)
+
+                workflow_runs.append(workflow_runs_item)
+
         app_workflow = cls(
             app_branch_runs=app_branch_runs,
             approval_option=approval_option,
@@ -366,6 +438,7 @@ class AppWorkflow:
             execution_time=execution_time,
             finished=finished,
             finished_at=finished_at,
+            generate_steps_signal=generate_steps_signal,
             id=id,
             install_action_workflow_runs=install_action_workflow_runs,
             install_deploys=install_deploys,
@@ -376,13 +449,16 @@ class AppWorkflow:
             owner_id=owner_id,
             owner_type=owner_type,
             plan_only=plan_only,
+            result_directive=result_directive,
             role=role,
             started_at=started_at,
             status=status,
             step_error_behavior=step_error_behavior,
+            step_groups=step_groups,
             steps=steps,
             type_=type_,
             updated_at=updated_at,
+            workflow_runs=workflow_runs,
         )
 
         app_workflow.additional_properties = d

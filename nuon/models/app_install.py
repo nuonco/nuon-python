@@ -23,11 +23,15 @@ if TYPE_CHECKING:
     from ..models.app_install_inputs import AppInstallInputs
     from ..models.app_install_links import AppInstallLinks
     from ..models.app_install_metadata import AppInstallMetadata
+    from ..models.app_install_roles import AppInstallRoles
     from ..models.app_install_sandbox import AppInstallSandbox
     from ..models.app_install_sandbox_run import AppInstallSandboxRun
     from ..models.app_install_stack import AppInstallStack
     from ..models.app_install_state import AppInstallState
+    from ..models.app_queue import AppQueue
     from ..models.app_workflow import AppWorkflow
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+    from ..models.sql_null_bool import SqlNullBool
 
 
 T = TypeVar("T", bound="AppInstall")
@@ -58,22 +62,28 @@ class AppInstall:
         install_events (list[AppInstallEvent] | Unset):
         install_inputs (list[AppInstallInputs] | Unset):
         install_number (int | Unset):
+        install_roles (list[AppInstallRoles] | Unset): InstallRoles is a list of roles associated with that install at
+            given app config ID
         install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
         install_stack (AppInstallStack | Unset):
         install_states (list[AppInstallState] | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         links (AppInstallLinks | Unset):
         metadata (AppInstallMetadata | Unset):
         name (str | Unset):
+        queues (list[AppQueue] | Unset):
         runner_id (str | Unset):
         runner_status (str | Unset):
         runner_status_description (str | Unset):
         runner_type (str | Unset):
         sandbox (AppInstallSandbox | Unset):
+        sandbox_mode (SqlNullBool | Unset):
         sandbox_status (str | Unset):
         sandbox_status_description (str | Unset):
         status (str | Unset): TODO(jm): deprecate these fields once the terraform provider has been updated
         status_description (str | Unset):
         updated_at (str | Unset):
+        workflow_id (str | Unset): WorkflowID is populated by handlers that create a workflow. Not persisted.
         workflows (list[AppWorkflow] | Unset):
     """
 
@@ -98,22 +108,27 @@ class AppInstall:
     install_events: list[AppInstallEvent] | Unset = UNSET
     install_inputs: list[AppInstallInputs] | Unset = UNSET
     install_number: int | Unset = UNSET
+    install_roles: list[AppInstallRoles] | Unset = UNSET
     install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
     install_stack: AppInstallStack | Unset = UNSET
     install_states: list[AppInstallState] | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     links: AppInstallLinks | Unset = UNSET
     metadata: AppInstallMetadata | Unset = UNSET
     name: str | Unset = UNSET
+    queues: list[AppQueue] | Unset = UNSET
     runner_id: str | Unset = UNSET
     runner_status: str | Unset = UNSET
     runner_status_description: str | Unset = UNSET
     runner_type: str | Unset = UNSET
     sandbox: AppInstallSandbox | Unset = UNSET
+    sandbox_mode: SqlNullBool | Unset = UNSET
     sandbox_status: str | Unset = UNSET
     sandbox_status_description: str | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
     updated_at: str | Unset = UNSET
+    workflow_id: str | Unset = UNSET
     workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -199,6 +214,13 @@ class AppInstall:
 
         install_number = self.install_number
 
+        install_roles: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.install_roles, Unset):
+            install_roles = []
+            for install_roles_item_data in self.install_roles:
+                install_roles_item = install_roles_item_data.to_dict()
+                install_roles.append(install_roles_item)
+
         install_sandbox_runs: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_sandbox_runs, Unset):
             install_sandbox_runs = []
@@ -217,6 +239,10 @@ class AppInstall:
                 install_states_item = install_states_item_data.to_dict()
                 install_states.append(install_states_item)
 
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
@@ -226,6 +252,13 @@ class AppInstall:
             metadata = self.metadata.to_dict()
 
         name = self.name
+
+        queues: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.queues, Unset):
+            queues = []
+            for queues_item_data in self.queues:
+                queues_item = queues_item_data.to_dict()
+                queues.append(queues_item)
 
         runner_id = self.runner_id
 
@@ -239,6 +272,10 @@ class AppInstall:
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
+        sandbox_mode: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.sandbox_mode, Unset):
+            sandbox_mode = self.sandbox_mode.to_dict()
+
         sandbox_status = self.sandbox_status
 
         sandbox_status_description = self.sandbox_status_description
@@ -248,6 +285,8 @@ class AppInstall:
         status_description = self.status_description
 
         updated_at = self.updated_at
+
+        workflow_id = self.workflow_id
 
         workflows: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.workflows, Unset):
@@ -301,18 +340,24 @@ class AppInstall:
             field_dict["install_inputs"] = install_inputs
         if install_number is not UNSET:
             field_dict["install_number"] = install_number
+        if install_roles is not UNSET:
+            field_dict["install_roles"] = install_roles
         if install_sandbox_runs is not UNSET:
             field_dict["install_sandbox_runs"] = install_sandbox_runs
         if install_stack is not UNSET:
             field_dict["install_stack"] = install_stack
         if install_states is not UNSET:
             field_dict["install_states"] = install_states
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if links is not UNSET:
             field_dict["links"] = links
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if name is not UNSET:
             field_dict["name"] = name
+        if queues is not UNSET:
+            field_dict["queues"] = queues
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if runner_status is not UNSET:
@@ -323,6 +368,8 @@ class AppInstall:
             field_dict["runner_type"] = runner_type
         if sandbox is not UNSET:
             field_dict["sandbox"] = sandbox
+        if sandbox_mode is not UNSET:
+            field_dict["sandbox_mode"] = sandbox_mode
         if sandbox_status is not UNSET:
             field_dict["sandbox_status"] = sandbox_status
         if sandbox_status_description is not UNSET:
@@ -333,6 +380,8 @@ class AppInstall:
             field_dict["status_description"] = status_description
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if workflow_id is not UNSET:
+            field_dict["workflow_id"] = workflow_id
         if workflows is not UNSET:
             field_dict["workflows"] = workflows
 
@@ -354,11 +403,15 @@ class AppInstall:
         from ..models.app_install_inputs import AppInstallInputs
         from ..models.app_install_links import AppInstallLinks
         from ..models.app_install_metadata import AppInstallMetadata
+        from ..models.app_install_roles import AppInstallRoles
         from ..models.app_install_sandbox import AppInstallSandbox
         from ..models.app_install_sandbox_run import AppInstallSandboxRun
         from ..models.app_install_stack import AppInstallStack
         from ..models.app_install_state import AppInstallState
+        from ..models.app_queue import AppQueue
         from ..models.app_workflow import AppWorkflow
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -473,6 +526,15 @@ class AppInstall:
 
         install_number = d.pop("install_number", UNSET)
 
+        _install_roles = d.pop("install_roles", UNSET)
+        install_roles: list[AppInstallRoles] | Unset = UNSET
+        if _install_roles is not UNSET:
+            install_roles = []
+            for install_roles_item_data in _install_roles:
+                install_roles_item = AppInstallRoles.from_dict(install_roles_item_data)
+
+                install_roles.append(install_roles_item)
+
         _install_sandbox_runs = d.pop("install_sandbox_runs", UNSET)
         install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
         if _install_sandbox_runs is not UNSET:
@@ -498,6 +560,13 @@ class AppInstall:
 
                 install_states.append(install_states_item)
 
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
+
         _links = d.pop("links", UNSET)
         links: AppInstallLinks | Unset
         if isinstance(_links, Unset):
@@ -514,6 +583,15 @@ class AppInstall:
 
         name = d.pop("name", UNSET)
 
+        _queues = d.pop("queues", UNSET)
+        queues: list[AppQueue] | Unset = UNSET
+        if _queues is not UNSET:
+            queues = []
+            for queues_item_data in _queues:
+                queues_item = AppQueue.from_dict(queues_item_data)
+
+                queues.append(queues_item)
+
         runner_id = d.pop("runner_id", UNSET)
 
         runner_status = d.pop("runner_status", UNSET)
@@ -529,6 +607,13 @@ class AppInstall:
         else:
             sandbox = AppInstallSandbox.from_dict(_sandbox)
 
+        _sandbox_mode = d.pop("sandbox_mode", UNSET)
+        sandbox_mode: SqlNullBool | Unset
+        if isinstance(_sandbox_mode, Unset):
+            sandbox_mode = UNSET
+        else:
+            sandbox_mode = SqlNullBool.from_dict(_sandbox_mode)
+
         sandbox_status = d.pop("sandbox_status", UNSET)
 
         sandbox_status_description = d.pop("sandbox_status_description", UNSET)
@@ -538,6 +623,8 @@ class AppInstall:
         status_description = d.pop("status_description", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
+
+        workflow_id = d.pop("workflow_id", UNSET)
 
         _workflows = d.pop("workflows", UNSET)
         workflows: list[AppWorkflow] | Unset = UNSET
@@ -570,22 +657,27 @@ class AppInstall:
             install_events=install_events,
             install_inputs=install_inputs,
             install_number=install_number,
+            install_roles=install_roles,
             install_sandbox_runs=install_sandbox_runs,
             install_stack=install_stack,
             install_states=install_states,
+            labels=labels,
             links=links,
             metadata=metadata,
             name=name,
+            queues=queues,
             runner_id=runner_id,
             runner_status=runner_status,
             runner_status_description=runner_status_description,
             runner_type=runner_type,
             sandbox=sandbox,
+            sandbox_mode=sandbox_mode,
             sandbox_status=sandbox_status,
             sandbox_status_description=sandbox_status_description,
             status=status,
             status_description=status_description,
             updated_at=updated_at,
+            workflow_id=workflow_id,
             workflows=workflows,
         )
 

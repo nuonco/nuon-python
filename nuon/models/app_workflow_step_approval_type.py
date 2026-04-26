@@ -6,6 +6,7 @@ class AppWorkflowStepApprovalType(str, Enum):
     HELM_APPROVAL = "helm_approval"
     KUBERNETES_MANIFEST_APPROVAL = "kubernetes_manifest_approval"
     NOOP = "noop"
+    PULUMI_PLAN = "pulumi_plan"
     TERRAFORM_PLAN = "terraform_plan"
 
     def __str__(self) -> str:

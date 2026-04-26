@@ -9,10 +9,12 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_notifications_config import AppNotificationsConfig
     from ..models.app_org_links import AppOrgLinks
     from ..models.app_runner_group import AppRunnerGroup
     from ..models.app_vcs_connection import AppVCSConnection
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
     from ..models.types_string_bool_map import TypesStringBoolMap
 
 
@@ -29,6 +31,7 @@ class AppOrg:
         features (TypesStringBoolMap | Unset):
         id (str | Unset):
         install_count (int | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         links (AppOrgLinks | Unset):
         logo_url (str | Unset):
         name (str | Unset):
@@ -37,6 +40,7 @@ class AppOrg:
         sandbox_mode (bool | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         tags (list[str] | Unset):
         updated_at (str | Unset):
         vcs_connections (list[AppVCSConnection] | Unset):
@@ -48,6 +52,7 @@ class AppOrg:
     features: TypesStringBoolMap | Unset = UNSET
     id: str | Unset = UNSET
     install_count: int | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     links: AppOrgLinks | Unset = UNSET
     logo_url: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -56,6 +61,7 @@ class AppOrg:
     sandbox_mode: bool | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     tags: list[str] | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connections: list[AppVCSConnection] | Unset = UNSET
@@ -75,6 +81,10 @@ class AppOrg:
         id = self.id
 
         install_count = self.install_count
+
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
 
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
@@ -97,6 +107,10 @@ class AppOrg:
         status = self.status
 
         status_description = self.status_description
+
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
 
         tags: list[str] | Unset = UNSET
         if not isinstance(self.tags, Unset):
@@ -126,6 +140,8 @@ class AppOrg:
             field_dict["id"] = id
         if install_count is not UNSET:
             field_dict["install_count"] = install_count
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if links is not UNSET:
             field_dict["links"] = links
         if logo_url is not UNSET:
@@ -142,6 +158,8 @@ class AppOrg:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if tags is not UNSET:
             field_dict["tags"] = tags
         if updated_at is not UNSET:
@@ -153,10 +171,12 @@ class AppOrg:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_notifications_config import AppNotificationsConfig
         from ..models.app_org_links import AppOrgLinks
         from ..models.app_runner_group import AppRunnerGroup
         from ..models.app_vcs_connection import AppVCSConnection
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
         from ..models.types_string_bool_map import TypesStringBoolMap
 
         d = dict(src_dict)
@@ -176,6 +196,13 @@ class AppOrg:
         id = d.pop("id", UNSET)
 
         install_count = d.pop("install_count", UNSET)
+
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
         _links = d.pop("links", UNSET)
         links: AppOrgLinks | Unset
@@ -208,6 +235,13 @@ class AppOrg:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         tags = cast(list[str], d.pop("tags", UNSET))
 
         updated_at = d.pop("updated_at", UNSET)
@@ -228,6 +262,7 @@ class AppOrg:
             features=features,
             id=id,
             install_count=install_count,
+            labels=labels,
             links=links,
             logo_url=logo_url,
             name=name,
@@ -236,6 +271,7 @@ class AppOrg:
             sandbox_mode=sandbox_mode,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             tags=tags,
             updated_at=updated_at,
             vcs_connections=vcs_connections,

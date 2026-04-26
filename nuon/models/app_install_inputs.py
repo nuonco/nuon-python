@@ -29,6 +29,7 @@ class AppInstallInputs:
         redacted_values (AppInstallInputsRedactedValues | Unset):
         updated_at (str | Unset):
         values (AppInstallInputsValues | Unset):
+        workflow_id (str | Unset): WorkflowID is populated by handlers that create a workflow. Not persisted.
     """
 
     app_input_config_id: str | Unset = UNSET
@@ -40,6 +41,7 @@ class AppInstallInputs:
     redacted_values: AppInstallInputsRedactedValues | Unset = UNSET
     updated_at: str | Unset = UNSET
     values: AppInstallInputsValues | Unset = UNSET
+    workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,6 +67,8 @@ class AppInstallInputs:
         if not isinstance(self.values, Unset):
             values = self.values.to_dict()
 
+        workflow_id = self.workflow_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -86,6 +90,8 @@ class AppInstallInputs:
             field_dict["updated_at"] = updated_at
         if values is not UNSET:
             field_dict["values"] = values
+        if workflow_id is not UNSET:
+            field_dict["workflow_id"] = workflow_id
 
         return field_dict
 
@@ -123,6 +129,8 @@ class AppInstallInputs:
         else:
             values = AppInstallInputsValues.from_dict(_values)
 
+        workflow_id = d.pop("workflow_id", UNSET)
+
         app_install_inputs = cls(
             app_input_config_id=app_input_config_id,
             created_at=created_at,
@@ -133,6 +141,7 @@ class AppInstallInputs:
             redacted_values=redacted_values,
             updated_at=updated_at,
             values=values,
+            workflow_id=workflow_id,
         )
 
         app_install_inputs.additional_properties = d

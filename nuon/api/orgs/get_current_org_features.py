@@ -62,7 +62,7 @@ def sync_detailed(
     ```json
     {
       \"api-pagination\": true,
-      \"org-dashboard\": false,
+      \"org-dashboard\": true,
       \"org-runner\": true,
       \"stratus-layout\": true,
       \"user-managed-features\": false
@@ -104,7 +104,7 @@ def sync(
     ```json
     {
       \"api-pagination\": true,
-      \"org-dashboard\": false,
+      \"org-dashboard\": true,
       \"org-runner\": true,
       \"stratus-layout\": true,
       \"user-managed-features\": false
@@ -142,7 +142,7 @@ async def asyncio_detailed(
     ```json
     {
       \"api-pagination\": true,
-      \"org-dashboard\": false,
+      \"org-dashboard\": true,
       \"org-runner\": true,
       \"stratus-layout\": true,
       \"user-managed-features\": false
@@ -182,7 +182,7 @@ async def asyncio(
     ```json
     {
       \"api-pagination\": true,
-      \"org-dashboard\": false,
+      \"org-dashboard\": true,
       \"org-runner\": true,
       \"stratus-layout\": true,
       \"user-managed-features\": false

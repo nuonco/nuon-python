@@ -35,6 +35,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset):
+        max_auto_retries (int | Unset):
         operation_roles (ServiceCreateDockerBuildComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
@@ -50,6 +51,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateDockerBuildComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
@@ -82,6 +84,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
+
+        max_auto_retries = self.max_auto_retries
 
         operation_roles: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_roles, Unset):
@@ -120,6 +124,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             field_dict["deploy_timeout"] = deploy_timeout
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
             field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
@@ -171,6 +177,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         else:
             env_vars = ServiceCreateDockerBuildComponentConfigRequestEnvVars.from_dict(_env_vars)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         _operation_roles = d.pop("operation_roles", UNSET)
         operation_roles: ServiceCreateDockerBuildComponentConfigRequestOperationRoles | Unset
         if isinstance(_operation_roles, Unset):
@@ -199,6 +207,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             env_vars=env_vars,
+            max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,

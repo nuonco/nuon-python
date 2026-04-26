@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> dict[str, Any]:
@@ -25,6 +26,8 @@ def _get_kwargs(
     params["types"] = types
 
     params["q"] = q
+
+    params["labels"] = labels
 
     params["offset"] = offset
 
@@ -104,6 +107,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
@@ -115,6 +119,7 @@ def sync_detailed(
         install_id (str):
         types (str | Unset):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -130,6 +135,7 @@ def sync_detailed(
         install_id=install_id,
         types=types,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
     )
@@ -147,6 +153,7 @@ def sync(
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
@@ -158,6 +165,7 @@ def sync(
         install_id (str):
         types (str | Unset):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -174,6 +182,7 @@ def sync(
         client=client,
         types=types,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
     ).parsed
@@ -185,6 +194,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
@@ -196,6 +206,7 @@ async def asyncio_detailed(
         install_id (str):
         types (str | Unset):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -211,6 +222,7 @@ async def asyncio_detailed(
         install_id=install_id,
         types=types,
         q=q,
+        labels=labels,
         offset=offset,
         limit=limit,
     )
@@ -226,6 +238,7 @@ async def asyncio(
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
+    labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
@@ -237,6 +250,7 @@ async def asyncio(
         install_id (str):
         types (str | Unset):
         q (str | Unset):
+        labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -254,6 +268,7 @@ async def asyncio(
             client=client,
             types=types,
             q=q,
+            labels=labels,
             offset=offset,
             limit=limit,
         )

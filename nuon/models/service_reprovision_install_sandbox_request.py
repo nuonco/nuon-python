@@ -17,16 +17,20 @@ class ServiceReprovisionInstallSandboxRequest:
     Attributes:
         plan_only (bool | Unset):
         role (str | Unset):
+        skip_components (bool | Unset):
     """
 
     plan_only: bool | Unset = UNSET
     role: str | Unset = UNSET
+    skip_components: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         plan_only = self.plan_only
 
         role = self.role
+
+        skip_components = self.skip_components
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +39,8 @@ class ServiceReprovisionInstallSandboxRequest:
             field_dict["plan_only"] = plan_only
         if role is not UNSET:
             field_dict["role"] = role
+        if skip_components is not UNSET:
+            field_dict["skip_components"] = skip_components
 
         return field_dict
 
@@ -45,9 +51,12 @@ class ServiceReprovisionInstallSandboxRequest:
 
         role = d.pop("role", UNSET)
 
+        skip_components = d.pop("skip_components", UNSET)
+
         service_reprovision_install_sandbox_request = cls(
             plan_only=plan_only,
             role=role,
+            skip_components=skip_components,
         )
 
         service_reprovision_install_sandbox_request.additional_properties = d

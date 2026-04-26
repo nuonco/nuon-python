@@ -33,6 +33,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         drift_schedule (str | Unset):
         kustomize (ServiceKustomizeConfigRequest | Unset):
         manifest (str | Unset): Inline manifest (mutually exclusive with Kustomize)
+        max_auto_retries (int | Unset):
         namespace (str | Unset):
         operation_roles (ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
@@ -48,6 +49,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     drift_schedule: str | Unset = UNSET
     kustomize: ServiceKustomizeConfigRequest | Unset = UNSET
     manifest: str | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     namespace: str | Unset = UNSET
     operation_roles: ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
@@ -78,6 +80,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             kustomize = self.kustomize.to_dict()
 
         manifest = self.manifest
+
+        max_auto_retries = self.max_auto_retries
 
         namespace = self.namespace
 
@@ -114,6 +118,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             field_dict["kustomize"] = kustomize
         if manifest is not UNSET:
             field_dict["manifest"] = manifest
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
         if operation_roles is not UNSET:
@@ -163,6 +169,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
         manifest = d.pop("manifest", UNSET)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         namespace = d.pop("namespace", UNSET)
 
         _operation_roles = d.pop("operation_roles", UNSET)
@@ -193,6 +201,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             drift_schedule=drift_schedule,
             kustomize=kustomize,
             manifest=manifest,
+            max_auto_retries=max_auto_retries,
             namespace=namespace,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,

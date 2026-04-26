@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_queue import AppQueue
     from ..models.app_runner_group import AppRunnerGroup
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_runner_operation import AppRunnerOperation
@@ -29,12 +31,16 @@ class AppRunner:
         name (str | Unset):
         operations (list[AppRunnerOperation] | Unset):
         org_id (str | Unset):
+        queues (list[AppQueue] | Unset): Queues holds per-job-group queues created when parallel-runner-jobs feature
+            flag is enabled.
         runner_group (AppRunnerGroup | Unset):
         runner_group_id (str | Unset):
         runner_job (AppRunnerJob | Unset):
         status (str | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
+        warnings (list[str] | Unset):
     """
 
     created_at: str | Unset = UNSET
@@ -45,12 +51,15 @@ class AppRunner:
     name: str | Unset = UNSET
     operations: list[AppRunnerOperation] | Unset = UNSET
     org_id: str | Unset = UNSET
+    queues: list[AppQueue] | Unset = UNSET
     runner_group: AppRunnerGroup | Unset = UNSET
     runner_group_id: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
+    warnings: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,6 +89,13 @@ class AppRunner:
 
         org_id = self.org_id
 
+        queues: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.queues, Unset):
+            queues = []
+            for queues_item_data in self.queues:
+                queues_item = queues_item_data.to_dict()
+                queues.append(queues_item)
+
         runner_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_group, Unset):
             runner_group = self.runner_group.to_dict()
@@ -94,7 +110,15 @@ class AppRunner:
 
         status_description = self.status_description
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
+
+        warnings: list[str] | Unset = UNSET
+        if not isinstance(self.warnings, Unset):
+            warnings = self.warnings
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -115,6 +139,8 @@ class AppRunner:
             field_dict["operations"] = operations
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if queues is not UNSET:
+            field_dict["queues"] = queues
         if runner_group is not UNSET:
             field_dict["runner_group"] = runner_group
         if runner_group_id is not UNSET:
@@ -125,13 +151,19 @@ class AppRunner:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if warnings is not UNSET:
+            field_dict["warnings"] = warnings
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_queue import AppQueue
         from ..models.app_runner_group import AppRunnerGroup
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_runner_operation import AppRunnerOperation
@@ -167,6 +199,15 @@ class AppRunner:
 
         org_id = d.pop("org_id", UNSET)
 
+        _queues = d.pop("queues", UNSET)
+        queues: list[AppQueue] | Unset = UNSET
+        if _queues is not UNSET:
+            queues = []
+            for queues_item_data in _queues:
+                queues_item = AppQueue.from_dict(queues_item_data)
+
+                queues.append(queues_item)
+
         _runner_group = d.pop("runner_group", UNSET)
         runner_group: AppRunnerGroup | Unset
         if isinstance(_runner_group, Unset):
@@ -187,7 +228,16 @@ class AppRunner:
 
         status_description = d.pop("status_description", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
+
+        warnings = cast(list[str], d.pop("warnings", UNSET))
 
         app_runner = cls(
             created_at=created_at,
@@ -198,12 +248,15 @@ class AppRunner:
             name=name,
             operations=operations,
             org_id=org_id,
+            queues=queues,
             runner_group=runner_group,
             runner_group_id=runner_group_id,
             runner_job=runner_job,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             updated_at=updated_at,
+            warnings=warnings,
         )
 
         app_runner.additional_properties = d

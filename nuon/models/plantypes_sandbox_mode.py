@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.plantypes_helm_sandbox_mode import PlantypesHelmSandboxMode
     from ..models.plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode
+    from ..models.plantypes_pulumi_sandbox_mode import PlantypesPulumiSandboxMode
     from ..models.plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
     from ..models.plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
 
@@ -26,6 +27,7 @@ class PlantypesSandboxMode:
         helm (PlantypesHelmSandboxMode | Unset):
         kubernetes_manifest (PlantypesKubernetesSandboxMode | Unset):
         outputs (PlantypesSandboxModeOutputs | Unset):
+        pulumi (PlantypesPulumiSandboxMode | Unset):
         terraform (PlantypesTerraformSandboxMode | Unset):
     """
 
@@ -33,6 +35,7 @@ class PlantypesSandboxMode:
     helm: PlantypesHelmSandboxMode | Unset = UNSET
     kubernetes_manifest: PlantypesKubernetesSandboxMode | Unset = UNSET
     outputs: PlantypesSandboxModeOutputs | Unset = UNSET
+    pulumi: PlantypesPulumiSandboxMode | Unset = UNSET
     terraform: PlantypesTerraformSandboxMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -51,6 +54,10 @@ class PlantypesSandboxMode:
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
 
+        pulumi: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi, Unset):
+            pulumi = self.pulumi.to_dict()
+
         terraform: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform, Unset):
             terraform = self.terraform.to_dict()
@@ -66,6 +73,8 @@ class PlantypesSandboxMode:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
+        if pulumi is not UNSET:
+            field_dict["pulumi"] = pulumi
         if terraform is not UNSET:
             field_dict["terraform"] = terraform
 
@@ -75,6 +84,7 @@ class PlantypesSandboxMode:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.plantypes_helm_sandbox_mode import PlantypesHelmSandboxMode
         from ..models.plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode
+        from ..models.plantypes_pulumi_sandbox_mode import PlantypesPulumiSandboxMode
         from ..models.plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
         from ..models.plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
 
@@ -102,6 +112,13 @@ class PlantypesSandboxMode:
         else:
             outputs = PlantypesSandboxModeOutputs.from_dict(_outputs)
 
+        _pulumi = d.pop("pulumi", UNSET)
+        pulumi: PlantypesPulumiSandboxMode | Unset
+        if isinstance(_pulumi, Unset):
+            pulumi = UNSET
+        else:
+            pulumi = PlantypesPulumiSandboxMode.from_dict(_pulumi)
+
         _terraform = d.pop("terraform", UNSET)
         terraform: PlantypesTerraformSandboxMode | Unset
         if isinstance(_terraform, Unset):
@@ -114,6 +131,7 @@ class PlantypesSandboxMode:
             helm=helm,
             kubernetes_manifest=kubernetes_manifest,
             outputs=outputs,
+            pulumi=pulumi,
             terraform=terraform,
         )
 

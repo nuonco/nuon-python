@@ -13,6 +13,8 @@ from ..models.app_runner_job_type import AppRunnerJobType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_install_role_usage import AppInstallRoleUsage
     from ..models.app_runner_job_execution import AppRunnerJobExecution
     from ..models.app_runner_job_metadata import AppRunnerJobMetadata
     from ..models.app_runner_job_outputs import AppRunnerJobOutputs
@@ -39,6 +41,7 @@ class AppRunnerJob:
         finished_at (str | Unset):
         group (AppRunnerJobGroup | Unset):
         id (str | Unset):
+        install_role_usage (AppInstallRoleUsage | Unset):
         json (AppRunnerJobPlan | Unset):
         log_stream_id (str | Unset):
         max_executions (int | Unset):
@@ -52,9 +55,11 @@ class AppRunnerJob:
         owner_type (str | Unset):
         queue_timeout (int | Unset): queue timeout is how long a job can be queued, before being made available
         runner_id (str | Unset):
+        runner_process_id (str | Unset):
         started_at (str | Unset):
         status (AppRunnerJobStatus | Unset):
         status_description (str | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         type_ (AppRunnerJobType | Unset):
         updated_at (str | Unset):
     """
@@ -70,6 +75,7 @@ class AppRunnerJob:
     finished_at: str | Unset = UNSET
     group: AppRunnerJobGroup | Unset = UNSET
     id: str | Unset = UNSET
+    install_role_usage: AppInstallRoleUsage | Unset = UNSET
     json: AppRunnerJobPlan | Unset = UNSET
     log_stream_id: str | Unset = UNSET
     max_executions: int | Unset = UNSET
@@ -83,9 +89,11 @@ class AppRunnerJob:
     owner_type: str | Unset = UNSET
     queue_timeout: int | Unset = UNSET
     runner_id: str | Unset = UNSET
+    runner_process_id: str | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppRunnerJobStatus | Unset = UNSET
     status_description: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     type_: AppRunnerJobType | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -119,6 +127,10 @@ class AppRunnerJob:
             group = self.group.value
 
         id = self.id
+
+        install_role_usage: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.install_role_usage, Unset):
+            install_role_usage = self.install_role_usage.to_dict()
 
         json: dict[str, Any] | Unset = UNSET
         if not isinstance(self.json, Unset):
@@ -154,6 +166,8 @@ class AppRunnerJob:
 
         runner_id = self.runner_id
 
+        runner_process_id = self.runner_process_id
+
         started_at = self.started_at
 
         status: str | Unset = UNSET
@@ -161,6 +175,10 @@ class AppRunnerJob:
             status = self.status.value
 
         status_description = self.status_description
+
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
@@ -193,6 +211,8 @@ class AppRunnerJob:
             field_dict["group"] = group
         if id is not UNSET:
             field_dict["id"] = id
+        if install_role_usage is not UNSET:
+            field_dict["install_role_usage"] = install_role_usage
         if json is not UNSET:
             field_dict["json"] = json
         if log_stream_id is not UNSET:
@@ -219,12 +239,16 @@ class AppRunnerJob:
             field_dict["queue_timeout"] = queue_timeout
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
+        if runner_process_id is not UNSET:
+            field_dict["runner_process_id"] = runner_process_id
         if started_at is not UNSET:
             field_dict["started_at"] = started_at
         if status is not UNSET:
             field_dict["status"] = status
         if status_description is not UNSET:
             field_dict["status_description"] = status_description
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -234,6 +258,8 @@ class AppRunnerJob:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_install_role_usage import AppInstallRoleUsage
         from ..models.app_runner_job_execution import AppRunnerJobExecution
         from ..models.app_runner_job_metadata import AppRunnerJobMetadata
         from ..models.app_runner_job_outputs import AppRunnerJobOutputs
@@ -273,6 +299,13 @@ class AppRunnerJob:
             group = AppRunnerJobGroup(_group)
 
         id = d.pop("id", UNSET)
+
+        _install_role_usage = d.pop("install_role_usage", UNSET)
+        install_role_usage: AppInstallRoleUsage | Unset
+        if isinstance(_install_role_usage, Unset):
+            install_role_usage = UNSET
+        else:
+            install_role_usage = AppInstallRoleUsage.from_dict(_install_role_usage)
 
         _json = d.pop("json", UNSET)
         json: AppRunnerJobPlan | Unset
@@ -320,6 +353,8 @@ class AppRunnerJob:
 
         runner_id = d.pop("runner_id", UNSET)
 
+        runner_process_id = d.pop("runner_process_id", UNSET)
+
         started_at = d.pop("started_at", UNSET)
 
         _status = d.pop("status", UNSET)
@@ -330,6 +365,13 @@ class AppRunnerJob:
             status = AppRunnerJobStatus(_status)
 
         status_description = d.pop("status_description", UNSET)
+
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
         _type_ = d.pop("type", UNSET)
         type_: AppRunnerJobType | Unset
@@ -352,6 +394,7 @@ class AppRunnerJob:
             finished_at=finished_at,
             group=group,
             id=id,
+            install_role_usage=install_role_usage,
             json=json,
             log_stream_id=log_stream_id,
             max_executions=max_executions,
@@ -365,9 +408,11 @@ class AppRunnerJob:
             owner_type=owner_type,
             queue_timeout=queue_timeout,
             runner_id=runner_id,
+            runner_process_id=runner_process_id,
             started_at=started_at,
             status=status,
             status_description=status_description,
+            status_v2=status_v2,
             type_=type_,
             updated_at=updated_at,
         )
