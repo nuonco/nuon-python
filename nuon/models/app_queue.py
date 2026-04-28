@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_queue_emitter import AppQueueEmitter
     from ..models.app_queue_metadata import AppQueueMetadata
     from ..models.app_queue_signal import AppQueueSignal
@@ -35,6 +36,7 @@ class AppQueue:
         owner_id (str | Unset):
         owner_type (str | Unset):
         queue_signal (list[AppQueueSignal] | Unset):
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
         workflow (SignaldbWorkflowRef | Unset):
     """
@@ -52,6 +54,7 @@ class AppQueue:
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
     queue_signal: list[AppQueueSignal] | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow: SignaldbWorkflowRef | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -95,6 +98,10 @@ class AppQueue:
                 queue_signal_item = queue_signal_item_data.to_dict()
                 queue_signal.append(queue_signal_item)
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         workflow: dict[str, Any] | Unset = UNSET
@@ -130,6 +137,8 @@ class AppQueue:
             field_dict["owner_type"] = owner_type
         if queue_signal is not UNSET:
             field_dict["queue_signal"] = queue_signal
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflow is not UNSET:
@@ -139,6 +148,7 @@ class AppQueue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_queue_emitter import AppQueueEmitter
         from ..models.app_queue_metadata import AppQueueMetadata
         from ..models.app_queue_signal import AppQueueSignal
@@ -190,6 +200,13 @@ class AppQueue:
 
                 queue_signal.append(queue_signal_item)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         _workflow = d.pop("workflow", UNSET)
@@ -213,6 +230,7 @@ class AppQueue:
             owner_id=owner_id,
             owner_type=owner_type,
             queue_signal=queue_signal,
+            status_v2=status_v2,
             updated_at=updated_at,
             workflow=workflow,
         )
