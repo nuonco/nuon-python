@@ -6,6 +6,7 @@ class AppWorkflowType(str, Enum):
     APP_BRANCHES_COMPONENT_REPO_UPDATE = "app_branches_component_repo_update"
     APP_BRANCHES_CONFIG_REPO_UPDATE = "app_branches_config_repo_update"
     APP_BRANCHES_MANUAL_UPDATE = "app_branches_manual_update"
+    APP_CONFIG_BUILD = "app_config_build"
     DEPLOY_COMPONENTS = "deploy_components"
     DEPROVISION = "deprovision"
     DEPROVISION_SANDBOX = "deprovision_sandbox"

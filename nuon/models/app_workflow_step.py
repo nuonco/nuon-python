@@ -56,6 +56,8 @@ class AppWorkflowStep:
         skippable (bool | Unset):
         started_at (str | Unset):
         status (AppCompositeStatus | Unset):
+        step_queue_id (str | Unset): StepQueueID is the queue where the execute-workflow-step signal runs.
+            When empty, the group's default step queue is used.
         step_target_id (str | Unset): the following fields are set _once_ a step is in flight, and are orchestrated via
             the step's signal.
 
@@ -67,6 +69,8 @@ class AppWorkflowStep:
             install_deploy
             install_action_workflow_run (can be many of these)
         step_target_type (str | Unset):
+        target_queue_id (str | Unset): TargetQueueID is the queue where the inner signal (the actual work)
+            gets dispatched. When empty, the step signal's TargetQueueName is used.
         updated_at (str | Unset):
         workflow_id (str | Unset): Fields that are de-nested at read time using AfterQuery
         workflow_step_group_id (str | Unset): WorkflowStepGroupID links this step to its parent WorkflowStepGroup.
@@ -100,8 +104,10 @@ class AppWorkflowStep:
     skippable: bool | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
+    step_queue_id: str | Unset = UNSET
     step_target_id: str | Unset = UNSET
     step_target_type: str | Unset = UNSET
+    target_queue_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
     workflow_step_group_id: str | Unset = UNSET
@@ -180,9 +186,13 @@ class AppWorkflowStep:
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
+        step_queue_id = self.step_queue_id
+
         step_target_id = self.step_target_id
 
         step_target_type = self.step_target_type
+
+        target_queue_id = self.target_queue_id
 
         updated_at = self.updated_at
 
@@ -249,10 +259,14 @@ class AppWorkflowStep:
             field_dict["started_at"] = started_at
         if status is not UNSET:
             field_dict["status"] = status
+        if step_queue_id is not UNSET:
+            field_dict["step_queue_id"] = step_queue_id
         if step_target_id is not UNSET:
             field_dict["step_target_id"] = step_target_id
         if step_target_type is not UNSET:
             field_dict["step_target_type"] = step_target_type
+        if target_queue_id is not UNSET:
+            field_dict["target_queue_id"] = target_queue_id
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflow_id is not UNSET:
@@ -369,9 +383,13 @@ class AppWorkflowStep:
         else:
             status = AppCompositeStatus.from_dict(_status)
 
+        step_queue_id = d.pop("step_queue_id", UNSET)
+
         step_target_id = d.pop("step_target_id", UNSET)
 
         step_target_type = d.pop("step_target_type", UNSET)
+
+        target_queue_id = d.pop("target_queue_id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -408,8 +426,10 @@ class AppWorkflowStep:
             skippable=skippable,
             started_at=started_at,
             status=status,
+            step_queue_id=step_queue_id,
             step_target_id=step_target_id,
             step_target_type=step_target_type,
+            target_queue_id=target_queue_id,
             updated_at=updated_at,
             workflow_id=workflow_id,
             workflow_step_group_id=workflow_step_group_id,

@@ -23,6 +23,10 @@ class AppWorkflowStepGroup:
     Attributes:
         created_at (str | Unset):
         created_by_id (str | Unset):
+        eager_execution (bool | Unset): EagerExecution marks this group for early execution during step generation.
+            When set, the group is returned via the "eager-step-groups" update handler
+            before all groups have been generated, allowing execution to start sooner.
+            This field is not persisted to DB — it is only used during generation.
         group_idx (int | Unset):
         id (str | Unset):
         name (str | Unset):
@@ -37,6 +41,7 @@ class AppWorkflowStepGroup:
 
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    eager_execution: bool | Unset = UNSET
     group_idx: int | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -53,6 +58,8 @@ class AppWorkflowStepGroup:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        eager_execution = self.eager_execution
 
         group_idx = self.group_idx
 
@@ -90,6 +97,8 @@ class AppWorkflowStepGroup:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if eager_execution is not UNSET:
+            field_dict["eager_execution"] = eager_execution
         if group_idx is not UNSET:
             field_dict["group_idx"] = group_idx
         if id is not UNSET:
@@ -123,6 +132,8 @@ class AppWorkflowStepGroup:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        eager_execution = d.pop("eager_execution", UNSET)
 
         group_idx = d.pop("group_idx", UNSET)
 
@@ -164,6 +175,7 @@ class AppWorkflowStepGroup:
         app_workflow_step_group = cls(
             created_at=created_at,
             created_by_id=created_by_id,
+            eager_execution=eager_execution,
             group_idx=group_idx,
             id=id,
             name=name,
