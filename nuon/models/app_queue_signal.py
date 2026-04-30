@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_queue import AppQueue
+    from ..models.cctx_signal_context import CctxSignalContext
     from ..models.signaldb_signal_data import SignaldbSignalData
     from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
 
@@ -34,6 +35,7 @@ class AppQueueSignal:
         queue (AppQueue | Unset):
         queue_id (str | Unset):
         signal (SignaldbSignalData | Unset):
+        signal_context (CctxSignalContext | Unset):
         status (AppCompositeStatus | Unset):
         type_ (str | Unset):
         updated_at (str | Unset):
@@ -52,6 +54,7 @@ class AppQueueSignal:
     queue: AppQueue | Unset = UNSET
     queue_id: str | Unset = UNSET
     signal: SignaldbSignalData | Unset = UNSET
+    signal_context: CctxSignalContext | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
     type_: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -86,6 +89,10 @@ class AppQueueSignal:
         signal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.signal, Unset):
             signal = self.signal.to_dict()
+
+        signal_context: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.signal_context, Unset):
+            signal_context = self.signal_context.to_dict()
 
         status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
@@ -126,6 +133,8 @@ class AppQueueSignal:
             field_dict["queue_id"] = queue_id
         if signal is not UNSET:
             field_dict["signal"] = signal
+        if signal_context is not UNSET:
+            field_dict["signal_context"] = signal_context
         if status is not UNSET:
             field_dict["status"] = status
         if type_ is not UNSET:
@@ -141,6 +150,7 @@ class AppQueueSignal:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_queue import AppQueue
+        from ..models.cctx_signal_context import CctxSignalContext
         from ..models.signaldb_signal_data import SignaldbSignalData
         from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
 
@@ -179,6 +189,13 @@ class AppQueueSignal:
         else:
             signal = SignaldbSignalData.from_dict(_signal)
 
+        _signal_context = d.pop("signal_context", UNSET)
+        signal_context: CctxSignalContext | Unset
+        if isinstance(_signal_context, Unset):
+            signal_context = UNSET
+        else:
+            signal_context = CctxSignalContext.from_dict(_signal_context)
+
         _status = d.pop("status", UNSET)
         status: AppCompositeStatus | Unset
         if isinstance(_status, Unset):
@@ -210,6 +227,7 @@ class AppQueueSignal:
             queue=queue,
             queue_id=queue_id,
             signal=signal,
+            signal_context=signal_context,
             status=status,
             type_=type_,
             updated_at=updated_at,
