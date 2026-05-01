@@ -17,16 +17,20 @@ class SignaldbWorkflowRef:
     Attributes:
         id (str | Unset):
         namespace (str | Unset):
+        run_id (str | Unset):
     """
 
     id: str | Unset = UNSET
     namespace: str | Unset = UNSET
+    run_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
         namespace = self.namespace
+
+        run_id = self.run_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +39,8 @@ class SignaldbWorkflowRef:
             field_dict["id"] = id
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
+        if run_id is not UNSET:
+            field_dict["run_id"] = run_id
 
         return field_dict
 
@@ -45,9 +51,12 @@ class SignaldbWorkflowRef:
 
         namespace = d.pop("namespace", UNSET)
 
+        run_id = d.pop("run_id", UNSET)
+
         signaldb_workflow_ref = cls(
             id=id,
             namespace=namespace,
+            run_id=run_id,
         )
 
         signaldb_workflow_ref.additional_properties = d
