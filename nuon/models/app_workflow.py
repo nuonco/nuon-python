@@ -49,6 +49,11 @@ class AppWorkflow:
         metadata (AppWorkflowMetadata | Unset):
         name (str | Unset):
         owner_id (str | Unset):
+        owner_name (str | Unset): OwnerName is a derived, non-persisted convenience field. It is
+            populated by activities that need a human-readable owner label
+            (e.g. workflow lifecycle webhooks) via a small switch on OwnerType
+            — see PkgWorkflowsFlowGetFlow. Empty unless the loading path
+            explicitly fills it.
         owner_type (str | Unset):
         plan_only (bool | Unset):
         result_directive (str | Unset): ResultDirective is set by the currently executing group signal to communicate
@@ -83,6 +88,7 @@ class AppWorkflow:
     metadata: AppWorkflowMetadata | Unset = UNSET
     name: str | Unset = UNSET
     owner_id: str | Unset = UNSET
+    owner_name: str | Unset = UNSET
     owner_type: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
     result_directive: str | Unset = UNSET
@@ -161,6 +167,8 @@ class AppWorkflow:
         name = self.name
 
         owner_id = self.owner_id
+
+        owner_name = self.owner_name
 
         owner_type = self.owner_type
 
@@ -242,6 +250,8 @@ class AppWorkflow:
             field_dict["name"] = name
         if owner_id is not UNSET:
             field_dict["owner_id"] = owner_id
+        if owner_name is not UNSET:
+            field_dict["owner_name"] = owner_name
         if owner_type is not UNSET:
             field_dict["owner_type"] = owner_type
         if plan_only is not UNSET:
@@ -374,6 +384,8 @@ class AppWorkflow:
 
         owner_id = d.pop("owner_id", UNSET)
 
+        owner_name = d.pop("owner_name", UNSET)
+
         owner_type = d.pop("owner_type", UNSET)
 
         plan_only = d.pop("plan_only", UNSET)
@@ -447,6 +459,7 @@ class AppWorkflow:
             metadata=metadata,
             name=name,
             owner_id=owner_id,
+            owner_name=owner_name,
             owner_type=owner_type,
             plan_only=plan_only,
             result_directive=result_directive,

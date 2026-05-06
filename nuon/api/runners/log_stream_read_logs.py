@@ -15,6 +15,20 @@ def _get_kwargs(
     log_stream_id: str,
     *,
     order: str | Unset = "asc",
+    service_name: list[str] | Unset = UNSET,
+    scope_name: list[str] | Unset = UNSET,
+    severity_text: list[str] | Unset = UNSET,
+    tool: str | Unset = UNSET,
+    helm_release_name: str | Unset = UNSET,
+    helm_operation: str | Unset = UNSET,
+    tf_workspace_id: str | Unset = UNSET,
+    tf_operation: str | Unset = UNSET,
+    k8s_kind: str | Unset = UNSET,
+    k8s_namespace: str | Unset = UNSET,
+    k8s_name: str | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -24,6 +38,46 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["order"] = order
+
+    json_service_name: list[str] | Unset = UNSET
+    if not isinstance(service_name, Unset):
+        json_service_name = service_name
+
+    params["service_name"] = json_service_name
+
+    json_scope_name: list[str] | Unset = UNSET
+    if not isinstance(scope_name, Unset):
+        json_scope_name = scope_name
+
+    params["scope_name"] = json_scope_name
+
+    json_severity_text: list[str] | Unset = UNSET
+    if not isinstance(severity_text, Unset):
+        json_severity_text = severity_text
+
+    params["severity_text"] = json_severity_text
+
+    params["tool"] = tool
+
+    params["helm_release_name"] = helm_release_name
+
+    params["helm_operation"] = helm_operation
+
+    params["tf_workspace_id"] = tf_workspace_id
+
+    params["tf_operation"] = tf_operation
+
+    params["k8s_kind"] = k8s_kind
+
+    params["k8s_namespace"] = k8s_namespace
+
+    params["k8s_name"] = k8s_name
+
+    params["trace_id"] = trace_id
+
+    params["span_id"] = span_id
+
+    params["q"] = q
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -99,6 +153,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    service_name: list[str] | Unset = UNSET,
+    scope_name: list[str] | Unset = UNSET,
+    severity_text: list[str] | Unset = UNSET,
+    tool: str | Unset = UNSET,
+    helm_release_name: str | Unset = UNSET,
+    helm_operation: str | Unset = UNSET,
+    tf_workspace_id: str | Unset = UNSET,
+    tf_operation: str | Unset = UNSET,
+    k8s_kind: str | Unset = UNSET,
+    k8s_namespace: str | Unset = UNSET,
+    k8s_name: str | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
     """read a log stream's logs
@@ -108,6 +176,20 @@ def sync_detailed(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        service_name (list[str] | Unset):
+        scope_name (list[str] | Unset):
+        severity_text (list[str] | Unset):
+        tool (str | Unset):
+        helm_release_name (str | Unset):
+        helm_operation (str | Unset):
+        tf_workspace_id (str | Unset):
+        tf_operation (str | Unset):
+        k8s_kind (str | Unset):
+        k8s_namespace (str | Unset):
+        k8s_name (str | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
     Raises:
@@ -121,6 +203,20 @@ def sync_detailed(
     kwargs = _get_kwargs(
         log_stream_id=log_stream_id,
         order=order,
+        service_name=service_name,
+        scope_name=scope_name,
+        severity_text=severity_text,
+        tool=tool,
+        helm_release_name=helm_release_name,
+        helm_operation=helm_operation,
+        tf_workspace_id=tf_workspace_id,
+        tf_operation=tf_operation,
+        k8s_kind=k8s_kind,
+        k8s_namespace=k8s_namespace,
+        k8s_name=k8s_name,
+        trace_id=trace_id,
+        span_id=span_id,
+        q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     )
 
@@ -136,6 +232,20 @@ def sync(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    service_name: list[str] | Unset = UNSET,
+    scope_name: list[str] | Unset = UNSET,
+    severity_text: list[str] | Unset = UNSET,
+    tool: str | Unset = UNSET,
+    helm_release_name: str | Unset = UNSET,
+    helm_operation: str | Unset = UNSET,
+    tf_workspace_id: str | Unset = UNSET,
+    tf_operation: str | Unset = UNSET,
+    k8s_kind: str | Unset = UNSET,
+    k8s_namespace: str | Unset = UNSET,
+    k8s_name: str | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppOtelLogRecord] | None:
     """read a log stream's logs
@@ -145,6 +255,20 @@ def sync(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        service_name (list[str] | Unset):
+        scope_name (list[str] | Unset):
+        severity_text (list[str] | Unset):
+        tool (str | Unset):
+        helm_release_name (str | Unset):
+        helm_operation (str | Unset):
+        tf_workspace_id (str | Unset):
+        tf_operation (str | Unset):
+        k8s_kind (str | Unset):
+        k8s_namespace (str | Unset):
+        k8s_name (str | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
     Raises:
@@ -159,6 +283,20 @@ def sync(
         log_stream_id=log_stream_id,
         client=client,
         order=order,
+        service_name=service_name,
+        scope_name=scope_name,
+        severity_text=severity_text,
+        tool=tool,
+        helm_release_name=helm_release_name,
+        helm_operation=helm_operation,
+        tf_workspace_id=tf_workspace_id,
+        tf_operation=tf_operation,
+        k8s_kind=k8s_kind,
+        k8s_namespace=k8s_namespace,
+        k8s_name=k8s_name,
+        trace_id=trace_id,
+        span_id=span_id,
+        q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     ).parsed
 
@@ -168,6 +306,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    service_name: list[str] | Unset = UNSET,
+    scope_name: list[str] | Unset = UNSET,
+    severity_text: list[str] | Unset = UNSET,
+    tool: str | Unset = UNSET,
+    helm_release_name: str | Unset = UNSET,
+    helm_operation: str | Unset = UNSET,
+    tf_workspace_id: str | Unset = UNSET,
+    tf_operation: str | Unset = UNSET,
+    k8s_kind: str | Unset = UNSET,
+    k8s_namespace: str | Unset = UNSET,
+    k8s_name: str | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
     """read a log stream's logs
@@ -177,6 +329,20 @@ async def asyncio_detailed(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        service_name (list[str] | Unset):
+        scope_name (list[str] | Unset):
+        severity_text (list[str] | Unset):
+        tool (str | Unset):
+        helm_release_name (str | Unset):
+        helm_operation (str | Unset):
+        tf_workspace_id (str | Unset):
+        tf_operation (str | Unset):
+        k8s_kind (str | Unset):
+        k8s_namespace (str | Unset):
+        k8s_name (str | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
     Raises:
@@ -190,6 +356,20 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         log_stream_id=log_stream_id,
         order=order,
+        service_name=service_name,
+        scope_name=scope_name,
+        severity_text=severity_text,
+        tool=tool,
+        helm_release_name=helm_release_name,
+        helm_operation=helm_operation,
+        tf_workspace_id=tf_workspace_id,
+        tf_operation=tf_operation,
+        k8s_kind=k8s_kind,
+        k8s_namespace=k8s_namespace,
+        k8s_name=k8s_name,
+        trace_id=trace_id,
+        span_id=span_id,
+        q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     )
 
@@ -203,6 +383,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    service_name: list[str] | Unset = UNSET,
+    scope_name: list[str] | Unset = UNSET,
+    severity_text: list[str] | Unset = UNSET,
+    tool: str | Unset = UNSET,
+    helm_release_name: str | Unset = UNSET,
+    helm_operation: str | Unset = UNSET,
+    tf_workspace_id: str | Unset = UNSET,
+    tf_operation: str | Unset = UNSET,
+    k8s_kind: str | Unset = UNSET,
+    k8s_namespace: str | Unset = UNSET,
+    k8s_name: str | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppOtelLogRecord] | None:
     """read a log stream's logs
@@ -212,6 +406,20 @@ async def asyncio(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        service_name (list[str] | Unset):
+        scope_name (list[str] | Unset):
+        severity_text (list[str] | Unset):
+        tool (str | Unset):
+        helm_release_name (str | Unset):
+        helm_operation (str | Unset):
+        tf_workspace_id (str | Unset):
+        tf_operation (str | Unset):
+        k8s_kind (str | Unset):
+        k8s_namespace (str | Unset):
+        k8s_name (str | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
     Raises:
@@ -227,6 +435,20 @@ async def asyncio(
             log_stream_id=log_stream_id,
             client=client,
             order=order,
+            service_name=service_name,
+            scope_name=scope_name,
+            severity_text=severity_text,
+            tool=tool,
+            helm_release_name=helm_release_name,
+            helm_operation=helm_operation,
+            tf_workspace_id=tf_workspace_id,
+            tf_operation=tf_operation,
+            k8s_kind=k8s_kind,
+            k8s_namespace=k8s_namespace,
+            k8s_name=k8s_name,
+            trace_id=trace_id,
+            span_id=span_id,
+            q=q,
             x_nuon_api_offset=x_nuon_api_offset,
         )
     ).parsed

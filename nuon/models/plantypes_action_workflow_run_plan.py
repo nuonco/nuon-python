@@ -44,6 +44,7 @@ class PlantypesActionWorkflowRunPlan:
         override_env_vars (PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
         steps (list[PlantypesActionWorkflowRunStepPlan] | Unset):
+        timeout (int | Unset):
     """
 
     attrs: PlantypesActionWorkflowRunPlanAttrs | Unset = UNSET
@@ -57,6 +58,7 @@ class PlantypesActionWorkflowRunPlan:
     override_env_vars: PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     steps: list[PlantypesActionWorkflowRunStepPlan] | Unset = UNSET
+    timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -103,6 +105,8 @@ class PlantypesActionWorkflowRunPlan:
                 steps_item = steps_item_data.to_dict()
                 steps.append(steps_item)
 
+        timeout = self.timeout
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -128,6 +132,8 @@ class PlantypesActionWorkflowRunPlan:
             field_dict["sandbox_mode"] = sandbox_mode
         if steps is not UNSET:
             field_dict["steps"] = steps
+        if timeout is not UNSET:
+            field_dict["timeout"] = timeout
 
         return field_dict
 
@@ -223,6 +229,8 @@ class PlantypesActionWorkflowRunPlan:
 
                 steps.append(steps_item)
 
+        timeout = d.pop("timeout", UNSET)
+
         plantypes_action_workflow_run_plan = cls(
             attrs=attrs,
             aws_auth=aws_auth,
@@ -235,6 +243,7 @@ class PlantypesActionWorkflowRunPlan:
             override_env_vars=override_env_vars,
             sandbox_mode=sandbox_mode,
             steps=steps,
+            timeout=timeout,
         )
 
         plantypes_action_workflow_run_plan.additional_properties = d

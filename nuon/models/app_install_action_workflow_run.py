@@ -51,6 +51,7 @@ class AppInstallActionWorkflowRun:
         status_description (str | Unset):
         status_v2 (AppCompositeStatus | Unset):
         steps (list[AppInstallActionWorkflowRunStep] | Unset):
+        timeout (int | Unset):
         trigger_type (AppActionWorkflowTriggerType | Unset):
         triggered_by_id (str | Unset):
         triggered_by_type (str | Unset):
@@ -80,6 +81,7 @@ class AppInstallActionWorkflowRun:
     status_description: str | Unset = UNSET
     status_v2: AppCompositeStatus | Unset = UNSET
     steps: list[AppInstallActionWorkflowRunStep] | Unset = UNSET
+    timeout: int | Unset = UNSET
     trigger_type: AppActionWorkflowTriggerType | Unset = UNSET
     triggered_by_id: str | Unset = UNSET
     triggered_by_type: str | Unset = UNSET
@@ -154,6 +156,8 @@ class AppInstallActionWorkflowRun:
                 steps_item = steps_item_data.to_dict()
                 steps.append(steps_item)
 
+        timeout = self.timeout
+
         trigger_type: str | Unset = UNSET
         if not isinstance(self.trigger_type, Unset):
             trigger_type = self.trigger_type.value
@@ -215,6 +219,8 @@ class AppInstallActionWorkflowRun:
             field_dict["status_v2"] = status_v2
         if steps is not UNSET:
             field_dict["steps"] = steps
+        if timeout is not UNSET:
+            field_dict["timeout"] = timeout
         if trigger_type is not UNSET:
             field_dict["trigger_type"] = trigger_type
         if triggered_by_id is not UNSET:
@@ -339,6 +345,8 @@ class AppInstallActionWorkflowRun:
 
                 steps.append(steps_item)
 
+        timeout = d.pop("timeout", UNSET)
+
         _trigger_type = d.pop("trigger_type", UNSET)
         trigger_type: AppActionWorkflowTriggerType | Unset
         if isinstance(_trigger_type, Unset):
@@ -383,6 +391,7 @@ class AppInstallActionWorkflowRun:
             status_description=status_description,
             status_v2=status_v2,
             steps=steps,
+            timeout=timeout,
             trigger_type=trigger_type,
             triggered_by_id=triggered_by_id,
             triggered_by_type=triggered_by_type,

@@ -6,6 +6,9 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.service_update_runner_settings_request_aws_auth_method import (
+    ServiceUpdateRunnerSettingsRequestAwsAuthMethod,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -21,6 +24,7 @@ T = TypeVar("T", bound="ServiceUpdateRunnerSettingsRequest")
 class ServiceUpdateRunnerSettingsRequest:
     """
     Attributes:
+        aws_auth_method (ServiceUpdateRunnerSettingsRequestAwsAuthMethod | Unset):
         aws_max_instance_lifetime (int | Unset): Deprecated: no longer used. Instance refresh is handled by a backend
             cron.
         binary_version (str | Unset):
@@ -36,6 +40,7 @@ class ServiceUpdateRunnerSettingsRequest:
         vm_max_uptime (int | Unset):
     """
 
+    aws_auth_method: ServiceUpdateRunnerSettingsRequestAwsAuthMethod | Unset = UNSET
     aws_max_instance_lifetime: int | Unset = UNSET
     binary_version: str | Unset = UNSET
     container_image_tag: str | Unset = UNSET
@@ -49,6 +54,10 @@ class ServiceUpdateRunnerSettingsRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        aws_auth_method: str | Unset = UNSET
+        if not isinstance(self.aws_auth_method, Unset):
+            aws_auth_method = self.aws_auth_method.value
+
         aws_max_instance_lifetime = self.aws_max_instance_lifetime
 
         binary_version = self.binary_version
@@ -74,6 +83,8 @@ class ServiceUpdateRunnerSettingsRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if aws_auth_method is not UNSET:
+            field_dict["aws_auth_method"] = aws_auth_method
         if aws_max_instance_lifetime is not UNSET:
             field_dict["aws_max_instance_lifetime"] = aws_max_instance_lifetime
         if binary_version is not UNSET:
@@ -104,6 +115,13 @@ class ServiceUpdateRunnerSettingsRequest:
         )
 
         d = dict(src_dict)
+        _aws_auth_method = d.pop("aws_auth_method", UNSET)
+        aws_auth_method: ServiceUpdateRunnerSettingsRequestAwsAuthMethod | Unset
+        if isinstance(_aws_auth_method, Unset):
+            aws_auth_method = UNSET
+        else:
+            aws_auth_method = ServiceUpdateRunnerSettingsRequestAwsAuthMethod(_aws_auth_method)
+
         aws_max_instance_lifetime = d.pop("aws_max_instance_lifetime", UNSET)
 
         binary_version = d.pop("binary_version", UNSET)
@@ -132,6 +150,7 @@ class ServiceUpdateRunnerSettingsRequest:
         vm_max_uptime = d.pop("vm_max_uptime", UNSET)
 
         service_update_runner_settings_request = cls(
+            aws_auth_method=aws_auth_method,
             aws_max_instance_lifetime=aws_max_instance_lifetime,
             binary_version=binary_version,
             container_image_tag=container_image_tag,

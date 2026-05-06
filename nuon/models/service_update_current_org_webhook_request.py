@@ -9,31 +9,27 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.service_create_current_org_webhook_request_interests import (
-        ServiceCreateCurrentOrgWebhookRequestInterests,
+    from ..models.service_update_current_org_webhook_request_interests import (
+        ServiceUpdateCurrentOrgWebhookRequestInterests,
     )
 
 
-T = TypeVar("T", bound="ServiceCreateCurrentOrgWebhookRequest")
+T = TypeVar("T", bound="ServiceUpdateCurrentOrgWebhookRequest")
 
 
 @_attrs_define
-class ServiceCreateCurrentOrgWebhookRequest:
+class ServiceUpdateCurrentOrgWebhookRequest:
     """
     Attributes:
-        webhook_url (str):
-        interests (ServiceCreateCurrentOrgWebhookRequestInterests | Unset):
+        interests (ServiceUpdateCurrentOrgWebhookRequestInterests | Unset):
         webhook_secret (str | Unset):
     """
 
-    webhook_url: str
-    interests: ServiceCreateCurrentOrgWebhookRequestInterests | Unset = UNSET
+    interests: ServiceUpdateCurrentOrgWebhookRequestInterests | Unset = UNSET
     webhook_secret: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        webhook_url = self.webhook_url
-
         interests: dict[str, Any] | Unset = UNSET
         if not isinstance(self.interests, Unset):
             interests = self.interests.to_dict()
@@ -42,11 +38,7 @@ class ServiceCreateCurrentOrgWebhookRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "webhook_url": webhook_url,
-            }
-        )
+        field_dict.update({})
         if interests is not UNSET:
             field_dict["interests"] = interests
         if webhook_secret is not UNSET:
@@ -56,30 +48,27 @@ class ServiceCreateCurrentOrgWebhookRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_current_org_webhook_request_interests import (
-            ServiceCreateCurrentOrgWebhookRequestInterests,
+        from ..models.service_update_current_org_webhook_request_interests import (
+            ServiceUpdateCurrentOrgWebhookRequestInterests,
         )
 
         d = dict(src_dict)
-        webhook_url = d.pop("webhook_url")
-
         _interests = d.pop("interests", UNSET)
-        interests: ServiceCreateCurrentOrgWebhookRequestInterests | Unset
+        interests: ServiceUpdateCurrentOrgWebhookRequestInterests | Unset
         if isinstance(_interests, Unset):
             interests = UNSET
         else:
-            interests = ServiceCreateCurrentOrgWebhookRequestInterests.from_dict(_interests)
+            interests = ServiceUpdateCurrentOrgWebhookRequestInterests.from_dict(_interests)
 
         webhook_secret = d.pop("webhook_secret", UNSET)
 
-        service_create_current_org_webhook_request = cls(
-            webhook_url=webhook_url,
+        service_update_current_org_webhook_request = cls(
             interests=interests,
             webhook_secret=webhook_secret,
         )
 
-        service_create_current_org_webhook_request.additional_properties = d
-        return service_create_current_org_webhook_request
+        service_update_current_org_webhook_request.additional_properties = d
+        return service_update_current_org_webhook_request
 
     @property
     def additional_keys(self) -> list[str]:

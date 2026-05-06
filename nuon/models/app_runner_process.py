@@ -29,6 +29,7 @@ class AppRunnerProcess:
         labels (list[str] | Unset): Labels are computed server-side and not persisted.
         log_stream_id (str | Unset):
         org_id (str | Unset):
+        restart_requested (bool | Unset):
         runner_id (str | Unset):
         shutdowns (list[AppRunnerProcessShutdown] | Unset):
         started_at (str | Unset):
@@ -47,6 +48,7 @@ class AppRunnerProcess:
     labels: list[str] | Unset = UNSET
     log_stream_id: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    restart_requested: bool | Unset = UNSET
     runner_id: str | Unset = UNSET
     shutdowns: list[AppRunnerProcessShutdown] | Unset = UNSET
     started_at: str | Unset = UNSET
@@ -77,6 +79,8 @@ class AppRunnerProcess:
         log_stream_id = self.log_stream_id
 
         org_id = self.org_id
+
+        restart_requested = self.restart_requested
 
         runner_id = self.runner_id
 
@@ -122,6 +126,8 @@ class AppRunnerProcess:
             field_dict["log_stream_id"] = log_stream_id
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if restart_requested is not UNSET:
+            field_dict["restart_requested"] = restart_requested
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if shutdowns is not UNSET:
@@ -168,6 +174,8 @@ class AppRunnerProcess:
 
         org_id = d.pop("org_id", UNSET)
 
+        restart_requested = d.pop("restart_requested", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         _shutdowns = d.pop("shutdowns", UNSET)
@@ -205,6 +213,7 @@ class AppRunnerProcess:
             labels=labels,
             log_stream_id=log_stream_id,
             org_id=org_id,
+            restart_requested=restart_requested,
             runner_id=runner_id,
             shutdowns=shutdowns,
             started_at=started_at,
