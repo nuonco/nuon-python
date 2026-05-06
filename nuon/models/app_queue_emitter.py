@@ -30,6 +30,10 @@ class AppQueueEmitter:
         emit_count (int | Unset):
         fired (bool | Unset): For scheduled mode: whether the signal has been fired
         id (str | Unset):
+        jitter_window (int | Unset): For cron mode: spread emitter ticks deterministically across this window
+            to avoid thundering-herd when many emitters share a schedule. A hash of the
+            emitter ID determines each emitter's static offset within the window. Zero
+            disables jitter (default).
         last_emitted_at (str | Unset):
         mode (AppQueueEmitterMode | Unset):
         name (str | Unset): Emitter identity
@@ -51,6 +55,7 @@ class AppQueueEmitter:
     emit_count: int | Unset = UNSET
     fired: bool | Unset = UNSET
     id: str | Unset = UNSET
+    jitter_window: int | Unset = UNSET
     last_emitted_at: str | Unset = UNSET
     mode: AppQueueEmitterMode | Unset = UNSET
     name: str | Unset = UNSET
@@ -79,6 +84,8 @@ class AppQueueEmitter:
         fired = self.fired
 
         id = self.id
+
+        jitter_window = self.jitter_window
 
         last_emitted_at = self.last_emitted_at
 
@@ -129,6 +136,8 @@ class AppQueueEmitter:
             field_dict["fired"] = fired
         if id is not UNSET:
             field_dict["id"] = id
+        if jitter_window is not UNSET:
+            field_dict["jitter_window"] = jitter_window
         if last_emitted_at is not UNSET:
             field_dict["last_emitted_at"] = last_emitted_at
         if mode is not UNSET:
@@ -176,6 +185,8 @@ class AppQueueEmitter:
         fired = d.pop("fired", UNSET)
 
         id = d.pop("id", UNSET)
+
+        jitter_window = d.pop("jitter_window", UNSET)
 
         last_emitted_at = d.pop("last_emitted_at", UNSET)
 
@@ -229,6 +240,7 @@ class AppQueueEmitter:
             emit_count=emit_count,
             fired=fired,
             id=id,
+            jitter_window=jitter_window,
             last_emitted_at=last_emitted_at,
             mode=mode,
             name=name,

@@ -15,6 +15,7 @@ def _get_kwargs(
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
@@ -26,6 +27,8 @@ def _get_kwargs(
     params["q"] = q
 
     params["labels"] = labels
+
+    params["runner_id"] = runner_id
 
     params["limit"] = limit
 
@@ -103,6 +106,7 @@ def sync_detailed(
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -114,6 +118,7 @@ def sync_detailed(
         offset (int | Unset):  Default: 0.
         q (str | Unset):
         labels (str | Unset):
+        runner_id (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -129,6 +134,7 @@ def sync_detailed(
         offset=offset,
         q=q,
         labels=labels,
+        runner_id=runner_id,
         limit=limit,
         page=page,
     )
@@ -146,6 +152,7 @@ def sync(
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -157,6 +164,7 @@ def sync(
         offset (int | Unset):  Default: 0.
         q (str | Unset):
         labels (str | Unset):
+        runner_id (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -173,6 +181,7 @@ def sync(
         offset=offset,
         q=q,
         labels=labels,
+        runner_id=runner_id,
         limit=limit,
         page=page,
     ).parsed
@@ -184,6 +193,7 @@ async def asyncio_detailed(
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -195,6 +205,7 @@ async def asyncio_detailed(
         offset (int | Unset):  Default: 0.
         q (str | Unset):
         labels (str | Unset):
+        runner_id (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -210,6 +221,7 @@ async def asyncio_detailed(
         offset=offset,
         q=q,
         labels=labels,
+        runner_id=runner_id,
         limit=limit,
         page=page,
     )
@@ -225,6 +237,7 @@ async def asyncio(
     offset: int | Unset = 0,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -236,6 +249,7 @@ async def asyncio(
         offset (int | Unset):  Default: 0.
         q (str | Unset):
         labels (str | Unset):
+        runner_id (str | Unset):
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -253,6 +267,7 @@ async def asyncio(
             offset=offset,
             q=q,
             labels=labels,
+            runner_id=runner_id,
             limit=limit,
             page=page,
         )

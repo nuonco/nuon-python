@@ -33,6 +33,7 @@ class AppRunner:
         org_id (str | Unset):
         queues (list[AppQueue] | Unset): Queues holds per-job-group queues created when parallel-runner-jobs feature
             flag is enabled.
+        restart_requested (bool | Unset):
         runner_group (AppRunnerGroup | Unset):
         runner_group_id (str | Unset):
         runner_job (AppRunnerJob | Unset):
@@ -52,6 +53,7 @@ class AppRunner:
     operations: list[AppRunnerOperation] | Unset = UNSET
     org_id: str | Unset = UNSET
     queues: list[AppQueue] | Unset = UNSET
+    restart_requested: bool | Unset = UNSET
     runner_group: AppRunnerGroup | Unset = UNSET
     runner_group_id: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
@@ -95,6 +97,8 @@ class AppRunner:
             for queues_item_data in self.queues:
                 queues_item = queues_item_data.to_dict()
                 queues.append(queues_item)
+
+        restart_requested = self.restart_requested
 
         runner_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_group, Unset):
@@ -141,6 +145,8 @@ class AppRunner:
             field_dict["org_id"] = org_id
         if queues is not UNSET:
             field_dict["queues"] = queues
+        if restart_requested is not UNSET:
+            field_dict["restart_requested"] = restart_requested
         if runner_group is not UNSET:
             field_dict["runner_group"] = runner_group
         if runner_group_id is not UNSET:
@@ -208,6 +214,8 @@ class AppRunner:
 
                 queues.append(queues_item)
 
+        restart_requested = d.pop("restart_requested", UNSET)
+
         _runner_group = d.pop("runner_group", UNSET)
         runner_group: AppRunnerGroup | Unset
         if isinstance(_runner_group, Unset):
@@ -249,6 +257,7 @@ class AppRunner:
             operations=operations,
             org_id=org_id,
             queues=queues,
+            restart_requested=restart_requested,
             runner_group=runner_group,
             runner_group_id=runner_group_id,
             runner_job=runner_job,

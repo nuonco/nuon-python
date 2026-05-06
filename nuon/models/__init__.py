@@ -171,6 +171,7 @@ from .app_role_type import AppRoleType
 from .app_runner import AppRunner
 from .app_runner_group import AppRunnerGroup
 from .app_runner_group_settings import AppRunnerGroupSettings
+from .app_runner_group_settings_aws_auth_method import AppRunnerGroupSettingsAwsAuthMethod
 from .app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
 from .app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
 from .app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
@@ -376,7 +377,10 @@ from .service_branch import ServiceBranch
 from .service_breakdown_entry import ServiceBreakdownEntry
 from .service_build_all_components_request import ServiceBuildAllComponentsRequest
 from .service_cancel_runner_job_request import ServiceCancelRunnerJobRequest
+from .service_cancel_workflow_error import ServiceCancelWorkflowError
 from .service_cancel_workflow_step_response import ServiceCancelWorkflowStepResponse
+from .service_cancel_workflows_request import ServiceCancelWorkflowsRequest
+from .service_cancel_workflows_response import ServiceCancelWorkflowsResponse
 from .service_cli_config import ServiceCLIConfig
 from .service_complete_install_step_request import ServiceCompleteInstallStepRequest
 from .service_complete_install_step_request_aws_account import ServiceCompleteInstallStepRequestAwsAccount
@@ -432,6 +436,7 @@ from .service_create_component_request_labels import ServiceCreateComponentReque
 from .service_create_connection_callback_request import ServiceCreateConnectionCallbackRequest
 from .service_create_connection_request import ServiceCreateConnectionRequest
 from .service_create_current_org_webhook_request import ServiceCreateCurrentOrgWebhookRequest
+from .service_create_current_org_webhook_request_interests import ServiceCreateCurrentOrgWebhookRequestInterests
 from .service_create_docker_build_component_config_request import ServiceCreateDockerBuildComponentConfigRequest
 from .service_create_docker_build_component_config_request_env_vars import (
     ServiceCreateDockerBuildComponentConfigRequestEnvVars,
@@ -505,6 +510,7 @@ from .service_create_user_journey_step_req import ServiceCreateUserJourneyStepRe
 from .service_create_workflow_step_approval_response_request import ServiceCreateWorkflowStepApprovalResponseRequest
 from .service_create_workflow_step_approval_response_response import ServiceCreateWorkflowStepApprovalResponseResponse
 from .service_current_org_webhook_response import ServiceCurrentOrgWebhookResponse
+from .service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests
 from .service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
@@ -521,6 +527,8 @@ from .service_install_permissions_role_status import ServiceInstallPermissionsRo
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from .service_kustomize_config_request import ServiceKustomizeConfigRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
+from .service_log_stream_span import ServiceLogStreamSpan
+from .service_log_stream_span_attributes import ServiceLogStreamSpanAttributes
 from .service_mng_fetch_token_request import ServiceMngFetchTokenRequest
 from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
@@ -563,6 +571,8 @@ from .service_update_app_config_request import ServiceUpdateAppConfigRequest
 from .service_update_app_request import ServiceUpdateAppRequest
 from .service_update_component_request import ServiceUpdateComponentRequest
 from .service_update_component_request_labels import ServiceUpdateComponentRequestLabels
+from .service_update_current_org_webhook_request import ServiceUpdateCurrentOrgWebhookRequest
+from .service_update_current_org_webhook_request_interests import ServiceUpdateCurrentOrgWebhookRequestInterests
 from .service_update_install_config_request import ServiceUpdateInstallConfigRequest
 from .service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
 from .service_update_install_inputs_request import ServiceUpdateInstallInputsRequest
@@ -573,6 +583,7 @@ from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 from .service_update_org_request import ServiceUpdateOrgRequest
 from .service_update_runner_settings_request import ServiceUpdateRunnerSettingsRequest
+from .service_update_runner_settings_request_aws_auth_method import ServiceUpdateRunnerSettingsRequestAwsAuthMethod
 from .service_update_runner_settings_request_job_group_parallelism import (
     ServiceUpdateRunnerSettingsRequestJobGroupParallelism,
 )
@@ -785,6 +796,7 @@ __all__ = (
     "AppRunner",
     "AppRunnerGroup",
     "AppRunnerGroupSettings",
+    "AppRunnerGroupSettingsAwsAuthMethod",
     "AppRunnerGroupSettingsAwsTags",
     "AppRunnerGroupSettingsJobGroupParallelism",
     "AppRunnerGroupSettingsMetadata",
@@ -986,6 +998,9 @@ __all__ = (
     "ServiceBreakdownEntry",
     "ServiceBuildAllComponentsRequest",
     "ServiceCancelRunnerJobRequest",
+    "ServiceCancelWorkflowError",
+    "ServiceCancelWorkflowsRequest",
+    "ServiceCancelWorkflowsResponse",
     "ServiceCancelWorkflowStepResponse",
     "ServiceCLIConfig",
     "ServiceCompleteInstallStepRequest",
@@ -1036,6 +1051,7 @@ __all__ = (
     "ServiceCreateConnectionCallbackRequest",
     "ServiceCreateConnectionRequest",
     "ServiceCreateCurrentOrgWebhookRequest",
+    "ServiceCreateCurrentOrgWebhookRequestInterests",
     "ServiceCreateDockerBuildComponentConfigRequest",
     "ServiceCreateDockerBuildComponentConfigRequestEnvVars",
     "ServiceCreateDockerBuildComponentConfigRequestOperationRoles",
@@ -1085,6 +1101,7 @@ __all__ = (
     "ServiceCreateWorkflowStepApprovalResponseRequest",
     "ServiceCreateWorkflowStepApprovalResponseResponse",
     "ServiceCurrentOrgWebhookResponse",
+    "ServiceCurrentOrgWebhookResponseInterests",
     "ServiceDeployInstallComponentsRequest",
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
@@ -1101,6 +1118,8 @@ __all__ = (
     "ServiceInstallPhoneHomeRequest",
     "ServiceKustomizeConfigRequest",
     "ServiceLatestRunnerHeartBeats",
+    "ServiceLogStreamSpan",
+    "ServiceLogStreamSpanAttributes",
     "ServiceMngFetchTokenRequest",
     "ServiceMngRestartRequest",
     "ServiceMngShutDownRequest",
@@ -1143,6 +1162,8 @@ __all__ = (
     "ServiceUpdateAppRequest",
     "ServiceUpdateComponentRequest",
     "ServiceUpdateComponentRequestLabels",
+    "ServiceUpdateCurrentOrgWebhookRequest",
+    "ServiceUpdateCurrentOrgWebhookRequestInterests",
     "ServiceUpdateInstallConfigRequest",
     "ServiceUpdateInstallConfigRequestLabels",
     "ServiceUpdateInstallInputsRequest",
@@ -1153,6 +1174,7 @@ __all__ = (
     "ServiceUpdateOrgFeaturesRequestFeatures",
     "ServiceUpdateOrgRequest",
     "ServiceUpdateRunnerSettingsRequest",
+    "ServiceUpdateRunnerSettingsRequestAwsAuthMethod",
     "ServiceUpdateRunnerSettingsRequestJobGroupParallelism",
     "ServiceUpdateUserJourneyStepRequest",
     "ServiceUpdateUserJourneyStepRequestMetadata",

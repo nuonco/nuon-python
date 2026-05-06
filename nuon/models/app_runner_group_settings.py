@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_runner_group_settings_aws_auth_method import AppRunnerGroupSettingsAwsAuthMethod
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -21,6 +22,7 @@ T = TypeVar("T", bound="AppRunnerGroupSettings")
 class AppRunnerGroupSettings:
     """
     Attributes:
+        aws_auth_method (AppRunnerGroupSettingsAwsAuthMethod | Unset):
         aws_cloudformation_stack_type (str | Unset):
         aws_instance_type (str | Unset): aws runner specifics runner-v2
         aws_max_instance_lifetime (int | Unset): Deprecated: instance refresh is now handled by a backend cron, not ASG
@@ -62,6 +64,7 @@ class AppRunnerGroupSettings:
         vm_max_uptime (int | Unset):
     """
 
+    aws_auth_method: AppRunnerGroupSettingsAwsAuthMethod | Unset = UNSET
     aws_cloudformation_stack_type: str | Unset = UNSET
     aws_instance_type: str | Unset = UNSET
     aws_max_instance_lifetime: int | Unset = UNSET
@@ -98,6 +101,10 @@ class AppRunnerGroupSettings:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        aws_auth_method: str | Unset = UNSET
+        if not isinstance(self.aws_auth_method, Unset):
+            aws_auth_method = self.aws_auth_method.value
+
         aws_cloudformation_stack_type = self.aws_cloudformation_stack_type
 
         aws_instance_type = self.aws_instance_type
@@ -175,6 +182,8 @@ class AppRunnerGroupSettings:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if aws_auth_method is not UNSET:
+            field_dict["aws_auth_method"] = aws_auth_method
         if aws_cloudformation_stack_type is not UNSET:
             field_dict["aws_cloudformation_stack_type"] = aws_cloudformation_stack_type
         if aws_instance_type is not UNSET:
@@ -251,6 +260,13 @@ class AppRunnerGroupSettings:
         from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
 
         d = dict(src_dict)
+        _aws_auth_method = d.pop("aws_auth_method", UNSET)
+        aws_auth_method: AppRunnerGroupSettingsAwsAuthMethod | Unset
+        if isinstance(_aws_auth_method, Unset):
+            aws_auth_method = UNSET
+        else:
+            aws_auth_method = AppRunnerGroupSettingsAwsAuthMethod(_aws_auth_method)
+
         aws_cloudformation_stack_type = d.pop("aws_cloudformation_stack_type", UNSET)
 
         aws_instance_type = d.pop("aws_instance_type", UNSET)
@@ -333,6 +349,7 @@ class AppRunnerGroupSettings:
         vm_max_uptime = d.pop("vm_max_uptime", UNSET)
 
         app_runner_group_settings = cls(
+            aws_auth_method=aws_auth_method,
             aws_cloudformation_stack_type=aws_cloudformation_stack_type,
             aws_instance_type=aws_instance_type,
             aws_max_instance_lifetime=aws_max_instance_lifetime,

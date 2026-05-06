@@ -37,6 +37,11 @@ class AppInstallStackVersion:
         quick_link_url (str | Unset):
         runs (list[AppInstallStackVersionRun] | Unset):
         template_url (str | Unset):
+        terraform_checksum (str | Unset):
+        terraform_contents (str | Unset): On AWS, the install workflow renders BOTH a CloudFormation template and
+            a Terraform tfvars envelope. The CFN artifact lives in Contents/Checksum
+            (and is uploaded to S3 with TemplateURL/QuickLinkURL); the Terraform
+            artifact lives below. The dashboard shows both during the await step.
         updated_at (str | Unset):
     """
 
@@ -57,6 +62,8 @@ class AppInstallStackVersion:
     quick_link_url: str | Unset = UNSET
     runs: list[AppInstallStackVersionRun] | Unset = UNSET
     template_url: str | Unset = UNSET
+    terraform_checksum: str | Unset = UNSET
+    terraform_contents: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -102,6 +109,10 @@ class AppInstallStackVersion:
 
         template_url = self.template_url
 
+        terraform_checksum = self.terraform_checksum
+
+        terraform_contents = self.terraform_contents
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -141,6 +152,10 @@ class AppInstallStackVersion:
             field_dict["runs"] = runs
         if template_url is not UNSET:
             field_dict["template_url"] = template_url
+        if terraform_checksum is not UNSET:
+            field_dict["terraform_checksum"] = terraform_checksum
+        if terraform_contents is not UNSET:
+            field_dict["terraform_contents"] = terraform_contents
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -198,6 +213,10 @@ class AppInstallStackVersion:
 
         template_url = d.pop("template_url", UNSET)
 
+        terraform_checksum = d.pop("terraform_checksum", UNSET)
+
+        terraform_contents = d.pop("terraform_contents", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_install_stack_version = cls(
@@ -218,6 +237,8 @@ class AppInstallStackVersion:
             quick_link_url=quick_link_url,
             runs=runs,
             template_url=template_url,
+            terraform_checksum=terraform_checksum,
+            terraform_contents=terraform_contents,
             updated_at=updated_at,
         )
 
