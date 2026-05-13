@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
     from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
     from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
+    from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels
 
 
 T = TypeVar("T", bound="ServiceCreateInstallRequest")
@@ -30,6 +31,9 @@ class ServiceCreateInstallRequest:
         gcp_account (ServiceCreateInstallRequestGcpAccount | Unset):
         inputs (ServiceCreateInstallRequestInputs | Unset):
         install_config (HelpersCreateInstallConfigParams | Unset):
+        labels (ServiceCreateInstallRequestLabels | Unset): Labels are key/value pairs to attach to the install at
+            creation time.
+            They are merged into the install's existing labels (which is empty for a brand-new install).
         metadata (HelpersInstallMetadata | Unset):
     """
 
@@ -39,6 +43,7 @@ class ServiceCreateInstallRequest:
     gcp_account: ServiceCreateInstallRequestGcpAccount | Unset = UNSET
     inputs: ServiceCreateInstallRequestInputs | Unset = UNSET
     install_config: HelpersCreateInstallConfigParams | Unset = UNSET
+    labels: ServiceCreateInstallRequestLabels | Unset = UNSET
     metadata: HelpersInstallMetadata | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -65,6 +70,10 @@ class ServiceCreateInstallRequest:
         if not isinstance(self.install_config, Unset):
             install_config = self.install_config.to_dict()
 
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
+
         metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
@@ -86,6 +95,8 @@ class ServiceCreateInstallRequest:
             field_dict["inputs"] = inputs
         if install_config is not UNSET:
             field_dict["install_config"] = install_config
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
 
@@ -99,6 +110,7 @@ class ServiceCreateInstallRequest:
         from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
         from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
         from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
+        from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -138,6 +150,13 @@ class ServiceCreateInstallRequest:
         else:
             install_config = HelpersCreateInstallConfigParams.from_dict(_install_config)
 
+        _labels = d.pop("labels", UNSET)
+        labels: ServiceCreateInstallRequestLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = ServiceCreateInstallRequestLabels.from_dict(_labels)
+
         _metadata = d.pop("metadata", UNSET)
         metadata: HelpersInstallMetadata | Unset
         if isinstance(_metadata, Unset):
@@ -152,6 +171,7 @@ class ServiceCreateInstallRequest:
             gcp_account=gcp_account,
             inputs=inputs,
             install_config=install_config,
+            labels=labels,
             metadata=metadata,
         )
 

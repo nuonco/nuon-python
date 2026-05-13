@@ -1,33 +1,25 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.app_slack_channel_subscription import AppSlackChannelSubscription
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    connection_id: str,
-    *,
-    delete_github_app: bool | Unset = UNSET,
+    org_id: str,
 ) -> dict[str, Any]:
 
-    params: dict[str, Any] = {}
-
-    params["delete_github_app"] = delete_github_app
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
-        "method": "delete",
-        "url": "/v1/vcs/connections/{connection_id}".format(
-            connection_id=quote(str(connection_id), safe=""),
+        "method": "get",
+        "url": "/v1/orgs/{org_id}/slack/channel-subscriptions".format(
+            org_id=quote(str(org_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -35,10 +27,16 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | StderrErrResponse | None:
-    if response.status_code == 204:
-        response_204 = cast(Any, None)
-        return response_204
+) -> StderrErrResponse | list[AppSlackChannelSubscription] | None:
+    if response.status_code == 200:
+        response_200 = []
+        _response_200 = response.json()
+        for response_200_item_data in _response_200:
+            response_200_item = AppSlackChannelSubscription.from_dict(response_200_item_data)
+
+            response_200.append(response_200_item)
+
+        return response_200
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -49,16 +47,6 @@ def _parse_response(
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
-
-    if response.status_code == 404:
-        response_404 = StderrErrResponse.from_dict(response.json())
-
-        return response_404
 
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
@@ -73,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | StderrErrResponse]:
+) -> Response[StderrErrResponse | list[AppSlackChannelSubscription]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -83,30 +71,27 @@ def _build_response(
 
 
 def sync_detailed(
-    connection_id: str,
+    org_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
-) -> Response[Any | StderrErrResponse]:
-    """Deletes a VCS connection
+) -> Response[StderrErrResponse | list[AppSlackChannelSubscription]]:
+    """List Slack channel subscriptions for the current org
 
-     Delete a VCS connection.
+     Returns the per-channel routing rules belonging to the calling org's verified Slack org links.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | StderrErrResponse]
+        Response[StderrErrResponse | list[AppSlackChannelSubscription]]
     """
 
     kwargs = _get_kwargs(
-        connection_id=connection_id,
-        delete_github_app=delete_github_app,
+        org_id=org_id,
     )
 
     response = client.get_httpx_client().request(
@@ -117,59 +102,53 @@ def sync_detailed(
 
 
 def sync(
-    connection_id: str,
+    org_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
-) -> Any | StderrErrResponse | None:
-    """Deletes a VCS connection
+) -> StderrErrResponse | list[AppSlackChannelSubscription] | None:
+    """List Slack channel subscriptions for the current org
 
-     Delete a VCS connection.
+     Returns the per-channel routing rules belonging to the calling org's verified Slack org links.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | StderrErrResponse
+        StderrErrResponse | list[AppSlackChannelSubscription]
     """
 
     return sync_detailed(
-        connection_id=connection_id,
+        org_id=org_id,
         client=client,
-        delete_github_app=delete_github_app,
     ).parsed
 
 
 async def asyncio_detailed(
-    connection_id: str,
+    org_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
-) -> Response[Any | StderrErrResponse]:
-    """Deletes a VCS connection
+) -> Response[StderrErrResponse | list[AppSlackChannelSubscription]]:
+    """List Slack channel subscriptions for the current org
 
-     Delete a VCS connection.
+     Returns the per-channel routing rules belonging to the calling org's verified Slack org links.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | StderrErrResponse]
+        Response[StderrErrResponse | list[AppSlackChannelSubscription]]
     """
 
     kwargs = _get_kwargs(
-        connection_id=connection_id,
-        delete_github_app=delete_github_app,
+        org_id=org_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -178,31 +157,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    connection_id: str,
+    org_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
-) -> Any | StderrErrResponse | None:
-    """Deletes a VCS connection
+) -> StderrErrResponse | list[AppSlackChannelSubscription] | None:
+    """List Slack channel subscriptions for the current org
 
-     Delete a VCS connection.
+     Returns the per-channel routing rules belonging to the calling org's verified Slack org links.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | StderrErrResponse
+        StderrErrResponse | list[AppSlackChannelSubscription]
     """
 
     return (
         await asyncio_detailed(
-            connection_id=connection_id,
+            org_id=org_id,
             client=client,
-            delete_github_app=delete_github_app,
         )
     ).parsed

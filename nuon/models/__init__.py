@@ -124,6 +124,7 @@ from .app_install_stack_version_run import AppInstallStackVersionRun
 from .app_install_stack_version_run_data import AppInstallStackVersionRunData
 from .app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
 from .app_install_state import AppInstallState
+from .app_install_state_generate_source import AppInstallStateGenerateSource
 from .app_job_component_config import AppJobComponentConfig
 from .app_job_component_config_env_vars import AppJobComponentConfigEnvVars
 from .app_json_map import AppJSONMap
@@ -204,6 +205,13 @@ from .app_runner_process_shutdown_type import AppRunnerProcessShutdownType
 from .app_runner_process_type import AppRunnerProcessType
 from .app_runner_status import AppRunnerStatus
 from .app_sandbox_run_type import AppSandboxRunType
+from .app_slack_channel_subscription import AppSlackChannelSubscription
+from .app_slack_channel_subscription_interests import AppSlackChannelSubscriptionInterests
+from .app_slack_channel_subscription_match import AppSlackChannelSubscriptionMatch
+from .app_slack_installation import AppSlackInstallation
+from .app_slack_installation_status import AppSlackInstallationStatus
+from .app_slack_org_link import AppSlackOrgLink
+from .app_slack_org_link_status import AppSlackOrgLinkStatus
 from .app_stack_type import AppStackType
 from .app_status import AppStatus
 from .app_terraform_lock import AppTerraformLock
@@ -244,6 +252,7 @@ from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .blobstore_blob import BlobstoreBlob
 from .cctx_signal_context import CctxSignalContext
+from .client_conversation import ClientConversation
 from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
 from .config_custom_nested_stack import ConfigCustomNestedStack
@@ -430,6 +439,9 @@ from .service_create_app_sandbox_config_request_variables import ServiceCreateAp
 from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
 from .service_create_app_stack_config_request import ServiceCreateAppStackConfigRequest
+from .service_create_channel_subscription_request import ServiceCreateChannelSubscriptionRequest
+from .service_create_channel_subscription_request_interests import ServiceCreateChannelSubscriptionRequestInterests
+from .service_create_channel_subscription_request_match import ServiceCreateChannelSubscriptionRequestMatch
 from .service_create_component_build_request import ServiceCreateComponentBuildRequest
 from .service_create_component_request import ServiceCreateComponentRequest
 from .service_create_component_request_labels import ServiceCreateComponentRequestLabels
@@ -437,6 +449,7 @@ from .service_create_connection_callback_request import ServiceCreateConnectionC
 from .service_create_connection_request import ServiceCreateConnectionRequest
 from .service_create_current_org_webhook_request import ServiceCreateCurrentOrgWebhookRequest
 from .service_create_current_org_webhook_request_interests import ServiceCreateCurrentOrgWebhookRequestInterests
+from .service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
 from .service_create_docker_build_component_config_request import ServiceCreateDockerBuildComponentConfigRequest
 from .service_create_docker_build_component_config_request_env_vars import (
     ServiceCreateDockerBuildComponentConfigRequestEnvVars,
@@ -468,11 +481,13 @@ from .service_create_install_request_aws_account import ServiceCreateInstallRequ
 from .service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
 from .service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
 from .service_create_install_request_inputs import ServiceCreateInstallRequestInputs
+from .service_create_install_request_labels import ServiceCreateInstallRequestLabels
 from .service_create_install_v2_request import ServiceCreateInstallV2Request
 from .service_create_install_v2_request_aws_account import ServiceCreateInstallV2RequestAwsAccount
 from .service_create_install_v2_request_azure_account import ServiceCreateInstallV2RequestAzureAccount
 from .service_create_install_v2_request_gcp_account import ServiceCreateInstallV2RequestGcpAccount
 from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
+from .service_create_install_v2_request_labels import ServiceCreateInstallV2RequestLabels
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
 from .service_create_job_component_config_request_env_vars import ServiceCreateJobComponentConfigRequestEnvVars
 from .service_create_job_component_config_request_operation_roles import (
@@ -485,6 +500,7 @@ from .service_create_kubernetes_manifest_component_config_request_operation_role
     ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
 )
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
+from .service_create_org_link_request import ServiceCreateOrgLinkRequest
 from .service_create_org_request import ServiceCreateOrgRequest
 from .service_create_org_user_request import ServiceCreateOrgUserRequest
 from .service_create_pulumi_component_config_request import ServiceCreatePulumiComponentConfigRequest
@@ -511,6 +527,7 @@ from .service_create_workflow_step_approval_response_request import ServiceCreat
 from .service_create_workflow_step_approval_response_response import ServiceCreateWorkflowStepApprovalResponseResponse
 from .service_current_org_webhook_response import ServiceCurrentOrgWebhookResponse
 from .service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests
+from .service_current_org_webhook_response_match import ServiceCurrentOrgWebhookResponseMatch
 from .service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
@@ -519,6 +536,7 @@ from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
+from .service_get_install_url_response import ServiceGetInstallURLResponse
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
 from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
@@ -527,6 +545,7 @@ from .service_install_permissions_role_status import ServiceInstallPermissionsRo
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
 from .service_kustomize_config_request import ServiceKustomizeConfigRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
+from .service_list_channels_response import ServiceListChannelsResponse
 from .service_log_stream_span import ServiceLogStreamSpan
 from .service_log_stream_span_attributes import ServiceLogStreamSpanAttributes
 from .service_mng_fetch_token_request import ServiceMngFetchTokenRequest
@@ -558,6 +577,8 @@ from .service_series_point import ServiceSeriesPoint
 from .service_series_point_labels import ServiceSeriesPointLabels
 from .service_shutdown_runner_process_request import ServiceShutdownRunnerProcessRequest
 from .service_skip_workflow_step_response import ServiceSkipWorkflowStepResponse
+from .service_slack_challenge_response import ServiceSlackChallengeResponse
+from .service_slash_response import ServiceSlashResponse
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from .service_teardown_install_components_request import ServiceTeardownInstallComponentsRequest
@@ -569,10 +590,14 @@ from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
 from .service_update_app_request import ServiceUpdateAppRequest
+from .service_update_channel_subscription_request import ServiceUpdateChannelSubscriptionRequest
+from .service_update_channel_subscription_request_interests import ServiceUpdateChannelSubscriptionRequestInterests
+from .service_update_channel_subscription_request_match import ServiceUpdateChannelSubscriptionRequestMatch
 from .service_update_component_request import ServiceUpdateComponentRequest
 from .service_update_component_request_labels import ServiceUpdateComponentRequestLabels
 from .service_update_current_org_webhook_request import ServiceUpdateCurrentOrgWebhookRequest
 from .service_update_current_org_webhook_request_interests import ServiceUpdateCurrentOrgWebhookRequestInterests
+from .service_update_current_org_webhook_request_match import ServiceUpdateCurrentOrgWebhookRequestMatch
 from .service_update_install_config_request import ServiceUpdateInstallConfigRequest
 from .service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
 from .service_update_install_inputs_request import ServiceUpdateInstallInputsRequest
@@ -598,6 +623,9 @@ from .service_vcs_connection_status_response_permissions import ServiceVCSConnec
 from .service_waitlist_request import ServiceWaitlistRequest
 from .signaldb_signal_data import SignaldbSignalData
 from .signaldb_workflow_ref import SignaldbWorkflowRef
+from .slack_events_body import SlackEventsBody
+from .slack_interactions_body import SlackInteractionsBody
+from .slack_slash_command_body import SlackSlashCommandBody
 from .sql_null_bool import SqlNullBool
 from .state_action_workflow_state import StateActionWorkflowState
 from .state_action_workflow_state_outputs import StateActionWorkflowStateOutputs
@@ -623,6 +651,7 @@ from .state_sandbox_state_outputs import StateSandboxStateOutputs
 from .state_secrets_state import StateSecretsState
 from .stderr_err_response import StderrErrResponse
 from .types_string_bool_map import TypesStringBoolMap
+from .validate_token_response_200 import ValidateTokenResponse200
 
 __all__ = (
     "AppAccount",
@@ -749,6 +778,7 @@ __all__ = (
     "AppInstallStackVersionRunData",
     "AppInstallStackVersionRunDataContents",
     "AppInstallState",
+    "AppInstallStateGenerateSource",
     "AppJobComponentConfig",
     "AppJobComponentConfigEnvVars",
     "AppJSONMap",
@@ -827,6 +857,13 @@ __all__ = (
     "AppRunnerProcessType",
     "AppRunnerStatus",
     "AppSandboxRunType",
+    "AppSlackChannelSubscription",
+    "AppSlackChannelSubscriptionInterests",
+    "AppSlackChannelSubscriptionMatch",
+    "AppSlackInstallation",
+    "AppSlackInstallationStatus",
+    "AppSlackOrgLink",
+    "AppSlackOrgLinkStatus",
     "AppStackType",
     "AppStatus",
     "AppTerraformLock",
@@ -867,6 +904,7 @@ __all__ = (
     "AppWorkflowType",
     "BlobstoreBlob",
     "CctxSignalContext",
+    "ClientConversation",
     "ConfigAppPolicyEngine",
     "ConfigAppPolicyType",
     "ConfigCustomNestedStack",
@@ -1045,6 +1083,9 @@ __all__ = (
     "ServiceCreateAppSecretRequest",
     "ServiceCreateAppSecretsConfigRequest",
     "ServiceCreateAppStackConfigRequest",
+    "ServiceCreateChannelSubscriptionRequest",
+    "ServiceCreateChannelSubscriptionRequestInterests",
+    "ServiceCreateChannelSubscriptionRequestMatch",
     "ServiceCreateComponentBuildRequest",
     "ServiceCreateComponentRequest",
     "ServiceCreateComponentRequestLabels",
@@ -1052,6 +1093,7 @@ __all__ = (
     "ServiceCreateConnectionRequest",
     "ServiceCreateCurrentOrgWebhookRequest",
     "ServiceCreateCurrentOrgWebhookRequestInterests",
+    "ServiceCreateCurrentOrgWebhookRequestMatch",
     "ServiceCreateDockerBuildComponentConfigRequest",
     "ServiceCreateDockerBuildComponentConfigRequestEnvVars",
     "ServiceCreateDockerBuildComponentConfigRequestOperationRoles",
@@ -1073,17 +1115,20 @@ __all__ = (
     "ServiceCreateInstallRequestAzureAccount",
     "ServiceCreateInstallRequestGcpAccount",
     "ServiceCreateInstallRequestInputs",
+    "ServiceCreateInstallRequestLabels",
     "ServiceCreateInstallV2Request",
     "ServiceCreateInstallV2RequestAwsAccount",
     "ServiceCreateInstallV2RequestAzureAccount",
     "ServiceCreateInstallV2RequestGcpAccount",
     "ServiceCreateInstallV2RequestInputs",
+    "ServiceCreateInstallV2RequestLabels",
     "ServiceCreateJobComponentConfigRequest",
     "ServiceCreateJobComponentConfigRequestEnvVars",
     "ServiceCreateJobComponentConfigRequestOperationRoles",
     "ServiceCreateKubernetesManifestComponentConfigRequest",
     "ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles",
     "ServiceCreateOrgInviteRequest",
+    "ServiceCreateOrgLinkRequest",
     "ServiceCreateOrgRequest",
     "ServiceCreateOrgUserRequest",
     "ServiceCreatePulumiComponentConfigRequest",
@@ -1102,6 +1147,7 @@ __all__ = (
     "ServiceCreateWorkflowStepApprovalResponseResponse",
     "ServiceCurrentOrgWebhookResponse",
     "ServiceCurrentOrgWebhookResponseInterests",
+    "ServiceCurrentOrgWebhookResponseMatch",
     "ServiceDeployInstallComponentsRequest",
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
@@ -1110,6 +1156,7 @@ __all__ = (
     "ServiceForgetInstallComponentRequest",
     "ServiceForgetInstallRequest",
     "ServiceGcpGARImageConfigRequest",
+    "ServiceGetInstallURLResponse",
     "ServiceGracefulShutdownRequest",
     "ServiceHelmRepoConfigRequest",
     "ServiceInstallAppPermissionsConfigResponse",
@@ -1118,6 +1165,7 @@ __all__ = (
     "ServiceInstallPhoneHomeRequest",
     "ServiceKustomizeConfigRequest",
     "ServiceLatestRunnerHeartBeats",
+    "ServiceListChannelsResponse",
     "ServiceLogStreamSpan",
     "ServiceLogStreamSpanAttributes",
     "ServiceMngFetchTokenRequest",
@@ -1149,6 +1197,8 @@ __all__ = (
     "ServiceSeriesPointLabels",
     "ServiceShutdownRunnerProcessRequest",
     "ServiceSkipWorkflowStepResponse",
+    "ServiceSlackChallengeResponse",
+    "ServiceSlashResponse",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
     "ServiceTeardownInstallComponentsRequest",
@@ -1160,10 +1210,14 @@ __all__ = (
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",
     "ServiceUpdateAppRequest",
+    "ServiceUpdateChannelSubscriptionRequest",
+    "ServiceUpdateChannelSubscriptionRequestInterests",
+    "ServiceUpdateChannelSubscriptionRequestMatch",
     "ServiceUpdateComponentRequest",
     "ServiceUpdateComponentRequestLabels",
     "ServiceUpdateCurrentOrgWebhookRequest",
     "ServiceUpdateCurrentOrgWebhookRequestInterests",
+    "ServiceUpdateCurrentOrgWebhookRequestMatch",
     "ServiceUpdateInstallConfigRequest",
     "ServiceUpdateInstallConfigRequestLabels",
     "ServiceUpdateInstallInputsRequest",
@@ -1187,6 +1241,9 @@ __all__ = (
     "ServiceWaitlistRequest",
     "SignaldbSignalData",
     "SignaldbWorkflowRef",
+    "SlackEventsBody",
+    "SlackInteractionsBody",
+    "SlackSlashCommandBody",
     "SqlNullBool",
     "StateActionsState",
     "StateActionsStateWorkflows",
@@ -1212,4 +1269,5 @@ __all__ = (
     "StateSecretsState",
     "StderrErrResponse",
     "TypesStringBoolMap",
+    "ValidateTokenResponse200",
 )

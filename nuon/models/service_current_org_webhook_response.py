@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests
+    from ..models.service_current_org_webhook_response_match import ServiceCurrentOrgWebhookResponseMatch
 
 
 T = TypeVar("T", bound="ServiceCurrentOrgWebhookResponse")
@@ -24,6 +25,7 @@ class ServiceCurrentOrgWebhookResponse:
         has_secret (bool | Unset):
         id (str | Unset):
         interests (ServiceCurrentOrgWebhookResponseInterests | Unset):
+        match (ServiceCurrentOrgWebhookResponseMatch | Unset):
         org_id (str | Unset):
         updated_at (str | Unset):
         webhook_url (str | Unset):
@@ -34,6 +36,7 @@ class ServiceCurrentOrgWebhookResponse:
     has_secret: bool | Unset = UNSET
     id: str | Unset = UNSET
     interests: ServiceCurrentOrgWebhookResponseInterests | Unset = UNSET
+    match: ServiceCurrentOrgWebhookResponseMatch | Unset = UNSET
     org_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     webhook_url: str | Unset = UNSET
@@ -51,6 +54,10 @@ class ServiceCurrentOrgWebhookResponse:
         interests: dict[str, Any] | Unset = UNSET
         if not isinstance(self.interests, Unset):
             interests = self.interests.to_dict()
+
+        match: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.match, Unset):
+            match = self.match.to_dict()
 
         org_id = self.org_id
 
@@ -71,6 +78,8 @@ class ServiceCurrentOrgWebhookResponse:
             field_dict["id"] = id
         if interests is not UNSET:
             field_dict["interests"] = interests
+        if match is not UNSET:
+            field_dict["match"] = match
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if updated_at is not UNSET:
@@ -83,6 +92,7 @@ class ServiceCurrentOrgWebhookResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests
+        from ..models.service_current_org_webhook_response_match import ServiceCurrentOrgWebhookResponseMatch
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
@@ -100,6 +110,13 @@ class ServiceCurrentOrgWebhookResponse:
         else:
             interests = ServiceCurrentOrgWebhookResponseInterests.from_dict(_interests)
 
+        _match = d.pop("match", UNSET)
+        match: ServiceCurrentOrgWebhookResponseMatch | Unset
+        if isinstance(_match, Unset):
+            match = UNSET
+        else:
+            match = ServiceCurrentOrgWebhookResponseMatch.from_dict(_match)
+
         org_id = d.pop("org_id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -112,6 +129,7 @@ class ServiceCurrentOrgWebhookResponse:
             has_secret=has_secret,
             id=id,
             interests=interests,
+            match=match,
             org_id=org_id,
             updated_at=updated_at,
             webhook_url=webhook_url,

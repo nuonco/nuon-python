@@ -35,6 +35,9 @@ class AppWorkflowStepGroup:
         result_directive (str | Unset):
         status (AppCompositeStatus | Unset):
         steps (list[AppWorkflowStep] | Unset):
+        timeout (int | Unset): Timeout is the execution timeout for this group, derived from its
+            steps' timeouts. For sequential groups: sum of step timeouts. For parallel
+            groups: max of step timeouts. Zero means use default fallback.
         updated_at (str | Unset):
         workflow_id (str | Unset):
     """
@@ -50,6 +53,7 @@ class AppWorkflowStepGroup:
     result_directive: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
     steps: list[AppWorkflowStep] | Unset = UNSET
+    timeout: int | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -86,6 +90,8 @@ class AppWorkflowStepGroup:
                 steps_item = steps_item_data.to_dict()
                 steps.append(steps_item)
 
+        timeout = self.timeout
+
         updated_at = self.updated_at
 
         workflow_id = self.workflow_id
@@ -115,6 +121,8 @@ class AppWorkflowStepGroup:
             field_dict["status"] = status
         if steps is not UNSET:
             field_dict["steps"] = steps
+        if timeout is not UNSET:
+            field_dict["timeout"] = timeout
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflow_id is not UNSET:
@@ -168,6 +176,8 @@ class AppWorkflowStepGroup:
 
                 steps.append(steps_item)
 
+        timeout = d.pop("timeout", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         workflow_id = d.pop("workflow_id", UNSET)
@@ -184,6 +194,7 @@ class AppWorkflowStepGroup:
             result_directive=result_directive,
             status=status,
             steps=steps,
+            timeout=timeout,
             updated_at=updated_at,
             workflow_id=workflow_id,
         )
