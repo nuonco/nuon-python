@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.service_update_current_org_webhook_request_interests import (
         ServiceUpdateCurrentOrgWebhookRequestInterests,
     )
+    from ..models.service_update_current_org_webhook_request_match import ServiceUpdateCurrentOrgWebhookRequestMatch
 
 
 T = TypeVar("T", bound="ServiceUpdateCurrentOrgWebhookRequest")
@@ -22,10 +23,12 @@ class ServiceUpdateCurrentOrgWebhookRequest:
     """
     Attributes:
         interests (ServiceUpdateCurrentOrgWebhookRequestInterests | Unset):
+        match (ServiceUpdateCurrentOrgWebhookRequestMatch | Unset):
         webhook_secret (str | Unset):
     """
 
     interests: ServiceUpdateCurrentOrgWebhookRequestInterests | Unset = UNSET
+    match: ServiceUpdateCurrentOrgWebhookRequestMatch | Unset = UNSET
     webhook_secret: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,6 +37,10 @@ class ServiceUpdateCurrentOrgWebhookRequest:
         if not isinstance(self.interests, Unset):
             interests = self.interests.to_dict()
 
+        match: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.match, Unset):
+            match = self.match.to_dict()
+
         webhook_secret = self.webhook_secret
 
         field_dict: dict[str, Any] = {}
@@ -41,6 +48,8 @@ class ServiceUpdateCurrentOrgWebhookRequest:
         field_dict.update({})
         if interests is not UNSET:
             field_dict["interests"] = interests
+        if match is not UNSET:
+            field_dict["match"] = match
         if webhook_secret is not UNSET:
             field_dict["webhook_secret"] = webhook_secret
 
@@ -51,6 +60,7 @@ class ServiceUpdateCurrentOrgWebhookRequest:
         from ..models.service_update_current_org_webhook_request_interests import (
             ServiceUpdateCurrentOrgWebhookRequestInterests,
         )
+        from ..models.service_update_current_org_webhook_request_match import ServiceUpdateCurrentOrgWebhookRequestMatch
 
         d = dict(src_dict)
         _interests = d.pop("interests", UNSET)
@@ -60,10 +70,18 @@ class ServiceUpdateCurrentOrgWebhookRequest:
         else:
             interests = ServiceUpdateCurrentOrgWebhookRequestInterests.from_dict(_interests)
 
+        _match = d.pop("match", UNSET)
+        match: ServiceUpdateCurrentOrgWebhookRequestMatch | Unset
+        if isinstance(_match, Unset):
+            match = UNSET
+        else:
+            match = ServiceUpdateCurrentOrgWebhookRequestMatch.from_dict(_match)
+
         webhook_secret = d.pop("webhook_secret", UNSET)
 
         service_update_current_org_webhook_request = cls(
             interests=interests,
+            match=match,
             webhook_secret=webhook_secret,
         )
 

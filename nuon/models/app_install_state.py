@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_install_state_generate_source import AppInstallStateGenerateSource
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -23,6 +24,7 @@ class AppInstallState:
         contents (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        generated_by (AppInstallStateGenerateSource | Unset):
         id (str | Unset):
         install_id (str | Unset):
         stale_at (GenericsNullTime | Unset):
@@ -36,6 +38,7 @@ class AppInstallState:
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    generated_by: AppInstallStateGenerateSource | Unset = UNSET
     id: str | Unset = UNSET
     install_id: str | Unset = UNSET
     stale_at: GenericsNullTime | Unset = UNSET
@@ -53,6 +56,10 @@ class AppInstallState:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        generated_by: str | Unset = UNSET
+        if not isinstance(self.generated_by, Unset):
+            generated_by = self.generated_by.value
 
         id = self.id
 
@@ -81,6 +88,8 @@ class AppInstallState:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if generated_by is not UNSET:
+            field_dict["generated_by"] = generated_by
         if id is not UNSET:
             field_dict["id"] = id
         if install_id is not UNSET:
@@ -111,6 +120,13 @@ class AppInstallState:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        _generated_by = d.pop("generated_by", UNSET)
+        generated_by: AppInstallStateGenerateSource | Unset
+        if isinstance(_generated_by, Unset):
+            generated_by = UNSET
+        else:
+            generated_by = AppInstallStateGenerateSource(_generated_by)
+
         id = d.pop("id", UNSET)
 
         install_id = d.pop("install_id", UNSET)
@@ -135,6 +151,7 @@ class AppInstallState:
             contents=contents,
             created_at=created_at,
             created_by_id=created_by_id,
+            generated_by=generated_by,
             id=id,
             install_id=install_id,
             stale_at=stale_at,

@@ -71,6 +71,10 @@ class AppWorkflowStep:
         step_target_type (str | Unset):
         target_queue_id (str | Unset): TargetQueueID is the queue where the inner signal (the actual work)
             gets dispatched. When empty, the step signal's TargetQueueName is used.
+        timeout (int | Unset): Timeout is the execution timeout for this step, derived from the
+            inner signal's Timeout() at step generation time. Used by the step-group
+            to set ScheduleToCloseTimeout when awaiting step completion.
+            Zero means use default fallback.
         updated_at (str | Unset):
         workflow_id (str | Unset): Fields that are de-nested at read time using AfterQuery
         workflow_step_group_id (str | Unset): WorkflowStepGroupID links this step to its parent WorkflowStepGroup.
@@ -108,6 +112,7 @@ class AppWorkflowStep:
     step_target_id: str | Unset = UNSET
     step_target_type: str | Unset = UNSET
     target_queue_id: str | Unset = UNSET
+    timeout: int | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
     workflow_step_group_id: str | Unset = UNSET
@@ -194,6 +199,8 @@ class AppWorkflowStep:
 
         target_queue_id = self.target_queue_id
 
+        timeout = self.timeout
+
         updated_at = self.updated_at
 
         workflow_id = self.workflow_id
@@ -267,6 +274,8 @@ class AppWorkflowStep:
             field_dict["step_target_type"] = step_target_type
         if target_queue_id is not UNSET:
             field_dict["target_queue_id"] = target_queue_id
+        if timeout is not UNSET:
+            field_dict["timeout"] = timeout
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflow_id is not UNSET:
@@ -391,6 +400,8 @@ class AppWorkflowStep:
 
         target_queue_id = d.pop("target_queue_id", UNSET)
 
+        timeout = d.pop("timeout", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         workflow_id = d.pop("workflow_id", UNSET)
@@ -430,6 +441,7 @@ class AppWorkflowStep:
             step_target_id=step_target_id,
             step_target_type=step_target_type,
             target_queue_id=target_queue_id,
+            timeout=timeout,
             updated_at=updated_at,
             workflow_id=workflow_id,
             workflow_step_group_id=workflow_step_group_id,

@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.service_create_current_org_webhook_request_interests import (
         ServiceCreateCurrentOrgWebhookRequestInterests,
     )
+    from ..models.service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
 
 
 T = TypeVar("T", bound="ServiceCreateCurrentOrgWebhookRequest")
@@ -23,11 +24,13 @@ class ServiceCreateCurrentOrgWebhookRequest:
     Attributes:
         webhook_url (str):
         interests (ServiceCreateCurrentOrgWebhookRequestInterests | Unset):
+        match (ServiceCreateCurrentOrgWebhookRequestMatch | Unset):
         webhook_secret (str | Unset):
     """
 
     webhook_url: str
     interests: ServiceCreateCurrentOrgWebhookRequestInterests | Unset = UNSET
+    match: ServiceCreateCurrentOrgWebhookRequestMatch | Unset = UNSET
     webhook_secret: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,6 +40,10 @@ class ServiceCreateCurrentOrgWebhookRequest:
         interests: dict[str, Any] | Unset = UNSET
         if not isinstance(self.interests, Unset):
             interests = self.interests.to_dict()
+
+        match: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.match, Unset):
+            match = self.match.to_dict()
 
         webhook_secret = self.webhook_secret
 
@@ -49,6 +56,8 @@ class ServiceCreateCurrentOrgWebhookRequest:
         )
         if interests is not UNSET:
             field_dict["interests"] = interests
+        if match is not UNSET:
+            field_dict["match"] = match
         if webhook_secret is not UNSET:
             field_dict["webhook_secret"] = webhook_secret
 
@@ -59,6 +68,7 @@ class ServiceCreateCurrentOrgWebhookRequest:
         from ..models.service_create_current_org_webhook_request_interests import (
             ServiceCreateCurrentOrgWebhookRequestInterests,
         )
+        from ..models.service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
 
         d = dict(src_dict)
         webhook_url = d.pop("webhook_url")
@@ -70,11 +80,19 @@ class ServiceCreateCurrentOrgWebhookRequest:
         else:
             interests = ServiceCreateCurrentOrgWebhookRequestInterests.from_dict(_interests)
 
+        _match = d.pop("match", UNSET)
+        match: ServiceCreateCurrentOrgWebhookRequestMatch | Unset
+        if isinstance(_match, Unset):
+            match = UNSET
+        else:
+            match = ServiceCreateCurrentOrgWebhookRequestMatch.from_dict(_match)
+
         webhook_secret = d.pop("webhook_secret", UNSET)
 
         service_create_current_org_webhook_request = cls(
             webhook_url=webhook_url,
             interests=interests,
+            match=match,
             webhook_secret=webhook_secret,
         )
 

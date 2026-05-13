@@ -7,27 +7,20 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    connection_id: str,
-    *,
-    delete_github_app: bool | Unset = UNSET,
+    org_id: str,
+    sub_id: str,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["delete_github_app"] = delete_github_app
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/vcs/connections/{connection_id}".format(
-            connection_id=quote(str(connection_id), safe=""),
+        "url": "/v1/orgs/{org_id}/slack/channel-subscriptions/{sub_id}".format(
+            org_id=quote(str(org_id), safe=""),
+            sub_id=quote(str(sub_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -49,11 +42,6 @@ def _parse_response(
         response_401 = StderrErrResponse.from_dict(response.json())
 
         return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
 
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
@@ -83,18 +71,19 @@ def _build_response(
 
 
 def sync_detailed(
-    connection_id: str,
+    org_id: str,
+    sub_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    """Deletes a VCS connection
+    """Delete a Slack channel subscription
 
-     Delete a VCS connection.
+     Soft-deletes a SlackChannelSubscription belonging to the current org. ABAC scoped at the DB query so
+    callers cannot delete subscriptions outside their org.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
+        sub_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,8 +94,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        connection_id=connection_id,
-        delete_github_app=delete_github_app,
+        org_id=org_id,
+        sub_id=sub_id,
     )
 
     response = client.get_httpx_client().request(
@@ -117,18 +106,19 @@ def sync_detailed(
 
 
 def sync(
-    connection_id: str,
+    org_id: str,
+    sub_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    """Deletes a VCS connection
+    """Delete a Slack channel subscription
 
-     Delete a VCS connection.
+     Soft-deletes a SlackChannelSubscription belonging to the current org. ABAC scoped at the DB query so
+    callers cannot delete subscriptions outside their org.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
+        sub_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,25 +129,26 @@ def sync(
     """
 
     return sync_detailed(
-        connection_id=connection_id,
+        org_id=org_id,
+        sub_id=sub_id,
         client=client,
-        delete_github_app=delete_github_app,
     ).parsed
 
 
 async def asyncio_detailed(
-    connection_id: str,
+    org_id: str,
+    sub_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    """Deletes a VCS connection
+    """Delete a Slack channel subscription
 
-     Delete a VCS connection.
+     Soft-deletes a SlackChannelSubscription belonging to the current org. ABAC scoped at the DB query so
+    callers cannot delete subscriptions outside their org.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
+        sub_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,8 +159,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        connection_id=connection_id,
-        delete_github_app=delete_github_app,
+        org_id=org_id,
+        sub_id=sub_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -178,18 +169,19 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    connection_id: str,
+    org_id: str,
+    sub_id: str,
     *,
     client: AuthenticatedClient,
-    delete_github_app: bool | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    """Deletes a VCS connection
+    """Delete a Slack channel subscription
 
-     Delete a VCS connection.
+     Soft-deletes a SlackChannelSubscription belonging to the current org. ABAC scoped at the DB query so
+    callers cannot delete subscriptions outside their org.
 
     Args:
-        connection_id (str):
-        delete_github_app (bool | Unset):
+        org_id (str):
+        sub_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -201,8 +193,8 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            connection_id=connection_id,
+            org_id=org_id,
+            sub_id=sub_id,
             client=client,
-            delete_github_app=delete_github_app,
         )
     ).parsed
