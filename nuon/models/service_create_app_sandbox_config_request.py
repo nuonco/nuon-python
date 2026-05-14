@@ -33,6 +33,7 @@ class ServiceCreateAppSandboxConfigRequest:
         app_config_id (str | Unset):
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
         drift_schedule (str | Unset):
+        max_auto_retries (int | Unset):
         operation_roles (ServiceCreateAppSandboxConfigRequestOperationRoles | Unset):
         public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
@@ -45,6 +46,7 @@ class ServiceCreateAppSandboxConfigRequest:
     app_config_id: str | Unset = UNSET
     connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
@@ -65,6 +67,8 @@ class ServiceCreateAppSandboxConfigRequest:
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
 
         drift_schedule = self.drift_schedule
+
+        max_auto_retries = self.max_auto_retries
 
         operation_roles: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_roles, Unset):
@@ -97,6 +101,8 @@ class ServiceCreateAppSandboxConfigRequest:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
             field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
@@ -140,6 +146,8 @@ class ServiceCreateAppSandboxConfigRequest:
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         _operation_roles = d.pop("operation_roles", UNSET)
         operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset
         if isinstance(_operation_roles, Unset):
@@ -165,6 +173,7 @@ class ServiceCreateAppSandboxConfigRequest:
             app_config_id=app_config_id,
             connected_github_vcs_config=connected_github_vcs_config,
             drift_schedule=drift_schedule,
+            max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
