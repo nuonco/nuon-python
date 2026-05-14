@@ -34,6 +34,7 @@ class AppAppSandboxConfig:
         drift_schedule (str | Unset):
         env_vars (AppAppSandboxConfigEnvVars | Unset):
         id (str | Unset):
+        max_auto_retries (int | Unset):
         operation_roles (AppAppSandboxConfigOperationRoles | Unset): Operation roles map: operation type -> role name
         org_id (str | Unset):
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
@@ -55,6 +56,7 @@ class AppAppSandboxConfig:
     drift_schedule: str | Unset = UNSET
     env_vars: AppAppSandboxConfigEnvVars | Unset = UNSET
     id: str | Unset = UNSET
+    max_auto_retries: int | Unset = UNSET
     operation_roles: AppAppSandboxConfigOperationRoles | Unset = UNSET
     org_id: str | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
@@ -90,6 +92,8 @@ class AppAppSandboxConfig:
             env_vars = self.env_vars.to_dict()
 
         id = self.id
+
+        max_auto_retries = self.max_auto_retries
 
         operation_roles: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_roles, Unset):
@@ -147,6 +151,8 @@ class AppAppSandboxConfig:
             field_dict["env_vars"] = env_vars
         if id is not UNSET:
             field_dict["id"] = id
+        if max_auto_retries is not UNSET:
+            field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
             field_dict["operation_roles"] = operation_roles
         if org_id is not UNSET:
@@ -208,6 +214,8 @@ class AppAppSandboxConfig:
 
         id = d.pop("id", UNSET)
 
+        max_auto_retries = d.pop("max_auto_retries", UNSET)
+
         _operation_roles = d.pop("operation_roles", UNSET)
         operation_roles: AppAppSandboxConfigOperationRoles | Unset
         if isinstance(_operation_roles, Unset):
@@ -259,6 +267,7 @@ class AppAppSandboxConfig:
             drift_schedule=drift_schedule,
             env_vars=env_vars,
             id=id,
+            max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             org_id=org_id,
             public_git_vcs_config=public_git_vcs_config,
