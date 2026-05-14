@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,13 +17,13 @@ class PlantypesTerraformSandboxMode:
     Attributes:
         plan_contents (str | Unset): create the plan output
         plan_display_contents (str | Unset):
-        state_json (list[int] | Unset): needs to be the outputs of `terraform show -json`
+        state_json (str | Unset): needs to be the outputs of `terraform show -json`
         workspace_id (str | Unset):
     """
 
     plan_contents: str | Unset = UNSET
     plan_display_contents: str | Unset = UNSET
-    state_json: list[int] | Unset = UNSET
+    state_json: str | Unset = UNSET
     workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,9 +32,7 @@ class PlantypesTerraformSandboxMode:
 
         plan_display_contents = self.plan_display_contents
 
-        state_json: list[int] | Unset = UNSET
-        if not isinstance(self.state_json, Unset):
-            state_json = self.state_json
+        state_json = self.state_json
 
         workspace_id = self.workspace_id
 
@@ -59,7 +57,7 @@ class PlantypesTerraformSandboxMode:
 
         plan_display_contents = d.pop("plan_display_contents", UNSET)
 
-        state_json = cast(list[int], d.pop("state_json", UNSET))
+        state_json = d.pop("state_json", UNSET)
 
         workspace_id = d.pop("workspace_id", UNSET)
 
