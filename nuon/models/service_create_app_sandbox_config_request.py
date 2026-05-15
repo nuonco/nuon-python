@@ -31,12 +31,14 @@ class ServiceCreateAppSandboxConfigRequest:
         terraform_version (str):
         variables (ServiceCreateAppSandboxConfigRequestVariables):
         app_config_id (str | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
         drift_schedule (str | Unset):
         max_auto_retries (int | Unset):
         operation_roles (ServiceCreateAppSandboxConfigRequestOperationRoles | Unset):
         public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
+        skip_noops (bool | Unset):
         variables_files (list[str] | Unset):
     """
 
@@ -44,12 +46,14 @@ class ServiceCreateAppSandboxConfigRequest:
     terraform_version: str
     variables: ServiceCreateAppSandboxConfigRequestVariables
     app_config_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,6 +65,8 @@ class ServiceCreateAppSandboxConfigRequest:
         variables = self.variables.to_dict()
 
         app_config_id = self.app_config_id
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
@@ -82,6 +88,8 @@ class ServiceCreateAppSandboxConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        skip_noops = self.skip_noops
+
         variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
             variables_files = self.variables_files
@@ -97,6 +105,8 @@ class ServiceCreateAppSandboxConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if drift_schedule is not UNSET:
@@ -109,6 +119,8 @@ class ServiceCreateAppSandboxConfigRequest:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
             field_dict["references"] = references
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
         if variables_files is not UNSET:
             field_dict["variables_files"] = variables_files
 
@@ -137,6 +149,8 @@ class ServiceCreateAppSandboxConfigRequest:
 
         app_config_id = d.pop("app_config_id", UNSET)
 
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
+
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
         connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset
         if isinstance(_connected_github_vcs_config, Unset):
@@ -164,6 +178,8 @@ class ServiceCreateAppSandboxConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         variables_files = cast(list[str], d.pop("variables_files", UNSET))
 
         service_create_app_sandbox_config_request = cls(
@@ -171,12 +187,14 @@ class ServiceCreateAppSandboxConfigRequest:
             terraform_version=terraform_version,
             variables=variables,
             app_config_id=app_config_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             connected_github_vcs_config=connected_github_vcs_config,
             drift_schedule=drift_schedule,
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
+            skip_noops=skip_noops,
             variables_files=variables_files,
         )
 

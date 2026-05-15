@@ -28,6 +28,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     Attributes:
         dockerfile (str):
         app_config_id (str | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         build_args (list[str] | Unset):
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
@@ -39,11 +40,13 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         operation_roles (ServiceCreateDockerBuildComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
+        skip_noops (bool | Unset):
         target (str | Unset):
     """
 
     dockerfile: str
     app_config_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     build_args: list[str] | Unset = UNSET
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
@@ -55,6 +58,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     operation_roles: ServiceCreateDockerBuildComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     target: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -62,6 +66,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dockerfile = self.dockerfile
 
         app_config_id = self.app_config_id
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         build_args: list[str] | Unset = UNSET
         if not isinstance(self.build_args, Unset):
@@ -99,6 +105,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        skip_noops = self.skip_noops
+
         target = self.target
 
         field_dict: dict[str, Any] = {}
@@ -110,6 +118,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if build_args is not UNSET:
             field_dict["build_args"] = build_args
         if build_timeout is not UNSET:
@@ -132,6 +142,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
             field_dict["references"] = references
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
         if target is not UNSET:
             field_dict["target"] = target
 
@@ -152,6 +164,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         dockerfile = d.pop("dockerfile")
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
 
         build_args = cast(list[str], d.pop("build_args", UNSET))
 
@@ -195,11 +209,14 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         target = d.pop("target", UNSET)
 
         service_create_docker_build_component_config_request = cls(
             dockerfile=dockerfile,
             app_config_id=app_config_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             build_args=build_args,
             build_timeout=build_timeout,
             checksum=checksum,
@@ -211,6 +228,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
+            skip_noops=skip_noops,
             target=target,
         )
 

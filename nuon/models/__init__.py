@@ -274,6 +274,7 @@ from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_install_label_keys_response_200 import GetInstallLabelKeysResponse200
+from .get_queue_signal_graph_response_200 import GetQueueSignalGraphResponse200
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
 from .get_terraform_workspace_states_json_by_idv2_response_200 import GetTerraformWorkspaceStatesJSONByIDV2Response200
 from .get_workspace_state_json_raw_by_id_response_200 import GetWorkspaceStateJSONRawByIDResponse200
@@ -926,6 +927,7 @@ __all__ = (
     "GetInstallActionWorkflowOutputsResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetInstallLabelKeysResponse200",
+    "GetQueueSignalGraphResponse200",
     "GetTerraformWorkspaceStatesJSONByIDResponse200",
     "GetTerraformWorkspaceStatesJSONByIDV2Response200",
     "GetWorkspaceStateJSONRawByIDResponse200",

@@ -30,6 +30,7 @@ class AppComponentConfigConnection:
     Attributes:
         app_config_id (str | Unset):
         app_config_version (int | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h"). Max 1h.
         checksum (str | Unset):
         component_dependency_ids (list[str] | Unset):
@@ -51,6 +52,7 @@ class AppComponentConfigConnection:
         pulumi (AppPulumiComponentConfig | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
+        skip_noops (bool | Unset):
         terraform_module (AppTerraformModuleComponentConfig | Unset):
         type_ (AppComponentType | Unset):
         updated_at (str | Unset):
@@ -59,6 +61,7 @@ class AppComponentConfigConnection:
 
     app_config_id: str | Unset = UNSET
     app_config_version: int | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     component_dependency_ids: list[str] | Unset = UNSET
@@ -79,6 +82,7 @@ class AppComponentConfigConnection:
     pulumi: AppPulumiComponentConfig | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
     type_: AppComponentType | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -89,6 +93,8 @@ class AppComponentConfigConnection:
         app_config_id = self.app_config_id
 
         app_config_version = self.app_config_version
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         build_timeout = self.build_timeout
 
@@ -153,6 +159,8 @@ class AppComponentConfigConnection:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
 
+        skip_noops = self.skip_noops
+
         terraform_module: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_module, Unset):
             terraform_module = self.terraform_module.to_dict()
@@ -172,6 +180,8 @@ class AppComponentConfigConnection:
             field_dict["app_config_id"] = app_config_id
         if app_config_version is not UNSET:
             field_dict["app_config_version"] = app_config_version
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if build_timeout is not UNSET:
             field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
@@ -212,6 +222,8 @@ class AppComponentConfigConnection:
             field_dict["references"] = references
         if refs is not UNSET:
             field_dict["refs"] = refs
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
         if terraform_module is not UNSET:
             field_dict["terraform_module"] = terraform_module
         if type_ is not UNSET:
@@ -239,6 +251,8 @@ class AppComponentConfigConnection:
         app_config_id = d.pop("app_config_id", UNSET)
 
         app_config_version = d.pop("app_config_version", UNSET)
+
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
 
         build_timeout = d.pop("build_timeout", UNSET)
 
@@ -322,6 +336,8 @@ class AppComponentConfigConnection:
 
                 refs.append(refs_item)
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         _terraform_module = d.pop("terraform_module", UNSET)
         terraform_module: AppTerraformModuleComponentConfig | Unset
         if isinstance(_terraform_module, Unset):
@@ -343,6 +359,7 @@ class AppComponentConfigConnection:
         app_component_config_connection = cls(
             app_config_id=app_config_id,
             app_config_version=app_config_version,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             build_timeout=build_timeout,
             checksum=checksum,
             component_dependency_ids=component_dependency_ids,
@@ -363,6 +380,7 @@ class AppComponentConfigConnection:
             pulumi=pulumi,
             references=references,
             refs=refs,
+            skip_noops=skip_noops,
             terraform_module=terraform_module,
             type_=type_,
             updated_at=updated_at,
