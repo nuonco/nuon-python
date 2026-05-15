@@ -19,6 +19,7 @@ class AppStatus(str, Enum):
     DRIFTED = "drifted"
     ERROR = "error"
     EXPIRED = "expired"
+    FAILED_PENDING_RETRY = "failed-pending-retry"
     GENERATING = "generating"
     IN_PROGRESS = "in-progress"
     NOOP = "noop"

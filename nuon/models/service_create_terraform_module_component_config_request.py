@@ -32,6 +32,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         env_vars (ServiceCreateTerraformModuleComponentConfigRequestEnvVars):
         variables (ServiceCreateTerraformModuleComponentConfigRequestVariables):
         app_config_id (str | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
@@ -42,6 +43,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         operation_roles (ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
+        skip_noops (bool | Unset):
         variables_files (list[str] | Unset):
         version (str | Unset):
     """
@@ -49,6 +51,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     env_vars: ServiceCreateTerraformModuleComponentConfigRequestEnvVars
     variables: ServiceCreateTerraformModuleComponentConfigRequestVariables
     app_config_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
@@ -59,6 +62,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     operation_roles: ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
     version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -69,6 +73,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         variables = self.variables.to_dict()
 
         app_config_id = self.app_config_id
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         build_timeout = self.build_timeout
 
@@ -100,6 +106,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        skip_noops = self.skip_noops
+
         variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
             variables_files = self.variables_files
@@ -116,6 +124,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if build_timeout is not UNSET:
             field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
@@ -136,6 +146,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
             field_dict["references"] = references
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
         if variables_files is not UNSET:
             field_dict["variables_files"] = variables_files
         if version is not UNSET:
@@ -163,6 +175,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         variables = ServiceCreateTerraformModuleComponentConfigRequestVariables.from_dict(d.pop("variables"))
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
 
         build_timeout = d.pop("build_timeout", UNSET)
 
@@ -201,6 +215,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         variables_files = cast(list[str], d.pop("variables_files", UNSET))
 
         version = d.pop("version", UNSET)
@@ -209,6 +225,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             env_vars=env_vars,
             variables=variables,
             app_config_id=app_config_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
@@ -219,6 +236,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
+            skip_noops=skip_noops,
             variables_files=variables_files,
             version=version,
         )

@@ -26,6 +26,7 @@ class AppAppSandboxConfig:
     Attributes:
         app_config_id (str | Unset):
         app_id (str | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         aws_region_type (str | Unset): cloud specific fields
         cloud_platform (str | Unset): fields set via after query
         connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
@@ -40,6 +41,7 @@ class AppAppSandboxConfig:
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
+        skip_noops (bool | Unset):
         terraform_version (str | Unset):
         updated_at (str | Unset):
         variables (AppAppSandboxConfigVariables | Unset):
@@ -48,6 +50,7 @@ class AppAppSandboxConfig:
 
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     aws_region_type: str | Unset = UNSET
     cloud_platform: str | Unset = UNSET
     connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
@@ -62,6 +65,7 @@ class AppAppSandboxConfig:
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     terraform_version: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     variables: AppAppSandboxConfigVariables | Unset = UNSET
@@ -72,6 +76,8 @@ class AppAppSandboxConfig:
         app_config_id = self.app_config_id
 
         app_id = self.app_id
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         aws_region_type = self.aws_region_type
 
@@ -116,6 +122,8 @@ class AppAppSandboxConfig:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
 
+        skip_noops = self.skip_noops
+
         terraform_version = self.terraform_version
 
         updated_at = self.updated_at
@@ -135,6 +143,8 @@ class AppAppSandboxConfig:
             field_dict["app_config_id"] = app_config_id
         if app_id is not UNSET:
             field_dict["app_id"] = app_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if aws_region_type is not UNSET:
             field_dict["aws_region_type"] = aws_region_type
         if cloud_platform is not UNSET:
@@ -163,6 +173,8 @@ class AppAppSandboxConfig:
             field_dict["references"] = references
         if refs is not UNSET:
             field_dict["refs"] = refs
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
         if terraform_version is not UNSET:
             field_dict["terraform_version"] = terraform_version
         if updated_at is not UNSET:
@@ -187,6 +199,8 @@ class AppAppSandboxConfig:
         app_config_id = d.pop("app_config_id", UNSET)
 
         app_id = d.pop("app_id", UNSET)
+
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
 
         aws_region_type = d.pop("aws_region_type", UNSET)
 
@@ -243,6 +257,8 @@ class AppAppSandboxConfig:
 
                 refs.append(refs_item)
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         terraform_version = d.pop("terraform_version", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -259,6 +275,7 @@ class AppAppSandboxConfig:
         app_app_sandbox_config = cls(
             app_config_id=app_config_id,
             app_id=app_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             aws_region_type=aws_region_type,
             cloud_platform=cloud_platform,
             connected_github_vcs_config=connected_github_vcs_config,
@@ -273,6 +290,7 @@ class AppAppSandboxConfig:
             public_git_vcs_config=public_git_vcs_config,
             references=references,
             refs=refs,
+            skip_noops=skip_noops,
             terraform_version=terraform_version,
             updated_at=updated_at,
             variables=variables,

@@ -27,6 +27,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         image_url (str):
         tag (str):
         app_config_id (str | Unset):
+        auto_approve_on_policies_passing (bool | Unset):
         aws_ecr_image_config (ServiceAwsECRImageConfigRequest | Unset):
         azure_acr_image_config (ServiceAzureACRImageConfigRequest | Unset):
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
@@ -37,11 +38,13 @@ class ServiceCreateExternalImageComponentConfigRequest:
         max_auto_retries (int | Unset):
         operation_roles (ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
+        skip_noops (bool | Unset):
     """
 
     image_url: str
     tag: str
     app_config_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | Unset = UNSET
     aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset = UNSET
     azure_acr_image_config: ServiceAzureACRImageConfigRequest | Unset = UNSET
     build_timeout: str | Unset = UNSET
@@ -52,6 +55,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
     max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
+    skip_noops: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,6 +64,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
         tag = self.tag
 
         app_config_id = self.app_config_id
+
+        auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         aws_ecr_image_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_ecr_image_config, Unset):
@@ -93,6 +99,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        skip_noops = self.skip_noops
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -103,6 +111,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if aws_ecr_image_config is not UNSET:
             field_dict["aws_ecr_image_config"] = aws_ecr_image_config
         if azure_acr_image_config is not UNSET:
@@ -123,6 +133,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["operation_roles"] = operation_roles
         if references is not UNSET:
             field_dict["references"] = references
+        if skip_noops is not UNSET:
+            field_dict["skip_noops"] = skip_noops
 
         return field_dict
 
@@ -141,6 +153,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
         tag = d.pop("tag")
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        auto_approve_on_policies_passing = d.pop("auto_approve_on_policies_passing", UNSET)
 
         _aws_ecr_image_config = d.pop("aws_ecr_image_config", UNSET)
         aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset
@@ -182,10 +196,13 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        skip_noops = d.pop("skip_noops", UNSET)
+
         service_create_external_image_component_config_request = cls(
             image_url=image_url,
             tag=tag,
             app_config_id=app_config_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             aws_ecr_image_config=aws_ecr_image_config,
             azure_acr_image_config=azure_acr_image_config,
             build_timeout=build_timeout,
@@ -196,6 +213,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             references=references,
+            skip_noops=skip_noops,
         )
 
         service_create_external_image_component_config_request.additional_properties = d
