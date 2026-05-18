@@ -30,6 +30,7 @@ class AppInstallSandboxRun:
     Attributes:
         action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
         app_sandbox_config (AppAppSandboxConfig | Unset):
+        applied_at (str | Unset): AppliedAt is set when the apply runner job completes successfully.
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
@@ -39,6 +40,7 @@ class AppInstallSandboxRun:
         install_workflow_id (str | Unset):
         log_stream (AppLogStream | Unset):
         outputs (AppInstallSandboxRunOutputs | Unset):
+        planned_at (str | Unset): PlannedAt is set when the plan runner job completes successfully.
         policy_reports (list[AppPolicyReport] | Unset):
         role (str | Unset): Role to be used when planning and applying sandbox runs
         run_type (AppSandboxRunType | Unset):
@@ -53,6 +55,7 @@ class AppInstallSandboxRun:
 
     action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
     app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
+    applied_at: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -62,6 +65,7 @@ class AppInstallSandboxRun:
     install_workflow_id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     outputs: AppInstallSandboxRunOutputs | Unset = UNSET
+    planned_at: str | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
     role: str | Unset = UNSET
     run_type: AppSandboxRunType | Unset = UNSET
@@ -86,6 +90,8 @@ class AppInstallSandboxRun:
         if not isinstance(self.app_sandbox_config, Unset):
             app_sandbox_config = self.app_sandbox_config.to_dict()
 
+        applied_at = self.applied_at
+
         created_at = self.created_at
 
         created_by: dict[str, Any] | Unset = UNSET
@@ -109,6 +115,8 @@ class AppInstallSandboxRun:
         outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
+
+        planned_at = self.planned_at
 
         policy_reports: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policy_reports, Unset):
@@ -153,6 +161,8 @@ class AppInstallSandboxRun:
             field_dict["action_workflow_runs"] = action_workflow_runs
         if app_sandbox_config is not UNSET:
             field_dict["app_sandbox_config"] = app_sandbox_config
+        if applied_at is not UNSET:
+            field_dict["applied_at"] = applied_at
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by is not UNSET:
@@ -171,6 +181,8 @@ class AppInstallSandboxRun:
             field_dict["log_stream"] = log_stream
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
+        if planned_at is not UNSET:
+            field_dict["planned_at"] = planned_at
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
         if role is not UNSET:
@@ -223,6 +235,8 @@ class AppInstallSandboxRun:
         else:
             app_sandbox_config = AppAppSandboxConfig.from_dict(_app_sandbox_config)
 
+        applied_at = d.pop("applied_at", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         _created_by = d.pop("created_by", UNSET)
@@ -255,6 +269,8 @@ class AppInstallSandboxRun:
             outputs = UNSET
         else:
             outputs = AppInstallSandboxRunOutputs.from_dict(_outputs)
+
+        planned_at = d.pop("planned_at", UNSET)
 
         _policy_reports = d.pop("policy_reports", UNSET)
         policy_reports: list[AppPolicyReport] | Unset = UNSET
@@ -308,6 +324,7 @@ class AppInstallSandboxRun:
         app_install_sandbox_run = cls(
             action_workflow_runs=action_workflow_runs,
             app_sandbox_config=app_sandbox_config,
+            applied_at=applied_at,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
@@ -317,6 +334,7 @@ class AppInstallSandboxRun:
             install_workflow_id=install_workflow_id,
             log_stream=log_stream,
             outputs=outputs,
+            planned_at=planned_at,
             policy_reports=policy_reports,
             role=role,
             run_type=run_type,
