@@ -31,6 +31,7 @@ class AppInstallDeploy:
     """
     Attributes:
         action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
+        applied_at (str | Unset): AppliedAt is set when the apply runner job completes successfully.
         build_id (str | Unset):
         component_build (AppComponentBuild | Unset):
         component_config_version (int | Unset):
@@ -48,6 +49,7 @@ class AppInstallDeploy:
         oci_artifact (AppOCIArtifact | Unset):
         outputs (AppInstallDeployOutputs | Unset):
         plan_only (bool | Unset):
+        planned_at (str | Unset): PlannedAt is set when the plan runner job completes successfully.
         policy_reports (list[AppPolicyReport] | Unset):
         queue_signals (list[AppQueueSignal] | Unset):
         release_id (str | Unset):
@@ -62,6 +64,7 @@ class AppInstallDeploy:
     """
 
     action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
+    applied_at: str | Unset = UNSET
     build_id: str | Unset = UNSET
     component_build: AppComponentBuild | Unset = UNSET
     component_config_version: int | Unset = UNSET
@@ -79,6 +82,7 @@ class AppInstallDeploy:
     oci_artifact: AppOCIArtifact | Unset = UNSET
     outputs: AppInstallDeployOutputs | Unset = UNSET
     plan_only: bool | Unset = UNSET
+    planned_at: str | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
     queue_signals: list[AppQueueSignal] | Unset = UNSET
     release_id: str | Unset = UNSET
@@ -99,6 +103,8 @@ class AppInstallDeploy:
             for action_workflow_runs_item_data in self.action_workflow_runs:
                 action_workflow_runs_item = action_workflow_runs_item_data.to_dict()
                 action_workflow_runs.append(action_workflow_runs_item)
+
+        applied_at = self.applied_at
 
         build_id = self.build_id
 
@@ -146,6 +152,8 @@ class AppInstallDeploy:
 
         plan_only = self.plan_only
 
+        planned_at = self.planned_at
+
         policy_reports: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policy_reports, Unset):
             policy_reports = []
@@ -192,6 +200,8 @@ class AppInstallDeploy:
         field_dict.update({})
         if action_workflow_runs is not UNSET:
             field_dict["action_workflow_runs"] = action_workflow_runs
+        if applied_at is not UNSET:
+            field_dict["applied_at"] = applied_at
         if build_id is not UNSET:
             field_dict["build_id"] = build_id
         if component_build is not UNSET:
@@ -226,6 +236,8 @@ class AppInstallDeploy:
             field_dict["outputs"] = outputs
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if planned_at is not UNSET:
+            field_dict["planned_at"] = planned_at
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
         if queue_signals is not UNSET:
@@ -274,6 +286,8 @@ class AppInstallDeploy:
                 action_workflow_runs_item = AppInstallActionWorkflowRun.from_dict(action_workflow_runs_item_data)
 
                 action_workflow_runs.append(action_workflow_runs_item)
+
+        applied_at = d.pop("applied_at", UNSET)
 
         build_id = d.pop("build_id", UNSET)
 
@@ -339,6 +353,8 @@ class AppInstallDeploy:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        planned_at = d.pop("planned_at", UNSET)
+
         _policy_reports = d.pop("policy_reports", UNSET)
         policy_reports: list[AppPolicyReport] | Unset = UNSET
         if _policy_reports is not UNSET:
@@ -394,6 +410,7 @@ class AppInstallDeploy:
 
         app_install_deploy = cls(
             action_workflow_runs=action_workflow_runs,
+            applied_at=applied_at,
             build_id=build_id,
             component_build=component_build,
             component_config_version=component_config_version,
@@ -411,6 +428,7 @@ class AppInstallDeploy:
             oci_artifact=oci_artifact,
             outputs=outputs,
             plan_only=plan_only,
+            planned_at=planned_at,
             policy_reports=policy_reports,
             queue_signals=queue_signals,
             release_id=release_id,
