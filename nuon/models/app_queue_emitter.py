@@ -41,6 +41,8 @@ class AppQueueEmitter:
         org_id (str | Unset):
         queue_id (str | Unset): Many-to-one: each emitter belongs to exactly one queue
         scheduled_at (str | Unset): For scheduled mode: the time to fire the signal
+        signal_expires_in (int | Unset): Optional TTL for emitted signals. When set, each emitted signal's ExpiresAt
+            is computed as time.Now().Add(SignalExpiresIn) at emission time.
         signal_template (SignaldbSignalData | Unset):
         signal_type (str | Unset): Signal template - the signal to emit on each tick
         status (AppCompositeStatus | Unset):
@@ -63,6 +65,7 @@ class AppQueueEmitter:
     org_id: str | Unset = UNSET
     queue_id: str | Unset = UNSET
     scheduled_at: str | Unset = UNSET
+    signal_expires_in: int | Unset = UNSET
     signal_template: SignaldbSignalData | Unset = UNSET
     signal_type: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
@@ -102,6 +105,8 @@ class AppQueueEmitter:
         queue_id = self.queue_id
 
         scheduled_at = self.scheduled_at
+
+        signal_expires_in = self.signal_expires_in
 
         signal_template: dict[str, Any] | Unset = UNSET
         if not isinstance(self.signal_template, Unset):
@@ -152,6 +157,8 @@ class AppQueueEmitter:
             field_dict["queue_id"] = queue_id
         if scheduled_at is not UNSET:
             field_dict["scheduled_at"] = scheduled_at
+        if signal_expires_in is not UNSET:
+            field_dict["signal_expires_in"] = signal_expires_in
         if signal_template is not UNSET:
             field_dict["signal_template"] = signal_template
         if signal_type is not UNSET:
@@ -207,6 +214,8 @@ class AppQueueEmitter:
 
         scheduled_at = d.pop("scheduled_at", UNSET)
 
+        signal_expires_in = d.pop("signal_expires_in", UNSET)
+
         _signal_template = d.pop("signal_template", UNSET)
         signal_template: SignaldbSignalData | Unset
         if isinstance(_signal_template, Unset):
@@ -248,6 +257,7 @@ class AppQueueEmitter:
             org_id=org_id,
             queue_id=queue_id,
             scheduled_at=scheduled_at,
+            signal_expires_in=signal_expires_in,
             signal_template=signal_template,
             signal_type=signal_type,
             status=status,

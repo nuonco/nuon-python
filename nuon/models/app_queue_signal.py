@@ -28,6 +28,7 @@ class AppQueueSignal:
         emitter_id (str | Unset): Optional: if this signal was emitted by an emitter
         enqueued (bool | Unset):
         execution_count (int | Unset):
+        expires_at (str | Unset):
         id (str | Unset):
         org_id (str | Unset):
         owner_id (str | Unset):
@@ -47,6 +48,7 @@ class AppQueueSignal:
     emitter_id: str | Unset = UNSET
     enqueued: bool | Unset = UNSET
     execution_count: int | Unset = UNSET
+    expires_at: str | Unset = UNSET
     id: str | Unset = UNSET
     org_id: str | Unset = UNSET
     owner_id: str | Unset = UNSET
@@ -71,6 +73,8 @@ class AppQueueSignal:
         enqueued = self.enqueued
 
         execution_count = self.execution_count
+
+        expires_at = self.expires_at
 
         id = self.id
 
@@ -119,6 +123,8 @@ class AppQueueSignal:
             field_dict["enqueued"] = enqueued
         if execution_count is not UNSET:
             field_dict["execution_count"] = execution_count
+        if expires_at is not UNSET:
+            field_dict["expires_at"] = expires_at
         if id is not UNSET:
             field_dict["id"] = id
         if org_id is not UNSET:
@@ -164,6 +170,8 @@ class AppQueueSignal:
         enqueued = d.pop("enqueued", UNSET)
 
         execution_count = d.pop("execution_count", UNSET)
+
+        expires_at = d.pop("expires_at", UNSET)
 
         id = d.pop("id", UNSET)
 
@@ -220,6 +228,7 @@ class AppQueueSignal:
             emitter_id=emitter_id,
             enqueued=enqueued,
             execution_count=execution_count,
+            expires_at=expires_at,
             id=id,
             org_id=org_id,
             owner_id=owner_id,
