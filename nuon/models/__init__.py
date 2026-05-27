@@ -622,6 +622,9 @@ from .service_vcs_connection_repos_response import ServiceVCSConnectionReposResp
 from .service_vcs_connection_status_response import ServiceVCSConnectionStatusResponse
 from .service_vcs_connection_status_response_permissions import ServiceVCSConnectionStatusResponsePermissions
 from .service_waitlist_request import ServiceWaitlistRequest
+from .service_workflow_queue_item import ServiceWorkflowQueueItem
+from .service_workflow_queue_item_metadata import ServiceWorkflowQueueItemMetadata
+from .service_workflow_queue_position_response import ServiceWorkflowQueuePositionResponse
 from .signaldb_signal_data import SignaldbSignalData
 from .signaldb_workflow_ref import SignaldbWorkflowRef
 from .slack_events_body import SlackEventsBody
@@ -1241,6 +1244,9 @@ __all__ = (
     "ServiceVCSConnectionStatusResponse",
     "ServiceVCSConnectionStatusResponsePermissions",
     "ServiceWaitlistRequest",
+    "ServiceWorkflowQueueItem",
+    "ServiceWorkflowQueueItemMetadata",
+    "ServiceWorkflowQueuePositionResponse",
     "SignaldbSignalData",
     "SignaldbWorkflowRef",
     "SlackEventsBody",
