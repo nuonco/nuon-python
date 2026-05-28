@@ -22,6 +22,7 @@ def _get_kwargs(
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
+    search: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -41,6 +42,8 @@ def _get_kwargs(
     params["created_at_gte"] = created_at_gte
 
     params["created_at_lte"] = created_at_lte
+
+    params["search"] = search
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -122,6 +125,7 @@ def sync_detailed(
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
+    search: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
     """get workflows
 
@@ -137,6 +141,7 @@ def sync_detailed(
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
+        search (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -156,6 +161,7 @@ def sync_detailed(
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
+        search=search,
     )
 
     response = client.get_httpx_client().request(
@@ -177,6 +183,7 @@ def sync(
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
+    search: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
     """get workflows
 
@@ -192,6 +199,7 @@ def sync(
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
+        search (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -212,6 +220,7 @@ def sync(
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
+        search=search,
     ).parsed
 
 
@@ -227,6 +236,7 @@ async def asyncio_detailed(
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
+    search: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
     """get workflows
 
@@ -242,6 +252,7 @@ async def asyncio_detailed(
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
+        search (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -261,6 +272,7 @@ async def asyncio_detailed(
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
+        search=search,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -280,6 +292,7 @@ async def asyncio(
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
+    search: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
     """get workflows
 
@@ -295,6 +308,7 @@ async def asyncio(
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
+        search (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -316,5 +330,6 @@ async def asyncio(
             finished=finished,
             created_at_gte=created_at_gte,
             created_at_lte=created_at_lte,
+            search=search,
         )
     ).parsed

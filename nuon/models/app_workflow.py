@@ -47,7 +47,11 @@ class AppWorkflow:
         install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
         links (AppWorkflowLinks | Unset):
         metadata (AppWorkflowMetadata | Unset):
-        name (str | Unset):
+        name (str | Unset): Name is the human-readable workflow title shown in the UI (e.g.
+            "Deploying to install (rds_cluster_temporal)"). Populated by
+            BeforeSave via computeWorkflowName — callers that mutate Type,
+            Metadata, or FinishedAt must go through GORM (Save / struct-based
+            Updates) so the hook fires.
         owner_id (str | Unset):
         owner_name (str | Unset): OwnerName is a derived, non-persisted convenience field. It is
             populated by activities that need a human-readable owner label

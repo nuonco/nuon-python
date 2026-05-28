@@ -112,6 +112,8 @@ from .app_install_metadata import AppInstallMetadata
 from .app_install_role_selection_record import AppInstallRoleSelectionRecord
 from .app_install_role_usage import AppInstallRoleUsage
 from .app_install_roles import AppInstallRoles
+from .app_install_runbook import AppInstallRunbook
+from .app_install_runbook_run import AppInstallRunbookRun
 from .app_install_sandbox import AppInstallSandbox
 from .app_install_sandbox_run import AppInstallSandboxRun
 from .app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
@@ -169,6 +171,10 @@ from .app_queue_metadata import AppQueueMetadata
 from .app_queue_signal import AppQueueSignal
 from .app_role import AppRole
 from .app_role_type import AppRoleType
+from .app_runbook import AppRunbook
+from .app_runbook_config import AppRunbookConfig
+from .app_runbook_step_config import AppRunbookStepConfig
+from .app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
 from .app_runner import AppRunner
 from .app_runner_group import AppRunnerGroup
 from .app_runner_group_settings import AppRunnerGroupSettings
@@ -510,6 +516,11 @@ from .service_create_pulumi_component_config_request_env_vars import ServiceCrea
 from .service_create_pulumi_component_config_request_operation_roles import (
     ServiceCreatePulumiComponentConfigRequestOperationRoles,
 )
+from .service_create_runbook_config_request import ServiceCreateRunbookConfigRequest
+from .service_create_runbook_request import ServiceCreateRunbookRequest
+from .service_create_runbook_request_labels import ServiceCreateRunbookRequestLabels
+from .service_create_runbook_step_config_request import ServiceCreateRunbookStepConfigRequest
+from .service_create_runbook_step_config_request_env_vars import ServiceCreateRunbookStepConfigRequestEnvVars
 from .service_create_runner_bootstrap_token_response import ServiceCreateRunnerBootstrapTokenResponse
 from .service_create_terraform_module_component_config_request import ServiceCreateTerraformModuleComponentConfigRequest
 from .service_create_terraform_module_component_config_request_env_vars import (
@@ -608,6 +619,8 @@ from .service_update_install_role_request import ServiceUpdateInstallRoleRequest
 from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 from .service_update_org_request import ServiceUpdateOrgRequest
+from .service_update_runbook_request import ServiceUpdateRunbookRequest
+from .service_update_runbook_request_labels import ServiceUpdateRunbookRequestLabels
 from .service_update_runner_settings_request import ServiceUpdateRunnerSettingsRequest
 from .service_update_runner_settings_request_aws_auth_method import ServiceUpdateRunnerSettingsRequestAwsAuthMethod
 from .service_update_runner_settings_request_job_group_parallelism import (
@@ -770,6 +783,8 @@ __all__ = (
     "AppInstallRoles",
     "AppInstallRoleSelectionRecord",
     "AppInstallRoleUsage",
+    "AppInstallRunbook",
+    "AppInstallRunbookRun",
     "AppInstallSandbox",
     "AppInstallSandboxRun",
     "AppInstallSandboxRunOutputs",
@@ -827,6 +842,10 @@ __all__ = (
     "AppQueueSignal",
     "AppRole",
     "AppRoleType",
+    "AppRunbook",
+    "AppRunbookConfig",
+    "AppRunbookStepConfig",
+    "AppRunbookStepConfigEnvVars",
     "AppRunner",
     "AppRunnerGroup",
     "AppRunnerGroupSettings",
@@ -1140,6 +1159,11 @@ __all__ = (
     "ServiceCreatePulumiComponentConfigRequestConfig",
     "ServiceCreatePulumiComponentConfigRequestEnvVars",
     "ServiceCreatePulumiComponentConfigRequestOperationRoles",
+    "ServiceCreateRunbookConfigRequest",
+    "ServiceCreateRunbookRequest",
+    "ServiceCreateRunbookRequestLabels",
+    "ServiceCreateRunbookStepConfigRequest",
+    "ServiceCreateRunbookStepConfigRequestEnvVars",
     "ServiceCreateRunnerBootstrapTokenResponse",
     "ServiceCreateTerraformModuleComponentConfigRequest",
     "ServiceCreateTerraformModuleComponentConfigRequestEnvVars",
@@ -1232,6 +1256,8 @@ __all__ = (
     "ServiceUpdateOrgFeaturesRequest",
     "ServiceUpdateOrgFeaturesRequestFeatures",
     "ServiceUpdateOrgRequest",
+    "ServiceUpdateRunbookRequest",
+    "ServiceUpdateRunbookRequestLabels",
     "ServiceUpdateRunnerSettingsRequest",
     "ServiceUpdateRunnerSettingsRequestAwsAuthMethod",
     "ServiceUpdateRunnerSettingsRequestJobGroupParallelism",
