@@ -44,6 +44,7 @@ class PlantypesSandboxRunPlan:
         git_source (PlantypesGitSource | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
         install_id (str | Unset):
+        kyverno_policies_dir (str | Unset):
         local_archive (PlantypesTerraformLocalArchive | Unset):
         policies (PlantypesSandboxRunPlanPolicies | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
@@ -64,6 +65,7 @@ class PlantypesSandboxRunPlan:
     git_source: PlantypesGitSource | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
     install_id: str | Unset = UNSET
+    kyverno_policies_dir: str | Unset = UNSET
     local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
     policies: PlantypesSandboxRunPlanPolicies | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
@@ -109,6 +111,8 @@ class PlantypesSandboxRunPlan:
             hooks = self.hooks.to_dict()
 
         install_id = self.install_id
+
+        kyverno_policies_dir = self.kyverno_policies_dir
 
         local_archive: dict[str, Any] | Unset = UNSET
         if not isinstance(self.local_archive, Unset):
@@ -163,6 +167,8 @@ class PlantypesSandboxRunPlan:
             field_dict["hooks"] = hooks
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
+        if kyverno_policies_dir is not UNSET:
+            field_dict["kyverno_policies_dir"] = kyverno_policies_dir
         if local_archive is not UNSET:
             field_dict["local_archive"] = local_archive
         if policies is not UNSET:
@@ -254,6 +260,8 @@ class PlantypesSandboxRunPlan:
 
         install_id = d.pop("install_id", UNSET)
 
+        kyverno_policies_dir = d.pop("kyverno_policies_dir", UNSET)
+
         _local_archive = d.pop("local_archive", UNSET)
         local_archive: PlantypesTerraformLocalArchive | Unset
         if isinstance(_local_archive, Unset):
@@ -310,6 +318,7 @@ class PlantypesSandboxRunPlan:
             git_source=git_source,
             hooks=hooks,
             install_id=install_id,
+            kyverno_policies_dir=kyverno_policies_dir,
             local_archive=local_archive,
             policies=policies,
             sandbox_mode=sandbox_mode,

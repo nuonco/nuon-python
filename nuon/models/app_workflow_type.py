@@ -17,6 +17,7 @@ class AppWorkflowType(str, Enum):
     PROVISION = "provision"
     REPROVISION = "reprovision"
     REPROVISION_SANDBOX = "reprovision_sandbox"
+    RUNBOOK_RUN = "runbook_run"
     SYNC_SECRETS = "sync_secrets"
     TEARDOWN_COMPONENT = "teardown_component"
     TEARDOWN_COMPONENTS = "teardown_components"

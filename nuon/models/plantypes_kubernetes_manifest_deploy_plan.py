@@ -14,6 +14,7 @@ if TYPE_CHECKING:
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
     )
     from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
+    from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.kube_cluster_info import KubeClusterInfo
     from ..models.plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
 
@@ -34,6 +35,7 @@ class PlantypesKubernetesManifestDeployPlan:
             after pulling the OCI artifact during Initialize().
         namespace (str | Unset):
         oci_artifact (PlantypesOCIArtifactReference | Unset):
+        state (GithubComNuoncoNuonPkgTypesStateState | Unset):
     """
 
     aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
@@ -43,6 +45,7 @@ class PlantypesKubernetesManifestDeployPlan:
     manifest: str | Unset = UNSET
     namespace: str | Unset = UNSET
     oci_artifact: PlantypesOCIArtifactReference | Unset = UNSET
+    state: GithubComNuoncoNuonPkgTypesStateState | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +73,10 @@ class PlantypesKubernetesManifestDeployPlan:
         if not isinstance(self.oci_artifact, Unset):
             oci_artifact = self.oci_artifact.to_dict()
 
+        state: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -87,6 +94,8 @@ class PlantypesKubernetesManifestDeployPlan:
             field_dict["namespace"] = namespace
         if oci_artifact is not UNSET:
             field_dict["oci_artifact"] = oci_artifact
+        if state is not UNSET:
+            field_dict["state"] = state
 
         return field_dict
 
@@ -101,6 +110,7 @@ class PlantypesKubernetesManifestDeployPlan:
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
             GithubComNuoncoNuonPkgGcpCredentialsConfig,
         )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.kube_cluster_info import KubeClusterInfo
         from ..models.plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
 
@@ -144,6 +154,13 @@ class PlantypesKubernetesManifestDeployPlan:
         else:
             oci_artifact = PlantypesOCIArtifactReference.from_dict(_oci_artifact)
 
+        _state = d.pop("state", UNSET)
+        state: GithubComNuoncoNuonPkgTypesStateState | Unset
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = GithubComNuoncoNuonPkgTypesStateState.from_dict(_state)
+
         plantypes_kubernetes_manifest_deploy_plan = cls(
             aws_auth=aws_auth,
             azure_auth=azure_auth,
@@ -152,6 +169,7 @@ class PlantypesKubernetesManifestDeployPlan:
             manifest=manifest,
             namespace=namespace,
             oci_artifact=oci_artifact,
+            state=state,
         )
 
         plantypes_kubernetes_manifest_deploy_plan.additional_properties = d
