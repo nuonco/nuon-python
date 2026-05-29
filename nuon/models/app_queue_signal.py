@@ -25,6 +25,7 @@ class AppQueueSignal:
     """
     Attributes:
         callback (CallbackRef | Unset):
+        callbacks (list[CallbackRef] | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         emitter_id (str | Unset): Optional: if this signal was emitted by an emitter
@@ -46,6 +47,7 @@ class AppQueueSignal:
     """
 
     callback: CallbackRef | Unset = UNSET
+    callbacks: list[CallbackRef] | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     emitter_id: str | Unset = UNSET
@@ -70,6 +72,13 @@ class AppQueueSignal:
         callback: dict[str, Any] | Unset = UNSET
         if not isinstance(self.callback, Unset):
             callback = self.callback.to_dict()
+
+        callbacks: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.callbacks, Unset):
+            callbacks = []
+            for callbacks_item_data in self.callbacks:
+                callbacks_item = callbacks_item_data.to_dict()
+                callbacks.append(callbacks_item)
 
         created_at = self.created_at
 
@@ -122,6 +131,8 @@ class AppQueueSignal:
         field_dict.update({})
         if callback is not UNSET:
             field_dict["callback"] = callback
+        if callbacks is not UNSET:
+            field_dict["callbacks"] = callbacks
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -177,6 +188,15 @@ class AppQueueSignal:
             callback = UNSET
         else:
             callback = CallbackRef.from_dict(_callback)
+
+        _callbacks = d.pop("callbacks", UNSET)
+        callbacks: list[CallbackRef] | Unset = UNSET
+        if _callbacks is not UNSET:
+            callbacks = []
+            for callbacks_item_data in _callbacks:
+                callbacks_item = CallbackRef.from_dict(callbacks_item_data)
+
+                callbacks.append(callbacks_item)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -241,6 +261,7 @@ class AppQueueSignal:
 
         app_queue_signal = cls(
             callback=callback,
+            callbacks=callbacks,
             created_at=created_at,
             created_by_id=created_by_id,
             emitter_id=emitter_id,
