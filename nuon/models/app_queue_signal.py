@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_queue import AppQueue
+    from ..models.callback_ref import CallbackRef
     from ..models.cctx_signal_context import CctxSignalContext
     from ..models.signaldb_signal_data import SignaldbSignalData
     from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
@@ -23,6 +24,7 @@ T = TypeVar("T", bound="AppQueueSignal")
 class AppQueueSignal:
     """
     Attributes:
+        callback (CallbackRef | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         emitter_id (str | Unset): Optional: if this signal was emitted by an emitter
@@ -43,6 +45,7 @@ class AppQueueSignal:
         workflow (SignaldbWorkflowRef | Unset):
     """
 
+    callback: CallbackRef | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     emitter_id: str | Unset = UNSET
@@ -64,6 +67,10 @@ class AppQueueSignal:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        callback: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.callback, Unset):
+            callback = self.callback.to_dict()
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -113,6 +120,8 @@ class AppQueueSignal:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if callback is not UNSET:
+            field_dict["callback"] = callback
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -156,11 +165,19 @@ class AppQueueSignal:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_queue import AppQueue
+        from ..models.callback_ref import CallbackRef
         from ..models.cctx_signal_context import CctxSignalContext
         from ..models.signaldb_signal_data import SignaldbSignalData
         from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
 
         d = dict(src_dict)
+        _callback = d.pop("callback", UNSET)
+        callback: CallbackRef | Unset
+        if isinstance(_callback, Unset):
+            callback = UNSET
+        else:
+            callback = CallbackRef.from_dict(_callback)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -223,6 +240,7 @@ class AppQueueSignal:
             workflow = SignaldbWorkflowRef.from_dict(_workflow)
 
         app_queue_signal = cls(
+            callback=callback,
             created_at=created_at,
             created_by_id=created_by_id,
             emitter_id=emitter_id,
