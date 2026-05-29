@@ -257,6 +257,7 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .blobstore_blob import BlobstoreBlob
+from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
 from .config_app_policy_engine import ConfigAppPolicyEngine
@@ -926,6 +927,7 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "BlobstoreBlob",
+    "CallbackRef",
     "CctxSignalContext",
     "ClientConversation",
     "ConfigAppPolicyEngine",
