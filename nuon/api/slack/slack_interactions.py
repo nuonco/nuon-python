@@ -22,7 +22,6 @@ def _get_kwargs(
 
     if not isinstance(body, Unset):
         _kwargs["data"] = body.to_dict()
-
     headers["Content-Type"] = "application/x-www-form-urlencoded"
 
     _kwargs["headers"] = headers
