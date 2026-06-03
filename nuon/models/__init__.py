@@ -670,6 +670,7 @@ from .state_install_stack_state_outputs import StateInstallStackStateOutputs
 from .state_install_state import StateInstallState
 from .state_install_state_inputs import StateInstallStateInputs
 from .state_org_state import StateOrgState
+from .state_partial_name import StatePartialName
 from .state_runner_state import StateRunnerState
 from .state_sandbox_state import StateSandboxState
 from .state_sandbox_state_outputs import StateSandboxStateOutputs
@@ -1313,6 +1314,7 @@ __all__ = (
     "StateInstallState",
     "StateInstallStateInputs",
     "StateOrgState",
+    "StatePartialName",
     "StateRunnerState",
     "StateSandboxState",
     "StateSandboxStateOutputs",
