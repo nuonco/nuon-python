@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.app_install_state_generate_source import AppInstallStateGenerateSource
+from ..models.state_partial_name import StatePartialName
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -28,6 +29,8 @@ class AppInstallState:
         id (str | Unset):
         install_id (str | Unset):
         stale_at (GenericsNullTime | Unset):
+        stale_partials (list[StatePartialName] | Unset): StalePartials lists which state partials are stale and need
+            regeneration on next read.
         triggered_by_id (str | Unset):
         triggered_by_type (str | Unset):
         updated_at (str | Unset):
@@ -42,6 +45,7 @@ class AppInstallState:
     id: str | Unset = UNSET
     install_id: str | Unset = UNSET
     stale_at: GenericsNullTime | Unset = UNSET
+    stale_partials: list[StatePartialName] | Unset = UNSET
     triggered_by_id: str | Unset = UNSET
     triggered_by_type: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -68,6 +72,13 @@ class AppInstallState:
         stale_at: dict[str, Any] | Unset = UNSET
         if not isinstance(self.stale_at, Unset):
             stale_at = self.stale_at.to_dict()
+
+        stale_partials: list[str] | Unset = UNSET
+        if not isinstance(self.stale_partials, Unset):
+            stale_partials = []
+            for stale_partials_item_data in self.stale_partials:
+                stale_partials_item = stale_partials_item_data.value
+                stale_partials.append(stale_partials_item)
 
         triggered_by_id = self.triggered_by_id
 
@@ -96,6 +107,8 @@ class AppInstallState:
             field_dict["install_id"] = install_id
         if stale_at is not UNSET:
             field_dict["stale_at"] = stale_at
+        if stale_partials is not UNSET:
+            field_dict["stale_partials"] = stale_partials
         if triggered_by_id is not UNSET:
             field_dict["triggered_by_id"] = triggered_by_id
         if triggered_by_type is not UNSET:
@@ -138,6 +151,15 @@ class AppInstallState:
         else:
             stale_at = GenericsNullTime.from_dict(_stale_at)
 
+        _stale_partials = d.pop("stale_partials", UNSET)
+        stale_partials: list[StatePartialName] | Unset = UNSET
+        if _stale_partials is not UNSET:
+            stale_partials = []
+            for stale_partials_item_data in _stale_partials:
+                stale_partials_item = StatePartialName(stale_partials_item_data)
+
+                stale_partials.append(stale_partials_item)
+
         triggered_by_id = d.pop("triggered_by_id", UNSET)
 
         triggered_by_type = d.pop("triggered_by_type", UNSET)
@@ -155,6 +177,7 @@ class AppInstallState:
             id=id,
             install_id=install_id,
             stale_at=stale_at,
+            stale_partials=stale_partials,
             triggered_by_id=triggered_by_id,
             triggered_by_type=triggered_by_type,
             updated_at=updated_at,
