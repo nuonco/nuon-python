@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.plantypes_kubernetes_secret_sync_target import PlantypesKubernetesSecretSyncTarget
+
 
 T = TypeVar("T", bound="PlantypesKubernetesSecretSync")
 
@@ -22,9 +26,12 @@ class PlantypesKubernetesSecretSync:
         gcp_secret_name (str | Unset): projects/{project}/secrets/{id}/versions/latest
         key_name (str | Unset):
         name (str | Unset):
-        namespace (str | Unset):
+        namespace (str | Unset): v1 destination (single). Used when Targets is empty.
         secret_arn (str | Unset):
         secret_name (str | Unset): the name of the secret from the config
+        targets (list[PlantypesKubernetesSecretSyncTarget] | Unset): v2 destinations: when len(Targets) > 0 the runner
+            uses the v2 path and fans the shared source out across each
+            target's namespaces. The v1 fields above are ignored in that case.
     """
 
     azure_key_vault_secret_id: str | Unset = UNSET
@@ -35,6 +42,7 @@ class PlantypesKubernetesSecretSync:
     namespace: str | Unset = UNSET
     secret_arn: str | Unset = UNSET
     secret_name: str | Unset = UNSET
+    targets: list[PlantypesKubernetesSecretSyncTarget] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,6 +61,13 @@ class PlantypesKubernetesSecretSync:
         secret_arn = self.secret_arn
 
         secret_name = self.secret_name
+
+        targets: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.targets, Unset):
+            targets = []
+            for targets_item_data in self.targets:
+                targets_item = targets_item_data.to_dict()
+                targets.append(targets_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -73,11 +88,15 @@ class PlantypesKubernetesSecretSync:
             field_dict["secret_arn"] = secret_arn
         if secret_name is not UNSET:
             field_dict["secret_name"] = secret_name
+        if targets is not UNSET:
+            field_dict["targets"] = targets
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.plantypes_kubernetes_secret_sync_target import PlantypesKubernetesSecretSyncTarget
+
         d = dict(src_dict)
         azure_key_vault_secret_id = d.pop("azure_key_vault_secret_id", UNSET)
 
@@ -95,6 +114,15 @@ class PlantypesKubernetesSecretSync:
 
         secret_name = d.pop("secret_name", UNSET)
 
+        _targets = d.pop("targets", UNSET)
+        targets: list[PlantypesKubernetesSecretSyncTarget] | Unset = UNSET
+        if _targets is not UNSET:
+            targets = []
+            for targets_item_data in _targets:
+                targets_item = PlantypesKubernetesSecretSyncTarget.from_dict(targets_item_data)
+
+                targets.append(targets_item)
+
         plantypes_kubernetes_secret_sync = cls(
             azure_key_vault_secret_id=azure_key_vault_secret_id,
             format_=format_,
@@ -104,6 +132,7 @@ class PlantypesKubernetesSecretSync:
             namespace=namespace,
             secret_arn=secret_arn,
             secret_name=secret_name,
+            targets=targets,
         )
 
         plantypes_kubernetes_secret_sync.additional_properties = d

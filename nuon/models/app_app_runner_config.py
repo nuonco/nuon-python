@@ -32,6 +32,8 @@ class AppAppRunnerConfig:
         id (str | Unset):
         init_script (str | Unset): takes a URL to a bash script ⤵  which will be `curl | bash`-ed on the VM. usually via
             user-data or equivalent.
+        instance_type (str | Unset): InstanceType is the cloud machine/instance type for the install runner host, mapped
+            per cloud platform.
         org_id (str | Unset):
         updated_at (str | Unset):
     """
@@ -46,6 +48,7 @@ class AppAppRunnerConfig:
     helm_driver: str | Unset = UNSET
     id: str | Unset = UNSET
     init_script: str | Unset = UNSET
+    instance_type: str | Unset = UNSET
     org_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -77,6 +80,8 @@ class AppAppRunnerConfig:
 
         init_script = self.init_script
 
+        instance_type = self.instance_type
+
         org_id = self.org_id
 
         updated_at = self.updated_at
@@ -104,6 +109,8 @@ class AppAppRunnerConfig:
             field_dict["id"] = id
         if init_script is not UNSET:
             field_dict["init_script"] = init_script
+        if instance_type is not UNSET:
+            field_dict["instance_type"] = instance_type
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if updated_at is not UNSET:
@@ -151,6 +158,8 @@ class AppAppRunnerConfig:
 
         init_script = d.pop("init_script", UNSET)
 
+        instance_type = d.pop("instance_type", UNSET)
+
         org_id = d.pop("org_id", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -166,6 +175,7 @@ class AppAppRunnerConfig:
             helm_driver=helm_driver,
             id=id,
             init_script=init_script,
+            instance_type=instance_type,
             org_id=org_id,
             updated_at=updated_at,
         )

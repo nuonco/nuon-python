@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,19 +20,23 @@ class ServiceUpdateInstallInputsRequest:
     """
     Attributes:
         inputs (ServiceUpdateInstallInputsRequestInputs):
-        deploy_dependents (bool | Unset):
+        deploy_dependents (bool | None | Unset):
         role (str | Unset):
     """
 
     inputs: ServiceUpdateInstallInputsRequestInputs
-    deploy_dependents: bool | Unset = UNSET
+    deploy_dependents: bool | None | Unset = UNSET
     role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         inputs = self.inputs.to_dict()
 
-        deploy_dependents = self.deploy_dependents
+        deploy_dependents: bool | None | Unset
+        if isinstance(self.deploy_dependents, Unset):
+            deploy_dependents = UNSET
+        else:
+            deploy_dependents = self.deploy_dependents
 
         role = self.role
 
@@ -57,7 +61,14 @@ class ServiceUpdateInstallInputsRequest:
         d = dict(src_dict)
         inputs = ServiceUpdateInstallInputsRequestInputs.from_dict(d.pop("inputs"))
 
-        deploy_dependents = d.pop("deploy_dependents", UNSET)
+        def _parse_deploy_dependents(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        deploy_dependents = _parse_deploy_dependents(d.pop("deploy_dependents", UNSET))
 
         role = d.pop("role", UNSET)
 

@@ -39,6 +39,7 @@ class PlantypesPulumiDeployPlan:
         runtime (str | Unset):
         stack_name (str | Unset):
         state (GithubComNuoncoNuonPkgTypesStateState | Unset):
+        update_plans (bool | Unset):
         workspace_id (str | Unset): Reuse workspace concept for state storage
     """
 
@@ -54,6 +55,7 @@ class PlantypesPulumiDeployPlan:
     runtime: str | Unset = UNSET
     stack_name: str | Unset = UNSET
     state: GithubComNuoncoNuonPkgTypesStateState | Unset = UNSET
+    update_plans: bool | Unset = UNSET
     workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -98,6 +100,8 @@ class PlantypesPulumiDeployPlan:
         if not isinstance(self.state, Unset):
             state = self.state.to_dict()
 
+        update_plans = self.update_plans
+
         workspace_id = self.workspace_id
 
         field_dict: dict[str, Any] = {}
@@ -127,6 +131,8 @@ class PlantypesPulumiDeployPlan:
             field_dict["stack_name"] = stack_name
         if state is not UNSET:
             field_dict["state"] = state
+        if update_plans is not UNSET:
+            field_dict["update_plans"] = update_plans
         if workspace_id is not UNSET:
             field_dict["workspace_id"] = workspace_id
 
@@ -208,6 +214,8 @@ class PlantypesPulumiDeployPlan:
         else:
             state = GithubComNuoncoNuonPkgTypesStateState.from_dict(_state)
 
+        update_plans = d.pop("update_plans", UNSET)
+
         workspace_id = d.pop("workspace_id", UNSET)
 
         plantypes_pulumi_deploy_plan = cls(
@@ -223,6 +231,7 @@ class PlantypesPulumiDeployPlan:
             runtime=runtime,
             stack_name=stack_name,
             state=state,
+            update_plans=update_plans,
             workspace_id=workspace_id,
         )
 

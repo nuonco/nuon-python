@@ -26,6 +26,7 @@ class ServiceCreateAppRunnerConfigRequest:
         env_vars (ServiceCreateAppRunnerConfigRequestEnvVars | Unset):
         helm_driver (AppAppRunnerConfigHelmDriverType | Unset):
         init_script_url (str | Unset):
+        instance_type (str | Unset):
     """
 
     type_: AppAppRunnerType
@@ -33,6 +34,7 @@ class ServiceCreateAppRunnerConfigRequest:
     env_vars: ServiceCreateAppRunnerConfigRequestEnvVars | Unset = UNSET
     helm_driver: AppAppRunnerConfigHelmDriverType | Unset = UNSET
     init_script_url: str | Unset = UNSET
+    instance_type: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,6 +52,8 @@ class ServiceCreateAppRunnerConfigRequest:
 
         init_script_url = self.init_script_url
 
+        instance_type = self.instance_type
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -65,6 +69,8 @@ class ServiceCreateAppRunnerConfigRequest:
             field_dict["helm_driver"] = helm_driver
         if init_script_url is not UNSET:
             field_dict["init_script_url"] = init_script_url
+        if instance_type is not UNSET:
+            field_dict["instance_type"] = instance_type
 
         return field_dict
 
@@ -95,12 +101,15 @@ class ServiceCreateAppRunnerConfigRequest:
 
         init_script_url = d.pop("init_script_url", UNSET)
 
+        instance_type = d.pop("instance_type", UNSET)
+
         service_create_app_runner_config_request = cls(
             type_=type_,
             app_config_id=app_config_id,
             env_vars=env_vars,
             helm_driver=helm_driver,
             init_script_url=init_script_url,
+            instance_type=instance_type,
         )
 
         service_create_app_runner_config_request.additional_properties = d
