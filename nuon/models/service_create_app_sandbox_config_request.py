@@ -15,6 +15,9 @@ if TYPE_CHECKING:
     from ..models.service_create_app_sandbox_config_request_operation_roles import (
         ServiceCreateAppSandboxConfigRequestOperationRoles,
     )
+    from ..models.service_create_app_sandbox_config_request_pulumi_config import (
+        ServiceCreateAppSandboxConfigRequestPulumiConfig,
+    )
     from ..models.service_create_app_sandbox_config_request_variables import (
         ServiceCreateAppSandboxConfigRequestVariables,
     )
@@ -28,7 +31,6 @@ class ServiceCreateAppSandboxConfigRequest:
     """
     Attributes:
         env_vars (ServiceCreateAppSandboxConfigRequestEnvVars):
-        terraform_version (str):
         variables (ServiceCreateAppSandboxConfigRequestVariables):
         app_config_id (str | Unset):
         auto_approve_on_policies_passing (bool | Unset):
@@ -37,13 +39,17 @@ class ServiceCreateAppSandboxConfigRequest:
         max_auto_retries (int | Unset):
         operation_roles (ServiceCreateAppSandboxConfigRequestOperationRoles | Unset):
         public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
+        pulumi_config (ServiceCreateAppSandboxConfigRequestPulumiConfig | Unset):
+        pulumi_version (str | Unset):
         references (list[str] | Unset):
+        runtime (str | Unset):
         skip_noops (bool | Unset):
+        terraform_version (str | Unset):
+        type_ (str | Unset):
         variables_files (list[str] | Unset):
     """
 
     env_vars: ServiceCreateAppSandboxConfigRequestEnvVars
-    terraform_version: str
     variables: ServiceCreateAppSandboxConfigRequestVariables
     app_config_id: str | Unset = UNSET
     auto_approve_on_policies_passing: bool | Unset = UNSET
@@ -52,15 +58,18 @@ class ServiceCreateAppSandboxConfigRequest:
     max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateAppSandboxConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
+    pulumi_config: ServiceCreateAppSandboxConfigRequestPulumiConfig | Unset = UNSET
+    pulumi_version: str | Unset = UNSET
     references: list[str] | Unset = UNSET
+    runtime: str | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    terraform_version: str | Unset = UNSET
+    type_: str | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         env_vars = self.env_vars.to_dict()
-
-        terraform_version = self.terraform_version
 
         variables = self.variables.to_dict()
 
@@ -84,11 +93,23 @@ class ServiceCreateAppSandboxConfigRequest:
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
+        pulumi_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi_config, Unset):
+            pulumi_config = self.pulumi_config.to_dict()
+
+        pulumi_version = self.pulumi_version
+
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
 
+        runtime = self.runtime
+
         skip_noops = self.skip_noops
+
+        terraform_version = self.terraform_version
+
+        type_ = self.type_
 
         variables_files: list[str] | Unset = UNSET
         if not isinstance(self.variables_files, Unset):
@@ -99,7 +120,6 @@ class ServiceCreateAppSandboxConfigRequest:
         field_dict.update(
             {
                 "env_vars": env_vars,
-                "terraform_version": terraform_version,
                 "variables": variables,
             }
         )
@@ -117,10 +137,20 @@ class ServiceCreateAppSandboxConfigRequest:
             field_dict["operation_roles"] = operation_roles
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if pulumi_config is not UNSET:
+            field_dict["pulumi_config"] = pulumi_config
+        if pulumi_version is not UNSET:
+            field_dict["pulumi_version"] = pulumi_version
         if references is not UNSET:
             field_dict["references"] = references
+        if runtime is not UNSET:
+            field_dict["runtime"] = runtime
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if terraform_version is not UNSET:
+            field_dict["terraform_version"] = terraform_version
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if variables_files is not UNSET:
             field_dict["variables_files"] = variables_files
 
@@ -136,14 +166,15 @@ class ServiceCreateAppSandboxConfigRequest:
         from ..models.service_create_app_sandbox_config_request_operation_roles import (
             ServiceCreateAppSandboxConfigRequestOperationRoles,
         )
+        from ..models.service_create_app_sandbox_config_request_pulumi_config import (
+            ServiceCreateAppSandboxConfigRequestPulumiConfig,
+        )
         from ..models.service_create_app_sandbox_config_request_variables import (
             ServiceCreateAppSandboxConfigRequestVariables,
         )
 
         d = dict(src_dict)
         env_vars = ServiceCreateAppSandboxConfigRequestEnvVars.from_dict(d.pop("env_vars"))
-
-        terraform_version = d.pop("terraform_version")
 
         variables = ServiceCreateAppSandboxConfigRequestVariables.from_dict(d.pop("variables"))
 
@@ -176,15 +207,29 @@ class ServiceCreateAppSandboxConfigRequest:
         else:
             public_git_vcs_config = HelpersPublicGitVCSConfigRequest.from_dict(_public_git_vcs_config)
 
+        _pulumi_config = d.pop("pulumi_config", UNSET)
+        pulumi_config: ServiceCreateAppSandboxConfigRequestPulumiConfig | Unset
+        if isinstance(_pulumi_config, Unset):
+            pulumi_config = UNSET
+        else:
+            pulumi_config = ServiceCreateAppSandboxConfigRequestPulumiConfig.from_dict(_pulumi_config)
+
+        pulumi_version = d.pop("pulumi_version", UNSET)
+
         references = cast(list[str], d.pop("references", UNSET))
 
+        runtime = d.pop("runtime", UNSET)
+
         skip_noops = d.pop("skip_noops", UNSET)
+
+        terraform_version = d.pop("terraform_version", UNSET)
+
+        type_ = d.pop("type", UNSET)
 
         variables_files = cast(list[str], d.pop("variables_files", UNSET))
 
         service_create_app_sandbox_config_request = cls(
             env_vars=env_vars,
-            terraform_version=terraform_version,
             variables=variables,
             app_config_id=app_config_id,
             auto_approve_on_policies_passing=auto_approve_on_policies_passing,
@@ -193,8 +238,13 @@ class ServiceCreateAppSandboxConfigRequest:
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
+            pulumi_config=pulumi_config,
+            pulumi_version=pulumi_version,
             references=references,
+            runtime=runtime,
             skip_noops=skip_noops,
+            terraform_version=terraform_version,
+            type_=type_,
             variables_files=variables_files,
         )
 

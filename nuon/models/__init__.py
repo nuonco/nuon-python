@@ -39,9 +39,11 @@ from .app_app_sandbox_build import AppAppSandboxBuild
 from .app_app_sandbox_config import AppAppSandboxConfig
 from .app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
 from .app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
+from .app_app_sandbox_config_pulumi_config import AppAppSandboxConfigPulumiConfig
 from .app_app_sandbox_config_variables import AppAppSandboxConfigVariables
 from .app_app_secret import AppAppSecret
 from .app_app_secret_config import AppAppSecretConfig
+from .app_app_secret_kubernetes_sync_target import AppAppSecretKubernetesSyncTarget
 from .app_app_secrets_config import AppAppSecretsConfig
 from .app_app_stack_config import AppAppStackConfig
 from .app_aws_account import AppAWSAccount
@@ -264,6 +266,7 @@ from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
 from .config_custom_nested_stack import ConfigCustomNestedStack
 from .config_custom_nested_stack_parameters import ConfigCustomNestedStackParameters
+from .config_custom_nested_stack_status import ConfigCustomNestedStackStatus
 from .config_helm_repo_config import ConfigHelmRepoConfig
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
@@ -338,9 +341,12 @@ from .plantypes_kubernetes_manifest_build_plan_labels import PlantypesKubernetes
 from .plantypes_kubernetes_manifest_deploy_plan import PlantypesKubernetesManifestDeployPlan
 from .plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode
 from .plantypes_kubernetes_secret_sync import PlantypesKubernetesSecretSync
+from .plantypes_kubernetes_secret_sync_target import PlantypesKubernetesSecretSyncTarget
 from .plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig
 from .plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
 from .plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
+from .plantypes_pulumi_backend import PlantypesPulumiBackend
+from .plantypes_pulumi_backend_config import PlantypesPulumiBackendConfig
 from .plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan
 from .plantypes_pulumi_build_plan_labels import PlantypesPulumiBuildPlanLabels
 from .plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan
@@ -443,6 +449,7 @@ from .service_create_app_sandbox_config_request_env_vars import ServiceCreateApp
 from .service_create_app_sandbox_config_request_operation_roles import (
     ServiceCreateAppSandboxConfigRequestOperationRoles,
 )
+from .service_create_app_sandbox_config_request_pulumi_config import ServiceCreateAppSandboxConfigRequestPulumiConfig
 from .service_create_app_sandbox_config_request_variables import ServiceCreateAppSandboxConfigRequestVariables
 from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
@@ -556,12 +563,12 @@ from .service_install_app_permissions_config_response import ServiceInstallAppPe
 from .service_install_group_request import ServiceInstallGroupRequest
 from .service_install_permissions_role_status import ServiceInstallPermissionsRoleStatus
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
+from .service_kubernetes_sync_target import ServiceKubernetesSyncTarget
 from .service_kustomize_config_request import ServiceKustomizeConfigRequest
 from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_list_channels_response import ServiceListChannelsResponse
 from .service_log_stream_span import ServiceLogStreamSpan
 from .service_log_stream_span_attributes import ServiceLogStreamSpanAttributes
-from .service_mng_fetch_token_request import ServiceMngFetchTokenRequest
 from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
@@ -711,9 +718,11 @@ __all__ = (
     "AppAppSandboxConfig",
     "AppAppSandboxConfigEnvVars",
     "AppAppSandboxConfigOperationRoles",
+    "AppAppSandboxConfigPulumiConfig",
     "AppAppSandboxConfigVariables",
     "AppAppSecret",
     "AppAppSecretConfig",
+    "AppAppSecretKubernetesSyncTarget",
     "AppAppSecretsConfig",
     "AppAppStackConfig",
     "AppAWSAccount",
@@ -934,6 +943,7 @@ __all__ = (
     "ConfigAppPolicyType",
     "ConfigCustomNestedStack",
     "ConfigCustomNestedStackParameters",
+    "ConfigCustomNestedStackStatus",
     "ConfigHelmRepoConfig",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
@@ -1006,9 +1016,12 @@ __all__ = (
     "PlantypesKubernetesManifestDeployPlan",
     "PlantypesKubernetesSandboxMode",
     "PlantypesKubernetesSecretSync",
+    "PlantypesKubernetesSecretSyncTarget",
     "PlantypesKustomizeBuildConfig",
     "PlantypesNoopDeployPlan",
     "PlantypesOCIArtifactReference",
+    "PlantypesPulumiBackend",
+    "PlantypesPulumiBackendConfig",
     "PlantypesPulumiBuildPlan",
     "PlantypesPulumiBuildPlanLabels",
     "PlantypesPulumiDeployPlan",
@@ -1105,6 +1118,7 @@ __all__ = (
     "ServiceCreateAppSandboxConfigRequest",
     "ServiceCreateAppSandboxConfigRequestEnvVars",
     "ServiceCreateAppSandboxConfigRequestOperationRoles",
+    "ServiceCreateAppSandboxConfigRequestPulumiConfig",
     "ServiceCreateAppSandboxConfigRequestVariables",
     "ServiceCreateAppSecretRequest",
     "ServiceCreateAppSecretsConfigRequest",
@@ -1194,12 +1208,12 @@ __all__ = (
     "ServiceInstallGroupRequest",
     "ServiceInstallPermissionsRoleStatus",
     "ServiceInstallPhoneHomeRequest",
+    "ServiceKubernetesSyncTarget",
     "ServiceKustomizeConfigRequest",
     "ServiceLatestRunnerHeartBeats",
     "ServiceListChannelsResponse",
     "ServiceLogStreamSpan",
     "ServiceLogStreamSpanAttributes",
-    "ServiceMngFetchTokenRequest",
     "ServiceMngRestartRequest",
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",

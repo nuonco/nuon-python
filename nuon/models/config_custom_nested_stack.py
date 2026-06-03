@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.config_custom_nested_stack_status import ConfigCustomNestedStackStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -24,6 +25,7 @@ class ConfigCustomNestedStack:
         index (int | Unset):
         name (str | Unset):
         parameters (ConfigCustomNestedStackParameters | Unset):
+        status (ConfigCustomNestedStackStatus | Unset):
         template_url (str | Unset):
     """
 
@@ -32,6 +34,7 @@ class ConfigCustomNestedStack:
     index: int | Unset = UNSET
     name: str | Unset = UNSET
     parameters: ConfigCustomNestedStackParameters | Unset = UNSET
+    status: ConfigCustomNestedStackStatus | Unset = UNSET
     template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,6 +51,10 @@ class ConfigCustomNestedStack:
         if not isinstance(self.parameters, Unset):
             parameters = self.parameters.to_dict()
 
+        status: str | Unset = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.value
+
         template_url = self.template_url
 
         field_dict: dict[str, Any] = {}
@@ -63,6 +70,8 @@ class ConfigCustomNestedStack:
             field_dict["name"] = name
         if parameters is not UNSET:
             field_dict["parameters"] = parameters
+        if status is not UNSET:
+            field_dict["status"] = status
         if template_url is not UNSET:
             field_dict["template_url"] = template_url
 
@@ -88,6 +97,13 @@ class ConfigCustomNestedStack:
         else:
             parameters = ConfigCustomNestedStackParameters.from_dict(_parameters)
 
+        _status = d.pop("status", UNSET)
+        status: ConfigCustomNestedStackStatus | Unset
+        if isinstance(_status, Unset):
+            status = UNSET
+        else:
+            status = ConfigCustomNestedStackStatus(_status)
+
         template_url = d.pop("template_url", UNSET)
 
         config_custom_nested_stack = cls(
@@ -96,6 +112,7 @@ class ConfigCustomNestedStack:
             index=index,
             name=name,
             parameters=parameters,
+            status=status,
             template_url=template_url,
         )
 

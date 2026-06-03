@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.plantypes_git_source import PlantypesGitSource
+    from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
     from ..models.plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies
@@ -47,6 +48,7 @@ class PlantypesSandboxRunPlan:
         kyverno_policies_dir (str | Unset):
         local_archive (PlantypesTerraformLocalArchive | Unset):
         policies (PlantypesSandboxRunPlanPolicies | Unset):
+        pulumi_backend (PlantypesPulumiBackend | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
         state (GithubComNuoncoNuonPkgTypesStateState | Unset):
         terraform_backend (PlantypesTerraformBackend | Unset):
@@ -68,6 +70,7 @@ class PlantypesSandboxRunPlan:
     kyverno_policies_dir: str | Unset = UNSET
     local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
     policies: PlantypesSandboxRunPlanPolicies | Unset = UNSET
+    pulumi_backend: PlantypesPulumiBackend | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     state: GithubComNuoncoNuonPkgTypesStateState | Unset = UNSET
     terraform_backend: PlantypesTerraformBackend | Unset = UNSET
@@ -122,6 +125,10 @@ class PlantypesSandboxRunPlan:
         if not isinstance(self.policies, Unset):
             policies = self.policies.to_dict()
 
+        pulumi_backend: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi_backend, Unset):
+            pulumi_backend = self.pulumi_backend.to_dict()
+
         sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
@@ -173,6 +180,8 @@ class PlantypesSandboxRunPlan:
             field_dict["local_archive"] = local_archive
         if policies is not UNSET:
             field_dict["policies"] = policies
+        if pulumi_backend is not UNSET:
+            field_dict["pulumi_backend"] = pulumi_backend
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
         if state is not UNSET:
@@ -199,6 +208,7 @@ class PlantypesSandboxRunPlan:
         )
         from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.plantypes_git_source import PlantypesGitSource
+        from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
         from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
         from ..models.plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies
@@ -276,6 +286,13 @@ class PlantypesSandboxRunPlan:
         else:
             policies = PlantypesSandboxRunPlanPolicies.from_dict(_policies)
 
+        _pulumi_backend = d.pop("pulumi_backend", UNSET)
+        pulumi_backend: PlantypesPulumiBackend | Unset
+        if isinstance(_pulumi_backend, Unset):
+            pulumi_backend = UNSET
+        else:
+            pulumi_backend = PlantypesPulumiBackend.from_dict(_pulumi_backend)
+
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
         sandbox_mode: PlantypesSandboxMode | Unset
         if isinstance(_sandbox_mode, Unset):
@@ -321,6 +338,7 @@ class PlantypesSandboxRunPlan:
             kyverno_policies_dir=kyverno_policies_dir,
             local_archive=local_archive,
             policies=policies,
+            pulumi_backend=pulumi_backend,
             sandbox_mode=sandbox_mode,
             state=state,
             terraform_backend=terraform_backend,

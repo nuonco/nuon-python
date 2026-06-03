@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_app_secret_kubernetes_sync_target import AppAppSecretKubernetesSyncTarget
+
 
 T = TypeVar("T", bound="AppAppSecretConfig")
 
@@ -31,6 +35,9 @@ class AppAppSecretConfig:
         kubernetes_secret_name (str | Unset):
         kubernetes_secret_namespace (str | Unset):
         kubernetes_sync (bool | Unset): for syncing into kubernetes
+        kubernetes_sync_targets (list[AppAppSecretKubernetesSyncTarget] | Unset): kubernetes sync v2: when present, the
+            secret syncs to each of these targets (namespaces x name x key). The
+            single-valued Kubernetes* fields above remain for backwards compatibility.
         name (str | Unset):
         org_id (str | Unset):
         required (bool | Unset):
@@ -53,6 +60,7 @@ class AppAppSecretConfig:
     kubernetes_secret_name: str | Unset = UNSET
     kubernetes_secret_namespace: str | Unset = UNSET
     kubernetes_sync: bool | Unset = UNSET
+    kubernetes_sync_targets: list[AppAppSecretKubernetesSyncTarget] | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
     required: bool | Unset = UNSET
@@ -91,6 +99,13 @@ class AppAppSecretConfig:
         kubernetes_secret_namespace = self.kubernetes_secret_namespace
 
         kubernetes_sync = self.kubernetes_sync
+
+        kubernetes_sync_targets: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.kubernetes_sync_targets, Unset):
+            kubernetes_sync_targets = []
+            for kubernetes_sync_targets_item_data in self.kubernetes_sync_targets:
+                kubernetes_sync_targets_item = kubernetes_sync_targets_item_data.to_dict()
+                kubernetes_sync_targets.append(kubernetes_sync_targets_item)
 
         name = self.name
 
@@ -135,6 +150,8 @@ class AppAppSecretConfig:
             field_dict["kubernetes_secret_namespace"] = kubernetes_secret_namespace
         if kubernetes_sync is not UNSET:
             field_dict["kubernetes_sync"] = kubernetes_sync
+        if kubernetes_sync_targets is not UNSET:
+            field_dict["kubernetes_sync_targets"] = kubernetes_sync_targets
         if name is not UNSET:
             field_dict["name"] = name
         if org_id is not UNSET:
@@ -148,6 +165,8 @@ class AppAppSecretConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_secret_kubernetes_sync_target import AppAppSecretKubernetesSyncTarget
+
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
 
@@ -181,6 +200,17 @@ class AppAppSecretConfig:
 
         kubernetes_sync = d.pop("kubernetes_sync", UNSET)
 
+        _kubernetes_sync_targets = d.pop("kubernetes_sync_targets", UNSET)
+        kubernetes_sync_targets: list[AppAppSecretKubernetesSyncTarget] | Unset = UNSET
+        if _kubernetes_sync_targets is not UNSET:
+            kubernetes_sync_targets = []
+            for kubernetes_sync_targets_item_data in _kubernetes_sync_targets:
+                kubernetes_sync_targets_item = AppAppSecretKubernetesSyncTarget.from_dict(
+                    kubernetes_sync_targets_item_data
+                )
+
+                kubernetes_sync_targets.append(kubernetes_sync_targets_item)
+
         name = d.pop("name", UNSET)
 
         org_id = d.pop("org_id", UNSET)
@@ -206,6 +236,7 @@ class AppAppSecretConfig:
             kubernetes_secret_name=kubernetes_secret_name,
             kubernetes_secret_namespace=kubernetes_secret_namespace,
             kubernetes_sync=kubernetes_sync,
+            kubernetes_sync_targets=kubernetes_sync_targets,
             name=name,
             org_id=org_id,
             required=required,

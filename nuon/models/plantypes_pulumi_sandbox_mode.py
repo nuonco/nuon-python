@@ -17,16 +17,20 @@ class PlantypesPulumiSandboxMode:
     Attributes:
         plan_contents (str | Unset):
         plan_display_contents (str | Unset):
+        workspace_id (str | Unset):
     """
 
     plan_contents: str | Unset = UNSET
     plan_display_contents: str | Unset = UNSET
+    workspace_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         plan_contents = self.plan_contents
 
         plan_display_contents = self.plan_display_contents
+
+        workspace_id = self.workspace_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +39,8 @@ class PlantypesPulumiSandboxMode:
             field_dict["plan_contents"] = plan_contents
         if plan_display_contents is not UNSET:
             field_dict["plan_display_contents"] = plan_display_contents
+        if workspace_id is not UNSET:
+            field_dict["workspace_id"] = workspace_id
 
         return field_dict
 
@@ -45,9 +51,12 @@ class PlantypesPulumiSandboxMode:
 
         plan_display_contents = d.pop("plan_display_contents", UNSET)
 
+        workspace_id = d.pop("workspace_id", UNSET)
+
         plantypes_pulumi_sandbox_mode = cls(
             plan_contents=plan_contents,
             plan_display_contents=plan_display_contents,
+            workspace_id=workspace_id,
         )
 
         plantypes_pulumi_sandbox_mode.additional_properties = d

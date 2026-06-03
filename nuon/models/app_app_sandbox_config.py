@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
     from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
+    from ..models.app_app_sandbox_config_pulumi_config import AppAppSandboxConfigPulumiConfig
     from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
     from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
     from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
@@ -39,10 +40,14 @@ class AppAppSandboxConfig:
         operation_roles (AppAppSandboxConfigOperationRoles | Unset): Operation roles map: operation type -> role name
         org_id (str | Unset):
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        pulumi_config (AppAppSandboxConfigPulumiConfig | Unset):
+        pulumi_version (str | Unset):
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
+        runtime (str | Unset):
         skip_noops (bool | Unset):
         terraform_version (str | Unset):
+        type_ (str | Unset):
         updated_at (str | Unset):
         variables (AppAppSandboxConfigVariables | Unset):
         variables_files (list[str] | Unset):
@@ -63,10 +68,14 @@ class AppAppSandboxConfig:
     operation_roles: AppAppSandboxConfigOperationRoles | Unset = UNSET
     org_id: str | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    pulumi_config: AppAppSandboxConfigPulumiConfig | Unset = UNSET
+    pulumi_version: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
+    runtime: str | Unset = UNSET
     skip_noops: bool | Unset = UNSET
     terraform_version: str | Unset = UNSET
+    type_: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     variables: AppAppSandboxConfigVariables | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
@@ -111,6 +120,12 @@ class AppAppSandboxConfig:
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
+        pulumi_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.pulumi_config, Unset):
+            pulumi_config = self.pulumi_config.to_dict()
+
+        pulumi_version = self.pulumi_version
+
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
@@ -122,9 +137,13 @@ class AppAppSandboxConfig:
                 refs_item = refs_item_data.to_dict()
                 refs.append(refs_item)
 
+        runtime = self.runtime
+
         skip_noops = self.skip_noops
 
         terraform_version = self.terraform_version
+
+        type_ = self.type_
 
         updated_at = self.updated_at
 
@@ -169,14 +188,22 @@ class AppAppSandboxConfig:
             field_dict["org_id"] = org_id
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if pulumi_config is not UNSET:
+            field_dict["pulumi_config"] = pulumi_config
+        if pulumi_version is not UNSET:
+            field_dict["pulumi_version"] = pulumi_version
         if references is not UNSET:
             field_dict["references"] = references
         if refs is not UNSET:
             field_dict["refs"] = refs
+        if runtime is not UNSET:
+            field_dict["runtime"] = runtime
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
         if terraform_version is not UNSET:
             field_dict["terraform_version"] = terraform_version
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if variables is not UNSET:
@@ -190,6 +217,7 @@ class AppAppSandboxConfig:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
         from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
+        from ..models.app_app_sandbox_config_pulumi_config import AppAppSandboxConfigPulumiConfig
         from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
         from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
         from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
@@ -246,6 +274,15 @@ class AppAppSandboxConfig:
         else:
             public_git_vcs_config = AppPublicGitVCSConfig.from_dict(_public_git_vcs_config)
 
+        _pulumi_config = d.pop("pulumi_config", UNSET)
+        pulumi_config: AppAppSandboxConfigPulumiConfig | Unset
+        if isinstance(_pulumi_config, Unset):
+            pulumi_config = UNSET
+        else:
+            pulumi_config = AppAppSandboxConfigPulumiConfig.from_dict(_pulumi_config)
+
+        pulumi_version = d.pop("pulumi_version", UNSET)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         _refs = d.pop("refs", UNSET)
@@ -257,9 +294,13 @@ class AppAppSandboxConfig:
 
                 refs.append(refs_item)
 
+        runtime = d.pop("runtime", UNSET)
+
         skip_noops = d.pop("skip_noops", UNSET)
 
         terraform_version = d.pop("terraform_version", UNSET)
+
+        type_ = d.pop("type", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -288,10 +329,14 @@ class AppAppSandboxConfig:
             operation_roles=operation_roles,
             org_id=org_id,
             public_git_vcs_config=public_git_vcs_config,
+            pulumi_config=pulumi_config,
+            pulumi_version=pulumi_version,
             references=references,
             refs=refs,
+            runtime=runtime,
             skip_noops=skip_noops,
             terraform_version=terraform_version,
+            type_=type_,
             updated_at=updated_at,
             variables=variables,
             variables_files=variables_files,
