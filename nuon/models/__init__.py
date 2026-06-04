@@ -569,6 +569,7 @@ from .service_latest_runner_heart_beats import ServiceLatestRunnerHeartBeats
 from .service_list_channels_response import ServiceListChannelsResponse
 from .service_log_stream_span import ServiceLogStreamSpan
 from .service_log_stream_span_attributes import ServiceLogStreamSpanAttributes
+from .service_log_stream_tail_logs_response import ServiceLogStreamTailLogsResponse
 from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
@@ -1215,6 +1216,7 @@ __all__ = (
     "ServiceListChannelsResponse",
     "ServiceLogStreamSpan",
     "ServiceLogStreamSpanAttributes",
+    "ServiceLogStreamTailLogsResponse",
     "ServiceMngRestartRequest",
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
