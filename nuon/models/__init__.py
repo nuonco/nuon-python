@@ -109,6 +109,7 @@ from .app_install_event_payload import AppInstallEventPayload
 from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
+from .app_install_lifecycle_status import AppInstallLifecycleStatus
 from .app_install_links import AppInstallLinks
 from .app_install_metadata import AppInstallMetadata
 from .app_install_role_selection_record import AppInstallRoleSelectionRecord
@@ -790,6 +791,7 @@ __all__ = (
     "AppInstallInputs",
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
+    "AppInstallLifecycleStatus",
     "AppInstallLinks",
     "AppInstallMetadata",
     "AppInstallRoles",
