@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from ..models.app_install_config import AppInstallConfig
     from ..models.app_install_event import AppInstallEvent
     from ..models.app_install_inputs import AppInstallInputs
+    from ..models.app_install_lifecycle_status import AppInstallLifecycleStatus
     from ..models.app_install_links import AppInstallLinks
     from ..models.app_install_metadata import AppInstallMetadata
     from ..models.app_install_roles import AppInstallRoles
@@ -68,6 +69,7 @@ class AppInstall:
         install_stack (AppInstallStack | Unset):
         install_states (list[AppInstallState] | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
+        lifecycle_status (AppInstallLifecycleStatus | Unset):
         links (AppInstallLinks | Unset):
         metadata (AppInstallMetadata | Unset):
         name (str | Unset):
@@ -113,6 +115,7 @@ class AppInstall:
     install_stack: AppInstallStack | Unset = UNSET
     install_states: list[AppInstallState] | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
+    lifecycle_status: AppInstallLifecycleStatus | Unset = UNSET
     links: AppInstallLinks | Unset = UNSET
     metadata: AppInstallMetadata | Unset = UNSET
     name: str | Unset = UNSET
@@ -243,6 +246,10 @@ class AppInstall:
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
 
+        lifecycle_status: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.lifecycle_status, Unset):
+            lifecycle_status = self.lifecycle_status.to_dict()
+
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
@@ -350,6 +357,8 @@ class AppInstall:
             field_dict["install_states"] = install_states
         if labels is not UNSET:
             field_dict["labels"] = labels
+        if lifecycle_status is not UNSET:
+            field_dict["lifecycle_status"] = lifecycle_status
         if links is not UNSET:
             field_dict["links"] = links
         if metadata is not UNSET:
@@ -401,6 +410,7 @@ class AppInstall:
         from ..models.app_install_config import AppInstallConfig
         from ..models.app_install_event import AppInstallEvent
         from ..models.app_install_inputs import AppInstallInputs
+        from ..models.app_install_lifecycle_status import AppInstallLifecycleStatus
         from ..models.app_install_links import AppInstallLinks
         from ..models.app_install_metadata import AppInstallMetadata
         from ..models.app_install_roles import AppInstallRoles
@@ -567,6 +577,13 @@ class AppInstall:
         else:
             labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
+        _lifecycle_status = d.pop("lifecycle_status", UNSET)
+        lifecycle_status: AppInstallLifecycleStatus | Unset
+        if isinstance(_lifecycle_status, Unset):
+            lifecycle_status = UNSET
+        else:
+            lifecycle_status = AppInstallLifecycleStatus.from_dict(_lifecycle_status)
+
         _links = d.pop("links", UNSET)
         links: AppInstallLinks | Unset
         if isinstance(_links, Unset):
@@ -662,6 +679,7 @@ class AppInstall:
             install_stack=install_stack,
             install_states=install_states,
             labels=labels,
+            lifecycle_status=lifecycle_status,
             links=links,
             metadata=metadata,
             name=name,
