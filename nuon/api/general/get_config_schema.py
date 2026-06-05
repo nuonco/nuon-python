@@ -106,6 +106,7 @@ def sync_detailed(
     - container_image
     - helm
     - terraform
+    - runbook
     - job
 
     Args:
@@ -158,6 +159,7 @@ def sync(
     - container_image
     - helm
     - terraform
+    - runbook
     - job
 
     Args:
@@ -205,6 +207,7 @@ async def asyncio_detailed(
     - container_image
     - helm
     - terraform
+    - runbook
     - job
 
     Args:
@@ -255,6 +258,7 @@ async def asyncio(
     - container_image
     - helm
     - terraform
+    - runbook
     - job
 
     Args:
