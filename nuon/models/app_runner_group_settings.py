@@ -46,6 +46,10 @@ class AppRunnerGroupSettings:
             e.g., {"build": "2", "deploy": "1"}. Only used when parallel-runner-jobs feature flag is on.
         local_aws_iam_role_arn (str | Unset):
         logging_level (str | Unset):
+        long_poll_jobs (bool | Unset): LongPollJobs mirrors the org's `runner-job-long-poll` feature flag
+            so the runner can choose between the legacy idle-poll loop and the
+            new long-poll endpoint at boot. Not persisted; populated by the
+            runner-settings handler.
         metadata (AppRunnerGroupSettingsMetadata | Unset): Metadata is used as both log and metric tags/attributes in
             the runner when emitting data
         org_aws_iam_role_arn (str | Unset): org runner specifics
@@ -84,6 +88,7 @@ class AppRunnerGroupSettings:
     job_group_parallelism: AppRunnerGroupSettingsJobGroupParallelism | Unset = UNSET
     local_aws_iam_role_arn: str | Unset = UNSET
     logging_level: str | Unset = UNSET
+    long_poll_jobs: bool | Unset = UNSET
     metadata: AppRunnerGroupSettingsMetadata | Unset = UNSET
     org_aws_iam_role_arn: str | Unset = UNSET
     org_azure_client_id: str | Unset = UNSET
@@ -148,6 +153,8 @@ class AppRunnerGroupSettings:
         local_aws_iam_role_arn = self.local_aws_iam_role_arn
 
         logging_level = self.logging_level
+
+        long_poll_jobs = self.long_poll_jobs
 
         metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
@@ -222,6 +229,8 @@ class AppRunnerGroupSettings:
             field_dict["local_aws_iam_role_arn"] = local_aws_iam_role_arn
         if logging_level is not UNSET:
             field_dict["logging_level"] = logging_level
+        if long_poll_jobs is not UNSET:
+            field_dict["long_poll_jobs"] = long_poll_jobs
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if org_aws_iam_role_arn is not UNSET:
@@ -315,6 +324,8 @@ class AppRunnerGroupSettings:
 
         logging_level = d.pop("logging_level", UNSET)
 
+        long_poll_jobs = d.pop("long_poll_jobs", UNSET)
+
         _metadata = d.pop("metadata", UNSET)
         metadata: AppRunnerGroupSettingsMetadata | Unset
         if isinstance(_metadata, Unset):
@@ -369,6 +380,7 @@ class AppRunnerGroupSettings:
             job_group_parallelism=job_group_parallelism,
             local_aws_iam_role_arn=local_aws_iam_role_arn,
             logging_level=logging_level,
+            long_poll_jobs=long_poll_jobs,
             metadata=metadata,
             org_aws_iam_role_arn=org_aws_iam_role_arn,
             org_azure_client_id=org_azure_client_id,
