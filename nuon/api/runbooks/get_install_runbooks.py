@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_install_runbook import AppInstallRunbook
+from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -38,7 +39,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> list[AppInstallRunbook] | None:
+) -> StderrErrResponse | list[AppInstallRunbook] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -49,6 +50,31 @@ def _parse_response(
 
         return response_200
 
+    if response.status_code == 400:
+        response_400 = StderrErrResponse.from_dict(response.json())
+
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = StderrErrResponse.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 403:
+        response_403 = StderrErrResponse.from_dict(response.json())
+
+        return response_403
+
+    if response.status_code == 404:
+        response_404 = StderrErrResponse.from_dict(response.json())
+
+        return response_404
+
+    if response.status_code == 500:
+        response_500 = StderrErrResponse.from_dict(response.json())
+
+        return response_500
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -57,7 +83,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[list[AppInstallRunbook]]:
+) -> Response[StderrErrResponse | list[AppInstallRunbook]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,7 +98,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
-) -> Response[list[AppInstallRunbook]]:
+) -> Response[StderrErrResponse | list[AppInstallRunbook]]:
     """get runbooks for an install
 
     Args:
@@ -85,7 +111,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[AppInstallRunbook]]
+        Response[StderrErrResponse | list[AppInstallRunbook]]
     """
 
     kwargs = _get_kwargs(
@@ -107,7 +133,7 @@ def sync(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
-) -> list[AppInstallRunbook] | None:
+) -> StderrErrResponse | list[AppInstallRunbook] | None:
     """get runbooks for an install
 
     Args:
@@ -120,7 +146,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[AppInstallRunbook]
+        StderrErrResponse | list[AppInstallRunbook]
     """
 
     return sync_detailed(
@@ -137,7 +163,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
-) -> Response[list[AppInstallRunbook]]:
+) -> Response[StderrErrResponse | list[AppInstallRunbook]]:
     """get runbooks for an install
 
     Args:
@@ -150,7 +176,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[AppInstallRunbook]]
+        Response[StderrErrResponse | list[AppInstallRunbook]]
     """
 
     kwargs = _get_kwargs(
@@ -170,7 +196,7 @@ async def asyncio(
     client: AuthenticatedClient,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
-) -> list[AppInstallRunbook] | None:
+) -> StderrErrResponse | list[AppInstallRunbook] | None:
     """get runbooks for an install
 
     Args:
@@ -183,7 +209,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[AppInstallRunbook]
+        StderrErrResponse | list[AppInstallRunbook]
     """
 
     return (
