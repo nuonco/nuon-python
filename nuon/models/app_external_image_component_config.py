@@ -30,6 +30,14 @@ class AppExternalImageComponentConfig:
         id (str | Unset):
         image_url (str | Unset):
         tag (str | Unset):
+        update_policy (str | Unset): UpdatePolicy is an optional Masterminds-compatible semver constraint
+            (e.g. "~1.25.0", "^2", ">=1.0.0,<2.0.0") that, when set, causes the
+            runner to list tags from the source registry, filter to those that
+            parse as semver and satisfy the constraint, and pick the highest
+            matching tag at build time. Tag is then ignored as the source ref;
+            the resolved tag is recorded on ComponentBuild.ResolvedTag.
+
+            When empty, the runner uses Tag literally.
         updated_at (str | Unset):
     """
 
@@ -42,6 +50,7 @@ class AppExternalImageComponentConfig:
     id: str | Unset = UNSET
     image_url: str | Unset = UNSET
     tag: str | Unset = UNSET
+    update_policy: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -70,6 +79,8 @@ class AppExternalImageComponentConfig:
 
         tag = self.tag
 
+        update_policy = self.update_policy
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -93,6 +104,8 @@ class AppExternalImageComponentConfig:
             field_dict["image_url"] = image_url
         if tag is not UNSET:
             field_dict["tag"] = tag
+        if update_policy is not UNSET:
+            field_dict["update_policy"] = update_policy
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -138,6 +151,8 @@ class AppExternalImageComponentConfig:
 
         tag = d.pop("tag", UNSET)
 
+        update_policy = d.pop("update_policy", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_external_image_component_config = cls(
@@ -150,6 +165,7 @@ class AppExternalImageComponentConfig:
             id=id,
             image_url=image_url,
             tag=tag,
+            update_policy=update_policy,
             updated_at=updated_at,
         )
 

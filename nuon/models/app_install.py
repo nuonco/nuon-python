@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from ..models.app_install_config import AppInstallConfig
     from ..models.app_install_event import AppInstallEvent
     from ..models.app_install_inputs import AppInstallInputs
-    from ..models.app_install_lifecycle_status import AppInstallLifecycleStatus
+    from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
     from ..models.app_install_links import AppInstallLinks
     from ..models.app_install_metadata import AppInstallMetadata
     from ..models.app_install_roles import AppInstallRoles
@@ -69,7 +69,7 @@ class AppInstall:
         install_stack (AppInstallStack | Unset):
         install_states (list[AppInstallState] | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
-        lifecycle_status (AppInstallLifecycleStatus | Unset):
+        lifecycle_phase (AppInstallLifecyclePhase | Unset):
         links (AppInstallLinks | Unset):
         metadata (AppInstallMetadata | Unset):
         name (str | Unset):
@@ -82,8 +82,6 @@ class AppInstall:
         sandbox_mode (SqlNullBool | Unset):
         sandbox_status (str | Unset):
         sandbox_status_description (str | Unset):
-        status (str | Unset): TODO(jm): deprecate these fields once the terraform provider has been updated
-        status_description (str | Unset):
         updated_at (str | Unset):
         workflow_id (str | Unset): WorkflowID is populated by handlers that create a workflow. Not persisted.
         workflows (list[AppWorkflow] | Unset):
@@ -115,7 +113,7 @@ class AppInstall:
     install_stack: AppInstallStack | Unset = UNSET
     install_states: list[AppInstallState] | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
-    lifecycle_status: AppInstallLifecycleStatus | Unset = UNSET
+    lifecycle_phase: AppInstallLifecyclePhase | Unset = UNSET
     links: AppInstallLinks | Unset = UNSET
     metadata: AppInstallMetadata | Unset = UNSET
     name: str | Unset = UNSET
@@ -128,8 +126,6 @@ class AppInstall:
     sandbox_mode: SqlNullBool | Unset = UNSET
     sandbox_status: str | Unset = UNSET
     sandbox_status_description: str | Unset = UNSET
-    status: str | Unset = UNSET
-    status_description: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
     workflows: list[AppWorkflow] | Unset = UNSET
@@ -246,9 +242,9 @@ class AppInstall:
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
 
-        lifecycle_status: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.lifecycle_status, Unset):
-            lifecycle_status = self.lifecycle_status.to_dict()
+        lifecycle_phase: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.lifecycle_phase, Unset):
+            lifecycle_phase = self.lifecycle_phase.to_dict()
 
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
@@ -286,10 +282,6 @@ class AppInstall:
         sandbox_status = self.sandbox_status
 
         sandbox_status_description = self.sandbox_status_description
-
-        status = self.status
-
-        status_description = self.status_description
 
         updated_at = self.updated_at
 
@@ -357,8 +349,8 @@ class AppInstall:
             field_dict["install_states"] = install_states
         if labels is not UNSET:
             field_dict["labels"] = labels
-        if lifecycle_status is not UNSET:
-            field_dict["lifecycle_status"] = lifecycle_status
+        if lifecycle_phase is not UNSET:
+            field_dict["lifecycle_phase"] = lifecycle_phase
         if links is not UNSET:
             field_dict["links"] = links
         if metadata is not UNSET:
@@ -383,10 +375,6 @@ class AppInstall:
             field_dict["sandbox_status"] = sandbox_status
         if sandbox_status_description is not UNSET:
             field_dict["sandbox_status_description"] = sandbox_status_description
-        if status is not UNSET:
-            field_dict["status"] = status
-        if status_description is not UNSET:
-            field_dict["status_description"] = status_description
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflow_id is not UNSET:
@@ -410,7 +398,7 @@ class AppInstall:
         from ..models.app_install_config import AppInstallConfig
         from ..models.app_install_event import AppInstallEvent
         from ..models.app_install_inputs import AppInstallInputs
-        from ..models.app_install_lifecycle_status import AppInstallLifecycleStatus
+        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
         from ..models.app_install_links import AppInstallLinks
         from ..models.app_install_metadata import AppInstallMetadata
         from ..models.app_install_roles import AppInstallRoles
@@ -577,12 +565,12 @@ class AppInstall:
         else:
             labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
-        _lifecycle_status = d.pop("lifecycle_status", UNSET)
-        lifecycle_status: AppInstallLifecycleStatus | Unset
-        if isinstance(_lifecycle_status, Unset):
-            lifecycle_status = UNSET
+        _lifecycle_phase = d.pop("lifecycle_phase", UNSET)
+        lifecycle_phase: AppInstallLifecyclePhase | Unset
+        if isinstance(_lifecycle_phase, Unset):
+            lifecycle_phase = UNSET
         else:
-            lifecycle_status = AppInstallLifecycleStatus.from_dict(_lifecycle_status)
+            lifecycle_phase = AppInstallLifecyclePhase.from_dict(_lifecycle_phase)
 
         _links = d.pop("links", UNSET)
         links: AppInstallLinks | Unset
@@ -635,10 +623,6 @@ class AppInstall:
 
         sandbox_status_description = d.pop("sandbox_status_description", UNSET)
 
-        status = d.pop("status", UNSET)
-
-        status_description = d.pop("status_description", UNSET)
-
         updated_at = d.pop("updated_at", UNSET)
 
         workflow_id = d.pop("workflow_id", UNSET)
@@ -679,7 +663,7 @@ class AppInstall:
             install_stack=install_stack,
             install_states=install_states,
             labels=labels,
-            lifecycle_status=lifecycle_status,
+            lifecycle_phase=lifecycle_phase,
             links=links,
             metadata=metadata,
             name=name,
@@ -692,8 +676,6 @@ class AppInstall:
             sandbox_mode=sandbox_mode,
             sandbox_status=sandbox_status,
             sandbox_status_description=sandbox_status_description,
-            status=status,
-            status_description=status_description,
             updated_at=updated_at,
             workflow_id=workflow_id,
             workflows=workflows,

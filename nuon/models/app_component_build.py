@@ -42,10 +42,40 @@ class AppComponentBuild:
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
         log_stream (AppLogStream | Unset):
+        no_op (bool | Unset): NoOp is true when the runner detected SourceDigest matches the previous
+            build's SourceDigest and skipped the artifact push.
+
+            Downstream contract:
+              - The build is still marked Active because the bytes it represents
+                are deployable (they live in the install registry under the prior
+                build that pushed them).
+              - No new install deploys are auto-queued for a NoOp build; the
+                dep-aware deploy path handles fan-out for installs that depend
+                on the underlying image.
+              - pollForDeployableBuild treats NoOp builds as Active without any
+                special-casing because the deployable artifact at the same
+                SourceDigest is already present in the install registry from the
+                prior build.
         policy_reports (list[AppPolicyReport] | Unset):
         queue_signal (AppQueueSignal | Unset):
         releases (list[AppComponentRelease] | Unset):
+        resolved_at (str | Unset): ResolvedAt is when the runner resolved SourceRef to SourceDigest.
+        resolved_tag (str | Unset): ResolvedTag is the tag the runner actually pulled from. For digest-pinned
+            refs this is empty. For mutable/semver refs this is the concrete tag the
+            runner selected (e.g. "1.25.5" even if SourceRef pinned "1.25.3" with a
+            "~1.25.0" update_policy constraint).
         runner_job (AppRunnerJob | Unset):
+        source_digest (str | Unset): SourceDigest is the manifest list digest of the resolved source ref,
+            e.g. "sha256:abc...". This is the canonical content address of what was
+            pulled and is used for build dedup.
+        source_image (str | Unset): SourceImage is the repository portion of SourceRef without tag/digest, e.g. "nginx".
+        source_media_type (str | Unset): SourceMediaType records the media type of the resolved manifest (image,
+            image index, OCI artifact, etc.) for downstream rendering decisions.
+        source_ref (str | Unset): Source identity for image-type builds.
+
+            SourceRef is what the user wrote in the spec, e.g. "nginx:1.25.3" or
+            "myimage@sha256:...". Always populated for image-type builds so we have a
+            permanent record of what was requested at build time.
         status (str | Unset):
         status_description (str | Unset):
         status_v2 (AppCompositeStatus | Unset):
@@ -66,10 +96,17 @@ class AppComponentBuild:
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
+    no_op: bool | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
     queue_signal: AppQueueSignal | Unset = UNSET
     releases: list[AppComponentRelease] | Unset = UNSET
+    resolved_at: str | Unset = UNSET
+    resolved_tag: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
+    source_digest: str | Unset = UNSET
+    source_image: str | Unset = UNSET
+    source_media_type: str | Unset = UNSET
+    source_ref: str | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
     status_v2: AppCompositeStatus | Unset = UNSET
@@ -115,6 +152,8 @@ class AppComponentBuild:
         if not isinstance(self.log_stream, Unset):
             log_stream = self.log_stream.to_dict()
 
+        no_op = self.no_op
+
         policy_reports: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policy_reports, Unset):
             policy_reports = []
@@ -133,9 +172,21 @@ class AppComponentBuild:
                 releases_item = releases_item_data.to_dict()
                 releases.append(releases_item)
 
+        resolved_at = self.resolved_at
+
+        resolved_tag = self.resolved_tag
+
         runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
+
+        source_digest = self.source_digest
+
+        source_image = self.source_image
+
+        source_media_type = self.source_media_type
+
+        source_ref = self.source_ref
 
         status = self.status
 
@@ -180,14 +231,28 @@ class AppComponentBuild:
             field_dict["install_deploys"] = install_deploys
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
+        if no_op is not UNSET:
+            field_dict["no_op"] = no_op
         if policy_reports is not UNSET:
             field_dict["policy_reports"] = policy_reports
         if queue_signal is not UNSET:
             field_dict["queue_signal"] = queue_signal
         if releases is not UNSET:
             field_dict["releases"] = releases
+        if resolved_at is not UNSET:
+            field_dict["resolved_at"] = resolved_at
+        if resolved_tag is not UNSET:
+            field_dict["resolved_tag"] = resolved_tag
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
+        if source_digest is not UNSET:
+            field_dict["source_digest"] = source_digest
+        if source_image is not UNSET:
+            field_dict["source_image"] = source_image
+        if source_media_type is not UNSET:
+            field_dict["source_media_type"] = source_media_type
+        if source_ref is not UNSET:
+            field_dict["source_ref"] = source_ref
         if status is not UNSET:
             field_dict["status"] = status
         if status_description is not UNSET:
@@ -263,6 +328,8 @@ class AppComponentBuild:
         else:
             log_stream = AppLogStream.from_dict(_log_stream)
 
+        no_op = d.pop("no_op", UNSET)
+
         _policy_reports = d.pop("policy_reports", UNSET)
         policy_reports: list[AppPolicyReport] | Unset = UNSET
         if _policy_reports is not UNSET:
@@ -288,12 +355,24 @@ class AppComponentBuild:
 
                 releases.append(releases_item)
 
+        resolved_at = d.pop("resolved_at", UNSET)
+
+        resolved_tag = d.pop("resolved_tag", UNSET)
+
         _runner_job = d.pop("runner_job", UNSET)
         runner_job: AppRunnerJob | Unset
         if isinstance(_runner_job, Unset):
             runner_job = UNSET
         else:
             runner_job = AppRunnerJob.from_dict(_runner_job)
+
+        source_digest = d.pop("source_digest", UNSET)
+
+        source_image = d.pop("source_image", UNSET)
+
+        source_media_type = d.pop("source_media_type", UNSET)
+
+        source_ref = d.pop("source_ref", UNSET)
 
         status = d.pop("status", UNSET)
 
@@ -329,10 +408,17 @@ class AppComponentBuild:
             id=id,
             install_deploys=install_deploys,
             log_stream=log_stream,
+            no_op=no_op,
             policy_reports=policy_reports,
             queue_signal=queue_signal,
             releases=releases,
+            resolved_at=resolved_at,
+            resolved_tag=resolved_tag,
             runner_job=runner_job,
+            source_digest=source_digest,
+            source_image=source_image,
+            source_media_type=source_media_type,
+            source_ref=source_ref,
             status=status,
             status_description=status_description,
             status_v2=status_v2,

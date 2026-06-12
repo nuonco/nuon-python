@@ -26,11 +26,13 @@ class ServiceCreateRunbookStepConfigRequest:
         action_name (str | Unset):
         command (str | Unset):
         component_name (str | Unset):
-        deploy_dependencies (bool | Unset):
+        deploy_dependents (bool | Unset):
         env_vars (ServiceCreateRunbookStepConfigRequestEnvVars | Unset):
         idx (int | Unset):
         inline_contents (str | Unset):
         role (str | Unset):
+        skip_component_deploys (bool | Unset):
+        tear_down_dependents (bool | Unset):
         timeout (int | Unset):
     """
 
@@ -39,11 +41,13 @@ class ServiceCreateRunbookStepConfigRequest:
     action_name: str | Unset = UNSET
     command: str | Unset = UNSET
     component_name: str | Unset = UNSET
-    deploy_dependencies: bool | Unset = UNSET
+    deploy_dependents: bool | Unset = UNSET
     env_vars: ServiceCreateRunbookStepConfigRequestEnvVars | Unset = UNSET
     idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
     role: str | Unset = UNSET
+    skip_component_deploys: bool | Unset = UNSET
+    tear_down_dependents: bool | Unset = UNSET
     timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -58,7 +62,7 @@ class ServiceCreateRunbookStepConfigRequest:
 
         component_name = self.component_name
 
-        deploy_dependencies = self.deploy_dependencies
+        deploy_dependents = self.deploy_dependents
 
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -69,6 +73,10 @@ class ServiceCreateRunbookStepConfigRequest:
         inline_contents = self.inline_contents
 
         role = self.role
+
+        skip_component_deploys = self.skip_component_deploys
+
+        tear_down_dependents = self.tear_down_dependents
 
         timeout = self.timeout
 
@@ -86,8 +94,8 @@ class ServiceCreateRunbookStepConfigRequest:
             field_dict["command"] = command
         if component_name is not UNSET:
             field_dict["component_name"] = component_name
-        if deploy_dependencies is not UNSET:
-            field_dict["deploy_dependencies"] = deploy_dependencies
+        if deploy_dependents is not UNSET:
+            field_dict["deploy_dependents"] = deploy_dependents
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if idx is not UNSET:
@@ -96,6 +104,10 @@ class ServiceCreateRunbookStepConfigRequest:
             field_dict["inline_contents"] = inline_contents
         if role is not UNSET:
             field_dict["role"] = role
+        if skip_component_deploys is not UNSET:
+            field_dict["skip_component_deploys"] = skip_component_deploys
+        if tear_down_dependents is not UNSET:
+            field_dict["tear_down_dependents"] = tear_down_dependents
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
 
@@ -118,7 +130,7 @@ class ServiceCreateRunbookStepConfigRequest:
 
         component_name = d.pop("component_name", UNSET)
 
-        deploy_dependencies = d.pop("deploy_dependencies", UNSET)
+        deploy_dependents = d.pop("deploy_dependents", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
         env_vars: ServiceCreateRunbookStepConfigRequestEnvVars | Unset
@@ -133,6 +145,10 @@ class ServiceCreateRunbookStepConfigRequest:
 
         role = d.pop("role", UNSET)
 
+        skip_component_deploys = d.pop("skip_component_deploys", UNSET)
+
+        tear_down_dependents = d.pop("tear_down_dependents", UNSET)
+
         timeout = d.pop("timeout", UNSET)
 
         service_create_runbook_step_config_request = cls(
@@ -141,11 +157,13 @@ class ServiceCreateRunbookStepConfigRequest:
             action_name=action_name,
             command=command,
             component_name=component_name,
-            deploy_dependencies=deploy_dependencies,
+            deploy_dependents=deploy_dependents,
             env_vars=env_vars,
             idx=idx,
             inline_contents=inline_contents,
             role=role,
+            skip_component_deploys=skip_component_deploys,
+            tear_down_dependents=tear_down_dependents,
             timeout=timeout,
         )
 

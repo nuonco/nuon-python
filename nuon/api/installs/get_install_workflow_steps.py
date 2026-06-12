@@ -8,18 +8,33 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_workflow_step import AppWorkflowStep
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_workflow_id: str,
+    *,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["offset"] = offset
+
+    params["limit"] = limit
+
+    params["page"] = page
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/install-workflows/{install_workflow_id}/steps".format(
             install_workflow_id=quote(str(install_workflow_id), safe=""),
         ),
+        "params": params,
     }
 
     return _kwargs
@@ -84,6 +99,9 @@ def sync_detailed(
     install_workflow_id: str,
     *,
     client: AuthenticatedClient,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppWorkflowStep]]:
     """get all of the steps for a given install workflow
 
@@ -91,6 +109,9 @@ def sync_detailed(
 
     Args:
         install_workflow_id (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -102,6 +123,9 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_workflow_id=install_workflow_id,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = client.get_httpx_client().request(
@@ -115,6 +139,9 @@ def sync(
     install_workflow_id: str,
     *,
     client: AuthenticatedClient,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppWorkflowStep] | None:
     """get all of the steps for a given install workflow
 
@@ -122,6 +149,9 @@ def sync(
 
     Args:
         install_workflow_id (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,6 +164,9 @@ def sync(
     return sync_detailed(
         install_workflow_id=install_workflow_id,
         client=client,
+        offset=offset,
+        limit=limit,
+        page=page,
     ).parsed
 
 
@@ -141,6 +174,9 @@ async def asyncio_detailed(
     install_workflow_id: str,
     *,
     client: AuthenticatedClient,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppWorkflowStep]]:
     """get all of the steps for a given install workflow
 
@@ -148,6 +184,9 @@ async def asyncio_detailed(
 
     Args:
         install_workflow_id (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,6 +198,9 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_workflow_id=install_workflow_id,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -170,6 +212,9 @@ async def asyncio(
     install_workflow_id: str,
     *,
     client: AuthenticatedClient,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppWorkflowStep] | None:
     """get all of the steps for a given install workflow
 
@@ -177,6 +222,9 @@ async def asyncio(
 
     Args:
         install_workflow_id (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -190,5 +238,8 @@ async def asyncio(
         await asyncio_detailed(
             install_workflow_id=install_workflow_id,
             client=client,
+            offset=offset,
+            limit=limit,
+            page=page,
         )
     ).parsed

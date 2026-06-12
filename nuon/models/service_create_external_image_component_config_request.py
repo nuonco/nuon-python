@@ -25,7 +25,6 @@ class ServiceCreateExternalImageComponentConfigRequest:
     """
     Attributes:
         image_url (str):
-        tag (str):
         app_config_id (str | Unset):
         auto_approve_on_policies_passing (bool | Unset):
         aws_ecr_image_config (ServiceAwsECRImageConfigRequest | Unset):
@@ -39,10 +38,14 @@ class ServiceCreateExternalImageComponentConfigRequest:
         operation_roles (ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
         skip_noops (bool | Unset):
+        tag (str | Unset):
+        update_policy (str | Unset): UpdatePolicy is an optional Masterminds-compatible semver constraint
+            (e.g. "~1.25.0", "^2"). When set, the runner lists tags from the
+            source registry, filters to those satisfying the constraint, and
+            uses the highest matching tag. Tag becomes optional in this case.
     """
 
     image_url: str
-    tag: str
     app_config_id: str | Unset = UNSET
     auto_approve_on_policies_passing: bool | Unset = UNSET
     aws_ecr_image_config: ServiceAwsECRImageConfigRequest | Unset = UNSET
@@ -56,12 +59,12 @@ class ServiceCreateExternalImageComponentConfigRequest:
     operation_roles: ServiceCreateExternalImageComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    tag: str | Unset = UNSET
+    update_policy: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         image_url = self.image_url
-
-        tag = self.tag
 
         app_config_id = self.app_config_id
 
@@ -101,12 +104,15 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         skip_noops = self.skip_noops
 
+        tag = self.tag
+
+        update_policy = self.update_policy
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "image_url": image_url,
-                "tag": tag,
             }
         )
         if app_config_id is not UNSET:
@@ -135,6 +141,10 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["references"] = references
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if tag is not UNSET:
+            field_dict["tag"] = tag
+        if update_policy is not UNSET:
+            field_dict["update_policy"] = update_policy
 
         return field_dict
 
@@ -149,8 +159,6 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         d = dict(src_dict)
         image_url = d.pop("image_url")
-
-        tag = d.pop("tag")
 
         app_config_id = d.pop("app_config_id", UNSET)
 
@@ -198,9 +206,12 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         skip_noops = d.pop("skip_noops", UNSET)
 
+        tag = d.pop("tag", UNSET)
+
+        update_policy = d.pop("update_policy", UNSET)
+
         service_create_external_image_component_config_request = cls(
             image_url=image_url,
-            tag=tag,
             app_config_id=app_config_id,
             auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             aws_ecr_image_config=aws_ecr_image_config,
@@ -214,6 +225,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             operation_roles=operation_roles,
             references=references,
             skip_noops=skip_noops,
+            tag=tag,
+            update_policy=update_policy,
         )
 
         service_create_external_image_component_config_request.additional_properties = d

@@ -9,68 +9,62 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
+    from ..models.app_notebook_cell_env_vars import AppNotebookCellEnvVars
+    from ..models.app_notebook_cell_run import AppNotebookCellRun
+    from ..models.sql_null_bool import SqlNullBool
 
 
-T = TypeVar("T", bound="AppRunbookStepConfig")
+T = TypeVar("T", bound="AppNotebookCell")
 
 
 @_attrs_define
-class AppRunbookStepConfig:
+class AppNotebookCell:
     """
     Attributes:
-        action_workflow_id (str | Unset): action reference field
-        command (str | Unset): inline action fields
-        component_name (str | Unset): deploy / tear-down fields
+        command (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
-        deploy_dependents (bool | Unset):
-        env_vars (AppRunbookStepConfigEnvVars | Unset):
+        enable_kube_config (SqlNullBool | Unset):
+        env_vars (AppNotebookCellEnvVars | Unset):
         id (str | Unset):
-        idx (int | Unset):
         inline_contents (str | Unset):
+        latest_run (AppNotebookCellRun | Unset):
         name (str | Unset):
+        notebook_id (str | Unset):
+        position (int | Unset): Position is the 0-based ordering of this cell within the notebook.
+        revision (int | Unset): Revision increments on every edit; runs snapshot the revision they ran.
         role (str | Unset):
-        runbook_config_id (str | Unset):
-        skip_component_deploys (bool | Unset): sandbox lifecycle fields
-        tear_down_dependents (bool | Unset):
         timeout (int | Unset):
-        type_ (str | Unset):
         updated_at (str | Unset):
     """
 
-    action_workflow_id: str | Unset = UNSET
     command: str | Unset = UNSET
-    component_name: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
-    deploy_dependents: bool | Unset = UNSET
-    env_vars: AppRunbookStepConfigEnvVars | Unset = UNSET
+    enable_kube_config: SqlNullBool | Unset = UNSET
+    env_vars: AppNotebookCellEnvVars | Unset = UNSET
     id: str | Unset = UNSET
-    idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
+    latest_run: AppNotebookCellRun | Unset = UNSET
     name: str | Unset = UNSET
+    notebook_id: str | Unset = UNSET
+    position: int | Unset = UNSET
+    revision: int | Unset = UNSET
     role: str | Unset = UNSET
-    runbook_config_id: str | Unset = UNSET
-    skip_component_deploys: bool | Unset = UNSET
-    tear_down_dependents: bool | Unset = UNSET
     timeout: int | Unset = UNSET
-    type_: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action_workflow_id = self.action_workflow_id
-
         command = self.command
-
-        component_name = self.component_name
 
         created_at = self.created_at
 
         created_by_id = self.created_by_id
 
-        deploy_dependents = self.deploy_dependents
+        enable_kube_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = self.enable_kube_config.to_dict()
 
         env_vars: dict[str, Any] | Unset = UNSET
         if not isinstance(self.env_vars, Unset):
@@ -78,63 +72,57 @@ class AppRunbookStepConfig:
 
         id = self.id
 
-        idx = self.idx
-
         inline_contents = self.inline_contents
+
+        latest_run: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.latest_run, Unset):
+            latest_run = self.latest_run.to_dict()
 
         name = self.name
 
+        notebook_id = self.notebook_id
+
+        position = self.position
+
+        revision = self.revision
+
         role = self.role
 
-        runbook_config_id = self.runbook_config_id
-
-        skip_component_deploys = self.skip_component_deploys
-
-        tear_down_dependents = self.tear_down_dependents
-
         timeout = self.timeout
-
-        type_ = self.type_
 
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if action_workflow_id is not UNSET:
-            field_dict["action_workflow_id"] = action_workflow_id
         if command is not UNSET:
             field_dict["command"] = command
-        if component_name is not UNSET:
-            field_dict["component_name"] = component_name
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
-        if deploy_dependents is not UNSET:
-            field_dict["deploy_dependents"] = deploy_dependents
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
         if id is not UNSET:
             field_dict["id"] = id
-        if idx is not UNSET:
-            field_dict["idx"] = idx
         if inline_contents is not UNSET:
             field_dict["inline_contents"] = inline_contents
+        if latest_run is not UNSET:
+            field_dict["latest_run"] = latest_run
         if name is not UNSET:
             field_dict["name"] = name
+        if notebook_id is not UNSET:
+            field_dict["notebook_id"] = notebook_id
+        if position is not UNSET:
+            field_dict["position"] = position
+        if revision is not UNSET:
+            field_dict["revision"] = revision
         if role is not UNSET:
             field_dict["role"] = role
-        if runbook_config_id is not UNSET:
-            field_dict["runbook_config_id"] = runbook_config_id
-        if skip_component_deploys is not UNSET:
-            field_dict["skip_component_deploys"] = skip_component_deploys
-        if tear_down_dependents is not UNSET:
-            field_dict["tear_down_dependents"] = tear_down_dependents
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -142,73 +130,76 @@ class AppRunbookStepConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
+        from ..models.app_notebook_cell_env_vars import AppNotebookCellEnvVars
+        from ..models.app_notebook_cell_run import AppNotebookCellRun
+        from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
-        action_workflow_id = d.pop("action_workflow_id", UNSET)
-
         command = d.pop("command", UNSET)
-
-        component_name = d.pop("component_name", UNSET)
 
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
 
-        deploy_dependents = d.pop("deploy_dependents", UNSET)
+        _enable_kube_config = d.pop("enable_kube_config", UNSET)
+        enable_kube_config: SqlNullBool | Unset
+        if isinstance(_enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = SqlNullBool.from_dict(_enable_kube_config)
 
         _env_vars = d.pop("env_vars", UNSET)
-        env_vars: AppRunbookStepConfigEnvVars | Unset
+        env_vars: AppNotebookCellEnvVars | Unset
         if isinstance(_env_vars, Unset):
             env_vars = UNSET
         else:
-            env_vars = AppRunbookStepConfigEnvVars.from_dict(_env_vars)
+            env_vars = AppNotebookCellEnvVars.from_dict(_env_vars)
 
         id = d.pop("id", UNSET)
 
-        idx = d.pop("idx", UNSET)
-
         inline_contents = d.pop("inline_contents", UNSET)
+
+        _latest_run = d.pop("latest_run", UNSET)
+        latest_run: AppNotebookCellRun | Unset
+        if isinstance(_latest_run, Unset):
+            latest_run = UNSET
+        else:
+            latest_run = AppNotebookCellRun.from_dict(_latest_run)
 
         name = d.pop("name", UNSET)
 
+        notebook_id = d.pop("notebook_id", UNSET)
+
+        position = d.pop("position", UNSET)
+
+        revision = d.pop("revision", UNSET)
+
         role = d.pop("role", UNSET)
-
-        runbook_config_id = d.pop("runbook_config_id", UNSET)
-
-        skip_component_deploys = d.pop("skip_component_deploys", UNSET)
-
-        tear_down_dependents = d.pop("tear_down_dependents", UNSET)
 
         timeout = d.pop("timeout", UNSET)
 
-        type_ = d.pop("type", UNSET)
-
         updated_at = d.pop("updated_at", UNSET)
 
-        app_runbook_step_config = cls(
-            action_workflow_id=action_workflow_id,
+        app_notebook_cell = cls(
             command=command,
-            component_name=component_name,
             created_at=created_at,
             created_by_id=created_by_id,
-            deploy_dependents=deploy_dependents,
+            enable_kube_config=enable_kube_config,
             env_vars=env_vars,
             id=id,
-            idx=idx,
             inline_contents=inline_contents,
+            latest_run=latest_run,
             name=name,
+            notebook_id=notebook_id,
+            position=position,
+            revision=revision,
             role=role,
-            runbook_config_id=runbook_config_id,
-            skip_component_deploys=skip_component_deploys,
-            tear_down_dependents=tear_down_dependents,
             timeout=timeout,
-            type_=type_,
             updated_at=updated_at,
         )
 
-        app_runbook_step_config.additional_properties = d
-        return app_runbook_step_config
+        app_notebook_cell.additional_properties = d
+        return app_notebook_cell
 
     @property
     def additional_keys(self) -> list[str]:

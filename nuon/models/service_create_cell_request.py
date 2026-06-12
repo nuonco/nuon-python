@@ -1,0 +1,139 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars
+
+
+T = TypeVar("T", bound="ServiceCreateCellRequest")
+
+
+@_attrs_define
+class ServiceCreateCellRequest:
+    """
+    Attributes:
+        command (str | Unset):
+        enable_kube_config (bool | None | Unset):
+        env_vars (ServiceCreateCellRequestEnvVars | Unset):
+        inline_contents (str | Unset):
+        name (str | Unset):
+        role (str | Unset):
+        timeout (int | Unset):
+    """
+
+    command: str | Unset = UNSET
+    enable_kube_config: bool | None | Unset = UNSET
+    env_vars: ServiceCreateCellRequestEnvVars | Unset = UNSET
+    inline_contents: str | Unset = UNSET
+    name: str | Unset = UNSET
+    role: str | Unset = UNSET
+    timeout: int | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        command = self.command
+
+        enable_kube_config: bool | None | Unset
+        if isinstance(self.enable_kube_config, Unset):
+            enable_kube_config = UNSET
+        else:
+            enable_kube_config = self.enable_kube_config
+
+        env_vars: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.env_vars, Unset):
+            env_vars = self.env_vars.to_dict()
+
+        inline_contents = self.inline_contents
+
+        name = self.name
+
+        role = self.role
+
+        timeout = self.timeout
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if command is not UNSET:
+            field_dict["command"] = command
+        if enable_kube_config is not UNSET:
+            field_dict["enable_kube_config"] = enable_kube_config
+        if env_vars is not UNSET:
+            field_dict["env_vars"] = env_vars
+        if inline_contents is not UNSET:
+            field_dict["inline_contents"] = inline_contents
+        if name is not UNSET:
+            field_dict["name"] = name
+        if role is not UNSET:
+            field_dict["role"] = role
+        if timeout is not UNSET:
+            field_dict["timeout"] = timeout
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars
+
+        d = dict(src_dict)
+        command = d.pop("command", UNSET)
+
+        def _parse_enable_kube_config(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        enable_kube_config = _parse_enable_kube_config(d.pop("enable_kube_config", UNSET))
+
+        _env_vars = d.pop("env_vars", UNSET)
+        env_vars: ServiceCreateCellRequestEnvVars | Unset
+        if isinstance(_env_vars, Unset):
+            env_vars = UNSET
+        else:
+            env_vars = ServiceCreateCellRequestEnvVars.from_dict(_env_vars)
+
+        inline_contents = d.pop("inline_contents", UNSET)
+
+        name = d.pop("name", UNSET)
+
+        role = d.pop("role", UNSET)
+
+        timeout = d.pop("timeout", UNSET)
+
+        service_create_cell_request = cls(
+            command=command,
+            enable_kube_config=enable_kube_config,
+            env_vars=env_vars,
+            inline_contents=inline_contents,
+            name=name,
+            role=role,
+            timeout=timeout,
+        )
+
+        service_create_cell_request.additional_properties = d
+        return service_create_cell_request
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

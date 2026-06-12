@@ -39,6 +39,12 @@ class PlantypesDeployPlan:
         noop (PlantypesNoopDeployPlan | Unset):
         pulumi (PlantypesPulumiDeployPlan | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
+        src_digest (str | Unset): SrcDigest is the manifest digest of the source artifact in the install
+            registry, e.g. "sha256:abc...". Populated for image-type component
+            builds with source identity recorded; empty for
+            non-image builds and legacy image builds. When non-empty, runners
+            should prefer this over SrcTag for content-addressed pulls and for
+            rendering digest-pinned image references in pod specs.
         terraform (PlantypesTerraformDeployPlan | Unset):
     """
 
@@ -56,6 +62,7 @@ class PlantypesDeployPlan:
     noop: PlantypesNoopDeployPlan | Unset = UNSET
     pulumi: PlantypesPulumiDeployPlan | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
+    src_digest: str | Unset = UNSET
     terraform: PlantypesTerraformDeployPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -98,6 +105,8 @@ class PlantypesDeployPlan:
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
+        src_digest = self.src_digest
+
         terraform: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform, Unset):
             terraform = self.terraform.to_dict()
@@ -134,6 +143,8 @@ class PlantypesDeployPlan:
             field_dict["pulumi"] = pulumi
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
+        if src_digest is not UNSET:
+            field_dict["src_digest"] = src_digest
         if terraform is not UNSET:
             field_dict["terraform"] = terraform
 
@@ -203,6 +214,8 @@ class PlantypesDeployPlan:
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
+        src_digest = d.pop("src_digest", UNSET)
+
         _terraform = d.pop("terraform", UNSET)
         terraform: PlantypesTerraformDeployPlan | Unset
         if isinstance(_terraform, Unset):
@@ -225,6 +238,7 @@ class PlantypesDeployPlan:
             noop=noop,
             pulumi=pulumi,
             sandbox_mode=sandbox_mode,
+            src_digest=src_digest,
             terraform=terraform,
         )
 
