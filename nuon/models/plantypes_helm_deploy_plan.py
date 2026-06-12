@@ -39,6 +39,9 @@ class PlantypesHelmDeployPlan:
         take_ownership (bool | Unset):
         values (list[PlantypesHelmValue] | Unset):
         values_files (list[str] | Unset):
+        values_override (str | Unset): ValuesOverride is the install-level Helm values override (raw YAML). It is
+            merged as the highest-precedence layer at deploy time, winning over both
+            ValuesFiles and Values. Empty means no override (exact no-op).
     """
 
     aws_auth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
@@ -53,6 +56,7 @@ class PlantypesHelmDeployPlan:
     take_ownership: bool | Unset = UNSET
     values: list[PlantypesHelmValue] | Unset = UNSET
     values_files: list[str] | Unset = UNSET
+    values_override: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -95,6 +99,8 @@ class PlantypesHelmDeployPlan:
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
 
+        values_override = self.values_override
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -122,6 +128,8 @@ class PlantypesHelmDeployPlan:
             field_dict["values"] = values
         if values_files is not UNSET:
             field_dict["values_files"] = values_files
+        if values_override is not UNSET:
+            field_dict["values_override"] = values_override
 
         return field_dict
 
@@ -191,6 +199,8 @@ class PlantypesHelmDeployPlan:
 
         values_files = cast(list[str], d.pop("values_files", UNSET))
 
+        values_override = d.pop("values_override", UNSET)
+
         plantypes_helm_deploy_plan = cls(
             aws_auth=aws_auth,
             azure_auth=azure_auth,
@@ -204,6 +214,7 @@ class PlantypesHelmDeployPlan:
             take_ownership=take_ownership,
             values=values,
             values_files=values_files,
+            values_override=values_override,
         )
 
         plantypes_helm_deploy_plan.additional_properties = d

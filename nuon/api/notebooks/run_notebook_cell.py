@@ -6,25 +6,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_install_runbook_run import AppInstallRunbookRun
-from ...models.service_create_runbook_run_request import ServiceCreateRunbookRunRequest
-from ...models.stderr_err_response import StderrErrResponse
+from ...models.app_notebook_cell_run import AppNotebookCellRun
+from ...models.service_run_cell_request import ServiceRunCellRequest
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
-    runbook_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
+    body: ServiceRunCellRequest | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/installs/{install_id}/runbooks/{runbook_id}/runs".format(
+        "url": "/v1/installs/{install_id}/notebooks/{notebook_id}/cells/{cell_id}/runs".format(
             install_id=quote(str(install_id), safe=""),
-            runbook_id=quote(str(runbook_id), safe=""),
+            notebook_id=quote(str(notebook_id), safe=""),
+            cell_id=quote(str(cell_id), safe=""),
         ),
     }
 
@@ -37,38 +38,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppInstallRunbookRun | StderrErrResponse | None:
-    if response.status_code == 201:
-        response_201 = AppInstallRunbookRun.from_dict(response.json())
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AppNotebookCellRun | None:
+    if response.status_code == 202:
+        response_202 = AppNotebookCellRun.from_dict(response.json())
 
-        return response_201
-
-    if response.status_code == 400:
-        response_400 = StderrErrResponse.from_dict(response.json())
-
-        return response_400
-
-    if response.status_code == 401:
-        response_401 = StderrErrResponse.from_dict(response.json())
-
-        return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
-
-    if response.status_code == 404:
-        response_404 = StderrErrResponse.from_dict(response.json())
-
-        return response_404
-
-    if response.status_code == 500:
-        response_500 = StderrErrResponse.from_dict(response.json())
-
-        return response_500
+        return response_202
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -76,9 +50,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AppNotebookCellRun]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,29 +61,35 @@ def _build_response(
 
 def sync_detailed(
     install_id: str,
-    runbook_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
-    """run a runbook on an install
+    body: ServiceRunCellRequest | Unset = UNSET,
+) -> Response[AppNotebookCellRun]:
+    """run a notebook cell on the install's runner
+
+     dispatches the cell to the notebook's warm Temporal workflow and records a NotebookCellRun linking
+    to the underlying execution + log stream. Returns once the run is queued, not when it finishes.
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        notebook_id (str):
+        cell_id (str):
+        body (ServiceRunCellRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallRunbookRun | StderrErrResponse]
+        Response[AppNotebookCellRun]
     """
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        runbook_id=runbook_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         body=body,
     )
 
@@ -124,29 +102,35 @@ def sync_detailed(
 
 def sync(
     install_id: str,
-    runbook_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> AppInstallRunbookRun | StderrErrResponse | None:
-    """run a runbook on an install
+    body: ServiceRunCellRequest | Unset = UNSET,
+) -> AppNotebookCellRun | None:
+    """run a notebook cell on the install's runner
+
+     dispatches the cell to the notebook's warm Temporal workflow and records a NotebookCellRun linking
+    to the underlying execution + log stream. Returns once the run is queued, not when it finishes.
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        notebook_id (str):
+        cell_id (str):
+        body (ServiceRunCellRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallRunbookRun | StderrErrResponse
+        AppNotebookCellRun
     """
 
     return sync_detailed(
         install_id=install_id,
-        runbook_id=runbook_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         client=client,
         body=body,
     ).parsed
@@ -154,29 +138,35 @@ def sync(
 
 async def asyncio_detailed(
     install_id: str,
-    runbook_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
-    """run a runbook on an install
+    body: ServiceRunCellRequest | Unset = UNSET,
+) -> Response[AppNotebookCellRun]:
+    """run a notebook cell on the install's runner
+
+     dispatches the cell to the notebook's warm Temporal workflow and records a NotebookCellRun linking
+    to the underlying execution + log stream. Returns once the run is queued, not when it finishes.
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        notebook_id (str):
+        cell_id (str):
+        body (ServiceRunCellRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallRunbookRun | StderrErrResponse]
+        Response[AppNotebookCellRun]
     """
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        runbook_id=runbook_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         body=body,
     )
 
@@ -187,30 +177,36 @@ async def asyncio_detailed(
 
 async def asyncio(
     install_id: str,
-    runbook_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> AppInstallRunbookRun | StderrErrResponse | None:
-    """run a runbook on an install
+    body: ServiceRunCellRequest | Unset = UNSET,
+) -> AppNotebookCellRun | None:
+    """run a notebook cell on the install's runner
+
+     dispatches the cell to the notebook's warm Temporal workflow and records a NotebookCellRun linking
+    to the underlying execution + log stream. Returns once the run is queued, not when it finishes.
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        notebook_id (str):
+        cell_id (str):
+        body (ServiceRunCellRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallRunbookRun | StderrErrResponse
+        AppNotebookCellRun
     """
 
     return (
         await asyncio_detailed(
             install_id=install_id,
-            runbook_id=runbook_id,
+            notebook_id=notebook_id,
+            cell_id=cell_id,
             client=client,
             body=body,
         )

@@ -6,30 +6,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_install_runbook_run import AppInstallRunbookRun
-from ...models.service_create_runbook_run_request import ServiceCreateRunbookRunRequest
-from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...models.app_notebook import AppNotebook
+from ...models.service_create_notebook_request import ServiceCreateNotebookRequest
+from ...types import Response
 
 
 def _get_kwargs(
     install_id: str,
-    runbook_id: str,
     *,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
+    body: ServiceCreateNotebookRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/installs/{install_id}/runbooks/{runbook_id}/runs".format(
+        "url": "/v1/installs/{install_id}/notebooks".format(
             install_id=quote(str(install_id), safe=""),
-            runbook_id=quote(str(runbook_id), safe=""),
         ),
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/json"
 
@@ -37,38 +33,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppInstallRunbookRun | StderrErrResponse | None:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AppNotebook | None:
     if response.status_code == 201:
-        response_201 = AppInstallRunbookRun.from_dict(response.json())
+        response_201 = AppNotebook.from_dict(response.json())
 
         return response_201
-
-    if response.status_code == 400:
-        response_400 = StderrErrResponse.from_dict(response.json())
-
-        return response_400
-
-    if response.status_code == 401:
-        response_401 = StderrErrResponse.from_dict(response.json())
-
-        return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
-
-    if response.status_code == 404:
-        response_404 = StderrErrResponse.from_dict(response.json())
-
-        return response_404
-
-    if response.status_code == 500:
-        response_500 = StderrErrResponse.from_dict(response.json())
-
-        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -76,9 +45,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AppNotebook]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,29 +56,26 @@ def _build_response(
 
 def sync_detailed(
     install_id: str,
-    runbook_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
-    """run a runbook on an install
+    body: ServiceCreateNotebookRequest,
+) -> Response[AppNotebook]:
+    """create a notebook for an install
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        body (ServiceCreateNotebookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallRunbookRun | StderrErrResponse]
+        Response[AppNotebook]
     """
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        runbook_id=runbook_id,
         body=body,
     )
 
@@ -124,29 +88,26 @@ def sync_detailed(
 
 def sync(
     install_id: str,
-    runbook_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> AppInstallRunbookRun | StderrErrResponse | None:
-    """run a runbook on an install
+    body: ServiceCreateNotebookRequest,
+) -> AppNotebook | None:
+    """create a notebook for an install
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        body (ServiceCreateNotebookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallRunbookRun | StderrErrResponse
+        AppNotebook
     """
 
     return sync_detailed(
         install_id=install_id,
-        runbook_id=runbook_id,
         client=client,
         body=body,
     ).parsed
@@ -154,29 +115,26 @@ def sync(
 
 async def asyncio_detailed(
     install_id: str,
-    runbook_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> Response[AppInstallRunbookRun | StderrErrResponse]:
-    """run a runbook on an install
+    body: ServiceCreateNotebookRequest,
+) -> Response[AppNotebook]:
+    """create a notebook for an install
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        body (ServiceCreateNotebookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallRunbookRun | StderrErrResponse]
+        Response[AppNotebook]
     """
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        runbook_id=runbook_id,
         body=body,
     )
 
@@ -187,30 +145,27 @@ async def asyncio_detailed(
 
 async def asyncio(
     install_id: str,
-    runbook_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateRunbookRunRequest | Unset = UNSET,
-) -> AppInstallRunbookRun | StderrErrResponse | None:
-    """run a runbook on an install
+    body: ServiceCreateNotebookRequest,
+) -> AppNotebook | None:
+    """create a notebook for an install
 
     Args:
         install_id (str):
-        runbook_id (str):
-        body (ServiceCreateRunbookRunRequest | Unset):
+        body (ServiceCreateNotebookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallRunbookRun | StderrErrResponse
+        AppNotebook
     """
 
     return (
         await asyncio_detailed(
             install_id=install_id,
-            runbook_id=runbook_id,
             client=client,
             body=body,
         )

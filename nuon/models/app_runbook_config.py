@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_runbook_input import AppRunbookInput
     from ..models.app_runbook_step_config import AppRunbookStepConfig
 
 
@@ -24,6 +25,7 @@ class AppRunbookConfig:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
+        inputs (list[AppRunbookInput] | Unset):
         readme (str | Unset):
         runbook_id (str | Unset):
         steps (list[AppRunbookStepConfig] | Unset):
@@ -35,6 +37,7 @@ class AppRunbookConfig:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    inputs: list[AppRunbookInput] | Unset = UNSET
     readme: str | Unset = UNSET
     runbook_id: str | Unset = UNSET
     steps: list[AppRunbookStepConfig] | Unset = UNSET
@@ -51,6 +54,13 @@ class AppRunbookConfig:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        inputs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.inputs, Unset):
+            inputs = []
+            for inputs_item_data in self.inputs:
+                inputs_item = inputs_item_data.to_dict()
+                inputs.append(inputs_item)
 
         readme = self.readme
 
@@ -78,6 +88,8 @@ class AppRunbookConfig:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if inputs is not UNSET:
+            field_dict["inputs"] = inputs
         if readme is not UNSET:
             field_dict["readme"] = readme
         if runbook_id is not UNSET:
@@ -91,6 +103,7 @@ class AppRunbookConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_runbook_input import AppRunbookInput
         from ..models.app_runbook_step_config import AppRunbookStepConfig
 
         d = dict(src_dict)
@@ -103,6 +116,15 @@ class AppRunbookConfig:
         created_by_id = d.pop("created_by_id", UNSET)
 
         id = d.pop("id", UNSET)
+
+        _inputs = d.pop("inputs", UNSET)
+        inputs: list[AppRunbookInput] | Unset = UNSET
+        if _inputs is not UNSET:
+            inputs = []
+            for inputs_item_data in _inputs:
+                inputs_item = AppRunbookInput.from_dict(inputs_item_data)
+
+                inputs.append(inputs_item)
 
         readme = d.pop("readme", UNSET)
 
@@ -125,6 +147,7 @@ class AppRunbookConfig:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            inputs=inputs,
             readme=readme,
             runbook_id=runbook_id,
             steps=steps,

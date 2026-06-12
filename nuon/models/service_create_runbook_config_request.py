@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.service_create_runbook_input_request import ServiceCreateRunbookInputRequest
     from ..models.service_create_runbook_step_config_request import ServiceCreateRunbookStepConfigRequest
 
 
@@ -21,11 +22,13 @@ class ServiceCreateRunbookConfigRequest:
     Attributes:
         steps (list[ServiceCreateRunbookStepConfigRequest]):
         app_config_id (str | Unset):
+        inputs (list[ServiceCreateRunbookInputRequest] | Unset):
         readme (str | Unset):
     """
 
     steps: list[ServiceCreateRunbookStepConfigRequest]
     app_config_id: str | Unset = UNSET
+    inputs: list[ServiceCreateRunbookInputRequest] | Unset = UNSET
     readme: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -36,6 +39,13 @@ class ServiceCreateRunbookConfigRequest:
             steps.append(steps_item)
 
         app_config_id = self.app_config_id
+
+        inputs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.inputs, Unset):
+            inputs = []
+            for inputs_item_data in self.inputs:
+                inputs_item = inputs_item_data.to_dict()
+                inputs.append(inputs_item)
 
         readme = self.readme
 
@@ -48,6 +58,8 @@ class ServiceCreateRunbookConfigRequest:
         )
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if inputs is not UNSET:
+            field_dict["inputs"] = inputs
         if readme is not UNSET:
             field_dict["readme"] = readme
 
@@ -55,6 +67,7 @@ class ServiceCreateRunbookConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_create_runbook_input_request import ServiceCreateRunbookInputRequest
         from ..models.service_create_runbook_step_config_request import ServiceCreateRunbookStepConfigRequest
 
         d = dict(src_dict)
@@ -67,11 +80,21 @@ class ServiceCreateRunbookConfigRequest:
 
         app_config_id = d.pop("app_config_id", UNSET)
 
+        _inputs = d.pop("inputs", UNSET)
+        inputs: list[ServiceCreateRunbookInputRequest] | Unset = UNSET
+        if _inputs is not UNSET:
+            inputs = []
+            for inputs_item_data in _inputs:
+                inputs_item = ServiceCreateRunbookInputRequest.from_dict(inputs_item_data)
+
+                inputs.append(inputs_item)
+
         readme = d.pop("readme", UNSET)
 
         service_create_runbook_config_request = cls(
             steps=steps,
             app_config_id=app_config_id,
+            inputs=inputs,
             readme=readme,
         )
 

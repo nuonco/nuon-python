@@ -6,17 +6,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_workflow_step import AppWorkflowStep
-from ...models.stderr_err_response import StderrErrResponse
+from ...models.app_notebook_cell_run import AppNotebookCellRun
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    workflow_id: str,
+    install_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
+    limit: int | Unset = 20,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -25,14 +25,14 @@ def _get_kwargs(
 
     params["limit"] = limit
 
-    params["page"] = page
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/workflows/{workflow_id}/steps".format(
-            workflow_id=quote(str(workflow_id), safe=""),
+        "url": "/v1/installs/{install_id}/notebooks/{notebook_id}/cells/{cell_id}/runs".format(
+            install_id=quote(str(install_id), safe=""),
+            notebook_id=quote(str(notebook_id), safe=""),
+            cell_id=quote(str(cell_id), safe=""),
         ),
         "params": params,
     }
@@ -42,41 +42,16 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppWorkflowStep] | None:
+) -> list[AppNotebookCellRun] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppWorkflowStep.from_dict(response_200_item_data)
+            response_200_item = AppNotebookCellRun.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
         return response_200
-
-    if response.status_code == 400:
-        response_400 = StderrErrResponse.from_dict(response.json())
-
-        return response_400
-
-    if response.status_code == 401:
-        response_401 = StderrErrResponse.from_dict(response.json())
-
-        return response_401
-
-    if response.status_code == 403:
-        response_403 = StderrErrResponse.from_dict(response.json())
-
-        return response_403
-
-    if response.status_code == 404:
-        response_404 = StderrErrResponse.from_dict(response.json())
-
-        return response_404
-
-    if response.status_code == 500:
-        response_500 = StderrErrResponse.from_dict(response.json())
-
-        return response_500
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -86,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppWorkflowStep]]:
+) -> Response[list[AppNotebookCellRun]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -96,36 +71,37 @@ def _build_response(
 
 
 def sync_detailed(
-    workflow_id: str,
+    install_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppWorkflowStep]]:
-    """get all of the steps for a given workflow
-
-     Return all steps for a workflow.
+    limit: int | Unset = 20,
+) -> Response[list[AppNotebookCellRun]]:
+    """list a cell's run history (newest first)
 
     Args:
-        workflow_id (str):
+        install_id (str):
+        notebook_id (str):
+        cell_id (str):
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 20.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppWorkflowStep]]
+        Response[list[AppNotebookCellRun]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
+        install_id=install_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         offset=offset,
         limit=limit,
-        page=page,
     )
 
     response = client.get_httpx_client().request(
@@ -136,71 +112,73 @@ def sync_detailed(
 
 
 def sync(
-    workflow_id: str,
+    install_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppWorkflowStep] | None:
-    """get all of the steps for a given workflow
-
-     Return all steps for a workflow.
+    limit: int | Unset = 20,
+) -> list[AppNotebookCellRun] | None:
+    """list a cell's run history (newest first)
 
     Args:
-        workflow_id (str):
+        install_id (str):
+        notebook_id (str):
+        cell_id (str):
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 20.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppWorkflowStep]
+        list[AppNotebookCellRun]
     """
 
     return sync_detailed(
-        workflow_id=workflow_id,
+        install_id=install_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         client=client,
         offset=offset,
         limit=limit,
-        page=page,
     ).parsed
 
 
 async def asyncio_detailed(
-    workflow_id: str,
+    install_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> Response[StderrErrResponse | list[AppWorkflowStep]]:
-    """get all of the steps for a given workflow
-
-     Return all steps for a workflow.
+    limit: int | Unset = 20,
+) -> Response[list[AppNotebookCellRun]]:
+    """list a cell's run history (newest first)
 
     Args:
-        workflow_id (str):
+        install_id (str):
+        notebook_id (str):
+        cell_id (str):
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 20.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppWorkflowStep]]
+        Response[list[AppNotebookCellRun]]
     """
 
     kwargs = _get_kwargs(
-        workflow_id=workflow_id,
+        install_id=install_id,
+        notebook_id=notebook_id,
+        cell_id=cell_id,
         offset=offset,
         limit=limit,
-        page=page,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -209,37 +187,38 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    workflow_id: str,
+    install_id: str,
+    notebook_id: str,
+    cell_id: str,
     *,
     client: AuthenticatedClient,
     offset: int | Unset = 0,
-    limit: int | Unset = 10,
-    page: int | Unset = 0,
-) -> StderrErrResponse | list[AppWorkflowStep] | None:
-    """get all of the steps for a given workflow
-
-     Return all steps for a workflow.
+    limit: int | Unset = 20,
+) -> list[AppNotebookCellRun] | None:
+    """list a cell's run history (newest first)
 
     Args:
-        workflow_id (str):
+        install_id (str):
+        notebook_id (str):
+        cell_id (str):
         offset (int | Unset):  Default: 0.
-        limit (int | Unset):  Default: 10.
-        page (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 20.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppWorkflowStep]
+        list[AppNotebookCellRun]
     """
 
     return (
         await asyncio_detailed(
-            workflow_id=workflow_id,
+            install_id=install_id,
+            notebook_id=notebook_id,
+            cell_id=cell_id,
             client=client,
             offset=offset,
             limit=limit,
-            page=page,
         )
     ).parsed

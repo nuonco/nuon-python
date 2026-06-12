@@ -109,7 +109,7 @@ from .app_install_event_payload import AppInstallEventPayload
 from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
-from .app_install_lifecycle_status import AppInstallLifecycleStatus
+from .app_install_lifecycle_phase import AppInstallLifecyclePhase
 from .app_install_links import AppInstallLinks
 from .app_install_metadata import AppInstallMetadata
 from .app_install_role_selection_record import AppInstallRoleSelectionRecord
@@ -117,6 +117,8 @@ from .app_install_role_usage import AppInstallRoleUsage
 from .app_install_roles import AppInstallRoles
 from .app_install_runbook import AppInstallRunbook
 from .app_install_runbook_run import AppInstallRunbookRun
+from .app_install_runbook_run_runbook_inputs import AppInstallRunbookRunRunbookInputs
+from .app_install_runbook_run_runbook_inputs_redacted import AppInstallRunbookRunRunbookInputsRedacted
 from .app_install_sandbox import AppInstallSandbox
 from .app_install_sandbox_run import AppInstallSandboxRun
 from .app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
@@ -138,6 +140,11 @@ from .app_kustomize_config import AppKustomizeConfig
 from .app_latest_runner_heart_beat import AppLatestRunnerHeartBeat
 from .app_log_stream import AppLogStream
 from .app_log_stream_attrs import AppLogStreamAttrs
+from .app_notebook import AppNotebook
+from .app_notebook_cell import AppNotebookCell
+from .app_notebook_cell_env_vars import AppNotebookCellEnvVars
+from .app_notebook_cell_run import AppNotebookCellRun
+from .app_notebook_cell_run_env_vars import AppNotebookCellRunEnvVars
 from .app_notifications_config import AppNotificationsConfig
 from .app_oci_artifact import AppOCIArtifact
 from .app_oci_artifact_annotations import AppOCIArtifactAnnotations
@@ -176,8 +183,10 @@ from .app_role import AppRole
 from .app_role_type import AppRoleType
 from .app_runbook import AppRunbook
 from .app_runbook_config import AppRunbookConfig
+from .app_runbook_input import AppRunbookInput
 from .app_runbook_step_config import AppRunbookStepConfig
 from .app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
+from .app_runbook_step_selection import AppRunbookStepSelection
 from .app_runner import AppRunner
 from .app_runner_group import AppRunnerGroup
 from .app_runner_group_settings import AppRunnerGroupSettings
@@ -455,6 +464,8 @@ from .service_create_app_sandbox_config_request_variables import ServiceCreateAp
 from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
 from .service_create_app_stack_config_request import ServiceCreateAppStackConfigRequest
+from .service_create_cell_request import ServiceCreateCellRequest
+from .service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars
 from .service_create_channel_subscription_request import ServiceCreateChannelSubscriptionRequest
 from .service_create_channel_subscription_request_interests import ServiceCreateChannelSubscriptionRequestInterests
 from .service_create_channel_subscription_request_match import ServiceCreateChannelSubscriptionRequestMatch
@@ -515,6 +526,7 @@ from .service_create_kubernetes_manifest_component_config_request import (
 from .service_create_kubernetes_manifest_component_config_request_operation_roles import (
     ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
 )
+from .service_create_notebook_request import ServiceCreateNotebookRequest
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
 from .service_create_org_link_request import ServiceCreateOrgLinkRequest
 from .service_create_org_request import ServiceCreateOrgRequest
@@ -526,8 +538,12 @@ from .service_create_pulumi_component_config_request_operation_roles import (
     ServiceCreatePulumiComponentConfigRequestOperationRoles,
 )
 from .service_create_runbook_config_request import ServiceCreateRunbookConfigRequest
+from .service_create_runbook_input_request import ServiceCreateRunbookInputRequest
 from .service_create_runbook_request import ServiceCreateRunbookRequest
 from .service_create_runbook_request_labels import ServiceCreateRunbookRequestLabels
+from .service_create_runbook_run_request import ServiceCreateRunbookRunRequest
+from .service_create_runbook_run_request_inputs import ServiceCreateRunbookRunRequestInputs
+from .service_create_runbook_run_step_selection import ServiceCreateRunbookRunStepSelection
 from .service_create_runbook_step_config_request import ServiceCreateRunbookStepConfigRequest
 from .service_create_runbook_step_config_request_env_vars import ServiceCreateRunbookStepConfigRequestEnvVars
 from .service_create_runner_bootstrap_token_response import ServiceCreateRunnerBootstrapTokenResponse
@@ -588,11 +604,13 @@ from .service_remove_action_labels_request import ServiceRemoveActionLabelsReque
 from .service_remove_component_labels_request import ServiceRemoveComponentLabelsRequest
 from .service_remove_install_labels_request import ServiceRemoveInstallLabelsRequest
 from .service_remove_org_user_request import ServiceRemoveOrgUserRequest
+from .service_reorder_cells_request import ServiceReorderCellsRequest
 from .service_reprovision_install_request import ServiceReprovisionInstallRequest
 from .service_reprovision_install_sandbox_request import ServiceReprovisionInstallSandboxRequest
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
 from .service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
+from .service_run_cell_request import ServiceRunCellRequest
 from .service_runner_card_details_response import ServiceRunnerCardDetailsResponse
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_series_point import ServiceSeriesPoint
@@ -612,6 +630,8 @@ from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
 from .service_update_app_request import ServiceUpdateAppRequest
+from .service_update_cell_request import ServiceUpdateCellRequest
+from .service_update_cell_request_env_vars import ServiceUpdateCellRequestEnvVars
 from .service_update_channel_subscription_request import ServiceUpdateChannelSubscriptionRequest
 from .service_update_channel_subscription_request_interests import ServiceUpdateChannelSubscriptionRequestInterests
 from .service_update_channel_subscription_request_match import ServiceUpdateChannelSubscriptionRequestMatch
@@ -626,6 +646,8 @@ from .service_update_install_inputs_request import ServiceUpdateInstallInputsReq
 from .service_update_install_inputs_request_inputs import ServiceUpdateInstallInputsRequestInputs
 from .service_update_install_request import ServiceUpdateInstallRequest
 from .service_update_install_role_request import ServiceUpdateInstallRoleRequest
+from .service_update_notebook_request import ServiceUpdateNotebookRequest
+from .service_update_notebook_request_status import ServiceUpdateNotebookRequestStatus
 from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 from .service_update_org_request import ServiceUpdateOrgRequest
@@ -791,7 +813,7 @@ __all__ = (
     "AppInstallInputs",
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
-    "AppInstallLifecycleStatus",
+    "AppInstallLifecyclePhase",
     "AppInstallLinks",
     "AppInstallMetadata",
     "AppInstallRoles",
@@ -799,6 +821,8 @@ __all__ = (
     "AppInstallRoleUsage",
     "AppInstallRunbook",
     "AppInstallRunbookRun",
+    "AppInstallRunbookRunRunbookInputs",
+    "AppInstallRunbookRunRunbookInputsRedacted",
     "AppInstallSandbox",
     "AppInstallSandboxRun",
     "AppInstallSandboxRunOutputs",
@@ -820,6 +844,11 @@ __all__ = (
     "AppLatestRunnerHeartBeat",
     "AppLogStream",
     "AppLogStreamAttrs",
+    "AppNotebook",
+    "AppNotebookCell",
+    "AppNotebookCellEnvVars",
+    "AppNotebookCellRun",
+    "AppNotebookCellRunEnvVars",
     "AppNotificationsConfig",
     "AppOCIArtifact",
     "AppOCIArtifactAnnotations",
@@ -858,8 +887,10 @@ __all__ = (
     "AppRoleType",
     "AppRunbook",
     "AppRunbookConfig",
+    "AppRunbookInput",
     "AppRunbookStepConfig",
     "AppRunbookStepConfigEnvVars",
+    "AppRunbookStepSelection",
     "AppRunner",
     "AppRunnerGroup",
     "AppRunnerGroupSettings",
@@ -1127,6 +1158,8 @@ __all__ = (
     "ServiceCreateAppSecretRequest",
     "ServiceCreateAppSecretsConfigRequest",
     "ServiceCreateAppStackConfigRequest",
+    "ServiceCreateCellRequest",
+    "ServiceCreateCellRequestEnvVars",
     "ServiceCreateChannelSubscriptionRequest",
     "ServiceCreateChannelSubscriptionRequestInterests",
     "ServiceCreateChannelSubscriptionRequestMatch",
@@ -1171,6 +1204,7 @@ __all__ = (
     "ServiceCreateJobComponentConfigRequestOperationRoles",
     "ServiceCreateKubernetesManifestComponentConfigRequest",
     "ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles",
+    "ServiceCreateNotebookRequest",
     "ServiceCreateOrgInviteRequest",
     "ServiceCreateOrgLinkRequest",
     "ServiceCreateOrgRequest",
@@ -1180,8 +1214,12 @@ __all__ = (
     "ServiceCreatePulumiComponentConfigRequestEnvVars",
     "ServiceCreatePulumiComponentConfigRequestOperationRoles",
     "ServiceCreateRunbookConfigRequest",
+    "ServiceCreateRunbookInputRequest",
     "ServiceCreateRunbookRequest",
     "ServiceCreateRunbookRequestLabels",
+    "ServiceCreateRunbookRunRequest",
+    "ServiceCreateRunbookRunRequestInputs",
+    "ServiceCreateRunbookRunStepSelection",
     "ServiceCreateRunbookStepConfigRequest",
     "ServiceCreateRunbookStepConfigRequestEnvVars",
     "ServiceCreateRunnerBootstrapTokenResponse",
@@ -1236,11 +1274,13 @@ __all__ = (
     "ServiceRemoveComponentLabelsRequest",
     "ServiceRemoveInstallLabelsRequest",
     "ServiceRemoveOrgUserRequest",
+    "ServiceReorderCellsRequest",
     "ServiceReprovisionInstallRequest",
     "ServiceReprovisionInstallSandboxRequest",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
     "ServiceRetryWorkflowStepResponse",
+    "ServiceRunCellRequest",
     "ServiceRunnerCardDetailsResponse",
     "ServiceRunnerConnectionStatus",
     "ServiceSeriesPoint",
@@ -1260,6 +1300,8 @@ __all__ = (
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",
     "ServiceUpdateAppRequest",
+    "ServiceUpdateCellRequest",
+    "ServiceUpdateCellRequestEnvVars",
     "ServiceUpdateChannelSubscriptionRequest",
     "ServiceUpdateChannelSubscriptionRequestInterests",
     "ServiceUpdateChannelSubscriptionRequestMatch",
@@ -1274,6 +1316,8 @@ __all__ = (
     "ServiceUpdateInstallInputsRequestInputs",
     "ServiceUpdateInstallRequest",
     "ServiceUpdateInstallRoleRequest",
+    "ServiceUpdateNotebookRequest",
+    "ServiceUpdateNotebookRequestStatus",
     "ServiceUpdateOrgFeaturesRequest",
     "ServiceUpdateOrgFeaturesRequestFeatures",
     "ServiceUpdateOrgRequest",
