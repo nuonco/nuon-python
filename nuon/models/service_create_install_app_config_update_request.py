@@ -6,29 +6,54 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="AppVCSEventPayload")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="ServiceCreateInstallAppConfigUpdateRequest")
 
 
 @_attrs_define
-class AppVCSEventPayload:
-    """ """
+class ServiceCreateInstallAppConfigUpdateRequest:
+    """
+    Attributes:
+        app_config_id (str):
+        plan_only (bool | Unset):
+    """
 
+    app_config_id: str
+    plan_only: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_config_id = self.app_config_id
+
+        plan_only = self.plan_only
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "app_config_id": app_config_id,
+            }
+        )
+        if plan_only is not UNSET:
+            field_dict["plan_only"] = plan_only
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        app_vcs_event_payload = cls()
+        app_config_id = d.pop("app_config_id")
 
-        app_vcs_event_payload.additional_properties = d
-        return app_vcs_event_payload
+        plan_only = d.pop("plan_only", UNSET)
+
+        service_create_install_app_config_update_request = cls(
+            app_config_id=app_config_id,
+            plan_only=plan_only,
+        )
+
+        service_create_install_app_config_update_request.additional_properties = d
+        return service_create_install_app_config_update_request
 
     @property
     def additional_keys(self) -> list[str]:

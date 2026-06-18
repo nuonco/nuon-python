@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppInstallDeploy")
@@ -37,6 +38,7 @@ class AppInstallDeploy:
         component_config_version (int | Unset):
         component_id (str | Unset):
         component_name (str | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
@@ -70,6 +72,7 @@ class AppInstallDeploy:
     component_config_version: int | Unset = UNSET
     component_id: str | Unset = UNSET
     component_name: str | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -117,6 +120,10 @@ class AppInstallDeploy:
         component_id = self.component_id
 
         component_name = self.component_name
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         created_at = self.created_at
 
@@ -212,6 +219,8 @@ class AppInstallDeploy:
             field_dict["component_id"] = component_id
         if component_name is not UNSET:
             field_dict["component_name"] = component_name
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by is not UNSET:
@@ -276,6 +285,7 @@ class AppInstallDeploy:
         from ..models.app_queue_signal import AppQueueSignal
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         _action_workflow_runs = d.pop("action_workflow_runs", UNSET)
@@ -303,6 +313,13 @@ class AppInstallDeploy:
         component_id = d.pop("component_id", UNSET)
 
         component_name = d.pop("component_name", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -416,6 +433,7 @@ class AppInstallDeploy:
             component_config_version=component_config_version,
             component_id=component_id,
             component_name=component_name,
+            composite_error=composite_error,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,

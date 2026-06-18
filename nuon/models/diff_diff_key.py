@@ -6,61 +6,60 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.diff_op import DiffOp
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTriggerAppBranchRunRequest")
+T = TypeVar("T", bound="DiffDiffKey")
 
 
 @_attrs_define
-class ServiceTriggerAppBranchRunRequest:
+class DiffDiffKey:
     """
     Attributes:
-        config_id (str | Unset): optional - use latest if not provided
-        force (bool | Unset): force run even if no changes detected
-        plan_only (bool | Unset): plan-only preview mode (no apply)
+        diff (str | Unset):
+        op (DiffOp | Unset):
     """
 
-    config_id: str | Unset = UNSET
-    force: bool | Unset = UNSET
-    plan_only: bool | Unset = UNSET
+    diff: str | Unset = UNSET
+    op: DiffOp | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        config_id = self.config_id
+        diff = self.diff
 
-        force = self.force
-
-        plan_only = self.plan_only
+        op: str | Unset = UNSET
+        if not isinstance(self.op, Unset):
+            op = self.op.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if config_id is not UNSET:
-            field_dict["config_id"] = config_id
-        if force is not UNSET:
-            field_dict["force"] = force
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        if diff is not UNSET:
+            field_dict["diff"] = diff
+        if op is not UNSET:
+            field_dict["op"] = op
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        config_id = d.pop("config_id", UNSET)
+        diff = d.pop("diff", UNSET)
 
-        force = d.pop("force", UNSET)
+        _op = d.pop("op", UNSET)
+        op: DiffOp | Unset
+        if isinstance(_op, Unset):
+            op = UNSET
+        else:
+            op = DiffOp(_op)
 
-        plan_only = d.pop("plan_only", UNSET)
-
-        service_trigger_app_branch_run_request = cls(
-            config_id=config_id,
-            force=force,
-            plan_only=plan_only,
+        diff_diff_key = cls(
+            diff=diff,
+            op=op,
         )
 
-        service_trigger_app_branch_run_request.additional_properties = d
-        return service_trigger_app_branch_run_request
+        diff_diff_key.additional_properties = d
+        return diff_diff_key
 
     @property
     def additional_keys(self) -> list[str]:

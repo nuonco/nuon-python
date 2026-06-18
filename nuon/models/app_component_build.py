@@ -28,6 +28,7 @@ T = TypeVar("T", bound="AppComponentBuild")
 class AppComponentBuild:
     """
     Attributes:
+        app_branch_run_id (str | Unset):
         checksum (str | Unset): checksum of our intermediate component config
         component_config_connection (AppComponentConfigConnection | Unset):
         component_config_connection_id (str | Unset): DEPRECATED: will retain the field to connect against the last
@@ -83,6 +84,7 @@ class AppComponentBuild:
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
     """
 
+    app_branch_run_id: str | Unset = UNSET
     checksum: str | Unset = UNSET
     component_config_connection: AppComponentConfigConnection | Unset = UNSET
     component_config_connection_id: str | Unset = UNSET
@@ -115,6 +117,8 @@ class AppComponentBuild:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_run_id = self.app_branch_run_id
+
         checksum = self.checksum
 
         component_config_connection: dict[str, Any] | Unset = UNSET
@@ -205,6 +209,8 @@ class AppComponentBuild:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_run_id is not UNSET:
+            field_dict["app_branch_run_id"] = app_branch_run_id
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if component_config_connection is not UNSET:
@@ -280,6 +286,8 @@ class AppComponentBuild:
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
         d = dict(src_dict)
+        app_branch_run_id = d.pop("app_branch_run_id", UNSET)
+
         checksum = d.pop("checksum", UNSET)
 
         _component_config_connection = d.pop("component_config_connection", UNSET)
@@ -395,6 +403,7 @@ class AppComponentBuild:
             vcs_connection_commit = AppVCSConnectionCommit.from_dict(_vcs_connection_commit)
 
         app_component_build = cls(
+            app_branch_run_id=app_branch_run_id,
             checksum=checksum,
             component_config_connection=component_config_connection,
             component_config_connection_id=component_config_connection_id,

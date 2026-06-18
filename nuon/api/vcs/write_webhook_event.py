@@ -12,13 +12,13 @@ from ...types import Response
 
 
 def _get_kwargs(
-    vcs_connection_id: str,
+    subscription_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/vcs/{vcs_connection_id}/events".format(
-            vcs_connection_id=quote(str(vcs_connection_id), safe=""),
+        "url": "/v1/vcs/webhooks/{subscription_id}/events".format(
+            subscription_id=quote(str(subscription_id), safe=""),
         ),
     }
 
@@ -37,6 +37,11 @@ def _parse_response(
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
+    if response.status_code == 401:
+        response_401 = StderrErrResponse.from_dict(response.json())
+
+        return response_401
 
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
@@ -66,16 +71,16 @@ def _build_response(
 
 
 def sync_detailed(
-    vcs_connection_id: str,
+    subscription_id: str,
     *,
     client: AuthenticatedClient | Client,
 ) -> Response[AppGithubEvent | StderrErrResponse]:
-    """Write a VCS webhook event
+    """Write a VCS webhook event (shared per subscription)
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Receives webhook events for a webhook subscription and creates a GithubEvent for processing
 
     Args:
-        vcs_connection_id (str):
+        subscription_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -86,7 +91,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        vcs_connection_id=vcs_connection_id,
+        subscription_id=subscription_id,
     )
 
     response = client.get_httpx_client().request(
@@ -97,16 +102,16 @@ def sync_detailed(
 
 
 def sync(
-    vcs_connection_id: str,
+    subscription_id: str,
     *,
     client: AuthenticatedClient | Client,
 ) -> AppGithubEvent | StderrErrResponse | None:
-    """Write a VCS webhook event
+    """Write a VCS webhook event (shared per subscription)
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Receives webhook events for a webhook subscription and creates a GithubEvent for processing
 
     Args:
-        vcs_connection_id (str):
+        subscription_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,22 +122,22 @@ def sync(
     """
 
     return sync_detailed(
-        vcs_connection_id=vcs_connection_id,
+        subscription_id=subscription_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    vcs_connection_id: str,
+    subscription_id: str,
     *,
     client: AuthenticatedClient | Client,
 ) -> Response[AppGithubEvent | StderrErrResponse]:
-    """Write a VCS webhook event
+    """Write a VCS webhook event (shared per subscription)
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Receives webhook events for a webhook subscription and creates a GithubEvent for processing
 
     Args:
-        vcs_connection_id (str):
+        subscription_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -143,7 +148,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        vcs_connection_id=vcs_connection_id,
+        subscription_id=subscription_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -152,16 +157,16 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    vcs_connection_id: str,
+    subscription_id: str,
     *,
     client: AuthenticatedClient | Client,
 ) -> AppGithubEvent | StderrErrResponse | None:
-    """Write a VCS webhook event
+    """Write a VCS webhook event (shared per subscription)
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Receives webhook events for a webhook subscription and creates a GithubEvent for processing
 
     Args:
-        vcs_connection_id (str):
+        subscription_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,7 +178,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            vcs_connection_id=vcs_connection_id,
+            subscription_id=subscription_id,
             client=client,
         )
     ).parsed

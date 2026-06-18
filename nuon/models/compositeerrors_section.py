@@ -8,59 +8,50 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceTriggerAppBranchRunRequest")
+T = TypeVar("T", bound="CompositeerrorsSection")
 
 
 @_attrs_define
-class ServiceTriggerAppBranchRunRequest:
+class CompositeerrorsSection:
     """
     Attributes:
-        config_id (str | Unset): optional - use latest if not provided
-        force (bool | Unset): force run even if no changes detected
-        plan_only (bool | Unset): plan-only preview mode (no apply)
+        body (str | Unset):
+        heading (str | Unset):
     """
 
-    config_id: str | Unset = UNSET
-    force: bool | Unset = UNSET
-    plan_only: bool | Unset = UNSET
+    body: str | Unset = UNSET
+    heading: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        config_id = self.config_id
+        body = self.body
 
-        force = self.force
-
-        plan_only = self.plan_only
+        heading = self.heading
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if config_id is not UNSET:
-            field_dict["config_id"] = config_id
-        if force is not UNSET:
-            field_dict["force"] = force
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
+        if body is not UNSET:
+            field_dict["body"] = body
+        if heading is not UNSET:
+            field_dict["heading"] = heading
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        config_id = d.pop("config_id", UNSET)
+        body = d.pop("body", UNSET)
 
-        force = d.pop("force", UNSET)
+        heading = d.pop("heading", UNSET)
 
-        plan_only = d.pop("plan_only", UNSET)
-
-        service_trigger_app_branch_run_request = cls(
-            config_id=config_id,
-            force=force,
-            plan_only=plan_only,
+        compositeerrors_section = cls(
+            body=body,
+            heading=heading,
         )
 
-        service_trigger_app_branch_run_request.additional_properties = d
-        return service_trigger_app_branch_run_request
+        compositeerrors_section.additional_properties = d
+        return compositeerrors_section
 
     @property
     def additional_keys(self) -> list[str]:

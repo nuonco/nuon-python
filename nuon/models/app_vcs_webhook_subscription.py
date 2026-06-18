@@ -10,34 +10,35 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
-    from ..models.app_vcs_event_payload import AppVCSEventPayload
 
 
-T = TypeVar("T", bound="AppVCSEvent")
+T = TypeVar("T", bound="AppVCSWebhookSubscription")
 
 
 @_attrs_define
-class AppVCSEvent:
+class AppVCSWebhookSubscription:
     """
     Attributes:
         created_at (str | Unset):
         created_by_id (str | Unset):
-        event_type (str | Unset):
+        github_hook_id (int | Unset):
+        github_install_id (str | Unset):
         id (str | Unset):
-        payload (AppVCSEventPayload | Unset):
         status (AppCompositeStatus | Unset):
         updated_at (str | Unset):
         vcs_connection_id (str | Unset):
+        webhook_url (str | Unset):
     """
 
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
-    event_type: str | Unset = UNSET
+    github_hook_id: int | Unset = UNSET
+    github_install_id: str | Unset = UNSET
     id: str | Unset = UNSET
-    payload: AppVCSEventPayload | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_id: str | Unset = UNSET
+    webhook_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,13 +46,11 @@ class AppVCSEvent:
 
         created_by_id = self.created_by_id
 
-        event_type = self.event_type
+        github_hook_id = self.github_hook_id
+
+        github_install_id = self.github_install_id
 
         id = self.id
-
-        payload: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.payload, Unset):
-            payload = self.payload.to_dict()
 
         status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
@@ -61,6 +60,8 @@ class AppVCSEvent:
 
         vcs_connection_id = self.vcs_connection_id
 
+        webhook_url = self.webhook_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -68,41 +69,37 @@ class AppVCSEvent:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
-        if event_type is not UNSET:
-            field_dict["event_type"] = event_type
+        if github_hook_id is not UNSET:
+            field_dict["github_hook_id"] = github_hook_id
+        if github_install_id is not UNSET:
+            field_dict["github_install_id"] = github_install_id
         if id is not UNSET:
             field_dict["id"] = id
-        if payload is not UNSET:
-            field_dict["payload"] = payload
         if status is not UNSET:
             field_dict["status"] = status
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connection_id is not UNSET:
             field_dict["vcs_connection_id"] = vcs_connection_id
+        if webhook_url is not UNSET:
+            field_dict["webhook_url"] = webhook_url
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_vcs_event_payload import AppVCSEventPayload
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
 
-        event_type = d.pop("event_type", UNSET)
+        github_hook_id = d.pop("github_hook_id", UNSET)
+
+        github_install_id = d.pop("github_install_id", UNSET)
 
         id = d.pop("id", UNSET)
-
-        _payload = d.pop("payload", UNSET)
-        payload: AppVCSEventPayload | Unset
-        if isinstance(_payload, Unset):
-            payload = UNSET
-        else:
-            payload = AppVCSEventPayload.from_dict(_payload)
 
         _status = d.pop("status", UNSET)
         status: AppCompositeStatus | Unset
@@ -115,19 +112,22 @@ class AppVCSEvent:
 
         vcs_connection_id = d.pop("vcs_connection_id", UNSET)
 
-        app_vcs_event = cls(
+        webhook_url = d.pop("webhook_url", UNSET)
+
+        app_vcs_webhook_subscription = cls(
             created_at=created_at,
             created_by_id=created_by_id,
-            event_type=event_type,
+            github_hook_id=github_hook_id,
+            github_install_id=github_install_id,
             id=id,
-            payload=payload,
             status=status,
             updated_at=updated_at,
             vcs_connection_id=vcs_connection_id,
+            webhook_url=webhook_url,
         )
 
-        app_vcs_event.additional_properties = d
-        return app_vcs_event
+        app_vcs_webhook_subscription.additional_properties = d
+        return app_vcs_webhook_subscription
 
     @property
     def additional_keys(self) -> list[str]:
