@@ -6,19 +6,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_github_event import AppGithubEvent
+from ...models.app_vcs_webhook_subscription import AppVCSWebhookSubscription
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    vcs_connection_id: str,
+    connection_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/v1/vcs/{vcs_connection_id}/events".format(
-            vcs_connection_id=quote(str(vcs_connection_id), safe=""),
+        "method": "get",
+        "url": "/v1/vcs/connections/{connection_id}/webhook-subscription".format(
+            connection_id=quote(str(connection_id), safe=""),
         ),
     }
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppGithubEvent | StderrErrResponse | None:
+) -> AppVCSWebhookSubscription | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = AppGithubEvent.from_dict(response.json())
+        response_200 = AppVCSWebhookSubscription.from_dict(response.json())
 
         return response_200
 
@@ -37,6 +37,16 @@ def _parse_response(
         response_400 = StderrErrResponse.from_dict(response.json())
 
         return response_400
+
+    if response.status_code == 401:
+        response_401 = StderrErrResponse.from_dict(response.json())
+
+        return response_401
+
+    if response.status_code == 403:
+        response_403 = StderrErrResponse.from_dict(response.json())
+
+        return response_403
 
     if response.status_code == 404:
         response_404 = StderrErrResponse.from_dict(response.json())
@@ -56,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppGithubEvent | StderrErrResponse]:
+) -> Response[AppVCSWebhookSubscription | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,27 +76,27 @@ def _build_response(
 
 
 def sync_detailed(
-    vcs_connection_id: str,
+    connection_id: str,
     *,
-    client: AuthenticatedClient | Client,
-) -> Response[AppGithubEvent | StderrErrResponse]:
-    """Write a VCS webhook event
+    client: AuthenticatedClient,
+) -> Response[AppVCSWebhookSubscription | StderrErrResponse]:
+    """returns the webhook subscription for a vcs connection
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Returns the webhook subscription associated with a VCS connection.
 
     Args:
-        vcs_connection_id (str):
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppGithubEvent | StderrErrResponse]
+        Response[AppVCSWebhookSubscription | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        vcs_connection_id=vcs_connection_id,
+        connection_id=connection_id,
     )
 
     response = client.get_httpx_client().request(
@@ -97,53 +107,53 @@ def sync_detailed(
 
 
 def sync(
-    vcs_connection_id: str,
+    connection_id: str,
     *,
-    client: AuthenticatedClient | Client,
-) -> AppGithubEvent | StderrErrResponse | None:
-    """Write a VCS webhook event
+    client: AuthenticatedClient,
+) -> AppVCSWebhookSubscription | StderrErrResponse | None:
+    """returns the webhook subscription for a vcs connection
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Returns the webhook subscription associated with a VCS connection.
 
     Args:
-        vcs_connection_id (str):
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppGithubEvent | StderrErrResponse
+        AppVCSWebhookSubscription | StderrErrResponse
     """
 
     return sync_detailed(
-        vcs_connection_id=vcs_connection_id,
+        connection_id=connection_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    vcs_connection_id: str,
+    connection_id: str,
     *,
-    client: AuthenticatedClient | Client,
-) -> Response[AppGithubEvent | StderrErrResponse]:
-    """Write a VCS webhook event
+    client: AuthenticatedClient,
+) -> Response[AppVCSWebhookSubscription | StderrErrResponse]:
+    """returns the webhook subscription for a vcs connection
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Returns the webhook subscription associated with a VCS connection.
 
     Args:
-        vcs_connection_id (str):
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppGithubEvent | StderrErrResponse]
+        Response[AppVCSWebhookSubscription | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        vcs_connection_id=vcs_connection_id,
+        connection_id=connection_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -152,28 +162,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    vcs_connection_id: str,
+    connection_id: str,
     *,
-    client: AuthenticatedClient | Client,
-) -> AppGithubEvent | StderrErrResponse | None:
-    """Write a VCS webhook event
+    client: AuthenticatedClient,
+) -> AppVCSWebhookSubscription | StderrErrResponse | None:
+    """returns the webhook subscription for a vcs connection
 
-     Writes incoming webhook events for a VCS connection (legacy endpoint)
+     Returns the webhook subscription associated with a VCS connection.
 
     Args:
-        vcs_connection_id (str):
+        connection_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppGithubEvent | StderrErrResponse
+        AppVCSWebhookSubscription | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            vcs_connection_id=vcs_connection_id,
+            connection_id=connection_id,
             client=client,
         )
     ).parsed

@@ -80,6 +80,7 @@ from .app_gcp_stack_outputs_break_glass_sa_emails import AppGCPStackOutputsBreak
 from .app_gcp_stack_outputs_custom_sa_emails import AppGCPStackOutputsCustomSaEmails
 from .app_gcp_stack_outputs_install_inputs import AppGCPStackOutputsInstallInputs
 from .app_gcpgar_image_config import AppGCPGARImageConfig
+from .app_github_event import AppGithubEvent
 from .app_helm_chart import AppHelmChart
 from .app_helm_component_config import AppHelmComponentConfig
 from .app_helm_component_config_values import AppHelmComponentConfigValues
@@ -101,11 +102,14 @@ from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
+from .app_install_config_update import AppInstallConfigUpdate
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
 from .app_install_deploy_type import AppInstallDeployType
 from .app_install_event import AppInstallEvent
 from .app_install_event_payload import AppInstallEventPayload
+from .app_install_group_run import AppInstallGroupRun
+from .app_install_group_run_install import AppInstallGroupRunInstall
 from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
@@ -248,8 +252,7 @@ from .app_user_journey_step import AppUserJourneyStep
 from .app_user_journey_step_metadata import AppUserJourneyStepMetadata
 from .app_vcs_connection import AppVCSConnection
 from .app_vcs_connection_commit import AppVCSConnectionCommit
-from .app_vcs_event import AppVCSEvent
-from .app_vcs_event_payload import AppVCSEventPayload
+from .app_vcs_webhook_subscription import AppVCSWebhookSubscription
 from .app_waitlist import AppWaitlist
 from .app_workflow import AppWorkflow
 from .app_workflow_links import AppWorkflowLinks
@@ -272,6 +275,9 @@ from .blobstore_blob import BlobstoreBlob
 from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
+from .compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+from .compositeerrors_section import CompositeerrorsSection
+from .compositeerrors_severity import CompositeerrorsSeverity
 from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
 from .config_custom_nested_stack import ConfigCustomNestedStack
@@ -284,6 +290,10 @@ from .configs_oci_registry_type import ConfigsOCIRegistryType
 from .credentials_assume_role_config import CredentialsAssumeRoleConfig
 from .credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
 from .credentials_static_credentials import CredentialsStaticCredentials
+from .diff_diff import DiffDiff
+from .diff_diff_key import DiffDiffKey
+from .diff_diff_summary import DiffDiffSummary
+from .diff_op import DiffOp
 from .generics_null_time import GenericsNullTime
 from .get_action_label_keys_response_200 import GetActionLabelKeysResponse200
 from .get_app_config_template_type import GetAppConfigTemplateType
@@ -302,6 +312,7 @@ from .github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNu
 from .github_com_nuonco_nuon_pkg_azure_credentials_config import GithubComNuoncoNuonPkgAzureCredentialsConfig
 from .github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
 from .github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+from .github_com_nuonco_nuon_pkg_labels_selector import GithubComNuoncoNuonPkgLabelsSelector
 from .github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
 from .github_com_nuonco_nuon_pkg_types_state_state_components import GithubComNuoncoNuonPkgTypesStateStateComponents
 from .github_com_nuonco_nuon_pkg_types_state_state_labels import GithubComNuoncoNuonPkgTypesStateStateLabels
@@ -394,6 +405,7 @@ from .service_add_install_labels_request_labels import ServiceAddInstallLabelsRe
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
 from .service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
 from .service_app_awsiam_role_config_cloud_platform import ServiceAppAWSIAMRoleConfigCloudPlatform
+from .service_app_config_diff_response import ServiceAppConfigDiffResponse
 from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
 from .service_app_group_request import ServiceAppGroupRequest
@@ -497,6 +509,7 @@ from .service_create_install_action_workflow_run_request import ServiceCreateIns
 from .service_create_install_action_workflow_run_request_run_env_vars import (
     ServiceCreateInstallActionWorkflowRunRequestRunEnvVars,
 )
+from .service_create_install_app_config_update_request import ServiceCreateInstallAppConfigUpdateRequest
 from .service_create_install_component_deploy_request import ServiceCreateInstallComponentDeployRequest
 from .service_create_install_config_request import ServiceCreateInstallConfigRequest
 from .service_create_install_config_request_labels import ServiceCreateInstallConfigRequestLabels
@@ -784,6 +797,7 @@ __all__ = (
     "AppGCPStackOutputsBreakGlassSaEmails",
     "AppGCPStackOutputsCustomSaEmails",
     "AppGCPStackOutputsInstallInputs",
+    "AppGithubEvent",
     "AppHelmChart",
     "AppHelmComponentConfig",
     "AppHelmComponentConfigValues",
@@ -805,11 +819,14 @@ __all__ = (
     "AppInstallComponentLinks",
     "AppInstallComponentStatuses",
     "AppInstallConfig",
+    "AppInstallConfigUpdate",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
     "AppInstallDeployType",
     "AppInstallEvent",
     "AppInstallEventPayload",
+    "AppInstallGroupRun",
+    "AppInstallGroupRunInstall",
     "AppInstallInputs",
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
@@ -950,8 +967,7 @@ __all__ = (
     "AppUserJourneyStepMetadata",
     "AppVCSConnection",
     "AppVCSConnectionCommit",
-    "AppVCSEvent",
-    "AppVCSEventPayload",
+    "AppVCSWebhookSubscription",
     "AppWaitlist",
     "AppWorkflow",
     "AppWorkflowLinks",
@@ -974,6 +990,9 @@ __all__ = (
     "CallbackRef",
     "CctxSignalContext",
     "ClientConversation",
+    "CompositeerrorsCompositeErrorData",
+    "CompositeerrorsSection",
+    "CompositeerrorsSeverity",
     "ConfigAppPolicyEngine",
     "ConfigAppPolicyType",
     "ConfigCustomNestedStack",
@@ -986,6 +1005,10 @@ __all__ = (
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",
+    "DiffDiff",
+    "DiffDiffKey",
+    "DiffDiffSummary",
+    "DiffOp",
     "GenericsNullTime",
     "GetActionLabelKeysResponse200",
     "GetAppConfigTemplateType",
@@ -1004,6 +1027,7 @@ __all__ = (
     "GithubComNuoncoNuonPkgAzureCredentialsConfig",
     "GithubComNuoncoNuonPkgGcpCredentialsConfig",
     "GithubComNuoncoNuonPkgLabelsLabels",
+    "GithubComNuoncoNuonPkgLabelsSelector",
     "GithubComNuoncoNuonPkgTypesStateState",
     "GithubComNuoncoNuonPkgTypesStateStateComponents",
     "GithubComNuoncoNuonPkgTypesStateStateLabels",
@@ -1094,6 +1118,7 @@ __all__ = (
     "ServiceAppAWSIAMPolicyConfig",
     "ServiceAppAWSIAMRoleConfig",
     "ServiceAppAWSIAMRoleConfigCloudPlatform",
+    "ServiceAppConfigDiffResponse",
     "ServiceAppConfigTemplate",
     "ServiceAppConfigTemplateType",
     "ServiceAppGroupRequest",
@@ -1181,6 +1206,7 @@ __all__ = (
     "ServiceCreateHelmComponentConfigRequestValues",
     "ServiceCreateInstallActionWorkflowRunRequest",
     "ServiceCreateInstallActionWorkflowRunRequestRunEnvVars",
+    "ServiceCreateInstallAppConfigUpdateRequest",
     "ServiceCreateInstallComponentDeployRequest",
     "ServiceCreateInstallConfigRequest",
     "ServiceCreateInstallConfigRequestLabels",

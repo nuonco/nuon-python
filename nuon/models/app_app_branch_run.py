@@ -28,6 +28,7 @@ class AppAppBranchRun:
         app_branch (AppAppBranch | Unset):
         app_branch_config (AppAppBranchConfig | Unset):
         app_config_id (str | Unset): AppConfigID is the app config that was created/synced during this run
+        base_branch (str | Unset):
         commit_sha (str | Unset): CommitSHA is the VCS commit that triggered or is associated with this run
             DEPRECATED: Use VCSConnectionCommit relationship instead
         completed_at (str | Unset): CompletedAt tracks when execution finished
@@ -35,10 +36,18 @@ class AppAppBranchRun:
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
         error_message (str | Unset): ErrorMessage stores any error that occurred during execution
+        event_type (str | Unset): EventType indicates what triggered this run (push, pull_request, manual).
         force (bool | Unset): Force indicates if this run was forced (bypassing change detection)
+        head_sha (str | Unset):
         id (str | Unset):
         log_stream (AppLogStream | Unset):
         log_stream_id (str | Unset): LogStreamID is the log stream created during this run for event tracking
+        plan_only (bool | Unset): PlanOnly indicates this is a preview run (e.g., PR preview) that should
+            only plan changes without applying them.
+        pr_number (int | Unset): PR metadata — populated when EventType is "pull_request"
+        previous_run (AppAppBranchRun | Unset):
+        previous_run_id (str | Unset): PreviousRunID links to the previous successful run on the same branch,
+            used for build diffing to determine which components need rebuilding.
         queue_signal (AppQueueSignal | Unset):
         started_at (str | Unset): StartedAt tracks when execution actually began
         status (str | Unset): Status tracks the current state of the run
@@ -52,16 +61,23 @@ class AppAppBranchRun:
     app_branch: AppAppBranch | Unset = UNSET
     app_branch_config: AppAppBranchConfig | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    base_branch: str | Unset = UNSET
     commit_sha: str | Unset = UNSET
     completed_at: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
     error_message: str | Unset = UNSET
+    event_type: str | Unset = UNSET
     force: bool | Unset = UNSET
+    head_sha: str | Unset = UNSET
     id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     log_stream_id: str | Unset = UNSET
+    plan_only: bool | Unset = UNSET
+    pr_number: int | Unset = UNSET
+    previous_run: AppAppBranchRun | Unset = UNSET
+    previous_run_id: str | Unset = UNSET
     queue_signal: AppQueueSignal | Unset = UNSET
     started_at: str | Unset = UNSET
     status: str | Unset = UNSET
@@ -82,6 +98,8 @@ class AppAppBranchRun:
 
         app_config_id = self.app_config_id
 
+        base_branch = self.base_branch
+
         commit_sha = self.commit_sha
 
         completed_at = self.completed_at
@@ -96,7 +114,11 @@ class AppAppBranchRun:
 
         error_message = self.error_message
 
+        event_type = self.event_type
+
         force = self.force
+
+        head_sha = self.head_sha
 
         id = self.id
 
@@ -105,6 +127,16 @@ class AppAppBranchRun:
             log_stream = self.log_stream.to_dict()
 
         log_stream_id = self.log_stream_id
+
+        plan_only = self.plan_only
+
+        pr_number = self.pr_number
+
+        previous_run: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.previous_run, Unset):
+            previous_run = self.previous_run.to_dict()
+
+        previous_run_id = self.previous_run_id
 
         queue_signal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.queue_signal, Unset):
@@ -135,6 +167,8 @@ class AppAppBranchRun:
             field_dict["app_branch_config"] = app_branch_config
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if base_branch is not UNSET:
+            field_dict["base_branch"] = base_branch
         if commit_sha is not UNSET:
             field_dict["commit_sha"] = commit_sha
         if completed_at is not UNSET:
@@ -147,14 +181,26 @@ class AppAppBranchRun:
             field_dict["created_by_id"] = created_by_id
         if error_message is not UNSET:
             field_dict["error_message"] = error_message
+        if event_type is not UNSET:
+            field_dict["event_type"] = event_type
         if force is not UNSET:
             field_dict["force"] = force
+        if head_sha is not UNSET:
+            field_dict["head_sha"] = head_sha
         if id is not UNSET:
             field_dict["id"] = id
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
         if log_stream_id is not UNSET:
             field_dict["log_stream_id"] = log_stream_id
+        if plan_only is not UNSET:
+            field_dict["plan_only"] = plan_only
+        if pr_number is not UNSET:
+            field_dict["pr_number"] = pr_number
+        if previous_run is not UNSET:
+            field_dict["previous_run"] = previous_run
+        if previous_run_id is not UNSET:
+            field_dict["previous_run_id"] = previous_run_id
         if queue_signal is not UNSET:
             field_dict["queue_signal"] = queue_signal
         if started_at is not UNSET:
@@ -199,6 +245,8 @@ class AppAppBranchRun:
 
         app_config_id = d.pop("app_config_id", UNSET)
 
+        base_branch = d.pop("base_branch", UNSET)
+
         commit_sha = d.pop("commit_sha", UNSET)
 
         completed_at = d.pop("completed_at", UNSET)
@@ -216,7 +264,11 @@ class AppAppBranchRun:
 
         error_message = d.pop("error_message", UNSET)
 
+        event_type = d.pop("event_type", UNSET)
+
         force = d.pop("force", UNSET)
+
+        head_sha = d.pop("head_sha", UNSET)
 
         id = d.pop("id", UNSET)
 
@@ -228,6 +280,19 @@ class AppAppBranchRun:
             log_stream = AppLogStream.from_dict(_log_stream)
 
         log_stream_id = d.pop("log_stream_id", UNSET)
+
+        plan_only = d.pop("plan_only", UNSET)
+
+        pr_number = d.pop("pr_number", UNSET)
+
+        _previous_run = d.pop("previous_run", UNSET)
+        previous_run: AppAppBranchRun | Unset
+        if isinstance(_previous_run, Unset):
+            previous_run = UNSET
+        else:
+            previous_run = AppAppBranchRun.from_dict(_previous_run)
+
+        previous_run_id = d.pop("previous_run_id", UNSET)
 
         _queue_signal = d.pop("queue_signal", UNSET)
         queue_signal: AppQueueSignal | Unset
@@ -262,16 +327,23 @@ class AppAppBranchRun:
             app_branch=app_branch,
             app_branch_config=app_branch_config,
             app_config_id=app_config_id,
+            base_branch=base_branch,
             commit_sha=commit_sha,
             completed_at=completed_at,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
             error_message=error_message,
+            event_type=event_type,
             force=force,
+            head_sha=head_sha,
             id=id,
             log_stream=log_stream,
             log_stream_id=log_stream_id,
+            plan_only=plan_only,
+            pr_number=pr_number,
+            previous_run=previous_run,
+            previous_run_id=previous_run_id,
             queue_signal=queue_signal,
             started_at=started_at,
             status=status,
