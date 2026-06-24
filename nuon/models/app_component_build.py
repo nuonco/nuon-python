@@ -66,6 +66,7 @@ class AppComponentBuild:
             runner selected (e.g. "1.25.5" even if SourceRef pinned "1.25.3" with a
             "~1.25.0" update_policy constraint).
         runner_job (AppRunnerJob | Unset):
+        source_checksum (str | Unset): checksum of the component's source directory at build time
         source_digest (str | Unset): SourceDigest is the manifest list digest of the resolved source ref,
             e.g. "sha256:abc...". This is the canonical content address of what was
             pulled and is used for build dedup.
@@ -105,6 +106,7 @@ class AppComponentBuild:
     resolved_at: str | Unset = UNSET
     resolved_tag: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
+    source_checksum: str | Unset = UNSET
     source_digest: str | Unset = UNSET
     source_image: str | Unset = UNSET
     source_media_type: str | Unset = UNSET
@@ -184,6 +186,8 @@ class AppComponentBuild:
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
+        source_checksum = self.source_checksum
+
         source_digest = self.source_digest
 
         source_image = self.source_image
@@ -251,6 +255,8 @@ class AppComponentBuild:
             field_dict["resolved_tag"] = resolved_tag
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
+        if source_checksum is not UNSET:
+            field_dict["source_checksum"] = source_checksum
         if source_digest is not UNSET:
             field_dict["source_digest"] = source_digest
         if source_image is not UNSET:
@@ -374,6 +380,8 @@ class AppComponentBuild:
         else:
             runner_job = AppRunnerJob.from_dict(_runner_job)
 
+        source_checksum = d.pop("source_checksum", UNSET)
+
         source_digest = d.pop("source_digest", UNSET)
 
         source_image = d.pop("source_image", UNSET)
@@ -424,6 +432,7 @@ class AppComponentBuild:
             resolved_at=resolved_at,
             resolved_tag=resolved_tag,
             runner_job=runner_job,
+            source_checksum=source_checksum,
             source_digest=source_digest,
             source_image=source_image,
             source_media_type=source_media_type,

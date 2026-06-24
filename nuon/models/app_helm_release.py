@@ -20,7 +20,6 @@ T = TypeVar("T", bound="AppHelmRelease")
 class AppHelmRelease:
     """
     Attributes:
-        body (str | Unset): The rspb.Release body, as a base64-encoded string
         created_at (str | Unset):
         created_by_id (str | Unset):
         helm_chart (AppHelmChart | Unset):
@@ -40,7 +39,6 @@ class AppHelmRelease:
         version (int | Unset):
     """
 
-    body: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     helm_chart: AppHelmChart | Unset = UNSET
@@ -58,8 +56,6 @@ class AppHelmRelease:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        body = self.body
-
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -95,8 +91,6 @@ class AppHelmRelease:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if body is not UNSET:
-            field_dict["body"] = body
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -134,8 +128,6 @@ class AppHelmRelease:
         from ..models.app_json_map import AppJSONMap
 
         d = dict(src_dict)
-        body = d.pop("body", UNSET)
-
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -175,7 +167,6 @@ class AppHelmRelease:
         version = d.pop("version", UNSET)
 
         app_helm_release = cls(
-            body=body,
             created_at=created_at,
             created_by_id=created_by_id,
             helm_chart=helm_chart,

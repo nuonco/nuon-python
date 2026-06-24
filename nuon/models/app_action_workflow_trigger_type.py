@@ -27,6 +27,8 @@ class AppActionWorkflowTriggerType(str, Enum):
     PRE_TEARDOWN_ALL_COMPONENTS = "pre-teardown-all-components"
     PRE_TEARDOWN_COMPONENT = "pre-teardown-component"
     PRE_UPDATE_INPUTS = "pre-update-inputs"
+    ROLE_DISABLED = "role-disabled"
+    ROLE_ENABLED = "role-enabled"
 
     def __str__(self) -> str:
         return str(self.value)
