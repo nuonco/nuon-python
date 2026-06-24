@@ -16,12 +16,14 @@ class ServiceCreateInstallDeployRequest:
     """
     Attributes:
         build_id (str | Unset):
+        deploy_dependencies (bool | Unset):
         deploy_dependents (bool | Unset):
         plan_only (bool | Unset):
         role (str | Unset):
     """
 
     build_id: str | Unset = UNSET
+    deploy_dependencies: bool | Unset = UNSET
     deploy_dependents: bool | Unset = UNSET
     plan_only: bool | Unset = UNSET
     role: str | Unset = UNSET
@@ -29,6 +31,8 @@ class ServiceCreateInstallDeployRequest:
 
     def to_dict(self) -> dict[str, Any]:
         build_id = self.build_id
+
+        deploy_dependencies = self.deploy_dependencies
 
         deploy_dependents = self.deploy_dependents
 
@@ -41,6 +45,8 @@ class ServiceCreateInstallDeployRequest:
         field_dict.update({})
         if build_id is not UNSET:
             field_dict["build_id"] = build_id
+        if deploy_dependencies is not UNSET:
+            field_dict["deploy_dependencies"] = deploy_dependencies
         if deploy_dependents is not UNSET:
             field_dict["deploy_dependents"] = deploy_dependents
         if plan_only is not UNSET:
@@ -55,6 +61,8 @@ class ServiceCreateInstallDeployRequest:
         d = dict(src_dict)
         build_id = d.pop("build_id", UNSET)
 
+        deploy_dependencies = d.pop("deploy_dependencies", UNSET)
+
         deploy_dependents = d.pop("deploy_dependents", UNSET)
 
         plan_only = d.pop("plan_only", UNSET)
@@ -63,6 +71,7 @@ class ServiceCreateInstallDeployRequest:
 
         service_create_install_deploy_request = cls(
             build_id=build_id,
+            deploy_dependencies=deploy_dependencies,
             deploy_dependents=deploy_dependents,
             plan_only=plan_only,
             role=role,

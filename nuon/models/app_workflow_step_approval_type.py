@@ -3,6 +3,7 @@ from enum import Enum
 
 class AppWorkflowStepApprovalType(str, Enum):
     APPROVE_ALL = "approve-all"
+    APP_BRANCH_PLAN = "app_branch_plan"
     HELM_APPROVAL = "helm_approval"
     KUBERNETES_MANIFEST_APPROVAL = "kubernetes_manifest_approval"
     NOOP = "noop"

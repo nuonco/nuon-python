@@ -235,6 +235,9 @@ from .app_slack_installation_status import AppSlackInstallationStatus
 from .app_slack_org_link import AppSlackOrgLink
 from .app_slack_org_link_status import AppSlackOrgLinkStatus
 from .app_stack_type import AppStackType
+from .app_stack_version_run_input_diff import AppStackVersionRunInputDiff
+from .app_stack_version_run_role_diff import AppStackVersionRunRoleDiff
+from .app_stack_version_run_type import AppStackVersionRunType
 from .app_status import AppStatus
 from .app_terraform_lock import AppTerraformLock
 from .app_terraform_module_component_config import AppTerraformModuleComponentConfig
@@ -950,6 +953,9 @@ __all__ = (
     "AppSlackOrgLink",
     "AppSlackOrgLinkStatus",
     "AppStackType",
+    "AppStackVersionRunInputDiff",
+    "AppStackVersionRunRoleDiff",
+    "AppStackVersionRunType",
     "AppStatus",
     "AppTerraformLock",
     "AppTerraformModuleComponentConfig",

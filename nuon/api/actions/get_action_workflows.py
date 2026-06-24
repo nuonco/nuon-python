@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    trigger_types: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -26,6 +27,8 @@ def _get_kwargs(
     params["q"] = q
 
     params["labels"] = labels
+
+    params["trigger_types"] = trigger_types
 
     params["offset"] = offset
 
@@ -107,6 +110,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    trigger_types: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -119,6 +123,7 @@ def sync_detailed(
         app_id (str):
         q (str | Unset):
         labels (str | Unset):
+        trigger_types (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -135,6 +140,7 @@ def sync_detailed(
         app_id=app_id,
         q=q,
         labels=labels,
+        trigger_types=trigger_types,
         offset=offset,
         limit=limit,
         page=page,
@@ -153,6 +159,7 @@ def sync(
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    trigger_types: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -165,6 +172,7 @@ def sync(
         app_id (str):
         q (str | Unset):
         labels (str | Unset):
+        trigger_types (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -182,6 +190,7 @@ def sync(
         client=client,
         q=q,
         labels=labels,
+        trigger_types=trigger_types,
         offset=offset,
         limit=limit,
         page=page,
@@ -194,6 +203,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    trigger_types: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -206,6 +216,7 @@ async def asyncio_detailed(
         app_id (str):
         q (str | Unset):
         labels (str | Unset):
+        trigger_types (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -222,6 +233,7 @@ async def asyncio_detailed(
         app_id=app_id,
         q=q,
         labels=labels,
+        trigger_types=trigger_types,
         offset=offset,
         limit=limit,
         page=page,
@@ -238,6 +250,7 @@ async def asyncio(
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    trigger_types: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -250,6 +263,7 @@ async def asyncio(
         app_id (str):
         q (str | Unset):
         labels (str | Unset):
+        trigger_types (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -268,6 +282,7 @@ async def asyncio(
             client=client,
             q=q,
             labels=labels,
+            trigger_types=trigger_types,
             offset=offset,
             limit=limit,
             page=page,

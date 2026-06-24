@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_stack_version_run import AppInstallStackVersionRun
+    from ..models.callback_ref import CallbackRef
 
 
 T = TypeVar("T", bound="AppInstallStackVersion")
@@ -23,6 +24,7 @@ class AppInstallStackVersion:
         app_config_id (str | Unset):
         aws_bucket_key (str | Unset):
         aws_bucket_name (str | Unset): aws configuration parameters
+        callback_ref (CallbackRef | Unset):
         checksum (str | Unset):
         composite_status (AppCompositeStatus | Unset):
         contents (str | Unset):
@@ -48,6 +50,7 @@ class AppInstallStackVersion:
     app_config_id: str | Unset = UNSET
     aws_bucket_key: str | Unset = UNSET
     aws_bucket_name: str | Unset = UNSET
+    callback_ref: CallbackRef | Unset = UNSET
     checksum: str | Unset = UNSET
     composite_status: AppCompositeStatus | Unset = UNSET
     contents: str | Unset = UNSET
@@ -73,6 +76,10 @@ class AppInstallStackVersion:
         aws_bucket_key = self.aws_bucket_key
 
         aws_bucket_name = self.aws_bucket_name
+
+        callback_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.callback_ref, Unset):
+            callback_ref = self.callback_ref.to_dict()
 
         checksum = self.checksum
 
@@ -124,6 +131,8 @@ class AppInstallStackVersion:
             field_dict["aws_bucket_key"] = aws_bucket_key
         if aws_bucket_name is not UNSET:
             field_dict["aws_bucket_name"] = aws_bucket_name
+        if callback_ref is not UNSET:
+            field_dict["callback_ref"] = callback_ref
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if composite_status is not UNSET:
@@ -165,6 +174,7 @@ class AppInstallStackVersion:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_stack_version_run import AppInstallStackVersionRun
+        from ..models.callback_ref import CallbackRef
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -172,6 +182,13 @@ class AppInstallStackVersion:
         aws_bucket_key = d.pop("aws_bucket_key", UNSET)
 
         aws_bucket_name = d.pop("aws_bucket_name", UNSET)
+
+        _callback_ref = d.pop("callback_ref", UNSET)
+        callback_ref: CallbackRef | Unset
+        if isinstance(_callback_ref, Unset):
+            callback_ref = UNSET
+        else:
+            callback_ref = CallbackRef.from_dict(_callback_ref)
 
         checksum = d.pop("checksum", UNSET)
 
@@ -223,6 +240,7 @@ class AppInstallStackVersion:
             app_config_id=app_config_id,
             aws_bucket_key=aws_bucket_key,
             aws_bucket_name=aws_bucket_name,
+            callback_ref=callback_ref,
             checksum=checksum,
             composite_status=composite_status,
             contents=contents,
