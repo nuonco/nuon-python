@@ -10,7 +10,6 @@ from ..models.app_install_approval_option import AppInstallApprovalOption
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles
     from ..models.config_custom_nested_stack import ConfigCustomNestedStack
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
@@ -23,7 +22,6 @@ class AppInstallConfig:
     """
     Attributes:
         approval_option (AppInstallApprovalOption | Unset):
-        component_toggles (AppInstallConfigComponentToggles | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
@@ -37,7 +35,6 @@ class AppInstallConfig:
     """
 
     approval_option: AppInstallApprovalOption | Unset = UNSET
-    component_toggles: AppInstallConfigComponentToggles | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
@@ -54,10 +51,6 @@ class AppInstallConfig:
         approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
-
-        component_toggles: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.component_toggles, Unset):
-            component_toggles = self.component_toggles.to_dict()
 
         created_at = self.created_at
 
@@ -91,8 +84,6 @@ class AppInstallConfig:
         field_dict.update({})
         if approval_option is not UNSET:
             field_dict["approval_option"] = approval_option
-        if component_toggles is not UNSET:
-            field_dict["component_toggles"] = component_toggles
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -118,7 +109,6 @@ class AppInstallConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles
         from ..models.config_custom_nested_stack import ConfigCustomNestedStack
         from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
@@ -129,13 +119,6 @@ class AppInstallConfig:
             approval_option = UNSET
         else:
             approval_option = AppInstallApprovalOption(_approval_option)
-
-        _component_toggles = d.pop("component_toggles", UNSET)
-        component_toggles: AppInstallConfigComponentToggles | Unset
-        if isinstance(_component_toggles, Unset):
-            component_toggles = UNSET
-        else:
-            component_toggles = AppInstallConfigComponentToggles.from_dict(_component_toggles)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -171,7 +154,6 @@ class AppInstallConfig:
 
         app_install_config = cls(
             approval_option=approval_option,
-            component_toggles=component_toggles,
             created_at=created_at,
             created_by_id=created_by_id,
             custom_nested_stacks=custom_nested_stacks,
