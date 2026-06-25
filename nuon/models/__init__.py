@@ -102,6 +102,7 @@ from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
+from .app_install_config_component_toggles import AppInstallConfigComponentToggles
 from .app_install_config_update import AppInstallConfigUpdate
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
@@ -823,6 +824,7 @@ __all__ = (
     "AppInstallComponentLinks",
     "AppInstallComponentStatuses",
     "AppInstallConfig",
+    "AppInstallConfigComponentToggles",
     "AppInstallConfigUpdate",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",

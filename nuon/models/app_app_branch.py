@@ -30,6 +30,7 @@ class AppAppBranch:
         org_id (str | Unset):
         queue (AppQueue | Unset):
         updated_at (str | Unset):
+        workflow_count (int | Unset):
         workflows (list[AppWorkflow] | Unset):
     """
 
@@ -42,6 +43,7 @@ class AppAppBranch:
     org_id: str | Unset = UNSET
     queue: AppQueue | Unset = UNSET
     updated_at: str | Unset = UNSET
+    workflow_count: int | Unset = UNSET
     workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -71,6 +73,8 @@ class AppAppBranch:
 
         updated_at = self.updated_at
 
+        workflow_count = self.workflow_count
+
         workflows: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.workflows, Unset):
             workflows = []
@@ -99,6 +103,8 @@ class AppAppBranch:
             field_dict["queue"] = queue
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if workflow_count is not UNSET:
+            field_dict["workflow_count"] = workflow_count
         if workflows is not UNSET:
             field_dict["workflows"] = workflows
 
@@ -141,6 +147,8 @@ class AppAppBranch:
 
         updated_at = d.pop("updated_at", UNSET)
 
+        workflow_count = d.pop("workflow_count", UNSET)
+
         _workflows = d.pop("workflows", UNSET)
         workflows: list[AppWorkflow] | Unset = UNSET
         if _workflows is not UNSET:
@@ -160,6 +168,7 @@ class AppAppBranch:
             org_id=org_id,
             queue=queue,
             updated_at=updated_at,
+            workflow_count=workflow_count,
             workflows=workflows,
         )
 
