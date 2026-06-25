@@ -30,6 +30,9 @@ class AppInstallComponent:
         created_at (str | Unset):
         created_by_id (str | Unset):
         drifted_object (AppDriftedObject | Unset):
+        enabled (bool | Unset): Enabled is the resolved enabled/disabled state for a toggleable component
+            on this install (from the synthetic enabled install input, falling back to
+            the component's default_enabled). It is nil for non-toggleable components.
         helm_chart (AppHelmChart | Unset):
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
@@ -47,6 +50,7 @@ class AppInstallComponent:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     drifted_object: AppDriftedObject | Unset = UNSET
+    enabled: bool | Unset = UNSET
     helm_chart: AppHelmChart | Unset = UNSET
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
@@ -73,6 +77,8 @@ class AppInstallComponent:
         drifted_object: dict[str, Any] | Unset = UNSET
         if not isinstance(self.drifted_object, Unset):
             drifted_object = self.drifted_object.to_dict()
+
+        enabled = self.enabled
 
         helm_chart: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_chart, Unset):
@@ -120,6 +126,8 @@ class AppInstallComponent:
             field_dict["created_by_id"] = created_by_id
         if drifted_object is not UNSET:
             field_dict["drifted_object"] = drifted_object
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if helm_chart is not UNSET:
             field_dict["helm_chart"] = helm_chart
         if id is not UNSET:
@@ -174,6 +182,8 @@ class AppInstallComponent:
         else:
             drifted_object = AppDriftedObject.from_dict(_drifted_object)
 
+        enabled = d.pop("enabled", UNSET)
+
         _helm_chart = d.pop("helm_chart", UNSET)
         helm_chart: AppHelmChart | Unset
         if isinstance(_helm_chart, Unset):
@@ -227,6 +237,7 @@ class AppInstallComponent:
             created_at=created_at,
             created_by_id=created_by_id,
             drifted_object=drifted_object,
+            enabled=enabled,
             helm_chart=helm_chart,
             id=id,
             install_deploys=install_deploys,
