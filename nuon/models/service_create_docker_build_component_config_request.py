@@ -33,6 +33,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        default_enabled (bool | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset):
@@ -42,6 +43,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         references (list[str] | Unset):
         skip_noops (bool | Unset):
         target (str | Unset):
+        toggleable (bool | Unset):
     """
 
     dockerfile: str
@@ -51,6 +53,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateDockerBuildComponentConfigRequestEnvVars | Unset = UNSET
@@ -60,6 +63,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
     target: str | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,6 +84,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
+
+        default_enabled = self.default_enabled
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
@@ -109,6 +115,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
         target = self.target
 
+        toggleable = self.toggleable
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -128,6 +136,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             field_dict["checksum"] = checksum
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
@@ -146,6 +156,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             field_dict["skip_noops"] = skip_noops
         if target is not UNSET:
             field_dict["target"] = target
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
 
         return field_dict
 
@@ -180,6 +192,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
         else:
             connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
+        default_enabled = d.pop("default_enabled", UNSET)
+
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
@@ -213,6 +227,8 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
         target = d.pop("target", UNSET)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         service_create_docker_build_component_config_request = cls(
             dockerfile=dockerfile,
             app_config_id=app_config_id,
@@ -221,6 +237,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
+            default_enabled=default_enabled,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             env_vars=env_vars,
@@ -230,6 +247,7 @@ class ServiceCreateDockerBuildComponentConfigRequest:
             references=references,
             skip_noops=skip_noops,
             target=target,
+            toggleable=toggleable,
         )
 
         service_create_docker_build_component_config_request.additional_properties = d

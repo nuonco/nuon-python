@@ -38,6 +38,7 @@ class AppComponentConfigConnection:
         component_name (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        default_enabled (bool | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h"). Max 1h.
         docker_build (AppDockerBuildComponentConfig | Unset):
         drift_schedule (str | Unset):
@@ -54,6 +55,7 @@ class AppComponentConfigConnection:
         refs (list[RefsRef] | Unset):
         skip_noops (bool | Unset):
         terraform_module (AppTerraformModuleComponentConfig | Unset):
+        toggleable (bool | Unset):
         type_ (AppComponentType | Unset):
         updated_at (str | Unset):
         version (int | Unset):
@@ -69,6 +71,7 @@ class AppComponentConfigConnection:
     component_name: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     docker_build: AppDockerBuildComponentConfig | Unset = UNSET
     drift_schedule: str | Unset = UNSET
@@ -84,6 +87,7 @@ class AppComponentConfigConnection:
     refs: list[RefsRef] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
     terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     type_: AppComponentType | Unset = UNSET
     updated_at: str | Unset = UNSET
     version: int | Unset = UNSET
@@ -111,6 +115,8 @@ class AppComponentConfigConnection:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        default_enabled = self.default_enabled
 
         deploy_timeout = self.deploy_timeout
 
@@ -165,6 +171,8 @@ class AppComponentConfigConnection:
         if not isinstance(self.terraform_module, Unset):
             terraform_module = self.terraform_module.to_dict()
 
+        toggleable = self.toggleable
+
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
@@ -196,6 +204,8 @@ class AppComponentConfigConnection:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if deploy_timeout is not UNSET:
             field_dict["deploy_timeout"] = deploy_timeout
         if docker_build is not UNSET:
@@ -226,6 +236,8 @@ class AppComponentConfigConnection:
             field_dict["skip_noops"] = skip_noops
         if terraform_module is not UNSET:
             field_dict["terraform_module"] = terraform_module
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -267,6 +279,8 @@ class AppComponentConfigConnection:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        default_enabled = d.pop("default_enabled", UNSET)
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
 
@@ -345,6 +359,8 @@ class AppComponentConfigConnection:
         else:
             terraform_module = AppTerraformModuleComponentConfig.from_dict(_terraform_module)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         _type_ = d.pop("type", UNSET)
         type_: AppComponentType | Unset
         if isinstance(_type_, Unset):
@@ -367,6 +383,7 @@ class AppComponentConfigConnection:
             component_name=component_name,
             created_at=created_at,
             created_by_id=created_by_id,
+            default_enabled=default_enabled,
             deploy_timeout=deploy_timeout,
             docker_build=docker_build,
             drift_schedule=drift_schedule,
@@ -382,6 +399,7 @@ class AppComponentConfigConnection:
             refs=refs,
             skip_noops=skip_noops,
             terraform_module=terraform_module,
+            toggleable=toggleable,
             type_=type_,
             updated_at=updated_at,
             version=version,

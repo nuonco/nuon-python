@@ -37,6 +37,7 @@ class ServiceCreatePulumiComponentConfigRequest:
         build_timeout (str | Unset):
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        default_enabled (bool | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset):
         drift_schedule (str | Unset):
@@ -45,6 +46,7 @@ class ServiceCreatePulumiComponentConfigRequest:
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
         skip_noops (bool | Unset):
+        toggleable (bool | Unset):
         version (str | Unset):
     """
 
@@ -56,6 +58,7 @@ class ServiceCreatePulumiComponentConfigRequest:
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
@@ -64,6 +67,7 @@ class ServiceCreatePulumiComponentConfigRequest:
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     version: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -85,6 +89,8 @@ class ServiceCreatePulumiComponentConfigRequest:
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
+
+        default_enabled = self.default_enabled
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
@@ -110,6 +116,8 @@ class ServiceCreatePulumiComponentConfigRequest:
 
         skip_noops = self.skip_noops
 
+        toggleable = self.toggleable
+
         version = self.version
 
         field_dict: dict[str, Any] = {}
@@ -131,6 +139,8 @@ class ServiceCreatePulumiComponentConfigRequest:
             field_dict["checksum"] = checksum
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
@@ -147,6 +157,8 @@ class ServiceCreatePulumiComponentConfigRequest:
             field_dict["references"] = references
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
         if version is not UNSET:
             field_dict["version"] = version
 
@@ -188,6 +200,8 @@ class ServiceCreatePulumiComponentConfigRequest:
         else:
             connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
+        default_enabled = d.pop("default_enabled", UNSET)
+
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
@@ -214,6 +228,8 @@ class ServiceCreatePulumiComponentConfigRequest:
 
         skip_noops = d.pop("skip_noops", UNSET)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         version = d.pop("version", UNSET)
 
         service_create_pulumi_component_config_request = cls(
@@ -225,6 +241,7 @@ class ServiceCreatePulumiComponentConfigRequest:
             build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
+            default_enabled=default_enabled,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
@@ -233,6 +250,7 @@ class ServiceCreatePulumiComponentConfigRequest:
             public_git_vcs_config=public_git_vcs_config,
             references=references,
             skip_noops=skip_noops,
+            toggleable=toggleable,
             version=version,
         )
 
