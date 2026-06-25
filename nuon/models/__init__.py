@@ -102,6 +102,7 @@ from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
+from .app_install_config_component_toggles import AppInstallConfigComponentToggles
 from .app_install_config_update import AppInstallConfigUpdate
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
@@ -639,6 +640,7 @@ from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from .service_teardown_install_components_request import ServiceTeardownInstallComponentsRequest
 from .service_timeseries_bucket import ServiceTimeseriesBucket
+from .service_toggle_install_component_request import ServiceToggleInstallComponentRequest
 from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
 from .service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels
@@ -822,6 +824,7 @@ __all__ = (
     "AppInstallComponentLinks",
     "AppInstallComponentStatuses",
     "AppInstallConfig",
+    "AppInstallConfigComponentToggles",
     "AppInstallConfigUpdate",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
@@ -1325,6 +1328,7 @@ __all__ = (
     "ServiceTeardownInstallComponentRequest",
     "ServiceTeardownInstallComponentsRequest",
     "ServiceTimeseriesBucket",
+    "ServiceToggleInstallComponentRequest",
     "ServiceTriggerAppBranchRunRequest",
     "ServiceUpdateActionWorkflowRequest",
     "ServiceUpdateActionWorkflowRequestLabels",

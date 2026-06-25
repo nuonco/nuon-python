@@ -31,6 +31,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         azure_acr_image_config (ServiceAzureACRImageConfigRequest | Unset):
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
+        default_enabled (bool | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         gcp_gar_image_config (ServiceGcpGARImageConfigRequest | Unset):
@@ -39,6 +40,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         references (list[str] | Unset):
         skip_noops (bool | Unset):
         tag (str | Unset):
+        toggleable (bool | Unset):
         update_policy (str | Unset): UpdatePolicy is an optional Masterminds-compatible semver constraint
             (e.g. "~1.25.0", "^2"). When set, the runner lists tags from the
             source registry, filters to those satisfying the constraint, and
@@ -52,6 +54,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
     azure_acr_image_config: ServiceAzureACRImageConfigRequest | Unset = UNSET
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     gcp_gar_image_config: ServiceGcpGARImageConfigRequest | Unset = UNSET
@@ -60,6 +63,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
     tag: str | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     update_policy: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -81,6 +85,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
         build_timeout = self.build_timeout
 
         checksum = self.checksum
+
+        default_enabled = self.default_enabled
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
@@ -106,6 +112,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         tag = self.tag
 
+        toggleable = self.toggleable
+
         update_policy = self.update_policy
 
         field_dict: dict[str, Any] = {}
@@ -127,6 +135,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["build_timeout"] = build_timeout
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
@@ -143,6 +153,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
             field_dict["skip_noops"] = skip_noops
         if tag is not UNSET:
             field_dict["tag"] = tag
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
         if update_policy is not UNSET:
             field_dict["update_policy"] = update_policy
 
@@ -182,6 +194,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         checksum = d.pop("checksum", UNSET)
 
+        default_enabled = d.pop("default_enabled", UNSET)
+
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         deploy_timeout = d.pop("deploy_timeout", UNSET)
@@ -208,6 +222,8 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
         tag = d.pop("tag", UNSET)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         update_policy = d.pop("update_policy", UNSET)
 
         service_create_external_image_component_config_request = cls(
@@ -218,6 +234,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
             azure_acr_image_config=azure_acr_image_config,
             build_timeout=build_timeout,
             checksum=checksum,
+            default_enabled=default_enabled,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             gcp_gar_image_config=gcp_gar_image_config,
@@ -226,6 +243,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
             references=references,
             skip_noops=skip_noops,
             tag=tag,
+            toggleable=toggleable,
             update_policy=update_policy,
         )
 

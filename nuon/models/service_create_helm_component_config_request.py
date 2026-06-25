@@ -34,6 +34,7 @@ class ServiceCreateHelmComponentConfigRequest:
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
+        default_enabled (bool | Unset):
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
@@ -46,6 +47,7 @@ class ServiceCreateHelmComponentConfigRequest:
         skip_noops (bool | Unset):
         storage_driver (str | Unset):
         take_ownership (bool | Unset):
+        toggleable (bool | Unset):
         values_files (list[str] | Unset):
     """
 
@@ -56,6 +58,7 @@ class ServiceCreateHelmComponentConfigRequest:
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     connected_github_vcs_config: ServiceConnectedGithubVCSConfigRequest | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
@@ -68,6 +71,7 @@ class ServiceCreateHelmComponentConfigRequest:
     skip_noops: bool | Unset = UNSET
     storage_driver: str | Unset = UNSET
     take_ownership: bool | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     values_files: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -87,6 +91,8 @@ class ServiceCreateHelmComponentConfigRequest:
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
+
+        default_enabled = self.default_enabled
 
         dependencies: list[str] | Unset = UNSET
         if not isinstance(self.dependencies, Unset):
@@ -122,6 +128,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         take_ownership = self.take_ownership
 
+        toggleable = self.toggleable
+
         values_files: list[str] | Unset = UNSET
         if not isinstance(self.values_files, Unset):
             values_files = self.values_files
@@ -144,6 +152,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["checksum"] = checksum
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if dependencies is not UNSET:
             field_dict["dependencies"] = dependencies
         if deploy_timeout is not UNSET:
@@ -168,6 +178,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["storage_driver"] = storage_driver
         if take_ownership is not UNSET:
             field_dict["take_ownership"] = take_ownership
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
         if values_files is not UNSET:
             field_dict["values_files"] = values_files
 
@@ -204,6 +216,8 @@ class ServiceCreateHelmComponentConfigRequest:
             connected_github_vcs_config = UNSET
         else:
             connected_github_vcs_config = ServiceConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
+
+        default_enabled = d.pop("default_enabled", UNSET)
 
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
@@ -244,6 +258,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         take_ownership = d.pop("take_ownership", UNSET)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         values_files = cast(list[str], d.pop("values_files", UNSET))
 
         service_create_helm_component_config_request = cls(
@@ -254,6 +270,7 @@ class ServiceCreateHelmComponentConfigRequest:
             build_timeout=build_timeout,
             checksum=checksum,
             connected_github_vcs_config=connected_github_vcs_config,
+            default_enabled=default_enabled,
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
@@ -266,6 +283,7 @@ class ServiceCreateHelmComponentConfigRequest:
             skip_noops=skip_noops,
             storage_driver=storage_driver,
             take_ownership=take_ownership,
+            toggleable=toggleable,
             values_files=values_files,
         )
 

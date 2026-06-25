@@ -32,12 +32,14 @@ class ServiceCreateJobComponentConfigRequest:
         build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
         checksum (str | Unset):
         cmd (list[str] | Unset):
+        default_enabled (bool | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         env_vars (ServiceCreateJobComponentConfigRequestEnvVars | Unset):
         max_auto_retries (int | Unset):
         operation_roles (ServiceCreateJobComponentConfigRequestOperationRoles | Unset):
         references (list[str] | Unset):
         skip_noops (bool | Unset):
+        toggleable (bool | Unset):
     """
 
     image_url: str
@@ -48,12 +50,14 @@ class ServiceCreateJobComponentConfigRequest:
     build_timeout: str | Unset = UNSET
     checksum: str | Unset = UNSET
     cmd: list[str] | Unset = UNSET
+    default_enabled: bool | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     env_vars: ServiceCreateJobComponentConfigRequestEnvVars | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateJobComponentConfigRequestOperationRoles | Unset = UNSET
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    toggleable: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +81,8 @@ class ServiceCreateJobComponentConfigRequest:
         if not isinstance(self.cmd, Unset):
             cmd = self.cmd
 
+        default_enabled = self.default_enabled
+
         deploy_timeout = self.deploy_timeout
 
         env_vars: dict[str, Any] | Unset = UNSET
@@ -94,6 +100,8 @@ class ServiceCreateJobComponentConfigRequest:
             references = self.references
 
         skip_noops = self.skip_noops
+
+        toggleable = self.toggleable
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -115,6 +123,8 @@ class ServiceCreateJobComponentConfigRequest:
             field_dict["checksum"] = checksum
         if cmd is not UNSET:
             field_dict["cmd"] = cmd
+        if default_enabled is not UNSET:
+            field_dict["default_enabled"] = default_enabled
         if deploy_timeout is not UNSET:
             field_dict["deploy_timeout"] = deploy_timeout
         if env_vars is not UNSET:
@@ -127,6 +137,8 @@ class ServiceCreateJobComponentConfigRequest:
             field_dict["references"] = references
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if toggleable is not UNSET:
+            field_dict["toggleable"] = toggleable
 
         return field_dict
 
@@ -156,6 +168,8 @@ class ServiceCreateJobComponentConfigRequest:
 
         cmd = cast(list[str], d.pop("cmd", UNSET))
 
+        default_enabled = d.pop("default_enabled", UNSET)
+
         deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         _env_vars = d.pop("env_vars", UNSET)
@@ -178,6 +192,8 @@ class ServiceCreateJobComponentConfigRequest:
 
         skip_noops = d.pop("skip_noops", UNSET)
 
+        toggleable = d.pop("toggleable", UNSET)
+
         service_create_job_component_config_request = cls(
             image_url=image_url,
             tag=tag,
@@ -187,12 +203,14 @@ class ServiceCreateJobComponentConfigRequest:
             build_timeout=build_timeout,
             checksum=checksum,
             cmd=cmd,
+            default_enabled=default_enabled,
             deploy_timeout=deploy_timeout,
             env_vars=env_vars,
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             references=references,
             skip_noops=skip_noops,
+            toggleable=toggleable,
         )
 
         service_create_job_component_config_request.additional_properties = d
