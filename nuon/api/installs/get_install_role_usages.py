@@ -8,18 +8,27 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_install_role_usage import AppInstallRoleUsage
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
     *,
     role_name: str,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["role_name"] = role_name
+
+    params["offset"] = offset
+
+    params["limit"] = limit
+
+    params["page"] = page
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -94,6 +103,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     role_name: str,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstallRoleUsage]]:
     """get install role usages
 
@@ -102,6 +114,9 @@ def sync_detailed(
     Args:
         install_id (str):
         role_name (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,6 +129,9 @@ def sync_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         role_name=role_name,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = client.get_httpx_client().request(
@@ -128,6 +146,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     role_name: str,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstallRoleUsage] | None:
     """get install role usages
 
@@ -136,6 +157,9 @@ def sync(
     Args:
         install_id (str):
         role_name (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,6 +173,9 @@ def sync(
         install_id=install_id,
         client=client,
         role_name=role_name,
+        offset=offset,
+        limit=limit,
+        page=page,
     ).parsed
 
 
@@ -157,6 +184,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     role_name: str,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstallRoleUsage]]:
     """get install role usages
 
@@ -165,6 +195,9 @@ async def asyncio_detailed(
     Args:
         install_id (str):
         role_name (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,6 +210,9 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         role_name=role_name,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -189,6 +225,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     role_name: str,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstallRoleUsage] | None:
     """get install role usages
 
@@ -197,6 +236,9 @@ async def asyncio(
     Args:
         install_id (str):
         role_name (str):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -211,5 +253,8 @@ async def asyncio(
             install_id=install_id,
             client=client,
             role_name=role_name,
+            offset=offset,
+            limit=limit,
+            page=page,
         )
     ).parsed
