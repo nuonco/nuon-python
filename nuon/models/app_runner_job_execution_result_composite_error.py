@@ -6,54 +6,35 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceToggleInstallComponentRequest")
+T = TypeVar("T", bound="AppRunnerJobExecutionResultCompositeError")
 
 
 @_attrs_define
-class ServiceToggleInstallComponentRequest:
-    """
-    Attributes:
-        enabled (bool):
-        plan_only (bool | Unset):
+class AppRunnerJobExecutionResultCompositeError:
+    """CompositeError is the typed, structured error parsed from this execution's
+    failure output at write time. It is the canonical, execution-scoped store
+    for runner-driven composite errors: strictly 1:1 with the attempt and
+    never reused, so it cannot go stale across retries. Aggregate rows derive
+    their displayed error from the latest relevant result; they do not own it.
+
     """
 
-    enabled: bool
-    plan_only: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        enabled = self.enabled
-
-        plan_only = self.plan_only
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "enabled": enabled,
-            }
-        )
-        if plan_only is not UNSET:
-            field_dict["plan_only"] = plan_only
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        enabled = d.pop("enabled")
+        app_runner_job_execution_result_composite_error = cls()
 
-        plan_only = d.pop("plan_only", UNSET)
-
-        service_toggle_install_component_request = cls(
-            enabled=enabled,
-            plan_only=plan_only,
-        )
-
-        service_toggle_install_component_request.additional_properties = d
-        return service_toggle_install_component_request
+        app_runner_job_execution_result_composite_error.additional_properties = d
+        return app_runner_job_execution_result_composite_error
 
     @property
     def additional_keys(self) -> list[str]:

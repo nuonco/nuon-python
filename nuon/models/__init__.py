@@ -211,6 +211,7 @@ from .app_runner_job_execution_outputs_outputs_additional_property import (
     AppRunnerJobExecutionOutputsOutputsAdditionalProperty,
 )
 from .app_runner_job_execution_result import AppRunnerJobExecutionResult
+from .app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
 from .app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
 from .app_runner_job_execution_status import AppRunnerJobExecutionStatus
 from .app_runner_job_group import AppRunnerJobGroup
@@ -280,6 +281,7 @@ from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
 from .compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+from .compositeerrors_hints import CompositeerrorsHints
 from .compositeerrors_section import CompositeerrorsSection
 from .compositeerrors_severity import CompositeerrorsSeverity
 from .config_app_policy_engine import ConfigAppPolicyEngine
@@ -931,6 +933,7 @@ __all__ = (
     "AppRunnerJobExecutionOutputsOutputs",
     "AppRunnerJobExecutionOutputsOutputsAdditionalProperty",
     "AppRunnerJobExecutionResult",
+    "AppRunnerJobExecutionResultCompositeError",
     "AppRunnerJobExecutionResultErrorMetadata",
     "AppRunnerJobExecutionStatus",
     "AppRunnerJobGroup",
@@ -1000,6 +1003,7 @@ __all__ = (
     "CctxSignalContext",
     "ClientConversation",
     "CompositeerrorsCompositeErrorData",
+    "CompositeerrorsHints",
     "CompositeerrorsSection",
     "CompositeerrorsSeverity",
     "ConfigAppPolicyEngine",

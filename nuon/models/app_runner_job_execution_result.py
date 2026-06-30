@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
     from ..models.app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
 
 
@@ -19,6 +20,12 @@ T = TypeVar("T", bound="AppRunnerJobExecutionResult")
 class AppRunnerJobExecutionResult:
     """
     Attributes:
+        composite_error (AppRunnerJobExecutionResultCompositeError | Unset): CompositeError is the typed, structured
+            error parsed from this execution's
+            failure output at write time. It is the canonical, execution-scoped store
+            for runner-driven composite errors: strictly 1:1 with the attempt and
+            never reused, so it cannot go stale across retries. Aggregate rows derive
+            their displayed error from the latest relevant result; they do not own it.
         contents (str | Unset):
         contents_display (str | Unset):
         contents_display_gzip (str | Unset):
@@ -34,6 +41,7 @@ class AppRunnerJobExecutionResult:
         updated_at (str | Unset):
     """
 
+    composite_error: AppRunnerJobExecutionResultCompositeError | Unset = UNSET
     contents: str | Unset = UNSET
     contents_display: str | Unset = UNSET
     contents_display_gzip: str | Unset = UNSET
@@ -50,6 +58,10 @@ class AppRunnerJobExecutionResult:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
+
         contents = self.contents
 
         contents_display = self.contents_display
@@ -81,6 +93,8 @@ class AppRunnerJobExecutionResult:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if contents is not UNSET:
             field_dict["contents"] = contents
         if contents_display is not UNSET:
@@ -112,9 +126,17 @@ class AppRunnerJobExecutionResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
         from ..models.app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
 
         d = dict(src_dict)
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: AppRunnerJobExecutionResultCompositeError | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = AppRunnerJobExecutionResultCompositeError.from_dict(_composite_error)
+
         contents = d.pop("contents", UNSET)
 
         contents_display = d.pop("contents_display", UNSET)
@@ -147,6 +169,7 @@ class AppRunnerJobExecutionResult:
         updated_at = d.pop("updated_at", UNSET)
 
         app_runner_job_execution_result = cls(
+            composite_error=composite_error,
             contents=contents,
             contents_display=contents_display,
             contents_display_gzip=contents_display_gzip,

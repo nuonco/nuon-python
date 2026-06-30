@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from ..models.app_policy_report import AppPolicyReport
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppInstallSandboxRun")
@@ -31,6 +32,7 @@ class AppInstallSandboxRun:
         action_workflow_runs (list[AppInstallActionWorkflowRun] | Unset):
         app_sandbox_config (AppAppSandboxConfig | Unset):
         applied_at (str | Unset): AppliedAt is set when the apply runner job completes successfully.
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
@@ -56,6 +58,7 @@ class AppInstallSandboxRun:
     action_workflow_runs: list[AppInstallActionWorkflowRun] | Unset = UNSET
     app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
     applied_at: str | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -91,6 +94,10 @@ class AppInstallSandboxRun:
             app_sandbox_config = self.app_sandbox_config.to_dict()
 
         applied_at = self.applied_at
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         created_at = self.created_at
 
@@ -163,6 +170,8 @@ class AppInstallSandboxRun:
             field_dict["app_sandbox_config"] = app_sandbox_config
         if applied_at is not UNSET:
             field_dict["applied_at"] = applied_at
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by is not UNSET:
@@ -217,6 +226,7 @@ class AppInstallSandboxRun:
         from ..models.app_policy_report import AppPolicyReport
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         _action_workflow_runs = d.pop("action_workflow_runs", UNSET)
@@ -236,6 +246,13 @@ class AppInstallSandboxRun:
             app_sandbox_config = AppAppSandboxConfig.from_dict(_app_sandbox_config)
 
         applied_at = d.pop("applied_at", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -325,6 +342,7 @@ class AppInstallSandboxRun:
             action_workflow_runs=action_workflow_runs,
             app_sandbox_config=app_sandbox_config,
             applied_at=applied_at,
+            composite_error=composite_error,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,

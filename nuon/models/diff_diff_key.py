@@ -16,15 +16,23 @@ T = TypeVar("T", bound="DiffDiffKey")
 class DiffDiffKey:
     """
     Attributes:
+        after (str | Unset):
+        before (str | Unset):
         diff (str | Unset):
         op (DiffOp | Unset):
     """
 
+    after: str | Unset = UNSET
+    before: str | Unset = UNSET
     diff: str | Unset = UNSET
     op: DiffOp | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        after = self.after
+
+        before = self.before
+
         diff = self.diff
 
         op: str | Unset = UNSET
@@ -34,6 +42,10 @@ class DiffDiffKey:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if after is not UNSET:
+            field_dict["after"] = after
+        if before is not UNSET:
+            field_dict["before"] = before
         if diff is not UNSET:
             field_dict["diff"] = diff
         if op is not UNSET:
@@ -44,6 +56,10 @@ class DiffDiffKey:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        after = d.pop("after", UNSET)
+
+        before = d.pop("before", UNSET)
+
         diff = d.pop("diff", UNSET)
 
         _op = d.pop("op", UNSET)
@@ -54,6 +70,8 @@ class DiffDiffKey:
             op = DiffOp(_op)
 
         diff_diff_key = cls(
+            after=after,
+            before=before,
             diff=diff,
             op=op,
         )
