@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,6 +30,9 @@ class AppInstallComponent:
         created_at (str | Unset):
         created_by_id (str | Unset):
         drifted_object (AppDriftedObject | Unset):
+        enabled (bool | None | Unset): Enabled is the resolved enabled/disabled state for a toggleable component
+            on this install (from the synthetic enabled install input, falling back to
+            the component's default_enabled). It is nil for non-toggleable components.
         helm_chart (AppHelmChart | Unset):
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
@@ -47,6 +50,7 @@ class AppInstallComponent:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     drifted_object: AppDriftedObject | Unset = UNSET
+    enabled: bool | None | Unset = UNSET
     helm_chart: AppHelmChart | Unset = UNSET
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
@@ -73,6 +77,12 @@ class AppInstallComponent:
         drifted_object: dict[str, Any] | Unset = UNSET
         if not isinstance(self.drifted_object, Unset):
             drifted_object = self.drifted_object.to_dict()
+
+        enabled: bool | None | Unset
+        if isinstance(self.enabled, Unset):
+            enabled = UNSET
+        else:
+            enabled = self.enabled
 
         helm_chart: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_chart, Unset):
@@ -120,6 +130,8 @@ class AppInstallComponent:
             field_dict["created_by_id"] = created_by_id
         if drifted_object is not UNSET:
             field_dict["drifted_object"] = drifted_object
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if helm_chart is not UNSET:
             field_dict["helm_chart"] = helm_chart
         if id is not UNSET:
@@ -174,6 +186,15 @@ class AppInstallComponent:
         else:
             drifted_object = AppDriftedObject.from_dict(_drifted_object)
 
+        def _parse_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        enabled = _parse_enabled(d.pop("enabled", UNSET))
+
         _helm_chart = d.pop("helm_chart", UNSET)
         helm_chart: AppHelmChart | Unset
         if isinstance(_helm_chart, Unset):
@@ -227,6 +248,7 @@ class AppInstallComponent:
             created_at=created_at,
             created_by_id=created_by_id,
             drifted_object=drifted_object,
+            enabled=enabled,
             helm_chart=helm_chart,
             id=id,
             install_deploys=install_deploys,
