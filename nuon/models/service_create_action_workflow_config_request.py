@@ -28,6 +28,7 @@ class ServiceCreateActionWorkflowConfigRequest:
         break_glass_role_arn (str | Unset):
         dependencies (list[str] | Unset):
         enable_kube_config (bool | None | Unset):
+        kubernetes_context (str | Unset):
         references (list[str] | Unset):
         role (str | Unset):
         timeout (int | Unset):
@@ -39,6 +40,7 @@ class ServiceCreateActionWorkflowConfigRequest:
     break_glass_role_arn: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     enable_kube_config: bool | None | Unset = UNSET
+    kubernetes_context: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     role: str | Unset = UNSET
     timeout: int | Unset = UNSET
@@ -69,6 +71,8 @@ class ServiceCreateActionWorkflowConfigRequest:
         else:
             enable_kube_config = self.enable_kube_config
 
+        kubernetes_context = self.kubernetes_context
+
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
             references = self.references
@@ -92,6 +96,8 @@ class ServiceCreateActionWorkflowConfigRequest:
             field_dict["dependencies"] = dependencies
         if enable_kube_config is not UNSET:
             field_dict["enable_kube_config"] = enable_kube_config
+        if kubernetes_context is not UNSET:
+            field_dict["kubernetes_context"] = kubernetes_context
         if references is not UNSET:
             field_dict["references"] = references
         if role is not UNSET:
@@ -140,6 +146,8 @@ class ServiceCreateActionWorkflowConfigRequest:
 
         enable_kube_config = _parse_enable_kube_config(d.pop("enable_kube_config", UNSET))
 
+        kubernetes_context = d.pop("kubernetes_context", UNSET)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         role = d.pop("role", UNSET)
@@ -153,6 +161,7 @@ class ServiceCreateActionWorkflowConfigRequest:
             break_glass_role_arn=break_glass_role_arn,
             dependencies=dependencies,
             enable_kube_config=enable_kube_config,
+            kubernetes_context=kubernetes_context,
             references=references,
             role=role,
             timeout=timeout,

@@ -46,6 +46,10 @@ class AppComponentConfigConnection:
         helm (AppHelmComponentConfig | Unset):
         id (str | Unset):
         job (AppJobComponentConfig | Unset):
+        kubernetes_context_name (str | Unset): KubernetesContextName is the name of an AppKubernetesContextConfig on
+            the same AppConfig. Empty means fall back to the implicit sandbox
+            default. Stored as a name (not an FK) so it remains stable across
+            AppConfig versions, mirroring how component dependencies are tracked.
         kubernetes_manifest (AppKubernetesManifestComponentConfig | Unset):
         max_auto_retries (int | Unset):
         operation_roles (AppComponentConfigConnectionOperationRoles | Unset): Operation roles map: operation type ->
@@ -79,6 +83,7 @@ class AppComponentConfigConnection:
     helm: AppHelmComponentConfig | Unset = UNSET
     id: str | Unset = UNSET
     job: AppJobComponentConfig | Unset = UNSET
+    kubernetes_context_name: str | Unset = UNSET
     kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
     operation_roles: AppComponentConfigConnectionOperationRoles | Unset = UNSET
@@ -139,6 +144,8 @@ class AppComponentConfigConnection:
         job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.job, Unset):
             job = self.job.to_dict()
+
+        kubernetes_context_name = self.kubernetes_context_name
 
         kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
@@ -220,6 +227,8 @@ class AppComponentConfigConnection:
             field_dict["id"] = id
         if job is not UNSET:
             field_dict["job"] = job
+        if kubernetes_context_name is not UNSET:
+            field_dict["kubernetes_context_name"] = kubernetes_context_name
         if kubernetes_manifest is not UNSET:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
         if max_auto_retries is not UNSET:
@@ -316,6 +325,8 @@ class AppComponentConfigConnection:
         else:
             job = AppJobComponentConfig.from_dict(_job)
 
+        kubernetes_context_name = d.pop("kubernetes_context_name", UNSET)
+
         _kubernetes_manifest = d.pop("kubernetes_manifest", UNSET)
         kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset
         if isinstance(_kubernetes_manifest, Unset):
@@ -391,6 +402,7 @@ class AppComponentConfigConnection:
             helm=helm,
             id=id,
             job=job,
+            kubernetes_context_name=kubernetes_context_name,
             kubernetes_manifest=kubernetes_manifest,
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,

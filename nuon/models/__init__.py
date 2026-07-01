@@ -25,6 +25,8 @@ from .app_app_input import AppAppInput
 from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
 from .app_app_input_source import AppAppInputSource
+from .app_app_kubernetes_context_config import AppAppKubernetesContextConfig
+from .app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
 from .app_app_links import AppAppLinks
 from .app_app_operation_role_config import AppAppOperationRoleConfig
 from .app_app_operation_role_rule import AppAppOperationRoleRule
@@ -416,6 +418,7 @@ from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
 from .service_app_group_request import ServiceAppGroupRequest
 from .service_app_input_request import ServiceAppInputRequest
+from .service_app_kubernetes_context import ServiceAppKubernetesContext
 from .service_app_policy_config import ServiceAppPolicyConfig
 from .service_app_secret_config import ServiceAppSecretConfig
 from .service_auth_me_identity import ServiceAuthMeIdentity
@@ -466,6 +469,7 @@ from .service_create_app_config_request import ServiceCreateAppConfigRequest
 from .service_create_app_input_config_request import ServiceCreateAppInputConfigRequest
 from .service_create_app_input_config_request_groups import ServiceCreateAppInputConfigRequestGroups
 from .service_create_app_input_config_request_inputs import ServiceCreateAppInputConfigRequestInputs
+from .service_create_app_kubernetes_contexts_config_request import ServiceCreateAppKubernetesContextsConfigRequest
 from .service_create_app_operation_role_config_request import ServiceCreateAppOperationRoleConfigRequest
 from .service_create_app_permissions_config_request import ServiceCreateAppPermissionsConfigRequest
 from .service_create_app_policies_config_request import ServiceCreateAppPoliciesConfigRequest
@@ -749,6 +753,8 @@ __all__ = (
     "AppAppInputConfig",
     "AppAppInputGroup",
     "AppAppInputSource",
+    "AppAppKubernetesContextConfig",
+    "AppAppKubernetesContextsConfig",
     "AppAppLinks",
     "AppAppOperationRoleConfig",
     "AppAppOperationRoleRule",
@@ -1136,6 +1142,7 @@ __all__ = (
     "ServiceAppConfigTemplateType",
     "ServiceAppGroupRequest",
     "ServiceAppInputRequest",
+    "ServiceAppKubernetesContext",
     "ServiceAppPolicyConfig",
     "ServiceAppSecretConfig",
     "ServiceAuthMeIdentity",
@@ -1182,6 +1189,7 @@ __all__ = (
     "ServiceCreateAppInputConfigRequest",
     "ServiceCreateAppInputConfigRequestGroups",
     "ServiceCreateAppInputConfigRequestInputs",
+    "ServiceCreateAppKubernetesContextsConfigRequest",
     "ServiceCreateAppOperationRoleConfigRequest",
     "ServiceCreateAppPermissionsConfigRequest",
     "ServiceCreateAppPoliciesConfigRequest",

@@ -31,6 +31,10 @@ class AppActionWorkflowConfig:
         created_by_id (str | Unset):
         enable_kube_config (SqlNullBool | Unset):
         id (str | Unset):
+        kubernetes_context_name (str | Unset): KubernetesContextName is the name of an AppKubernetesContextConfig on
+            the same AppConfig. Empty means fall back to the implicit sandbox
+            default. Stored as a name (not an FK) so it remains stable across
+            AppConfig versions.
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
         role (str | Unset):
@@ -50,6 +54,7 @@ class AppActionWorkflowConfig:
     created_by_id: str | Unset = UNSET
     enable_kube_config: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
+    kubernetes_context_name: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
     role: str | Unset = UNSET
@@ -81,6 +86,8 @@ class AppActionWorkflowConfig:
             enable_kube_config = self.enable_kube_config.to_dict()
 
         id = self.id
+
+        kubernetes_context_name = self.kubernetes_context_name
 
         references: list[str] | Unset = UNSET
         if not isinstance(self.references, Unset):
@@ -134,6 +141,8 @@ class AppActionWorkflowConfig:
             field_dict["enable_kube_config"] = enable_kube_config
         if id is not UNSET:
             field_dict["id"] = id
+        if kubernetes_context_name is not UNSET:
+            field_dict["kubernetes_context_name"] = kubernetes_context_name
         if references is not UNSET:
             field_dict["references"] = references
         if refs is not UNSET:
@@ -182,6 +191,8 @@ class AppActionWorkflowConfig:
 
         id = d.pop("id", UNSET)
 
+        kubernetes_context_name = d.pop("kubernetes_context_name", UNSET)
+
         references = cast(list[str], d.pop("references", UNSET))
 
         _refs = d.pop("refs", UNSET)
@@ -227,6 +238,7 @@ class AppActionWorkflowConfig:
             created_by_id=created_by_id,
             enable_kube_config=enable_kube_config,
             id=id,
+            kubernetes_context_name=kubernetes_context_name,
             references=references,
             refs=refs,
             role=role,
