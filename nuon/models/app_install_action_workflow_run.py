@@ -42,6 +42,9 @@ class AppInstallActionWorkflowRun:
         install_action_workflow_id (str | Unset):
         install_id (str | Unset):
         install_workflow_id (str | Unset):
+        kubernetes_context_name (str | Unset): KubernetesContextName is snapshotted from the action's
+            ActionWorkflowConfig at run-creation time so plan resolution can target
+            the correct cluster. Empty means fall back to the sandbox default.
         log_stream (AppLogStream | Unset):
         outputs (AppInstallActionWorkflowRunOutputs | Unset):
         role (str | Unset): Role to be used when running this action
@@ -72,6 +75,7 @@ class AppInstallActionWorkflowRun:
     install_action_workflow_id: str | Unset = UNSET
     install_id: str | Unset = UNSET
     install_workflow_id: str | Unset = UNSET
+    kubernetes_context_name: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     outputs: AppInstallActionWorkflowRunOutputs | Unset = UNSET
     role: str | Unset = UNSET
@@ -122,6 +126,8 @@ class AppInstallActionWorkflowRun:
         install_id = self.install_id
 
         install_workflow_id = self.install_workflow_id
+
+        kubernetes_context_name = self.kubernetes_context_name
 
         log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
@@ -201,6 +207,8 @@ class AppInstallActionWorkflowRun:
             field_dict["install_id"] = install_id
         if install_workflow_id is not UNSET:
             field_dict["install_workflow_id"] = install_workflow_id
+        if kubernetes_context_name is not UNSET:
+            field_dict["kubernetes_context_name"] = kubernetes_context_name
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
         if outputs is not UNSET:
@@ -295,6 +303,8 @@ class AppInstallActionWorkflowRun:
 
         install_workflow_id = d.pop("install_workflow_id", UNSET)
 
+        kubernetes_context_name = d.pop("kubernetes_context_name", UNSET)
+
         _log_stream = d.pop("log_stream", UNSET)
         log_stream: AppLogStream | Unset
         if isinstance(_log_stream, Unset):
@@ -382,6 +392,7 @@ class AppInstallActionWorkflowRun:
             install_action_workflow_id=install_action_workflow_id,
             install_id=install_id,
             install_workflow_id=install_workflow_id,
+            kubernetes_context_name=kubernetes_context_name,
             log_stream=log_stream,
             outputs=outputs,
             role=role,

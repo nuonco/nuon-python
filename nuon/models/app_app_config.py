@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.app_app_branch import AppAppBranch
     from ..models.app_app_break_glass_config import AppAppBreakGlassConfig
     from ..models.app_app_input_config import AppAppInputConfig
+    from ..models.app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
     from ..models.app_app_operation_role_config import AppAppOperationRoleConfig
     from ..models.app_app_permissions_config import AppAppPermissionsConfig
     from ..models.app_app_policies_config import AppAppPoliciesConfig
@@ -49,6 +50,7 @@ class AppAppConfig:
         id (str | Unset):
         input_ (AppAppInputConfig | Unset):
         intermediate_config (BlobstoreBlob | Unset):
+        kubernetes_contexts (AppAppKubernetesContextsConfig | Unset):
         operation_role_config (AppAppOperationRoleConfig | Unset):
         org_id (str | Unset):
         permissions (AppAppPermissionsConfig | Unset):
@@ -82,6 +84,7 @@ class AppAppConfig:
     id: str | Unset = UNSET
     input_: AppAppInputConfig | Unset = UNSET
     intermediate_config: BlobstoreBlob | Unset = UNSET
+    kubernetes_contexts: AppAppKubernetesContextsConfig | Unset = UNSET
     operation_role_config: AppAppOperationRoleConfig | Unset = UNSET
     org_id: str | Unset = UNSET
     permissions: AppAppPermissionsConfig | Unset = UNSET
@@ -152,6 +155,10 @@ class AppAppConfig:
         intermediate_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.intermediate_config, Unset):
             intermediate_config = self.intermediate_config.to_dict()
+
+        kubernetes_contexts: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.kubernetes_contexts, Unset):
+            kubernetes_contexts = self.kubernetes_contexts.to_dict()
 
         operation_role_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_role_config, Unset):
@@ -238,6 +245,8 @@ class AppAppConfig:
             field_dict["input"] = input_
         if intermediate_config is not UNSET:
             field_dict["intermediate_config"] = intermediate_config
+        if kubernetes_contexts is not UNSET:
+            field_dict["kubernetes_contexts"] = kubernetes_contexts
         if operation_role_config is not UNSET:
             field_dict["operation_role_config"] = operation_role_config
         if org_id is not UNSET:
@@ -279,6 +288,7 @@ class AppAppConfig:
         from ..models.app_app_branch import AppAppBranch
         from ..models.app_app_break_glass_config import AppAppBreakGlassConfig
         from ..models.app_app_input_config import AppAppInputConfig
+        from ..models.app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
         from ..models.app_app_operation_role_config import AppAppOperationRoleConfig
         from ..models.app_app_permissions_config import AppAppPermissionsConfig
         from ..models.app_app_policies_config import AppAppPoliciesConfig
@@ -357,6 +367,13 @@ class AppAppConfig:
             intermediate_config = UNSET
         else:
             intermediate_config = BlobstoreBlob.from_dict(_intermediate_config)
+
+        _kubernetes_contexts = d.pop("kubernetes_contexts", UNSET)
+        kubernetes_contexts: AppAppKubernetesContextsConfig | Unset
+        if isinstance(_kubernetes_contexts, Unset):
+            kubernetes_contexts = UNSET
+        else:
+            kubernetes_contexts = AppAppKubernetesContextsConfig.from_dict(_kubernetes_contexts)
 
         _operation_role_config = d.pop("operation_role_config", UNSET)
         operation_role_config: AppAppOperationRoleConfig | Unset
@@ -456,6 +473,7 @@ class AppAppConfig:
             id=id,
             input_=input_,
             intermediate_config=intermediate_config,
+            kubernetes_contexts=kubernetes_contexts,
             operation_role_config=operation_role_config,
             org_id=org_id,
             permissions=permissions,

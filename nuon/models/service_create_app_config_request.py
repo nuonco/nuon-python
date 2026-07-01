@@ -20,12 +20,15 @@ class ServiceCreateAppConfigRequest:
         cli_version (str | Unset):
         plan_only (bool | Unset): PlanOnly creates a preview run (plan without apply). Only used with AppBranchID.
         readme (str | Unset): not required Readme
+        skip_notification (bool | Unset): SkipNotification suppresses the app-config-synced signal emission.
+            Used when creating a config as part of app deletion cleanup.
     """
 
     app_branch_id: str | Unset = UNSET
     cli_version: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
     readme: str | Unset = UNSET
+    skip_notification: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +39,8 @@ class ServiceCreateAppConfigRequest:
         plan_only = self.plan_only
 
         readme = self.readme
+
+        skip_notification = self.skip_notification
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -48,6 +53,8 @@ class ServiceCreateAppConfigRequest:
             field_dict["plan_only"] = plan_only
         if readme is not UNSET:
             field_dict["readme"] = readme
+        if skip_notification is not UNSET:
+            field_dict["skip_notification"] = skip_notification
 
         return field_dict
 
@@ -62,11 +69,14 @@ class ServiceCreateAppConfigRequest:
 
         readme = d.pop("readme", UNSET)
 
+        skip_notification = d.pop("skip_notification", UNSET)
+
         service_create_app_config_request = cls(
             app_branch_id=app_branch_id,
             cli_version=cli_version,
             plan_only=plan_only,
             readme=readme,
+            skip_notification=skip_notification,
         )
 
         service_create_app_config_request.additional_properties = d

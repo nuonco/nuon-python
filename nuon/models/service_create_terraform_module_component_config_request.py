@@ -40,6 +40,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
+        kubernetes_context (str | Unset):
         max_auto_retries (int | Unset):
         operation_roles (ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
@@ -61,6 +62,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    kubernetes_context: str | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
     operation_roles: ServiceCreateTerraformModuleComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
@@ -97,6 +99,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         deploy_timeout = self.deploy_timeout
 
         drift_schedule = self.drift_schedule
+
+        kubernetes_context = self.kubernetes_context
 
         max_auto_retries = self.max_auto_retries
 
@@ -148,6 +152,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             field_dict["deploy_timeout"] = deploy_timeout
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if kubernetes_context is not UNSET:
+            field_dict["kubernetes_context"] = kubernetes_context
         if max_auto_retries is not UNSET:
             field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
@@ -209,6 +215,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         drift_schedule = d.pop("drift_schedule", UNSET)
 
+        kubernetes_context = d.pop("kubernetes_context", UNSET)
+
         max_auto_retries = d.pop("max_auto_retries", UNSET)
 
         _operation_roles = d.pop("operation_roles", UNSET)
@@ -249,6 +257,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
+            kubernetes_context=kubernetes_context,
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
