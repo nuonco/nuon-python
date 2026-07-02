@@ -35,6 +35,9 @@ class AppAppRunnerConfig:
         instance_type (str | Unset): InstanceType is the cloud machine/instance type for the install runner host, mapped
             per cloud platform.
         org_id (str | Unset):
+        public_api_url (str | Unset): PublicAPIURL overrides the Nuon public API endpoint used for phone-home callbacks.
+        runner_api_url (str | Unset): RunnerAPIURL overrides the Nuon runner API endpoint for installs using this
+            config.
         updated_at (str | Unset):
     """
 
@@ -50,6 +53,8 @@ class AppAppRunnerConfig:
     init_script: str | Unset = UNSET
     instance_type: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    public_api_url: str | Unset = UNSET
+    runner_api_url: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -84,6 +89,10 @@ class AppAppRunnerConfig:
 
         org_id = self.org_id
 
+        public_api_url = self.public_api_url
+
+        runner_api_url = self.runner_api_url
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -113,6 +122,10 @@ class AppAppRunnerConfig:
             field_dict["instance_type"] = instance_type
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if public_api_url is not UNSET:
+            field_dict["public_api_url"] = public_api_url
+        if runner_api_url is not UNSET:
+            field_dict["runner_api_url"] = runner_api_url
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -162,6 +175,10 @@ class AppAppRunnerConfig:
 
         org_id = d.pop("org_id", UNSET)
 
+        public_api_url = d.pop("public_api_url", UNSET)
+
+        runner_api_url = d.pop("runner_api_url", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_app_runner_config = cls(
@@ -177,6 +194,8 @@ class AppAppRunnerConfig:
             init_script=init_script,
             instance_type=instance_type,
             org_id=org_id,
+            public_api_url=public_api_url,
+            runner_api_url=runner_api_url,
             updated_at=updated_at,
         )
 
