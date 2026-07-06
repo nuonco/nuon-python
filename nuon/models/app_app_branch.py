@@ -26,6 +26,7 @@ class AppAppBranch:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
+        managed_by (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
         queue (AppQueue | Unset):
@@ -39,6 +40,7 @@ class AppAppBranch:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    managed_by: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
     queue: AppQueue | Unset = UNSET
@@ -62,6 +64,8 @@ class AppAppBranch:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        managed_by = self.managed_by
 
         name = self.name
 
@@ -95,6 +99,8 @@ class AppAppBranch:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
         if name is not UNSET:
             field_dict["name"] = name
         if org_id is not UNSET:
@@ -134,6 +140,8 @@ class AppAppBranch:
 
         id = d.pop("id", UNSET)
 
+        managed_by = d.pop("managed_by", UNSET)
+
         name = d.pop("name", UNSET)
 
         org_id = d.pop("org_id", UNSET)
@@ -164,6 +172,7 @@ class AppAppBranch:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            managed_by=managed_by,
             name=name,
             org_id=org_id,
             queue=queue,

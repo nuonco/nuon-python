@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_app_config import AppAppConfig
     from ..models.app_app_input_config import AppAppInputConfig
+    from ..models.app_app_label_colors import AppAppLabelColors
     from ..models.app_app_links import AppAppLinks
     from ..models.app_app_permissions_config import AppAppPermissionsConfig
     from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -37,6 +38,7 @@ class AppApp:
         display_name (str | Unset):
         id (str | Unset):
         input_config (AppAppInputConfig | Unset):
+        label_colors (AppAppLabelColors | Unset):
         links (AppAppLinks | Unset):
         name (str | Unset):
         notifications_config (AppNotificationsConfig | Unset):
@@ -63,6 +65,7 @@ class AppApp:
     display_name: str | Unset = UNSET
     id: str | Unset = UNSET
     input_config: AppAppInputConfig | Unset = UNSET
+    label_colors: AppAppLabelColors | Unset = UNSET
     links: AppAppLinks | Unset = UNSET
     name: str | Unset = UNSET
     notifications_config: AppNotificationsConfig | Unset = UNSET
@@ -107,6 +110,10 @@ class AppApp:
         input_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.input_config, Unset):
             input_config = self.input_config.to_dict()
+
+        label_colors: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.label_colors, Unset):
+            label_colors = self.label_colors.to_dict()
 
         links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
@@ -171,6 +178,8 @@ class AppApp:
             field_dict["id"] = id
         if input_config is not UNSET:
             field_dict["input_config"] = input_config
+        if label_colors is not UNSET:
+            field_dict["label_colors"] = label_colors
         if links is not UNSET:
             field_dict["links"] = links
         if name is not UNSET:
@@ -204,6 +213,7 @@ class AppApp:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_config import AppAppConfig
         from ..models.app_app_input_config import AppAppInputConfig
+        from ..models.app_app_label_colors import AppAppLabelColors
         from ..models.app_app_links import AppAppLinks
         from ..models.app_app_permissions_config import AppAppPermissionsConfig
         from ..models.app_app_runner_config import AppAppRunnerConfig
@@ -245,6 +255,13 @@ class AppApp:
             input_config = UNSET
         else:
             input_config = AppAppInputConfig.from_dict(_input_config)
+
+        _label_colors = d.pop("label_colors", UNSET)
+        label_colors: AppAppLabelColors | Unset
+        if isinstance(_label_colors, Unset):
+            label_colors = UNSET
+        else:
+            label_colors = AppAppLabelColors.from_dict(_label_colors)
 
         _links = d.pop("links", UNSET)
         links: AppAppLinks | Unset
@@ -314,6 +331,7 @@ class AppApp:
             display_name=display_name,
             id=id,
             input_config=input_config,
+            label_colors=label_colors,
             links=links,
             name=name,
             notifications_config=notifications_config,
