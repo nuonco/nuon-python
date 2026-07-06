@@ -6,23 +6,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_install_app_config_version import AppInstallAppConfigVersion
+from ...models.service_app_labels_response import ServiceAppLabelsResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
     app_id: str,
-    app_branch_id: str,
-    run_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs/{run_id}/install-groups".format(
+        "url": "/v1/apps/{app_id}/labels".format(
             app_id=quote(str(app_id), safe=""),
-            app_branch_id=quote(str(app_branch_id), safe=""),
-            run_id=quote(str(run_id), safe=""),
         ),
     }
 
@@ -31,14 +27,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
+) -> ServiceAppLabelsResponse | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = AppInstallAppConfigVersion.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = ServiceAppLabelsResponse.from_dict(response.json())
 
         return response_200
 
@@ -75,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
+) -> Response[ServiceAppLabelsResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,32 +77,27 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    app_branch_id: str,
-    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+) -> Response[ServiceAppLabelsResponse | StderrErrResponse]:
+    """get all labels used across an app
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns all distinct label keys with values, usage counts, and assigned colors across components,
+    actions, runbooks, and installs for an app.
 
     Args:
         app_id (str):
-        app_branch_id (str):
-        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppInstallAppConfigVersion]]
+        Response[ServiceAppLabelsResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
     )
 
     response = client.get_httpx_client().request(
@@ -123,64 +109,54 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    app_branch_id: str,
-    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+) -> ServiceAppLabelsResponse | StderrErrResponse | None:
+    """get all labels used across an app
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns all distinct label keys with values, usage counts, and assigned colors across components,
+    actions, runbooks, and installs for an app.
 
     Args:
         app_id (str):
-        app_branch_id (str):
-        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppInstallAppConfigVersion]
+        ServiceAppLabelsResponse | StderrErrResponse
     """
 
     return sync_detailed(
         app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
     app_id: str,
-    app_branch_id: str,
-    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+) -> Response[ServiceAppLabelsResponse | StderrErrResponse]:
+    """get all labels used across an app
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns all distinct label keys with values, usage counts, and assigned colors across components,
+    actions, runbooks, and installs for an app.
 
     Args:
         app_id (str):
-        app_branch_id (str):
-        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppInstallAppConfigVersion]]
+        Response[ServiceAppLabelsResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -190,33 +166,28 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    app_branch_id: str,
-    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+) -> ServiceAppLabelsResponse | StderrErrResponse | None:
+    """get all labels used across an app
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns all distinct label keys with values, usage counts, and assigned colors across components,
+    actions, runbooks, and installs for an app.
 
     Args:
         app_id (str):
-        app_branch_id (str):
-        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppInstallAppConfigVersion]
+        ServiceAppLabelsResponse | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
             app_id=app_id,
-            app_branch_id=app_branch_id,
-            run_id=run_id,
             client=client,
         )
     ).parsed

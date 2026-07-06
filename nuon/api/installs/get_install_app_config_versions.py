@@ -12,17 +12,13 @@ from ...types import Response
 
 
 def _get_kwargs(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs/{run_id}/install-groups".format(
-            app_id=quote(str(app_id), safe=""),
-            app_branch_id=quote(str(app_branch_id), safe=""),
-            run_id=quote(str(run_id), safe=""),
+        "url": "/v1/installs/{install_id}/app-config-versions".format(
+            install_id=quote(str(install_id), safe=""),
         ),
     }
 
@@ -85,20 +81,16 @@ def _build_response(
 
 
 def sync_detailed(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+    """get app config versions for an install
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the app config version history for an install, ordered by most recent first.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -109,9 +101,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
     )
 
     response = client.get_httpx_client().request(
@@ -122,20 +112,16 @@ def sync_detailed(
 
 
 def sync(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+    """get app config versions for an install
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the app config version history for an install, ordered by most recent first.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,28 +132,22 @@ def sync(
     """
 
     return sync_detailed(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+    """get app config versions for an install
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the app config version history for an install, ordered by most recent first.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,9 +158,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -189,20 +167,16 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+    """get app config versions for an install
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the app config version history for an install, ordered by most recent first.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -214,9 +188,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            app_id=app_id,
-            app_branch_id=app_branch_id,
-            run_id=run_id,
+            install_id=install_id,
             client=client,
         )
     ).parsed

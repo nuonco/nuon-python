@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_install_config_update import AppInstallConfigUpdate
+from ...models.app_install_app_config_version import AppInstallAppConfigVersion
 from ...models.service_create_install_app_config_update_request import ServiceCreateInstallAppConfigUpdateRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppInstallConfigUpdate | StderrErrResponse | None:
+) -> AppInstallAppConfigVersion | StderrErrResponse | None:
     if response.status_code == 201:
-        response_201 = AppInstallConfigUpdate.from_dict(response.json())
+        response_201 = AppInstallAppConfigVersion.from_dict(response.json())
 
         return response_201
 
@@ -75,7 +75,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppInstallConfigUpdate | StderrErrResponse]:
+) -> Response[AppInstallAppConfigVersion | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,7 +89,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateInstallAppConfigUpdateRequest,
-) -> Response[AppInstallConfigUpdate | StderrErrResponse]:
+) -> Response[AppInstallAppConfigVersion | StderrErrResponse]:
     """trigger an app config update for an install
 
      Creates a workflow to diff and deploy a new app config to an install.
@@ -103,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallConfigUpdate | StderrErrResponse]
+        Response[AppInstallAppConfigVersion | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -123,7 +123,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateInstallAppConfigUpdateRequest,
-) -> AppInstallConfigUpdate | StderrErrResponse | None:
+) -> AppInstallAppConfigVersion | StderrErrResponse | None:
     """trigger an app config update for an install
 
      Creates a workflow to diff and deploy a new app config to an install.
@@ -137,7 +137,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallConfigUpdate | StderrErrResponse
+        AppInstallAppConfigVersion | StderrErrResponse
     """
 
     return sync_detailed(
@@ -152,7 +152,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateInstallAppConfigUpdateRequest,
-) -> Response[AppInstallConfigUpdate | StderrErrResponse]:
+) -> Response[AppInstallAppConfigVersion | StderrErrResponse]:
     """trigger an app config update for an install
 
      Creates a workflow to diff and deploy a new app config to an install.
@@ -166,7 +166,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppInstallConfigUpdate | StderrErrResponse]
+        Response[AppInstallAppConfigVersion | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ServiceCreateInstallAppConfigUpdateRequest,
-) -> AppInstallConfigUpdate | StderrErrResponse | None:
+) -> AppInstallAppConfigVersion | StderrErrResponse | None:
     """trigger an app config update for an install
 
      Creates a workflow to diff and deploy a new app config to an install.
@@ -198,7 +198,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppInstallConfigUpdate | StderrErrResponse
+        AppInstallAppConfigVersion | StderrErrResponse
     """
 
     return (

@@ -10,15 +10,16 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
     from ..models.app_workflow import AppWorkflow
     from ..models.blobstore_blob import BlobstoreBlob
 
 
-T = TypeVar("T", bound="AppInstallConfigUpdate")
+T = TypeVar("T", bound="AppInstallAppConfigVersion")
 
 
 @_attrs_define
-class AppInstallConfigUpdate:
+class AppInstallAppConfigVersion:
     """
     Attributes:
         app_branch_run_id (str | Unset):
@@ -28,13 +29,14 @@ class AppInstallConfigUpdate:
         id (str | Unset):
         install_group_id (str | Unset):
         install_id (str | Unset):
+        metadata (AppInstallAppConfigVersionMetadata | Unset):
         new_app_config_id (str | Unset):
         old_app_config_id (str | Unset):
         org_id (str | Unset):
         status (AppCompositeStatus | Unset):
         updated_at (str | Unset):
         workflow (AppWorkflow | Unset):
-        workflow_id (str | Unset): WorkflowID links to the install workflow that performs the actual diff and deploy.
+        workflow_id (str | Unset):
     """
 
     app_branch_run_id: str | Unset = UNSET
@@ -44,6 +46,7 @@ class AppInstallConfigUpdate:
     id: str | Unset = UNSET
     install_group_id: str | Unset = UNSET
     install_id: str | Unset = UNSET
+    metadata: AppInstallAppConfigVersionMetadata | Unset = UNSET
     new_app_config_id: str | Unset = UNSET
     old_app_config_id: str | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -69,6 +72,10 @@ class AppInstallConfigUpdate:
         install_group_id = self.install_group_id
 
         install_id = self.install_id
+
+        metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         new_app_config_id = self.new_app_config_id
 
@@ -105,6 +112,8 @@ class AppInstallConfigUpdate:
             field_dict["install_group_id"] = install_group_id
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if new_app_config_id is not UNSET:
             field_dict["new_app_config_id"] = new_app_config_id
         if old_app_config_id is not UNSET:
@@ -125,6 +134,7 @@ class AppInstallConfigUpdate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
         from ..models.app_workflow import AppWorkflow
         from ..models.blobstore_blob import BlobstoreBlob
 
@@ -147,6 +157,13 @@ class AppInstallConfigUpdate:
         install_group_id = d.pop("install_group_id", UNSET)
 
         install_id = d.pop("install_id", UNSET)
+
+        _metadata = d.pop("metadata", UNSET)
+        metadata: AppInstallAppConfigVersionMetadata | Unset
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppInstallAppConfigVersionMetadata.from_dict(_metadata)
 
         new_app_config_id = d.pop("new_app_config_id", UNSET)
 
@@ -172,7 +189,7 @@ class AppInstallConfigUpdate:
 
         workflow_id = d.pop("workflow_id", UNSET)
 
-        app_install_config_update = cls(
+        app_install_app_config_version = cls(
             app_branch_run_id=app_branch_run_id,
             created_at=created_at,
             created_by_id=created_by_id,
@@ -180,6 +197,7 @@ class AppInstallConfigUpdate:
             id=id,
             install_group_id=install_group_id,
             install_id=install_id,
+            metadata=metadata,
             new_app_config_id=new_app_config_id,
             old_app_config_id=old_app_config_id,
             org_id=org_id,
@@ -189,8 +207,8 @@ class AppInstallConfigUpdate:
             workflow_id=workflow_id,
         )
 
-        app_install_config_update.additional_properties = d
-        return app_install_config_update
+        app_install_app_config_version.additional_properties = d
+        return app_install_app_config_version
 
     @property
     def additional_keys(self) -> list[str]:

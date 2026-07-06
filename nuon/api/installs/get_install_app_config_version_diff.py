@@ -6,23 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_install_app_config_version import AppInstallAppConfigVersion
+from ...models.app_install_config_diff import AppInstallConfigDiff
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
+    version_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs/{run_id}/install-groups".format(
-            app_id=quote(str(app_id), safe=""),
-            app_branch_id=quote(str(app_branch_id), safe=""),
-            run_id=quote(str(run_id), safe=""),
+        "url": "/v1/installs/{install_id}/app-config-versions/{version_id}/diff".format(
+            install_id=quote(str(install_id), safe=""),
+            version_id=quote(str(version_id), safe=""),
         ),
     }
 
@@ -31,14 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
+) -> AppInstallConfigDiff | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = AppInstallAppConfigVersion.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = AppInstallConfigDiff.from_dict(response.json())
 
         return response_200
 
@@ -75,7 +68,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
+) -> Response[AppInstallConfigDiff | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,33 +78,30 @@ def _build_response(
 
 
 def sync_detailed(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
+    version_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+) -> Response[AppInstallConfigDiff | StderrErrResponse]:
+    """get the diff for an install app config version
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the component diff for a specific app config version transition.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
+        version_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppInstallAppConfigVersion]]
+        Response[AppInstallConfigDiff | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
+        version_id=version_id,
     )
 
     response = client.get_httpx_client().request(
@@ -122,65 +112,59 @@ def sync_detailed(
 
 
 def sync(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
+    version_id: str,
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+) -> AppInstallConfigDiff | StderrErrResponse | None:
+    """get the diff for an install app config version
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the component diff for a specific app config version transition.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
+        version_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppInstallAppConfigVersion]
+        AppInstallConfigDiff | StderrErrResponse
     """
 
     return sync_detailed(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
+        version_id=version_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
+    version_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[AppInstallAppConfigVersion]]:
-    """get install group deployments for an app branch run
+) -> Response[AppInstallConfigDiff | StderrErrResponse]:
+    """get the diff for an install app config version
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the component diff for a specific app config version transition.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
+        version_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppInstallAppConfigVersion]]
+        Response[AppInstallConfigDiff | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        app_branch_id=app_branch_id,
-        run_id=run_id,
+        install_id=install_id,
+        version_id=version_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -189,34 +173,31 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    app_id: str,
-    app_branch_id: str,
-    run_id: str,
+    install_id: str,
+    version_id: str,
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[AppInstallAppConfigVersion] | None:
-    """get install group deployments for an app branch run
+) -> AppInstallConfigDiff | StderrErrResponse | None:
+    """get the diff for an install app config version
 
-     Returns install config updates triggered by a specific app branch run, grouped by install group
+     Returns the component diff for a specific app config version transition.
 
     Args:
-        app_id (str):
-        app_branch_id (str):
-        run_id (str):
+        install_id (str):
+        version_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppInstallAppConfigVersion]
+        AppInstallConfigDiff | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            app_id=app_id,
-            app_branch_id=app_branch_id,
-            run_id=run_id,
+            install_id=install_id,
+            version_id=version_id,
             client=client,
         )
     ).parsed

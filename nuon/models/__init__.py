@@ -27,6 +27,7 @@ from .app_app_input_group import AppAppInputGroup
 from .app_app_input_source import AppAppInputSource
 from .app_app_kubernetes_context_config import AppAppKubernetesContextConfig
 from .app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
+from .app_app_label_colors import AppAppLabelColors
 from .app_app_links import AppAppLinks
 from .app_app_operation_role_config import AppAppOperationRoleConfig
 from .app_app_operation_role_rule import AppAppOperationRoleRule
@@ -64,6 +65,7 @@ from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
 from .app_component_config_connection import AppComponentConfigConnection
 from .app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
+from .app_component_diff_entry import AppComponentDiffEntry
 from .app_component_links import AppComponentLinks
 from .app_component_release import AppComponentRelease
 from .app_component_release_step import AppComponentReleaseStep
@@ -98,6 +100,8 @@ from .app_install_action_workflow_run_run_env_vars import AppInstallActionWorkfl
 from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunStatus
 from .app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
 from .app_install_action_workflow_run_step_status import AppInstallActionWorkflowRunStepStatus
+from .app_install_app_config_version import AppInstallAppConfigVersion
+from .app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
 from .app_install_approval_option import AppInstallApprovalOption
 from .app_install_audit_log import AppInstallAuditLog
 from .app_install_component import AppInstallComponent
@@ -105,7 +109,7 @@ from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
 from .app_install_config_component_toggles import AppInstallConfigComponentToggles
-from .app_install_config_update import AppInstallConfigUpdate
+from .app_install_config_diff import AppInstallConfigDiff
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
 from .app_install_deploy_type import AppInstallDeployType
@@ -419,6 +423,9 @@ from .service_app_config_template_type import ServiceAppConfigTemplateType
 from .service_app_group_request import ServiceAppGroupRequest
 from .service_app_input_request import ServiceAppInputRequest
 from .service_app_kubernetes_context import ServiceAppKubernetesContext
+from .service_app_label_key_summary import ServiceAppLabelKeySummary
+from .service_app_labels_response import ServiceAppLabelsResponse
+from .service_app_labels_response_label_colors import ServiceAppLabelsResponseLabelColors
 from .service_app_policy_config import ServiceAppPolicyConfig
 from .service_app_secret_config import ServiceAppSecretConfig
 from .service_auth_me_identity import ServiceAuthMeIdentity
@@ -654,6 +661,7 @@ from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
 from .service_update_app_request import ServiceUpdateAppRequest
+from .service_update_app_request_label_colors import ServiceUpdateAppRequestLabelColors
 from .service_update_cell_request import ServiceUpdateCellRequest
 from .service_update_cell_request_env_vars import ServiceUpdateCellRequestEnvVars
 from .service_update_channel_subscription_request import ServiceUpdateChannelSubscriptionRequest
@@ -755,6 +763,7 @@ __all__ = (
     "AppAppInputSource",
     "AppAppKubernetesContextConfig",
     "AppAppKubernetesContextsConfig",
+    "AppAppLabelColors",
     "AppAppLinks",
     "AppAppOperationRoleConfig",
     "AppAppOperationRoleRule",
@@ -792,6 +801,7 @@ __all__ = (
     "AppComponentBuild",
     "AppComponentConfigConnection",
     "AppComponentConfigConnectionOperationRoles",
+    "AppComponentDiffEntry",
     "AppComponentLinks",
     "AppComponentRelease",
     "AppComponentReleaseStep",
@@ -826,6 +836,8 @@ __all__ = (
     "AppInstallActionWorkflowRunStatus",
     "AppInstallActionWorkflowRunStep",
     "AppInstallActionWorkflowRunStepStatus",
+    "AppInstallAppConfigVersion",
+    "AppInstallAppConfigVersionMetadata",
     "AppInstallApprovalOption",
     "AppInstallAuditLog",
     "AppInstallComponent",
@@ -833,7 +845,7 @@ __all__ = (
     "AppInstallComponentStatuses",
     "AppInstallConfig",
     "AppInstallConfigComponentToggles",
-    "AppInstallConfigUpdate",
+    "AppInstallConfigDiff",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
     "AppInstallDeployType",
@@ -1143,6 +1155,9 @@ __all__ = (
     "ServiceAppGroupRequest",
     "ServiceAppInputRequest",
     "ServiceAppKubernetesContext",
+    "ServiceAppLabelKeySummary",
+    "ServiceAppLabelsResponse",
+    "ServiceAppLabelsResponseLabelColors",
     "ServiceAppPolicyConfig",
     "ServiceAppSecretConfig",
     "ServiceAuthMeIdentity",
@@ -1348,6 +1363,7 @@ __all__ = (
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",
     "ServiceUpdateAppRequest",
+    "ServiceUpdateAppRequestLabelColors",
     "ServiceUpdateCellRequest",
     "ServiceUpdateCellRequestEnvVars",
     "ServiceUpdateChannelSubscriptionRequest",

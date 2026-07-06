@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.app_workflow import AppWorkflow
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
 T = TypeVar("T", bound="AppAppBranchRun")
@@ -40,6 +41,7 @@ class AppAppBranchRun:
         force (bool | Unset): Force indicates if this run was forced (bypassing change detection)
         head_sha (str | Unset):
         id (str | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         log_stream (AppLogStream | Unset):
         log_stream_id (str | Unset): LogStreamID is the log stream created during this run for event tracking
         plan_only (bool | Unset): PlanOnly indicates this is a preview run (e.g., PR preview) that should
@@ -72,6 +74,7 @@ class AppAppBranchRun:
     force: bool | Unset = UNSET
     head_sha: str | Unset = UNSET
     id: str | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     log_stream_id: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
@@ -121,6 +124,10 @@ class AppAppBranchRun:
         head_sha = self.head_sha
 
         id = self.id
+
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
 
         log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
@@ -189,6 +196,8 @@ class AppAppBranchRun:
             field_dict["head_sha"] = head_sha
         if id is not UNSET:
             field_dict["id"] = id
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
         if log_stream_id is not UNSET:
@@ -227,6 +236,7 @@ class AppAppBranchRun:
         from ..models.app_queue_signal import AppQueueSignal
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
         from ..models.app_workflow import AppWorkflow
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)
@@ -271,6 +281,13 @@ class AppAppBranchRun:
         head_sha = d.pop("head_sha", UNSET)
 
         id = d.pop("id", UNSET)
+
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
         _log_stream = d.pop("log_stream", UNSET)
         log_stream: AppLogStream | Unset
@@ -338,6 +355,7 @@ class AppAppBranchRun:
             force=force,
             head_sha=head_sha,
             id=id,
+            labels=labels,
             log_stream=log_stream,
             log_stream_id=log_stream_id,
             plan_only=plan_only,
