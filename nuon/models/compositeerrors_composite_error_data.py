@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -10,6 +10,7 @@ from ..models.compositeerrors_severity import CompositeerrorsSeverity
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.compositeerrors_composite_error_data_data import CompositeerrorsCompositeErrorDataData
     from ..models.compositeerrors_hints import CompositeerrorsHints
     from ..models.compositeerrors_section import CompositeerrorsSection
 
@@ -21,7 +22,8 @@ T = TypeVar("T", bound="CompositeerrorsCompositeErrorData")
 class CompositeerrorsCompositeErrorData:
     """
     Attributes:
-        data (list[int] | Unset): Data is the typed, per-error-type payload: WHAT the error is. Closed
+        data (CompositeerrorsCompositeErrorDataData | Unset): Data is the typed, per-error-type payload: WHAT the error
+            is. Closed
             schema per Type. Read to render sections and by any future view.
         hints (CompositeerrorsHints | Unset):
         message (str | Unset):
@@ -36,7 +38,7 @@ class CompositeerrorsCompositeErrorData:
         version (int | Unset): Version is the payload schema version (SchemaVersion at write time).
     """
 
-    data: list[int] | Unset = UNSET
+    data: CompositeerrorsCompositeErrorDataData | Unset = UNSET
     hints: CompositeerrorsHints | Unset = UNSET
     message: str | Unset = UNSET
     sections: list[CompositeerrorsSection] | Unset = UNSET
@@ -48,9 +50,9 @@ class CompositeerrorsCompositeErrorData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: list[int] | Unset = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
-            data = self.data
+            data = self.data.to_dict()
 
         hints: dict[str, Any] | Unset = UNSET
         if not isinstance(self.hints, Unset):
@@ -103,11 +105,17 @@ class CompositeerrorsCompositeErrorData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.compositeerrors_composite_error_data_data import CompositeerrorsCompositeErrorDataData
         from ..models.compositeerrors_hints import CompositeerrorsHints
         from ..models.compositeerrors_section import CompositeerrorsSection
 
         d = dict(src_dict)
-        data = cast(list[int], d.pop("data", UNSET))
+        _data = d.pop("data", UNSET)
+        data: CompositeerrorsCompositeErrorDataData | Unset
+        if isinstance(_data, Unset):
+            data = UNSET
+        else:
+            data = CompositeerrorsCompositeErrorDataData.from_dict(_data)
 
         _hints = d.pop("hints", UNSET)
         hints: CompositeerrorsHints | Unset

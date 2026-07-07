@@ -287,6 +287,7 @@ from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
 from .compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+from .compositeerrors_composite_error_data_data import CompositeerrorsCompositeErrorDataData
 from .compositeerrors_hints import CompositeerrorsHints
 from .compositeerrors_section import CompositeerrorsSection
 from .compositeerrors_severity import CompositeerrorsSeverity
@@ -1021,6 +1022,7 @@ __all__ = (
     "CctxSignalContext",
     "ClientConversation",
     "CompositeerrorsCompositeErrorData",
+    "CompositeerrorsCompositeErrorDataData",
     "CompositeerrorsHints",
     "CompositeerrorsSection",
     "CompositeerrorsSeverity",
