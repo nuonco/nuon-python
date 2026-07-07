@@ -37,6 +37,7 @@ class AppRunnerJob:
         execution_timeout (int | Unset): execution timeout is how long a job can be marked as "exeucuting" before being
             requeued
         executions (list[AppRunnerJobExecution] | Unset):
+        executor (str | Unset):
         final_runner_job_execution_id (str | Unset):
         finished_at (str | Unset):
         group (AppRunnerJobGroup | Unset):
@@ -71,6 +72,7 @@ class AppRunnerJob:
     execution_time: int | Unset = UNSET
     execution_timeout: int | Unset = UNSET
     executions: list[AppRunnerJobExecution] | Unset = UNSET
+    executor: str | Unset = UNSET
     final_runner_job_execution_id: str | Unset = UNSET
     finished_at: str | Unset = UNSET
     group: AppRunnerJobGroup | Unset = UNSET
@@ -117,6 +119,8 @@ class AppRunnerJob:
             for executions_item_data in self.executions:
                 executions_item = executions_item_data.to_dict()
                 executions.append(executions_item)
+
+        executor = self.executor
 
         final_runner_job_execution_id = self.final_runner_job_execution_id
 
@@ -203,6 +207,8 @@ class AppRunnerJob:
             field_dict["execution_timeout"] = execution_timeout
         if executions is not UNSET:
             field_dict["executions"] = executions
+        if executor is not UNSET:
+            field_dict["executor"] = executor
         if final_runner_job_execution_id is not UNSET:
             field_dict["final_runner_job_execution_id"] = final_runner_job_execution_id
         if finished_at is not UNSET:
@@ -286,6 +292,8 @@ class AppRunnerJob:
                 executions_item = AppRunnerJobExecution.from_dict(executions_item_data)
 
                 executions.append(executions_item)
+
+        executor = d.pop("executor", UNSET)
 
         final_runner_job_execution_id = d.pop("final_runner_job_execution_id", UNSET)
 
@@ -390,6 +398,7 @@ class AppRunnerJob:
             execution_time=execution_time,
             execution_timeout=execution_timeout,
             executions=executions,
+            executor=executor,
             final_runner_job_execution_id=final_runner_job_execution_id,
             finished_at=finished_at,
             group=group,

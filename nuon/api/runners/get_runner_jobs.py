@@ -18,6 +18,7 @@ def _get_kwargs(
     groups: str | Unset = UNSET,
     status: str | Unset = UNSET,
     statuses: str | Unset = UNSET,
+    executor: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -32,6 +33,8 @@ def _get_kwargs(
     params["status"] = status
 
     params["statuses"] = statuses
+
+    params["executor"] = executor
 
     params["offset"] = offset
 
@@ -115,6 +118,7 @@ def sync_detailed(
     groups: str | Unset = UNSET,
     status: str | Unset = UNSET,
     statuses: str | Unset = UNSET,
+    executor: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -129,6 +133,7 @@ def sync_detailed(
         groups (str | Unset):
         status (str | Unset):
         statuses (str | Unset):
+        executor (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -147,6 +152,7 @@ def sync_detailed(
         groups=groups,
         status=status,
         statuses=statuses,
+        executor=executor,
         offset=offset,
         limit=limit,
         page=page,
@@ -167,6 +173,7 @@ def sync(
     groups: str | Unset = UNSET,
     status: str | Unset = UNSET,
     statuses: str | Unset = UNSET,
+    executor: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -181,6 +188,7 @@ def sync(
         groups (str | Unset):
         status (str | Unset):
         statuses (str | Unset):
+        executor (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -200,6 +208,7 @@ def sync(
         groups=groups,
         status=status,
         statuses=statuses,
+        executor=executor,
         offset=offset,
         limit=limit,
         page=page,
@@ -214,6 +223,7 @@ async def asyncio_detailed(
     groups: str | Unset = UNSET,
     status: str | Unset = UNSET,
     statuses: str | Unset = UNSET,
+    executor: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -228,6 +238,7 @@ async def asyncio_detailed(
         groups (str | Unset):
         status (str | Unset):
         statuses (str | Unset):
+        executor (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -246,6 +257,7 @@ async def asyncio_detailed(
         groups=groups,
         status=status,
         statuses=statuses,
+        executor=executor,
         offset=offset,
         limit=limit,
         page=page,
@@ -264,6 +276,7 @@ async def asyncio(
     groups: str | Unset = UNSET,
     status: str | Unset = UNSET,
     statuses: str | Unset = UNSET,
+    executor: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -278,6 +291,7 @@ async def asyncio(
         groups (str | Unset):
         status (str | Unset):
         statuses (str | Unset):
+        executor (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -298,6 +312,7 @@ async def asyncio(
             groups=groups,
             status=status,
             statuses=statuses,
+            executor=executor,
             offset=offset,
             limit=limit,
             page=page,
