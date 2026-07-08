@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.blobstore_blob import BlobstoreBlob
+    from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
 T = TypeVar("T", bound="AppAppConfig")
@@ -51,6 +52,7 @@ class AppAppConfig:
         input_ (AppAppInputConfig | Unset):
         intermediate_config (BlobstoreBlob | Unset):
         kubernetes_contexts (AppAppKubernetesContextsConfig | Unset):
+        labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         operation_role_config (AppAppOperationRoleConfig | Unset):
         org_id (str | Unset):
         permissions (AppAppPermissionsConfig | Unset):
@@ -85,6 +87,7 @@ class AppAppConfig:
     input_: AppAppInputConfig | Unset = UNSET
     intermediate_config: BlobstoreBlob | Unset = UNSET
     kubernetes_contexts: AppAppKubernetesContextsConfig | Unset = UNSET
+    labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     operation_role_config: AppAppOperationRoleConfig | Unset = UNSET
     org_id: str | Unset = UNSET
     permissions: AppAppPermissionsConfig | Unset = UNSET
@@ -159,6 +162,10 @@ class AppAppConfig:
         kubernetes_contexts: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_contexts, Unset):
             kubernetes_contexts = self.kubernetes_contexts.to_dict()
+
+        labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
 
         operation_role_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.operation_role_config, Unset):
@@ -247,6 +254,8 @@ class AppAppConfig:
             field_dict["intermediate_config"] = intermediate_config
         if kubernetes_contexts is not UNSET:
             field_dict["kubernetes_contexts"] = kubernetes_contexts
+        if labels is not UNSET:
+            field_dict["labels"] = labels
         if operation_role_config is not UNSET:
             field_dict["operation_role_config"] = operation_role_config
         if org_id is not UNSET:
@@ -300,6 +309,7 @@ class AppAppConfig:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
         from ..models.blobstore_blob import BlobstoreBlob
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
         d = dict(src_dict)
         action_ids = cast(list[str], d.pop("action_ids", UNSET))
@@ -374,6 +384,13 @@ class AppAppConfig:
             kubernetes_contexts = UNSET
         else:
             kubernetes_contexts = AppAppKubernetesContextsConfig.from_dict(_kubernetes_contexts)
+
+        _labels = d.pop("labels", UNSET)
+        labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
 
         _operation_role_config = d.pop("operation_role_config", UNSET)
         operation_role_config: AppAppOperationRoleConfig | Unset
@@ -474,6 +491,7 @@ class AppAppConfig:
             input_=input_,
             intermediate_config=intermediate_config,
             kubernetes_contexts=kubernetes_contexts,
+            labels=labels,
             operation_role_config=operation_role_config,
             org_id=org_id,
             permissions=permissions,
