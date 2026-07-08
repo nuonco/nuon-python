@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_app_branch_run_type import AppAppBranchRunType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -37,20 +38,24 @@ class AppAppBranchRun:
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
         error_message (str | Unset): ErrorMessage stores any error that occurred during execution
-        event_type (str | Unset): EventType indicates what triggered this run (push, pull_request, manual).
-        force (bool | Unset): Force indicates if this run was forced (bypassing change detection)
+        event_type (str | Unset): EventType indicates what triggered this run. Kept for backward compat; new code uses
+            RunType.
+        force (bool | Unset):
+        github_comment_id (int | Unset):
         head_sha (str | Unset):
         id (str | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         log_stream (AppLogStream | Unset):
         log_stream_id (str | Unset): LogStreamID is the log stream created during this run for event tracking
-        plan_only (bool | Unset): PlanOnly indicates this is a preview run (e.g., PR preview) that should
-            only plan changes without applying them.
-        pr_number (int | Unset): PR metadata — populated when EventType is "pull_request"
+        no_config_changes (bool | Unset):
+        plan_only (bool | Unset): PlanOnly indicates this is a preview run. Kept for backward compat; new code uses
+            RunType.
+        pr_number (int | Unset):
         previous_run (AppAppBranchRun | Unset):
         previous_run_id (str | Unset): PreviousRunID links to the previous successful run on the same branch,
             used for build diffing to determine which components need rebuilding.
         queue_signal (AppQueueSignal | Unset):
+        run_type (AppAppBranchRunType | Unset):
         started_at (str | Unset): StartedAt tracks when execution actually began
         status (str | Unset): Status tracks the current state of the run
             Values: pending, running, success, failed, cancelled
@@ -72,16 +77,19 @@ class AppAppBranchRun:
     error_message: str | Unset = UNSET
     event_type: str | Unset = UNSET
     force: bool | Unset = UNSET
+    github_comment_id: int | Unset = UNSET
     head_sha: str | Unset = UNSET
     id: str | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     log_stream_id: str | Unset = UNSET
+    no_config_changes: bool | Unset = UNSET
     plan_only: bool | Unset = UNSET
     pr_number: int | Unset = UNSET
     previous_run: AppAppBranchRun | Unset = UNSET
     previous_run_id: str | Unset = UNSET
     queue_signal: AppQueueSignal | Unset = UNSET
+    run_type: AppAppBranchRunType | Unset = UNSET
     started_at: str | Unset = UNSET
     status: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -121,6 +129,8 @@ class AppAppBranchRun:
 
         force = self.force
 
+        github_comment_id = self.github_comment_id
+
         head_sha = self.head_sha
 
         id = self.id
@@ -135,6 +145,8 @@ class AppAppBranchRun:
 
         log_stream_id = self.log_stream_id
 
+        no_config_changes = self.no_config_changes
+
         plan_only = self.plan_only
 
         pr_number = self.pr_number
@@ -148,6 +160,10 @@ class AppAppBranchRun:
         queue_signal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.queue_signal, Unset):
             queue_signal = self.queue_signal.to_dict()
+
+        run_type: str | Unset = UNSET
+        if not isinstance(self.run_type, Unset):
+            run_type = self.run_type.value
 
         started_at = self.started_at
 
@@ -192,6 +208,8 @@ class AppAppBranchRun:
             field_dict["event_type"] = event_type
         if force is not UNSET:
             field_dict["force"] = force
+        if github_comment_id is not UNSET:
+            field_dict["github_comment_id"] = github_comment_id
         if head_sha is not UNSET:
             field_dict["head_sha"] = head_sha
         if id is not UNSET:
@@ -202,6 +220,8 @@ class AppAppBranchRun:
             field_dict["log_stream"] = log_stream
         if log_stream_id is not UNSET:
             field_dict["log_stream_id"] = log_stream_id
+        if no_config_changes is not UNSET:
+            field_dict["no_config_changes"] = no_config_changes
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
         if pr_number is not UNSET:
@@ -212,6 +232,8 @@ class AppAppBranchRun:
             field_dict["previous_run_id"] = previous_run_id
         if queue_signal is not UNSET:
             field_dict["queue_signal"] = queue_signal
+        if run_type is not UNSET:
+            field_dict["run_type"] = run_type
         if started_at is not UNSET:
             field_dict["started_at"] = started_at
         if status is not UNSET:
@@ -278,6 +300,8 @@ class AppAppBranchRun:
 
         force = d.pop("force", UNSET)
 
+        github_comment_id = d.pop("github_comment_id", UNSET)
+
         head_sha = d.pop("head_sha", UNSET)
 
         id = d.pop("id", UNSET)
@@ -298,6 +322,8 @@ class AppAppBranchRun:
 
         log_stream_id = d.pop("log_stream_id", UNSET)
 
+        no_config_changes = d.pop("no_config_changes", UNSET)
+
         plan_only = d.pop("plan_only", UNSET)
 
         pr_number = d.pop("pr_number", UNSET)
@@ -317,6 +343,13 @@ class AppAppBranchRun:
             queue_signal = UNSET
         else:
             queue_signal = AppQueueSignal.from_dict(_queue_signal)
+
+        _run_type = d.pop("run_type", UNSET)
+        run_type: AppAppBranchRunType | Unset
+        if isinstance(_run_type, Unset):
+            run_type = UNSET
+        else:
+            run_type = AppAppBranchRunType(_run_type)
 
         started_at = d.pop("started_at", UNSET)
 
@@ -353,16 +386,19 @@ class AppAppBranchRun:
             error_message=error_message,
             event_type=event_type,
             force=force,
+            github_comment_id=github_comment_id,
             head_sha=head_sha,
             id=id,
             labels=labels,
             log_stream=log_stream,
             log_stream_id=log_stream_id,
+            no_config_changes=no_config_changes,
             plan_only=plan_only,
             pr_number=pr_number,
             previous_run=previous_run,
             previous_run_id=previous_run_id,
             queue_signal=queue_signal,
+            run_type=run_type,
             started_at=started_at,
             status=status,
             updated_at=updated_at,
