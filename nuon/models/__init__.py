@@ -17,6 +17,7 @@ from .app_app_branch import AppAppBranch
 from .app_app_branch_config import AppAppBranchConfig
 from .app_app_branch_install_group import AppAppBranchInstallGroup
 from .app_app_branch_run import AppAppBranchRun
+from .app_app_branch_run_type import AppAppBranchRunType
 from .app_app_break_glass_config import AppAppBreakGlassConfig
 from .app_app_config import AppAppConfig
 from .app_app_config_status import AppAppConfigStatus
@@ -754,6 +755,7 @@ __all__ = (
     "AppAppBranchConfig",
     "AppAppBranchInstallGroup",
     "AppAppBranchRun",
+    "AppAppBranchRunType",
     "AppAppBreakGlassConfig",
     "AppAppConfig",
     "AppAppConfigStatus",

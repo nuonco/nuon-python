@@ -18,14 +18,18 @@ class ServiceCreateAppConfigRequest:
         app_branch_id (str | Unset): AppBranchID optionally links this config to an app branch.
             When set, triggers an app branch run after sync.
         cli_version (str | Unset):
+        intermediate_config_json (str | Unset): IntermediateConfigJSON is the serialized intermediate config (parsed
+            nuon.toml).
+            When provided, stored on the AppConfig for diffing in PR previews.
         plan_only (bool | Unset): PlanOnly creates a preview run (plan without apply). Only used with AppBranchID.
-        readme (str | Unset): not required Readme
+        readme (str | Unset):
         skip_notification (bool | Unset): SkipNotification suppresses the app-config-synced signal emission.
             Used when creating a config as part of app deletion cleanup.
     """
 
     app_branch_id: str | Unset = UNSET
     cli_version: str | Unset = UNSET
+    intermediate_config_json: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
     readme: str | Unset = UNSET
     skip_notification: bool | Unset = UNSET
@@ -35,6 +39,8 @@ class ServiceCreateAppConfigRequest:
         app_branch_id = self.app_branch_id
 
         cli_version = self.cli_version
+
+        intermediate_config_json = self.intermediate_config_json
 
         plan_only = self.plan_only
 
@@ -49,6 +55,8 @@ class ServiceCreateAppConfigRequest:
             field_dict["app_branch_id"] = app_branch_id
         if cli_version is not UNSET:
             field_dict["cli_version"] = cli_version
+        if intermediate_config_json is not UNSET:
+            field_dict["intermediate_config_json"] = intermediate_config_json
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
         if readme is not UNSET:
@@ -65,6 +73,8 @@ class ServiceCreateAppConfigRequest:
 
         cli_version = d.pop("cli_version", UNSET)
 
+        intermediate_config_json = d.pop("intermediate_config_json", UNSET)
+
         plan_only = d.pop("plan_only", UNSET)
 
         readme = d.pop("readme", UNSET)
@@ -74,6 +84,7 @@ class ServiceCreateAppConfigRequest:
         service_create_app_config_request = cls(
             app_branch_id=app_branch_id,
             cli_version=cli_version,
+            intermediate_config_json=intermediate_config_json,
             plan_only=plan_only,
             readme=readme,
             skip_notification=skip_notification,
