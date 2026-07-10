@@ -101,6 +101,7 @@ from .app_install_action_workflow_run_run_env_vars import AppInstallActionWorkfl
 from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunStatus
 from .app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
 from .app_install_action_workflow_run_step_status import AppInstallActionWorkflowRunStepStatus
+from .app_install_app_branch_connection import AppInstallAppBranchConnection
 from .app_install_app_config_version import AppInstallAppConfigVersion
 from .app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
 from .app_install_approval_option import AppInstallApprovalOption
@@ -380,6 +381,7 @@ from .plantypes_kubernetes_secret_sync_target import PlantypesKubernetesSecretSy
 from .plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig
 from .plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
 from .plantypes_oci_artifact_reference import PlantypesOCIArtifactReference
+from .plantypes_oci_source import PlantypesOCISource
 from .plantypes_pulumi_backend import PlantypesPulumiBackend
 from .plantypes_pulumi_backend_config import PlantypesPulumiBackendConfig
 from .plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan
@@ -839,6 +841,7 @@ __all__ = (
     "AppInstallActionWorkflowRunStatus",
     "AppInstallActionWorkflowRunStep",
     "AppInstallActionWorkflowRunStepStatus",
+    "AppInstallAppBranchConnection",
     "AppInstallAppConfigVersion",
     "AppInstallAppConfigVersionMetadata",
     "AppInstallApprovalOption",
@@ -1114,6 +1117,7 @@ __all__ = (
     "PlantypesKustomizeBuildConfig",
     "PlantypesNoopDeployPlan",
     "PlantypesOCIArtifactReference",
+    "PlantypesOCISource",
     "PlantypesPulumiBackend",
     "PlantypesPulumiBackendConfig",
     "PlantypesPulumiBuildPlan",

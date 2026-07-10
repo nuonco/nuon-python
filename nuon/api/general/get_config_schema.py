@@ -12,11 +12,14 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     type_: str | Unset = UNSET,
+    source: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["type"] = type_
+
+    params["source"] = source
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -82,6 +85,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient | Client,
     type_: str | Unset = UNSET,
+    source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
     r"""Get jsonschema for config file
 
@@ -111,6 +115,7 @@ def sync_detailed(
 
     Args:
         type_ (str | Unset):
+        source (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -122,6 +127,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         type_=type_,
+        source=source,
     )
 
     response = client.get_httpx_client().request(
@@ -135,6 +141,7 @@ def sync(
     *,
     client: AuthenticatedClient | Client,
     type_: str | Unset = UNSET,
+    source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
     r"""Get jsonschema for config file
 
@@ -164,6 +171,7 @@ def sync(
 
     Args:
         type_ (str | Unset):
+        source (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -176,6 +184,7 @@ def sync(
     return sync_detailed(
         client=client,
         type_=type_,
+        source=source,
     ).parsed
 
 
@@ -183,6 +192,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient | Client,
     type_: str | Unset = UNSET,
+    source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
     r"""Get jsonschema for config file
 
@@ -212,6 +222,7 @@ async def asyncio_detailed(
 
     Args:
         type_ (str | Unset):
+        source (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,6 +234,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         type_=type_,
+        source=source,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -234,6 +246,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient | Client,
     type_: str | Unset = UNSET,
+    source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
     r"""Get jsonschema for config file
 
@@ -263,6 +276,7 @@ async def asyncio(
 
     Args:
         type_ (str | Unset):
+        source (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -276,5 +290,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             type_=type_,
+            source=source,
         )
     ).parsed

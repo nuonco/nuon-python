@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
     from ..models.plantypes_git_source import PlantypesGitSource
+    from ..models.plantypes_oci_source import PlantypesOCISource
     from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
@@ -47,6 +48,7 @@ class PlantypesSandboxRunPlan:
         install_id (str | Unset):
         kyverno_policies_dir (str | Unset):
         local_archive (PlantypesTerraformLocalArchive | Unset):
+        oci_source (PlantypesOCISource | Unset):
         policies (PlantypesSandboxRunPlanPolicies | Unset):
         pulumi_backend (PlantypesPulumiBackend | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
@@ -69,6 +71,7 @@ class PlantypesSandboxRunPlan:
     install_id: str | Unset = UNSET
     kyverno_policies_dir: str | Unset = UNSET
     local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
+    oci_source: PlantypesOCISource | Unset = UNSET
     policies: PlantypesSandboxRunPlanPolicies | Unset = UNSET
     pulumi_backend: PlantypesPulumiBackend | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
@@ -120,6 +123,10 @@ class PlantypesSandboxRunPlan:
         local_archive: dict[str, Any] | Unset = UNSET
         if not isinstance(self.local_archive, Unset):
             local_archive = self.local_archive.to_dict()
+
+        oci_source: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.oci_source, Unset):
+            oci_source = self.oci_source.to_dict()
 
         policies: dict[str, Any] | Unset = UNSET
         if not isinstance(self.policies, Unset):
@@ -178,6 +185,8 @@ class PlantypesSandboxRunPlan:
             field_dict["kyverno_policies_dir"] = kyverno_policies_dir
         if local_archive is not UNSET:
             field_dict["local_archive"] = local_archive
+        if oci_source is not UNSET:
+            field_dict["oci_source"] = oci_source
         if policies is not UNSET:
             field_dict["policies"] = policies
         if pulumi_backend is not UNSET:
@@ -208,6 +217,7 @@ class PlantypesSandboxRunPlan:
         )
         from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
         from ..models.plantypes_git_source import PlantypesGitSource
+        from ..models.plantypes_oci_source import PlantypesOCISource
         from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
         from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
@@ -279,6 +289,13 @@ class PlantypesSandboxRunPlan:
         else:
             local_archive = PlantypesTerraformLocalArchive.from_dict(_local_archive)
 
+        _oci_source = d.pop("oci_source", UNSET)
+        oci_source: PlantypesOCISource | Unset
+        if isinstance(_oci_source, Unset):
+            oci_source = UNSET
+        else:
+            oci_source = PlantypesOCISource.from_dict(_oci_source)
+
         _policies = d.pop("policies", UNSET)
         policies: PlantypesSandboxRunPlanPolicies | Unset
         if isinstance(_policies, Unset):
@@ -337,6 +354,7 @@ class PlantypesSandboxRunPlan:
             install_id=install_id,
             kyverno_policies_dir=kyverno_policies_dir,
             local_archive=local_archive,
+            oci_source=oci_source,
             policies=policies,
             pulumi_backend=pulumi_backend,
             sandbox_mode=sandbox_mode,

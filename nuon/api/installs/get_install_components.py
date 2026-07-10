@@ -17,6 +17,7 @@ def _get_kwargs(
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> dict[str, Any]:
@@ -28,6 +29,8 @@ def _get_kwargs(
     params["q"] = q
 
     params["labels"] = labels
+
+    params["synced"] = synced
 
     params["offset"] = offset
 
@@ -108,6 +111,7 @@ def sync_detailed(
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
@@ -120,6 +124,7 @@ def sync_detailed(
         types (str | Unset):
         q (str | Unset):
         labels (str | Unset):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -136,6 +141,7 @@ def sync_detailed(
         types=types,
         q=q,
         labels=labels,
+        synced=synced,
         offset=offset,
         limit=limit,
     )
@@ -154,6 +160,7 @@ def sync(
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
@@ -166,6 +173,7 @@ def sync(
         types (str | Unset):
         q (str | Unset):
         labels (str | Unset):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -183,6 +191,7 @@ def sync(
         types=types,
         q=q,
         labels=labels,
+        synced=synced,
         offset=offset,
         limit=limit,
     ).parsed
@@ -195,6 +204,7 @@ async def asyncio_detailed(
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppInstallComponent]]:
@@ -207,6 +217,7 @@ async def asyncio_detailed(
         types (str | Unset):
         q (str | Unset):
         labels (str | Unset):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -223,6 +234,7 @@ async def asyncio_detailed(
         types=types,
         q=q,
         labels=labels,
+        synced=synced,
         offset=offset,
         limit=limit,
     )
@@ -239,6 +251,7 @@ async def asyncio(
     types: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppInstallComponent] | None:
@@ -251,6 +264,7 @@ async def asyncio(
         types (str | Unset):
         q (str | Unset):
         labels (str | Unset):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -269,6 +283,7 @@ async def asyncio(
             types=types,
             q=q,
             labels=labels,
+            synced=synced,
             offset=offset,
             limit=limit,
         )

@@ -17,6 +17,7 @@ def _get_kwargs(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     q: str | Unset = UNSET,
+    synced: bool | Unset = True,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -26,6 +27,8 @@ def _get_kwargs(
     params["limit"] = limit
 
     params["q"] = q
+
+    params["synced"] = synced
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -102,6 +105,7 @@ def sync_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     q: str | Unset = UNSET,
+    synced: bool | Unset = True,
 ) -> Response[StderrErrResponse | list[AppInstallRunbook]]:
     """get runbooks for an install
 
@@ -110,6 +114,7 @@ def sync_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         q (str | Unset):
+        synced (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,6 +129,7 @@ def sync_detailed(
         offset=offset,
         limit=limit,
         q=q,
+        synced=synced,
     )
 
     response = client.get_httpx_client().request(
@@ -140,6 +146,7 @@ def sync(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     q: str | Unset = UNSET,
+    synced: bool | Unset = True,
 ) -> StderrErrResponse | list[AppInstallRunbook] | None:
     """get runbooks for an install
 
@@ -148,6 +155,7 @@ def sync(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         q (str | Unset):
+        synced (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,6 +171,7 @@ def sync(
         offset=offset,
         limit=limit,
         q=q,
+        synced=synced,
     ).parsed
 
 
@@ -173,6 +182,7 @@ async def asyncio_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     q: str | Unset = UNSET,
+    synced: bool | Unset = True,
 ) -> Response[StderrErrResponse | list[AppInstallRunbook]]:
     """get runbooks for an install
 
@@ -181,6 +191,7 @@ async def asyncio_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         q (str | Unset):
+        synced (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,6 +206,7 @@ async def asyncio_detailed(
         offset=offset,
         limit=limit,
         q=q,
+        synced=synced,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -209,6 +221,7 @@ async def asyncio(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     q: str | Unset = UNSET,
+    synced: bool | Unset = True,
 ) -> StderrErrResponse | list[AppInstallRunbook] | None:
     """get runbooks for an install
 
@@ -217,6 +230,7 @@ async def asyncio(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         q (str | Unset):
+        synced (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -233,5 +247,6 @@ async def asyncio(
             offset=offset,
             limit=limit,
             q=q,
+            synced=synced,
         )
     ).parsed
