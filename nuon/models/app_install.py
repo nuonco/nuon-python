@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_branch import AppAppBranch
     from ..models.app_app_runner_config import AppAppRunnerConfig
     from ..models.app_app_sandbox_config import AppAppSandboxConfig
     from ..models.app_aws_account import AppAWSAccount
@@ -16,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.app_drifted_object import AppDriftedObject
     from ..models.app_gcp_account import AppGCPAccount
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
+    from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
     from ..models.app_install_component import AppInstallComponent
     from ..models.app_install_component_statuses import AppInstallComponentStatuses
     from ..models.app_install_config import AppInstallConfig
@@ -42,6 +44,9 @@ T = TypeVar("T", bound="AppInstall")
 class AppInstall:
     """
     Attributes:
+        app_branch (AppAppBranch | Unset):
+        app_branch_connections (list[AppInstallAppBranchConnection] | Unset):
+        app_branch_id (str | Unset):
         app_config_id (str | Unset):
         app_id (str | Unset):
         app_runner_config (AppAppRunnerConfig | Unset):
@@ -87,6 +92,9 @@ class AppInstall:
         workflows (list[AppWorkflow] | Unset):
     """
 
+    app_branch: AppAppBranch | Unset = UNSET
+    app_branch_connections: list[AppInstallAppBranchConnection] | Unset = UNSET
+    app_branch_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
     app_runner_config: AppAppRunnerConfig | Unset = UNSET
@@ -132,6 +140,19 @@ class AppInstall:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_branch, Unset):
+            app_branch = self.app_branch.to_dict()
+
+        app_branch_connections: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.app_branch_connections, Unset):
+            app_branch_connections = []
+            for app_branch_connections_item_data in self.app_branch_connections:
+                app_branch_connections_item = app_branch_connections_item_data.to_dict()
+                app_branch_connections.append(app_branch_connections_item)
+
+        app_branch_id = self.app_branch_id
+
         app_config_id = self.app_config_id
 
         app_id = self.app_id
@@ -297,6 +318,12 @@ class AppInstall:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch is not UNSET:
+            field_dict["app_branch"] = app_branch
+        if app_branch_connections is not UNSET:
+            field_dict["app_branch_connections"] = app_branch_connections
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
         if app_id is not UNSET:
@@ -386,6 +413,7 @@ class AppInstall:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_branch import AppAppBranch
         from ..models.app_app_runner_config import AppAppRunnerConfig
         from ..models.app_app_sandbox_config import AppAppSandboxConfig
         from ..models.app_aws_account import AppAWSAccount
@@ -393,6 +421,7 @@ class AppInstall:
         from ..models.app_drifted_object import AppDriftedObject
         from ..models.app_gcp_account import AppGCPAccount
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
+        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
         from ..models.app_install_component import AppInstallComponent
         from ..models.app_install_component_statuses import AppInstallComponentStatuses
         from ..models.app_install_config import AppInstallConfig
@@ -412,6 +441,24 @@ class AppInstall:
         from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
+        _app_branch = d.pop("app_branch", UNSET)
+        app_branch: AppAppBranch | Unset
+        if isinstance(_app_branch, Unset):
+            app_branch = UNSET
+        else:
+            app_branch = AppAppBranch.from_dict(_app_branch)
+
+        _app_branch_connections = d.pop("app_branch_connections", UNSET)
+        app_branch_connections: list[AppInstallAppBranchConnection] | Unset = UNSET
+        if _app_branch_connections is not UNSET:
+            app_branch_connections = []
+            for app_branch_connections_item_data in _app_branch_connections:
+                app_branch_connections_item = AppInstallAppBranchConnection.from_dict(app_branch_connections_item_data)
+
+                app_branch_connections.append(app_branch_connections_item)
+
+        app_branch_id = d.pop("app_branch_id", UNSET)
+
         app_config_id = d.pop("app_config_id", UNSET)
 
         app_id = d.pop("app_id", UNSET)
@@ -637,6 +684,9 @@ class AppInstall:
                 workflows.append(workflows_item)
 
         app_install = cls(
+            app_branch=app_branch,
+            app_branch_connections=app_branch_connections,
+            app_branch_id=app_branch_id,
             app_config_id=app_config_id,
             app_id=app_id,
             app_runner_config=app_runner_config,

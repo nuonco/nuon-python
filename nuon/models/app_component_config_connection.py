@@ -51,6 +51,7 @@ class AppComponentConfigConnection:
             default. Stored as a name (not an FK) so it remains stable across
             AppConfig versions, mirroring how component dependencies are tracked.
         kubernetes_manifest (AppKubernetesManifestComponentConfig | Unset):
+        latest_build_id (str | Unset):
         max_auto_retries (int | Unset):
         operation_roles (AppComponentConfigConnectionOperationRoles | Unset): Operation roles map: operation type ->
             role name
@@ -85,6 +86,7 @@ class AppComponentConfigConnection:
     job: AppJobComponentConfig | Unset = UNSET
     kubernetes_context_name: str | Unset = UNSET
     kubernetes_manifest: AppKubernetesManifestComponentConfig | Unset = UNSET
+    latest_build_id: str | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
     operation_roles: AppComponentConfigConnectionOperationRoles | Unset = UNSET
     pulumi: AppPulumiComponentConfig | Unset = UNSET
@@ -150,6 +152,8 @@ class AppComponentConfigConnection:
         kubernetes_manifest: dict[str, Any] | Unset = UNSET
         if not isinstance(self.kubernetes_manifest, Unset):
             kubernetes_manifest = self.kubernetes_manifest.to_dict()
+
+        latest_build_id = self.latest_build_id
 
         max_auto_retries = self.max_auto_retries
 
@@ -231,6 +235,8 @@ class AppComponentConfigConnection:
             field_dict["kubernetes_context_name"] = kubernetes_context_name
         if kubernetes_manifest is not UNSET:
             field_dict["kubernetes_manifest"] = kubernetes_manifest
+        if latest_build_id is not UNSET:
+            field_dict["latest_build_id"] = latest_build_id
         if max_auto_retries is not UNSET:
             field_dict["max_auto_retries"] = max_auto_retries
         if operation_roles is not UNSET:
@@ -334,6 +340,8 @@ class AppComponentConfigConnection:
         else:
             kubernetes_manifest = AppKubernetesManifestComponentConfig.from_dict(_kubernetes_manifest)
 
+        latest_build_id = d.pop("latest_build_id", UNSET)
+
         max_auto_retries = d.pop("max_auto_retries", UNSET)
 
         _operation_roles = d.pop("operation_roles", UNSET)
@@ -404,6 +412,7 @@ class AppComponentConfigConnection:
             job=job,
             kubernetes_context_name=kubernetes_context_name,
             kubernetes_manifest=kubernetes_manifest,
+            latest_build_id=latest_build_id,
             max_auto_retries=max_auto_retries,
             operation_roles=operation_roles,
             pulumi=pulumi,
