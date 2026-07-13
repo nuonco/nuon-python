@@ -1,32 +1,24 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    *,
-    type_: str | Unset = UNSET,
-    source: str | Unset = UNSET,
+    type_: str,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["type"] = type_
-
-    params["source"] = source
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/general/config-schema",
-        "params": params,
+        "url": "/v1/general/config-schema/{type_}".format(
+            type_=quote(str(type_), safe=""),
+        ),
     }
 
     return _kwargs
@@ -82,12 +74,11 @@ def _build_response(
 
 
 def sync_detailed(
+    type_: str,
     *,
     client: AuthenticatedClient | Client,
-    type_: str | Unset = UNSET,
-    source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for config file (deprecated query form)
+    r"""Get jsonschema for a config file type
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -114,8 +105,7 @@ def sync_detailed(
     - job
 
     Args:
-        type_ (str | Unset):
-        source (str | Unset):
+        type_ (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,7 +117,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         type_=type_,
-        source=source,
     )
 
     response = client.get_httpx_client().request(
@@ -138,12 +127,11 @@ def sync_detailed(
 
 
 def sync(
+    type_: str,
     *,
     client: AuthenticatedClient | Client,
-    type_: str | Unset = UNSET,
-    source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for config file (deprecated query form)
+    r"""Get jsonschema for a config file type
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -170,8 +158,7 @@ def sync(
     - job
 
     Args:
-        type_ (str | Unset):
-        source (str | Unset):
+        type_ (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,19 +169,17 @@ def sync(
     """
 
     return sync_detailed(
-        client=client,
         type_=type_,
-        source=source,
+        client=client,
     ).parsed
 
 
 async def asyncio_detailed(
+    type_: str,
     *,
     client: AuthenticatedClient | Client,
-    type_: str | Unset = UNSET,
-    source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for config file (deprecated query form)
+    r"""Get jsonschema for a config file type
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -221,8 +206,7 @@ async def asyncio_detailed(
     - job
 
     Args:
-        type_ (str | Unset):
-        source (str | Unset):
+        type_ (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -234,7 +218,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         type_=type_,
-        source=source,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -243,12 +226,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    type_: str,
     *,
     client: AuthenticatedClient | Client,
-    type_: str | Unset = UNSET,
-    source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for config file (deprecated query form)
+    r"""Get jsonschema for a config file type
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -275,8 +257,7 @@ async def asyncio(
     - job
 
     Args:
-        type_ (str | Unset):
-        source (str | Unset):
+        type_ (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -288,8 +269,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            client=client,
             type_=type_,
-            source=source,
+            client=client,
         )
     ).parsed
