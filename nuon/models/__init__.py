@@ -292,6 +292,7 @@ from .compositeerrors_composite_error_data import CompositeerrorsCompositeErrorD
 from .compositeerrors_composite_error_data_data import CompositeerrorsCompositeErrorDataData
 from .compositeerrors_hints import CompositeerrorsHints
 from .compositeerrors_section import CompositeerrorsSection
+from .compositeerrors_section_kind import CompositeerrorsSectionKind
 from .compositeerrors_severity import CompositeerrorsSeverity
 from .config_app_policy_engine import ConfigAppPolicyEngine
 from .config_app_policy_type import ConfigAppPolicyType
@@ -1030,6 +1031,7 @@ __all__ = (
     "CompositeerrorsCompositeErrorDataData",
     "CompositeerrorsHints",
     "CompositeerrorsSection",
+    "CompositeerrorsSectionKind",
     "CompositeerrorsSeverity",
     "ConfigAppPolicyEngine",
     "ConfigAppPolicyType",
