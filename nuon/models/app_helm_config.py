@@ -23,6 +23,7 @@ class AppHelmConfig:
         chart_name (str | Unset):
         helm_repo_config (AppHelmRepoConfig | Unset):
         namespace (str | Unset):
+        skip_crds (bool | Unset):
         storage_driver (str | Unset):
         take_ownership (bool | Unset): Newer fields that we don't need to store as columns in the database
         values (AppHelmConfigValues | Unset):
@@ -32,6 +33,7 @@ class AppHelmConfig:
     chart_name: str | Unset = UNSET
     helm_repo_config: AppHelmRepoConfig | Unset = UNSET
     namespace: str | Unset = UNSET
+    skip_crds: bool | Unset = UNSET
     storage_driver: str | Unset = UNSET
     take_ownership: bool | Unset = UNSET
     values: AppHelmConfigValues | Unset = UNSET
@@ -46,6 +48,8 @@ class AppHelmConfig:
             helm_repo_config = self.helm_repo_config.to_dict()
 
         namespace = self.namespace
+
+        skip_crds = self.skip_crds
 
         storage_driver = self.storage_driver
 
@@ -68,6 +72,8 @@ class AppHelmConfig:
             field_dict["helm_repo_config"] = helm_repo_config
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
+        if skip_crds is not UNSET:
+            field_dict["skip_crds"] = skip_crds
         if storage_driver is not UNSET:
             field_dict["storage_driver"] = storage_driver
         if take_ownership is not UNSET:
@@ -96,6 +102,8 @@ class AppHelmConfig:
 
         namespace = d.pop("namespace", UNSET)
 
+        skip_crds = d.pop("skip_crds", UNSET)
+
         storage_driver = d.pop("storage_driver", UNSET)
 
         take_ownership = d.pop("take_ownership", UNSET)
@@ -113,6 +121,7 @@ class AppHelmConfig:
             chart_name=chart_name,
             helm_repo_config=helm_repo_config,
             namespace=namespace,
+            skip_crds=skip_crds,
             storage_driver=storage_driver,
             take_ownership=take_ownership,
             values=values,
