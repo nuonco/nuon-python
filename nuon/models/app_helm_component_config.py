@@ -31,6 +31,7 @@ class AppHelmComponentConfig:
         id (str | Unset):
         namespace (str | Unset):
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        skip_crds (bool | Unset):
         storage_driver (str | Unset):
         take_ownership (bool | Unset): Newer config fields that we don't need a column for
         updated_at (str | Unset):
@@ -47,6 +48,7 @@ class AppHelmComponentConfig:
     id: str | Unset = UNSET
     namespace: str | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    skip_crds: bool | Unset = UNSET
     storage_driver: str | Unset = UNSET
     take_ownership: bool | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -78,6 +80,8 @@ class AppHelmComponentConfig:
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
+
+        skip_crds = self.skip_crds
 
         storage_driver = self.storage_driver
 
@@ -114,6 +118,8 @@ class AppHelmComponentConfig:
             field_dict["namespace"] = namespace
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if skip_crds is not UNSET:
+            field_dict["skip_crds"] = skip_crds
         if storage_driver is not UNSET:
             field_dict["storage_driver"] = storage_driver
         if take_ownership is not UNSET:
@@ -168,6 +174,8 @@ class AppHelmComponentConfig:
         else:
             public_git_vcs_config = AppPublicGitVCSConfig.from_dict(_public_git_vcs_config)
 
+        skip_crds = d.pop("skip_crds", UNSET)
+
         storage_driver = d.pop("storage_driver", UNSET)
 
         take_ownership = d.pop("take_ownership", UNSET)
@@ -193,6 +201,7 @@ class AppHelmComponentConfig:
             id=id,
             namespace=namespace,
             public_git_vcs_config=public_git_vcs_config,
+            skip_crds=skip_crds,
             storage_driver=storage_driver,
             take_ownership=take_ownership,
             updated_at=updated_at,

@@ -45,6 +45,7 @@ class ServiceCreateHelmComponentConfigRequest:
         operation_roles (ServiceCreateHelmComponentConfigRequestOperationRoles | Unset):
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
+        skip_crds (bool | Unset):
         skip_noops (bool | Unset):
         storage_driver (str | Unset):
         take_ownership (bool | Unset):
@@ -70,6 +71,7 @@ class ServiceCreateHelmComponentConfigRequest:
     operation_roles: ServiceCreateHelmComponentConfigRequestOperationRoles | Unset = UNSET
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
+    skip_crds: bool | Unset = UNSET
     skip_noops: bool | Unset = UNSET
     storage_driver: str | Unset = UNSET
     take_ownership: bool | Unset = UNSET
@@ -126,6 +128,8 @@ class ServiceCreateHelmComponentConfigRequest:
         if not isinstance(self.references, Unset):
             references = self.references
 
+        skip_crds = self.skip_crds
+
         skip_noops = self.skip_noops
 
         storage_driver = self.storage_driver
@@ -178,6 +182,8 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if references is not UNSET:
             field_dict["references"] = references
+        if skip_crds is not UNSET:
+            field_dict["skip_crds"] = skip_crds
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
         if storage_driver is not UNSET:
@@ -260,6 +266,8 @@ class ServiceCreateHelmComponentConfigRequest:
 
         references = cast(list[str], d.pop("references", UNSET))
 
+        skip_crds = d.pop("skip_crds", UNSET)
+
         skip_noops = d.pop("skip_noops", UNSET)
 
         storage_driver = d.pop("storage_driver", UNSET)
@@ -289,6 +297,7 @@ class ServiceCreateHelmComponentConfigRequest:
             operation_roles=operation_roles,
             public_git_vcs_config=public_git_vcs_config,
             references=references,
+            skip_crds=skip_crds,
             skip_noops=skip_noops,
             storage_driver=storage_driver,
             take_ownership=take_ownership,
