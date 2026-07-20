@@ -12,6 +12,7 @@ class AppActionWorkflowTriggerType(str, Enum):
     POST_DISABLE_COMPONENT = "post-disable-component"
     POST_ENABLE_COMPONENT = "post-enable-component"
     POST_PROVISION = "post-provision"
+    POST_PROVISION_SANDBOX = "post-provision-sandbox"
     POST_REPROVISION = "post-reprovision"
     POST_REPROVISION_SANDBOX = "post-reprovision-sandbox"
     POST_SECRETS_SYNC = "post-secrets-sync"
