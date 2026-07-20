@@ -60,6 +60,9 @@ from .app_awsiam_role_type import AppAWSIAMRoleType
 from .app_azure_account import AppAzureAccount
 from .app_azure_acr_image_config import AppAzureACRImageConfig
 from .app_azure_stack_outputs import AppAzureStackOutputs
+from .app_azure_stack_outputs_break_glass_identity_client_ids import AppAzureStackOutputsBreakGlassIdentityClientIds
+from .app_azure_stack_outputs_custom_identity_client_ids import AppAzureStackOutputsCustomIdentityClientIds
+from .app_azure_stack_outputs_install_inputs import AppAzureStackOutputsInstallInputs
 from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
@@ -801,6 +804,9 @@ __all__ = (
     "AppAzureAccount",
     "AppAzureACRImageConfig",
     "AppAzureStackOutputs",
+    "AppAzureStackOutputsBreakGlassIdentityClientIds",
+    "AppAzureStackOutputsCustomIdentityClientIds",
+    "AppAzureStackOutputsInstallInputs",
     "AppCloudPlatform",
     "AppCloudPlatformRegion",
     "AppComponent",
