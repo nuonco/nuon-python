@@ -15,6 +15,8 @@ T = TypeVar("T", bound="ServiceAppAWSIAMPolicyConfig")
 class ServiceAppAWSIAMPolicyConfig:
     """
     Attributes:
+        azure_actions (list[str] | Unset):
+        azure_built_in_roles (list[str] | Unset):
         contents (str | Unset):
         gcp_permissions (list[str] | Unset):
         gcp_predefined_role (str | Unset):
@@ -22,6 +24,8 @@ class ServiceAppAWSIAMPolicyConfig:
         name (str | Unset):
     """
 
+    azure_actions: list[str] | Unset = UNSET
+    azure_built_in_roles: list[str] | Unset = UNSET
     contents: str | Unset = UNSET
     gcp_permissions: list[str] | Unset = UNSET
     gcp_predefined_role: str | Unset = UNSET
@@ -30,6 +34,14 @@ class ServiceAppAWSIAMPolicyConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        azure_actions: list[str] | Unset = UNSET
+        if not isinstance(self.azure_actions, Unset):
+            azure_actions = self.azure_actions
+
+        azure_built_in_roles: list[str] | Unset = UNSET
+        if not isinstance(self.azure_built_in_roles, Unset):
+            azure_built_in_roles = self.azure_built_in_roles
+
         contents = self.contents
 
         gcp_permissions: list[str] | Unset = UNSET
@@ -45,6 +57,10 @@ class ServiceAppAWSIAMPolicyConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if azure_actions is not UNSET:
+            field_dict["azure_actions"] = azure_actions
+        if azure_built_in_roles is not UNSET:
+            field_dict["azure_built_in_roles"] = azure_built_in_roles
         if contents is not UNSET:
             field_dict["contents"] = contents
         if gcp_permissions is not UNSET:
@@ -61,6 +77,10 @@ class ServiceAppAWSIAMPolicyConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        azure_actions = cast(list[str], d.pop("azure_actions", UNSET))
+
+        azure_built_in_roles = cast(list[str], d.pop("azure_built_in_roles", UNSET))
+
         contents = d.pop("contents", UNSET)
 
         gcp_permissions = cast(list[str], d.pop("gcp_permissions", UNSET))
@@ -72,6 +92,8 @@ class ServiceAppAWSIAMPolicyConfig:
         name = d.pop("name", UNSET)
 
         service_app_awsiam_policy_config = cls(
+            azure_actions=azure_actions,
+            azure_built_in_roles=azure_built_in_roles,
             contents=contents,
             gcp_permissions=gcp_permissions,
             gcp_predefined_role=gcp_predefined_role,

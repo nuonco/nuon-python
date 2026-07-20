@@ -19,15 +19,20 @@ T = TypeVar("T", bound="GithubComNuoncoNuonPkgAzureCredentialsConfig")
 class GithubComNuoncoNuonPkgAzureCredentialsConfig:
     """
     Attributes:
+        managed_identity_client_id (str | Unset): ManagedIdentityClientID runs the operation as a specific user-assigned
+            managed identity instead of the VM's system identity.
         service_principal (CredentialsServicePrincipalCredentials | Unset):
         use_default (bool | Unset):
     """
 
+    managed_identity_client_id: str | Unset = UNSET
     service_principal: CredentialsServicePrincipalCredentials | Unset = UNSET
     use_default: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        managed_identity_client_id = self.managed_identity_client_id
+
         service_principal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.service_principal, Unset):
             service_principal = self.service_principal.to_dict()
@@ -37,6 +42,8 @@ class GithubComNuoncoNuonPkgAzureCredentialsConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if managed_identity_client_id is not UNSET:
+            field_dict["managed_identity_client_id"] = managed_identity_client_id
         if service_principal is not UNSET:
             field_dict["service_principal"] = service_principal
         if use_default is not UNSET:
@@ -49,6 +56,8 @@ class GithubComNuoncoNuonPkgAzureCredentialsConfig:
         from ..models.credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
 
         d = dict(src_dict)
+        managed_identity_client_id = d.pop("managed_identity_client_id", UNSET)
+
         _service_principal = d.pop("service_principal", UNSET)
         service_principal: CredentialsServicePrincipalCredentials | Unset
         if isinstance(_service_principal, Unset):
@@ -59,6 +68,7 @@ class GithubComNuoncoNuonPkgAzureCredentialsConfig:
         use_default = d.pop("use_default", UNSET)
 
         github_com_nuonco_nuon_pkg_azure_credentials_config = cls(
+            managed_identity_client_id=managed_identity_client_id,
             service_principal=service_principal,
             use_default=use_default,
         )

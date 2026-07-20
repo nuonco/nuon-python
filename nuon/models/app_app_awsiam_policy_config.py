@@ -17,6 +17,8 @@ class AppAppAWSIAMPolicyConfig:
     Attributes:
         app_aws_iam_role_config_id (str | Unset):
         app_config_id (str | Unset):
+        azure_actions (list[str] | Unset):
+        azure_built_in_roles (list[str] | Unset):
         cloudformation_stack_name (str | Unset):
         contents (str | Unset):
         created_at (str | Unset):
@@ -32,6 +34,8 @@ class AppAppAWSIAMPolicyConfig:
 
     app_aws_iam_role_config_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    azure_actions: list[str] | Unset = UNSET
+    azure_built_in_roles: list[str] | Unset = UNSET
     cloudformation_stack_name: str | Unset = UNSET
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -49,6 +53,14 @@ class AppAppAWSIAMPolicyConfig:
         app_aws_iam_role_config_id = self.app_aws_iam_role_config_id
 
         app_config_id = self.app_config_id
+
+        azure_actions: list[str] | Unset = UNSET
+        if not isinstance(self.azure_actions, Unset):
+            azure_actions = self.azure_actions
+
+        azure_built_in_roles: list[str] | Unset = UNSET
+        if not isinstance(self.azure_built_in_roles, Unset):
+            azure_built_in_roles = self.azure_built_in_roles
 
         cloudformation_stack_name = self.cloudformation_stack_name
 
@@ -81,6 +93,10 @@ class AppAppAWSIAMPolicyConfig:
             field_dict["app_aws_iam_role_config_id"] = app_aws_iam_role_config_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if azure_actions is not UNSET:
+            field_dict["azure_actions"] = azure_actions
+        if azure_built_in_roles is not UNSET:
+            field_dict["azure_built_in_roles"] = azure_built_in_roles
         if cloudformation_stack_name is not UNSET:
             field_dict["cloudformation_stack_name"] = cloudformation_stack_name
         if contents is not UNSET:
@@ -113,6 +129,10 @@ class AppAppAWSIAMPolicyConfig:
 
         app_config_id = d.pop("app_config_id", UNSET)
 
+        azure_actions = cast(list[str], d.pop("azure_actions", UNSET))
+
+        azure_built_in_roles = cast(list[str], d.pop("azure_built_in_roles", UNSET))
+
         cloudformation_stack_name = d.pop("cloudformation_stack_name", UNSET)
 
         contents = d.pop("contents", UNSET)
@@ -138,6 +158,8 @@ class AppAppAWSIAMPolicyConfig:
         app_app_awsiam_policy_config = cls(
             app_aws_iam_role_config_id=app_aws_iam_role_config_id,
             app_config_id=app_config_id,
+            azure_actions=azure_actions,
+            azure_built_in_roles=azure_built_in_roles,
             cloudformation_stack_name=cloudformation_stack_name,
             contents=contents,
             created_at=created_at,
