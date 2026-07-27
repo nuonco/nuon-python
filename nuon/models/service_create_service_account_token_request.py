@@ -8,50 +8,50 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceCreateInstallRequestAwsAccount")
+T = TypeVar("T", bound="ServiceCreateServiceAccountTokenRequest")
 
 
 @_attrs_define
-class ServiceCreateInstallRequestAwsAccount:
+class ServiceCreateServiceAccountTokenRequest:
     """
     Attributes:
-        connection_id (str | Unset):
-        region (str | Unset):
+        duration (str | Unset): Duration defaults to one year. Default: '8760h'.
+        invalidate (bool | Unset):
     """
 
-    connection_id: str | Unset = UNSET
-    region: str | Unset = UNSET
+    duration: str | Unset = "8760h"
+    invalidate: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connection_id = self.connection_id
+        duration = self.duration
 
-        region = self.region
+        invalidate = self.invalidate
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if connection_id is not UNSET:
-            field_dict["connection_id"] = connection_id
-        if region is not UNSET:
-            field_dict["region"] = region
+        if duration is not UNSET:
+            field_dict["duration"] = duration
+        if invalidate is not UNSET:
+            field_dict["invalidate"] = invalidate
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connection_id = d.pop("connection_id", UNSET)
+        duration = d.pop("duration", UNSET)
 
-        region = d.pop("region", UNSET)
+        invalidate = d.pop("invalidate", UNSET)
 
-        service_create_install_request_aws_account = cls(
-            connection_id=connection_id,
-            region=region,
+        service_create_service_account_token_request = cls(
+            duration=duration,
+            invalidate=invalidate,
         )
 
-        service_create_install_request_aws_account.additional_properties = d
-        return service_create_install_request_aws_account
+        service_create_service_account_token_request.additional_properties = d
+        return service_create_service_account_token_request
 
     @property
     def additional_keys(self) -> list[str]:

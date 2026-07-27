@@ -28,6 +28,7 @@ class ServiceAuthMeResponse:
         email (str | Unset):
         id (str | Unset):
         identities (list[ServiceAuthMeIdentity] | Unset):
+        name (str | Unset):
         org_ids (list[str] | Unset): ReadOnly Fields
         permissions (PermissionsSet | Unset):
         roles (list[AppRole] | Unset):
@@ -41,6 +42,7 @@ class ServiceAuthMeResponse:
     email: str | Unset = UNSET
     id: str | Unset = UNSET
     identities: list[ServiceAuthMeIdentity] | Unset = UNSET
+    name: str | Unset = UNSET
     org_ids: list[str] | Unset = UNSET
     permissions: PermissionsSet | Unset = UNSET
     roles: list[AppRole] | Unset = UNSET
@@ -66,6 +68,8 @@ class ServiceAuthMeResponse:
             for identities_item_data in self.identities:
                 identities_item = identities_item_data.to_dict()
                 identities.append(identities_item)
+
+        name = self.name
 
         org_ids: list[str] | Unset = UNSET
         if not isinstance(self.org_ids, Unset):
@@ -106,6 +110,8 @@ class ServiceAuthMeResponse:
             field_dict["id"] = id
         if identities is not UNSET:
             field_dict["identities"] = identities
+        if name is not UNSET:
+            field_dict["name"] = name
         if org_ids is not UNSET:
             field_dict["org_ids"] = org_ids
         if permissions is not UNSET:
@@ -151,6 +157,8 @@ class ServiceAuthMeResponse:
 
                 identities.append(identities_item)
 
+        name = d.pop("name", UNSET)
+
         org_ids = cast(list[str], d.pop("org_ids", UNSET))
 
         _permissions = d.pop("permissions", UNSET)
@@ -188,6 +196,7 @@ class ServiceAuthMeResponse:
             email=email,
             id=id,
             identities=identities,
+            name=name,
             org_ids=org_ids,
             permissions=permissions,
             roles=roles,

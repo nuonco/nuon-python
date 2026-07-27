@@ -25,6 +25,7 @@ class AppToken:
         issuer (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
+        role (str | Unset):
         token_type (AppTokenType | Unset):
         updated_at (str | Unset):
     """
@@ -38,6 +39,7 @@ class AppToken:
     issuer: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    role: str | Unset = UNSET
     token_type: AppTokenType | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -60,6 +62,8 @@ class AppToken:
         name = self.name
 
         org_id = self.org_id
+
+        role = self.role
 
         token_type: str | Unset = UNSET
         if not isinstance(self.token_type, Unset):
@@ -88,6 +92,8 @@ class AppToken:
             field_dict["name"] = name
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if role is not UNSET:
+            field_dict["role"] = role
         if token_type is not UNSET:
             field_dict["token_type"] = token_type
         if updated_at is not UNSET:
@@ -116,6 +122,8 @@ class AppToken:
 
         org_id = d.pop("org_id", UNSET)
 
+        role = d.pop("role", UNSET)
+
         _token_type = d.pop("token_type", UNSET)
         token_type: AppTokenType | Unset
         if isinstance(_token_type, Unset):
@@ -135,6 +143,7 @@ class AppToken:
             issuer=issuer,
             name=name,
             org_id=org_id,
+            role=role,
             token_type=token_type,
             updated_at=updated_at,
         )

@@ -21,6 +21,7 @@ class CredentialsAssumeRoleConfig:
     Attributes:
         role_arn (str):
         session_name (str):
+        external_id (str | Unset):
         session_duration_seconds (int | Unset):
         two_step_config (IamTwoStepConfig | Unset):
         use_gcp_oidc (bool | Unset):
@@ -29,6 +30,7 @@ class CredentialsAssumeRoleConfig:
 
     role_arn: str
     session_name: str
+    external_id: str | Unset = UNSET
     session_duration_seconds: int | Unset = UNSET
     two_step_config: IamTwoStepConfig | Unset = UNSET
     use_gcp_oidc: bool | Unset = UNSET
@@ -39,6 +41,8 @@ class CredentialsAssumeRoleConfig:
         role_arn = self.role_arn
 
         session_name = self.session_name
+
+        external_id = self.external_id
 
         session_duration_seconds = self.session_duration_seconds
 
@@ -58,6 +62,8 @@ class CredentialsAssumeRoleConfig:
                 "session_name": session_name,
             }
         )
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
         if session_duration_seconds is not UNSET:
             field_dict["session_duration_seconds"] = session_duration_seconds
         if two_step_config is not UNSET:
@@ -78,6 +84,8 @@ class CredentialsAssumeRoleConfig:
 
         session_name = d.pop("session_name")
 
+        external_id = d.pop("external_id", UNSET)
+
         session_duration_seconds = d.pop("session_duration_seconds", UNSET)
 
         _two_step_config = d.pop("two_step_config", UNSET)
@@ -94,6 +102,7 @@ class CredentialsAssumeRoleConfig:
         credentials_assume_role_config = cls(
             role_arn=role_arn,
             session_name=session_name,
+            external_id=external_id,
             session_duration_seconds=session_duration_seconds,
             two_step_config=two_step_config,
             use_gcp_oidc=use_gcp_oidc,

@@ -26,6 +26,7 @@ class AppAccount:
         created_at (str | Unset):
         email (str | Unset):
         id (str | Unset):
+        name (str | Unset):
         org_ids (list[str] | Unset): ReadOnly Fields
         permissions (PermissionsSet | Unset):
         roles (list[AppRole] | Unset):
@@ -38,6 +39,7 @@ class AppAccount:
     created_at: str | Unset = UNSET
     email: str | Unset = UNSET
     id: str | Unset = UNSET
+    name: str | Unset = UNSET
     org_ids: list[str] | Unset = UNSET
     permissions: PermissionsSet | Unset = UNSET
     roles: list[AppRole] | Unset = UNSET
@@ -56,6 +58,8 @@ class AppAccount:
         email = self.email
 
         id = self.id
+
+        name = self.name
 
         org_ids: list[str] | Unset = UNSET
         if not isinstance(self.org_ids, Unset):
@@ -94,6 +98,8 @@ class AppAccount:
             field_dict["email"] = email
         if id is not UNSET:
             field_dict["id"] = id
+        if name is not UNSET:
+            field_dict["name"] = name
         if org_ids is not UNSET:
             field_dict["org_ids"] = org_ids
         if permissions is not UNSET:
@@ -128,6 +134,8 @@ class AppAccount:
         email = d.pop("email", UNSET)
 
         id = d.pop("id", UNSET)
+
+        name = d.pop("name", UNSET)
 
         org_ids = cast(list[str], d.pop("org_ids", UNSET))
 
@@ -165,6 +173,7 @@ class AppAccount:
             created_at=created_at,
             email=email,
             id=id,
+            name=name,
             org_ids=org_ids,
             permissions=permissions,
             roles=roles,

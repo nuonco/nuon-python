@@ -15,18 +15,24 @@ T = TypeVar("T", bound="ServiceCreateInstallV2RequestAwsAccount")
 class ServiceCreateInstallV2RequestAwsAccount:
     """
     Attributes:
+        connection_id (str | Unset):
         region (str | Unset):
     """
 
+    connection_id: str | Unset = UNSET
     region: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        connection_id = self.connection_id
+
         region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if connection_id is not UNSET:
+            field_dict["connection_id"] = connection_id
         if region is not UNSET:
             field_dict["region"] = region
 
@@ -35,9 +41,12 @@ class ServiceCreateInstallV2RequestAwsAccount:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        connection_id = d.pop("connection_id", UNSET)
+
         region = d.pop("region", UNSET)
 
         service_create_install_v2_request_aws_account = cls(
+            connection_id=connection_id,
             region=region,
         )
 

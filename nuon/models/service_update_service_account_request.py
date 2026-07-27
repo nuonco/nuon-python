@@ -6,52 +6,43 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceCreateInstallRequestAwsAccount")
+T = TypeVar("T", bound="ServiceUpdateServiceAccountRequest")
 
 
 @_attrs_define
-class ServiceCreateInstallRequestAwsAccount:
+class ServiceUpdateServiceAccountRequest:
     """
     Attributes:
-        connection_id (str | Unset):
-        region (str | Unset):
+        name (str): Name is a human-friendly label for the service account.
     """
 
-    connection_id: str | Unset = UNSET
-    region: str | Unset = UNSET
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connection_id = self.connection_id
-
-        region = self.region
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if connection_id is not UNSET:
-            field_dict["connection_id"] = connection_id
-        if region is not UNSET:
-            field_dict["region"] = region
+        field_dict.update(
+            {
+                "name": name,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connection_id = d.pop("connection_id", UNSET)
+        name = d.pop("name")
 
-        region = d.pop("region", UNSET)
-
-        service_create_install_request_aws_account = cls(
-            connection_id=connection_id,
-            region=region,
+        service_update_service_account_request = cls(
+            name=name,
         )
 
-        service_create_install_request_aws_account.additional_properties = d
-        return service_create_install_request_aws_account
+        service_update_service_account_request.additional_properties = d
+        return service_update_service_account_request
 
     @property
     def additional_keys(self) -> list[str]:

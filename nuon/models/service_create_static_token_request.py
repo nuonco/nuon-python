@@ -17,16 +17,21 @@ class ServiceCreateStaticTokenRequest:
     Attributes:
         name (str): human-friendly name to identify the token later
         duration (str | Unset): defaults to one year Default: '8760h'.
+        role (str | Unset): org role granted to the token. one of org_admin, org_support, org_read_only.
+            defaults to org_read_only.
     """
 
     name: str
     duration: str | Unset = "8760h"
+    role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         duration = self.duration
+
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -37,6 +42,8 @@ class ServiceCreateStaticTokenRequest:
         )
         if duration is not UNSET:
             field_dict["duration"] = duration
+        if role is not UNSET:
+            field_dict["role"] = role
 
         return field_dict
 
@@ -47,9 +54,12 @@ class ServiceCreateStaticTokenRequest:
 
         duration = d.pop("duration", UNSET)
 
+        role = d.pop("role", UNSET)
+
         service_create_static_token_request = cls(
             name=name,
             duration=duration,
+            role=role,
         )
 
         service_create_static_token_request.additional_properties = d
