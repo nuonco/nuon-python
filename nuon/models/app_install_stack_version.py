@@ -38,6 +38,7 @@ class AppInstallStackVersion:
         phone_home_url (str | Unset):
         quick_link_url (str | Unset):
         runs (list[AppInstallStackVersionRun] | Unset):
+        stack_name (str | Unset):
         template_url (str | Unset):
         terraform_checksum (str | Unset):
         terraform_contents (str | Unset): On AWS, the install workflow renders BOTH a CloudFormation template and
@@ -64,6 +65,7 @@ class AppInstallStackVersion:
     phone_home_url: str | Unset = UNSET
     quick_link_url: str | Unset = UNSET
     runs: list[AppInstallStackVersionRun] | Unset = UNSET
+    stack_name: str | Unset = UNSET
     template_url: str | Unset = UNSET
     terraform_checksum: str | Unset = UNSET
     terraform_contents: str | Unset = UNSET
@@ -114,6 +116,8 @@ class AppInstallStackVersion:
                 runs_item = runs_item_data.to_dict()
                 runs.append(runs_item)
 
+        stack_name = self.stack_name
+
         template_url = self.template_url
 
         terraform_checksum = self.terraform_checksum
@@ -159,6 +163,8 @@ class AppInstallStackVersion:
             field_dict["quick_link_url"] = quick_link_url
         if runs is not UNSET:
             field_dict["runs"] = runs
+        if stack_name is not UNSET:
+            field_dict["stack_name"] = stack_name
         if template_url is not UNSET:
             field_dict["template_url"] = template_url
         if terraform_checksum is not UNSET:
@@ -228,6 +234,8 @@ class AppInstallStackVersion:
 
                 runs.append(runs_item)
 
+        stack_name = d.pop("stack_name", UNSET)
+
         template_url = d.pop("template_url", UNSET)
 
         terraform_checksum = d.pop("terraform_checksum", UNSET)
@@ -254,6 +262,7 @@ class AppInstallStackVersion:
             phone_home_url=phone_home_url,
             quick_link_url=quick_link_url,
             runs=runs,
+            stack_name=stack_name,
             template_url=template_url,
             terraform_checksum=terraform_checksum,
             terraform_contents=terraform_contents,

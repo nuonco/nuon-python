@@ -84,6 +84,12 @@ class AppInstall:
         runner_status_description (str | Unset):
         runner_type (str | Unset):
         sandbox (AppInstallSandbox | Unset):
+        sandbox_health_message (str | Unset):
+        sandbox_health_status (str | Unset): SandboxHealthStatus / SandboxHealthMessage are a denormalized rollup of the
+            worst health across the sandbox-owned resources reported by the
+            component-health engine, written on each ingest so every install read can
+            surface a degraded sandbox without querying ClickHouse. Empty until the
+            engine reports.
         sandbox_mode (SqlNullBool | Unset):
         sandbox_status (str | Unset):
         sandbox_status_description (str | Unset):
@@ -131,6 +137,8 @@ class AppInstall:
     runner_status_description: str | Unset = UNSET
     runner_type: str | Unset = UNSET
     sandbox: AppInstallSandbox | Unset = UNSET
+    sandbox_health_message: str | Unset = UNSET
+    sandbox_health_status: str | Unset = UNSET
     sandbox_mode: SqlNullBool | Unset = UNSET
     sandbox_status: str | Unset = UNSET
     sandbox_status_description: str | Unset = UNSET
@@ -296,6 +304,10 @@ class AppInstall:
         if not isinstance(self.sandbox, Unset):
             sandbox = self.sandbox.to_dict()
 
+        sandbox_health_message = self.sandbox_health_message
+
+        sandbox_health_status = self.sandbox_health_status
+
         sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
@@ -396,6 +408,10 @@ class AppInstall:
             field_dict["runner_type"] = runner_type
         if sandbox is not UNSET:
             field_dict["sandbox"] = sandbox
+        if sandbox_health_message is not UNSET:
+            field_dict["sandbox_health_message"] = sandbox_health_message
+        if sandbox_health_status is not UNSET:
+            field_dict["sandbox_health_status"] = sandbox_health_status
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
         if sandbox_status is not UNSET:
@@ -659,6 +675,10 @@ class AppInstall:
         else:
             sandbox = AppInstallSandbox.from_dict(_sandbox)
 
+        sandbox_health_message = d.pop("sandbox_health_message", UNSET)
+
+        sandbox_health_status = d.pop("sandbox_health_status", UNSET)
+
         _sandbox_mode = d.pop("sandbox_mode", UNSET)
         sandbox_mode: SqlNullBool | Unset
         if isinstance(_sandbox_mode, Unset):
@@ -723,6 +743,8 @@ class AppInstall:
             runner_status_description=runner_status_description,
             runner_type=runner_type,
             sandbox=sandbox,
+            sandbox_health_message=sandbox_health_message,
+            sandbox_health_status=sandbox_health_status,
             sandbox_mode=sandbox_mode,
             sandbox_status=sandbox_status,
             sandbox_status_description=sandbox_status_description,

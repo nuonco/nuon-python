@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
@@ -11,13 +11,13 @@ from ...types import Response
 
 
 def _get_kwargs(
-    type_: str,
+    account_id: str,
 ) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/v1/general/config-schema/{type_}".format(
-            type_=quote(str(type_), safe=""),
+        "method": "delete",
+        "url": "/v1/service-accounts/{account_id}".format(
+            account_id=quote(str(account_id), safe=""),
         ),
     }
 
@@ -27,9 +27,9 @@ def _get_kwargs(
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Any | StderrErrResponse | None:
-    if response.status_code == 200:
-        response_200 = response.json()
-        return response_200
+    if response.status_code == 202:
+        response_202 = cast(Any, None)
+        return response_202
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -74,38 +74,19 @@ def _build_response(
 
 
 def sync_detailed(
-    type_: str,
+    account_id: str,
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for a config file type
+    """Delete a service account for the current org
 
-     Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
-    TOML LSP (such as
-    [Taplo](https://taplo.tamasfe.dev/) configured.
+     Delete a service account from the current org.
 
-    ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema/inputs
-
-    description = \"description\"
-    ```
-
-    You can pass in a valid source argument to render within a specific config file:
-
-    - input
-    - input-group
-    - installer
-    - sandbox
-    - runner
-    - docker_build
-    - container_image
-    - helm
-    - terraform
-    - runbook
-    - job
+    This removes the service account's roles in this org and invalidates all of
+    its existing API tokens.
 
     Args:
-        type_ (str):
+        account_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,7 +97,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        type_=type_,
+        account_id=account_id,
     )
 
     response = client.get_httpx_client().request(
@@ -127,38 +108,19 @@ def sync_detailed(
 
 
 def sync(
-    type_: str,
+    account_id: str,
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for a config file type
+    """Delete a service account for the current org
 
-     Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
-    TOML LSP (such as
-    [Taplo](https://taplo.tamasfe.dev/) configured.
+     Delete a service account from the current org.
 
-    ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema/inputs
-
-    description = \"description\"
-    ```
-
-    You can pass in a valid source argument to render within a specific config file:
-
-    - input
-    - input-group
-    - installer
-    - sandbox
-    - runner
-    - docker_build
-    - container_image
-    - helm
-    - terraform
-    - runbook
-    - job
+    This removes the service account's roles in this org and invalidates all of
+    its existing API tokens.
 
     Args:
-        type_ (str):
+        account_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -169,44 +131,25 @@ def sync(
     """
 
     return sync_detailed(
-        type_=type_,
+        account_id=account_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    type_: str,
+    account_id: str,
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for a config file type
+    """Delete a service account for the current org
 
-     Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
-    TOML LSP (such as
-    [Taplo](https://taplo.tamasfe.dev/) configured.
+     Delete a service account from the current org.
 
-    ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema/inputs
-
-    description = \"description\"
-    ```
-
-    You can pass in a valid source argument to render within a specific config file:
-
-    - input
-    - input-group
-    - installer
-    - sandbox
-    - runner
-    - docker_build
-    - container_image
-    - helm
-    - terraform
-    - runbook
-    - job
+    This removes the service account's roles in this org and invalidates all of
+    its existing API tokens.
 
     Args:
-        type_ (str):
+        account_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -217,7 +160,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        type_=type_,
+        account_id=account_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -226,38 +169,19 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    type_: str,
+    account_id: str,
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for a config file type
+    """Delete a service account for the current org
 
-     Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
-    TOML LSP (such as
-    [Taplo](https://taplo.tamasfe.dev/) configured.
+     Delete a service account from the current org.
 
-    ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema/inputs
-
-    description = \"description\"
-    ```
-
-    You can pass in a valid source argument to render within a specific config file:
-
-    - input
-    - input-group
-    - installer
-    - sandbox
-    - runner
-    - docker_build
-    - container_image
-    - helm
-    - terraform
-    - runbook
-    - job
+    This removes the service account's roles in this org and invalidates all of
+    its existing API tokens.
 
     Args:
-        type_ (str):
+        account_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -269,7 +193,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            type_=type_,
+            account_id=account_id,
             client=client,
         )
     ).parsed

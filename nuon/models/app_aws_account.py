@@ -15,6 +15,7 @@ T = TypeVar("T", bound="AppAWSAccount")
 class AppAWSAccount:
     """
     Attributes:
+        connection_id (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         iam_role_arn (str | Unset):
@@ -23,6 +24,7 @@ class AppAWSAccount:
         updated_at (str | Unset):
     """
 
+    connection_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     iam_role_arn: str | Unset = UNSET
@@ -32,6 +34,8 @@ class AppAWSAccount:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        connection_id = self.connection_id
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -47,6 +51,8 @@ class AppAWSAccount:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if connection_id is not UNSET:
+            field_dict["connection_id"] = connection_id
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -65,6 +71,8 @@ class AppAWSAccount:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        connection_id = d.pop("connection_id", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -78,6 +86,7 @@ class AppAWSAccount:
         updated_at = d.pop("updated_at", UNSET)
 
         app_aws_account = cls(
+            connection_id=connection_id,
             created_at=created_at,
             created_by_id=created_by_id,
             iam_role_arn=iam_role_arn,

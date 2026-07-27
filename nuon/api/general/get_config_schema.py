@@ -94,7 +94,7 @@ def sync_detailed(
     [Taplo](https://taplo.tamasfe.dev/) configured.
 
     ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema?source=inputs
+    #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
     description = \"description\"
     ```
@@ -150,7 +150,7 @@ def sync(
     [Taplo](https://taplo.tamasfe.dev/) configured.
 
     ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema?source=inputs
+    #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
     description = \"description\"
     ```
@@ -201,7 +201,7 @@ async def asyncio_detailed(
     [Taplo](https://taplo.tamasfe.dev/) configured.
 
     ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema?source=inputs
+    #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
     description = \"description\"
     ```
@@ -255,7 +255,7 @@ async def asyncio(
     [Taplo](https://taplo.tamasfe.dev/) configured.
 
     ```toml
-    #:schema https://api.nuon.co/v1/general/config-schema?source=inputs
+    #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
     description = \"description\"
     ```

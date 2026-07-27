@@ -29,6 +29,7 @@ class AppComponentBuild:
     """
     Attributes:
         app_branch_run_id (str | Unset):
+        build_runner_job_id (str | Unset):
         checksum (str | Unset): checksum of our intermediate component config
         component_config_connection (AppComponentConfigConnection | Unset):
         component_config_connection_id (str | Unset): DEPRECATED: will retain the field to connect against the last
@@ -86,6 +87,7 @@ class AppComponentBuild:
     """
 
     app_branch_run_id: str | Unset = UNSET
+    build_runner_job_id: str | Unset = UNSET
     checksum: str | Unset = UNSET
     component_config_connection: AppComponentConfigConnection | Unset = UNSET
     component_config_connection_id: str | Unset = UNSET
@@ -120,6 +122,8 @@ class AppComponentBuild:
 
     def to_dict(self) -> dict[str, Any]:
         app_branch_run_id = self.app_branch_run_id
+
+        build_runner_job_id = self.build_runner_job_id
 
         checksum = self.checksum
 
@@ -215,6 +219,8 @@ class AppComponentBuild:
         field_dict.update({})
         if app_branch_run_id is not UNSET:
             field_dict["app_branch_run_id"] = app_branch_run_id
+        if build_runner_job_id is not UNSET:
+            field_dict["build_runner_job_id"] = build_runner_job_id
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
         if component_config_connection is not UNSET:
@@ -293,6 +299,8 @@ class AppComponentBuild:
 
         d = dict(src_dict)
         app_branch_run_id = d.pop("app_branch_run_id", UNSET)
+
+        build_runner_job_id = d.pop("build_runner_job_id", UNSET)
 
         checksum = d.pop("checksum", UNSET)
 
@@ -412,6 +420,7 @@ class AppComponentBuild:
 
         app_component_build = cls(
             app_branch_run_id=app_branch_run_id,
+            build_runner_job_id=build_runner_job_id,
             checksum=checksum,
             component_config_connection=component_config_connection,
             component_config_connection_id=component_config_connection_id,

@@ -6,52 +6,45 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+from ..models.app_role_type import AppRoleType
 
-T = TypeVar("T", bound="ServiceCreateInstallRequestAwsAccount")
+T = TypeVar("T", bound="ServiceUpdateOrgAccountRoleRequest")
 
 
 @_attrs_define
-class ServiceCreateInstallRequestAwsAccount:
+class ServiceUpdateOrgAccountRoleRequest:
     """
     Attributes:
-        connection_id (str | Unset):
-        region (str | Unset):
+        role_type (AppRoleType):
     """
 
-    connection_id: str | Unset = UNSET
-    region: str | Unset = UNSET
+    role_type: AppRoleType
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connection_id = self.connection_id
-
-        region = self.region
+        role_type = self.role_type.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if connection_id is not UNSET:
-            field_dict["connection_id"] = connection_id
-        if region is not UNSET:
-            field_dict["region"] = region
+        field_dict.update(
+            {
+                "role_type": role_type,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connection_id = d.pop("connection_id", UNSET)
+        role_type = AppRoleType(d.pop("role_type"))
 
-        region = d.pop("region", UNSET)
-
-        service_create_install_request_aws_account = cls(
-            connection_id=connection_id,
-            region=region,
+        service_update_org_account_role_request = cls(
+            role_type=role_type,
         )
 
-        service_create_install_request_aws_account.additional_properties = d
-        return service_create_install_request_aws_account
+        service_update_org_account_role_request.additional_properties = d
+        return service_update_org_account_role_request
 
     @property
     def additional_keys(self) -> list[str]:
