@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.app_gcp_account import AppGCPAccount
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
     from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
+    from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
     from ..models.app_install_component import AppInstallComponent
     from ..models.app_install_component_statuses import AppInstallComponentStatuses
     from ..models.app_install_config import AppInstallConfig
@@ -54,12 +55,20 @@ class AppInstall:
         aws_account (AppAWSAccount | Unset):
         azure_account (AppAzureAccount | Unset):
         cloud_platform (str | Unset):
+        cloud_platform_metadata (AppInstallCloudPlatformMetadata | Unset): CloudPlatformMetadata records the cloud
+            account this install is expected to
+            run in, and what it was observed running in. See the type for the trust model.
         component_statuses (AppInstallComponentStatuses | Unset):
         composite_component_status (str | Unset):
         composite_component_status_description (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         drifted_objects (list[AppDriftedObject] | Unset):
+        expected_account_id (str | Unset): Expected* coalesce the target identifier with the observed one, so callers
+            get
+            the strongest identifier available without caring which is set.
+        expected_project_id (str | Unset):
+        expected_subscription_id (str | Unset):
         gcp_account (AppGCPAccount | Unset):
         id (str | Unset):
         install_action_workflows (list[AppInstallActionWorkflow] | Unset):
@@ -108,12 +117,16 @@ class AppInstall:
     aws_account: AppAWSAccount | Unset = UNSET
     azure_account: AppAzureAccount | Unset = UNSET
     cloud_platform: str | Unset = UNSET
+    cloud_platform_metadata: AppInstallCloudPlatformMetadata | Unset = UNSET
     component_statuses: AppInstallComponentStatuses | Unset = UNSET
     composite_component_status: str | Unset = UNSET
     composite_component_status_description: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     drifted_objects: list[AppDriftedObject] | Unset = UNSET
+    expected_account_id: str | Unset = UNSET
+    expected_project_id: str | Unset = UNSET
+    expected_subscription_id: str | Unset = UNSET
     gcp_account: AppGCPAccount | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflows: list[AppInstallActionWorkflow] | Unset = UNSET
@@ -183,6 +196,10 @@ class AppInstall:
 
         cloud_platform = self.cloud_platform
 
+        cloud_platform_metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.cloud_platform_metadata, Unset):
+            cloud_platform_metadata = self.cloud_platform_metadata.to_dict()
+
         component_statuses: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component_statuses, Unset):
             component_statuses = self.component_statuses.to_dict()
@@ -201,6 +218,12 @@ class AppInstall:
             for drifted_objects_item_data in self.drifted_objects:
                 drifted_objects_item = drifted_objects_item_data.to_dict()
                 drifted_objects.append(drifted_objects_item)
+
+        expected_account_id = self.expected_account_id
+
+        expected_project_id = self.expected_project_id
+
+        expected_subscription_id = self.expected_subscription_id
 
         gcp_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.gcp_account, Unset):
@@ -350,6 +373,8 @@ class AppInstall:
             field_dict["azure_account"] = azure_account
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
+        if cloud_platform_metadata is not UNSET:
+            field_dict["cloud_platform_metadata"] = cloud_platform_metadata
         if component_statuses is not UNSET:
             field_dict["component_statuses"] = component_statuses
         if composite_component_status is not UNSET:
@@ -362,6 +387,12 @@ class AppInstall:
             field_dict["created_by_id"] = created_by_id
         if drifted_objects is not UNSET:
             field_dict["drifted_objects"] = drifted_objects
+        if expected_account_id is not UNSET:
+            field_dict["expected_account_id"] = expected_account_id
+        if expected_project_id is not UNSET:
+            field_dict["expected_project_id"] = expected_project_id
+        if expected_subscription_id is not UNSET:
+            field_dict["expected_subscription_id"] = expected_subscription_id
         if gcp_account is not UNSET:
             field_dict["gcp_account"] = gcp_account
         if id is not UNSET:
@@ -438,6 +469,7 @@ class AppInstall:
         from ..models.app_gcp_account import AppGCPAccount
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
         from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
+        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
         from ..models.app_install_component import AppInstallComponent
         from ..models.app_install_component_statuses import AppInstallComponentStatuses
         from ..models.app_install_config import AppInstallConfig
@@ -509,6 +541,13 @@ class AppInstall:
 
         cloud_platform = d.pop("cloud_platform", UNSET)
 
+        _cloud_platform_metadata = d.pop("cloud_platform_metadata", UNSET)
+        cloud_platform_metadata: AppInstallCloudPlatformMetadata | Unset
+        if isinstance(_cloud_platform_metadata, Unset):
+            cloud_platform_metadata = UNSET
+        else:
+            cloud_platform_metadata = AppInstallCloudPlatformMetadata.from_dict(_cloud_platform_metadata)
+
         _component_statuses = d.pop("component_statuses", UNSET)
         component_statuses: AppInstallComponentStatuses | Unset
         if isinstance(_component_statuses, Unset):
@@ -532,6 +571,12 @@ class AppInstall:
                 drifted_objects_item = AppDriftedObject.from_dict(drifted_objects_item_data)
 
                 drifted_objects.append(drifted_objects_item)
+
+        expected_account_id = d.pop("expected_account_id", UNSET)
+
+        expected_project_id = d.pop("expected_project_id", UNSET)
+
+        expected_subscription_id = d.pop("expected_subscription_id", UNSET)
 
         _gcp_account = d.pop("gcp_account", UNSET)
         gcp_account: AppGCPAccount | Unset
@@ -714,12 +759,16 @@ class AppInstall:
             aws_account=aws_account,
             azure_account=azure_account,
             cloud_platform=cloud_platform,
+            cloud_platform_metadata=cloud_platform_metadata,
             component_statuses=component_statuses,
             composite_component_status=composite_component_status,
             composite_component_status_description=composite_component_status_description,
             created_at=created_at,
             created_by_id=created_by_id,
             drifted_objects=drifted_objects,
+            expected_account_id=expected_account_id,
+            expected_project_id=expected_project_id,
+            expected_subscription_id=expected_subscription_id,
             gcp_account=gcp_account,
             id=id,
             install_action_workflows=install_action_workflows,
