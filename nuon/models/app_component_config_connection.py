@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
+    from ..models.app_component_health_probe import AppComponentHealthProbe
     from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig
     from ..models.app_external_image_component_config import AppExternalImageComponentConfig
     from ..models.app_helm_component_config import AppHelmComponentConfig
@@ -43,6 +44,11 @@ class AppComponentConfigConnection:
         docker_build (AppDockerBuildComponentConfig | Unset):
         drift_schedule (str | Unset):
         external_image (AppExternalImageComponentConfig | Unset):
+        health_block_deploy (bool | None | Unset):
+        health_enabled (bool | None | Unset):
+        health_probes (list[AppComponentHealthProbe] | Unset):
+        health_stabilization_window (str | Unset): Duration string for how long health must hold after a deploy applies
+            (e.g., "3m"). Max 1h.
         helm (AppHelmComponentConfig | Unset):
         id (str | Unset):
         job (AppJobComponentConfig | Unset):
@@ -81,6 +87,10 @@ class AppComponentConfigConnection:
     docker_build: AppDockerBuildComponentConfig | Unset = UNSET
     drift_schedule: str | Unset = UNSET
     external_image: AppExternalImageComponentConfig | Unset = UNSET
+    health_block_deploy: bool | None | Unset = UNSET
+    health_enabled: bool | None | Unset = UNSET
+    health_probes: list[AppComponentHealthProbe] | Unset = UNSET
+    health_stabilization_window: str | Unset = UNSET
     helm: AppHelmComponentConfig | Unset = UNSET
     id: str | Unset = UNSET
     job: AppJobComponentConfig | Unset = UNSET
@@ -136,6 +146,27 @@ class AppComponentConfigConnection:
         external_image: dict[str, Any] | Unset = UNSET
         if not isinstance(self.external_image, Unset):
             external_image = self.external_image.to_dict()
+
+        health_block_deploy: bool | None | Unset
+        if isinstance(self.health_block_deploy, Unset):
+            health_block_deploy = UNSET
+        else:
+            health_block_deploy = self.health_block_deploy
+
+        health_enabled: bool | None | Unset
+        if isinstance(self.health_enabled, Unset):
+            health_enabled = UNSET
+        else:
+            health_enabled = self.health_enabled
+
+        health_probes: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.health_probes, Unset):
+            health_probes = []
+            for health_probes_item_data in self.health_probes:
+                health_probes_item = health_probes_item_data.to_dict()
+                health_probes.append(health_probes_item)
+
+        health_stabilization_window = self.health_stabilization_window
 
         helm: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm, Unset):
@@ -225,6 +256,14 @@ class AppComponentConfigConnection:
             field_dict["drift_schedule"] = drift_schedule
         if external_image is not UNSET:
             field_dict["external_image"] = external_image
+        if health_block_deploy is not UNSET:
+            field_dict["health_block_deploy"] = health_block_deploy
+        if health_enabled is not UNSET:
+            field_dict["health_enabled"] = health_enabled
+        if health_probes is not UNSET:
+            field_dict["health_probes"] = health_probes
+        if health_stabilization_window is not UNSET:
+            field_dict["health_stabilization_window"] = health_stabilization_window
         if helm is not UNSET:
             field_dict["helm"] = helm
         if id is not UNSET:
@@ -265,6 +304,7 @@ class AppComponentConfigConnection:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
+        from ..models.app_component_health_probe import AppComponentHealthProbe
         from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig
         from ..models.app_external_image_component_config import AppExternalImageComponentConfig
         from ..models.app_helm_component_config import AppHelmComponentConfig
@@ -314,6 +354,35 @@ class AppComponentConfigConnection:
             external_image = UNSET
         else:
             external_image = AppExternalImageComponentConfig.from_dict(_external_image)
+
+        def _parse_health_block_deploy(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        health_block_deploy = _parse_health_block_deploy(d.pop("health_block_deploy", UNSET))
+
+        def _parse_health_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        health_enabled = _parse_health_enabled(d.pop("health_enabled", UNSET))
+
+        _health_probes = d.pop("health_probes", UNSET)
+        health_probes: list[AppComponentHealthProbe] | Unset = UNSET
+        if _health_probes is not UNSET:
+            health_probes = []
+            for health_probes_item_data in _health_probes:
+                health_probes_item = AppComponentHealthProbe.from_dict(health_probes_item_data)
+
+                health_probes.append(health_probes_item)
+
+        health_stabilization_window = d.pop("health_stabilization_window", UNSET)
 
         _helm = d.pop("helm", UNSET)
         helm: AppHelmComponentConfig | Unset
@@ -407,6 +476,10 @@ class AppComponentConfigConnection:
             docker_build=docker_build,
             drift_schedule=drift_schedule,
             external_image=external_image,
+            health_block_deploy=health_block_deploy,
+            health_enabled=health_enabled,
+            health_probes=health_probes,
+            health_stabilization_window=health_stabilization_window,
             helm=helm,
             id=id,
             job=job,

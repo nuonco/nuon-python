@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
     from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
     from ..models.app_install_component import AppInstallComponent
+    from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
     from ..models.app_install_component_statuses import AppInstallComponentStatuses
     from ..models.app_install_config import AppInstallConfig
     from ..models.app_install_event import AppInstallEvent
@@ -58,9 +59,15 @@ class AppInstall:
         cloud_platform_metadata (AppInstallCloudPlatformMetadata | Unset): CloudPlatformMetadata records the cloud
             account this install is expected to
             run in, and what it was observed running in. See the type for the trust model.
+        component_health_statuses (AppInstallComponentHealthStatuses | Unset):
         component_statuses (AppInstallComponentStatuses | Unset):
         composite_component_status (str | Unset):
         composite_component_status_description (str | Unset):
+        composite_health_status (str | Unset): CompositeHealthStatus is the live-health rollup of the install's
+            components — a parallel axis to CompositeComponentStatus (deploy
+            lifecycle), never merged with it. Empty until the component-health
+            evaluator has produced verdicts.
+        composite_health_status_description (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         drifted_objects (list[AppDriftedObject] | Unset):
@@ -118,9 +125,12 @@ class AppInstall:
     azure_account: AppAzureAccount | Unset = UNSET
     cloud_platform: str | Unset = UNSET
     cloud_platform_metadata: AppInstallCloudPlatformMetadata | Unset = UNSET
+    component_health_statuses: AppInstallComponentHealthStatuses | Unset = UNSET
     component_statuses: AppInstallComponentStatuses | Unset = UNSET
     composite_component_status: str | Unset = UNSET
     composite_component_status_description: str | Unset = UNSET
+    composite_health_status: str | Unset = UNSET
+    composite_health_status_description: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     drifted_objects: list[AppDriftedObject] | Unset = UNSET
@@ -200,6 +210,10 @@ class AppInstall:
         if not isinstance(self.cloud_platform_metadata, Unset):
             cloud_platform_metadata = self.cloud_platform_metadata.to_dict()
 
+        component_health_statuses: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.component_health_statuses, Unset):
+            component_health_statuses = self.component_health_statuses.to_dict()
+
         component_statuses: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component_statuses, Unset):
             component_statuses = self.component_statuses.to_dict()
@@ -207,6 +221,10 @@ class AppInstall:
         composite_component_status = self.composite_component_status
 
         composite_component_status_description = self.composite_component_status_description
+
+        composite_health_status = self.composite_health_status
+
+        composite_health_status_description = self.composite_health_status_description
 
         created_at = self.created_at
 
@@ -375,12 +393,18 @@ class AppInstall:
             field_dict["cloud_platform"] = cloud_platform
         if cloud_platform_metadata is not UNSET:
             field_dict["cloud_platform_metadata"] = cloud_platform_metadata
+        if component_health_statuses is not UNSET:
+            field_dict["component_health_statuses"] = component_health_statuses
         if component_statuses is not UNSET:
             field_dict["component_statuses"] = component_statuses
         if composite_component_status is not UNSET:
             field_dict["composite_component_status"] = composite_component_status
         if composite_component_status_description is not UNSET:
             field_dict["composite_component_status_description"] = composite_component_status_description
+        if composite_health_status is not UNSET:
+            field_dict["composite_health_status"] = composite_health_status
+        if composite_health_status_description is not UNSET:
+            field_dict["composite_health_status_description"] = composite_health_status_description
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -471,6 +495,7 @@ class AppInstall:
         from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
         from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
         from ..models.app_install_component import AppInstallComponent
+        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
         from ..models.app_install_component_statuses import AppInstallComponentStatuses
         from ..models.app_install_config import AppInstallConfig
         from ..models.app_install_event import AppInstallEvent
@@ -548,6 +573,13 @@ class AppInstall:
         else:
             cloud_platform_metadata = AppInstallCloudPlatformMetadata.from_dict(_cloud_platform_metadata)
 
+        _component_health_statuses = d.pop("component_health_statuses", UNSET)
+        component_health_statuses: AppInstallComponentHealthStatuses | Unset
+        if isinstance(_component_health_statuses, Unset):
+            component_health_statuses = UNSET
+        else:
+            component_health_statuses = AppInstallComponentHealthStatuses.from_dict(_component_health_statuses)
+
         _component_statuses = d.pop("component_statuses", UNSET)
         component_statuses: AppInstallComponentStatuses | Unset
         if isinstance(_component_statuses, Unset):
@@ -558,6 +590,10 @@ class AppInstall:
         composite_component_status = d.pop("composite_component_status", UNSET)
 
         composite_component_status_description = d.pop("composite_component_status_description", UNSET)
+
+        composite_health_status = d.pop("composite_health_status", UNSET)
+
+        composite_health_status_description = d.pop("composite_health_status_description", UNSET)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -760,9 +796,12 @@ class AppInstall:
             azure_account=azure_account,
             cloud_platform=cloud_platform,
             cloud_platform_metadata=cloud_platform_metadata,
+            component_health_statuses=component_health_statuses,
             component_statuses=component_statuses,
             composite_component_status=composite_component_status,
             composite_component_status_description=composite_component_status_description,
+            composite_health_status=composite_health_status,
+            composite_health_status_description=composite_health_status_description,
             created_at=created_at,
             created_by_id=created_by_id,
             drifted_objects=drifted_objects,

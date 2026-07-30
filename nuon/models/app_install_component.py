@@ -31,8 +31,10 @@ class AppInstallComponent:
         created_by_id (str | Unset):
         drifted_object (AppDriftedObject | Unset):
         enabled (bool | None | Unset): Enabled is the resolved enabled/disabled state for a toggleable component
-            on this install (from the synthetic enabled install input, falling back to
-            the component's default_enabled). It is nil for non-toggleable components.
+            (from the synthetic enabled input, falling back to default_enabled); nil otherwise.
+        health_status (str | Unset):
+        health_status_description (str | Unset):
+        health_status_v2 (AppCompositeStatus | Unset):
         helm_chart (AppHelmChart | Unset):
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
@@ -51,6 +53,9 @@ class AppInstallComponent:
     created_by_id: str | Unset = UNSET
     drifted_object: AppDriftedObject | Unset = UNSET
     enabled: bool | None | Unset = UNSET
+    health_status: str | Unset = UNSET
+    health_status_description: str | Unset = UNSET
+    health_status_v2: AppCompositeStatus | Unset = UNSET
     helm_chart: AppHelmChart | Unset = UNSET
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
@@ -83,6 +88,14 @@ class AppInstallComponent:
             enabled = UNSET
         else:
             enabled = self.enabled
+
+        health_status = self.health_status
+
+        health_status_description = self.health_status_description
+
+        health_status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.health_status_v2, Unset):
+            health_status_v2 = self.health_status_v2.to_dict()
 
         helm_chart: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_chart, Unset):
@@ -132,6 +145,12 @@ class AppInstallComponent:
             field_dict["drifted_object"] = drifted_object
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if health_status is not UNSET:
+            field_dict["health_status"] = health_status
+        if health_status_description is not UNSET:
+            field_dict["health_status_description"] = health_status_description
+        if health_status_v2 is not UNSET:
+            field_dict["health_status_v2"] = health_status_v2
         if helm_chart is not UNSET:
             field_dict["helm_chart"] = helm_chart
         if id is not UNSET:
@@ -195,6 +214,17 @@ class AppInstallComponent:
 
         enabled = _parse_enabled(d.pop("enabled", UNSET))
 
+        health_status = d.pop("health_status", UNSET)
+
+        health_status_description = d.pop("health_status_description", UNSET)
+
+        _health_status_v2 = d.pop("health_status_v2", UNSET)
+        health_status_v2: AppCompositeStatus | Unset
+        if isinstance(_health_status_v2, Unset):
+            health_status_v2 = UNSET
+        else:
+            health_status_v2 = AppCompositeStatus.from_dict(_health_status_v2)
+
         _helm_chart = d.pop("helm_chart", UNSET)
         helm_chart: AppHelmChart | Unset
         if isinstance(_helm_chart, Unset):
@@ -249,6 +279,9 @@ class AppInstallComponent:
             created_by_id=created_by_id,
             drifted_object=drifted_object,
             enabled=enabled,
+            health_status=health_status,
+            health_status_description=health_status_description,
+            health_status_v2=health_status_v2,
             helm_chart=helm_chart,
             id=id,
             install_deploys=install_deploys,
