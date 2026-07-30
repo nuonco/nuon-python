@@ -109,6 +109,7 @@ from .app_install_app_config_version import AppInstallAppConfigVersion
 from .app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
 from .app_install_approval_option import AppInstallApprovalOption
 from .app_install_audit_log import AppInstallAuditLog
+from .app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
 from .app_install_component import AppInstallComponent
 from .app_install_component_links import AppInstallComponentLinks
 from .app_install_component_resource_state import AppInstallComponentResourceState
@@ -116,6 +117,10 @@ from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
 from .app_install_config_component_toggles import AppInstallConfigComponentToggles
 from .app_install_config_diff import AppInstallConfigDiff
+from .app_install_config_sync import AppInstallConfigSync
+from .app_install_config_sync_metadata import AppInstallConfigSyncMetadata
+from .app_install_config_version import AppInstallConfigVersion
+from .app_install_config_version_metadata import AppInstallConfigVersionMetadata
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
 from .app_install_deploy_type import AppInstallDeployType
@@ -325,6 +330,7 @@ from .get_component_label_keys_response_200 import GetComponentLabelKeysResponse
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
+from .get_install_config_version_diff_response_200 import GetInstallConfigVersionDiffResponse200
 from .get_install_label_keys_response_200 import GetInstallLabelKeysResponse200
 from .get_queue_signal_graph_response_200 import GetQueueSignalGraphResponse200
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
@@ -348,8 +354,11 @@ from .github_timestamp import GithubTimestamp
 from .github_user import GithubUser
 from .github_user_permissions import GithubUserPermissions
 from .helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
+from .helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
+from .helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
 from .helpers_create_install_config_params import HelpersCreateInstallConfigParams
 from .helpers_create_install_config_params_labels import HelpersCreateInstallConfigParamsLabels
+from .helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
 from .helpers_install_metadata import HelpersInstallMetadata
 from .helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
 from .iam_static_credentials import IamStaticCredentials
@@ -549,15 +558,9 @@ from .service_create_install_deploy_request import ServiceCreateInstallDeployReq
 from .service_create_install_inputs_request import ServiceCreateInstallInputsRequest
 from .service_create_install_inputs_request_inputs import ServiceCreateInstallInputsRequestInputs
 from .service_create_install_request import ServiceCreateInstallRequest
-from .service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
-from .service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
-from .service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
 from .service_create_install_request_inputs import ServiceCreateInstallRequestInputs
 from .service_create_install_request_labels import ServiceCreateInstallRequestLabels
 from .service_create_install_v2_request import ServiceCreateInstallV2Request
-from .service_create_install_v2_request_aws_account import ServiceCreateInstallV2RequestAwsAccount
-from .service_create_install_v2_request_azure_account import ServiceCreateInstallV2RequestAzureAccount
-from .service_create_install_v2_request_gcp_account import ServiceCreateInstallV2RequestGcpAccount
 from .service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
 from .service_create_install_v2_request_labels import ServiceCreateInstallV2RequestLabels
 from .service_create_job_component_config_request import ServiceCreateJobComponentConfigRequest
@@ -677,6 +680,7 @@ from .service_teardown_install_components_request import ServiceTeardownInstallC
 from .service_timeseries_bucket import ServiceTimeseriesBucket
 from .service_toggle_install_component_request import ServiceToggleInstallComponentRequest
 from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRequest
+from .service_trigger_install_config_sync_request import ServiceTriggerInstallConfigSyncRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
 from .service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels
 from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
@@ -757,6 +761,8 @@ from .state_sandbox_state import StateSandboxState
 from .state_sandbox_state_outputs import StateSandboxStateOutputs
 from .state_secrets_state import StateSecretsState
 from .stderr_err_response import StderrErrResponse
+from .sync_install_config_response_202 import SyncInstallConfigResponse202
+from .trigger_install_config_sync_response_202 import TriggerInstallConfigSyncResponse202
 from .types_string_bool_map import TypesStringBoolMap
 from .validate_token_response_200 import ValidateTokenResponse200
 
@@ -870,6 +876,7 @@ __all__ = (
     "AppInstallAppConfigVersionMetadata",
     "AppInstallApprovalOption",
     "AppInstallAuditLog",
+    "AppInstallCloudPlatformMetadata",
     "AppInstallComponent",
     "AppInstallComponentLinks",
     "AppInstallComponentResourceState",
@@ -877,6 +884,10 @@ __all__ = (
     "AppInstallConfig",
     "AppInstallConfigComponentToggles",
     "AppInstallConfigDiff",
+    "AppInstallConfigSync",
+    "AppInstallConfigSyncMetadata",
+    "AppInstallConfigVersion",
+    "AppInstallConfigVersionMetadata",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
     "AppInstallDeployType",
@@ -1084,6 +1095,7 @@ __all__ = (
     "GetCurrentOrgFeaturesResponse200",
     "GetInstallActionWorkflowOutputsResponse200",
     "GetInstallComponentOutputsResponse200",
+    "GetInstallConfigVersionDiffResponse200",
     "GetInstallLabelKeysResponse200",
     "GetQueueSignalGraphResponse200",
     "GetTerraformWorkspaceStatesJSONByIDResponse200",
@@ -1105,8 +1117,11 @@ __all__ = (
     "GithubUser",
     "GithubUserPermissions",
     "HelpersConnectedGithubVCSConfigRequest",
+    "HelpersCreateInstallAWSAccountParams",
+    "HelpersCreateInstallAzureAccountParams",
     "HelpersCreateInstallConfigParams",
     "HelpersCreateInstallConfigParamsLabels",
+    "HelpersCreateInstallGCPAccountParams",
     "HelpersInstallMetadata",
     "HelpersPublicGitVCSConfigRequest",
     "IamStaticCredentials",
@@ -1288,15 +1303,9 @@ __all__ = (
     "ServiceCreateInstallInputsRequest",
     "ServiceCreateInstallInputsRequestInputs",
     "ServiceCreateInstallRequest",
-    "ServiceCreateInstallRequestAwsAccount",
-    "ServiceCreateInstallRequestAzureAccount",
-    "ServiceCreateInstallRequestGcpAccount",
     "ServiceCreateInstallRequestInputs",
     "ServiceCreateInstallRequestLabels",
     "ServiceCreateInstallV2Request",
-    "ServiceCreateInstallV2RequestAwsAccount",
-    "ServiceCreateInstallV2RequestAzureAccount",
-    "ServiceCreateInstallV2RequestGcpAccount",
     "ServiceCreateInstallV2RequestInputs",
     "ServiceCreateInstallV2RequestLabels",
     "ServiceCreateJobComponentConfigRequest",
@@ -1402,6 +1411,7 @@ __all__ = (
     "ServiceTimeseriesBucket",
     "ServiceToggleInstallComponentRequest",
     "ServiceTriggerAppBranchRunRequest",
+    "ServiceTriggerInstallConfigSyncRequest",
     "ServiceUpdateActionWorkflowRequest",
     "ServiceUpdateActionWorkflowRequestLabels",
     "ServiceUpdateAppBranchRequest",
@@ -1480,6 +1490,8 @@ __all__ = (
     "StateSandboxStateOutputs",
     "StateSecretsState",
     "StderrErrResponse",
+    "SyncInstallConfigResponse202",
+    "TriggerInstallConfigSyncResponse202",
     "TypesStringBoolMap",
     "ValidateTokenResponse200",
 )

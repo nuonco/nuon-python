@@ -30,6 +30,7 @@ class ServiceCreateRunbookStepConfigRequest:
         env_vars (ServiceCreateRunbookStepConfigRequestEnvVars | Unset):
         idx (int | Unset):
         inline_contents (str | Unset):
+        plan_only (bool | Unset):
         role (str | Unset):
         skip_component_deploys (bool | Unset):
         tear_down_dependents (bool | Unset):
@@ -45,6 +46,7 @@ class ServiceCreateRunbookStepConfigRequest:
     env_vars: ServiceCreateRunbookStepConfigRequestEnvVars | Unset = UNSET
     idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
+    plan_only: bool | Unset = UNSET
     role: str | Unset = UNSET
     skip_component_deploys: bool | Unset = UNSET
     tear_down_dependents: bool | Unset = UNSET
@@ -71,6 +73,8 @@ class ServiceCreateRunbookStepConfigRequest:
         idx = self.idx
 
         inline_contents = self.inline_contents
+
+        plan_only = self.plan_only
 
         role = self.role
 
@@ -102,6 +106,8 @@ class ServiceCreateRunbookStepConfigRequest:
             field_dict["idx"] = idx
         if inline_contents is not UNSET:
             field_dict["inline_contents"] = inline_contents
+        if plan_only is not UNSET:
+            field_dict["plan_only"] = plan_only
         if role is not UNSET:
             field_dict["role"] = role
         if skip_component_deploys is not UNSET:
@@ -143,6 +149,8 @@ class ServiceCreateRunbookStepConfigRequest:
 
         inline_contents = d.pop("inline_contents", UNSET)
 
+        plan_only = d.pop("plan_only", UNSET)
+
         role = d.pop("role", UNSET)
 
         skip_component_deploys = d.pop("skip_component_deploys", UNSET)
@@ -161,6 +169,7 @@ class ServiceCreateRunbookStepConfigRequest:
             env_vars=env_vars,
             idx=idx,
             inline_contents=inline_contents,
+            plan_only=plan_only,
             role=role,
             skip_component_deploys=skip_component_deploys,
             tear_down_dependents=tear_down_dependents,

@@ -8,31 +8,32 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceCreateInstallV2RequestAwsAccount")
+T = TypeVar("T", bound="HelpersCreateInstallGCPAccountParams")
 
 
 @_attrs_define
-class ServiceCreateInstallV2RequestAwsAccount:
+class HelpersCreateInstallGCPAccountParams:
     """
     Attributes:
-        connection_id (str | Unset):
+        project_id (str | Unset): ProjectID is the GCP project this install targets. Required when the org has
+            the phone-home-auth feature enabled. Immutable after creation.
         region (str | Unset):
     """
 
-    connection_id: str | Unset = UNSET
+    project_id: str | Unset = UNSET
     region: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connection_id = self.connection_id
+        project_id = self.project_id
 
         region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if connection_id is not UNSET:
-            field_dict["connection_id"] = connection_id
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
         if region is not UNSET:
             field_dict["region"] = region
 
@@ -41,17 +42,17 @@ class ServiceCreateInstallV2RequestAwsAccount:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connection_id = d.pop("connection_id", UNSET)
+        project_id = d.pop("project_id", UNSET)
 
         region = d.pop("region", UNSET)
 
-        service_create_install_v2_request_aws_account = cls(
-            connection_id=connection_id,
+        helpers_create_install_gcp_account_params = cls(
+            project_id=project_id,
             region=region,
         )
 
-        service_create_install_v2_request_aws_account.additional_properties = d
-        return service_create_install_v2_request_aws_account
+        helpers_create_install_gcp_account_params.additional_properties = d
+        return helpers_create_install_gcp_account_params
 
     @property
     def additional_keys(self) -> list[str]:

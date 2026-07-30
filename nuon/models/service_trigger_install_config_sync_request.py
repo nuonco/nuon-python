@@ -8,50 +8,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceCreateInstallRequestAwsAccount")
+T = TypeVar("T", bound="ServiceTriggerInstallConfigSyncRequest")
 
 
 @_attrs_define
-class ServiceCreateInstallRequestAwsAccount:
+class ServiceTriggerInstallConfigSyncRequest:
     """
     Attributes:
-        connection_id (str | Unset):
-        region (str | Unset):
+        install_name (str | Unset):
     """
 
-    connection_id: str | Unset = UNSET
-    region: str | Unset = UNSET
+    install_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        connection_id = self.connection_id
-
-        region = self.region
+        install_name = self.install_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if connection_id is not UNSET:
-            field_dict["connection_id"] = connection_id
-        if region is not UNSET:
-            field_dict["region"] = region
+        if install_name is not UNSET:
+            field_dict["install_name"] = install_name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        connection_id = d.pop("connection_id", UNSET)
+        install_name = d.pop("install_name", UNSET)
 
-        region = d.pop("region", UNSET)
-
-        service_create_install_request_aws_account = cls(
-            connection_id=connection_id,
-            region=region,
+        service_trigger_install_config_sync_request = cls(
+            install_name=install_name,
         )
 
-        service_create_install_request_aws_account.additional_properties = d
-        return service_create_install_request_aws_account
+        service_trigger_install_config_sync_request.additional_properties = d
+        return service_trigger_install_config_sync_request
 
     @property
     def additional_keys(self) -> list[str]:

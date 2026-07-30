@@ -9,11 +9,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
+    from ..models.helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
     from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
+    from ..models.helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
     from ..models.helpers_install_metadata import HelpersInstallMetadata
-    from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
-    from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
-    from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
     from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
     from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels
 
@@ -26,9 +26,9 @@ class ServiceCreateInstallRequest:
     """
     Attributes:
         name (str):
-        aws_account (ServiceCreateInstallRequestAwsAccount | Unset):
-        azure_account (ServiceCreateInstallRequestAzureAccount | Unset):
-        gcp_account (ServiceCreateInstallRequestGcpAccount | Unset):
+        aws_account (HelpersCreateInstallAWSAccountParams | Unset):
+        azure_account (HelpersCreateInstallAzureAccountParams | Unset):
+        gcp_account (HelpersCreateInstallGCPAccountParams | Unset):
         inputs (ServiceCreateInstallRequestInputs | Unset):
         install_config (HelpersCreateInstallConfigParams | Unset):
         labels (ServiceCreateInstallRequestLabels | Unset): Labels are key/value pairs to attach to the install at
@@ -38,9 +38,9 @@ class ServiceCreateInstallRequest:
     """
 
     name: str
-    aws_account: ServiceCreateInstallRequestAwsAccount | Unset = UNSET
-    azure_account: ServiceCreateInstallRequestAzureAccount | Unset = UNSET
-    gcp_account: ServiceCreateInstallRequestGcpAccount | Unset = UNSET
+    aws_account: HelpersCreateInstallAWSAccountParams | Unset = UNSET
+    azure_account: HelpersCreateInstallAzureAccountParams | Unset = UNSET
+    gcp_account: HelpersCreateInstallGCPAccountParams | Unset = UNSET
     inputs: ServiceCreateInstallRequestInputs | Unset = UNSET
     install_config: HelpersCreateInstallConfigParams | Unset = UNSET
     labels: ServiceCreateInstallRequestLabels | Unset = UNSET
@@ -104,11 +104,11 @@ class ServiceCreateInstallRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
+        from ..models.helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
         from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
+        from ..models.helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
         from ..models.helpers_install_metadata import HelpersInstallMetadata
-        from ..models.service_create_install_request_aws_account import ServiceCreateInstallRequestAwsAccount
-        from ..models.service_create_install_request_azure_account import ServiceCreateInstallRequestAzureAccount
-        from ..models.service_create_install_request_gcp_account import ServiceCreateInstallRequestGcpAccount
         from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
         from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels
 
@@ -116,25 +116,25 @@ class ServiceCreateInstallRequest:
         name = d.pop("name")
 
         _aws_account = d.pop("aws_account", UNSET)
-        aws_account: ServiceCreateInstallRequestAwsAccount | Unset
+        aws_account: HelpersCreateInstallAWSAccountParams | Unset
         if isinstance(_aws_account, Unset):
             aws_account = UNSET
         else:
-            aws_account = ServiceCreateInstallRequestAwsAccount.from_dict(_aws_account)
+            aws_account = HelpersCreateInstallAWSAccountParams.from_dict(_aws_account)
 
         _azure_account = d.pop("azure_account", UNSET)
-        azure_account: ServiceCreateInstallRequestAzureAccount | Unset
+        azure_account: HelpersCreateInstallAzureAccountParams | Unset
         if isinstance(_azure_account, Unset):
             azure_account = UNSET
         else:
-            azure_account = ServiceCreateInstallRequestAzureAccount.from_dict(_azure_account)
+            azure_account = HelpersCreateInstallAzureAccountParams.from_dict(_azure_account)
 
         _gcp_account = d.pop("gcp_account", UNSET)
-        gcp_account: ServiceCreateInstallRequestGcpAccount | Unset
+        gcp_account: HelpersCreateInstallGCPAccountParams | Unset
         if isinstance(_gcp_account, Unset):
             gcp_account = UNSET
         else:
-            gcp_account = ServiceCreateInstallRequestGcpAccount.from_dict(_gcp_account)
+            gcp_account = HelpersCreateInstallGCPAccountParams.from_dict(_gcp_account)
 
         _inputs = d.pop("inputs", UNSET)
         inputs: ServiceCreateInstallRequestInputs | Unset

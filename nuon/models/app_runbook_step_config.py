@@ -30,6 +30,7 @@ class AppRunbookStepConfig:
         idx (int | Unset):
         inline_contents (str | Unset):
         name (str | Unset):
+        plan_only (bool | Unset):
         role (str | Unset):
         runbook_config_id (str | Unset):
         skip_component_deploys (bool | Unset): sandbox lifecycle fields
@@ -50,6 +51,7 @@ class AppRunbookStepConfig:
     idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
     name: str | Unset = UNSET
+    plan_only: bool | Unset = UNSET
     role: str | Unset = UNSET
     runbook_config_id: str | Unset = UNSET
     skip_component_deploys: bool | Unset = UNSET
@@ -83,6 +85,8 @@ class AppRunbookStepConfig:
         inline_contents = self.inline_contents
 
         name = self.name
+
+        plan_only = self.plan_only
 
         role = self.role
 
@@ -123,6 +127,8 @@ class AppRunbookStepConfig:
             field_dict["inline_contents"] = inline_contents
         if name is not UNSET:
             field_dict["name"] = name
+        if plan_only is not UNSET:
+            field_dict["plan_only"] = plan_only
         if role is not UNSET:
             field_dict["role"] = role
         if runbook_config_id is not UNSET:
@@ -172,6 +178,8 @@ class AppRunbookStepConfig:
 
         name = d.pop("name", UNSET)
 
+        plan_only = d.pop("plan_only", UNSET)
+
         role = d.pop("role", UNSET)
 
         runbook_config_id = d.pop("runbook_config_id", UNSET)
@@ -198,6 +206,7 @@ class AppRunbookStepConfig:
             idx=idx,
             inline_contents=inline_contents,
             name=name,
+            plan_only=plan_only,
             role=role,
             runbook_config_id=runbook_config_id,
             skip_component_deploys=skip_component_deploys,

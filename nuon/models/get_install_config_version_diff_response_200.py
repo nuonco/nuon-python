@@ -6,52 +6,29 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ServiceCreateInstallV2RequestGcpAccount")
+T = TypeVar("T", bound="GetInstallConfigVersionDiffResponse200")
 
 
 @_attrs_define
-class ServiceCreateInstallV2RequestGcpAccount:
-    """
-    Attributes:
-        project_id (str | Unset):
-        region (str | Unset):
-    """
+class GetInstallConfigVersionDiffResponse200:
+    """ """
 
-    project_id: str | Unset = UNSET
-    region: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        project_id = self.project_id
-
-        region = self.region
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if project_id is not UNSET:
-            field_dict["project_id"] = project_id
-        if region is not UNSET:
-            field_dict["region"] = region
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        project_id = d.pop("project_id", UNSET)
+        get_install_config_version_diff_response_200 = cls()
 
-        region = d.pop("region", UNSET)
-
-        service_create_install_v2_request_gcp_account = cls(
-            project_id=project_id,
-            region=region,
-        )
-
-        service_create_install_v2_request_gcp_account.additional_properties = d
-        return service_create_install_v2_request_gcp_account
+        get_install_config_version_diff_response_200.additional_properties = d
+        return get_install_config_version_diff_response_200
 
     @property
     def additional_keys(self) -> list[str]:

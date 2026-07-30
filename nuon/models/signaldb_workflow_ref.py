@@ -18,11 +18,13 @@ class SignaldbWorkflowRef:
         id (str | Unset):
         namespace (str | Unset):
         run_id (str | Unset):
+        task_queue (str | Unset): empty means workflows.APITaskQueue (back-compat for pre-isolation rows)
     """
 
     id: str | Unset = UNSET
     namespace: str | Unset = UNSET
     run_id: str | Unset = UNSET
+    task_queue: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -31,6 +33,8 @@ class SignaldbWorkflowRef:
         namespace = self.namespace
 
         run_id = self.run_id
+
+        task_queue = self.task_queue
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,6 +45,8 @@ class SignaldbWorkflowRef:
             field_dict["namespace"] = namespace
         if run_id is not UNSET:
             field_dict["run_id"] = run_id
+        if task_queue is not UNSET:
+            field_dict["task_queue"] = task_queue
 
         return field_dict
 
@@ -53,10 +59,13 @@ class SignaldbWorkflowRef:
 
         run_id = d.pop("run_id", UNSET)
 
+        task_queue = d.pop("task_queue", UNSET)
+
         signaldb_workflow_ref = cls(
             id=id,
             namespace=namespace,
             run_id=run_id,
+            task_queue=task_queue,
         )
 
         signaldb_workflow_ref.additional_properties = d
