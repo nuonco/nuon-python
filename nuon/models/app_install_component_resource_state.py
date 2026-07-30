@@ -30,11 +30,13 @@ class AppInstallComponentResourceState:
         org_id (str | Unset):
         owner_name (str | Unset):
         provider (str | Unset):
+        removed_from_config (bool | Unset): RemovedFromConfig is set at read time when a probe's name is no longer in
+            the component's config — still shown, but labelled so it can't pass as live.
         runner_id (str | Unset):
-        source (str | Unset): Source classifies the resource owner: "component" (an app component,
-            keyed by install_component_id) or "sandbox" (install base infra, keyed by
-            owner_name = helm release name). OwnerName is the display group for
-            sandbox resources.
+        source (str | Unset): Source classifies the resource owner: "component" (keyed by
+            install_component_id) or "sandbox" (keyed by owner_name = helm release name).
+        stale_after_seconds (int | Unset): StaleAfterSeconds is how long this observation stays trustworthy (0 =
+            default); a pushed check sets its own, since it knows its cadence best.
     """
 
     api_group: str | Unset = UNSET
@@ -52,8 +54,10 @@ class AppInstallComponentResourceState:
     org_id: str | Unset = UNSET
     owner_name: str | Unset = UNSET
     provider: str | Unset = UNSET
+    removed_from_config: bool | Unset = UNSET
     runner_id: str | Unset = UNSET
     source: str | Unset = UNSET
+    stale_after_seconds: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -87,9 +91,13 @@ class AppInstallComponentResourceState:
 
         provider = self.provider
 
+        removed_from_config = self.removed_from_config
+
         runner_id = self.runner_id
 
         source = self.source
+
+        stale_after_seconds = self.stale_after_seconds
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -124,10 +132,14 @@ class AppInstallComponentResourceState:
             field_dict["owner_name"] = owner_name
         if provider is not UNSET:
             field_dict["provider"] = provider
+        if removed_from_config is not UNSET:
+            field_dict["removed_from_config"] = removed_from_config
         if runner_id is not UNSET:
             field_dict["runner_id"] = runner_id
         if source is not UNSET:
             field_dict["source"] = source
+        if stale_after_seconds is not UNSET:
+            field_dict["stale_after_seconds"] = stale_after_seconds
 
         return field_dict
 
@@ -164,9 +176,13 @@ class AppInstallComponentResourceState:
 
         provider = d.pop("provider", UNSET)
 
+        removed_from_config = d.pop("removed_from_config", UNSET)
+
         runner_id = d.pop("runner_id", UNSET)
 
         source = d.pop("source", UNSET)
+
+        stale_after_seconds = d.pop("stale_after_seconds", UNSET)
 
         app_install_component_resource_state = cls(
             api_group=api_group,
@@ -184,8 +200,10 @@ class AppInstallComponentResourceState:
             org_id=org_id,
             owner_name=owner_name,
             provider=provider,
+            removed_from_config=removed_from_config,
             runner_id=runner_id,
             source=source,
+            stale_after_seconds=stale_after_seconds,
         )
 
         app_install_component_resource_state.additional_properties = d

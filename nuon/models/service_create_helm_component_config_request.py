@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.service_create_helm_component_config_request_values import (
         ServiceCreateHelmComponentConfigRequestValues,
     )
+    from ..models.service_health_probe_request import ServiceHealthProbeRequest
     from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest
     from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
@@ -38,6 +39,10 @@ class ServiceCreateHelmComponentConfigRequest:
         dependencies (list[str] | Unset):
         deploy_timeout (str | Unset): Duration string for deploy operations (e.g., "30m", "1h")
         drift_schedule (str | Unset):
+        health_block_deploy (bool | None | Unset):
+        health_enabled (bool | None | Unset):
+        health_probes (list[ServiceHealthProbeRequest] | Unset):
+        health_stabilization_window (str | Unset): Duration string for the health stabilization window (e.g., "3m")
         helm_repo_config (ServiceHelmRepoConfigRequest | Unset):
         kubernetes_context (str | Unset):
         max_auto_retries (int | Unset):
@@ -64,6 +69,10 @@ class ServiceCreateHelmComponentConfigRequest:
     dependencies: list[str] | Unset = UNSET
     deploy_timeout: str | Unset = UNSET
     drift_schedule: str | Unset = UNSET
+    health_block_deploy: bool | None | Unset = UNSET
+    health_enabled: bool | None | Unset = UNSET
+    health_probes: list[ServiceHealthProbeRequest] | Unset = UNSET
+    health_stabilization_window: str | Unset = UNSET
     helm_repo_config: ServiceHelmRepoConfigRequest | Unset = UNSET
     kubernetes_context: str | Unset = UNSET
     max_auto_retries: int | Unset = UNSET
@@ -105,6 +114,27 @@ class ServiceCreateHelmComponentConfigRequest:
         deploy_timeout = self.deploy_timeout
 
         drift_schedule = self.drift_schedule
+
+        health_block_deploy: bool | None | Unset
+        if isinstance(self.health_block_deploy, Unset):
+            health_block_deploy = UNSET
+        else:
+            health_block_deploy = self.health_block_deploy
+
+        health_enabled: bool | None | Unset
+        if isinstance(self.health_enabled, Unset):
+            health_enabled = UNSET
+        else:
+            health_enabled = self.health_enabled
+
+        health_probes: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.health_probes, Unset):
+            health_probes = []
+            for health_probes_item_data in self.health_probes:
+                health_probes_item = health_probes_item_data.to_dict()
+                health_probes.append(health_probes_item)
+
+        health_stabilization_window = self.health_stabilization_window
 
         helm_repo_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm_repo_config, Unset):
@@ -168,6 +198,14 @@ class ServiceCreateHelmComponentConfigRequest:
             field_dict["deploy_timeout"] = deploy_timeout
         if drift_schedule is not UNSET:
             field_dict["drift_schedule"] = drift_schedule
+        if health_block_deploy is not UNSET:
+            field_dict["health_block_deploy"] = health_block_deploy
+        if health_enabled is not UNSET:
+            field_dict["health_enabled"] = health_enabled
+        if health_probes is not UNSET:
+            field_dict["health_probes"] = health_probes
+        if health_stabilization_window is not UNSET:
+            field_dict["health_stabilization_window"] = health_stabilization_window
         if helm_repo_config is not UNSET:
             field_dict["helm_repo_config"] = helm_repo_config
         if kubernetes_context is not UNSET:
@@ -206,6 +244,7 @@ class ServiceCreateHelmComponentConfigRequest:
         from ..models.service_create_helm_component_config_request_values import (
             ServiceCreateHelmComponentConfigRequestValues,
         )
+        from ..models.service_health_probe_request import ServiceHealthProbeRequest
         from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest
         from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
 
@@ -236,6 +275,35 @@ class ServiceCreateHelmComponentConfigRequest:
         deploy_timeout = d.pop("deploy_timeout", UNSET)
 
         drift_schedule = d.pop("drift_schedule", UNSET)
+
+        def _parse_health_block_deploy(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        health_block_deploy = _parse_health_block_deploy(d.pop("health_block_deploy", UNSET))
+
+        def _parse_health_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        health_enabled = _parse_health_enabled(d.pop("health_enabled", UNSET))
+
+        _health_probes = d.pop("health_probes", UNSET)
+        health_probes: list[ServiceHealthProbeRequest] | Unset = UNSET
+        if _health_probes is not UNSET:
+            health_probes = []
+            for health_probes_item_data in _health_probes:
+                health_probes_item = ServiceHealthProbeRequest.from_dict(health_probes_item_data)
+
+                health_probes.append(health_probes_item)
+
+        health_stabilization_window = d.pop("health_stabilization_window", UNSET)
 
         _helm_repo_config = d.pop("helm_repo_config", UNSET)
         helm_repo_config: ServiceHelmRepoConfigRequest | Unset
@@ -290,6 +358,10 @@ class ServiceCreateHelmComponentConfigRequest:
             dependencies=dependencies,
             deploy_timeout=deploy_timeout,
             drift_schedule=drift_schedule,
+            health_block_deploy=health_block_deploy,
+            health_enabled=health_enabled,
+            health_probes=health_probes,
+            health_stabilization_window=health_stabilization_window,
             helm_repo_config=helm_repo_config,
             kubernetes_context=kubernetes_context,
             max_auto_retries=max_auto_retries,
