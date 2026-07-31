@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
+    from ..models.app_trigger_filter import AppTriggerFilter
 
 
 T = TypeVar("T", bound="AppRunbookStepConfig")
@@ -26,6 +27,8 @@ class AppRunbookStepConfig:
         created_by_id (str | Unset):
         deploy_dependents (bool | Unset):
         env_vars (AppRunbookStepConfigEnvVars | Unset):
+        event_types (list[str] | Unset):
+        filters (list[AppTriggerFilter] | Unset):
         id (str | Unset):
         idx (int | Unset):
         inline_contents (str | Unset):
@@ -36,6 +39,8 @@ class AppRunbookStepConfig:
         skip_component_deploys (bool | Unset): sandbox lifecycle fields
         tear_down_dependents (bool | Unset):
         timeout (int | Unset):
+        trigger_id (str | Unset):
+        trigger_name (str | Unset):
         type_ (str | Unset):
         updated_at (str | Unset):
     """
@@ -47,6 +52,8 @@ class AppRunbookStepConfig:
     created_by_id: str | Unset = UNSET
     deploy_dependents: bool | Unset = UNSET
     env_vars: AppRunbookStepConfigEnvVars | Unset = UNSET
+    event_types: list[str] | Unset = UNSET
+    filters: list[AppTriggerFilter] | Unset = UNSET
     id: str | Unset = UNSET
     idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
@@ -57,6 +64,8 @@ class AppRunbookStepConfig:
     skip_component_deploys: bool | Unset = UNSET
     tear_down_dependents: bool | Unset = UNSET
     timeout: int | Unset = UNSET
+    trigger_id: str | Unset = UNSET
+    trigger_name: str | Unset = UNSET
     type_: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -78,6 +87,17 @@ class AppRunbookStepConfig:
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
+        event_types: list[str] | Unset = UNSET
+        if not isinstance(self.event_types, Unset):
+            event_types = self.event_types
+
+        filters: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.filters, Unset):
+            filters = []
+            for filters_item_data in self.filters:
+                filters_item = filters_item_data.to_dict()
+                filters.append(filters_item)
+
         id = self.id
 
         idx = self.idx
@@ -97,6 +117,10 @@ class AppRunbookStepConfig:
         tear_down_dependents = self.tear_down_dependents
 
         timeout = self.timeout
+
+        trigger_id = self.trigger_id
+
+        trigger_name = self.trigger_name
 
         type_ = self.type_
 
@@ -119,6 +143,10 @@ class AppRunbookStepConfig:
             field_dict["deploy_dependents"] = deploy_dependents
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if event_types is not UNSET:
+            field_dict["event_types"] = event_types
+        if filters is not UNSET:
+            field_dict["filters"] = filters
         if id is not UNSET:
             field_dict["id"] = id
         if idx is not UNSET:
@@ -139,6 +167,10 @@ class AppRunbookStepConfig:
             field_dict["tear_down_dependents"] = tear_down_dependents
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
+        if trigger_id is not UNSET:
+            field_dict["trigger_id"] = trigger_id
+        if trigger_name is not UNSET:
+            field_dict["trigger_name"] = trigger_name
         if type_ is not UNSET:
             field_dict["type"] = type_
         if updated_at is not UNSET:
@@ -149,6 +181,7 @@ class AppRunbookStepConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_runbook_step_config_env_vars import AppRunbookStepConfigEnvVars
+        from ..models.app_trigger_filter import AppTriggerFilter
 
         d = dict(src_dict)
         action_workflow_id = d.pop("action_workflow_id", UNSET)
@@ -170,6 +203,17 @@ class AppRunbookStepConfig:
         else:
             env_vars = AppRunbookStepConfigEnvVars.from_dict(_env_vars)
 
+        event_types = cast(list[str], d.pop("event_types", UNSET))
+
+        _filters = d.pop("filters", UNSET)
+        filters: list[AppTriggerFilter] | Unset = UNSET
+        if _filters is not UNSET:
+            filters = []
+            for filters_item_data in _filters:
+                filters_item = AppTriggerFilter.from_dict(filters_item_data)
+
+                filters.append(filters_item)
+
         id = d.pop("id", UNSET)
 
         idx = d.pop("idx", UNSET)
@@ -190,6 +234,10 @@ class AppRunbookStepConfig:
 
         timeout = d.pop("timeout", UNSET)
 
+        trigger_id = d.pop("trigger_id", UNSET)
+
+        trigger_name = d.pop("trigger_name", UNSET)
+
         type_ = d.pop("type", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -202,6 +250,8 @@ class AppRunbookStepConfig:
             created_by_id=created_by_id,
             deploy_dependents=deploy_dependents,
             env_vars=env_vars,
+            event_types=event_types,
+            filters=filters,
             id=id,
             idx=idx,
             inline_contents=inline_contents,
@@ -212,6 +262,8 @@ class AppRunbookStepConfig:
             skip_component_deploys=skip_component_deploys,
             tear_down_dependents=tear_down_dependents,
             timeout=timeout,
+            trigger_id=trigger_id,
+            trigger_name=trigger_name,
             type_=type_,
             updated_at=updated_at,
         )

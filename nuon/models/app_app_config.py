@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from ..models.app_app_stack_config import AppAppStackConfig
     from ..models.app_component_config_connection import AppComponentConfigConnection
     from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_trigger_rule import AppTriggerRule
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.blobstore_blob import BlobstoreBlob
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
@@ -66,6 +67,7 @@ class AppAppConfig:
         status (AppAppConfigStatus | Unset):
         status_description (str | Unset):
         status_v2 (AppCompositeStatus | Unset):
+        trigger_rules (list[AppTriggerRule] | Unset):
         updated_at (str | Unset):
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
         version (int | Unset): fields that are filled in via after query or views
@@ -101,6 +103,7 @@ class AppAppConfig:
     status: AppAppConfigStatus | Unset = UNSET
     status_description: str | Unset = UNSET
     status_v2: AppCompositeStatus | Unset = UNSET
+    trigger_rules: list[AppTriggerRule] | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
     version: int | Unset = UNSET
@@ -211,6 +214,13 @@ class AppAppConfig:
         if not isinstance(self.status_v2, Unset):
             status_v2 = self.status_v2.to_dict()
 
+        trigger_rules: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.trigger_rules, Unset):
+            trigger_rules = []
+            for trigger_rules_item_data in self.trigger_rules:
+                trigger_rules_item = trigger_rules_item_data.to_dict()
+                trigger_rules.append(trigger_rules_item)
+
         updated_at = self.updated_at
 
         vcs_connection_commit: dict[str, Any] | Unset = UNSET
@@ -282,6 +292,8 @@ class AppAppConfig:
             field_dict["status_description"] = status_description
         if status_v2 is not UNSET:
             field_dict["status_v2"] = status_v2
+        if trigger_rules is not UNSET:
+            field_dict["trigger_rules"] = trigger_rules
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connection_commit is not UNSET:
@@ -307,6 +319,7 @@ class AppAppConfig:
         from ..models.app_app_stack_config import AppAppStackConfig
         from ..models.app_component_config_connection import AppComponentConfigConnection
         from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_trigger_rule import AppTriggerRule
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
         from ..models.blobstore_blob import BlobstoreBlob
         from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
@@ -463,6 +476,15 @@ class AppAppConfig:
         else:
             status_v2 = AppCompositeStatus.from_dict(_status_v2)
 
+        _trigger_rules = d.pop("trigger_rules", UNSET)
+        trigger_rules: list[AppTriggerRule] | Unset = UNSET
+        if _trigger_rules is not UNSET:
+            trigger_rules = []
+            for trigger_rules_item_data in _trigger_rules:
+                trigger_rules_item = AppTriggerRule.from_dict(trigger_rules_item_data)
+
+                trigger_rules.append(trigger_rules_item)
+
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
@@ -505,6 +527,7 @@ class AppAppConfig:
             status=status,
             status_description=status_description,
             status_v2=status_v2,
+            trigger_rules=trigger_rules,
             updated_at=updated_at,
             vcs_connection_commit=vcs_connection_commit,
             version=version,

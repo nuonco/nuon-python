@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_trigger_filter import AppTriggerFilter
     from ..models.service_create_runbook_step_config_request_env_vars import (
         ServiceCreateRunbookStepConfigRequestEnvVars,
     )
@@ -28,6 +29,8 @@ class ServiceCreateRunbookStepConfigRequest:
         component_name (str | Unset):
         deploy_dependents (bool | Unset):
         env_vars (ServiceCreateRunbookStepConfigRequestEnvVars | Unset):
+        event_types (list[str] | Unset):
+        filters (list[AppTriggerFilter] | Unset):
         idx (int | Unset):
         inline_contents (str | Unset):
         plan_only (bool | Unset):
@@ -35,6 +38,7 @@ class ServiceCreateRunbookStepConfigRequest:
         skip_component_deploys (bool | Unset):
         tear_down_dependents (bool | Unset):
         timeout (int | Unset):
+        trigger (str | Unset):
     """
 
     name: str
@@ -44,6 +48,8 @@ class ServiceCreateRunbookStepConfigRequest:
     component_name: str | Unset = UNSET
     deploy_dependents: bool | Unset = UNSET
     env_vars: ServiceCreateRunbookStepConfigRequestEnvVars | Unset = UNSET
+    event_types: list[str] | Unset = UNSET
+    filters: list[AppTriggerFilter] | Unset = UNSET
     idx: int | Unset = UNSET
     inline_contents: str | Unset = UNSET
     plan_only: bool | Unset = UNSET
@@ -51,6 +57,7 @@ class ServiceCreateRunbookStepConfigRequest:
     skip_component_deploys: bool | Unset = UNSET
     tear_down_dependents: bool | Unset = UNSET
     timeout: int | Unset = UNSET
+    trigger: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +77,17 @@ class ServiceCreateRunbookStepConfigRequest:
         if not isinstance(self.env_vars, Unset):
             env_vars = self.env_vars.to_dict()
 
+        event_types: list[str] | Unset = UNSET
+        if not isinstance(self.event_types, Unset):
+            event_types = self.event_types
+
+        filters: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.filters, Unset):
+            filters = []
+            for filters_item_data in self.filters:
+                filters_item = filters_item_data.to_dict()
+                filters.append(filters_item)
+
         idx = self.idx
 
         inline_contents = self.inline_contents
@@ -83,6 +101,8 @@ class ServiceCreateRunbookStepConfigRequest:
         tear_down_dependents = self.tear_down_dependents
 
         timeout = self.timeout
+
+        trigger = self.trigger
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -102,6 +122,10 @@ class ServiceCreateRunbookStepConfigRequest:
             field_dict["deploy_dependents"] = deploy_dependents
         if env_vars is not UNSET:
             field_dict["env_vars"] = env_vars
+        if event_types is not UNSET:
+            field_dict["event_types"] = event_types
+        if filters is not UNSET:
+            field_dict["filters"] = filters
         if idx is not UNSET:
             field_dict["idx"] = idx
         if inline_contents is not UNSET:
@@ -116,11 +140,14 @@ class ServiceCreateRunbookStepConfigRequest:
             field_dict["tear_down_dependents"] = tear_down_dependents
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
+        if trigger is not UNSET:
+            field_dict["trigger"] = trigger
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_trigger_filter import AppTriggerFilter
         from ..models.service_create_runbook_step_config_request_env_vars import (
             ServiceCreateRunbookStepConfigRequestEnvVars,
         )
@@ -145,6 +172,17 @@ class ServiceCreateRunbookStepConfigRequest:
         else:
             env_vars = ServiceCreateRunbookStepConfigRequestEnvVars.from_dict(_env_vars)
 
+        event_types = cast(list[str], d.pop("event_types", UNSET))
+
+        _filters = d.pop("filters", UNSET)
+        filters: list[AppTriggerFilter] | Unset = UNSET
+        if _filters is not UNSET:
+            filters = []
+            for filters_item_data in _filters:
+                filters_item = AppTriggerFilter.from_dict(filters_item_data)
+
+                filters.append(filters_item)
+
         idx = d.pop("idx", UNSET)
 
         inline_contents = d.pop("inline_contents", UNSET)
@@ -159,6 +197,8 @@ class ServiceCreateRunbookStepConfigRequest:
 
         timeout = d.pop("timeout", UNSET)
 
+        trigger = d.pop("trigger", UNSET)
+
         service_create_runbook_step_config_request = cls(
             name=name,
             type_=type_,
@@ -167,6 +207,8 @@ class ServiceCreateRunbookStepConfigRequest:
             component_name=component_name,
             deploy_dependents=deploy_dependents,
             env_vars=env_vars,
+            event_types=event_types,
+            filters=filters,
             idx=idx,
             inline_contents=inline_contents,
             plan_only=plan_only,
@@ -174,6 +216,7 @@ class ServiceCreateRunbookStepConfigRequest:
             skip_component_deploys=skip_component_deploys,
             tear_down_dependents=tear_down_dependents,
             timeout=timeout,
+            trigger=trigger,
         )
 
         service_create_runbook_step_config_request.additional_properties = d
