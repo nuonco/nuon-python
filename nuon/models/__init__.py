@@ -674,6 +674,8 @@ from .service_put_install_component_health_check_request_details import (
     ServicePutInstallComponentHealthCheckRequestDetails,
 )
 from .service_readme import ServiceReadme
+from .service_refresh_install_health_cluster_access_request import ServiceRefreshInstallHealthClusterAccessRequest
+from .service_refresh_install_health_cluster_access_response import ServiceRefreshInstallHealthClusterAccessResponse
 from .service_remove_action_labels_request import ServiceRemoveActionLabelsRequest
 from .service_remove_component_labels_request import ServiceRemoveComponentLabelsRequest
 from .service_remove_install_labels_request import ServiceRemoveInstallLabelsRequest
@@ -1424,6 +1426,8 @@ __all__ = (
     "ServicePutInstallComponentHealthCheckRequest",
     "ServicePutInstallComponentHealthCheckRequestDetails",
     "ServiceReadme",
+    "ServiceRefreshInstallHealthClusterAccessRequest",
+    "ServiceRefreshInstallHealthClusterAccessResponse",
     "ServiceRemoveActionLabelsRequest",
     "ServiceRemoveComponentLabelsRequest",
     "ServiceRemoveInstallLabelsRequest",

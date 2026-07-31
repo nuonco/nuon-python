@@ -77,6 +77,9 @@ class AppInstall:
         expected_project_id (str | Unset):
         expected_subscription_id (str | Unset):
         gcp_account (AppGCPAccount | Unset):
+        health_cluster_error (str | Unset): HealthClusterError is why component health cannot currently inspect the
+            install's cluster, empty when it can. Install-level because it is one
+            fact about the install rather than a property of any component.
         id (str | Unset):
         install_action_workflows (list[AppInstallActionWorkflow] | Unset):
         install_components (list[AppInstallComponent] | Unset):
@@ -90,6 +93,9 @@ class AppInstall:
         install_stack (AppInstallStack | Unset):
         install_states (list[AppInstallState] | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
+        last_health_report_at (str | Unset): LastHealthReportAt is when a runner last reported component health. It is
+            how the staleness sweep finds installs that went quiet without polling
+            every install individually.
         lifecycle_phase (AppInstallLifecyclePhase | Unset):
         links (AppInstallLinks | Unset):
         metadata (AppInstallMetadata | Unset):
@@ -138,6 +144,7 @@ class AppInstall:
     expected_project_id: str | Unset = UNSET
     expected_subscription_id: str | Unset = UNSET
     gcp_account: AppGCPAccount | Unset = UNSET
+    health_cluster_error: str | Unset = UNSET
     id: str | Unset = UNSET
     install_action_workflows: list[AppInstallActionWorkflow] | Unset = UNSET
     install_components: list[AppInstallComponent] | Unset = UNSET
@@ -150,6 +157,7 @@ class AppInstall:
     install_stack: AppInstallStack | Unset = UNSET
     install_states: list[AppInstallState] | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
+    last_health_report_at: str | Unset = UNSET
     lifecycle_phase: AppInstallLifecyclePhase | Unset = UNSET
     links: AppInstallLinks | Unset = UNSET
     metadata: AppInstallMetadata | Unset = UNSET
@@ -247,6 +255,8 @@ class AppInstall:
         if not isinstance(self.gcp_account, Unset):
             gcp_account = self.gcp_account.to_dict()
 
+        health_cluster_error = self.health_cluster_error
+
         id = self.id
 
         install_action_workflows: list[dict[str, Any]] | Unset = UNSET
@@ -311,6 +321,8 @@ class AppInstall:
         labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
+
+        last_health_report_at = self.last_health_report_at
 
         lifecycle_phase: dict[str, Any] | Unset = UNSET
         if not isinstance(self.lifecycle_phase, Unset):
@@ -419,6 +431,8 @@ class AppInstall:
             field_dict["expected_subscription_id"] = expected_subscription_id
         if gcp_account is not UNSET:
             field_dict["gcp_account"] = gcp_account
+        if health_cluster_error is not UNSET:
+            field_dict["health_cluster_error"] = health_cluster_error
         if id is not UNSET:
             field_dict["id"] = id
         if install_action_workflows is not UNSET:
@@ -443,6 +457,8 @@ class AppInstall:
             field_dict["install_states"] = install_states
         if labels is not UNSET:
             field_dict["labels"] = labels
+        if last_health_report_at is not UNSET:
+            field_dict["last_health_report_at"] = last_health_report_at
         if lifecycle_phase is not UNSET:
             field_dict["lifecycle_phase"] = lifecycle_phase
         if links is not UNSET:
@@ -621,6 +637,8 @@ class AppInstall:
         else:
             gcp_account = AppGCPAccount.from_dict(_gcp_account)
 
+        health_cluster_error = d.pop("health_cluster_error", UNSET)
+
         id = d.pop("id", UNSET)
 
         _install_action_workflows = d.pop("install_action_workflows", UNSET)
@@ -708,6 +726,8 @@ class AppInstall:
             labels = UNSET
         else:
             labels = GithubComNuoncoNuonPkgLabelsLabels.from_dict(_labels)
+
+        last_health_report_at = d.pop("last_health_report_at", UNSET)
 
         _lifecycle_phase = d.pop("lifecycle_phase", UNSET)
         lifecycle_phase: AppInstallLifecyclePhase | Unset
@@ -809,6 +829,7 @@ class AppInstall:
             expected_project_id=expected_project_id,
             expected_subscription_id=expected_subscription_id,
             gcp_account=gcp_account,
+            health_cluster_error=health_cluster_error,
             id=id,
             install_action_workflows=install_action_workflows,
             install_components=install_components,
@@ -821,6 +842,7 @@ class AppInstall:
             install_stack=install_stack,
             install_states=install_states,
             labels=labels,
+            last_health_report_at=last_health_report_at,
             lifecycle_phase=lifecycle_phase,
             links=links,
             metadata=metadata,
