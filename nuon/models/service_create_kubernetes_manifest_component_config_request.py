@@ -37,6 +37,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
         health_block_deploy (bool | None | Unset):
         health_enabled (bool | None | Unset):
         health_probes (list[ServiceHealthProbeRequest] | Unset):
+        health_required_checks (list[str] | Unset):
         health_stabilization_window (str | Unset): Duration string for the health stabilization window (e.g., "3m")
         kubernetes_context (str | Unset):
         kustomize (ServiceKustomizeConfigRequest | Unset):
@@ -62,6 +63,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
     health_block_deploy: bool | None | Unset = UNSET
     health_enabled: bool | None | Unset = UNSET
     health_probes: list[ServiceHealthProbeRequest] | Unset = UNSET
+    health_required_checks: list[str] | Unset = UNSET
     health_stabilization_window: str | Unset = UNSET
     kubernetes_context: str | Unset = UNSET
     kustomize: ServiceKustomizeConfigRequest | Unset = UNSET
@@ -116,6 +118,10 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             for health_probes_item_data in self.health_probes:
                 health_probes_item = health_probes_item_data.to_dict()
                 health_probes.append(health_probes_item)
+
+        health_required_checks: list[str] | Unset = UNSET
+        if not isinstance(self.health_required_checks, Unset):
+            health_required_checks = self.health_required_checks
 
         health_stabilization_window = self.health_stabilization_window
 
@@ -174,6 +180,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             field_dict["health_enabled"] = health_enabled
         if health_probes is not UNSET:
             field_dict["health_probes"] = health_probes
+        if health_required_checks is not UNSET:
+            field_dict["health_required_checks"] = health_required_checks
         if health_stabilization_window is not UNSET:
             field_dict["health_stabilization_window"] = health_stabilization_window
         if kubernetes_context is not UNSET:
@@ -260,6 +268,8 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
                 health_probes.append(health_probes_item)
 
+        health_required_checks = cast(list[str], d.pop("health_required_checks", UNSET))
+
         health_stabilization_window = d.pop("health_stabilization_window", UNSET)
 
         kubernetes_context = d.pop("kubernetes_context", UNSET)
@@ -312,6 +322,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
             health_block_deploy=health_block_deploy,
             health_enabled=health_enabled,
             health_probes=health_probes,
+            health_required_checks=health_required_checks,
             health_stabilization_window=health_stabilization_window,
             kubernetes_context=kubernetes_context,
             kustomize=kustomize,

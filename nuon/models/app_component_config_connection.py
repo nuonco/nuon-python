@@ -47,6 +47,7 @@ class AppComponentConfigConnection:
         health_block_deploy (bool | None | Unset):
         health_enabled (bool | None | Unset):
         health_probes (list[AppComponentHealthProbe] | Unset):
+        health_required_checks (list[str] | Unset):
         health_stabilization_window (str | Unset): Duration string for how long health must hold after a deploy applies
             (e.g., "3m"). Max 1h.
         helm (AppHelmComponentConfig | Unset):
@@ -90,6 +91,7 @@ class AppComponentConfigConnection:
     health_block_deploy: bool | None | Unset = UNSET
     health_enabled: bool | None | Unset = UNSET
     health_probes: list[AppComponentHealthProbe] | Unset = UNSET
+    health_required_checks: list[str] | Unset = UNSET
     health_stabilization_window: str | Unset = UNSET
     helm: AppHelmComponentConfig | Unset = UNSET
     id: str | Unset = UNSET
@@ -165,6 +167,10 @@ class AppComponentConfigConnection:
             for health_probes_item_data in self.health_probes:
                 health_probes_item = health_probes_item_data.to_dict()
                 health_probes.append(health_probes_item)
+
+        health_required_checks: list[str] | Unset = UNSET
+        if not isinstance(self.health_required_checks, Unset):
+            health_required_checks = self.health_required_checks
 
         health_stabilization_window = self.health_stabilization_window
 
@@ -262,6 +268,8 @@ class AppComponentConfigConnection:
             field_dict["health_enabled"] = health_enabled
         if health_probes is not UNSET:
             field_dict["health_probes"] = health_probes
+        if health_required_checks is not UNSET:
+            field_dict["health_required_checks"] = health_required_checks
         if health_stabilization_window is not UNSET:
             field_dict["health_stabilization_window"] = health_stabilization_window
         if helm is not UNSET:
@@ -382,6 +390,8 @@ class AppComponentConfigConnection:
 
                 health_probes.append(health_probes_item)
 
+        health_required_checks = cast(list[str], d.pop("health_required_checks", UNSET))
+
         health_stabilization_window = d.pop("health_stabilization_window", UNSET)
 
         _helm = d.pop("helm", UNSET)
@@ -479,6 +489,7 @@ class AppComponentConfigConnection:
             health_block_deploy=health_block_deploy,
             health_enabled=health_enabled,
             health_probes=health_probes,
+            health_required_checks=health_required_checks,
             health_stabilization_window=health_stabilization_window,
             helm=helm,
             id=id,
