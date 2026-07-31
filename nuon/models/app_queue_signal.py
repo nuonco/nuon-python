@@ -28,6 +28,7 @@ class AppQueueSignal:
         callbacks (list[CallbackRef] | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        dedupe_key (str | Unset):
         emitter_id (str | Unset): Optional: if this signal was emitted by an emitter
         enqueued (bool | Unset):
         execution_count (int | Unset):
@@ -50,6 +51,7 @@ class AppQueueSignal:
     callbacks: list[CallbackRef] | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    dedupe_key: str | Unset = UNSET
     emitter_id: str | Unset = UNSET
     enqueued: bool | Unset = UNSET
     execution_count: int | Unset = UNSET
@@ -83,6 +85,8 @@ class AppQueueSignal:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        dedupe_key = self.dedupe_key
 
         emitter_id = self.emitter_id
 
@@ -137,6 +141,8 @@ class AppQueueSignal:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if dedupe_key is not UNSET:
+            field_dict["dedupe_key"] = dedupe_key
         if emitter_id is not UNSET:
             field_dict["emitter_id"] = emitter_id
         if enqueued is not UNSET:
@@ -202,6 +208,8 @@ class AppQueueSignal:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        dedupe_key = d.pop("dedupe_key", UNSET)
+
         emitter_id = d.pop("emitter_id", UNSET)
 
         enqueued = d.pop("enqueued", UNSET)
@@ -264,6 +272,7 @@ class AppQueueSignal:
             callbacks=callbacks,
             created_at=created_at,
             created_by_id=created_by_id,
+            dedupe_key=dedupe_key,
             emitter_id=emitter_id,
             enqueued=enqueued,
             execution_count=execution_count,

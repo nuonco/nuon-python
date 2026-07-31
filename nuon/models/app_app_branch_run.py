@@ -59,6 +59,7 @@ class AppAppBranchRun:
         started_at (str | Unset): StartedAt tracks when execution actually began
         status (str | Unset): Status tracks the current state of the run
             Values: pending, running, success, failed, cancelled
+        trigger_event_dispatch_id (str | Unset):
         updated_at (str | Unset):
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
         workflow (AppWorkflow | Unset):
@@ -92,6 +93,7 @@ class AppAppBranchRun:
     run_type: AppAppBranchRunType | Unset = UNSET
     started_at: str | Unset = UNSET
     status: str | Unset = UNSET
+    trigger_event_dispatch_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connection_commit: AppVCSConnectionCommit | Unset = UNSET
     workflow: AppWorkflow | Unset = UNSET
@@ -169,6 +171,8 @@ class AppAppBranchRun:
 
         status = self.status
 
+        trigger_event_dispatch_id = self.trigger_event_dispatch_id
+
         updated_at = self.updated_at
 
         vcs_connection_commit: dict[str, Any] | Unset = UNSET
@@ -238,6 +242,8 @@ class AppAppBranchRun:
             field_dict["started_at"] = started_at
         if status is not UNSET:
             field_dict["status"] = status
+        if trigger_event_dispatch_id is not UNSET:
+            field_dict["trigger_event_dispatch_id"] = trigger_event_dispatch_id
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connection_commit is not UNSET:
@@ -355,6 +361,8 @@ class AppAppBranchRun:
 
         status = d.pop("status", UNSET)
 
+        trigger_event_dispatch_id = d.pop("trigger_event_dispatch_id", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connection_commit = d.pop("vcs_connection_commit", UNSET)
@@ -401,6 +409,7 @@ class AppAppBranchRun:
             run_type=run_type,
             started_at=started_at,
             status=status,
+            trigger_event_dispatch_id=trigger_event_dispatch_id,
             updated_at=updated_at,
             vcs_connection_commit=vcs_connection_commit,
             workflow=workflow,

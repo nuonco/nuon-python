@@ -273,6 +273,11 @@ from .app_terraform_workspace_state import AppTerraformWorkspaceState
 from .app_terraform_workspace_state_json import AppTerraformWorkspaceStateJSON
 from .app_token import AppToken
 from .app_token_type import AppTokenType
+from .app_trigger_filter import AppTriggerFilter
+from .app_trigger_filter_type import AppTriggerFilterType
+from .app_trigger_rule import AppTriggerRule
+from .app_trigger_rule_input_mappings import AppTriggerRuleInputMappings
+from .app_trigger_target_type import AppTriggerTargetType
 from .app_user_journey import AppUserJourney
 from .app_user_journey_step import AppUserJourneyStep
 from .app_user_journey_step_metadata import AppUserJourneyStepMetadata
@@ -1054,6 +1059,11 @@ __all__ = (
     "AppTerraformWorkspaceStateJSON",
     "AppToken",
     "AppTokenType",
+    "AppTriggerFilter",
+    "AppTriggerFilterType",
+    "AppTriggerRule",
+    "AppTriggerRuleInputMappings",
+    "AppTriggerTargetType",
     "AppUserJourney",
     "AppUserJourneyStep",
     "AppUserJourneyStepMetadata",
