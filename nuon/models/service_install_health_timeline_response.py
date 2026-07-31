@@ -20,6 +20,8 @@ T = TypeVar("T", bound="ServiceInstallHealthTimelineResponse")
 class ServiceInstallHealthTimelineResponse:
     """
     Attributes:
+        cluster_access_error (str | Unset): ClusterAccessError is why health cannot currently inspect the install's
+            cluster, empty when it can. Surfaced once here rather than per component.
         components (list[ServiceInstallComponentHealthSummary] | Unset):
         current_health (str | Unset):
         daily (list[ServiceDailyHealthBucket] | Unset):
@@ -29,6 +31,7 @@ class ServiceInstallHealthTimelineResponse:
         uptime_percent (float | Unset):
     """
 
+    cluster_access_error: str | Unset = UNSET
     components: list[ServiceInstallComponentHealthSummary] | Unset = UNSET
     current_health: str | Unset = UNSET
     daily: list[ServiceDailyHealthBucket] | Unset = UNSET
@@ -39,6 +42,8 @@ class ServiceInstallHealthTimelineResponse:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        cluster_access_error = self.cluster_access_error
+
         components: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.components, Unset):
             components = []
@@ -66,6 +71,8 @@ class ServiceInstallHealthTimelineResponse:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if cluster_access_error is not UNSET:
+            field_dict["cluster_access_error"] = cluster_access_error
         if components is not UNSET:
             field_dict["components"] = components
         if current_health is not UNSET:
@@ -89,6 +96,8 @@ class ServiceInstallHealthTimelineResponse:
         from ..models.service_install_component_health_summary import ServiceInstallComponentHealthSummary
 
         d = dict(src_dict)
+        cluster_access_error = d.pop("cluster_access_error", UNSET)
+
         _components = d.pop("components", UNSET)
         components: list[ServiceInstallComponentHealthSummary] | Unset = UNSET
         if _components is not UNSET:
@@ -118,6 +127,7 @@ class ServiceInstallHealthTimelineResponse:
         uptime_percent = d.pop("uptime_percent", UNSET)
 
         service_install_health_timeline_response = cls(
+            cluster_access_error=cluster_access_error,
             components=components,
             current_health=current_health,
             daily=daily,

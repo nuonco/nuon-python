@@ -20,6 +20,8 @@ class ServiceInstallComponentHealthSummary:
         component_name (str | Unset):
         current_health (str | Unset):
         install_component_id (str | Unset):
+        observed_seconds (int | Unset): ObservedSeconds distinguishes "no data" from "0% up" — without it a
+            component that was never observed renders as total downtime.
         uptime_percent (float | Unset):
     """
 
@@ -27,6 +29,7 @@ class ServiceInstallComponentHealthSummary:
     component_name: str | Unset = UNSET
     current_health: str | Unset = UNSET
     install_component_id: str | Unset = UNSET
+    observed_seconds: int | Unset = UNSET
     uptime_percent: float | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,6 +41,8 @@ class ServiceInstallComponentHealthSummary:
         current_health = self.current_health
 
         install_component_id = self.install_component_id
+
+        observed_seconds = self.observed_seconds
 
         uptime_percent = self.uptime_percent
 
@@ -52,6 +57,8 @@ class ServiceInstallComponentHealthSummary:
             field_dict["current_health"] = current_health
         if install_component_id is not UNSET:
             field_dict["install_component_id"] = install_component_id
+        if observed_seconds is not UNSET:
+            field_dict["observed_seconds"] = observed_seconds
         if uptime_percent is not UNSET:
             field_dict["uptime_percent"] = uptime_percent
 
@@ -68,6 +75,8 @@ class ServiceInstallComponentHealthSummary:
 
         install_component_id = d.pop("install_component_id", UNSET)
 
+        observed_seconds = d.pop("observed_seconds", UNSET)
+
         uptime_percent = d.pop("uptime_percent", UNSET)
 
         service_install_component_health_summary = cls(
@@ -75,6 +84,7 @@ class ServiceInstallComponentHealthSummary:
             component_name=component_name,
             current_health=current_health,
             install_component_id=install_component_id,
+            observed_seconds=observed_seconds,
             uptime_percent=uptime_percent,
         )
 
