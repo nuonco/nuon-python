@@ -20,6 +20,7 @@ class ServiceCLIConfig:
         auth_domain (str | Unset):
         dashboard_url (str | Unset):
         nuon_auth_enabled (bool | Unset):
+        oidc_federation_enabled (bool | Unset):
         root_domain (str | Unset):
     """
 
@@ -28,6 +29,7 @@ class ServiceCLIConfig:
     auth_domain: str | Unset = UNSET
     dashboard_url: str | Unset = UNSET
     nuon_auth_enabled: bool | Unset = UNSET
+    oidc_federation_enabled: bool | Unset = UNSET
     root_domain: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,6 +43,8 @@ class ServiceCLIConfig:
         dashboard_url = self.dashboard_url
 
         nuon_auth_enabled = self.nuon_auth_enabled
+
+        oidc_federation_enabled = self.oidc_federation_enabled
 
         root_domain = self.root_domain
 
@@ -57,6 +61,8 @@ class ServiceCLIConfig:
             field_dict["dashboard_url"] = dashboard_url
         if nuon_auth_enabled is not UNSET:
             field_dict["nuon_auth_enabled"] = nuon_auth_enabled
+        if oidc_federation_enabled is not UNSET:
+            field_dict["oidc_federation_enabled"] = oidc_federation_enabled
         if root_domain is not UNSET:
             field_dict["root_domain"] = root_domain
 
@@ -75,6 +81,8 @@ class ServiceCLIConfig:
 
         nuon_auth_enabled = d.pop("nuon_auth_enabled", UNSET)
 
+        oidc_federation_enabled = d.pop("oidc_federation_enabled", UNSET)
+
         root_domain = d.pop("root_domain", UNSET)
 
         service_cli_config = cls(
@@ -83,6 +91,7 @@ class ServiceCLIConfig:
             auth_domain=auth_domain,
             dashboard_url=dashboard_url,
             nuon_auth_enabled=nuon_auth_enabled,
+            oidc_federation_enabled=oidc_federation_enabled,
             root_domain=root_domain,
         )
 

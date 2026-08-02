@@ -14,12 +14,15 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     install_id: str,
     *,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
+
+    params["synced"] = synced
 
     params["offset"] = offset
 
@@ -99,6 +102,7 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -109,6 +113,7 @@ def sync_detailed(
 
     Args:
         install_id (str):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -123,6 +128,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        synced=synced,
         offset=offset,
         limit=limit,
         page=page,
@@ -139,6 +145,7 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -149,6 +156,7 @@ def sync(
 
     Args:
         install_id (str):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -164,6 +172,7 @@ def sync(
     return sync_detailed(
         install_id=install_id,
         client=client,
+        synced=synced,
         offset=offset,
         limit=limit,
         page=page,
@@ -174,6 +183,7 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -184,6 +194,7 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -198,6 +209,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        synced=synced,
         offset=offset,
         limit=limit,
         page=page,
@@ -212,6 +224,7 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    synced: bool | Unset = True,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -222,6 +235,7 @@ async def asyncio(
 
     Args:
         install_id (str):
+        synced (bool | Unset):  Default: True.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -238,6 +252,7 @@ async def asyncio(
         await asyncio_detailed(
             install_id=install_id,
             client=client,
+            synced=synced,
             offset=offset,
             limit=limit,
             page=page,

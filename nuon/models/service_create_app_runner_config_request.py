@@ -27,6 +27,7 @@ class ServiceCreateAppRunnerConfigRequest:
         helm_driver (AppAppRunnerConfigHelmDriverType | Unset):
         init_script_url (str | Unset):
         instance_type (str | Unset):
+        phone_home_script_url (str | Unset): PhoneHomeScriptURL overrides the phone-home Lambda source for this app.
         public_api_url (str | Unset):
         runner_api_url (str | Unset):
     """
@@ -37,6 +38,7 @@ class ServiceCreateAppRunnerConfigRequest:
     helm_driver: AppAppRunnerConfigHelmDriverType | Unset = UNSET
     init_script_url: str | Unset = UNSET
     instance_type: str | Unset = UNSET
+    phone_home_script_url: str | Unset = UNSET
     public_api_url: str | Unset = UNSET
     runner_api_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -57,6 +59,8 @@ class ServiceCreateAppRunnerConfigRequest:
         init_script_url = self.init_script_url
 
         instance_type = self.instance_type
+
+        phone_home_script_url = self.phone_home_script_url
 
         public_api_url = self.public_api_url
 
@@ -79,6 +83,8 @@ class ServiceCreateAppRunnerConfigRequest:
             field_dict["init_script_url"] = init_script_url
         if instance_type is not UNSET:
             field_dict["instance_type"] = instance_type
+        if phone_home_script_url is not UNSET:
+            field_dict["phone_home_script_url"] = phone_home_script_url
         if public_api_url is not UNSET:
             field_dict["public_api_url"] = public_api_url
         if runner_api_url is not UNSET:
@@ -115,6 +121,8 @@ class ServiceCreateAppRunnerConfigRequest:
 
         instance_type = d.pop("instance_type", UNSET)
 
+        phone_home_script_url = d.pop("phone_home_script_url", UNSET)
+
         public_api_url = d.pop("public_api_url", UNSET)
 
         runner_api_url = d.pop("runner_api_url", UNSET)
@@ -126,6 +134,7 @@ class ServiceCreateAppRunnerConfigRequest:
             helm_driver=helm_driver,
             init_script_url=init_script_url,
             instance_type=instance_type,
+            phone_home_script_url=phone_home_script_url,
             public_api_url=public_api_url,
             runner_api_url=runner_api_url,
         )

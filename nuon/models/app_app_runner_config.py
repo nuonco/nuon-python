@@ -35,6 +35,10 @@ class AppAppRunnerConfig:
         instance_type (str | Unset): InstanceType is the cloud machine/instance type for the install runner host, mapped
             per cloud platform.
         org_id (str | Unset):
+        phone_home_script_url (str | Unset): PhoneHomeScriptURL overrides the phone-home Lambda source fetched at stack
+            render time. Per app so a single app can be moved onto a new script version
+            without touching anyone else: the default is shared by every org, so changing
+            it ships to the whole fleet on their next stack regeneration.
         public_api_url (str | Unset): PublicAPIURL overrides the Nuon public API endpoint used for phone-home callbacks.
         runner_api_url (str | Unset): RunnerAPIURL overrides the Nuon runner API endpoint for installs using this
             config.
@@ -53,6 +57,7 @@ class AppAppRunnerConfig:
     init_script: str | Unset = UNSET
     instance_type: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    phone_home_script_url: str | Unset = UNSET
     public_api_url: str | Unset = UNSET
     runner_api_url: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -89,6 +94,8 @@ class AppAppRunnerConfig:
 
         org_id = self.org_id
 
+        phone_home_script_url = self.phone_home_script_url
+
         public_api_url = self.public_api_url
 
         runner_api_url = self.runner_api_url
@@ -122,6 +129,8 @@ class AppAppRunnerConfig:
             field_dict["instance_type"] = instance_type
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if phone_home_script_url is not UNSET:
+            field_dict["phone_home_script_url"] = phone_home_script_url
         if public_api_url is not UNSET:
             field_dict["public_api_url"] = public_api_url
         if runner_api_url is not UNSET:
@@ -175,6 +184,8 @@ class AppAppRunnerConfig:
 
         org_id = d.pop("org_id", UNSET)
 
+        phone_home_script_url = d.pop("phone_home_script_url", UNSET)
+
         public_api_url = d.pop("public_api_url", UNSET)
 
         runner_api_url = d.pop("runner_api_url", UNSET)
@@ -194,6 +205,7 @@ class AppAppRunnerConfig:
             init_script=init_script,
             instance_type=instance_type,
             org_id=org_id,
+            phone_home_script_url=phone_home_script_url,
             public_api_url=public_api_url,
             runner_api_url=runner_api_url,
             updated_at=updated_at,
