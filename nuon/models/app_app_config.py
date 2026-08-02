@@ -59,6 +59,7 @@ class AppAppConfig:
         permissions (AppAppPermissionsConfig | Unset):
         policies (AppAppPoliciesConfig | Unset):
         readme (str | Unset):
+        runbook_ids (list[str] | Unset):
         runner (AppAppRunnerConfig | Unset):
         sandbox (AppAppSandboxConfig | Unset):
         secrets (AppAppSecretsConfig | Unset):
@@ -95,6 +96,7 @@ class AppAppConfig:
     permissions: AppAppPermissionsConfig | Unset = UNSET
     policies: AppAppPoliciesConfig | Unset = UNSET
     readme: str | Unset = UNSET
+    runbook_ids: list[str] | Unset = UNSET
     runner: AppAppRunnerConfig | Unset = UNSET
     sandbox: AppAppSandboxConfig | Unset = UNSET
     secrets: AppAppSecretsConfig | Unset = UNSET
@@ -186,6 +188,10 @@ class AppAppConfig:
 
         readme = self.readme
 
+        runbook_ids: list[str] | Unset = UNSET
+        if not isinstance(self.runbook_ids, Unset):
+            runbook_ids = self.runbook_ids
+
         runner: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner, Unset):
             runner = self.runner.to_dict()
@@ -276,6 +282,8 @@ class AppAppConfig:
             field_dict["policies"] = policies
         if readme is not UNSET:
             field_dict["readme"] = readme
+        if runbook_ids is not UNSET:
+            field_dict["runbook_ids"] = runbook_ids
         if runner is not UNSET:
             field_dict["runner"] = runner
         if sandbox is not UNSET:
@@ -430,6 +438,8 @@ class AppAppConfig:
 
         readme = d.pop("readme", UNSET)
 
+        runbook_ids = cast(list[str], d.pop("runbook_ids", UNSET))
+
         _runner = d.pop("runner", UNSET)
         runner: AppAppRunnerConfig | Unset
         if isinstance(_runner, Unset):
@@ -519,6 +529,7 @@ class AppAppConfig:
             permissions=permissions,
             policies=policies,
             readme=readme,
+            runbook_ids=runbook_ids,
             runner=runner,
             sandbox=sandbox,
             secrets=secrets,

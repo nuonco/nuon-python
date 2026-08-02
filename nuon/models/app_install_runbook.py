@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_runbook_run import AppInstallRunbookRun
     from ..models.app_runbook import AppRunbook
 
@@ -28,6 +29,7 @@ class AppInstallRunbook:
         runbook_id (str | Unset):
         runs (list[AppInstallRunbookRun] | Unset):
         status (str | Unset): after query fields
+        status_v2 (AppCompositeStatus | Unset):
         updated_at (str | Unset):
     """
 
@@ -39,6 +41,7 @@ class AppInstallRunbook:
     runbook_id: str | Unset = UNSET
     runs: list[AppInstallRunbookRun] | Unset = UNSET
     status: str | Unset = UNSET
+    status_v2: AppCompositeStatus | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -66,6 +69,10 @@ class AppInstallRunbook:
 
         status = self.status
 
+        status_v2: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.status_v2, Unset):
+            status_v2 = self.status_v2.to_dict()
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -87,6 +94,8 @@ class AppInstallRunbook:
             field_dict["runs"] = runs
         if status is not UNSET:
             field_dict["status"] = status
+        if status_v2 is not UNSET:
+            field_dict["status_v2"] = status_v2
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -94,6 +103,7 @@ class AppInstallRunbook:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_runbook_run import AppInstallRunbookRun
         from ..models.app_runbook import AppRunbook
 
@@ -126,6 +136,13 @@ class AppInstallRunbook:
 
         status = d.pop("status", UNSET)
 
+        _status_v2 = d.pop("status_v2", UNSET)
+        status_v2: AppCompositeStatus | Unset
+        if isinstance(_status_v2, Unset):
+            status_v2 = UNSET
+        else:
+            status_v2 = AppCompositeStatus.from_dict(_status_v2)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_install_runbook = cls(
@@ -137,6 +154,7 @@ class AppInstallRunbook:
             runbook_id=runbook_id,
             runs=runs,
             status=status,
+            status_v2=status_v2,
             updated_at=updated_at,
         )
 

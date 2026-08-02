@@ -172,6 +172,8 @@ from .app_notebook_cell_run_env_vars import AppNotebookCellRunEnvVars
 from .app_notifications_config import AppNotificationsConfig
 from .app_oci_artifact import AppOCIArtifact
 from .app_oci_artifact_annotations import AppOCIArtifactAnnotations
+from .app_oidc_trust_policy import AppOIDCTrustPolicy
+from .app_oidc_trust_policy_claim_conditions import AppOIDCTrustPolicyClaimConditions
 from .app_onboarding import AppOnboarding
 from .app_onboarding_app_config import AppOnboardingAppConfig
 from .app_operation_status import AppOperationStatus
@@ -583,6 +585,10 @@ from .service_create_kubernetes_manifest_component_config_request_operation_role
     ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
 )
 from .service_create_notebook_request import ServiceCreateNotebookRequest
+from .service_create_oidc_trust_policy_request import ServiceCreateOIDCTrustPolicyRequest
+from .service_create_oidc_trust_policy_request_claim_conditions import (
+    ServiceCreateOIDCTrustPolicyRequestClaimConditions,
+)
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
 from .service_create_org_link_request import ServiceCreateOrgLinkRequest
 from .service_create_org_request import ServiceCreateOrgRequest
@@ -630,6 +636,8 @@ from .service_deploy_install_components_request import ServiceDeployInstallCompo
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
 from .service_example_app import ServiceExampleApp
+from .service_exchange_oidc_token_request import ServiceExchangeOIDCTokenRequest
+from .service_exchange_oidc_token_response import ServiceExchangeOIDCTokenResponse
 from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
@@ -729,6 +737,10 @@ from .service_update_install_request import ServiceUpdateInstallRequest
 from .service_update_install_role_request import ServiceUpdateInstallRoleRequest
 from .service_update_notebook_request import ServiceUpdateNotebookRequest
 from .service_update_notebook_request_status import ServiceUpdateNotebookRequestStatus
+from .service_update_oidc_trust_policy_request import ServiceUpdateOIDCTrustPolicyRequest
+from .service_update_oidc_trust_policy_request_claim_conditions import (
+    ServiceUpdateOIDCTrustPolicyRequestClaimConditions,
+)
 from .service_update_org_account_role_request import ServiceUpdateOrgAccountRoleRequest
 from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
@@ -962,6 +974,8 @@ __all__ = (
     "AppNotificationsConfig",
     "AppOCIArtifact",
     "AppOCIArtifactAnnotations",
+    "AppOIDCTrustPolicy",
+    "AppOIDCTrustPolicyClaimConditions",
     "AppOnboarding",
     "AppOnboardingAppConfig",
     "AppOperationStatus",
@@ -1345,6 +1359,8 @@ __all__ = (
     "ServiceCreateKubernetesManifestComponentConfigRequest",
     "ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles",
     "ServiceCreateNotebookRequest",
+    "ServiceCreateOIDCTrustPolicyRequest",
+    "ServiceCreateOIDCTrustPolicyRequestClaimConditions",
     "ServiceCreateOrgInviteRequest",
     "ServiceCreateOrgLinkRequest",
     "ServiceCreateOrgRequest",
@@ -1384,6 +1400,8 @@ __all__ = (
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
     "ServiceExampleApp",
+    "ServiceExchangeOIDCTokenRequest",
+    "ServiceExchangeOIDCTokenResponse",
     "ServiceForceShutdownRequest",
     "ServiceForgetInstallComponentRequest",
     "ServiceForgetInstallRequest",
@@ -1481,6 +1499,8 @@ __all__ = (
     "ServiceUpdateInstallRoleRequest",
     "ServiceUpdateNotebookRequest",
     "ServiceUpdateNotebookRequestStatus",
+    "ServiceUpdateOIDCTrustPolicyRequest",
+    "ServiceUpdateOIDCTrustPolicyRequestClaimConditions",
     "ServiceUpdateOrgAccountRoleRequest",
     "ServiceUpdateOrgFeaturesRequest",
     "ServiceUpdateOrgFeaturesRequestFeatures",

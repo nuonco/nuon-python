@@ -6,6 +6,7 @@ class AppTokenType(str, Enum):
     AUTH = "auth"
     AUTH0 = "auth0"
     CANARY = "canary"
+    FEDERATED = "federated"
     INTEGRATION = "integration"
     NUON = "nuon"
     STATIC = "static"

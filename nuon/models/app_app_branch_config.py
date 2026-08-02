@@ -33,6 +33,7 @@ class AppAppBranchConfig:
         install_groups (list[AppAppBranchInstallGroup] | Unset):
         org_id (str | Unset):
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
+        runbook_ids (list[str] | Unset):
         updated_at (str | Unset):
         workflows (list[AppWorkflow] | Unset):
     """
@@ -48,6 +49,7 @@ class AppAppBranchConfig:
     install_groups: list[AppAppBranchInstallGroup] | Unset = UNSET
     org_id: str | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
+    runbook_ids: list[str] | Unset = UNSET
     updated_at: str | Unset = UNSET
     workflows: list[AppWorkflow] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -88,6 +90,10 @@ class AppAppBranchConfig:
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
 
+        runbook_ids: list[str] | Unset = UNSET
+        if not isinstance(self.runbook_ids, Unset):
+            runbook_ids = self.runbook_ids
+
         updated_at = self.updated_at
 
         workflows: list[dict[str, Any]] | Unset = UNSET
@@ -122,6 +128,8 @@ class AppAppBranchConfig:
             field_dict["org_id"] = org_id
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if runbook_ids is not UNSET:
+            field_dict["runbook_ids"] = runbook_ids
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if workflows is not UNSET:
@@ -176,6 +184,8 @@ class AppAppBranchConfig:
         else:
             public_git_vcs_config = AppPublicGitVCSConfig.from_dict(_public_git_vcs_config)
 
+        runbook_ids = cast(list[str], d.pop("runbook_ids", UNSET))
+
         updated_at = d.pop("updated_at", UNSET)
 
         _workflows = d.pop("workflows", UNSET)
@@ -199,6 +209,7 @@ class AppAppBranchConfig:
             install_groups=install_groups,
             org_id=org_id,
             public_git_vcs_config=public_git_vcs_config,
+            runbook_ids=runbook_ids,
             updated_at=updated_at,
             workflows=workflows,
         )
