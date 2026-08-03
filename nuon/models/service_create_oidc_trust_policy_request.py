@@ -29,7 +29,7 @@ class ServiceCreateOIDCTrustPolicyRequest:
         issuer_url (str): exact `iss` claim value; also used for OIDC discovery + JWKS fetching
         name (str): human-friendly name to identify the policy
         role (str | Unset): org role granted to exchanged tokens. one of org_admin, org_support,
-            org_read_only. defaults to org_read_only.
+            org_read_only, org_builder. defaults to org_read_only.
         token_duration_seconds (int | Unset): lifetime of exchanged tokens in seconds. defaults to 3600, max 86400.
     """
 
