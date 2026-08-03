@@ -17,7 +17,7 @@ class ServiceCreateStaticTokenRequest:
     Attributes:
         name (str): human-friendly name to identify the token later
         duration (str | Unset): defaults to one year Default: '8760h'.
-        role (str | Unset): org role granted to the token. one of org_admin, org_support, org_read_only.
+        role (str | Unset): org role granted to the token. one of org_admin, org_support, org_read_only, org_builder.
             defaults to org_read_only.
     """
 

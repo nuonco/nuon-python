@@ -5,6 +5,7 @@ class AppRoleType(str, Enum):
     HOSTED_INSTALLER = "hosted-installer"
     INSTALLER = "installer"
     ORG_ADMIN = "org_admin"
+    ORG_BUILDER = "org_builder"
     ORG_READ_ONLY = "org_read_only"
     ORG_SUPPORT = "org_support"
     RUNNER = "runner"
