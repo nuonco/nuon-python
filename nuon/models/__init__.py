@@ -691,6 +691,7 @@ from .service_remove_org_user_request import ServiceRemoveOrgUserRequest
 from .service_reorder_cells_request import ServiceReorderCellsRequest
 from .service_reprovision_install_request import ServiceReprovisionInstallRequest
 from .service_reprovision_install_sandbox_request import ServiceReprovisionInstallSandboxRequest
+from .service_reprovision_install_stack_request import ServiceReprovisionInstallStackRequest
 from .service_reset_install_health_baseline_response import ServiceResetInstallHealthBaselineResponse
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
@@ -1453,6 +1454,7 @@ __all__ = (
     "ServiceReorderCellsRequest",
     "ServiceReprovisionInstallRequest",
     "ServiceReprovisionInstallSandboxRequest",
+    "ServiceReprovisionInstallStackRequest",
     "ServiceResetInstallHealthBaselineResponse",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
