@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_branch_config import AppAppBranchConfig
+    from ..models.app_app_branch_run import AppAppBranchRun
     from ..models.app_queue import AppQueue
     from ..models.app_workflow import AppWorkflow
 
@@ -26,6 +27,7 @@ class AppAppBranch:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
+        latest_run (AppAppBranchRun | Unset):
         managed_by (str | Unset):
         name (str | Unset):
         org_id (str | Unset):
@@ -40,6 +42,7 @@ class AppAppBranch:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    latest_run: AppAppBranchRun | Unset = UNSET
     managed_by: str | Unset = UNSET
     name: str | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -64,6 +67,10 @@ class AppAppBranch:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        latest_run: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.latest_run, Unset):
+            latest_run = self.latest_run.to_dict()
 
         managed_by = self.managed_by
 
@@ -99,6 +106,8 @@ class AppAppBranch:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if latest_run is not UNSET:
+            field_dict["latest_run"] = latest_run
         if managed_by is not UNSET:
             field_dict["managed_by"] = managed_by
         if name is not UNSET:
@@ -119,6 +128,7 @@ class AppAppBranch:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_branch_config import AppAppBranchConfig
+        from ..models.app_app_branch_run import AppAppBranchRun
         from ..models.app_queue import AppQueue
         from ..models.app_workflow import AppWorkflow
 
@@ -139,6 +149,13 @@ class AppAppBranch:
         created_by_id = d.pop("created_by_id", UNSET)
 
         id = d.pop("id", UNSET)
+
+        _latest_run = d.pop("latest_run", UNSET)
+        latest_run: AppAppBranchRun | Unset
+        if isinstance(_latest_run, Unset):
+            latest_run = UNSET
+        else:
+            latest_run = AppAppBranchRun.from_dict(_latest_run)
 
         managed_by = d.pop("managed_by", UNSET)
 
@@ -172,6 +189,7 @@ class AppAppBranch:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            latest_run=latest_run,
             managed_by=managed_by,
             name=name,
             org_id=org_id,
