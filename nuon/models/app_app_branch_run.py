@@ -30,6 +30,7 @@ class AppAppBranchRun:
         app_branch (AppAppBranch | Unset):
         app_branch_config (AppAppBranchConfig | Unset):
         app_config_id (str | Unset): AppConfigID is the app config that was created/synced during this run
+        awaiting_approval (bool | Unset):
         base_branch (str | Unset):
         commit_sha (str | Unset): CommitSHA is the VCS commit that triggered or is associated with this run
             DEPRECATED: Use VCSConnectionCommit relationship instead
@@ -69,6 +70,7 @@ class AppAppBranchRun:
     app_branch: AppAppBranch | Unset = UNSET
     app_branch_config: AppAppBranchConfig | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    awaiting_approval: bool | Unset = UNSET
     base_branch: str | Unset = UNSET
     commit_sha: str | Unset = UNSET
     completed_at: str | Unset = UNSET
@@ -110,6 +112,8 @@ class AppAppBranchRun:
             app_branch_config = self.app_branch_config.to_dict()
 
         app_config_id = self.app_config_id
+
+        awaiting_approval = self.awaiting_approval
 
         base_branch = self.base_branch
 
@@ -194,6 +198,8 @@ class AppAppBranchRun:
             field_dict["app_branch_config"] = app_branch_config
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if awaiting_approval is not UNSET:
+            field_dict["awaiting_approval"] = awaiting_approval
         if base_branch is not UNSET:
             field_dict["base_branch"] = base_branch
         if commit_sha is not UNSET:
@@ -282,6 +288,8 @@ class AppAppBranchRun:
             app_branch_config = AppAppBranchConfig.from_dict(_app_branch_config)
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        awaiting_approval = d.pop("awaiting_approval", UNSET)
 
         base_branch = d.pop("base_branch", UNSET)
 
@@ -385,6 +393,7 @@ class AppAppBranchRun:
             app_branch=app_branch,
             app_branch_config=app_branch_config,
             app_config_id=app_config_id,
+            awaiting_approval=awaiting_approval,
             base_branch=base_branch,
             commit_sha=commit_sha,
             completed_at=completed_at,

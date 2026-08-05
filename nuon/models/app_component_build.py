@@ -28,6 +28,7 @@ T = TypeVar("T", bound="AppComponentBuild")
 class AppComponentBuild:
     """
     Attributes:
+        app_branch_id (str | Unset):
         app_branch_run_id (str | Unset):
         build_runner_job_id (str | Unset):
         checksum (str | Unset): checksum of our intermediate component config
@@ -86,6 +87,7 @@ class AppComponentBuild:
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
     """
 
+    app_branch_id: str | Unset = UNSET
     app_branch_run_id: str | Unset = UNSET
     build_runner_job_id: str | Unset = UNSET
     checksum: str | Unset = UNSET
@@ -121,6 +123,8 @@ class AppComponentBuild:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_id = self.app_branch_id
+
         app_branch_run_id = self.app_branch_run_id
 
         build_runner_job_id = self.build_runner_job_id
@@ -217,6 +221,8 @@ class AppComponentBuild:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
         if app_branch_run_id is not UNSET:
             field_dict["app_branch_run_id"] = app_branch_run_id
         if build_runner_job_id is not UNSET:
@@ -298,6 +304,8 @@ class AppComponentBuild:
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
 
         d = dict(src_dict)
+        app_branch_id = d.pop("app_branch_id", UNSET)
+
         app_branch_run_id = d.pop("app_branch_run_id", UNSET)
 
         build_runner_job_id = d.pop("build_runner_job_id", UNSET)
@@ -419,6 +427,7 @@ class AppComponentBuild:
             vcs_connection_commit = AppVCSConnectionCommit.from_dict(_vcs_connection_commit)
 
         app_component_build = cls(
+            app_branch_id=app_branch_id,
             app_branch_run_id=app_branch_run_id,
             build_runner_job_id=build_runner_job_id,
             checksum=checksum,
