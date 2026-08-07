@@ -21,10 +21,12 @@ class ServiceCreateRunbookRunRequest:
     """
     Attributes:
         inputs (ServiceCreateRunbookRunRequestInputs | Unset):
+        role (str | Unset):
         steps (list[ServiceCreateRunbookRunStepSelection] | Unset):
     """
 
     inputs: ServiceCreateRunbookRunRequestInputs | Unset = UNSET
+    role: str | Unset = UNSET
     steps: list[ServiceCreateRunbookRunStepSelection] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,6 +34,8 @@ class ServiceCreateRunbookRunRequest:
         inputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.inputs, Unset):
             inputs = self.inputs.to_dict()
+
+        role = self.role
 
         steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
@@ -45,6 +49,8 @@ class ServiceCreateRunbookRunRequest:
         field_dict.update({})
         if inputs is not UNSET:
             field_dict["inputs"] = inputs
+        if role is not UNSET:
+            field_dict["role"] = role
         if steps is not UNSET:
             field_dict["steps"] = steps
 
@@ -63,6 +69,8 @@ class ServiceCreateRunbookRunRequest:
         else:
             inputs = ServiceCreateRunbookRunRequestInputs.from_dict(_inputs)
 
+        role = d.pop("role", UNSET)
+
         _steps = d.pop("steps", UNSET)
         steps: list[ServiceCreateRunbookRunStepSelection] | Unset = UNSET
         if _steps is not UNSET:
@@ -74,6 +82,7 @@ class ServiceCreateRunbookRunRequest:
 
         service_create_runbook_run_request = cls(
             inputs=inputs,
+            role=role,
             steps=steps,
         )
 
