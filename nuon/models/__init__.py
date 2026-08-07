@@ -590,7 +590,6 @@ from .service_create_oidc_trust_policy_request_claim_conditions import (
     ServiceCreateOIDCTrustPolicyRequestClaimConditions,
 )
 from .service_create_org_invite_request import ServiceCreateOrgInviteRequest
-from .service_create_org_link_request import ServiceCreateOrgLinkRequest
 from .service_create_org_request import ServiceCreateOrgRequest
 from .service_create_org_user_request import ServiceCreateOrgUserRequest
 from .service_create_pulumi_component_config_request import ServiceCreatePulumiComponentConfigRequest
@@ -1363,7 +1362,6 @@ __all__ = (
     "ServiceCreateOIDCTrustPolicyRequest",
     "ServiceCreateOIDCTrustPolicyRequestClaimConditions",
     "ServiceCreateOrgInviteRequest",
-    "ServiceCreateOrgLinkRequest",
     "ServiceCreateOrgRequest",
     "ServiceCreateOrgUserRequest",
     "ServiceCreatePulumiComponentConfigRequest",
