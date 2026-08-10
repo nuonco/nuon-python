@@ -5,6 +5,7 @@ class AppWorkflowStepApprovalType(str, Enum):
     APPROVE_ALL = "approve-all"
     APP_BRANCH_PLAN = "app_branch_plan"
     HELM_APPROVAL = "helm_approval"
+    INSTALL_CREATION = "install_creation"
     KUBERNETES_MANIFEST_APPROVAL = "kubernetes_manifest_approval"
     NOOP = "noop"
     PULUMI_PLAN = "pulumi_plan"

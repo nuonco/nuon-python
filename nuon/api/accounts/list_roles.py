@@ -5,16 +5,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_role_info import ServiceRoleInfo
+from ...models.app_role import AppRole
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    context: str | Unset = UNSET,
+) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    params["context"] = context
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/roles",
+        "params": params,
     }
 
     return _kwargs
@@ -22,12 +32,12 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[ServiceRoleInfo] | None:
+) -> StderrErrResponse | list[AppRole] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ServiceRoleInfo.from_dict(response_200_item_data)
+            response_200_item = AppRole.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -51,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[ServiceRoleInfo]]:
+) -> Response[StderrErrResponse | list[AppRole]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,22 +73,31 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[ServiceRoleInfo]]:
-    """List assignable roles
+    context: str | Unset = UNSET,
+) -> Response[StderrErrResponse | list[AppRole]]:
+    """List your org's roles
 
-     List the roles that can be assigned to members and service accounts in an
-    organization. Each role indicates which principal types it applies to via the
-    `applies_to` field (`user`, `service_account`, or both).
+     List your org's roles. Each role carries its display metadata (`title`,
+    `description`) and the assignment surfaces it may be offered on via the
+    `applies_to` field (`team`, `service_account`, `api_token`,
+    `oidc_trust_policy`). A role with no `applies_to` entries exists and may be
+    displayed, but cannot be newly assigned. Pass `?context=<surface>` to filter
+    to the roles assignable on a single surface.
+
+    Args:
+        context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[ServiceRoleInfo]]
+        Response[StderrErrResponse | list[AppRole]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        context=context,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -90,45 +109,62 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[ServiceRoleInfo] | None:
-    """List assignable roles
+    context: str | Unset = UNSET,
+) -> StderrErrResponse | list[AppRole] | None:
+    """List your org's roles
 
-     List the roles that can be assigned to members and service accounts in an
-    organization. Each role indicates which principal types it applies to via the
-    `applies_to` field (`user`, `service_account`, or both).
+     List your org's roles. Each role carries its display metadata (`title`,
+    `description`) and the assignment surfaces it may be offered on via the
+    `applies_to` field (`team`, `service_account`, `api_token`,
+    `oidc_trust_policy`). A role with no `applies_to` entries exists and may be
+    displayed, but cannot be newly assigned. Pass `?context=<surface>` to filter
+    to the roles assignable on a single surface.
+
+    Args:
+        context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[ServiceRoleInfo]
+        StderrErrResponse | list[AppRole]
     """
 
     return sync_detailed(
         client=client,
+        context=context,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[StderrErrResponse | list[ServiceRoleInfo]]:
-    """List assignable roles
+    context: str | Unset = UNSET,
+) -> Response[StderrErrResponse | list[AppRole]]:
+    """List your org's roles
 
-     List the roles that can be assigned to members and service accounts in an
-    organization. Each role indicates which principal types it applies to via the
-    `applies_to` field (`user`, `service_account`, or both).
+     List your org's roles. Each role carries its display metadata (`title`,
+    `description`) and the assignment surfaces it may be offered on via the
+    `applies_to` field (`team`, `service_account`, `api_token`,
+    `oidc_trust_policy`). A role with no `applies_to` entries exists and may be
+    displayed, but cannot be newly assigned. Pass `?context=<surface>` to filter
+    to the roles assignable on a single surface.
+
+    Args:
+        context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[ServiceRoleInfo]]
+        Response[StderrErrResponse | list[AppRole]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        context=context,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -138,23 +174,31 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> StderrErrResponse | list[ServiceRoleInfo] | None:
-    """List assignable roles
+    context: str | Unset = UNSET,
+) -> StderrErrResponse | list[AppRole] | None:
+    """List your org's roles
 
-     List the roles that can be assigned to members and service accounts in an
-    organization. Each role indicates which principal types it applies to via the
-    `applies_to` field (`user`, `service_account`, or both).
+     List your org's roles. Each role carries its display metadata (`title`,
+    `description`) and the assignment surfaces it may be offered on via the
+    `applies_to` field (`team`, `service_account`, `api_token`,
+    `oidc_trust_policy`). A role with no `applies_to` entries exists and may be
+    displayed, but cannot be newly assigned. Pass `?context=<surface>` to filter
+    to the roles assignable on a single surface.
+
+    Args:
+        context (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[ServiceRoleInfo]
+        StderrErrResponse | list[AppRole]
     """
 
     return (
         await asyncio_detailed(
             client=client,
+            context=context,
         )
     ).parsed

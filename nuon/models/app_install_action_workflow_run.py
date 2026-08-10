@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.app_action_workflow_config import AppActionWorkflowConfig
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
+    from ..models.app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
     from ..models.app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
     from ..models.app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
     from ..models.app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
@@ -31,6 +32,7 @@ class AppInstallActionWorkflowRun:
     """
     Attributes:
         action_workflow_config_id (str | Unset):
+        composite_error (AppInstallActionWorkflowRunCompositeError | Unset):
         config (AppActionWorkflowConfig | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
@@ -64,6 +66,7 @@ class AppInstallActionWorkflowRun:
     """
 
     action_workflow_config_id: str | Unset = UNSET
+    composite_error: AppInstallActionWorkflowRunCompositeError | Unset = UNSET
     config: AppActionWorkflowConfig | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
@@ -96,6 +99,10 @@ class AppInstallActionWorkflowRun:
 
     def to_dict(self) -> dict[str, Any]:
         action_workflow_config_id = self.action_workflow_config_id
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.config, Unset):
@@ -185,6 +192,8 @@ class AppInstallActionWorkflowRun:
         field_dict.update({})
         if action_workflow_config_id is not UNSET:
             field_dict["action_workflow_config_id"] = action_workflow_config_id
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if config is not UNSET:
             field_dict["config"] = config
         if created_at is not UNSET:
@@ -250,6 +259,7 @@ class AppInstallActionWorkflowRun:
         from ..models.app_action_workflow_config import AppActionWorkflowConfig
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
+        from ..models.app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
         from ..models.app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
         from ..models.app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
         from ..models.app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
@@ -260,6 +270,13 @@ class AppInstallActionWorkflowRun:
 
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: AppInstallActionWorkflowRunCompositeError | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = AppInstallActionWorkflowRunCompositeError.from_dict(_composite_error)
 
         _config = d.pop("config", UNSET)
         config: AppActionWorkflowConfig | Unset
@@ -381,6 +398,7 @@ class AppInstallActionWorkflowRun:
 
         app_install_action_workflow_run = cls(
             action_workflow_config_id=action_workflow_config_id,
+            composite_error=composite_error,
             config=config,
             created_at=created_at,
             created_by=created_by,

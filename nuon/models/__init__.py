@@ -26,6 +26,8 @@ from .app_app_input import AppAppInput
 from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
 from .app_app_input_source import AppAppInputSource
+from .app_app_install_config_sync import AppAppInstallConfigSync
+from .app_app_installs_config import AppAppInstallsConfig
 from .app_app_kubernetes_context_config import AppAppKubernetesContextConfig
 from .app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
 from .app_app_label_colors import AppAppLabelColors
@@ -67,6 +69,7 @@ from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
+from .app_component_build_composite_error import AppComponentBuildCompositeError
 from .app_component_config_connection import AppComponentConfigConnection
 from .app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
 from .app_component_diff_entry import AppComponentDiffEntry
@@ -100,6 +103,7 @@ from .app_helm_repo_config import AppHelmRepoConfig
 from .app_install import AppInstall
 from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
+from .app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
 from .app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
 from .app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
 from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunStatus
@@ -123,6 +127,8 @@ from .app_install_config_sync import AppInstallConfigSync
 from .app_install_config_sync_metadata import AppInstallConfigSyncMetadata
 from .app_install_config_version import AppInstallConfigVersion
 from .app_install_config_version_metadata import AppInstallConfigVersionMetadata
+from .app_install_creation_approval import AppInstallCreationApproval
+from .app_install_creation_approval_status import AppInstallCreationApprovalStatus
 from .app_install_deploy import AppInstallDeploy
 from .app_install_deploy_outputs import AppInstallDeployOutputs
 from .app_install_deploy_type import AppInstallDeployType
@@ -195,6 +201,7 @@ from .app_policy_report import AppPolicyReport
 from .app_policy_report_owner_type import AppPolicyReportOwnerType
 from .app_policy_result import AppPolicyResult
 from .app_policy_violation import AppPolicyViolation
+from .app_proposed_install import AppProposedInstall
 from .app_provider_type import AppProviderType
 from .app_public_git_vcs_config import AppPublicGitVCSConfig
 from .app_pulumi_component_config import AppPulumiComponentConfig
@@ -326,6 +333,7 @@ from .configs_oci_registry_type import ConfigsOCIRegistryType
 from .credentials_assume_role_config import CredentialsAssumeRoleConfig
 from .credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
 from .credentials_static_credentials import CredentialsStaticCredentials
+from .delete_app_installs_config_response_200 import DeleteAppInstallsConfigResponse200
 from .diff_diff import DiffDiff
 from .diff_diff_key import DiffDiffKey
 from .diff_diff_summary import DiffDiffSummary
@@ -440,6 +448,7 @@ from .plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
 from .queue_status_response import QueueStatusResponse
 from .refs_ref import RefsRef
 from .refs_ref_type import RefsRefType
+from .respond_install_creation_approval_response_202 import RespondInstallCreationApprovalResponse202
 from .service_add_action_labels_request import ServiceAddActionLabelsRequest
 from .service_add_action_labels_request_labels import ServiceAddActionLabelsRequestLabels
 from .service_add_component_labels_request import ServiceAddComponentLabelsRequest
@@ -510,6 +519,8 @@ from .service_create_app_config_request import ServiceCreateAppConfigRequest
 from .service_create_app_input_config_request import ServiceCreateAppInputConfigRequest
 from .service_create_app_input_config_request_groups import ServiceCreateAppInputConfigRequestGroups
 from .service_create_app_input_config_request_inputs import ServiceCreateAppInputConfigRequestInputs
+from .service_create_app_installs_config_request import ServiceCreateAppInstallsConfigRequest
+from .service_create_app_installs_config_request_vcs_type import ServiceCreateAppInstallsConfigRequestVcsType
 from .service_create_app_kubernetes_contexts_config_request import ServiceCreateAppKubernetesContextsConfigRequest
 from .service_create_app_operation_role_config_request import ServiceCreateAppOperationRoleConfigRequest
 from .service_create_app_permissions_config_request import ServiceCreateAppPermissionsConfigRequest
@@ -692,10 +703,13 @@ from .service_reprovision_install_request import ServiceReprovisionInstallReques
 from .service_reprovision_install_sandbox_request import ServiceReprovisionInstallSandboxRequest
 from .service_reprovision_install_stack_request import ServiceReprovisionInstallStackRequest
 from .service_reset_install_health_baseline_response import ServiceResetInstallHealthBaselineResponse
+from .service_respond_install_creation_approval_request import ServiceRespondInstallCreationApprovalRequest
+from .service_respond_install_creation_approval_request_response_type import (
+    ServiceRespondInstallCreationApprovalRequestResponseType,
+)
 from .service_retry_workflow_request import ServiceRetryWorkflowRequest
 from .service_retry_workflow_response import ServiceRetryWorkflowResponse
 from .service_retry_workflow_step_response import ServiceRetryWorkflowStepResponse
-from .service_role_info import ServiceRoleInfo
 from .service_run_cell_request import ServiceRunCellRequest
 from .service_runner_card_details_response import ServiceRunnerCardDetailsResponse
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
@@ -828,6 +842,8 @@ __all__ = (
     "AppAppInputConfig",
     "AppAppInputGroup",
     "AppAppInputSource",
+    "AppAppInstallConfigSync",
+    "AppAppInstallsConfig",
     "AppAppKubernetesContextConfig",
     "AppAppKubernetesContextsConfig",
     "AppAppLabelColors",
@@ -869,6 +885,7 @@ __all__ = (
     "AppCloudPlatformRegion",
     "AppComponent",
     "AppComponentBuild",
+    "AppComponentBuildCompositeError",
     "AppComponentConfigConnection",
     "AppComponentConfigConnectionOperationRoles",
     "AppComponentDiffEntry",
@@ -902,6 +919,7 @@ __all__ = (
     "AppInstall",
     "AppInstallActionWorkflow",
     "AppInstallActionWorkflowRun",
+    "AppInstallActionWorkflowRunCompositeError",
     "AppInstallActionWorkflowRunOutputs",
     "AppInstallActionWorkflowRunRunEnvVars",
     "AppInstallActionWorkflowRunStatus",
@@ -925,6 +943,8 @@ __all__ = (
     "AppInstallConfigSyncMetadata",
     "AppInstallConfigVersion",
     "AppInstallConfigVersionMetadata",
+    "AppInstallCreationApproval",
+    "AppInstallCreationApprovalStatus",
     "AppInstallDeploy",
     "AppInstallDeployOutputs",
     "AppInstallDeployType",
@@ -997,6 +1017,7 @@ __all__ = (
     "AppPolicyReportOwnerType",
     "AppPolicyResult",
     "AppPolicyViolation",
+    "AppProposedInstall",
     "AppProviderType",
     "AppPublicGitVCSConfig",
     "AppPulumiComponentConfig",
@@ -1126,6 +1147,7 @@ __all__ = (
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",
+    "DeleteAppInstallsConfigResponse200",
     "DiffDiff",
     "DiffDiffKey",
     "DiffDiffSummary",
@@ -1236,6 +1258,7 @@ __all__ = (
     "QueueStatusResponse",
     "RefsRef",
     "RefsRefType",
+    "RespondInstallCreationApprovalResponse202",
     "ServiceAddActionLabelsRequest",
     "ServiceAddActionLabelsRequestLabels",
     "ServiceAddComponentLabelsRequest",
@@ -1302,6 +1325,8 @@ __all__ = (
     "ServiceCreateAppInputConfigRequest",
     "ServiceCreateAppInputConfigRequestGroups",
     "ServiceCreateAppInputConfigRequestInputs",
+    "ServiceCreateAppInstallsConfigRequest",
+    "ServiceCreateAppInstallsConfigRequestVcsType",
     "ServiceCreateAppKubernetesContextsConfigRequest",
     "ServiceCreateAppOperationRoleConfigRequest",
     "ServiceCreateAppPermissionsConfigRequest",
@@ -1454,10 +1479,11 @@ __all__ = (
     "ServiceReprovisionInstallSandboxRequest",
     "ServiceReprovisionInstallStackRequest",
     "ServiceResetInstallHealthBaselineResponse",
+    "ServiceRespondInstallCreationApprovalRequest",
+    "ServiceRespondInstallCreationApprovalRequestResponseType",
     "ServiceRetryWorkflowRequest",
     "ServiceRetryWorkflowResponse",
     "ServiceRetryWorkflowStepResponse",
-    "ServiceRoleInfo",
     "ServiceRunCellRequest",
     "ServiceRunnerCardDetailsResponse",
     "ServiceRunnerConnectionStatus",

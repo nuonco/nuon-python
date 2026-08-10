@@ -6,43 +6,37 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_docker_build_component_config import AppDockerBuildComponentConfig
-from ...models.service_create_docker_build_component_config_request import (
-    ServiceCreateDockerBuildComponentConfigRequest,
-)
+from ...models.app_app_install_config_sync import AppAppInstallConfigSync
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    component_id: str,
-    *,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
+    app_id: str,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/v1/components/{component_id}/configs/docker-build".format(
-            component_id=quote(str(component_id), safe=""),
+        "method": "get",
+        "url": "/v1/apps/{app_id}/install-syncs".format(
+            app_id=quote(str(app_id), safe=""),
         ),
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    if response.status_code == 201:
-        response_201 = AppDockerBuildComponentConfig.from_dict(response.json())
+) -> StderrErrResponse | list[AppAppInstallConfigSync] | None:
+    if response.status_code == 200:
+        response_200 = []
+        _response_200 = response.json()
+        for response_200_item_data in _response_200:
+            response_200_item = AppAppInstallConfigSync.from_dict(response_200_item_data)
 
-        return response_201
+            response_200.append(response_200_item)
+
+        return response_200
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -64,11 +58,6 @@ def _parse_response(
 
         return response_404
 
-    if response.status_code == 409:
-        response_409 = StderrErrResponse.from_dict(response.json())
-
-        return response_409
-
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -82,7 +71,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
+) -> Response[StderrErrResponse | list[AppAppInstallConfigSync]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,31 +81,27 @@ def _build_response(
 
 
 def sync_detailed(
-    component_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
-    """create a docker build component config
+) -> Response[StderrErrResponse | list[AppAppInstallConfigSync]]:
+    """list app install config syncs
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Returns a list of app install config sync records for the given app.
 
     Args:
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        app_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppDockerBuildComponentConfig | StderrErrResponse]
+        Response[StderrErrResponse | list[AppAppInstallConfigSync]]
     """
 
     kwargs = _get_kwargs(
-        component_id=component_id,
-        body=body,
+        app_id=app_id,
     )
 
     response = client.get_httpx_client().request(
@@ -127,61 +112,53 @@ def sync_detailed(
 
 
 def sync(
-    component_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    """create a docker build component config
+) -> StderrErrResponse | list[AppAppInstallConfigSync] | None:
+    """list app install config syncs
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Returns a list of app install config sync records for the given app.
 
     Args:
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        app_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppDockerBuildComponentConfig | StderrErrResponse
+        StderrErrResponse | list[AppAppInstallConfigSync]
     """
 
     return sync_detailed(
-        component_id=component_id,
+        app_id=app_id,
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    component_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
-    """create a docker build component config
+) -> Response[StderrErrResponse | list[AppAppInstallConfigSync]]:
+    """list app install config syncs
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Returns a list of app install config sync records for the given app.
 
     Args:
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        app_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppDockerBuildComponentConfig | StderrErrResponse]
+        Response[StderrErrResponse | list[AppAppInstallConfigSync]]
     """
 
     kwargs = _get_kwargs(
-        component_id=component_id,
-        body=body,
+        app_id=app_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -190,32 +167,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    component_id: str,
+    app_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    """create a docker build component config
+) -> StderrErrResponse | list[AppAppInstallConfigSync] | None:
+    """list app install config syncs
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Returns a list of app install config sync records for the given app.
 
     Args:
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        app_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppDockerBuildComponentConfig | StderrErrResponse
+        StderrErrResponse | list[AppAppInstallConfigSync]
     """
 
     return (
         await asyncio_detailed(
-            component_id=component_id,
+            app_id=app_id,
             client=client,
-            body=body,
         )
     ).parsed
