@@ -8,6 +8,7 @@ class AppWorkflowType(str, Enum):
     APP_BRANCHES_MANUAL_UPDATE = "app_branches_manual_update"
     APP_BRANCH_CONFIG_UPDATE = "app_branch_config_update"
     APP_CONFIG_BUILD = "app_config_build"
+    APP_INSTALL_SYNC = "app_install_sync"
     COMPONENT_DISABLED = "component_disabled"
     COMPONENT_ENABLED = "component_enabled"
     DEPLOY_COMPONENTS = "deploy_components"

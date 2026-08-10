@@ -67,7 +67,8 @@ def sync_detailed(
 
      Creates a long-lived static API token scoped to your current org. Each token gets its own dedicated
     service account, and only grants access to the current org. The role param controls the token's
-    permissions (org_admin, org_support, org_read_only, or org_builder) and defaults to org_read_only.
+    permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and defaults to
+    org_read_only.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -100,7 +101,8 @@ def sync(
 
      Creates a long-lived static API token scoped to your current org. Each token gets its own dedicated
     service account, and only grants access to the current org. The role param controls the token's
-    permissions (org_admin, org_support, org_read_only, or org_builder) and defaults to org_read_only.
+    permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and defaults to
+    org_read_only.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -128,7 +130,8 @@ async def asyncio_detailed(
 
      Creates a long-lived static API token scoped to your current org. Each token gets its own dedicated
     service account, and only grants access to the current org. The role param controls the token's
-    permissions (org_admin, org_support, org_read_only, or org_builder) and defaults to org_read_only.
+    permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and defaults to
+    org_read_only.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -159,7 +162,8 @@ async def asyncio(
 
      Creates a long-lived static API token scoped to your current org. Each token gets its own dedicated
     service account, and only grants access to the current org. The role param controls the token's
-    permissions (org_admin, org_support, org_read_only, or org_builder) and defaults to org_read_only.
+    permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and defaults to
+    org_read_only.
 
     Args:
         body (ServiceCreateStaticTokenRequest):

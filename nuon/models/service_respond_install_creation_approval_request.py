@@ -6,64 +6,47 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+from ..models.service_respond_install_creation_approval_request_response_type import (
+    ServiceRespondInstallCreationApprovalRequestResponseType,
+)
 
-T = TypeVar("T", bound="ServiceCreateStaticTokenRequest")
+T = TypeVar("T", bound="ServiceRespondInstallCreationApprovalRequest")
 
 
 @_attrs_define
-class ServiceCreateStaticTokenRequest:
+class ServiceRespondInstallCreationApprovalRequest:
     """
     Attributes:
-        name (str): human-friendly name to identify the token later
-        duration (str | Unset): defaults to one year Default: '8760h'.
-        role (str | Unset): org role granted to the token. must be assignable to API tokens; see
-            GET /v1/roles?context=api_token. defaults to org_read_only.
+        response_type (ServiceRespondInstallCreationApprovalRequestResponseType):
     """
 
-    name: str
-    duration: str | Unset = "8760h"
-    role: str | Unset = UNSET
+    response_type: ServiceRespondInstallCreationApprovalRequestResponseType
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        duration = self.duration
-
-        role = self.role
+        response_type = self.response_type.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
+                "response_type": response_type,
             }
         )
-        if duration is not UNSET:
-            field_dict["duration"] = duration
-        if role is not UNSET:
-            field_dict["role"] = role
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        response_type = ServiceRespondInstallCreationApprovalRequestResponseType(d.pop("response_type"))
 
-        duration = d.pop("duration", UNSET)
-
-        role = d.pop("role", UNSET)
-
-        service_create_static_token_request = cls(
-            name=name,
-            duration=duration,
-            role=role,
+        service_respond_install_creation_approval_request = cls(
+            response_type=response_type,
         )
 
-        service_create_static_token_request.additional_properties = d
-        return service_create_static_token_request
+        service_respond_install_creation_approval_request.additional_properties = d
+        return service_respond_install_creation_approval_request
 
     @property
     def additional_keys(self) -> list[str]:

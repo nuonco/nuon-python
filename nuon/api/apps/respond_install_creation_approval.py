@@ -6,27 +6,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_docker_build_component_config import AppDockerBuildComponentConfig
-from ...models.service_create_docker_build_component_config_request import (
-    ServiceCreateDockerBuildComponentConfigRequest,
-)
+from ...models.respond_install_creation_approval_response_202 import RespondInstallCreationApprovalResponse202
+from ...models.service_respond_install_creation_approval_request import ServiceRespondInstallCreationApprovalRequest
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
 def _get_kwargs(
     app_id: str,
-    component_id: str,
+    sync_id: str,
+    approval_id: str,
     *,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
+    body: ServiceRespondInstallCreationApprovalRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/apps/{app_id}/components/{component_id}/configs/docker-build".format(
+        "url": "/v1/apps/{app_id}/install-syncs/{sync_id}/approvals/{approval_id}/response".format(
             app_id=quote(str(app_id), safe=""),
-            component_id=quote(str(component_id), safe=""),
+            sync_id=quote(str(sync_id), safe=""),
+            approval_id=quote(str(approval_id), safe=""),
         ),
     }
 
@@ -40,11 +40,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    if response.status_code == 201:
-        response_201 = AppDockerBuildComponentConfig.from_dict(response.json())
+) -> RespondInstallCreationApprovalResponse202 | StderrErrResponse | None:
+    if response.status_code == 202:
+        response_202 = RespondInstallCreationApprovalResponse202.from_dict(response.json())
 
-        return response_201
+        return response_202
 
     if response.status_code == 400:
         response_400 = StderrErrResponse.from_dict(response.json())
@@ -66,11 +66,6 @@ def _parse_response(
 
         return response_404
 
-    if response.status_code == 409:
-        response_409 = StderrErrResponse.from_dict(response.json())
-
-        return response_409
-
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -84,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
+) -> Response[RespondInstallCreationApprovalResponse202 | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,32 +90,35 @@ def _build_response(
 
 def sync_detailed(
     app_id: str,
-    component_id: str,
+    sync_id: str,
+    approval_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
-    """create a docker build component config
+    body: ServiceRespondInstallCreationApprovalRequest,
+) -> Response[RespondInstallCreationApprovalResponse202 | StderrErrResponse]:
+    """respond to an install creation approval
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Approves or denies an install creation approval. On approve, creates the missing installs and re-
+    triggers the sync. On deny, marks the approval as denied.
 
     Args:
         app_id (str):
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        sync_id (str):
+        approval_id (str):
+        body (ServiceRespondInstallCreationApprovalRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppDockerBuildComponentConfig | StderrErrResponse]
+        Response[RespondInstallCreationApprovalResponse202 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        component_id=component_id,
+        sync_id=sync_id,
+        approval_id=approval_id,
         body=body,
     )
 
@@ -133,32 +131,35 @@ def sync_detailed(
 
 def sync(
     app_id: str,
-    component_id: str,
+    sync_id: str,
+    approval_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    """create a docker build component config
+    body: ServiceRespondInstallCreationApprovalRequest,
+) -> RespondInstallCreationApprovalResponse202 | StderrErrResponse | None:
+    """respond to an install creation approval
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Approves or denies an install creation approval. On approve, creates the missing installs and re-
+    triggers the sync. On deny, marks the approval as denied.
 
     Args:
         app_id (str):
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        sync_id (str):
+        approval_id (str):
+        body (ServiceRespondInstallCreationApprovalRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppDockerBuildComponentConfig | StderrErrResponse
+        RespondInstallCreationApprovalResponse202 | StderrErrResponse
     """
 
     return sync_detailed(
         app_id=app_id,
-        component_id=component_id,
+        sync_id=sync_id,
+        approval_id=approval_id,
         client=client,
         body=body,
     ).parsed
@@ -166,32 +167,35 @@ def sync(
 
 async def asyncio_detailed(
     app_id: str,
-    component_id: str,
+    sync_id: str,
+    approval_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> Response[AppDockerBuildComponentConfig | StderrErrResponse]:
-    """create a docker build component config
+    body: ServiceRespondInstallCreationApprovalRequest,
+) -> Response[RespondInstallCreationApprovalResponse202 | StderrErrResponse]:
+    """respond to an install creation approval
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Approves or denies an install creation approval. On approve, creates the missing installs and re-
+    triggers the sync. On deny, marks the approval as denied.
 
     Args:
         app_id (str):
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        sync_id (str):
+        approval_id (str):
+        body (ServiceRespondInstallCreationApprovalRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppDockerBuildComponentConfig | StderrErrResponse]
+        Response[RespondInstallCreationApprovalResponse202 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
         app_id=app_id,
-        component_id=component_id,
+        sync_id=sync_id,
+        approval_id=approval_id,
         body=body,
     )
 
@@ -202,33 +206,36 @@ async def asyncio_detailed(
 
 async def asyncio(
     app_id: str,
-    component_id: str,
+    sync_id: str,
+    approval_id: str,
     *,
     client: AuthenticatedClient,
-    body: ServiceCreateDockerBuildComponentConfigRequest,
-) -> AppDockerBuildComponentConfig | StderrErrResponse | None:
-    """create a docker build component config
+    body: ServiceRespondInstallCreationApprovalRequest,
+) -> RespondInstallCreationApprovalResponse202 | StderrErrResponse | None:
+    """respond to an install creation approval
 
-     Deprecated: docker_build components are no longer supported. This endpoint always returns an error.
-    Use a container_image component to reference a pre-built image instead.
+     Approves or denies an install creation approval. On approve, creates the missing installs and re-
+    triggers the sync. On deny, marks the approval as denied.
 
     Args:
         app_id (str):
-        component_id (str):
-        body (ServiceCreateDockerBuildComponentConfigRequest):
+        sync_id (str):
+        approval_id (str):
+        body (ServiceRespondInstallCreationApprovalRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppDockerBuildComponentConfig | StderrErrResponse
+        RespondInstallCreationApprovalResponse202 | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
             app_id=app_id,
-            component_id=component_id,
+            sync_id=sync_id,
+            approval_id=approval_id,
             client=client,
             body=body,
         )
