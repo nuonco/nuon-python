@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,11 +23,15 @@ class ServiceCreateAppBranchConfigRequest:
     Attributes:
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
         install_groups (list[ServiceInstallGroupRequest] | Unset):
+        post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs run on each install, in order, after its
+            deploy succeeds.
+            Omit to carry the current setting forward; send an empty array to clear it.
         public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
     """
 
     connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
     install_groups: list[ServiceInstallGroupRequest] | Unset = UNSET
+    post_deploy_runbook_ids: list[str] | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -43,6 +47,10 @@ class ServiceCreateAppBranchConfigRequest:
                 install_groups_item = install_groups_item_data.to_dict()
                 install_groups.append(install_groups_item)
 
+        post_deploy_runbook_ids: list[str] | Unset = UNSET
+        if not isinstance(self.post_deploy_runbook_ids, Unset):
+            post_deploy_runbook_ids = self.post_deploy_runbook_ids
+
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
@@ -54,6 +62,8 @@ class ServiceCreateAppBranchConfigRequest:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
         if install_groups is not UNSET:
             field_dict["install_groups"] = install_groups
+        if post_deploy_runbook_ids is not UNSET:
+            field_dict["post_deploy_runbook_ids"] = post_deploy_runbook_ids
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
 
@@ -82,6 +92,8 @@ class ServiceCreateAppBranchConfigRequest:
 
                 install_groups.append(install_groups_item)
 
+        post_deploy_runbook_ids = cast(list[str], d.pop("post_deploy_runbook_ids", UNSET))
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -92,6 +104,7 @@ class ServiceCreateAppBranchConfigRequest:
         service_create_app_branch_config_request = cls(
             connected_github_vcs_config=connected_github_vcs_config,
             install_groups=install_groups,
+            post_deploy_runbook_ids=post_deploy_runbook_ids,
             public_git_vcs_config=public_git_vcs_config,
         )
 

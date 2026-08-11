@@ -32,6 +32,10 @@ class AppAppBranchConfig:
         id (str | Unset):
         install_groups (list[AppAppBranchInstallGroup] | Unset):
         org_id (str | Unset):
+        post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs are runbooks run on each install, in order,
+            after its
+            deploy succeeds. Distinct from RunbookIDs, which tracks the runbooks the
+            branch's synced app config produced.
         public_git_vcs_config (AppPublicGitVCSConfig | Unset):
         runbook_ids (list[str] | Unset):
         updated_at (str | Unset):
@@ -48,6 +52,7 @@ class AppAppBranchConfig:
     id: str | Unset = UNSET
     install_groups: list[AppAppBranchInstallGroup] | Unset = UNSET
     org_id: str | Unset = UNSET
+    post_deploy_runbook_ids: list[str] | Unset = UNSET
     public_git_vcs_config: AppPublicGitVCSConfig | Unset = UNSET
     runbook_ids: list[str] | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -85,6 +90,10 @@ class AppAppBranchConfig:
                 install_groups.append(install_groups_item)
 
         org_id = self.org_id
+
+        post_deploy_runbook_ids: list[str] | Unset = UNSET
+        if not isinstance(self.post_deploy_runbook_ids, Unset):
+            post_deploy_runbook_ids = self.post_deploy_runbook_ids
 
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
@@ -126,6 +135,8 @@ class AppAppBranchConfig:
             field_dict["install_groups"] = install_groups
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if post_deploy_runbook_ids is not UNSET:
+            field_dict["post_deploy_runbook_ids"] = post_deploy_runbook_ids
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
         if runbook_ids is not UNSET:
@@ -177,6 +188,8 @@ class AppAppBranchConfig:
 
         org_id = d.pop("org_id", UNSET)
 
+        post_deploy_runbook_ids = cast(list[str], d.pop("post_deploy_runbook_ids", UNSET))
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: AppPublicGitVCSConfig | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -208,6 +221,7 @@ class AppAppBranchConfig:
             id=id,
             install_groups=install_groups,
             org_id=org_id,
+            post_deploy_runbook_ids=post_deploy_runbook_ids,
             public_git_vcs_config=public_git_vcs_config,
             runbook_ids=runbook_ids,
             updated_at=updated_at,

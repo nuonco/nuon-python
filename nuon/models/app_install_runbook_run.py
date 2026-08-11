@@ -31,6 +31,8 @@ class AppInstallRunbookRun:
         created_by_id (str | Unset):
         execution_time (int | Unset): after query
         id (str | Unset):
+        idempotency_key (str | Unset): IdempotencyKey lets a retryable caller (e.g. a Temporal activity) repeat a
+            trigger without starting the runbook twice. Unique where set.
         install_id (str | Unset):
         install_runbook (AppInstallRunbook | Unset):
         install_runbook_id (str | Unset):
@@ -56,6 +58,7 @@ class AppInstallRunbookRun:
     created_by_id: str | Unset = UNSET
     execution_time: int | Unset = UNSET
     id: str | Unset = UNSET
+    idempotency_key: str | Unset = UNSET
     install_id: str | Unset = UNSET
     install_runbook: AppInstallRunbook | Unset = UNSET
     install_runbook_id: str | Unset = UNSET
@@ -86,6 +89,8 @@ class AppInstallRunbookRun:
         execution_time = self.execution_time
 
         id = self.id
+
+        idempotency_key = self.idempotency_key
 
         install_id = self.install_id
 
@@ -149,6 +154,8 @@ class AppInstallRunbookRun:
             field_dict["execution_time"] = execution_time
         if id is not UNSET:
             field_dict["id"] = id
+        if idempotency_key is not UNSET:
+            field_dict["idempotency_key"] = idempotency_key
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
         if install_runbook is not UNSET:
@@ -210,6 +217,8 @@ class AppInstallRunbookRun:
         execution_time = d.pop("execution_time", UNSET)
 
         id = d.pop("id", UNSET)
+
+        idempotency_key = d.pop("idempotency_key", UNSET)
 
         install_id = d.pop("install_id", UNSET)
 
@@ -286,6 +295,7 @@ class AppInstallRunbookRun:
             created_by_id=created_by_id,
             execution_time=execution_time,
             id=id,
+            idempotency_key=idempotency_key,
             install_id=install_id,
             install_runbook=install_runbook,
             install_runbook_id=install_runbook_id,
