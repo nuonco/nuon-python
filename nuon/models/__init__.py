@@ -136,6 +136,7 @@ from .app_install_event import AppInstallEvent
 from .app_install_event_payload import AppInstallEventPayload
 from .app_install_group_run import AppInstallGroupRun
 from .app_install_group_run_install import AppInstallGroupRunInstall
+from .app_install_group_run_runbook import AppInstallGroupRunRunbook
 from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
@@ -952,6 +953,7 @@ __all__ = (
     "AppInstallEventPayload",
     "AppInstallGroupRun",
     "AppInstallGroupRunInstall",
+    "AppInstallGroupRunRunbook",
     "AppInstallInputs",
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
