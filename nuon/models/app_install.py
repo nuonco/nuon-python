@@ -33,6 +33,7 @@ if TYPE_CHECKING:
     from ..models.app_install_sandbox_run import AppInstallSandboxRun
     from ..models.app_install_stack import AppInstallStack
     from ..models.app_install_state import AppInstallState
+    from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus
     from ..models.app_queue import AppQueue
     from ..models.app_workflow import AppWorkflow
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
@@ -100,6 +101,7 @@ class AppInstall:
         links (AppInstallLinks | Unset):
         metadata (AppInstallMetadata | Unset):
         name (str | Unset):
+        phone_home_auth (AppPhoneHomeAuthStatus | Unset):
         queues (list[AppQueue] | Unset):
         runner_id (str | Unset):
         runner_status (str | Unset):
@@ -162,6 +164,7 @@ class AppInstall:
     links: AppInstallLinks | Unset = UNSET
     metadata: AppInstallMetadata | Unset = UNSET
     name: str | Unset = UNSET
+    phone_home_auth: AppPhoneHomeAuthStatus | Unset = UNSET
     queues: list[AppQueue] | Unset = UNSET
     runner_id: str | Unset = UNSET
     runner_status: str | Unset = UNSET
@@ -338,6 +341,10 @@ class AppInstall:
 
         name = self.name
 
+        phone_home_auth: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.phone_home_auth, Unset):
+            phone_home_auth = self.phone_home_auth.to_dict()
+
         queues: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.queues, Unset):
             queues = []
@@ -467,6 +474,8 @@ class AppInstall:
             field_dict["metadata"] = metadata
         if name is not UNSET:
             field_dict["name"] = name
+        if phone_home_auth is not UNSET:
+            field_dict["phone_home_auth"] = phone_home_auth
         if queues is not UNSET:
             field_dict["queues"] = queues
         if runner_id is not UNSET:
@@ -524,6 +533,7 @@ class AppInstall:
         from ..models.app_install_sandbox_run import AppInstallSandboxRun
         from ..models.app_install_stack import AppInstallStack
         from ..models.app_install_state import AppInstallState
+        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus
         from ..models.app_queue import AppQueue
         from ..models.app_workflow import AppWorkflow
         from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
@@ -752,6 +762,13 @@ class AppInstall:
 
         name = d.pop("name", UNSET)
 
+        _phone_home_auth = d.pop("phone_home_auth", UNSET)
+        phone_home_auth: AppPhoneHomeAuthStatus | Unset
+        if isinstance(_phone_home_auth, Unset):
+            phone_home_auth = UNSET
+        else:
+            phone_home_auth = AppPhoneHomeAuthStatus.from_dict(_phone_home_auth)
+
         _queues = d.pop("queues", UNSET)
         queues: list[AppQueue] | Unset = UNSET
         if _queues is not UNSET:
@@ -847,6 +864,7 @@ class AppInstall:
             links=links,
             metadata=metadata,
             name=name,
+            phone_home_auth=phone_home_auth,
             queues=queues,
             runner_id=runner_id,
             runner_status=runner_status,

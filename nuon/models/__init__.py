@@ -194,6 +194,7 @@ from .app_otel_log_record import AppOtelLogRecord
 from .app_otel_log_record_log_attributes import AppOtelLogRecordLogAttributes
 from .app_otel_log_record_resource_attributes import AppOtelLogRecordResourceAttributes
 from .app_otel_log_record_scope_attributes import AppOtelLogRecordScopeAttributes
+from .app_phone_home_auth_status import AppPhoneHomeAuthStatus
 from .app_policy import AppPolicy
 from .app_policy_input_ref import AppPolicyInputRef
 from .app_policy_name import AppPolicyName
@@ -232,6 +233,7 @@ from .app_runner_group_type import AppRunnerGroupType
 from .app_runner_health_check import AppRunnerHealthCheck
 from .app_runner_heart_beat import AppRunnerHeartBeat
 from .app_runner_job import AppRunnerJob
+from .app_runner_job_composite_error import AppRunnerJobCompositeError
 from .app_runner_job_execution import AppRunnerJobExecution
 from .app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
 from .app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
@@ -1011,6 +1013,7 @@ __all__ = (
     "AppOtelLogRecordLogAttributes",
     "AppOtelLogRecordResourceAttributes",
     "AppOtelLogRecordScopeAttributes",
+    "AppPhoneHomeAuthStatus",
     "AppPolicy",
     "AppPolicyInputRef",
     "AppPolicyName",
@@ -1049,6 +1052,7 @@ __all__ = (
     "AppRunnerHealthCheck",
     "AppRunnerHeartBeat",
     "AppRunnerJob",
+    "AppRunnerJobCompositeError",
     "AppRunnerJobExecution",
     "AppRunnerJobExecutionMetadata",
     "AppRunnerJobExecutionOutputs",
