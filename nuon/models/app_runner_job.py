@@ -15,6 +15,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_role_usage import AppInstallRoleUsage
+    from ..models.app_runner_job_composite_error import AppRunnerJobCompositeError
     from ..models.app_runner_job_execution import AppRunnerJobExecution
     from ..models.app_runner_job_metadata import AppRunnerJobMetadata
     from ..models.app_runner_job_outputs import AppRunnerJobOutputs
@@ -30,6 +31,7 @@ class AppRunnerJob:
     Attributes:
         available_timeout (int | Unset): available timeout is how long a job can be marked as "available" before being
             requeued
+        composite_error (AppRunnerJobCompositeError | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         execution_count (int | Unset):
@@ -66,6 +68,7 @@ class AppRunnerJob:
     """
 
     available_timeout: int | Unset = UNSET
+    composite_error: AppRunnerJobCompositeError | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     execution_count: int | Unset = UNSET
@@ -102,6 +105,10 @@ class AppRunnerJob:
 
     def to_dict(self) -> dict[str, Any]:
         available_timeout = self.available_timeout
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         created_at = self.created_at
 
@@ -195,6 +202,8 @@ class AppRunnerJob:
         field_dict.update({})
         if available_timeout is not UNSET:
             field_dict["available_timeout"] = available_timeout
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -266,6 +275,7 @@ class AppRunnerJob:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_role_usage import AppInstallRoleUsage
+        from ..models.app_runner_job_composite_error import AppRunnerJobCompositeError
         from ..models.app_runner_job_execution import AppRunnerJobExecution
         from ..models.app_runner_job_metadata import AppRunnerJobMetadata
         from ..models.app_runner_job_outputs import AppRunnerJobOutputs
@@ -273,6 +283,13 @@ class AppRunnerJob:
 
         d = dict(src_dict)
         available_timeout = d.pop("available_timeout", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: AppRunnerJobCompositeError | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = AppRunnerJobCompositeError.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -392,6 +409,7 @@ class AppRunnerJob:
 
         app_runner_job = cls(
             available_timeout=available_timeout,
+            composite_error=composite_error,
             created_at=created_at,
             created_by_id=created_by_id,
             execution_count=execution_count,
