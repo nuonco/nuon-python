@@ -9,8 +9,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
     from ..models.app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppRunnerJobExecutionResult")
@@ -20,12 +20,7 @@ T = TypeVar("T", bound="AppRunnerJobExecutionResult")
 class AppRunnerJobExecutionResult:
     """
     Attributes:
-        composite_error (AppRunnerJobExecutionResultCompositeError | Unset): CompositeError is the typed, structured
-            error parsed from this execution's
-            failure output at write time. It is the canonical, execution-scoped store
-            for runner-driven composite errors: strictly 1:1 with the attempt and
-            never reused, so it cannot go stale across retries. Aggregate rows derive
-            their displayed error from the latest relevant result; they do not own it.
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         contents (str | Unset):
         contents_display (str | Unset):
         contents_display_gzip (str | Unset):
@@ -41,7 +36,7 @@ class AppRunnerJobExecutionResult:
         updated_at (str | Unset):
     """
 
-    composite_error: AppRunnerJobExecutionResultCompositeError | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     contents: str | Unset = UNSET
     contents_display: str | Unset = UNSET
     contents_display_gzip: str | Unset = UNSET
@@ -126,16 +121,16 @@ class AppRunnerJobExecutionResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
         from ..models.app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         _composite_error = d.pop("composite_error", UNSET)
-        composite_error: AppRunnerJobExecutionResultCompositeError | Unset
+        composite_error: CompositeerrorsCompositeErrorData | Unset
         if isinstance(_composite_error, Unset):
             composite_error = UNSET
         else:
-            composite_error = AppRunnerJobExecutionResultCompositeError.from_dict(_composite_error)
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         contents = d.pop("contents", UNSET)
 
