@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.app_log_stream import AppLogStream
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppAppSandboxBuild")
@@ -26,6 +27,7 @@ class AppAppSandboxBuild:
         app_config_id (str | Unset):
         app_id (str | Unset):
         app_sandbox_config_id (str | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
@@ -43,6 +45,7 @@ class AppAppSandboxBuild:
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
     app_sandbox_config_id: str | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -63,6 +66,10 @@ class AppAppSandboxBuild:
         app_id = self.app_id
 
         app_sandbox_config_id = self.app_sandbox_config_id
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         created_at = self.created_at
 
@@ -107,6 +114,8 @@ class AppAppSandboxBuild:
             field_dict["app_id"] = app_id
         if app_sandbox_config_id is not UNSET:
             field_dict["app_sandbox_config_id"] = app_sandbox_config_id
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by is not UNSET:
@@ -141,6 +150,7 @@ class AppAppSandboxBuild:
         from ..models.app_log_stream import AppLogStream
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -148,6 +158,13 @@ class AppAppSandboxBuild:
         app_id = d.pop("app_id", UNSET)
 
         app_sandbox_config_id = d.pop("app_sandbox_config_id", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -202,6 +219,7 @@ class AppAppSandboxBuild:
             app_config_id=app_config_id,
             app_id=app_id,
             app_sandbox_config_id=app_sandbox_config_id,
+            composite_error=composite_error,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
