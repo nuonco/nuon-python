@@ -10,7 +10,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
-    from ..models.app_component_build_composite_error import AppComponentBuildCompositeError
     from ..models.app_component_config_connection import AppComponentConfigConnection
     from ..models.app_component_release import AppComponentRelease
     from ..models.app_composite_status import AppCompositeStatus
@@ -20,6 +19,7 @@ if TYPE_CHECKING:
     from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppComponentBuild")
@@ -39,7 +39,7 @@ class AppComponentBuild:
         component_config_version (int | Unset):
         component_id (str | Unset): Read-only fields set on the object to de-nest data
         component_name (str | Unset):
-        composite_error (AppComponentBuildCompositeError | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
@@ -98,7 +98,7 @@ class AppComponentBuild:
     component_config_version: int | Unset = UNSET
     component_id: str | Unset = UNSET
     component_name: str | Unset = UNSET
-    composite_error: AppComponentBuildCompositeError | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -302,7 +302,6 @@ class AppComponentBuild:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_account import AppAccount
-        from ..models.app_component_build_composite_error import AppComponentBuildCompositeError
         from ..models.app_component_config_connection import AppComponentConfigConnection
         from ..models.app_component_release import AppComponentRelease
         from ..models.app_composite_status import AppCompositeStatus
@@ -312,6 +311,7 @@ class AppComponentBuild:
         from ..models.app_queue_signal import AppQueueSignal
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)
@@ -338,11 +338,11 @@ class AppComponentBuild:
         component_name = d.pop("component_name", UNSET)
 
         _composite_error = d.pop("composite_error", UNSET)
-        composite_error: AppComponentBuildCompositeError | Unset
+        composite_error: CompositeerrorsCompositeErrorData | Unset
         if isinstance(_composite_error, Unset):
             composite_error = UNSET
         else:
-            composite_error = AppComponentBuildCompositeError.from_dict(_composite_error)
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 

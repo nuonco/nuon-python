@@ -69,7 +69,6 @@ from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
 from .app_component_build import AppComponentBuild
-from .app_component_build_composite_error import AppComponentBuildCompositeError
 from .app_component_config_connection import AppComponentConfigConnection
 from .app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
 from .app_component_diff_entry import AppComponentDiffEntry
@@ -103,7 +102,6 @@ from .app_helm_repo_config import AppHelmRepoConfig
 from .app_install import AppInstall
 from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
-from .app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
 from .app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
 from .app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
 from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunStatus
@@ -233,7 +231,6 @@ from .app_runner_group_type import AppRunnerGroupType
 from .app_runner_health_check import AppRunnerHealthCheck
 from .app_runner_heart_beat import AppRunnerHeartBeat
 from .app_runner_job import AppRunnerJob
-from .app_runner_job_composite_error import AppRunnerJobCompositeError
 from .app_runner_job_execution import AppRunnerJobExecution
 from .app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
 from .app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
@@ -242,7 +239,6 @@ from .app_runner_job_execution_outputs_outputs_additional_property import (
     AppRunnerJobExecutionOutputsOutputsAdditionalProperty,
 )
 from .app_runner_job_execution_result import AppRunnerJobExecutionResult
-from .app_runner_job_execution_result_composite_error import AppRunnerJobExecutionResultCompositeError
 from .app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
 from .app_runner_job_execution_status import AppRunnerJobExecutionStatus
 from .app_runner_job_group import AppRunnerJobGroup
@@ -888,7 +884,6 @@ __all__ = (
     "AppCloudPlatformRegion",
     "AppComponent",
     "AppComponentBuild",
-    "AppComponentBuildCompositeError",
     "AppComponentConfigConnection",
     "AppComponentConfigConnectionOperationRoles",
     "AppComponentDiffEntry",
@@ -922,7 +917,6 @@ __all__ = (
     "AppInstall",
     "AppInstallActionWorkflow",
     "AppInstallActionWorkflowRun",
-    "AppInstallActionWorkflowRunCompositeError",
     "AppInstallActionWorkflowRunOutputs",
     "AppInstallActionWorkflowRunRunEnvVars",
     "AppInstallActionWorkflowRunStatus",
@@ -1052,14 +1046,12 @@ __all__ = (
     "AppRunnerHealthCheck",
     "AppRunnerHeartBeat",
     "AppRunnerJob",
-    "AppRunnerJobCompositeError",
     "AppRunnerJobExecution",
     "AppRunnerJobExecutionMetadata",
     "AppRunnerJobExecutionOutputs",
     "AppRunnerJobExecutionOutputsOutputs",
     "AppRunnerJobExecutionOutputsOutputsAdditionalProperty",
     "AppRunnerJobExecutionResult",
-    "AppRunnerJobExecutionResultCompositeError",
     "AppRunnerJobExecutionResultErrorMetadata",
     "AppRunnerJobExecutionStatus",
     "AppRunnerJobGroup",

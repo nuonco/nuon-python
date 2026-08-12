@@ -14,13 +14,13 @@ if TYPE_CHECKING:
     from ..models.app_action_workflow_config import AppActionWorkflowConfig
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
-    from ..models.app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
     from ..models.app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
     from ..models.app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
     from ..models.app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
     from ..models.app_log_stream import AppLogStream
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_workflow import AppWorkflow
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
     from ..models.sql_null_bool import SqlNullBool
 
 
@@ -32,7 +32,7 @@ class AppInstallActionWorkflowRun:
     """
     Attributes:
         action_workflow_config_id (str | Unset):
-        composite_error (AppInstallActionWorkflowRunCompositeError | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         config (AppActionWorkflowConfig | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
@@ -66,7 +66,7 @@ class AppInstallActionWorkflowRun:
     """
 
     action_workflow_config_id: str | Unset = UNSET
-    composite_error: AppInstallActionWorkflowRunCompositeError | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     config: AppActionWorkflowConfig | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
@@ -259,24 +259,24 @@ class AppInstallActionWorkflowRun:
         from ..models.app_action_workflow_config import AppActionWorkflowConfig
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
-        from ..models.app_install_action_workflow_run_composite_error import AppInstallActionWorkflowRunCompositeError
         from ..models.app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs
         from ..models.app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars
         from ..models.app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
         from ..models.app_log_stream import AppLogStream
         from ..models.app_runner_job import AppRunnerJob
         from ..models.app_workflow import AppWorkflow
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
         from ..models.sql_null_bool import SqlNullBool
 
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)
 
         _composite_error = d.pop("composite_error", UNSET)
-        composite_error: AppInstallActionWorkflowRunCompositeError | Unset
+        composite_error: CompositeerrorsCompositeErrorData | Unset
         if isinstance(_composite_error, Unset):
             composite_error = UNSET
         else:
-            composite_error = AppInstallActionWorkflowRunCompositeError.from_dict(_composite_error)
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         _config = d.pop("config", UNSET)
         config: AppActionWorkflowConfig | Unset

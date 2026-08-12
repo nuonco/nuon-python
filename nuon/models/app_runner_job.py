@@ -15,11 +15,11 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_role_usage import AppInstallRoleUsage
-    from ..models.app_runner_job_composite_error import AppRunnerJobCompositeError
     from ..models.app_runner_job_execution import AppRunnerJobExecution
     from ..models.app_runner_job_metadata import AppRunnerJobMetadata
     from ..models.app_runner_job_outputs import AppRunnerJobOutputs
     from ..models.app_runner_job_plan import AppRunnerJobPlan
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppRunnerJob")
@@ -31,7 +31,7 @@ class AppRunnerJob:
     Attributes:
         available_timeout (int | Unset): available timeout is how long a job can be marked as "available" before being
             requeued
-        composite_error (AppRunnerJobCompositeError | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         execution_count (int | Unset):
@@ -68,7 +68,7 @@ class AppRunnerJob:
     """
 
     available_timeout: int | Unset = UNSET
-    composite_error: AppRunnerJobCompositeError | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     execution_count: int | Unset = UNSET
@@ -275,21 +275,21 @@ class AppRunnerJob:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_composite_status import AppCompositeStatus
         from ..models.app_install_role_usage import AppInstallRoleUsage
-        from ..models.app_runner_job_composite_error import AppRunnerJobCompositeError
         from ..models.app_runner_job_execution import AppRunnerJobExecution
         from ..models.app_runner_job_metadata import AppRunnerJobMetadata
         from ..models.app_runner_job_outputs import AppRunnerJobOutputs
         from ..models.app_runner_job_plan import AppRunnerJobPlan
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
         d = dict(src_dict)
         available_timeout = d.pop("available_timeout", UNSET)
 
         _composite_error = d.pop("composite_error", UNSET)
-        composite_error: AppRunnerJobCompositeError | Unset
+        composite_error: CompositeerrorsCompositeErrorData | Unset
         if isinstance(_composite_error, Unset):
             composite_error = UNSET
         else:
-            composite_error = AppRunnerJobCompositeError.from_dict(_composite_error)
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 

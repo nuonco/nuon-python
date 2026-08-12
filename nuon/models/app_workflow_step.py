@@ -53,6 +53,8 @@ class AppWorkflowStep:
         retried (bool | Unset):
         retry_index (int | Unset):
         retryable (bool | Unset):
+        skip_on_failure (bool | Unset): SkipOnFailure lets the workflow continue past this step after its retry
+            budget is exhausted. Skippable only gates user-initiated skips.
         skippable (bool | Unset):
         started_at (str | Unset):
         status (AppCompositeStatus | Unset):
@@ -105,6 +107,7 @@ class AppWorkflowStep:
     retried: bool | Unset = UNSET
     retry_index: int | Unset = UNSET
     retryable: bool | Unset = UNSET
+    skip_on_failure: bool | Unset = UNSET
     skippable: bool | Unset = UNSET
     started_at: str | Unset = UNSET
     status: AppCompositeStatus | Unset = UNSET
@@ -183,6 +186,8 @@ class AppWorkflowStep:
 
         retryable = self.retryable
 
+        skip_on_failure = self.skip_on_failure
+
         skippable = self.skippable
 
         started_at = self.started_at
@@ -260,6 +265,8 @@ class AppWorkflowStep:
             field_dict["retry_index"] = retry_index
         if retryable is not UNSET:
             field_dict["retryable"] = retryable
+        if skip_on_failure is not UNSET:
+            field_dict["skip_on_failure"] = skip_on_failure
         if skippable is not UNSET:
             field_dict["skippable"] = skippable
         if started_at is not UNSET:
@@ -381,6 +388,8 @@ class AppWorkflowStep:
 
         retryable = d.pop("retryable", UNSET)
 
+        skip_on_failure = d.pop("skip_on_failure", UNSET)
+
         skippable = d.pop("skippable", UNSET)
 
         started_at = d.pop("started_at", UNSET)
@@ -434,6 +443,7 @@ class AppWorkflowStep:
             retried=retried,
             retry_index=retry_index,
             retryable=retryable,
+            skip_on_failure=skip_on_failure,
             skippable=skippable,
             started_at=started_at,
             status=status,
