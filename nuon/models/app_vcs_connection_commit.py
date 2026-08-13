@@ -15,6 +15,7 @@ T = TypeVar("T", bound="AppVCSConnectionCommit")
 class AppVCSConnectionCommit:
     """
     Attributes:
+        author_avatar_url (str | Unset):
         author_email (str | Unset):
         author_name (str | Unset):
         created_at (str | Unset):
@@ -28,6 +29,7 @@ class AppVCSConnectionCommit:
         vcs_connection_id (str | Unset):
     """
 
+    author_avatar_url: str | Unset = UNSET
     author_email: str | Unset = UNSET
     author_name: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -42,6 +44,8 @@ class AppVCSConnectionCommit:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        author_avatar_url = self.author_avatar_url
+
         author_email = self.author_email
 
         author_name = self.author_name
@@ -67,6 +71,8 @@ class AppVCSConnectionCommit:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if author_avatar_url is not UNSET:
+            field_dict["author_avatar_url"] = author_avatar_url
         if author_email is not UNSET:
             field_dict["author_email"] = author_email
         if author_name is not UNSET:
@@ -95,6 +101,8 @@ class AppVCSConnectionCommit:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        author_avatar_url = d.pop("author_avatar_url", UNSET)
+
         author_email = d.pop("author_email", UNSET)
 
         author_name = d.pop("author_name", UNSET)
@@ -118,6 +126,7 @@ class AppVCSConnectionCommit:
         vcs_connection_id = d.pop("vcs_connection_id", UNSET)
 
         app_vcs_connection_commit = cls(
+            author_avatar_url=author_avatar_url,
             author_email=author_email,
             author_name=author_name,
             created_at=created_at,

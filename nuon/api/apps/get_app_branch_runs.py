@@ -18,6 +18,7 @@ def _get_kwargs(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    planonly: bool | Unset = True,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -27,6 +28,8 @@ def _get_kwargs(
     params["limit"] = limit
 
     params["page"] = page
+
+    params["planonly"] = planonly
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -105,6 +108,7 @@ def sync_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    planonly: bool | Unset = True,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
     """get app branch workflow runs
 
@@ -116,6 +120,7 @@ def sync_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        planonly (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,6 +136,7 @@ def sync_detailed(
         offset=offset,
         limit=limit,
         page=page,
+        planonly=planonly,
     )
 
     response = client.get_httpx_client().request(
@@ -148,6 +154,7 @@ def sync(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    planonly: bool | Unset = True,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
     """get app branch workflow runs
 
@@ -159,6 +166,7 @@ def sync(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        planonly (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -175,6 +183,7 @@ def sync(
         offset=offset,
         limit=limit,
         page=page,
+        planonly=planonly,
     ).parsed
 
 
@@ -186,6 +195,7 @@ async def asyncio_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    planonly: bool | Unset = True,
 ) -> Response[StderrErrResponse | list[AppWorkflow]]:
     """get app branch workflow runs
 
@@ -197,6 +207,7 @@ async def asyncio_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        planonly (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -212,6 +223,7 @@ async def asyncio_detailed(
         offset=offset,
         limit=limit,
         page=page,
+        planonly=planonly,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -227,6 +239,7 @@ async def asyncio(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    planonly: bool | Unset = True,
 ) -> StderrErrResponse | list[AppWorkflow] | None:
     """get app branch workflow runs
 
@@ -238,6 +251,7 @@ async def asyncio(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        planonly (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -255,5 +269,6 @@ async def asyncio(
             offset=offset,
             limit=limit,
             page=page,
+            planonly=planonly,
         )
     ).parsed
