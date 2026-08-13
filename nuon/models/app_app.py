@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_config import AppAppConfig
+    from ..models.app_app_default_labels import AppAppDefaultLabels
     from ..models.app_app_input_config import AppAppInputConfig
     from ..models.app_app_label_colors import AppAppLabelColors
     from ..models.app_app_links import AppAppLinks
@@ -34,6 +35,9 @@ class AppApp:
         config_repo (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        default_labels (AppAppDefaultLabels | Unset): DefaultLabels are applied to every install of the app and can only
+            be
+            changed via app config sync — install label endpoints reject these keys.
         description (str | Unset):
         display_name (str | Unset):
         id (str | Unset):
@@ -61,6 +65,7 @@ class AppApp:
     config_repo: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    default_labels: AppAppDefaultLabels | Unset = UNSET
     description: str | Unset = UNSET
     display_name: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -100,6 +105,10 @@ class AppApp:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        default_labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.default_labels, Unset):
+            default_labels = self.default_labels.to_dict()
 
         description = self.description
 
@@ -170,6 +179,8 @@ class AppApp:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if default_labels is not UNSET:
+            field_dict["default_labels"] = default_labels
         if description is not UNSET:
             field_dict["description"] = description
         if display_name is not UNSET:
@@ -212,6 +223,7 @@ class AppApp:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_config import AppAppConfig
+        from ..models.app_app_default_labels import AppAppDefaultLabels
         from ..models.app_app_input_config import AppAppInputConfig
         from ..models.app_app_label_colors import AppAppLabelColors
         from ..models.app_app_links import AppAppLinks
@@ -242,6 +254,13 @@ class AppApp:
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        _default_labels = d.pop("default_labels", UNSET)
+        default_labels: AppAppDefaultLabels | Unset
+        if isinstance(_default_labels, Unset):
+            default_labels = UNSET
+        else:
+            default_labels = AppAppDefaultLabels.from_dict(_default_labels)
 
         description = d.pop("description", UNSET)
 
@@ -327,6 +346,7 @@ class AppApp:
             config_repo=config_repo,
             created_at=created_at,
             created_by_id=created_by_id,
+            default_labels=default_labels,
             description=description,
             display_name=display_name,
             id=id,

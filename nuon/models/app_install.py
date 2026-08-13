@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.app_gcp_account import AppGCPAccount
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
     from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
+    from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels
     from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
     from ..models.app_install_component import AppInstallComponent
     from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
@@ -25,6 +26,7 @@ if TYPE_CHECKING:
     from ..models.app_install_config import AppInstallConfig
     from ..models.app_install_event import AppInstallEvent
     from ..models.app_install_inputs import AppInstallInputs
+    from ..models.app_install_label_templates import AppInstallLabelTemplates
     from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
     from ..models.app_install_links import AppInstallLinks
     from ..models.app_install_metadata import AppInstallMetadata
@@ -51,6 +53,10 @@ class AppInstall:
         app_branch_connections (list[AppInstallAppBranchConnection] | Unset):
         app_branch_id (str | Unset):
         app_config_id (str | Unset):
+        app_default_labels (AppInstallAppDefaultLabels | Unset): AppDefaultLabels is the snapshot of the app's default
+            labels applied to
+            this install. It is the lock set for label mutation endpoints, and lets
+            reconciliation tell a removed default apart from a user-set label.
         app_id (str | Unset):
         app_runner_config (AppAppRunnerConfig | Unset):
         app_sandbox_config (AppAppSandboxConfig | Unset):
@@ -93,6 +99,13 @@ class AppInstall:
         install_sandbox_runs (list[AppInstallSandboxRun] | Unset):
         install_stack (AppInstallStack | Unset):
         install_states (list[AppInstallState] | Unset):
+        label_templates (AppInstallLabelTemplates | Unset): LabelTemplates holds label values written with the .nuon
+            interpolation
+            syntax. Rendered values are materialized into Labels whenever install
+            state changes, so downstream consumers (SQL label matching, subscription
+            dispatch, pickers) only ever read literal values. NOTE: this comment ends
+            up in the swagger spec, which swag executes as a Go text/template —
+            literal moustaches here break spec generation.
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         last_health_report_at (str | Unset): LastHealthReportAt is when a runner last reported component health. It is
             how the staleness sweep finds installs that went quiet without polling
@@ -126,6 +139,7 @@ class AppInstall:
     app_branch_connections: list[AppInstallAppBranchConnection] | Unset = UNSET
     app_branch_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    app_default_labels: AppInstallAppDefaultLabels | Unset = UNSET
     app_id: str | Unset = UNSET
     app_runner_config: AppAppRunnerConfig | Unset = UNSET
     app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
@@ -158,6 +172,7 @@ class AppInstall:
     install_sandbox_runs: list[AppInstallSandboxRun] | Unset = UNSET
     install_stack: AppInstallStack | Unset = UNSET
     install_states: list[AppInstallState] | Unset = UNSET
+    label_templates: AppInstallLabelTemplates | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     last_health_report_at: str | Unset = UNSET
     lifecycle_phase: AppInstallLifecyclePhase | Unset = UNSET
@@ -196,6 +211,10 @@ class AppInstall:
         app_branch_id = self.app_branch_id
 
         app_config_id = self.app_config_id
+
+        app_default_labels: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_default_labels, Unset):
+            app_default_labels = self.app_default_labels.to_dict()
 
         app_id = self.app_id
 
@@ -321,6 +340,10 @@ class AppInstall:
                 install_states_item = install_states_item_data.to_dict()
                 install_states.append(install_states_item)
 
+        label_templates: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.label_templates, Unset):
+            label_templates = self.label_templates.to_dict()
+
         labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
@@ -398,6 +421,8 @@ class AppInstall:
             field_dict["app_branch_id"] = app_branch_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if app_default_labels is not UNSET:
+            field_dict["app_default_labels"] = app_default_labels
         if app_id is not UNSET:
             field_dict["app_id"] = app_id
         if app_runner_config is not UNSET:
@@ -462,6 +487,8 @@ class AppInstall:
             field_dict["install_stack"] = install_stack
         if install_states is not UNSET:
             field_dict["install_states"] = install_states
+        if label_templates is not UNSET:
+            field_dict["label_templates"] = label_templates
         if labels is not UNSET:
             field_dict["labels"] = labels
         if last_health_report_at is not UNSET:
@@ -518,6 +545,7 @@ class AppInstall:
         from ..models.app_gcp_account import AppGCPAccount
         from ..models.app_install_action_workflow import AppInstallActionWorkflow
         from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
+        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels
         from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
         from ..models.app_install_component import AppInstallComponent
         from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
@@ -525,6 +553,7 @@ class AppInstall:
         from ..models.app_install_config import AppInstallConfig
         from ..models.app_install_event import AppInstallEvent
         from ..models.app_install_inputs import AppInstallInputs
+        from ..models.app_install_label_templates import AppInstallLabelTemplates
         from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
         from ..models.app_install_links import AppInstallLinks
         from ..models.app_install_metadata import AppInstallMetadata
@@ -559,6 +588,13 @@ class AppInstall:
         app_branch_id = d.pop("app_branch_id", UNSET)
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        _app_default_labels = d.pop("app_default_labels", UNSET)
+        app_default_labels: AppInstallAppDefaultLabels | Unset
+        if isinstance(_app_default_labels, Unset):
+            app_default_labels = UNSET
+        else:
+            app_default_labels = AppInstallAppDefaultLabels.from_dict(_app_default_labels)
 
         app_id = d.pop("app_id", UNSET)
 
@@ -730,6 +766,13 @@ class AppInstall:
 
                 install_states.append(install_states_item)
 
+        _label_templates = d.pop("label_templates", UNSET)
+        label_templates: AppInstallLabelTemplates | Unset
+        if isinstance(_label_templates, Unset):
+            label_templates = UNSET
+        else:
+            label_templates = AppInstallLabelTemplates.from_dict(_label_templates)
+
         _labels = d.pop("labels", UNSET)
         labels: GithubComNuoncoNuonPkgLabelsLabels | Unset
         if isinstance(_labels, Unset):
@@ -826,6 +869,7 @@ class AppInstall:
             app_branch_connections=app_branch_connections,
             app_branch_id=app_branch_id,
             app_config_id=app_config_id,
+            app_default_labels=app_default_labels,
             app_id=app_id,
             app_runner_config=app_runner_config,
             app_sandbox_config=app_sandbox_config,
@@ -858,6 +902,7 @@ class AppInstall:
             install_sandbox_runs=install_sandbox_runs,
             install_stack=install_stack,
             install_states=install_states,
+            label_templates=label_templates,
             labels=labels,
             last_health_report_at=last_health_report_at,
             lifecycle_phase=lifecycle_phase,

@@ -40,6 +40,10 @@ class AppAzureStackOutputs:
         resource_group_id (str | Unset):
         resource_group_location (str | Unset):
         resource_group_name (str | Unset):
+        runner_identity_principal_id (str | Unset): Principal ID of the runner VMSS's system-assigned identity. Secret
+            sync and
+            image sync run as this identity, not a per-operation one, so sandboxes need
+            it to grant cluster access.
         subscription_id (str | Unset):
         subscription_tenant_id (str | Unset):
     """
@@ -61,6 +65,7 @@ class AppAzureStackOutputs:
     resource_group_id: str | Unset = UNSET
     resource_group_location: str | Unset = UNSET
     resource_group_name: str | Unset = UNSET
+    runner_identity_principal_id: str | Unset = UNSET
     subscription_id: str | Unset = UNSET
     subscription_tenant_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -114,6 +119,8 @@ class AppAzureStackOutputs:
 
         resource_group_name = self.resource_group_name
 
+        runner_identity_principal_id = self.runner_identity_principal_id
+
         subscription_id = self.subscription_id
 
         subscription_tenant_id = self.subscription_tenant_id
@@ -155,6 +162,8 @@ class AppAzureStackOutputs:
             field_dict["resource_group_location"] = resource_group_location
         if resource_group_name is not UNSET:
             field_dict["resource_group_name"] = resource_group_name
+        if runner_identity_principal_id is not UNSET:
+            field_dict["runner_identity_principal_id"] = runner_identity_principal_id
         if subscription_id is not UNSET:
             field_dict["subscription_id"] = subscription_id
         if subscription_tenant_id is not UNSET:
@@ -226,6 +235,8 @@ class AppAzureStackOutputs:
 
         resource_group_name = d.pop("resource_group_name", UNSET)
 
+        runner_identity_principal_id = d.pop("runner_identity_principal_id", UNSET)
+
         subscription_id = d.pop("subscription_id", UNSET)
 
         subscription_tenant_id = d.pop("subscription_tenant_id", UNSET)
@@ -248,6 +259,7 @@ class AppAzureStackOutputs:
             resource_group_id=resource_group_id,
             resource_group_location=resource_group_location,
             resource_group_name=resource_group_name,
+            runner_identity_principal_id=runner_identity_principal_id,
             subscription_id=subscription_id,
             subscription_tenant_id=subscription_tenant_id,
         )
