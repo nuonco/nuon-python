@@ -18,12 +18,17 @@ class ServiceCreateStaticTokenRequest:
         name (str): human-friendly name to identify the token later
         duration (str | Unset): defaults to one year Default: '8760h'.
         role (str | Unset): org role granted to the token. must be assignable to API tokens; see
-            GET /v1/roles?context=api_token. defaults to org_read_only.
+            GET /v1/roles?context=api_token. defaults to org_read_only. must be
+            empty for personal tokens.
+        token_identity (str | Unset): "service_account" (default) creates a dedicated service account with
+            the given role; "personal" issues the token against your own account
+            and its existing roles, across all your orgs.
     """
 
     name: str
     duration: str | Unset = "8760h"
     role: str | Unset = UNSET
+    token_identity: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,6 +37,8 @@ class ServiceCreateStaticTokenRequest:
         duration = self.duration
 
         role = self.role
+
+        token_identity = self.token_identity
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -44,6 +51,8 @@ class ServiceCreateStaticTokenRequest:
             field_dict["duration"] = duration
         if role is not UNSET:
             field_dict["role"] = role
+        if token_identity is not UNSET:
+            field_dict["token_identity"] = token_identity
 
         return field_dict
 
@@ -56,10 +65,13 @@ class ServiceCreateStaticTokenRequest:
 
         role = d.pop("role", UNSET)
 
+        token_identity = d.pop("token_identity", UNSET)
+
         service_create_static_token_request = cls(
             name=name,
             duration=duration,
             role=role,
+            token_identity=token_identity,
         )
 
         service_create_static_token_request.additional_properties = d
