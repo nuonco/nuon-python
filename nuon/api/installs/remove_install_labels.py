@@ -92,7 +92,8 @@ def sync_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """remove labels from an install
 
-     Remove the specified label keys from the install.
+     Remove the specified label keys from the install. Removing a dynamic label's key also removes its
+    template. Keys managed by the app config's default_labels cannot be removed here.
 
     Args:
         install_id (str):
@@ -126,7 +127,8 @@ def sync(
 ) -> AppInstall | StderrErrResponse | None:
     """remove labels from an install
 
-     Remove the specified label keys from the install.
+     Remove the specified label keys from the install. Removing a dynamic label's key also removes its
+    template. Keys managed by the app config's default_labels cannot be removed here.
 
     Args:
         install_id (str):
@@ -155,7 +157,8 @@ async def asyncio_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """remove labels from an install
 
-     Remove the specified label keys from the install.
+     Remove the specified label keys from the install. Removing a dynamic label's key also removes its
+    template. Keys managed by the app config's default_labels cannot be removed here.
 
     Args:
         install_id (str):
@@ -187,7 +190,8 @@ async def asyncio(
 ) -> AppInstall | StderrErrResponse | None:
     """remove labels from an install
 
-     Remove the specified label keys from the install.
+     Remove the specified label keys from the install. Removing a dynamic label's key also removes its
+    template. Keys managed by the app config's default_labels cannot be removed here.
 
     Args:
         install_id (str):

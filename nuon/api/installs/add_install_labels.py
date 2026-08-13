@@ -92,7 +92,10 @@ def sync_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """add labels to an install
 
-     Merge the provided labels into the install's existing labels. Existing keys are overwritten.
+     Merge the provided labels into the install's existing labels. Existing keys are overwritten. A value
+    using the .nuon interpolation syntax becomes a dynamic label: the template is stored and its
+    rendered value is re-materialized whenever install state changes. Keys managed by the app config's
+    default_labels cannot be changed here.
 
     Args:
         install_id (str):
@@ -126,7 +129,10 @@ def sync(
 ) -> AppInstall | StderrErrResponse | None:
     """add labels to an install
 
-     Merge the provided labels into the install's existing labels. Existing keys are overwritten.
+     Merge the provided labels into the install's existing labels. Existing keys are overwritten. A value
+    using the .nuon interpolation syntax becomes a dynamic label: the template is stored and its
+    rendered value is re-materialized whenever install state changes. Keys managed by the app config's
+    default_labels cannot be changed here.
 
     Args:
         install_id (str):
@@ -155,7 +161,10 @@ async def asyncio_detailed(
 ) -> Response[AppInstall | StderrErrResponse]:
     """add labels to an install
 
-     Merge the provided labels into the install's existing labels. Existing keys are overwritten.
+     Merge the provided labels into the install's existing labels. Existing keys are overwritten. A value
+    using the .nuon interpolation syntax becomes a dynamic label: the template is stored and its
+    rendered value is re-materialized whenever install state changes. Keys managed by the app config's
+    default_labels cannot be changed here.
 
     Args:
         install_id (str):
@@ -187,7 +196,10 @@ async def asyncio(
 ) -> AppInstall | StderrErrResponse | None:
     """add labels to an install
 
-     Merge the provided labels into the install's existing labels. Existing keys are overwritten.
+     Merge the provided labels into the install's existing labels. Existing keys are overwritten. A value
+    using the .nuon interpolation syntax becomes a dynamic label: the template is stored and its
+    rendered value is re-materialized whenever install state changes. Keys managed by the app config's
+    default_labels cannot be changed here.
 
     Args:
         install_id (str):

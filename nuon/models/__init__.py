@@ -22,6 +22,7 @@ from .app_app_break_glass_config import AppAppBreakGlassConfig
 from .app_app_config import AppAppConfig
 from .app_app_config_status import AppAppConfigStatus
 from .app_app_config_version import AppAppConfigVersion
+from .app_app_default_labels import AppAppDefaultLabels
 from .app_app_input import AppAppInput
 from .app_app_input_config import AppAppInputConfig
 from .app_app_input_group import AppAppInputGroup
@@ -110,6 +111,7 @@ from .app_install_action_workflow_run_step_status import AppInstallActionWorkflo
 from .app_install_app_branch_connection import AppInstallAppBranchConnection
 from .app_install_app_config_version import AppInstallAppConfigVersion
 from .app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
+from .app_install_app_default_labels import AppInstallAppDefaultLabels
 from .app_install_approval_option import AppInstallApprovalOption
 from .app_install_audit_log import AppInstallAuditLog
 from .app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
@@ -138,6 +140,7 @@ from .app_install_group_run_runbook import AppInstallGroupRunRunbook
 from .app_install_inputs import AppInstallInputs
 from .app_install_inputs_redacted_values import AppInstallInputsRedactedValues
 from .app_install_inputs_values import AppInstallInputsValues
+from .app_install_label_templates import AppInstallLabelTemplates
 from .app_install_lifecycle_phase import AppInstallLifecyclePhase
 from .app_install_links import AppInstallLinks
 from .app_install_metadata import AppInstallMetadata
@@ -837,6 +840,7 @@ __all__ = (
     "AppAppConfig",
     "AppAppConfigStatus",
     "AppAppConfigVersion",
+    "AppAppDefaultLabels",
     "AppAppInput",
     "AppAppInputConfig",
     "AppAppInputGroup",
@@ -925,6 +929,7 @@ __all__ = (
     "AppInstallAppBranchConnection",
     "AppInstallAppConfigVersion",
     "AppInstallAppConfigVersionMetadata",
+    "AppInstallAppDefaultLabels",
     "AppInstallApprovalOption",
     "AppInstallAuditLog",
     "AppInstallCloudPlatformMetadata",
@@ -953,6 +958,7 @@ __all__ = (
     "AppInstallInputs",
     "AppInstallInputsRedactedValues",
     "AppInstallInputsValues",
+    "AppInstallLabelTemplates",
     "AppInstallLifecyclePhase",
     "AppInstallLinks",
     "AppInstallMetadata",
