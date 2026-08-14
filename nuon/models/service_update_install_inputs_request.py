@@ -21,11 +21,14 @@ class ServiceUpdateInstallInputsRequest:
     Attributes:
         inputs (ServiceUpdateInstallInputsRequestInputs):
         deploy_dependents (bool | None | Unset):
+        inputs_only (bool | Unset): InputsOnly saves the new input values without deploying components,
+            reprovisioning the sandbox, or running update-input lifecycle actions.
         role (str | Unset):
     """
 
     inputs: ServiceUpdateInstallInputsRequestInputs
     deploy_dependents: bool | None | Unset = UNSET
+    inputs_only: bool | Unset = UNSET
     role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,6 +41,8 @@ class ServiceUpdateInstallInputsRequest:
         else:
             deploy_dependents = self.deploy_dependents
 
+        inputs_only = self.inputs_only
+
         role = self.role
 
         field_dict: dict[str, Any] = {}
@@ -49,6 +54,8 @@ class ServiceUpdateInstallInputsRequest:
         )
         if deploy_dependents is not UNSET:
             field_dict["deploy_dependents"] = deploy_dependents
+        if inputs_only is not UNSET:
+            field_dict["inputs_only"] = inputs_only
         if role is not UNSET:
             field_dict["role"] = role
 
@@ -70,11 +77,14 @@ class ServiceUpdateInstallInputsRequest:
 
         deploy_dependents = _parse_deploy_dependents(d.pop("deploy_dependents", UNSET))
 
+        inputs_only = d.pop("inputs_only", UNSET)
+
         role = d.pop("role", UNSET)
 
         service_update_install_inputs_request = cls(
             inputs=inputs,
             deploy_dependents=deploy_dependents,
+            inputs_only=inputs_only,
             role=role,
         )
 
