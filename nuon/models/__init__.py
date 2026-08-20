@@ -266,6 +266,7 @@ from .app_slack_installation import AppSlackInstallation
 from .app_slack_installation_status import AppSlackInstallationStatus
 from .app_slack_org_link import AppSlackOrgLink
 from .app_slack_org_link_status import AppSlackOrgLinkStatus
+from .app_stack_deployment_scope import AppStackDeploymentScope
 from .app_stack_type import AppStackType
 from .app_stack_version_run_input_diff import AppStackVersionRunInputDiff
 from .app_stack_version_run_role_diff import AppStackVersionRunRoleDiff
@@ -694,6 +695,7 @@ from .service_put_install_component_health_check_request_details import (
     ServicePutInstallComponentHealthCheckRequestDetails,
 )
 from .service_readme import ServiceReadme
+from .service_recover_install_component_helm_release_request import ServiceRecoverInstallComponentHelmReleaseRequest
 from .service_refresh_install_health_cluster_access_request import ServiceRefreshInstallHealthClusterAccessRequest
 from .service_refresh_install_health_cluster_access_response import ServiceRefreshInstallHealthClusterAccessResponse
 from .service_remove_action_labels_request import ServiceRemoveActionLabelsRequest
@@ -1082,6 +1084,7 @@ __all__ = (
     "AppSlackInstallationStatus",
     "AppSlackOrgLink",
     "AppSlackOrgLinkStatus",
+    "AppStackDeploymentScope",
     "AppStackType",
     "AppStackVersionRunInputDiff",
     "AppStackVersionRunRoleDiff",
@@ -1472,6 +1475,7 @@ __all__ = (
     "ServicePutInstallComponentHealthCheckRequest",
     "ServicePutInstallComponentHealthCheckRequestDetails",
     "ServiceReadme",
+    "ServiceRecoverInstallComponentHelmReleaseRequest",
     "ServiceRefreshInstallHealthClusterAccessRequest",
     "ServiceRefreshInstallHealthClusterAccessResponse",
     "ServiceRemoveActionLabelsRequest",

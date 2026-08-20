@@ -25,6 +25,7 @@ class ServiceCreateAppStackConfigRequest:
         name (str):
         type_ (AppStackType):
         custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
+        deployment_scope (str | Unset):
         runner_nested_template_url (str | Unset):
         vpc_nested_template_url (str | Unset):
     """
@@ -34,6 +35,7 @@ class ServiceCreateAppStackConfigRequest:
     name: str
     type_: AppStackType
     custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
+    deployment_scope: str | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -54,6 +56,8 @@ class ServiceCreateAppStackConfigRequest:
                 custom_nested_stacks_item = custom_nested_stacks_item_data.to_dict()
                 custom_nested_stacks.append(custom_nested_stacks_item)
 
+        deployment_scope = self.deployment_scope
+
         runner_nested_template_url = self.runner_nested_template_url
 
         vpc_nested_template_url = self.vpc_nested_template_url
@@ -70,6 +74,8 @@ class ServiceCreateAppStackConfigRequest:
         )
         if custom_nested_stacks is not UNSET:
             field_dict["custom_nested_stacks"] = custom_nested_stacks
+        if deployment_scope is not UNSET:
+            field_dict["deployment_scope"] = deployment_scope
         if runner_nested_template_url is not UNSET:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
         if vpc_nested_template_url is not UNSET:
@@ -99,6 +105,8 @@ class ServiceCreateAppStackConfigRequest:
 
                 custom_nested_stacks.append(custom_nested_stacks_item)
 
+        deployment_scope = d.pop("deployment_scope", UNSET)
+
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
         vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
@@ -109,6 +117,7 @@ class ServiceCreateAppStackConfigRequest:
             name=name,
             type_=type_,
             custom_nested_stacks=custom_nested_stacks,
+            deployment_scope=deployment_scope,
             runner_nested_template_url=runner_nested_template_url,
             vpc_nested_template_url=vpc_nested_template_url,
         )
