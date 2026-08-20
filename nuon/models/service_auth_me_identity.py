@@ -16,17 +16,21 @@ T = TypeVar("T", bound="ServiceAuthMeIdentity")
 class ServiceAuthMeIdentity:
     """
     Attributes:
+        identity_provider_id (str | Unset):
         name (str | Unset):
         picture (str | Unset):
         provider_type (AppProviderType | Unset):
     """
 
+    identity_provider_id: str | Unset = UNSET
     name: str | Unset = UNSET
     picture: str | Unset = UNSET
     provider_type: AppProviderType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        identity_provider_id = self.identity_provider_id
+
         name = self.name
 
         picture = self.picture
@@ -38,6 +42,8 @@ class ServiceAuthMeIdentity:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if identity_provider_id is not UNSET:
+            field_dict["identity_provider_id"] = identity_provider_id
         if name is not UNSET:
             field_dict["name"] = name
         if picture is not UNSET:
@@ -50,6 +56,8 @@ class ServiceAuthMeIdentity:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        identity_provider_id = d.pop("identity_provider_id", UNSET)
+
         name = d.pop("name", UNSET)
 
         picture = d.pop("picture", UNSET)
@@ -62,6 +70,7 @@ class ServiceAuthMeIdentity:
             provider_type = AppProviderType(_provider_type)
 
         service_auth_me_identity = cls(
+            identity_provider_id=identity_provider_id,
             name=name,
             picture=picture,
             provider_type=provider_type,
