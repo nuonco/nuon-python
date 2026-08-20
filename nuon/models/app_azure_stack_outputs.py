@@ -25,6 +25,17 @@ class AppAzureStackOutputs:
     Attributes:
         break_glass_identity_client_ids (AppAzureStackOutputsBreakGlassIdentityClientIds | Unset):
         custom_identity_client_ids (AppAzureStackOutputsCustomIdentityClientIds | Unset):
+        deployment_location (str | Unset): DeploymentLocation is where the subscription-scoped deployment record itself
+            lives, which is not necessarily where the resources are: the portal prompts the
+            customer for a Region, and a quick link cannot pre-set it.
+
+            Worth recording because a subscription-scoped deployment record's location is
+            immutable. Reusing the same stack name from a different region fails with
+            InvalidDeploymentLocation, so a reprovision command has to offer the region the
+            customer actually deployed to rather than the one Nuon assumed.
+
+            Empty at resource-group scope, where the deployment record lives in the
+            resource group and there is no such prompt.
         deprovision_identity_client_id (str | Unset):
         install_inputs (AppAzureStackOutputsInstallInputs | Unset):
         key_vault_id (str | Unset):
@@ -50,6 +61,7 @@ class AppAzureStackOutputs:
 
     break_glass_identity_client_ids: AppAzureStackOutputsBreakGlassIdentityClientIds | Unset = UNSET
     custom_identity_client_ids: AppAzureStackOutputsCustomIdentityClientIds | Unset = UNSET
+    deployment_location: str | Unset = UNSET
     deprovision_identity_client_id: str | Unset = UNSET
     install_inputs: AppAzureStackOutputsInstallInputs | Unset = UNSET
     key_vault_id: str | Unset = UNSET
@@ -78,6 +90,8 @@ class AppAzureStackOutputs:
         custom_identity_client_ids: dict[str, Any] | Unset = UNSET
         if not isinstance(self.custom_identity_client_ids, Unset):
             custom_identity_client_ids = self.custom_identity_client_ids.to_dict()
+
+        deployment_location = self.deployment_location
 
         deprovision_identity_client_id = self.deprovision_identity_client_id
 
@@ -132,6 +146,8 @@ class AppAzureStackOutputs:
             field_dict["break_glass_identity_client_ids"] = break_glass_identity_client_ids
         if custom_identity_client_ids is not UNSET:
             field_dict["custom_identity_client_ids"] = custom_identity_client_ids
+        if deployment_location is not UNSET:
+            field_dict["deployment_location"] = deployment_location
         if deprovision_identity_client_id is not UNSET:
             field_dict["deprovision_identity_client_id"] = deprovision_identity_client_id
         if install_inputs is not UNSET:
@@ -200,6 +216,8 @@ class AppAzureStackOutputs:
                 _custom_identity_client_ids
             )
 
+        deployment_location = d.pop("deployment_location", UNSET)
+
         deprovision_identity_client_id = d.pop("deprovision_identity_client_id", UNSET)
 
         _install_inputs = d.pop("install_inputs", UNSET)
@@ -244,6 +262,7 @@ class AppAzureStackOutputs:
         app_azure_stack_outputs = cls(
             break_glass_identity_client_ids=break_glass_identity_client_ids,
             custom_identity_client_ids=custom_identity_client_ids,
+            deployment_location=deployment_location,
             deprovision_identity_client_id=deprovision_identity_client_id,
             install_inputs=install_inputs,
             key_vault_id=key_vault_id,
