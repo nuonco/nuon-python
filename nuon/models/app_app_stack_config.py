@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_stack_deployment_scope import AppStackDeploymentScope
 from ..models.app_stack_type import AppStackType
 from ..types import UNSET, Unset
 
@@ -25,6 +26,7 @@ class AppAppStackConfig:
         created_at (str | Unset):
         created_by_id (str | Unset):
         custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
+        deployment_scope (AppStackDeploymentScope | Unset):
         description (str | Unset):
         id (str | Unset):
         name (str | Unset):
@@ -40,6 +42,7 @@ class AppAppStackConfig:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
+    deployment_scope: AppStackDeploymentScope | Unset = UNSET
     description: str | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -65,6 +68,10 @@ class AppAppStackConfig:
             for custom_nested_stacks_item_data in self.custom_nested_stacks:
                 custom_nested_stacks_item = custom_nested_stacks_item_data.to_dict()
                 custom_nested_stacks.append(custom_nested_stacks_item)
+
+        deployment_scope: str | Unset = UNSET
+        if not isinstance(self.deployment_scope, Unset):
+            deployment_scope = self.deployment_scope.value
 
         description = self.description
 
@@ -97,6 +104,8 @@ class AppAppStackConfig:
             field_dict["created_by_id"] = created_by_id
         if custom_nested_stacks is not UNSET:
             field_dict["custom_nested_stacks"] = custom_nested_stacks
+        if deployment_scope is not UNSET:
+            field_dict["deployment_scope"] = deployment_scope
         if description is not UNSET:
             field_dict["description"] = description
         if id is not UNSET:
@@ -138,6 +147,13 @@ class AppAppStackConfig:
 
                 custom_nested_stacks.append(custom_nested_stacks_item)
 
+        _deployment_scope = d.pop("deployment_scope", UNSET)
+        deployment_scope: AppStackDeploymentScope | Unset
+        if isinstance(_deployment_scope, Unset):
+            deployment_scope = UNSET
+        else:
+            deployment_scope = AppStackDeploymentScope(_deployment_scope)
+
         description = d.pop("description", UNSET)
 
         id = d.pop("id", UNSET)
@@ -165,6 +181,7 @@ class AppAppStackConfig:
             created_at=created_at,
             created_by_id=created_by_id,
             custom_nested_stacks=custom_nested_stacks,
+            deployment_scope=deployment_scope,
             description=description,
             id=id,
             name=name,
