@@ -31,6 +31,8 @@ class AppAWSStackOutputs:
         provision_iam_role_arn (str | Unset):
         public_subnets (list[str] | Unset):
         region (str | Unset):
+        runner_enabled (bool | Unset): Nil when the stack predates the runner_enabled variable, which must read
+            as enabled rather than disabled.
         runner_iam_role_arn (str | Unset):
         runner_subnet (str | Unset):
         vpc_id (str | Unset):
@@ -46,6 +48,7 @@ class AppAWSStackOutputs:
     provision_iam_role_arn: str | Unset = UNSET
     public_subnets: list[str] | Unset = UNSET
     region: str | Unset = UNSET
+    runner_enabled: bool | Unset = UNSET
     runner_iam_role_arn: str | Unset = UNSET
     runner_subnet: str | Unset = UNSET
     vpc_id: str | Unset = UNSET
@@ -82,6 +85,8 @@ class AppAWSStackOutputs:
 
         region = self.region
 
+        runner_enabled = self.runner_enabled
+
         runner_iam_role_arn = self.runner_iam_role_arn
 
         runner_subnet = self.runner_subnet
@@ -111,6 +116,8 @@ class AppAWSStackOutputs:
             field_dict["public_subnets"] = public_subnets
         if region is not UNSET:
             field_dict["region"] = region
+        if runner_enabled is not UNSET:
+            field_dict["runner_enabled"] = runner_enabled
         if runner_iam_role_arn is not UNSET:
             field_dict["runner_iam_role_arn"] = runner_iam_role_arn
         if runner_subnet is not UNSET:
@@ -162,6 +169,8 @@ class AppAWSStackOutputs:
 
         region = d.pop("region", UNSET)
 
+        runner_enabled = d.pop("runner_enabled", UNSET)
+
         runner_iam_role_arn = d.pop("runner_iam_role_arn", UNSET)
 
         runner_subnet = d.pop("runner_subnet", UNSET)
@@ -179,6 +188,7 @@ class AppAWSStackOutputs:
             provision_iam_role_arn=provision_iam_role_arn,
             public_subnets=public_subnets,
             region=region,
+            runner_enabled=runner_enabled,
             runner_iam_role_arn=runner_iam_role_arn,
             runner_subnet=runner_subnet,
             vpc_id=vpc_id,
