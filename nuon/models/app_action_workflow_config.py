@@ -31,6 +31,7 @@ class AppActionWorkflowConfig:
         created_by_id (str | Unset):
         enable_kube_config (SqlNullBool | Unset):
         id (str | Unset):
+        image (str | Unset): Image is an optional container image the action's steps run inside.
         kubernetes_context_name (str | Unset): KubernetesContextName is the name of an AppKubernetesContextConfig on
             the same AppConfig. Empty means fall back to the implicit sandbox
             default. Stored as a name (not an FK) so it remains stable across
@@ -54,6 +55,7 @@ class AppActionWorkflowConfig:
     created_by_id: str | Unset = UNSET
     enable_kube_config: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
+    image: str | Unset = UNSET
     kubernetes_context_name: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
@@ -86,6 +88,8 @@ class AppActionWorkflowConfig:
             enable_kube_config = self.enable_kube_config.to_dict()
 
         id = self.id
+
+        image = self.image
 
         kubernetes_context_name = self.kubernetes_context_name
 
@@ -141,6 +145,8 @@ class AppActionWorkflowConfig:
             field_dict["enable_kube_config"] = enable_kube_config
         if id is not UNSET:
             field_dict["id"] = id
+        if image is not UNSET:
+            field_dict["image"] = image
         if kubernetes_context_name is not UNSET:
             field_dict["kubernetes_context_name"] = kubernetes_context_name
         if references is not UNSET:
@@ -191,6 +197,8 @@ class AppActionWorkflowConfig:
 
         id = d.pop("id", UNSET)
 
+        image = d.pop("image", UNSET)
+
         kubernetes_context_name = d.pop("kubernetes_context_name", UNSET)
 
         references = cast(list[str], d.pop("references", UNSET))
@@ -238,6 +246,7 @@ class AppActionWorkflowConfig:
             created_by_id=created_by_id,
             enable_kube_config=enable_kube_config,
             id=id,
+            image=image,
             kubernetes_context_name=kubernetes_context_name,
             references=references,
             refs=refs,
