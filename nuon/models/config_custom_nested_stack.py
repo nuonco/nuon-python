@@ -26,6 +26,11 @@ class ConfigCustomNestedStack:
         name (str | Unset):
         parameters (ConfigCustomNestedStackParameters | Unset):
         status (ConfigCustomNestedStackStatus | Unset):
+        template_source_url (str | Unset): TemplateSourceURL is the public URL of the uploaded template contents.
+            TemplateURL is whatever the vendor wrote in their config — usually a path
+            relative to the config dir — so it is not resolvable by anything that did
+            not do the original parse. Set when the contents are uploaded; empty for
+            configs synced before this field existed.
         template_url (str | Unset):
     """
 
@@ -35,6 +40,7 @@ class ConfigCustomNestedStack:
     name: str | Unset = UNSET
     parameters: ConfigCustomNestedStackParameters | Unset = UNSET
     status: ConfigCustomNestedStackStatus | Unset = UNSET
+    template_source_url: str | Unset = UNSET
     template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -55,6 +61,8 @@ class ConfigCustomNestedStack:
         if not isinstance(self.status, Unset):
             status = self.status.value
 
+        template_source_url = self.template_source_url
+
         template_url = self.template_url
 
         field_dict: dict[str, Any] = {}
@@ -72,6 +80,8 @@ class ConfigCustomNestedStack:
             field_dict["parameters"] = parameters
         if status is not UNSET:
             field_dict["status"] = status
+        if template_source_url is not UNSET:
+            field_dict["template_source_url"] = template_source_url
         if template_url is not UNSET:
             field_dict["template_url"] = template_url
 
@@ -104,6 +114,8 @@ class ConfigCustomNestedStack:
         else:
             status = ConfigCustomNestedStackStatus(_status)
 
+        template_source_url = d.pop("template_source_url", UNSET)
+
         template_url = d.pop("template_url", UNSET)
 
         config_custom_nested_stack = cls(
@@ -113,6 +125,7 @@ class ConfigCustomNestedStack:
             name=name,
             parameters=parameters,
             status=status,
+            template_source_url=template_source_url,
             template_url=template_url,
         )
 
