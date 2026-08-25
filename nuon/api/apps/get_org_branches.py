@@ -1,36 +1,35 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_log_stream_tail_logs_response import ServiceLogStreamTailLogsResponse
+from ...models.app_app_branch import AppAppBranch
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    log_stream_id: str,
     *,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["since"] = since
+    params["offset"] = offset
 
-    params["wait"] = wait
+    params["limit"] = limit
+
+    params["page"] = page
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/log-streams/{log_stream_id}/logs/tail".format(
-            log_stream_id=quote(str(log_stream_id), safe=""),
-        ),
+        "url": "/v1/branches",
         "params": params,
     }
 
@@ -39,9 +38,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
+) -> StderrErrResponse | list[AppAppBranch] | None:
     if response.status_code == 200:
-        response_200 = ServiceLogStreamTailLogsResponse.from_dict(response.json())
+        response_200 = []
+        _response_200 = response.json()
+        for response_200_item_data in _response_200:
+            response_200_item = AppAppBranch.from_dict(response_200_item_data)
+
+            response_200.append(response_200_item)
 
         return response_200
 
@@ -70,11 +74,6 @@ def _parse_response(
 
         return response_500
 
-    if response.status_code == 503:
-        response_503 = StderrErrResponse.from_dict(response.json())
-
-        return response_503
-
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -83,7 +82,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
+) -> Response[StderrErrResponse | list[AppAppBranch]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,34 +92,33 @@ def _build_response(
 
 
 def sync_detailed(
-    log_stream_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppAppBranch]]:
+    """get all app branches for an org
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns all app branches across every app in the current org.
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[StderrErrResponse | list[AppAppBranch]]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = client.get_httpx_client().request(
@@ -131,67 +129,65 @@ def sync_detailed(
 
 
 def sync(
-    log_stream_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppAppBranch] | None:
+    """get all app branches for an org
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns all app branches across every app in the current org.
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        StderrErrResponse | list[AppAppBranch]
     """
 
     return sync_detailed(
-        log_stream_id=log_stream_id,
         client=client,
-        since=since,
-        wait=wait,
+        offset=offset,
+        limit=limit,
+        page=page,
     ).parsed
 
 
 async def asyncio_detailed(
-    log_stream_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> Response[StderrErrResponse | list[AppAppBranch]]:
+    """get all app branches for an org
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns all app branches across every app in the current org.
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[StderrErrResponse | list[AppAppBranch]]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        offset=offset,
+        limit=limit,
+        page=page,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -200,35 +196,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    log_stream_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    offset: int | Unset = 0,
+    limit: int | Unset = 10,
+    page: int | Unset = 0,
+) -> StderrErrResponse | list[AppAppBranch] | None:
+    """get all app branches for an org
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns all app branches across every app in the current org.
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        offset (int | Unset):  Default: 0.
+        limit (int | Unset):  Default: 10.
+        page (int | Unset):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        StderrErrResponse | list[AppAppBranch]
     """
 
     return (
         await asyncio_detailed(
-            log_stream_id=log_stream_id,
             client=client,
-            since=since,
-            wait=wait,
+            offset=offset,
+            limit=limit,
+            page=page,
         )
     ).parsed
