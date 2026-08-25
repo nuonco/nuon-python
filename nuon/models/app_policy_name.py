@@ -9,6 +9,7 @@ class AppPolicyName(str, Enum):
     ORG_READ_ONLY = "org_read_only"
     ORG_SUPPORT = "org_support"
     RUNNER = "runner"
+    STACK = "stack"
 
     def __str__(self) -> str:
         return str(self.value)

@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
     from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
         GithubComNuoncoNuonPkgAzureCredentialsConfig,
@@ -40,9 +41,18 @@ class PlantypesActionWorkflowRunPlan:
         cluster_info (KubeClusterInfo | Unset):
         gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         id (str | Unset):
+        image_digest_ref (str | Unset): ImageDigestRef is the digest-pinned pull reference resolved by the mirror
+            job (<login_server>/<repository>@sha256:...). When set, the runner pulls
+            this exact manifest instead of the mutable tag, binding execution to the
+            content that was mirrored.
+        image_registry (ConfigsOCIRegistryRepository | Unset):
+        image_tag (str | Unset):
         install_id (str | Unset):
         override_env_vars (PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
+        source_image (str | Unset): Image-backed actions: SourceImage is the rendered app-authored ref
+            (e.g. ghcr.io/acme/tools:v1); ImageRegistry/ImageTag point at the
+            install-registry mirror the runner pulls from.
         steps (list[PlantypesActionWorkflowRunStepPlan] | Unset):
         timeout (int | Unset):
     """
@@ -54,9 +64,13 @@ class PlantypesActionWorkflowRunPlan:
     cluster_info: KubeClusterInfo | Unset = UNSET
     gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     id: str | Unset = UNSET
+    image_digest_ref: str | Unset = UNSET
+    image_registry: ConfigsOCIRegistryRepository | Unset = UNSET
+    image_tag: str | Unset = UNSET
     install_id: str | Unset = UNSET
     override_env_vars: PlantypesActionWorkflowRunPlanOverrideEnvVars | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
+    source_image: str | Unset = UNSET
     steps: list[PlantypesActionWorkflowRunStepPlan] | Unset = UNSET
     timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -88,6 +102,14 @@ class PlantypesActionWorkflowRunPlan:
 
         id = self.id
 
+        image_digest_ref = self.image_digest_ref
+
+        image_registry: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.image_registry, Unset):
+            image_registry = self.image_registry.to_dict()
+
+        image_tag = self.image_tag
+
         install_id = self.install_id
 
         override_env_vars: dict[str, Any] | Unset = UNSET
@@ -97,6 +119,8 @@ class PlantypesActionWorkflowRunPlan:
         sandbox_mode: dict[str, Any] | Unset = UNSET
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
+
+        source_image = self.source_image
 
         steps: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.steps, Unset):
@@ -124,12 +148,20 @@ class PlantypesActionWorkflowRunPlan:
             field_dict["gcp_auth"] = gcp_auth
         if id is not UNSET:
             field_dict["id"] = id
+        if image_digest_ref is not UNSET:
+            field_dict["image_digest_ref"] = image_digest_ref
+        if image_registry is not UNSET:
+            field_dict["image_registry"] = image_registry
+        if image_tag is not UNSET:
+            field_dict["image_tag"] = image_tag
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
         if override_env_vars is not UNSET:
             field_dict["override_env_vars"] = override_env_vars
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
+        if source_image is not UNSET:
+            field_dict["source_image"] = source_image
         if steps is not UNSET:
             field_dict["steps"] = steps
         if timeout is not UNSET:
@@ -139,6 +171,7 @@ class PlantypesActionWorkflowRunPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
             GithubComNuoncoNuonPkgAwsCredentialsConfig,
         )
@@ -204,6 +237,17 @@ class PlantypesActionWorkflowRunPlan:
 
         id = d.pop("id", UNSET)
 
+        image_digest_ref = d.pop("image_digest_ref", UNSET)
+
+        _image_registry = d.pop("image_registry", UNSET)
+        image_registry: ConfigsOCIRegistryRepository | Unset
+        if isinstance(_image_registry, Unset):
+            image_registry = UNSET
+        else:
+            image_registry = ConfigsOCIRegistryRepository.from_dict(_image_registry)
+
+        image_tag = d.pop("image_tag", UNSET)
+
         install_id = d.pop("install_id", UNSET)
 
         _override_env_vars = d.pop("override_env_vars", UNSET)
@@ -219,6 +263,8 @@ class PlantypesActionWorkflowRunPlan:
             sandbox_mode = UNSET
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
+
+        source_image = d.pop("source_image", UNSET)
 
         _steps = d.pop("steps", UNSET)
         steps: list[PlantypesActionWorkflowRunStepPlan] | Unset = UNSET
@@ -239,9 +285,13 @@ class PlantypesActionWorkflowRunPlan:
             cluster_info=cluster_info,
             gcp_auth=gcp_auth,
             id=id,
+            image_digest_ref=image_digest_ref,
+            image_registry=image_registry,
+            image_tag=image_tag,
             install_id=install_id,
             override_env_vars=override_env_vars,
             sandbox_mode=sandbox_mode,
+            source_image=source_image,
             steps=steps,
             timeout=timeout,
         )
