@@ -36,7 +36,18 @@ class AppInstallStackVersion:
         org_id (str | Unset):
         phone_home_id (str | Unset):
         phone_home_url (str | Unset):
-        quick_link_url (str | Unset):
+        quick_link_bucket_key (str | Unset): QuickLinkBucketKey and QuickLinkUIDefBucketKey held the wrapper template
+            and
+            createUiDefinition that an earlier Azure quick link pointed at, so that the
+            portal created a deployment stack rather than a plain deployment. Nothing
+            writes them now: the quick link addresses the stack template directly on both
+            platforms. Rows created while the wrapper shipped still carry their keys.
+        quick_link_ui_def_bucket_key (str | Unset):
+        quick_link_url (str | Unset): QuickLinkURL opens the cloud console pre-loaded with this version's stack:
+            CloudFormation quick-create on AWS, Deploy to Azure on Azure. Empty on GCP,
+            on any install whose template bucket is unconfigured, and on an Azure install
+            at resource group scope — the portal cannot create the resource group the
+            root template needs, so there is no link to offer.
         runs (list[AppInstallStackVersionRun] | Unset):
         stack_name (str | Unset):
         template_url (str | Unset):
@@ -63,6 +74,8 @@ class AppInstallStackVersion:
     org_id: str | Unset = UNSET
     phone_home_id: str | Unset = UNSET
     phone_home_url: str | Unset = UNSET
+    quick_link_bucket_key: str | Unset = UNSET
+    quick_link_ui_def_bucket_key: str | Unset = UNSET
     quick_link_url: str | Unset = UNSET
     runs: list[AppInstallStackVersionRun] | Unset = UNSET
     stack_name: str | Unset = UNSET
@@ -106,6 +119,10 @@ class AppInstallStackVersion:
         phone_home_id = self.phone_home_id
 
         phone_home_url = self.phone_home_url
+
+        quick_link_bucket_key = self.quick_link_bucket_key
+
+        quick_link_ui_def_bucket_key = self.quick_link_ui_def_bucket_key
 
         quick_link_url = self.quick_link_url
 
@@ -159,6 +176,10 @@ class AppInstallStackVersion:
             field_dict["phone_home_id"] = phone_home_id
         if phone_home_url is not UNSET:
             field_dict["phone_home_url"] = phone_home_url
+        if quick_link_bucket_key is not UNSET:
+            field_dict["quick_link_bucket_key"] = quick_link_bucket_key
+        if quick_link_ui_def_bucket_key is not UNSET:
+            field_dict["quick_link_ui_def_bucket_key"] = quick_link_ui_def_bucket_key
         if quick_link_url is not UNSET:
             field_dict["quick_link_url"] = quick_link_url
         if runs is not UNSET:
@@ -223,6 +244,10 @@ class AppInstallStackVersion:
 
         phone_home_url = d.pop("phone_home_url", UNSET)
 
+        quick_link_bucket_key = d.pop("quick_link_bucket_key", UNSET)
+
+        quick_link_ui_def_bucket_key = d.pop("quick_link_ui_def_bucket_key", UNSET)
+
         quick_link_url = d.pop("quick_link_url", UNSET)
 
         _runs = d.pop("runs", UNSET)
@@ -260,6 +285,8 @@ class AppInstallStackVersion:
             org_id=org_id,
             phone_home_id=phone_home_id,
             phone_home_url=phone_home_url,
+            quick_link_bucket_key=quick_link_bucket_key,
+            quick_link_ui_def_bucket_key=quick_link_ui_def_bucket_key,
             quick_link_url=quick_link_url,
             runs=runs,
             stack_name=stack_name,

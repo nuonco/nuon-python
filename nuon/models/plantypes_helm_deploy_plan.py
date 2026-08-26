@@ -35,6 +35,8 @@ class PlantypesHelmDeployPlan:
             around for
             debuggability
         namespace (str | Unset):
+        recover_release (bool | Unset): Must stay a bool: go-swagger renders a documented $ref field as an inline
+            struct value, which decodes non-nil on every deploy.
         skip_crds (bool | Unset):
         storage_driver (str | Unset):
         take_ownership (bool | Unset):
@@ -53,6 +55,7 @@ class PlantypesHelmDeployPlan:
     helm_chart_id: str | Unset = UNSET
     name: str | Unset = UNSET
     namespace: str | Unset = UNSET
+    recover_release: bool | Unset = UNSET
     skip_crds: bool | Unset = UNSET
     storage_driver: str | Unset = UNSET
     take_ownership: bool | Unset = UNSET
@@ -85,6 +88,8 @@ class PlantypesHelmDeployPlan:
         name = self.name
 
         namespace = self.namespace
+
+        recover_release = self.recover_release
 
         skip_crds = self.skip_crds
 
@@ -124,6 +129,8 @@ class PlantypesHelmDeployPlan:
             field_dict["name"] = name
         if namespace is not UNSET:
             field_dict["namespace"] = namespace
+        if recover_release is not UNSET:
+            field_dict["recover_release"] = recover_release
         if skip_crds is not UNSET:
             field_dict["skip_crds"] = skip_crds
         if storage_driver is not UNSET:
@@ -190,6 +197,8 @@ class PlantypesHelmDeployPlan:
 
         namespace = d.pop("namespace", UNSET)
 
+        recover_release = d.pop("recover_release", UNSET)
+
         skip_crds = d.pop("skip_crds", UNSET)
 
         storage_driver = d.pop("storage_driver", UNSET)
@@ -218,6 +227,7 @@ class PlantypesHelmDeployPlan:
             helm_chart_id=helm_chart_id,
             name=name,
             namespace=namespace,
+            recover_release=recover_release,
             skip_crds=skip_crds,
             storage_driver=storage_driver,
             take_ownership=take_ownership,
