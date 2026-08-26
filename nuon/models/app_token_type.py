@@ -9,6 +9,7 @@ class AppTokenType(str, Enum):
     FEDERATED = "federated"
     INTEGRATION = "integration"
     NUON = "nuon"
+    OAUTH = "oauth"
     STATIC = "static"
 
     def __str__(self) -> str:

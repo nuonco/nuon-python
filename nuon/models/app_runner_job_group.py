@@ -7,12 +7,13 @@ class AppRunnerJobGroup(str, Enum):
     BUILD = "build"
     DEPLOY = "deploy"
     HEALTH_CHECKS = "health-checks"
+    IMAGE_ACTIONS = "image-actions"
     MANAGEMENT = "management"
     OPERATIONS = "operations"
     RUNNER = "runner"
     SANDBOX = "sandbox"
     SYNC = "sync"
-    VALUE_9 = ""
+    VALUE_10 = ""
 
     def __str__(self) -> str:
         return str(self.value)
