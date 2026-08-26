@@ -33,6 +33,8 @@ class AppGCPStackOutputs:
         provision_sa_email (str | Unset):
         public_subnet_name (str | Unset):
         region (str | Unset):
+        runner_enabled (bool | Unset): Nil when the stack predates the runner_enabled variable, which must read
+            as enabled rather than disabled.
         runner_service_account_email (str | Unset):
         runner_subnet_name (str | Unset):
     """
@@ -49,6 +51,7 @@ class AppGCPStackOutputs:
     provision_sa_email: str | Unset = UNSET
     public_subnet_name: str | Unset = UNSET
     region: str | Unset = UNSET
+    runner_enabled: bool | Unset = UNSET
     runner_service_account_email: str | Unset = UNSET
     runner_subnet_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -84,6 +87,8 @@ class AppGCPStackOutputs:
 
         region = self.region
 
+        runner_enabled = self.runner_enabled
+
         runner_service_account_email = self.runner_service_account_email
 
         runner_subnet_name = self.runner_subnet_name
@@ -115,6 +120,8 @@ class AppGCPStackOutputs:
             field_dict["public_subnet_name"] = public_subnet_name
         if region is not UNSET:
             field_dict["region"] = region
+        if runner_enabled is not UNSET:
+            field_dict["runner_enabled"] = runner_enabled
         if runner_service_account_email is not UNSET:
             field_dict["runner_service_account_email"] = runner_service_account_email
         if runner_subnet_name is not UNSET:
@@ -168,6 +175,8 @@ class AppGCPStackOutputs:
 
         region = d.pop("region", UNSET)
 
+        runner_enabled = d.pop("runner_enabled", UNSET)
+
         runner_service_account_email = d.pop("runner_service_account_email", UNSET)
 
         runner_subnet_name = d.pop("runner_subnet_name", UNSET)
@@ -185,6 +194,7 @@ class AppGCPStackOutputs:
             provision_sa_email=provision_sa_email,
             public_subnet_name=public_subnet_name,
             region=region,
+            runner_enabled=runner_enabled,
             runner_service_account_email=runner_service_account_email,
             runner_subnet_name=runner_subnet_name,
         )
