@@ -20,6 +20,8 @@ class ServiceInstallGroupRequest:
     """
     Attributes:
         name (str):
+        all_installs (bool | Unset): AllInstalls targets every install on the app that no other branch owns.
+            Mutually exclusive with InstallIDs and LabelSelector.
         install_ids (list[str] | Unset):
         label_selector (GithubComNuoncoNuonPkgLabelsSelector | Unset):
         order (int | Unset):
@@ -27,6 +29,7 @@ class ServiceInstallGroupRequest:
     """
 
     name: str
+    all_installs: bool | Unset = UNSET
     install_ids: list[str] | Unset = UNSET
     label_selector: GithubComNuoncoNuonPkgLabelsSelector | Unset = UNSET
     order: int | Unset = UNSET
@@ -35,6 +38,8 @@ class ServiceInstallGroupRequest:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
+
+        all_installs = self.all_installs
 
         install_ids: list[str] | Unset = UNSET
         if not isinstance(self.install_ids, Unset):
@@ -55,6 +60,8 @@ class ServiceInstallGroupRequest:
                 "name": name,
             }
         )
+        if all_installs is not UNSET:
+            field_dict["all_installs"] = all_installs
         if install_ids is not UNSET:
             field_dict["install_ids"] = install_ids
         if label_selector is not UNSET:
@@ -73,6 +80,8 @@ class ServiceInstallGroupRequest:
         d = dict(src_dict)
         name = d.pop("name")
 
+        all_installs = d.pop("all_installs", UNSET)
+
         install_ids = cast(list[str], d.pop("install_ids", UNSET))
 
         _label_selector = d.pop("label_selector", UNSET)
@@ -88,6 +97,7 @@ class ServiceInstallGroupRequest:
 
         service_install_group_request = cls(
             name=name,
+            all_installs=all_installs,
             install_ids=install_ids,
             label_selector=label_selector,
             order=order,

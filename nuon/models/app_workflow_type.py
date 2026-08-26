@@ -19,6 +19,7 @@ class AppWorkflowType(str, Enum):
     INPUT_UPDATE = "input_update"
     MANUAL_DEPLOY = "manual_deploy"
     PROVISION = "provision"
+    RECOVER_HELM_RELEASE = "recover_helm_release"
     REPROVISION = "reprovision"
     REPROVISION_SANDBOX = "reprovision_sandbox"
     REPROVISION_STACK = "reprovision_stack"
