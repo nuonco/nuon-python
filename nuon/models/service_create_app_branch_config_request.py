@@ -22,6 +22,9 @@ class ServiceCreateAppBranchConfigRequest:
     """
     Attributes:
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
+        disable_branch_triggers (bool | Unset): DisableBranchTriggers stops git push / pull_request webhooks from
+            enqueueing
+            branch runs. Omit to carry the current setting forward.
         install_groups (list[ServiceInstallGroupRequest] | Unset):
         post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs run on each install, in order, after its
             deploy succeeds.
@@ -30,6 +33,7 @@ class ServiceCreateAppBranchConfigRequest:
     """
 
     connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
+    disable_branch_triggers: bool | Unset = UNSET
     install_groups: list[ServiceInstallGroupRequest] | Unset = UNSET
     post_deploy_runbook_ids: list[str] | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
@@ -39,6 +43,8 @@ class ServiceCreateAppBranchConfigRequest:
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
+
+        disable_branch_triggers = self.disable_branch_triggers
 
         install_groups: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_groups, Unset):
@@ -60,6 +66,8 @@ class ServiceCreateAppBranchConfigRequest:
         field_dict.update({})
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if disable_branch_triggers is not UNSET:
+            field_dict["disable_branch_triggers"] = disable_branch_triggers
         if install_groups is not UNSET:
             field_dict["install_groups"] = install_groups
         if post_deploy_runbook_ids is not UNSET:
@@ -83,6 +91,8 @@ class ServiceCreateAppBranchConfigRequest:
         else:
             connected_github_vcs_config = HelpersConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
 
+        disable_branch_triggers = d.pop("disable_branch_triggers", UNSET)
+
         _install_groups = d.pop("install_groups", UNSET)
         install_groups: list[ServiceInstallGroupRequest] | Unset = UNSET
         if _install_groups is not UNSET:
@@ -103,6 +113,7 @@ class ServiceCreateAppBranchConfigRequest:
 
         service_create_app_branch_config_request = cls(
             connected_github_vcs_config=connected_github_vcs_config,
+            disable_branch_triggers=disable_branch_triggers,
             install_groups=install_groups,
             post_deploy_runbook_ids=post_deploy_runbook_ids,
             public_git_vcs_config=public_git_vcs_config,

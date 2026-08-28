@@ -6,34 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_app_config import AppAppConfig
+from ...models.service_stack_service_account_response import ServiceStackServiceAccountResponse
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    app_id: str,
-    config_id: str,
-    *,
-    recurse: bool | Unset = False,
-    include_intermediate: bool | Unset = False,
+    install_id: str,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["recurse"] = recurse
-
-    params["include_intermediate"] = include_intermediate
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/apps/{app_id}/configs/{config_id}".format(
-            app_id=quote(str(app_id), safe=""),
-            config_id=quote(str(config_id), safe=""),
+        "url": "/v1/stacks/{install_id}/service-account".format(
+            install_id=quote(str(install_id), safe=""),
         ),
-        "params": params,
     }
 
     return _kwargs
@@ -41,16 +27,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppAppConfig | StderrErrResponse | None:
+) -> ServiceStackServiceAccountResponse | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = AppAppConfig.from_dict(response.json())
+        response_200 = ServiceStackServiceAccountResponse.from_dict(response.json())
 
         return response_200
-
-    if response.status_code == 400:
-        response_400 = StderrErrResponse.from_dict(response.json())
-
-        return response_400
 
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
@@ -80,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppAppConfig | StderrErrResponse]:
+) -> Response[ServiceStackServiceAccountResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -90,36 +71,29 @@ def _build_response(
 
 
 def sync_detailed(
-    app_id: str,
-    config_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
-    include_intermediate: bool | Unset = False,
-) -> Response[AppAppConfig | StderrErrResponse]:
-    """get an app config
+) -> Response[ServiceStackServiceAccountResponse | StderrErrResponse]:
+    """get an install stack's service account
 
-     Fetch an app config by id.
+     Return the service account an install stack's Terraform module authenticates as, and whether it
+    holds a usable API token. Never returns a token value: create one with POST /v1/service-
+    accounts/{account_id}/tokens, which returns it once.
 
     Args:
-        app_id (str):
-        config_id (str):
-        recurse (bool | Unset):  Default: False.
-        include_intermediate (bool | Unset):  Default: False.
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppAppConfig | StderrErrResponse]
+        Response[ServiceStackServiceAccountResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        config_id=config_id,
-        recurse=recurse,
-        include_intermediate=include_intermediate,
+        install_id=install_id,
     )
 
     response = client.get_httpx_client().request(
@@ -130,71 +104,57 @@ def sync_detailed(
 
 
 def sync(
-    app_id: str,
-    config_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
-    include_intermediate: bool | Unset = False,
-) -> AppAppConfig | StderrErrResponse | None:
-    """get an app config
+) -> ServiceStackServiceAccountResponse | StderrErrResponse | None:
+    """get an install stack's service account
 
-     Fetch an app config by id.
+     Return the service account an install stack's Terraform module authenticates as, and whether it
+    holds a usable API token. Never returns a token value: create one with POST /v1/service-
+    accounts/{account_id}/tokens, which returns it once.
 
     Args:
-        app_id (str):
-        config_id (str):
-        recurse (bool | Unset):  Default: False.
-        include_intermediate (bool | Unset):  Default: False.
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppAppConfig | StderrErrResponse
+        ServiceStackServiceAccountResponse | StderrErrResponse
     """
 
     return sync_detailed(
-        app_id=app_id,
-        config_id=config_id,
+        install_id=install_id,
         client=client,
-        recurse=recurse,
-        include_intermediate=include_intermediate,
     ).parsed
 
 
 async def asyncio_detailed(
-    app_id: str,
-    config_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
-    include_intermediate: bool | Unset = False,
-) -> Response[AppAppConfig | StderrErrResponse]:
-    """get an app config
+) -> Response[ServiceStackServiceAccountResponse | StderrErrResponse]:
+    """get an install stack's service account
 
-     Fetch an app config by id.
+     Return the service account an install stack's Terraform module authenticates as, and whether it
+    holds a usable API token. Never returns a token value: create one with POST /v1/service-
+    accounts/{account_id}/tokens, which returns it once.
 
     Args:
-        app_id (str):
-        config_id (str):
-        recurse (bool | Unset):  Default: False.
-        include_intermediate (bool | Unset):  Default: False.
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppAppConfig | StderrErrResponse]
+        Response[ServiceStackServiceAccountResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        app_id=app_id,
-        config_id=config_id,
-        recurse=recurse,
-        include_intermediate=include_intermediate,
+        install_id=install_id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -203,37 +163,30 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    app_id: str,
-    config_id: str,
+    install_id: str,
     *,
     client: AuthenticatedClient,
-    recurse: bool | Unset = False,
-    include_intermediate: bool | Unset = False,
-) -> AppAppConfig | StderrErrResponse | None:
-    """get an app config
+) -> ServiceStackServiceAccountResponse | StderrErrResponse | None:
+    """get an install stack's service account
 
-     Fetch an app config by id.
+     Return the service account an install stack's Terraform module authenticates as, and whether it
+    holds a usable API token. Never returns a token value: create one with POST /v1/service-
+    accounts/{account_id}/tokens, which returns it once.
 
     Args:
-        app_id (str):
-        config_id (str):
-        recurse (bool | Unset):  Default: False.
-        include_intermediate (bool | Unset):  Default: False.
+        install_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppAppConfig | StderrErrResponse
+        ServiceStackServiceAccountResponse | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            app_id=app_id,
-            config_id=config_id,
+            install_id=install_id,
             client=client,
-            recurse=recurse,
-            include_intermediate=include_intermediate,
         )
     ).parsed

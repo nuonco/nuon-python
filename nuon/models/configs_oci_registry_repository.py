@@ -10,6 +10,7 @@ from ..models.configs_oci_registry_type import ConfigsOCIRegistryType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.configs_acr_app_registration import ConfigsACRAppRegistration
     from ..models.configs_oci_registry_auth import ConfigsOCIRegistryAuth
     from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
     from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
@@ -24,6 +25,7 @@ T = TypeVar("T", bound="ConfigsOCIRegistryRepository")
 class ConfigsOCIRegistryRepository:
     """
     Attributes:
+        acrapp_registration (ConfigsACRAppRegistration | Unset):
         acrauth (GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset):
         ecrauth (GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset):
         login_server (str | Unset):
@@ -37,6 +39,7 @@ class ConfigsOCIRegistryRepository:
         workload_identity_provider (str | Unset):
     """
 
+    acrapp_registration: ConfigsACRAppRegistration | Unset = UNSET
     acrauth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset = UNSET
     ecrauth: GithubComNuoncoNuonPkgAwsCredentialsConfig | Unset = UNSET
     login_server: str | Unset = UNSET
@@ -50,6 +53,10 @@ class ConfigsOCIRegistryRepository:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        acrapp_registration: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.acrapp_registration, Unset):
+            acrapp_registration = self.acrapp_registration.to_dict()
+
         acrauth: dict[str, Any] | Unset = UNSET
         if not isinstance(self.acrauth, Unset):
             acrauth = self.acrauth.to_dict()
@@ -81,6 +88,8 @@ class ConfigsOCIRegistryRepository:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if acrapp_registration is not UNSET:
+            field_dict["acrappRegistration"] = acrapp_registration
         if acrauth is not UNSET:
             field_dict["acrauth"] = acrauth
         if ecrauth is not UNSET:
@@ -106,6 +115,7 @@ class ConfigsOCIRegistryRepository:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.configs_acr_app_registration import ConfigsACRAppRegistration
         from ..models.configs_oci_registry_auth import ConfigsOCIRegistryAuth
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
             GithubComNuoncoNuonPkgAwsCredentialsConfig,
@@ -115,6 +125,13 @@ class ConfigsOCIRegistryRepository:
         )
 
         d = dict(src_dict)
+        _acrapp_registration = d.pop("acrappRegistration", UNSET)
+        acrapp_registration: ConfigsACRAppRegistration | Unset
+        if isinstance(_acrapp_registration, Unset):
+            acrapp_registration = UNSET
+        else:
+            acrapp_registration = ConfigsACRAppRegistration.from_dict(_acrapp_registration)
+
         _acrauth = d.pop("acrauth", UNSET)
         acrauth: GithubComNuoncoNuonPkgAzureCredentialsConfig | Unset
         if isinstance(_acrauth, Unset):
@@ -156,6 +173,7 @@ class ConfigsOCIRegistryRepository:
         workload_identity_provider = d.pop("workloadIdentityProvider", UNSET)
 
         configs_oci_registry_repository = cls(
+            acrapp_registration=acrapp_registration,
             acrauth=acrauth,
             ecrauth=ecrauth,
             login_server=login_server,

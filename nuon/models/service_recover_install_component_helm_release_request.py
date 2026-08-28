@@ -8,60 +8,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AppOrgFeatureInfo")
+T = TypeVar("T", bound="ServiceRecoverInstallComponentHelmReleaseRequest")
 
 
 @_attrs_define
-class AppOrgFeatureInfo:
+class ServiceRecoverInstallComponentHelmReleaseRequest:
     """
     Attributes:
-        description (str | Unset):
-        forced (bool | Unset): Forced marks a flag this deployment pins on for every org, which callers
-            cannot toggle off.
-        name (str | Unset):
+        role (str | Unset):
     """
 
-    description: str | Unset = UNSET
-    forced: bool | Unset = UNSET
-    name: str | Unset = UNSET
+    role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        description = self.description
-
-        forced = self.forced
-
-        name = self.name
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if forced is not UNSET:
-            field_dict["forced"] = forced
-        if name is not UNSET:
-            field_dict["name"] = name
+        if role is not UNSET:
+            field_dict["role"] = role
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        description = d.pop("description", UNSET)
+        role = d.pop("role", UNSET)
 
-        forced = d.pop("forced", UNSET)
-
-        name = d.pop("name", UNSET)
-
-        app_org_feature_info = cls(
-            description=description,
-            forced=forced,
-            name=name,
+        service_recover_install_component_helm_release_request = cls(
+            role=role,
         )
 
-        app_org_feature_info.additional_properties = d
-        return app_org_feature_info
+        service_recover_install_component_helm_release_request.additional_properties = d
+        return service_recover_install_component_helm_release_request
 
     @property
     def additional_keys(self) -> list[str]:

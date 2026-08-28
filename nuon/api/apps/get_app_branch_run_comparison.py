@@ -6,30 +6,31 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_log_stream_tail_logs_response import ServiceLogStreamTailLogsResponse
+from ...models.service_app_branch_run_comparison_response import ServiceAppBranchRunComparisonResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
+    include_diff: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["since"] = since
-
-    params["wait"] = wait
+    params["include_diff"] = include_diff
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/log-streams/{log_stream_id}/logs/tail".format(
-            log_stream_id=quote(str(log_stream_id), safe=""),
+        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs/{run_id}/comparison".format(
+            app_id=quote(str(app_id), safe=""),
+            app_branch_id=quote(str(app_branch_id), safe=""),
+            run_id=quote(str(run_id), safe=""),
         ),
         "params": params,
     }
@@ -39,9 +40,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
+) -> ServiceAppBranchRunComparisonResponse | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = ServiceLogStreamTailLogsResponse.from_dict(response.json())
+        response_200 = ServiceAppBranchRunComparisonResponse.from_dict(response.json())
 
         return response_200
 
@@ -70,11 +71,6 @@ def _parse_response(
 
         return response_500
 
-    if response.status_code == 503:
-        response_503 = StderrErrResponse.from_dict(response.json())
-
-        return response_503
-
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -83,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
+) -> Response[ServiceAppBranchRunComparisonResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,34 +89,37 @@ def _build_response(
 
 
 def sync_detailed(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    include_diff: str | Unset = UNSET,
+) -> Response[ServiceAppBranchRunComparisonResponse | StderrErrResponse]:
+    """get comparison for an app branch run
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns the AppBranchRunComparison for a run (as head), optionally including diff blob contents via
+    include_diff=git|full|config
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
+        include_diff (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[ServiceAppBranchRunComparisonResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
+        include_diff=include_diff,
     )
 
     response = client.get_httpx_client().request(
@@ -131,67 +130,73 @@ def sync_detailed(
 
 
 def sync(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    include_diff: str | Unset = UNSET,
+) -> ServiceAppBranchRunComparisonResponse | StderrErrResponse | None:
+    """get comparison for an app branch run
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns the AppBranchRunComparison for a run (as head), optionally including diff blob contents via
+    include_diff=git|full|config
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
+        include_diff (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        ServiceAppBranchRunComparisonResponse | StderrErrResponse
     """
 
     return sync_detailed(
-        log_stream_id=log_stream_id,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
         client=client,
-        since=since,
-        wait=wait,
+        include_diff=include_diff,
     ).parsed
 
 
 async def asyncio_detailed(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    include_diff: str | Unset = UNSET,
+) -> Response[ServiceAppBranchRunComparisonResponse | StderrErrResponse]:
+    """get comparison for an app branch run
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns the AppBranchRunComparison for a run (as head), optionally including diff blob contents via
+    include_diff=git|full|config
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
+        include_diff (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[ServiceAppBranchRunComparisonResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
+        include_diff=include_diff,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -200,35 +205,38 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    include_diff: str | Unset = UNSET,
+) -> ServiceAppBranchRunComparisonResponse | StderrErrResponse | None:
+    """get comparison for an app branch run
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Returns the AppBranchRunComparison for a run (as head), optionally including diff blob contents via
+    include_diff=git|full|config
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
+        include_diff (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        ServiceAppBranchRunComparisonResponse | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            log_stream_id=log_stream_id,
+            app_id=app_id,
+            app_branch_id=app_branch_id,
+            run_id=run_id,
             client=client,
-            since=since,
-            wait=wait,
+            include_diff=include_diff,
         )
     ).parsed
