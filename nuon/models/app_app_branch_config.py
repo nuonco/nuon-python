@@ -25,10 +25,13 @@ class AppAppBranchConfig:
         action_ids (list[str] | Unset):
         app_branch_id (str | Unset):
         component_ids (list[str] | Unset):
-        config_number (int | Unset): generated view field
+        config_number (int | Unset):
         connected_github_vcs_config (AppConnectedGithubVCSConfig | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        disable_branch_triggers (bool | Unset): DisableBranchTriggers stops git push / pull_request webhooks from
+            enqueueing
+            branch runs for this config. Manual triggers are unaffected.
         id (str | Unset):
         install_groups (list[AppAppBranchInstallGroup] | Unset):
         org_id (str | Unset):
@@ -49,6 +52,7 @@ class AppAppBranchConfig:
     connected_github_vcs_config: AppConnectedGithubVCSConfig | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    disable_branch_triggers: bool | Unset = UNSET
     id: str | Unset = UNSET
     install_groups: list[AppAppBranchInstallGroup] | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -79,6 +83,8 @@ class AppAppBranchConfig:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        disable_branch_triggers = self.disable_branch_triggers
 
         id = self.id
 
@@ -129,6 +135,8 @@ class AppAppBranchConfig:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if disable_branch_triggers is not UNSET:
+            field_dict["disable_branch_triggers"] = disable_branch_triggers
         if id is not UNSET:
             field_dict["id"] = id
         if install_groups is not UNSET:
@@ -175,6 +183,8 @@ class AppAppBranchConfig:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        disable_branch_triggers = d.pop("disable_branch_triggers", UNSET)
+
         id = d.pop("id", UNSET)
 
         _install_groups = d.pop("install_groups", UNSET)
@@ -218,6 +228,7 @@ class AppAppBranchConfig:
             connected_github_vcs_config=connected_github_vcs_config,
             created_at=created_at,
             created_by_id=created_by_id,
+            disable_branch_triggers=disable_branch_triggers,
             id=id,
             install_groups=install_groups,
             org_id=org_id,

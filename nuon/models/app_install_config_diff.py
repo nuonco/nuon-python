@@ -22,6 +22,9 @@ class AppInstallConfigDiff:
         added (list[AppComponentDiffEntry] | Unset):
         changed (list[AppComponentDiffEntry] | Unset):
         removed (list[AppComponentDiffEntry] | Unset):
+        sandbox_build_changed (bool | Unset):
+        sandbox_build_new_id (str | Unset):
+        sandbox_build_old_id (str | Unset):
         sandbox_changed (bool | Unset):
         sandbox_new_id (str | Unset):
         sandbox_old_id (str | Unset):
@@ -34,6 +37,9 @@ class AppInstallConfigDiff:
     added: list[AppComponentDiffEntry] | Unset = UNSET
     changed: list[AppComponentDiffEntry] | Unset = UNSET
     removed: list[AppComponentDiffEntry] | Unset = UNSET
+    sandbox_build_changed: bool | Unset = UNSET
+    sandbox_build_new_id: str | Unset = UNSET
+    sandbox_build_old_id: str | Unset = UNSET
     sandbox_changed: bool | Unset = UNSET
     sandbox_new_id: str | Unset = UNSET
     sandbox_old_id: str | Unset = UNSET
@@ -65,6 +71,12 @@ class AppInstallConfigDiff:
                 removed_item = removed_item_data.to_dict()
                 removed.append(removed_item)
 
+        sandbox_build_changed = self.sandbox_build_changed
+
+        sandbox_build_new_id = self.sandbox_build_new_id
+
+        sandbox_build_old_id = self.sandbox_build_old_id
+
         sandbox_changed = self.sandbox_changed
 
         sandbox_new_id = self.sandbox_new_id
@@ -93,6 +105,12 @@ class AppInstallConfigDiff:
             field_dict["changed"] = changed
         if removed is not UNSET:
             field_dict["removed"] = removed
+        if sandbox_build_changed is not UNSET:
+            field_dict["sandbox_build_changed"] = sandbox_build_changed
+        if sandbox_build_new_id is not UNSET:
+            field_dict["sandbox_build_new_id"] = sandbox_build_new_id
+        if sandbox_build_old_id is not UNSET:
+            field_dict["sandbox_build_old_id"] = sandbox_build_old_id
         if sandbox_changed is not UNSET:
             field_dict["sandbox_changed"] = sandbox_changed
         if sandbox_new_id is not UNSET:
@@ -142,6 +160,12 @@ class AppInstallConfigDiff:
 
                 removed.append(removed_item)
 
+        sandbox_build_changed = d.pop("sandbox_build_changed", UNSET)
+
+        sandbox_build_new_id = d.pop("sandbox_build_new_id", UNSET)
+
+        sandbox_build_old_id = d.pop("sandbox_build_old_id", UNSET)
+
         sandbox_changed = d.pop("sandbox_changed", UNSET)
 
         sandbox_new_id = d.pop("sandbox_new_id", UNSET)
@@ -167,6 +191,9 @@ class AppInstallConfigDiff:
             added=added,
             changed=changed,
             removed=removed,
+            sandbox_build_changed=sandbox_build_changed,
+            sandbox_build_new_id=sandbox_build_new_id,
+            sandbox_build_old_id=sandbox_build_old_id,
             sandbox_changed=sandbox_changed,
             sandbox_new_id=sandbox_new_id,
             sandbox_old_id=sandbox_old_id,

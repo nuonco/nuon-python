@@ -6,42 +6,43 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_log_stream_tail_logs_response import ServiceLogStreamTailLogsResponse
+from ...models.app_app_branch_config import AppAppBranchConfig
+from ...models.service_update_app_branch_config_request import ServiceUpdateAppBranchConfigRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    config_id: str,
     *,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
+    body: ServiceUpdateAppBranchConfigRequest,
 ) -> dict[str, Any]:
-
-    params: dict[str, Any] = {}
-
-    params["since"] = since
-
-    params["wait"] = wait
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/v1/log-streams/{log_stream_id}/logs/tail".format(
-            log_stream_id=quote(str(log_stream_id), safe=""),
+        "method": "patch",
+        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/configs/{config_id}".format(
+            app_id=quote(str(app_id), safe=""),
+            app_branch_id=quote(str(app_branch_id), safe=""),
+            config_id=quote(str(config_id), safe=""),
         ),
-        "params": params,
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
+) -> AppAppBranchConfig | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = ServiceLogStreamTailLogsResponse.from_dict(response.json())
+        response_200 = AppAppBranchConfig.from_dict(response.json())
 
         return response_200
 
@@ -70,11 +71,6 @@ def _parse_response(
 
         return response_500
 
-    if response.status_code == 503:
-        response_503 = StderrErrResponse.from_dict(response.json())
-
-        return response_503
-
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -83,7 +79,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
+) -> Response[AppAppBranchConfig | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,34 +89,36 @@ def _build_response(
 
 
 def sync_detailed(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    body: ServiceUpdateAppBranchConfigRequest,
+) -> Response[AppAppBranchConfig | StderrErrResponse]:
+    """update app branch config settings
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Updates mutable settings on an existing app branch config (e.g. webhook trigger behavior).
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        config_id (str):
+        body (ServiceUpdateAppBranchConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[AppAppBranchConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        config_id=config_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -131,67 +129,71 @@ def sync_detailed(
 
 
 def sync(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    body: ServiceUpdateAppBranchConfigRequest,
+) -> AppAppBranchConfig | StderrErrResponse | None:
+    """update app branch config settings
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Updates mutable settings on an existing app branch config (e.g. webhook trigger behavior).
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        config_id (str):
+        body (ServiceUpdateAppBranchConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        AppAppBranchConfig | StderrErrResponse
     """
 
     return sync_detailed(
-        log_stream_id=log_stream_id,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        config_id=config_id,
         client=client,
-        since=since,
-        wait=wait,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]:
-    """long-poll tail a log stream
+    body: ServiceUpdateAppBranchConfigRequest,
+) -> Response[AppAppBranchConfig | StderrErrResponse]:
+    """update app branch config settings
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Updates mutable settings on an existing app branch config (e.g. webhook trigger behavior).
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        config_id (str):
+        body (ServiceUpdateAppBranchConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceLogStreamTailLogsResponse | StderrErrResponse]
+        Response[AppAppBranchConfig | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
-        log_stream_id=log_stream_id,
-        since=since,
-        wait=wait,
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        config_id=config_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -200,35 +202,37 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    log_stream_id: str,
+    app_id: str,
+    app_branch_id: str,
+    config_id: str,
     *,
     client: AuthenticatedClient,
-    since: str | Unset = UNSET,
-    wait: str | Unset = UNSET,
-) -> ServiceLogStreamTailLogsResponse | StderrErrResponse | None:
-    """long-poll tail a log stream
+    body: ServiceUpdateAppBranchConfigRequest,
+) -> AppAppBranchConfig | StderrErrResponse | None:
+    """update app branch config settings
 
-     Returns rows after the supplied composite cursor, long-polling up to ~30s for new rows on an idle
-    stream. Behind the `log-tail-long-poll` org feature flag.
+     Updates mutable settings on an existing app branch config (e.g. webhook trigger behavior).
 
     Args:
-        log_stream_id (str):
-        since (str | Unset):
-        wait (str | Unset):
+        app_id (str):
+        app_branch_id (str):
+        config_id (str):
+        body (ServiceUpdateAppBranchConfigRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceLogStreamTailLogsResponse | StderrErrResponse
+        AppAppBranchConfig | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
-            log_stream_id=log_stream_id,
+            app_id=app_id,
+            app_branch_id=app_branch_id,
+            config_id=config_id,
             client=client,
-            since=since,
-            wait=wait,
+            body=body,
         )
     ).parsed

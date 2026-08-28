@@ -17,6 +17,7 @@ from .app_app_branch import AppAppBranch
 from .app_app_branch_config import AppAppBranchConfig
 from .app_app_branch_install_group import AppAppBranchInstallGroup
 from .app_app_branch_run import AppAppBranchRun
+from .app_app_branch_run_comparison import AppAppBranchRunComparison
 from .app_app_branch_run_type import AppAppBranchRunType
 from .app_app_break_glass_config import AppAppBreakGlassConfig
 from .app_app_config import AppAppConfig
@@ -266,6 +267,7 @@ from .app_slack_installation import AppSlackInstallation
 from .app_slack_installation_status import AppSlackInstallationStatus
 from .app_slack_org_link import AppSlackOrgLink
 from .app_slack_org_link_status import AppSlackOrgLinkStatus
+from .app_stack_deployment_scope import AppStackDeploymentScope
 from .app_stack_type import AppStackType
 from .app_stack_version_run_input_diff import AppStackVersionRunInputDiff
 from .app_stack_version_run_role_diff import AppStackVersionRunRoleDiff
@@ -314,6 +316,7 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .blobstore_blob import BlobstoreBlob
+from .blobstore_blob_metadata import BlobstoreBlobMetadata
 from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
@@ -329,6 +332,7 @@ from .config_custom_nested_stack import ConfigCustomNestedStack
 from .config_custom_nested_stack_parameters import ConfigCustomNestedStackParameters
 from .config_custom_nested_stack_status import ConfigCustomNestedStackStatus
 from .config_helm_repo_config import ConfigHelmRepoConfig
+from .configs_acr_app_registration import ConfigsACRAppRegistration
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
 from .configs_oci_registry_type import ConfigsOCIRegistryType
@@ -460,6 +464,8 @@ from .service_add_install_labels_request_labels import ServiceAddInstallLabelsRe
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
 from .service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
 from .service_app_awsiam_role_config_cloud_platform import ServiceAppAWSIAMRoleConfigCloudPlatform
+from .service_app_branch_run_comparison_response import ServiceAppBranchRunComparisonResponse
+from .service_app_branch_run_comparison_run_summary import ServiceAppBranchRunComparisonRunSummary
 from .service_app_config_diff_response import ServiceAppConfigDiffResponse
 from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
@@ -694,6 +700,7 @@ from .service_put_install_component_health_check_request_details import (
     ServicePutInstallComponentHealthCheckRequestDetails,
 )
 from .service_readme import ServiceReadme
+from .service_recover_install_component_helm_release_request import ServiceRecoverInstallComponentHelmReleaseRequest
 from .service_refresh_install_health_cluster_access_request import ServiceRefreshInstallHealthClusterAccessRequest
 from .service_refresh_install_health_cluster_access_response import ServiceRefreshInstallHealthClusterAccessResponse
 from .service_remove_action_labels_request import ServiceRemoveActionLabelsRequest
@@ -721,6 +728,7 @@ from .service_shutdown_runner_process_request import ServiceShutdownRunnerProces
 from .service_skip_workflow_step_response import ServiceSkipWorkflowStepResponse
 from .service_slack_challenge_response import ServiceSlackChallengeResponse
 from .service_slash_response import ServiceSlashResponse
+from .service_stack_service_account_response import ServiceStackServiceAccountResponse
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from .service_teardown_install_components_request import ServiceTeardownInstallComponentsRequest
@@ -730,6 +738,7 @@ from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRe
 from .service_trigger_install_config_sync_request import ServiceTriggerInstallConfigSyncRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
 from .service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels
+from .service_update_app_branch_config_request import ServiceUpdateAppBranchConfigRequest
 from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
@@ -835,6 +844,7 @@ __all__ = (
     "AppAppBranchConfig",
     "AppAppBranchInstallGroup",
     "AppAppBranchRun",
+    "AppAppBranchRunComparison",
     "AppAppBranchRunType",
     "AppAppBreakGlassConfig",
     "AppAppConfig",
@@ -1082,6 +1092,7 @@ __all__ = (
     "AppSlackInstallationStatus",
     "AppSlackOrgLink",
     "AppSlackOrgLinkStatus",
+    "AppStackDeploymentScope",
     "AppStackType",
     "AppStackVersionRunInputDiff",
     "AppStackVersionRunRoleDiff",
@@ -1130,6 +1141,7 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "BlobstoreBlob",
+    "BlobstoreBlobMetadata",
     "CallbackRef",
     "CctxSignalContext",
     "ClientConversation",
@@ -1145,6 +1157,7 @@ __all__ = (
     "ConfigCustomNestedStackParameters",
     "ConfigCustomNestedStackStatus",
     "ConfigHelmRepoConfig",
+    "ConfigsACRAppRegistration",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
     "ConfigsOCIRegistryType",
@@ -1272,6 +1285,8 @@ __all__ = (
     "ServiceAppAWSIAMPolicyConfig",
     "ServiceAppAWSIAMRoleConfig",
     "ServiceAppAWSIAMRoleConfigCloudPlatform",
+    "ServiceAppBranchRunComparisonResponse",
+    "ServiceAppBranchRunComparisonRunSummary",
     "ServiceAppConfigDiffResponse",
     "ServiceAppConfigTemplate",
     "ServiceAppConfigTemplateType",
@@ -1472,6 +1487,7 @@ __all__ = (
     "ServicePutInstallComponentHealthCheckRequest",
     "ServicePutInstallComponentHealthCheckRequestDetails",
     "ServiceReadme",
+    "ServiceRecoverInstallComponentHelmReleaseRequest",
     "ServiceRefreshInstallHealthClusterAccessRequest",
     "ServiceRefreshInstallHealthClusterAccessResponse",
     "ServiceRemoveActionLabelsRequest",
@@ -1497,6 +1513,7 @@ __all__ = (
     "ServiceSkipWorkflowStepResponse",
     "ServiceSlackChallengeResponse",
     "ServiceSlashResponse",
+    "ServiceStackServiceAccountResponse",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
     "ServiceTeardownInstallComponentsRequest",
@@ -1506,6 +1523,7 @@ __all__ = (
     "ServiceTriggerInstallConfigSyncRequest",
     "ServiceUpdateActionWorkflowRequest",
     "ServiceUpdateActionWorkflowRequestLabels",
+    "ServiceUpdateAppBranchConfigRequest",
     "ServiceUpdateAppBranchRequest",
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",

@@ -8,24 +8,24 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceAzureACRImageConfigRequest")
+T = TypeVar("T", bound="ConfigsACRAppRegistration")
 
 
 @_attrs_define
-class ServiceAzureACRImageConfigRequest:
+class ConfigsACRAppRegistration:
     """
     Attributes:
         client_certificate_name (str | Unset):
         client_id (str | Unset):
-        client_secret_name (str | Unset): Names of app secrets, never raw values. At most one may be set.
-        registry_url (str | Unset):
+        client_secret_name (str | Unset): App secret names holding the credential. Exactly one is set.
+        component_id (str | Unset):
         tenant_id (str | Unset):
     """
 
     client_certificate_name: str | Unset = UNSET
     client_id: str | Unset = UNSET
     client_secret_name: str | Unset = UNSET
-    registry_url: str | Unset = UNSET
+    component_id: str | Unset = UNSET
     tenant_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -36,7 +36,7 @@ class ServiceAzureACRImageConfigRequest:
 
         client_secret_name = self.client_secret_name
 
-        registry_url = self.registry_url
+        component_id = self.component_id
 
         tenant_id = self.tenant_id
 
@@ -44,41 +44,41 @@ class ServiceAzureACRImageConfigRequest:
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if client_certificate_name is not UNSET:
-            field_dict["client_certificate_name"] = client_certificate_name
+            field_dict["clientCertificateName"] = client_certificate_name
         if client_id is not UNSET:
-            field_dict["client_id"] = client_id
+            field_dict["clientID"] = client_id
         if client_secret_name is not UNSET:
-            field_dict["client_secret_name"] = client_secret_name
-        if registry_url is not UNSET:
-            field_dict["registry_url"] = registry_url
+            field_dict["clientSecretName"] = client_secret_name
+        if component_id is not UNSET:
+            field_dict["componentID"] = component_id
         if tenant_id is not UNSET:
-            field_dict["tenant_id"] = tenant_id
+            field_dict["tenantID"] = tenant_id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        client_certificate_name = d.pop("client_certificate_name", UNSET)
+        client_certificate_name = d.pop("clientCertificateName", UNSET)
 
-        client_id = d.pop("client_id", UNSET)
+        client_id = d.pop("clientID", UNSET)
 
-        client_secret_name = d.pop("client_secret_name", UNSET)
+        client_secret_name = d.pop("clientSecretName", UNSET)
 
-        registry_url = d.pop("registry_url", UNSET)
+        component_id = d.pop("componentID", UNSET)
 
-        tenant_id = d.pop("tenant_id", UNSET)
+        tenant_id = d.pop("tenantID", UNSET)
 
-        service_azure_acr_image_config_request = cls(
+        configs_acr_app_registration = cls(
             client_certificate_name=client_certificate_name,
             client_id=client_id,
             client_secret_name=client_secret_name,
-            registry_url=registry_url,
+            component_id=component_id,
             tenant_id=tenant_id,
         )
 
-        service_azure_acr_image_config_request.additional_properties = d
-        return service_azure_acr_image_config_request
+        configs_acr_app_registration.additional_properties = d
+        return configs_acr_app_registration
 
     @property
     def additional_keys(self) -> list[str]:
