@@ -13,8 +13,6 @@ T = TypeVar("T", bound="PermissionsSet")
 
 @_attrs_define
 class PermissionsSet:
-    """ """
-
     additional_properties: dict[str, PermissionsPermission] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceCreateAppInstallsConfigRequestVcsType(str, Enum):
+class ServiceCreateAppInstallsConfigRequestVcsType(StrEnum):
     CONNECTED = "connected"
     PUBLIC = "public"
 

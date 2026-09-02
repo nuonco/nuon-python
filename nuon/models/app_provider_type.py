@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppProviderType(str, Enum):
+class AppProviderType(StrEnum):
     GITHUB = "github"
     GOOGLE = "google"
     OIDC = "oidc"
