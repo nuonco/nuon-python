@@ -127,10 +127,10 @@ class AppInstallConfigVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_config_sync import AppInstallConfigSync
-        from ..models.app_install_config_version_metadata import AppInstallConfigVersionMetadata
-        from ..models.blobstore_blob import BlobstoreBlob
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_config_sync import AppInstallConfigSync  # noqa: PLC0415
+        from ..models.app_install_config_version_metadata import AppInstallConfigVersionMetadata  # noqa: PLC0415
+        from ..models.blobstore_blob import BlobstoreBlob  # noqa: PLC0415
 
         d = dict(src_dict)
         created = d.pop("created", UNSET)

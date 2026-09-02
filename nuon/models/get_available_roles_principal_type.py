@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetAvailableRolesPrincipalType(str, Enum):
+class GetAvailableRolesPrincipalType(StrEnum):
     ACTION = "action"
     COMPONENT = "component"
     SANDBOX = "sandbox"

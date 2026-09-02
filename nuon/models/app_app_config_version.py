@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppConfigVersion(str, Enum):
+class AppAppConfigVersion(StrEnum):
     V2 = "v2"
     VALUE_0 = ""
 
