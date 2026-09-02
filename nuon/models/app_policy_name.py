@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppPolicyName(str, Enum):
+class AppPolicyName(StrEnum):
     HOSTED_INSTALLER = "hosted_installer"
     INSTALLER = "installer"
     ORG_ADMIN = "org_admin"
@@ -9,6 +9,7 @@ class AppPolicyName(str, Enum):
     ORG_READ_ONLY = "org_read_only"
     ORG_SUPPORT = "org_support"
     RUNNER = "runner"
+    STACK = "stack"
 
     def __str__(self) -> str:
         return str(self.value)

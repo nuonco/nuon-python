@@ -158,7 +158,7 @@ class AppOCIArtifact:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_oci_artifact_annotations import AppOCIArtifactAnnotations
+        from ..models.app_oci_artifact_annotations import AppOCIArtifactAnnotations  # noqa: PLC0415
 
         d = dict(src_dict)
         _annotations = d.pop("annotations", UNSET)

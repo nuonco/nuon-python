@@ -17,16 +17,20 @@ class ServiceCreateServiceAccountTokenRequest:
     Attributes:
         duration (str | Unset): Duration defaults to one year. Default: '8760h'.
         invalidate (bool | Unset):
+        name (str | Unset): Name labels the token where it is listed; defaults to the account's identity.
     """
 
     duration: str | Unset = "8760h"
     invalidate: bool | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         duration = self.duration
 
         invalidate = self.invalidate
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +39,8 @@ class ServiceCreateServiceAccountTokenRequest:
             field_dict["duration"] = duration
         if invalidate is not UNSET:
             field_dict["invalidate"] = invalidate
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
@@ -45,9 +51,12 @@ class ServiceCreateServiceAccountTokenRequest:
 
         invalidate = d.pop("invalidate", UNSET)
 
+        name = d.pop("name", UNSET)
+
         service_create_service_account_token_request = cls(
             duration=duration,
             invalidate=invalidate,
+            name=name,
         )
 
         service_create_service_account_token_request.additional_properties = d

@@ -77,7 +77,7 @@ class ServiceCreateAppPermissionsConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
+        from ..models.service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id")

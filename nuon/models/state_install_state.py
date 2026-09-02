@@ -79,8 +79,8 @@ class StateInstallState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_install_state_inputs import StateInstallStateInputs
-        from ..models.state_sandbox_state import StateSandboxState
+        from ..models.state_install_state_inputs import StateInstallStateInputs  # noqa: PLC0415
+        from ..models.state_sandbox_state import StateSandboxState  # noqa: PLC0415
 
         d = dict(src_dict)
         id = d.pop("id", UNSET)

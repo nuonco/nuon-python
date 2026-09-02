@@ -17,8 +17,6 @@ T = TypeVar("T", bound="AppRunnerJobExecutionOutputsOutputs")
 
 @_attrs_define
 class AppRunnerJobExecutionOutputsOutputs:
-    """ """
-
     additional_properties: dict[str, AppRunnerJobExecutionOutputsOutputsAdditionalProperty] = _attrs_field(
         init=False, factory=dict
     )
@@ -34,7 +32,7 @@ class AppRunnerJobExecutionOutputsOutputs:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_runner_job_execution_outputs_outputs_additional_property import (
-            AppRunnerJobExecutionOutputsOutputsAdditionalProperty,
+            AppRunnerJobExecutionOutputsOutputsAdditionalProperty,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

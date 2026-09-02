@@ -6,29 +6,52 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetTerraformWorkspaceStatesJSONByIDV2Response200")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="ServiceVCSConnectionUser")
 
 
 @_attrs_define
-class GetTerraformWorkspaceStatesJSONByIDV2Response200:
-    """ """
+class ServiceVCSConnectionUser:
+    """
+    Attributes:
+        id (int | Unset):
+        login (str | Unset):
+    """
 
+    id: int | Unset = UNSET
+    login: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
+        login = self.login
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if id is not UNSET:
+            field_dict["id"] = id
+        if login is not UNSET:
+            field_dict["login"] = login
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        get_terraform_workspace_states_json_by_idv2_response_200 = cls()
+        id = d.pop("id", UNSET)
 
-        get_terraform_workspace_states_json_by_idv2_response_200.additional_properties = d
-        return get_terraform_workspace_states_json_by_idv2_response_200
+        login = d.pop("login", UNSET)
+
+        service_vcs_connection_user = cls(
+            id=id,
+            login=login,
+        )
+
+        service_vcs_connection_user.additional_properties = d
+        return service_vcs_connection_user
 
     @property
     def additional_keys(self) -> list[str]:
