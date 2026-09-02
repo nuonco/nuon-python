@@ -76,7 +76,7 @@ class AppUserJourneyStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_user_journey_step_metadata import AppUserJourneyStepMetadata
+        from ..models.app_user_journey_step_metadata import AppUserJourneyStepMetadata  # noqa: PLC0415
 
         d = dict(src_dict)
         complete = d.pop("complete", UNSET)

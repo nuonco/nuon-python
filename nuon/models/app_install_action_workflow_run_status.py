@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallActionWorkflowRunStatus(str, Enum):
+class AppInstallActionWorkflowRunStatus(StrEnum):
     CANCELLED = "cancelled"
     ERROR = "error"
     FINISHED = "finished"

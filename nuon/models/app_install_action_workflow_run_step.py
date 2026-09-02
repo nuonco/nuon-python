@@ -100,8 +100,8 @@ class AppInstallActionWorkflowRunStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_ad_hoc_step_config import AppAdHocStepConfig
-        from ..models.app_composite_status import AppCompositeStatus
+        from ..models.app_ad_hoc_step_config import AppAdHocStepConfig  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
 
         d = dict(src_dict)
         _adhoc_config = d.pop("adhoc_config", UNSET)

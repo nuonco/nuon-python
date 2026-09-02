@@ -64,10 +64,10 @@ class ServiceUpdateChannelSubscriptionRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_update_channel_subscription_request_interests import (
-            ServiceUpdateChannelSubscriptionRequestInterests,
+            ServiceUpdateChannelSubscriptionRequestInterests,  # noqa: PLC0415
         )
         from ..models.service_update_channel_subscription_request_match import (
-            ServiceUpdateChannelSubscriptionRequestMatch,
+            ServiceUpdateChannelSubscriptionRequestMatch,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

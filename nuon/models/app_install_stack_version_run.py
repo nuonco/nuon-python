@@ -100,10 +100,12 @@ class AppInstallStackVersionRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_stack_version_run_data import AppInstallStackVersionRunData
-        from ..models.app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
-        from ..models.app_stack_version_run_input_diff import AppStackVersionRunInputDiff
-        from ..models.app_stack_version_run_role_diff import AppStackVersionRunRoleDiff
+        from ..models.app_install_stack_version_run_data import AppInstallStackVersionRunData  # noqa: PLC0415
+        from ..models.app_install_stack_version_run_data_contents import (
+            AppInstallStackVersionRunDataContents,  # noqa: PLC0415
+        )
+        from ..models.app_stack_version_run_input_diff import AppStackVersionRunInputDiff  # noqa: PLC0415
+        from ..models.app_stack_version_run_role_diff import AppStackVersionRunRoleDiff  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

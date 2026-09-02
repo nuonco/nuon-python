@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class RefsRefType(str, Enum):
+class RefsRefType(StrEnum):
     ACTIONS = "actions"
     COMPONENT = "component"
     INPUTS = "inputs"
