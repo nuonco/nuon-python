@@ -6,43 +6,60 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_app_branch_run_preview_mode import AppAppBranchRunPreviewMode
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="GithubTimestamp")
+T = TypeVar("T", bound="AppAppBranchPreviewOverride")
 
 
 @_attrs_define
-class GithubTimestamp:
+class AppAppBranchPreviewOverride:
     """
     Attributes:
-        time_time (str | Unset):
+        install_id (str | Unset):
+        mode (AppAppBranchRunPreviewMode | Unset):
     """
 
-    time_time: str | Unset = UNSET
+    install_id: str | Unset = UNSET
+    mode: AppAppBranchRunPreviewMode | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        time_time = self.time_time
+        install_id = self.install_id
+
+        mode: str | Unset = UNSET
+        if not isinstance(self.mode, Unset):
+            mode = self.mode.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if time_time is not UNSET:
-            field_dict["time.Time"] = time_time
+        if install_id is not UNSET:
+            field_dict["install_id"] = install_id
+        if mode is not UNSET:
+            field_dict["mode"] = mode
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        time_time = d.pop("time.Time", UNSET)
+        install_id = d.pop("install_id", UNSET)
 
-        github_timestamp = cls(
-            time_time=time_time,
+        _mode = d.pop("mode", UNSET)
+        mode: AppAppBranchRunPreviewMode | Unset
+        if isinstance(_mode, Unset):
+            mode = UNSET
+        else:
+            mode = AppAppBranchRunPreviewMode(_mode)
+
+        app_app_branch_preview_override = cls(
+            install_id=install_id,
+            mode=mode,
         )
 
-        github_timestamp.additional_properties = d
-        return github_timestamp
+        app_app_branch_preview_override.additional_properties = d
+        return app_app_branch_preview_override
 
     @property
     def additional_keys(self) -> list[str]:

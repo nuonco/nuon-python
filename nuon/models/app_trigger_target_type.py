@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppTriggerTargetType(str, Enum):
+class AppTriggerTargetType(StrEnum):
     APP_BRANCH_RUN = "app_branch_run"
     RUNBOOK = "runbook"
 

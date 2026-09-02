@@ -222,16 +222,16 @@ class AppApp:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_config import AppAppConfig
-        from ..models.app_app_default_labels import AppAppDefaultLabels
-        from ..models.app_app_input_config import AppAppInputConfig
-        from ..models.app_app_label_colors import AppAppLabelColors
-        from ..models.app_app_links import AppAppLinks
-        from ..models.app_app_permissions_config import AppAppPermissionsConfig
-        from ..models.app_app_runner_config import AppAppRunnerConfig
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_notifications_config import AppNotificationsConfig
+        from ..models.app_app_config import AppAppConfig  # noqa: PLC0415
+        from ..models.app_app_default_labels import AppAppDefaultLabels  # noqa: PLC0415
+        from ..models.app_app_input_config import AppAppInputConfig  # noqa: PLC0415
+        from ..models.app_app_label_colors import AppAppLabelColors  # noqa: PLC0415
+        from ..models.app_app_links import AppAppLinks  # noqa: PLC0415
+        from ..models.app_app_permissions_config import AppAppPermissionsConfig  # noqa: PLC0415
+        from ..models.app_app_runner_config import AppAppRunnerConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_notifications_config import AppNotificationsConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_configs = d.pop("app_configs", UNSET)

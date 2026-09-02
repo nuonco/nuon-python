@@ -17,6 +17,7 @@ def _get_kwargs(
     q: str | Unset = UNSET,
     types: str | Unset = UNSET,
     component_ids: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -30,6 +31,8 @@ def _get_kwargs(
     params["types"] = types
 
     params["component_ids"] = component_ids
+
+    params["branch_id"] = branch_id
 
     params["labels"] = labels
 
@@ -114,6 +117,7 @@ def sync_detailed(
     q: str | Unset = UNSET,
     types: str | Unset = UNSET,
     component_ids: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -128,6 +132,7 @@ def sync_detailed(
         q (str | Unset):
         types (str | Unset):
         component_ids (str | Unset):
+        branch_id (str | Unset):
         labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -146,6 +151,7 @@ def sync_detailed(
         q=q,
         types=types,
         component_ids=component_ids,
+        branch_id=branch_id,
         labels=labels,
         offset=offset,
         limit=limit,
@@ -166,6 +172,7 @@ def sync(
     q: str | Unset = UNSET,
     types: str | Unset = UNSET,
     component_ids: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -180,6 +187,7 @@ def sync(
         q (str | Unset):
         types (str | Unset):
         component_ids (str | Unset):
+        branch_id (str | Unset):
         labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -199,6 +207,7 @@ def sync(
         q=q,
         types=types,
         component_ids=component_ids,
+        branch_id=branch_id,
         labels=labels,
         offset=offset,
         limit=limit,
@@ -213,6 +222,7 @@ async def asyncio_detailed(
     q: str | Unset = UNSET,
     types: str | Unset = UNSET,
     component_ids: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -227,6 +237,7 @@ async def asyncio_detailed(
         q (str | Unset):
         types (str | Unset):
         component_ids (str | Unset):
+        branch_id (str | Unset):
         labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -245,6 +256,7 @@ async def asyncio_detailed(
         q=q,
         types=types,
         component_ids=component_ids,
+        branch_id=branch_id,
         labels=labels,
         offset=offset,
         limit=limit,
@@ -263,6 +275,7 @@ async def asyncio(
     q: str | Unset = UNSET,
     types: str | Unset = UNSET,
     component_ids: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
@@ -277,6 +290,7 @@ async def asyncio(
         q (str | Unset):
         types (str | Unset):
         component_ids (str | Unset):
+        branch_id (str | Unset):
         labels (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
@@ -297,6 +311,7 @@ async def asyncio(
             q=q,
             types=types,
             component_ids=component_ids,
+            branch_id=branch_id,
             labels=labels,
             offset=offset,
             limit=limit,
