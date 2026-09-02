@@ -10,8 +10,13 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
+    from ..models.app_install_stack_version_custom_stacks_input_parameters_map import (
+        AppInstallStackVersionCustomStacksInputParametersMap,
+    )
+    from ..models.app_install_stack_version_custom_stacks_output_map import AppInstallStackVersionCustomStacksOutputMap
     from ..models.app_install_stack_version_run import AppInstallStackVersionRun
     from ..models.callback_ref import CallbackRef
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppInstallStackVersion")
@@ -26,17 +31,33 @@ class AppInstallStackVersion:
         aws_bucket_name (str | Unset): aws configuration parameters
         callback_ref (CallbackRef | Unset):
         checksum (str | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         composite_status (AppCompositeStatus | Unset):
         contents (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
+        custom_stacks_aws_bucket_key (str | Unset):
+        custom_stacks_input_parameters_map (AppInstallStackVersionCustomStacksInputParametersMap | Unset):
+        custom_stacks_output_map (AppInstallStackVersionCustomStacksOutputMap | Unset):
+        custom_stacks_template_url (str | Unset):
         id (str | Unset):
         install_id (str | Unset):
         install_stack_id (str | Unset):
         org_id (str | Unset):
         phone_home_id (str | Unset):
         phone_home_url (str | Unset):
-        quick_link_url (str | Unset):
+        quick_link_bucket_key (str | Unset): QuickLinkBucketKey and QuickLinkUIDefBucketKey held the wrapper template
+            and
+            createUiDefinition that an earlier Azure quick link pointed at, so that the
+            portal created a deployment stack rather than a plain deployment. Nothing
+            writes them now: the quick link addresses the stack template directly on both
+            platforms. Rows created while the wrapper shipped still carry their keys.
+        quick_link_ui_def_bucket_key (str | Unset):
+        quick_link_url (str | Unset): QuickLinkURL opens the cloud console pre-loaded with this version's stack:
+            CloudFormation quick-create on AWS, Deploy to Azure on Azure. Empty on GCP,
+            on any install whose template bucket is unconfigured, and on an Azure install
+            at resource group scope — the portal cannot create the resource group the
+            root template needs, so there is no link to offer.
         runs (list[AppInstallStackVersionRun] | Unset):
         stack_name (str | Unset):
         template_url (str | Unset):
@@ -53,16 +74,23 @@ class AppInstallStackVersion:
     aws_bucket_name: str | Unset = UNSET
     callback_ref: CallbackRef | Unset = UNSET
     checksum: str | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     composite_status: AppCompositeStatus | Unset = UNSET
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    custom_stacks_aws_bucket_key: str | Unset = UNSET
+    custom_stacks_input_parameters_map: AppInstallStackVersionCustomStacksInputParametersMap | Unset = UNSET
+    custom_stacks_output_map: AppInstallStackVersionCustomStacksOutputMap | Unset = UNSET
+    custom_stacks_template_url: str | Unset = UNSET
     id: str | Unset = UNSET
     install_id: str | Unset = UNSET
     install_stack_id: str | Unset = UNSET
     org_id: str | Unset = UNSET
     phone_home_id: str | Unset = UNSET
     phone_home_url: str | Unset = UNSET
+    quick_link_bucket_key: str | Unset = UNSET
+    quick_link_ui_def_bucket_key: str | Unset = UNSET
     quick_link_url: str | Unset = UNSET
     runs: list[AppInstallStackVersionRun] | Unset = UNSET
     stack_name: str | Unset = UNSET
@@ -85,6 +113,10 @@ class AppInstallStackVersion:
 
         checksum = self.checksum
 
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
+
         composite_status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.composite_status, Unset):
             composite_status = self.composite_status.to_dict()
@@ -94,6 +126,18 @@ class AppInstallStackVersion:
         created_at = self.created_at
 
         created_by_id = self.created_by_id
+
+        custom_stacks_aws_bucket_key = self.custom_stacks_aws_bucket_key
+
+        custom_stacks_input_parameters_map: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.custom_stacks_input_parameters_map, Unset):
+            custom_stacks_input_parameters_map = self.custom_stacks_input_parameters_map.to_dict()
+
+        custom_stacks_output_map: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.custom_stacks_output_map, Unset):
+            custom_stacks_output_map = self.custom_stacks_output_map.to_dict()
+
+        custom_stacks_template_url = self.custom_stacks_template_url
 
         id = self.id
 
@@ -106,6 +150,10 @@ class AppInstallStackVersion:
         phone_home_id = self.phone_home_id
 
         phone_home_url = self.phone_home_url
+
+        quick_link_bucket_key = self.quick_link_bucket_key
+
+        quick_link_ui_def_bucket_key = self.quick_link_ui_def_bucket_key
 
         quick_link_url = self.quick_link_url
 
@@ -139,6 +187,8 @@ class AppInstallStackVersion:
             field_dict["callback_ref"] = callback_ref
         if checksum is not UNSET:
             field_dict["checksum"] = checksum
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if composite_status is not UNSET:
             field_dict["composite_status"] = composite_status
         if contents is not UNSET:
@@ -147,6 +197,14 @@ class AppInstallStackVersion:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if custom_stacks_aws_bucket_key is not UNSET:
+            field_dict["custom_stacks_aws_bucket_key"] = custom_stacks_aws_bucket_key
+        if custom_stacks_input_parameters_map is not UNSET:
+            field_dict["custom_stacks_input_parameters_map"] = custom_stacks_input_parameters_map
+        if custom_stacks_output_map is not UNSET:
+            field_dict["custom_stacks_output_map"] = custom_stacks_output_map
+        if custom_stacks_template_url is not UNSET:
+            field_dict["custom_stacks_template_url"] = custom_stacks_template_url
         if id is not UNSET:
             field_dict["id"] = id
         if install_id is not UNSET:
@@ -159,6 +217,10 @@ class AppInstallStackVersion:
             field_dict["phone_home_id"] = phone_home_id
         if phone_home_url is not UNSET:
             field_dict["phone_home_url"] = phone_home_url
+        if quick_link_bucket_key is not UNSET:
+            field_dict["quick_link_bucket_key"] = quick_link_bucket_key
+        if quick_link_ui_def_bucket_key is not UNSET:
+            field_dict["quick_link_ui_def_bucket_key"] = quick_link_ui_def_bucket_key
         if quick_link_url is not UNSET:
             field_dict["quick_link_url"] = quick_link_url
         if runs is not UNSET:
@@ -178,9 +240,16 @@ class AppInstallStackVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_stack_version_run import AppInstallStackVersionRun
-        from ..models.callback_ref import CallbackRef
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_stack_version_custom_stacks_input_parameters_map import (
+            AppInstallStackVersionCustomStacksInputParametersMap,  # noqa: PLC0415
+        )
+        from ..models.app_install_stack_version_custom_stacks_output_map import (
+            AppInstallStackVersionCustomStacksOutputMap,  # noqa: PLC0415
+        )
+        from ..models.app_install_stack_version_run import AppInstallStackVersionRun  # noqa: PLC0415
+        from ..models.callback_ref import CallbackRef  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -198,6 +267,13 @@ class AppInstallStackVersion:
 
         checksum = d.pop("checksum", UNSET)
 
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
+
         _composite_status = d.pop("composite_status", UNSET)
         composite_status: AppCompositeStatus | Unset
         if isinstance(_composite_status, Unset):
@@ -211,6 +287,26 @@ class AppInstallStackVersion:
 
         created_by_id = d.pop("created_by_id", UNSET)
 
+        custom_stacks_aws_bucket_key = d.pop("custom_stacks_aws_bucket_key", UNSET)
+
+        _custom_stacks_input_parameters_map = d.pop("custom_stacks_input_parameters_map", UNSET)
+        custom_stacks_input_parameters_map: AppInstallStackVersionCustomStacksInputParametersMap | Unset
+        if isinstance(_custom_stacks_input_parameters_map, Unset):
+            custom_stacks_input_parameters_map = UNSET
+        else:
+            custom_stacks_input_parameters_map = AppInstallStackVersionCustomStacksInputParametersMap.from_dict(
+                _custom_stacks_input_parameters_map
+            )
+
+        _custom_stacks_output_map = d.pop("custom_stacks_output_map", UNSET)
+        custom_stacks_output_map: AppInstallStackVersionCustomStacksOutputMap | Unset
+        if isinstance(_custom_stacks_output_map, Unset):
+            custom_stacks_output_map = UNSET
+        else:
+            custom_stacks_output_map = AppInstallStackVersionCustomStacksOutputMap.from_dict(_custom_stacks_output_map)
+
+        custom_stacks_template_url = d.pop("custom_stacks_template_url", UNSET)
+
         id = d.pop("id", UNSET)
 
         install_id = d.pop("install_id", UNSET)
@@ -222,6 +318,10 @@ class AppInstallStackVersion:
         phone_home_id = d.pop("phone_home_id", UNSET)
 
         phone_home_url = d.pop("phone_home_url", UNSET)
+
+        quick_link_bucket_key = d.pop("quick_link_bucket_key", UNSET)
+
+        quick_link_ui_def_bucket_key = d.pop("quick_link_ui_def_bucket_key", UNSET)
 
         quick_link_url = d.pop("quick_link_url", UNSET)
 
@@ -250,16 +350,23 @@ class AppInstallStackVersion:
             aws_bucket_name=aws_bucket_name,
             callback_ref=callback_ref,
             checksum=checksum,
+            composite_error=composite_error,
             composite_status=composite_status,
             contents=contents,
             created_at=created_at,
             created_by_id=created_by_id,
+            custom_stacks_aws_bucket_key=custom_stacks_aws_bucket_key,
+            custom_stacks_input_parameters_map=custom_stacks_input_parameters_map,
+            custom_stacks_output_map=custom_stacks_output_map,
+            custom_stacks_template_url=custom_stacks_template_url,
             id=id,
             install_id=install_id,
             install_stack_id=install_stack_id,
             org_id=org_id,
             phone_home_id=phone_home_id,
             phone_home_url=phone_home_url,
+            quick_link_bucket_key=quick_link_bucket_key,
+            quick_link_ui_def_bucket_key=quick_link_ui_def_bucket_key,
             quick_link_url=quick_link_url,
             runs=runs,
             stack_name=stack_name,

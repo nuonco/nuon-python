@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceRespondInstallCreationApprovalRequestResponseType(str, Enum):
+class ServiceRespondInstallCreationApprovalRequestResponseType(StrEnum):
     APPROVE = "approve"
     DENY = "deny"
 

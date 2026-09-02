@@ -139,11 +139,11 @@ class AppAppInstallConfigSync:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_config_sync import AppInstallConfigSync
-        from ..models.app_install_creation_approval import AppInstallCreationApproval
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.app_workflow import AppWorkflow
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_config_sync import AppInstallConfigSync  # noqa: PLC0415
+        from ..models.app_install_creation_approval import AppInstallCreationApproval  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)
