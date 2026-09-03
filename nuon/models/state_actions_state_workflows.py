@@ -15,8 +15,6 @@ T = TypeVar("T", bound="StateActionsStateWorkflows")
 
 @_attrs_define
 class StateActionsStateWorkflows:
-    """ """
-
     additional_properties: dict[str, StateActionWorkflowState] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,7 +27,7 @@ class StateActionsStateWorkflows:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_action_workflow_state import StateActionWorkflowState
+        from ..models.state_action_workflow_state import StateActionWorkflowState  # noqa: PLC0415
 
         d = dict(src_dict)
         state_actions_state_workflows = cls()

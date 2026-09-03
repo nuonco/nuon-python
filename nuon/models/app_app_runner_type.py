@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppRunnerType(str, Enum):
+class AppAppRunnerType(StrEnum):
     AWS = "aws"
     AWS_ECS = "aws-ecs"
     AWS_EKS = "aws-eks"

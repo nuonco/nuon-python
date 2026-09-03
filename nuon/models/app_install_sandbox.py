@@ -103,9 +103,9 @@ class AppInstallSandbox:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_sandbox_run import AppInstallSandboxRun
-        from ..models.app_terraform_workspace import AppTerraformWorkspace
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_sandbox_run import AppInstallSandboxRun  # noqa: PLC0415
+        from ..models.app_terraform_workspace import AppTerraformWorkspace  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
