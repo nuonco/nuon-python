@@ -58,9 +58,9 @@ class StateCloudAccount:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_aws_cloud_account import StateAWSCloudAccount
-        from ..models.state_azure_cloud_account import StateAzureCloudAccount
-        from ..models.state_gcp_cloud_account import StateGCPCloudAccount
+        from ..models.state_aws_cloud_account import StateAWSCloudAccount  # noqa: PLC0415
+        from ..models.state_azure_cloud_account import StateAzureCloudAccount  # noqa: PLC0415
+        from ..models.state_gcp_cloud_account import StateGCPCloudAccount  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)

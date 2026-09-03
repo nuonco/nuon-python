@@ -58,7 +58,7 @@ class PlantypesDockerBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_docker_build_plan_build_args import PlantypesDockerBuildPlanBuildArgs
+        from ..models.plantypes_docker_build_plan_build_args import PlantypesDockerBuildPlanBuildArgs  # noqa: PLC0415
 
         d = dict(src_dict)
         _build_args = d.pop("build_args", UNSET)

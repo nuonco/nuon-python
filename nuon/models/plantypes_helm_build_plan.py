@@ -69,9 +69,9 @@ class PlantypesHelmBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.config_helm_repo_config import ConfigHelmRepoConfig
-        from ..models.plantypes_helm_build_plan_labels import PlantypesHelmBuildPlanLabels
-        from ..models.plantypes_helm_value import PlantypesHelmValue
+        from ..models.config_helm_repo_config import ConfigHelmRepoConfig  # noqa: PLC0415
+        from ..models.plantypes_helm_build_plan_labels import PlantypesHelmBuildPlanLabels  # noqa: PLC0415
+        from ..models.plantypes_helm_value import PlantypesHelmValue  # noqa: PLC0415
 
         d = dict(src_dict)
         _helm_repo_config = d.pop("helmRepoConfig", UNSET)

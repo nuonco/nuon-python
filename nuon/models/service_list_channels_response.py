@@ -49,7 +49,7 @@ class ServiceListChannelsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.client_conversation import ClientConversation
+        from ..models.client_conversation import ClientConversation  # noqa: PLC0415
 
         d = dict(src_dict)
         _channels = d.pop("channels", UNSET)

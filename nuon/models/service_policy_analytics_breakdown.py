@@ -61,7 +61,7 @@ class ServicePolicyAnalyticsBreakdown:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_breakdown_entry import ServiceBreakdownEntry
+        from ..models.service_breakdown_entry import ServiceBreakdownEntry  # noqa: PLC0415
 
         d = dict(src_dict)
         dimension = d.pop("dimension", UNSET)

@@ -1,8 +1,9 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallDeployType(str, Enum):
+class AppInstallDeployType(StrEnum):
     APPLY = "apply"
+    RECOVER = "recover"
     SYNC_IMAGE = "sync-image"
     TEARDOWN = "teardown"
 

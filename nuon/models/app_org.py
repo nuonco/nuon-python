@@ -171,13 +171,15 @@ class AppOrg:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_notifications_config import AppNotificationsConfig
-        from ..models.app_org_links import AppOrgLinks
-        from ..models.app_runner_group import AppRunnerGroup
-        from ..models.app_vcs_connection import AppVCSConnection
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
-        from ..models.types_string_bool_map import TypesStringBoolMap
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_notifications_config import AppNotificationsConfig  # noqa: PLC0415
+        from ..models.app_org_links import AppOrgLinks  # noqa: PLC0415
+        from ..models.app_runner_group import AppRunnerGroup  # noqa: PLC0415
+        from ..models.app_vcs_connection import AppVCSConnection  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
+        from ..models.types_string_bool_map import TypesStringBoolMap  # noqa: PLC0415
 
         d = dict(src_dict)
         app_count = d.pop("app_count", UNSET)

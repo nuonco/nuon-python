@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppWorkflowStepResponseType(str, Enum):
+class AppWorkflowStepResponseType(StrEnum):
     APPROVE = "approve"
     AUTO_APPROVE = "auto-approve"
     DENY = "deny"

@@ -117,9 +117,9 @@ class AppAccount:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_role import AppRole
-        from ..models.app_user_journey import AppUserJourney
-        from ..models.permissions_set import PermissionsSet
+        from ..models.app_role import AppRole  # noqa: PLC0415
+        from ..models.app_user_journey import AppUserJourney  # noqa: PLC0415
+        from ..models.permissions_set import PermissionsSet  # noqa: PLC0415
 
         d = dict(src_dict)
         _account_type = d.pop("account_type", UNSET)

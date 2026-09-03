@@ -86,7 +86,7 @@ class ServiceAppAWSIAMRoleConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
+        from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         description = d.pop("description")
