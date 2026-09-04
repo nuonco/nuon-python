@@ -1,59 +1,32 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="GithubMatch")
+T = TypeVar("T", bound="AppInstallStackVersionCustomStacksOutputMap")
 
 
 @_attrs_define
-class GithubMatch:
-    """
-    Attributes:
-        indices (list[int] | Unset):
-        text (str | Unset):
-    """
-
-    indices: list[int] | Unset = UNSET
-    text: str | Unset = UNSET
+class AppInstallStackVersionCustomStacksOutputMap:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        indices: list[int] | Unset = UNSET
-        if not isinstance(self.indices, Unset):
-            indices = self.indices
-
-        text = self.text
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if indices is not UNSET:
-            field_dict["indices"] = indices
-        if text is not UNSET:
-            field_dict["text"] = text
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        indices = cast(list[int], d.pop("indices", UNSET))
+        app_install_stack_version_custom_stacks_output_map = cls()
 
-        text = d.pop("text", UNSET)
-
-        github_match = cls(
-            indices=indices,
-            text=text,
-        )
-
-        github_match.additional_properties = d
-        return github_match
+        app_install_stack_version_custom_stacks_output_map.additional_properties = d
+        return app_install_stack_version_custom_stacks_output_map
 
     @property
     def additional_keys(self) -> list[str]:

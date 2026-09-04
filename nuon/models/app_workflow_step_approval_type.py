@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppWorkflowStepApprovalType(str, Enum):
+class AppWorkflowStepApprovalType(StrEnum):
     APPROVE_ALL = "approve-all"
     APP_BRANCH_PLAN = "app_branch_plan"
     HELM_APPROVAL = "helm_approval"

@@ -67,8 +67,8 @@ class ServiceAppConfigDiffResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.diff_diff import DiffDiff
-        from ..models.diff_diff_summary import DiffDiffSummary
+        from ..models.diff_diff import DiffDiff  # noqa: PLC0415
+        from ..models.diff_diff_summary import DiffDiffSummary  # noqa: PLC0415
 
         d = dict(src_dict)
         changed = d.pop("changed", UNSET)

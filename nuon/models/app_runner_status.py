@@ -1,11 +1,12 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerStatus(str, Enum):
+class AppRunnerStatus(StrEnum):
     ACTIVE = "active"
     AWAITING_INSTALL_STACK_RUN = "awaiting-install-stack-run"
     DEPROVISIONED = "deprovisioned"
     DEPROVISIONING = "deprovisioning"
+    DISABLED = "disabled"
     ERROR = "error"
     OFFLINE = "offline"
     PENDING = "pending"

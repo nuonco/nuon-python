@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigsOCIRegistryType(str, Enum):
+class ConfigsOCIRegistryType(StrEnum):
     ACR = "acr"
     ECR = "ecr"
     GAR = "gar"

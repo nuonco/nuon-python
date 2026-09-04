@@ -55,7 +55,7 @@ class ServiceLogStreamTailLogsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_otel_log_record import AppOtelLogRecord
+        from ..models.app_otel_log_record import AppOtelLogRecord  # noqa: PLC0415
 
         d = dict(src_dict)
         has_more = d.pop("has_more", UNSET)

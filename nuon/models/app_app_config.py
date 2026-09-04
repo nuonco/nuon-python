@@ -313,24 +313,26 @@ class AppAppConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_action_workflow_config import AppActionWorkflowConfig
-        from ..models.app_app_branch import AppAppBranch
-        from ..models.app_app_break_glass_config import AppAppBreakGlassConfig
-        from ..models.app_app_input_config import AppAppInputConfig
-        from ..models.app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
-        from ..models.app_app_operation_role_config import AppAppOperationRoleConfig
-        from ..models.app_app_permissions_config import AppAppPermissionsConfig
-        from ..models.app_app_policies_config import AppAppPoliciesConfig
-        from ..models.app_app_runner_config import AppAppRunnerConfig
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_app_secrets_config import AppAppSecretsConfig
-        from ..models.app_app_stack_config import AppAppStackConfig
-        from ..models.app_component_config_connection import AppComponentConfigConnection
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_trigger_rule import AppTriggerRule
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.blobstore_blob import BlobstoreBlob
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.app_action_workflow_config import AppActionWorkflowConfig  # noqa: PLC0415
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
+        from ..models.app_app_break_glass_config import AppAppBreakGlassConfig  # noqa: PLC0415
+        from ..models.app_app_input_config import AppAppInputConfig  # noqa: PLC0415
+        from ..models.app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig  # noqa: PLC0415
+        from ..models.app_app_operation_role_config import AppAppOperationRoleConfig  # noqa: PLC0415
+        from ..models.app_app_permissions_config import AppAppPermissionsConfig  # noqa: PLC0415
+        from ..models.app_app_policies_config import AppAppPoliciesConfig  # noqa: PLC0415
+        from ..models.app_app_runner_config import AppAppRunnerConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_app_secrets_config import AppAppSecretsConfig  # noqa: PLC0415
+        from ..models.app_app_stack_config import AppAppStackConfig  # noqa: PLC0415
+        from ..models.app_component_config_connection import AppComponentConfigConnection  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_trigger_rule import AppTriggerRule  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.blobstore_blob import BlobstoreBlob  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         action_ids = cast(list[str], d.pop("action_ids", UNSET))
