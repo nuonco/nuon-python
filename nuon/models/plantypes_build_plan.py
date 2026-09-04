@@ -129,15 +129,17 @@ class PlantypesBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
-        from ..models.plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan
-        from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan
-        from ..models.plantypes_git_source import PlantypesGitSource
-        from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan
-        from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan
-        from ..models.plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan
-        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
-        from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
+        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
+        from ..models.plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan  # noqa: PLC0415
+        from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan  # noqa: PLC0415
+        from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
+        from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan  # noqa: PLC0415
+        from ..models.plantypes_kubernetes_manifest_build_plan import (
+            PlantypesKubernetesManifestBuildPlan,  # noqa: PLC0415
+        )
+        from ..models.plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan  # noqa: PLC0415
+        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan  # noqa: PLC0415
 
         d = dict(src_dict)
         dst_registry = ConfigsOCIRegistryRepository.from_dict(d.pop("dst_registry"))

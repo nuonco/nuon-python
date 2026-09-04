@@ -16,6 +16,7 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
+    include_stacks: bool | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -27,6 +28,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["include_runners"] = include_runners
+
+    params["include_stacks"] = include_stacks
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -91,6 +94,7 @@ def sync_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
+    include_stacks: bool | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppAccount]]:
     """List service accounts for the current org
 
@@ -102,6 +106,7 @@ def sync_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
+        include_stacks (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,6 +121,7 @@ def sync_detailed(
         limit=limit,
         page=page,
         include_runners=include_runners,
+        include_stacks=include_stacks,
     )
 
     response = client.get_httpx_client().request(
@@ -132,6 +138,7 @@ def sync(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
+    include_stacks: bool | Unset = UNSET,
 ) -> StderrErrResponse | list[AppAccount] | None:
     """List service accounts for the current org
 
@@ -143,6 +150,7 @@ def sync(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
+        include_stacks (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -158,6 +166,7 @@ def sync(
         limit=limit,
         page=page,
         include_runners=include_runners,
+        include_stacks=include_stacks,
     ).parsed
 
 
@@ -168,6 +177,7 @@ async def asyncio_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
+    include_stacks: bool | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppAccount]]:
     """List service accounts for the current org
 
@@ -179,6 +189,7 @@ async def asyncio_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
+        include_stacks (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -193,6 +204,7 @@ async def asyncio_detailed(
         limit=limit,
         page=page,
         include_runners=include_runners,
+        include_stacks=include_stacks,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -207,6 +219,7 @@ async def asyncio(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
+    include_stacks: bool | Unset = UNSET,
 ) -> StderrErrResponse | list[AppAccount] | None:
     """List service accounts for the current org
 
@@ -218,6 +231,7 @@ async def asyncio(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
+        include_stacks (bool | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -234,5 +248,6 @@ async def asyncio(
             limit=limit,
             page=page,
             include_runners=include_runners,
+            include_stacks=include_stacks,
         )
     ).parsed

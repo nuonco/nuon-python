@@ -113,10 +113,10 @@ class AppRunnerJobExecution:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata
-        from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs
-        from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_runner_job_execution_metadata import AppRunnerJobExecutionMetadata  # noqa: PLC0415
+        from ..models.app_runner_job_execution_outputs import AppRunnerJobExecutionOutputs  # noqa: PLC0415
+        from ..models.app_runner_job_execution_result import AppRunnerJobExecutionResult  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

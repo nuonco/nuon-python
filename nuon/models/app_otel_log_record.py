@@ -208,9 +208,9 @@ class AppOtelLogRecord:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_otel_log_record_log_attributes import AppOtelLogRecordLogAttributes
-        from ..models.app_otel_log_record_resource_attributes import AppOtelLogRecordResourceAttributes
-        from ..models.app_otel_log_record_scope_attributes import AppOtelLogRecordScopeAttributes
+        from ..models.app_otel_log_record_log_attributes import AppOtelLogRecordLogAttributes  # noqa: PLC0415
+        from ..models.app_otel_log_record_resource_attributes import AppOtelLogRecordResourceAttributes  # noqa: PLC0415
+        from ..models.app_otel_log_record_scope_attributes import AppOtelLogRecordScopeAttributes  # noqa: PLC0415
 
         d = dict(src_dict)
         body = d.pop("body", UNSET)

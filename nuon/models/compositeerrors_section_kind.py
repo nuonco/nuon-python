@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CompositeerrorsSectionKind(str, Enum):
+class CompositeerrorsSectionKind(StrEnum):
     CODE = "code"
     MARKDOWN = "markdown"
     TEXT = "text"

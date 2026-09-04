@@ -57,7 +57,7 @@ class DiffDiff:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.diff_diff_key import DiffDiffKey
+        from ..models.diff_diff_key import DiffDiffKey  # noqa: PLC0415
 
         d = dict(src_dict)
         _children = d.pop("children", UNSET)
