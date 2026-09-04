@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceUpdateRunnerSettingsRequestAwsAuthMethod(str, Enum):
+class ServiceUpdateRunnerSettingsRequestAwsAuthMethod(StrEnum):
     IID = "iid"
     STS = "sts"
 

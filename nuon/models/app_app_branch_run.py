@@ -13,10 +13,13 @@ if TYPE_CHECKING:
     from ..models.app_account import AppAccount
     from ..models.app_app_branch import AppAppBranch
     from ..models.app_app_branch_config import AppAppBranchConfig
+    from ..models.app_app_branch_run_comparison import AppAppBranchRunComparison
+    from ..models.app_app_branch_run_preview import AppAppBranchRunPreview
     from ..models.app_log_stream import AppLogStream
     from ..models.app_queue_signal import AppQueueSignal
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.app_workflow import AppWorkflow
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
@@ -29,37 +32,32 @@ class AppAppBranchRun:
     Attributes:
         app_branch (AppAppBranch | Unset):
         app_branch_config (AppAppBranchConfig | Unset):
-        app_config_id (str | Unset): AppConfigID is the app config that was created/synced during this run
+        app_config_id (str | Unset):
         awaiting_approval (bool | Unset):
         base_branch (str | Unset):
-        commit_sha (str | Unset): CommitSHA is the VCS commit that triggered or is associated with this run
-            DEPRECATED: Use VCSConnectionCommit relationship instead
-        completed_at (str | Unset): CompletedAt tracks when execution finished
+        comparison (AppAppBranchRunComparison | Unset):
+        completed_at (str | Unset):
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
-        error_message (str | Unset): ErrorMessage stores any error that occurred during execution
-        event_type (str | Unset): EventType indicates what triggered this run. Kept for backward compat; new code uses
-            RunType.
+        error_message (str | Unset):
+        event_type (str | Unset):
         force (bool | Unset):
         github_comment_id (int | Unset):
         head_sha (str | Unset):
         id (str | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         log_stream (AppLogStream | Unset):
-        log_stream_id (str | Unset): LogStreamID is the log stream created during this run for event tracking
+        log_stream_id (str | Unset):
         no_config_changes (bool | Unset):
-        plan_only (bool | Unset): PlanOnly indicates this is a preview run. Kept for backward compat; new code uses
-            RunType.
+        plan_only (bool | Unset):
         pr_number (int | Unset):
-        previous_run (AppAppBranchRun | Unset):
-        previous_run_id (str | Unset): PreviousRunID links to the previous successful run on the same branch,
-            used for build diffing to determine which components need rebuilding.
+        preview (AppAppBranchRunPreview | Unset):
         queue_signal (AppQueueSignal | Unset):
         run_type (AppAppBranchRunType | Unset):
-        started_at (str | Unset): StartedAt tracks when execution actually began
-        status (str | Unset): Status tracks the current state of the run
-            Values: pending, running, success, failed, cancelled
+        started_at (str | Unset):
+        status (str | Unset):
         trigger_event_dispatch_id (str | Unset):
         updated_at (str | Unset):
         vcs_connection_commit (AppVCSConnectionCommit | Unset):
@@ -72,8 +70,9 @@ class AppAppBranchRun:
     app_config_id: str | Unset = UNSET
     awaiting_approval: bool | Unset = UNSET
     base_branch: str | Unset = UNSET
-    commit_sha: str | Unset = UNSET
+    comparison: AppAppBranchRunComparison | Unset = UNSET
     completed_at: str | Unset = UNSET
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -89,8 +88,7 @@ class AppAppBranchRun:
     no_config_changes: bool | Unset = UNSET
     plan_only: bool | Unset = UNSET
     pr_number: int | Unset = UNSET
-    previous_run: AppAppBranchRun | Unset = UNSET
-    previous_run_id: str | Unset = UNSET
+    preview: AppAppBranchRunPreview | Unset = UNSET
     queue_signal: AppQueueSignal | Unset = UNSET
     run_type: AppAppBranchRunType | Unset = UNSET
     started_at: str | Unset = UNSET
@@ -117,9 +115,15 @@ class AppAppBranchRun:
 
         base_branch = self.base_branch
 
-        commit_sha = self.commit_sha
+        comparison: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.comparison, Unset):
+            comparison = self.comparison.to_dict()
 
         completed_at = self.completed_at
+
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
 
         created_at = self.created_at
 
@@ -157,11 +161,9 @@ class AppAppBranchRun:
 
         pr_number = self.pr_number
 
-        previous_run: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.previous_run, Unset):
-            previous_run = self.previous_run.to_dict()
-
-        previous_run_id = self.previous_run_id
+        preview: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.preview, Unset):
+            preview = self.preview.to_dict()
 
         queue_signal: dict[str, Any] | Unset = UNSET
         if not isinstance(self.queue_signal, Unset):
@@ -202,10 +204,12 @@ class AppAppBranchRun:
             field_dict["awaiting_approval"] = awaiting_approval
         if base_branch is not UNSET:
             field_dict["base_branch"] = base_branch
-        if commit_sha is not UNSET:
-            field_dict["commit_sha"] = commit_sha
+        if comparison is not UNSET:
+            field_dict["comparison"] = comparison
         if completed_at is not UNSET:
             field_dict["completed_at"] = completed_at
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by is not UNSET:
@@ -236,10 +240,8 @@ class AppAppBranchRun:
             field_dict["plan_only"] = plan_only
         if pr_number is not UNSET:
             field_dict["pr_number"] = pr_number
-        if previous_run is not UNSET:
-            field_dict["previous_run"] = previous_run
-        if previous_run_id is not UNSET:
-            field_dict["previous_run_id"] = previous_run_id
+        if preview is not UNSET:
+            field_dict["preview"] = preview
         if queue_signal is not UNSET:
             field_dict["queue_signal"] = queue_signal
         if run_type is not UNSET:
@@ -263,14 +265,19 @@ class AppAppBranchRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_app_branch import AppAppBranch
-        from ..models.app_app_branch_config import AppAppBranchConfig
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_queue_signal import AppQueueSignal
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.app_workflow import AppWorkflow
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
+        from ..models.app_app_branch_config import AppAppBranchConfig  # noqa: PLC0415
+        from ..models.app_app_branch_run_comparison import AppAppBranchRunComparison  # noqa: PLC0415
+        from ..models.app_app_branch_run_preview import AppAppBranchRunPreview  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_queue_signal import AppQueueSignal  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)
@@ -293,9 +300,21 @@ class AppAppBranchRun:
 
         base_branch = d.pop("base_branch", UNSET)
 
-        commit_sha = d.pop("commit_sha", UNSET)
+        _comparison = d.pop("comparison", UNSET)
+        comparison: AppAppBranchRunComparison | Unset
+        if isinstance(_comparison, Unset):
+            comparison = UNSET
+        else:
+            comparison = AppAppBranchRunComparison.from_dict(_comparison)
 
         completed_at = d.pop("completed_at", UNSET)
+
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -342,14 +361,12 @@ class AppAppBranchRun:
 
         pr_number = d.pop("pr_number", UNSET)
 
-        _previous_run = d.pop("previous_run", UNSET)
-        previous_run: AppAppBranchRun | Unset
-        if isinstance(_previous_run, Unset):
-            previous_run = UNSET
+        _preview = d.pop("preview", UNSET)
+        preview: AppAppBranchRunPreview | Unset
+        if isinstance(_preview, Unset):
+            preview = UNSET
         else:
-            previous_run = AppAppBranchRun.from_dict(_previous_run)
-
-        previous_run_id = d.pop("previous_run_id", UNSET)
+            preview = AppAppBranchRunPreview.from_dict(_preview)
 
         _queue_signal = d.pop("queue_signal", UNSET)
         queue_signal: AppQueueSignal | Unset
@@ -395,8 +412,9 @@ class AppAppBranchRun:
             app_config_id=app_config_id,
             awaiting_approval=awaiting_approval,
             base_branch=base_branch,
-            commit_sha=commit_sha,
+            comparison=comparison,
             completed_at=completed_at,
+            composite_error=composite_error,
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
@@ -412,8 +430,7 @@ class AppAppBranchRun:
             no_config_changes=no_config_changes,
             plan_only=plan_only,
             pr_number=pr_number,
-            previous_run=previous_run,
-            previous_run_id=previous_run_id,
+            preview=preview,
             queue_signal=queue_signal,
             run_type=run_type,
             started_at=started_at,

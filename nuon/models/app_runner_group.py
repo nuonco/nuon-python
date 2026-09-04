@@ -112,8 +112,8 @@ class AppRunnerGroup:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner import AppRunner
-        from ..models.app_runner_group_settings import AppRunnerGroupSettings
+        from ..models.app_runner import AppRunner  # noqa: PLC0415
+        from ..models.app_runner_group_settings import AppRunnerGroupSettings  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

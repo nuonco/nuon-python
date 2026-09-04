@@ -53,7 +53,9 @@ class GithubComNuoncoNuonPkgAzureCredentialsConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.credentials_service_principal_credentials import CredentialsServicePrincipalCredentials
+        from ..models.credentials_service_principal_credentials import (
+            CredentialsServicePrincipalCredentials,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         managed_identity_client_id = d.pop("managed_identity_client_id", UNSET)

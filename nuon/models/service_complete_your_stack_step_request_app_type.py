@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceCompleteYourStackStepRequestAppType(str, Enum):
+class ServiceCompleteYourStackStepRequestAppType(StrEnum):
     CUSTOM = "custom"
     EXAMPLE = "example"
 

@@ -108,9 +108,11 @@ class AppDockerBuildComponentConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-        from ..models.app_docker_build_component_config_env_vars import AppDockerBuildComponentConfigEnvVars
-        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
+        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
+        from ..models.app_docker_build_component_config_env_vars import (
+            AppDockerBuildComponentConfigEnvVars,  # noqa: PLC0415
+        )
+        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         build_args = cast(list[str], d.pop("build_args", UNSET))
