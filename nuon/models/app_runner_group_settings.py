@@ -264,9 +264,11 @@ class AppRunnerGroupSettings:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
-        from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
-        from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
+        from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags  # noqa: PLC0415
+        from ..models.app_runner_group_settings_job_group_parallelism import (
+            AppRunnerGroupSettingsJobGroupParallelism,  # noqa: PLC0415
+        )
+        from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws_auth_method = d.pop("aws_auth_method", UNSET)

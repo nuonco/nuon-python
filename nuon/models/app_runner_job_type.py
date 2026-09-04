@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerJobType(str, Enum):
+class AppRunnerJobType(StrEnum):
     ACTIONS_WORKFLOW = "actions-workflow"
     CONTAINER_IMAGE_BUILD = "container-image-build"
     DOCKER_BUILD = "docker-build"

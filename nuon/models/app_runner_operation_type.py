@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerOperationType(str, Enum):
+class AppRunnerOperationType(StrEnum):
     DEPROVISION = "deprovision"
     PROVISION = "provision"
     PROVISION_SERVICE_ACCOUNT = "provision_service_account"
