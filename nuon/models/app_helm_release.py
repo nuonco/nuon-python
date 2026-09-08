@@ -124,8 +124,8 @@ class AppHelmRelease:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_helm_chart import AppHelmChart
-        from ..models.app_json_map import AppJSONMap
+        from ..models.app_helm_chart import AppHelmChart  # noqa: PLC0415
+        from ..models.app_json_map import AppJSONMap  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

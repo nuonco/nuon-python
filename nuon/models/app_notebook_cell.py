@@ -130,9 +130,9 @@ class AppNotebookCell:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_notebook_cell_env_vars import AppNotebookCellEnvVars
-        from ..models.app_notebook_cell_run import AppNotebookCellRun
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_notebook_cell_env_vars import AppNotebookCellEnvVars  # noqa: PLC0415
+        from ..models.app_notebook_cell_run import AppNotebookCellRun  # noqa: PLC0415
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         command = d.pop("command", UNSET)

@@ -169,22 +169,22 @@ class GithubComNuoncoNuonPkgTypesStateState:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_types_state_state_components import (
-            GithubComNuoncoNuonPkgTypesStateStateComponents,
+            GithubComNuoncoNuonPkgTypesStateStateComponents,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_types_state_state_labels import (
-            GithubComNuoncoNuonPkgTypesStateStateLabels,
+            GithubComNuoncoNuonPkgTypesStateStateLabels,  # noqa: PLC0415
         )
-        from ..models.state_actions_state import StateActionsState
-        from ..models.state_app_state import StateAppState
-        from ..models.state_cloud_account import StateCloudAccount
-        from ..models.state_domain_state import StateDomainState
-        from ..models.state_inputs_state import StateInputsState
-        from ..models.state_install_stack_state import StateInstallStackState
-        from ..models.state_install_state import StateInstallState
-        from ..models.state_org_state import StateOrgState
-        from ..models.state_runner_state import StateRunnerState
-        from ..models.state_sandbox_state import StateSandboxState
-        from ..models.state_secrets_state import StateSecretsState
+        from ..models.state_actions_state import StateActionsState  # noqa: PLC0415
+        from ..models.state_app_state import StateAppState  # noqa: PLC0415
+        from ..models.state_cloud_account import StateCloudAccount  # noqa: PLC0415
+        from ..models.state_domain_state import StateDomainState  # noqa: PLC0415
+        from ..models.state_inputs_state import StateInputsState  # noqa: PLC0415
+        from ..models.state_install_stack_state import StateInstallStackState  # noqa: PLC0415
+        from ..models.state_install_state import StateInstallState  # noqa: PLC0415
+        from ..models.state_org_state import StateOrgState  # noqa: PLC0415
+        from ..models.state_runner_state import StateRunnerState  # noqa: PLC0415
+        from ..models.state_sandbox_state import StateSandboxState  # noqa: PLC0415
+        from ..models.state_secrets_state import StateSecretsState  # noqa: PLC0415
 
         d = dict(src_dict)
         _actions = d.pop("actions", UNSET)

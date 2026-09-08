@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_branch_preview_config import AppAppBranchPreviewConfig
     from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
     from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
     from ..models.service_install_group_request import ServiceInstallGroupRequest
@@ -22,23 +23,35 @@ class ServiceCreateAppBranchConfigRequest:
     """
     Attributes:
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
+        ignore_changes_regex (str | Unset): IgnoreChangesRegex marks a run not-attempted when every changed file path in
+            it matches this RE2 pattern. Omit to carry the current setting forward; send
+            an empty string to clear it.
         install_groups (list[ServiceInstallGroupRequest] | Unset):
         post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs run on each install, in order, after its
             deploy succeeds.
             Omit to carry the current setting forward; send an empty array to clear it.
+        preview_config (AppAppBranchPreviewConfig | Unset):
         public_git_vcs_config (HelpersPublicGitVCSConfigRequest | Unset):
+        send_statuses_on_ignore (bool | Unset): SendStatusesOnIgnore posts a successful commit status for runs ignored
+            by
+            IgnoreChangesRegex. Omit to carry the current setting forward.
     """
 
     connected_github_vcs_config: HelpersConnectedGithubVCSConfigRequest | Unset = UNSET
+    ignore_changes_regex: str | Unset = UNSET
     install_groups: list[ServiceInstallGroupRequest] | Unset = UNSET
     post_deploy_runbook_ids: list[str] | Unset = UNSET
+    preview_config: AppAppBranchPreviewConfig | Unset = UNSET
     public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset = UNSET
+    send_statuses_on_ignore: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         connected_github_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.connected_github_vcs_config, Unset):
             connected_github_vcs_config = self.connected_github_vcs_config.to_dict()
+
+        ignore_changes_regex = self.ignore_changes_regex
 
         install_groups: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.install_groups, Unset):
@@ -51,29 +64,44 @@ class ServiceCreateAppBranchConfigRequest:
         if not isinstance(self.post_deploy_runbook_ids, Unset):
             post_deploy_runbook_ids = self.post_deploy_runbook_ids
 
+        preview_config: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.preview_config, Unset):
+            preview_config = self.preview_config.to_dict()
+
         public_git_vcs_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.public_git_vcs_config, Unset):
             public_git_vcs_config = self.public_git_vcs_config.to_dict()
+
+        send_statuses_on_ignore = self.send_statuses_on_ignore
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if connected_github_vcs_config is not UNSET:
             field_dict["connected_github_vcs_config"] = connected_github_vcs_config
+        if ignore_changes_regex is not UNSET:
+            field_dict["ignore_changes_regex"] = ignore_changes_regex
         if install_groups is not UNSET:
             field_dict["install_groups"] = install_groups
         if post_deploy_runbook_ids is not UNSET:
             field_dict["post_deploy_runbook_ids"] = post_deploy_runbook_ids
+        if preview_config is not UNSET:
+            field_dict["preview_config"] = preview_config
         if public_git_vcs_config is not UNSET:
             field_dict["public_git_vcs_config"] = public_git_vcs_config
+        if send_statuses_on_ignore is not UNSET:
+            field_dict["send_statuses_on_ignore"] = send_statuses_on_ignore
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
-        from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
-        from ..models.service_install_group_request import ServiceInstallGroupRequest
+        from ..models.app_app_branch_preview_config import AppAppBranchPreviewConfig  # noqa: PLC0415
+        from ..models.helpers_connected_github_vcs_config_request import (
+            HelpersConnectedGithubVCSConfigRequest,  # noqa: PLC0415
+        )
+        from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest  # noqa: PLC0415
+        from ..models.service_install_group_request import ServiceInstallGroupRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         _connected_github_vcs_config = d.pop("connected_github_vcs_config", UNSET)
@@ -82,6 +110,8 @@ class ServiceCreateAppBranchConfigRequest:
             connected_github_vcs_config = UNSET
         else:
             connected_github_vcs_config = HelpersConnectedGithubVCSConfigRequest.from_dict(_connected_github_vcs_config)
+
+        ignore_changes_regex = d.pop("ignore_changes_regex", UNSET)
 
         _install_groups = d.pop("install_groups", UNSET)
         install_groups: list[ServiceInstallGroupRequest] | Unset = UNSET
@@ -94,6 +124,13 @@ class ServiceCreateAppBranchConfigRequest:
 
         post_deploy_runbook_ids = cast(list[str], d.pop("post_deploy_runbook_ids", UNSET))
 
+        _preview_config = d.pop("preview_config", UNSET)
+        preview_config: AppAppBranchPreviewConfig | Unset
+        if isinstance(_preview_config, Unset):
+            preview_config = UNSET
+        else:
+            preview_config = AppAppBranchPreviewConfig.from_dict(_preview_config)
+
         _public_git_vcs_config = d.pop("public_git_vcs_config", UNSET)
         public_git_vcs_config: HelpersPublicGitVCSConfigRequest | Unset
         if isinstance(_public_git_vcs_config, Unset):
@@ -101,11 +138,16 @@ class ServiceCreateAppBranchConfigRequest:
         else:
             public_git_vcs_config = HelpersPublicGitVCSConfigRequest.from_dict(_public_git_vcs_config)
 
+        send_statuses_on_ignore = d.pop("send_statuses_on_ignore", UNSET)
+
         service_create_app_branch_config_request = cls(
             connected_github_vcs_config=connected_github_vcs_config,
+            ignore_changes_regex=ignore_changes_regex,
             install_groups=install_groups,
             post_deploy_runbook_ids=post_deploy_runbook_ids,
+            preview_config=preview_config,
             public_git_vcs_config=public_git_vcs_config,
+            send_statuses_on_ignore=send_statuses_on_ignore,
         )
 
         service_create_app_branch_config_request.additional_properties = d

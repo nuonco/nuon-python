@@ -69,7 +69,7 @@ class ServicePolicyAnalyticsTimeseries:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_timeseries_bucket import ServiceTimeseriesBucket
+        from ..models.service_timeseries_bucket import ServiceTimeseriesBucket  # noqa: PLC0415
 
         d = dict(src_dict)
         _buckets = d.pop("buckets", UNSET)
