@@ -209,13 +209,15 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
-        from ..models.service_create_kubernetes_manifest_component_config_request_operation_roles import (
-            ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,
+        from ..models.service_connected_github_vcs_config_request import (
+            ServiceConnectedGithubVCSConfigRequest,  # noqa: PLC0415
         )
-        from ..models.service_health_probe_request import ServiceHealthProbeRequest
-        from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest
-        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+        from ..models.service_create_kubernetes_manifest_component_config_request_operation_roles import (
+            ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,  # noqa: PLC0415
+        )
+        from ..models.service_health_probe_request import ServiceHealthProbeRequest  # noqa: PLC0415
+        from ..models.service_kustomize_config_request import ServiceKustomizeConfigRequest  # noqa: PLC0415
+        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)

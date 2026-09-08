@@ -11,8 +11,6 @@ T = TypeVar("T", bound="AppInstallConfigComponentToggles")
 
 @_attrs_define
 class AppInstallConfigComponentToggles:
-    """ """
-
     additional_properties: dict[str, bool] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

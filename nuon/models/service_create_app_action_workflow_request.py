@@ -47,7 +47,7 @@ class ServiceCreateAppActionWorkflowRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_app_action_workflow_request_labels import (
-            ServiceCreateAppActionWorkflowRequestLabels,
+            ServiceCreateAppActionWorkflowRequestLabels,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

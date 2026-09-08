@@ -118,7 +118,7 @@ class AppConnectedGithubVCSConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_vcs_connection import AppVCSConnection
+        from ..models.app_vcs_connection import AppVCSConnection  # noqa: PLC0415
 
         d = dict(src_dict)
         branch = d.pop("branch", UNSET)

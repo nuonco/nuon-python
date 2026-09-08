@@ -85,8 +85,8 @@ class ServiceInstallComponentHealthTimelineResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_daily_health_bucket import ServiceDailyHealthBucket
-        from ..models.service_health_transition_response import ServiceHealthTransitionResponse
+        from ..models.service_daily_health_bucket import ServiceDailyHealthBucket  # noqa: PLC0415
+        from ..models.service_health_transition_response import ServiceHealthTransitionResponse  # noqa: PLC0415
 
         d = dict(src_dict)
         current_health = d.pop("current_health", UNSET)
