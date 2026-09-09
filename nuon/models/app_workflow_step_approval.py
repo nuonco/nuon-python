@@ -22,6 +22,8 @@ T = TypeVar("T", bound="AppWorkflowStepApproval")
 class AppWorkflowStepApproval:
     """
     Attributes:
+        app_branch_id (str | Unset):
+        app_id (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -38,6 +40,8 @@ class AppWorkflowStepApproval:
         workflow_step_id (str | Unset): afterquery
     """
 
+    app_branch_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -55,6 +59,10 @@ class AppWorkflowStepApproval:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_id = self.app_branch_id
+
+        app_id = self.app_id
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -96,6 +104,10 @@ class AppWorkflowStepApproval:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
+        if app_id is not UNSET:
+            field_dict["app_id"] = app_id
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -129,11 +141,15 @@ class AppWorkflowStepApproval:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_workflow_step import AppWorkflowStep
-        from ..models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_workflow_step import AppWorkflowStep  # noqa: PLC0415
+        from ..models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse  # noqa: PLC0415
 
         d = dict(src_dict)
+        app_branch_id = d.pop("app_branch_id", UNSET)
+
+        app_id = d.pop("app_id", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -188,6 +204,8 @@ class AppWorkflowStepApproval:
         workflow_step_id = d.pop("workflow_step_id", UNSET)
 
         app_workflow_step_approval = cls(
+            app_branch_id=app_branch_id,
+            app_id=app_id,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,

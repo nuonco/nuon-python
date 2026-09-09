@@ -72,8 +72,8 @@ class PlantypesFetchImageMetadataPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
-        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
+        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
+        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
 
         d = dict(src_dict)
         registry = ConfigsOCIRegistryRepository.from_dict(d.pop("registry"))

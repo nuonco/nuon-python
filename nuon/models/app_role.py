@@ -113,8 +113,8 @@ class AppRole:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_policy import AppPolicy
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_policy import AppPolicy  # noqa: PLC0415
 
         d = dict(src_dict)
         applies_to = cast(list[str], d.pop("applies_to", UNSET))
