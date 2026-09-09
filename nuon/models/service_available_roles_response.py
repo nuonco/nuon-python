@@ -43,7 +43,7 @@ class ServiceAvailableRolesResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_available_role import ServiceAvailableRole
+        from ..models.service_available_role import ServiceAvailableRole  # noqa: PLC0415
 
         d = dict(src_dict)
         _roles = d.pop("roles", UNSET)

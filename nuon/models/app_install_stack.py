@@ -88,8 +88,8 @@ class AppInstallStack:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_stack_outputs import AppInstallStackOutputs
-        from ..models.app_install_stack_version import AppInstallStackVersion
+        from ..models.app_install_stack_outputs import AppInstallStackOutputs  # noqa: PLC0415
+        from ..models.app_install_stack_version import AppInstallStackVersion  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerProcessType(str, Enum):
+class AppRunnerProcessType(StrEnum):
     BUILD = "build"
     INSTALL = "install"
     MNG = "mng"
