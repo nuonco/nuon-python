@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppRunnerConfigHelmDriverType(str, Enum):
+class AppAppRunnerConfigHelmDriverType(StrEnum):
     CONFIGMAP = "configmap"
     SECRET = "secret"
     VALUE_2 = ""

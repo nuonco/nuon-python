@@ -52,7 +52,7 @@ class IamTwoStepConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.iam_static_credentials import IamStaticCredentials
+        from ..models.iam_static_credentials import IamStaticCredentials  # noqa: PLC0415
 
         d = dict(src_dict)
         iam_role_arn = d.pop("iam_role_arn", UNSET)

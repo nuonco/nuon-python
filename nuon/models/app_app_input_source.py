@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppInputSource(str, Enum):
+class AppAppInputSource(StrEnum):
     CUSTOMER = "customer"
     VENDOR = "vendor"
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerGroupSettingsAwsAuthMethod(str, Enum):
+class AppRunnerGroupSettingsAwsAuthMethod(StrEnum):
     IID = "iid"
     STS = "sts"
 

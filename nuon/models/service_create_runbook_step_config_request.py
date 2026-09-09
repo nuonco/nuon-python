@@ -147,9 +147,9 @@ class ServiceCreateRunbookStepConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_trigger_filter import AppTriggerFilter
+        from ..models.app_trigger_filter import AppTriggerFilter  # noqa: PLC0415
         from ..models.service_create_runbook_step_config_request_env_vars import (
-            ServiceCreateRunbookStepConfigRequestEnvVars,
+            ServiceCreateRunbookStepConfigRequestEnvVars,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

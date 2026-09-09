@@ -15,8 +15,6 @@ T = TypeVar("T", bound="ServiceLatestRunnerHeartBeats")
 
 @_attrs_define
 class ServiceLatestRunnerHeartBeats:
-    """ """
-
     additional_properties: dict[str, AppLatestRunnerHeartBeat] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,7 +27,7 @@ class ServiceLatestRunnerHeartBeats:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_latest_runner_heart_beat import AppLatestRunnerHeartBeat
+        from ..models.app_latest_runner_heart_beat import AppLatestRunnerHeartBeat  # noqa: PLC0415
 
         d = dict(src_dict)
         service_latest_runner_heart_beats = cls()

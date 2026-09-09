@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppBranchRunType(str, Enum):
+class AppAppBranchRunType(StrEnum):
     GIT_PREVIEW_RUN = "git-preview-run"
     GIT_RUN = "git-run"
     MANUAL_RUN = "manual-run"

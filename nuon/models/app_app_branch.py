@@ -127,10 +127,10 @@ class AppAppBranch:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch_config import AppAppBranchConfig
-        from ..models.app_app_branch_run import AppAppBranchRun
-        from ..models.app_queue import AppQueue
-        from ..models.app_workflow import AppWorkflow
+        from ..models.app_app_branch_config import AppAppBranchConfig  # noqa: PLC0415
+        from ..models.app_app_branch_run import AppAppBranchRun  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)

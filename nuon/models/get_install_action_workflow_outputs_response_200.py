@@ -11,8 +11,6 @@ T = TypeVar("T", bound="GetInstallActionWorkflowOutputsResponse200")
 
 @_attrs_define
 class GetInstallActionWorkflowOutputsResponse200:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
