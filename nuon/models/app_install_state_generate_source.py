@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallStateGenerateSource(str, Enum):
+class AppInstallStateGenerateSource(StrEnum):
     LEGACY = "legacy"
     STATE_MANAGER = "state-manager"
 

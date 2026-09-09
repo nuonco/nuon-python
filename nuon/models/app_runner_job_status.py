@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerJobStatus(str, Enum):
+class AppRunnerJobStatus(StrEnum):
     AVAILABLE = "available"
     CANCELLED = "cancelled"
     FAILED = "failed"

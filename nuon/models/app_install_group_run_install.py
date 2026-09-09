@@ -67,7 +67,7 @@ class AppInstallGroupRunInstall:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_group_run_runbook import AppInstallGroupRunRunbook
+        from ..models.app_install_group_run_runbook import AppInstallGroupRunRunbook  # noqa: PLC0415
 
         d = dict(src_dict)
         install_id = d.pop("install_id", UNSET)
