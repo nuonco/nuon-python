@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAccountType(str, Enum):
+class AppAccountType(StrEnum):
     AUTH = "auth"
     AUTH0 = "auth0"
     CANARY = "canary"

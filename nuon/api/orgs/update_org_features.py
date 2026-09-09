@@ -65,7 +65,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateOrgFeaturesRequest,
 ) -> Response[AppOrg | StderrErrResponse]:
-    r"""update org features (requires user-managed-features flag)
+    """update org features (requires user-managed-features flag)
 
      Update feature flags for your current organization.
 
@@ -80,9 +80,9 @@ def sync_detailed(
     **Example Request:**
     ```json
     {
-      \"features\": {
-        \"api-pagination\": true,
-        \"install-delete\": false
+      "features": {
+        "api-pagination": true,
+        "install-delete": false
       }
     }
     ```
@@ -117,7 +117,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceUpdateOrgFeaturesRequest,
 ) -> AppOrg | StderrErrResponse | None:
-    r"""update org features (requires user-managed-features flag)
+    """update org features (requires user-managed-features flag)
 
      Update feature flags for your current organization.
 
@@ -132,9 +132,9 @@ def sync(
     **Example Request:**
     ```json
     {
-      \"features\": {
-        \"api-pagination\": true,
-        \"install-delete\": false
+      "features": {
+        "api-pagination": true,
+        "install-delete": false
       }
     }
     ```
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceUpdateOrgFeaturesRequest,
 ) -> Response[AppOrg | StderrErrResponse]:
-    r"""update org features (requires user-managed-features flag)
+    """update org features (requires user-managed-features flag)
 
      Update feature flags for your current organization.
 
@@ -179,9 +179,9 @@ async def asyncio_detailed(
     **Example Request:**
     ```json
     {
-      \"features\": {
-        \"api-pagination\": true,
-        \"install-delete\": false
+      "features": {
+        "api-pagination": true,
+        "install-delete": false
       }
     }
     ```
@@ -214,7 +214,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceUpdateOrgFeaturesRequest,
 ) -> AppOrg | StderrErrResponse | None:
-    r"""update org features (requires user-managed-features flag)
+    """update org features (requires user-managed-features flag)
 
      Update feature flags for your current organization.
 
@@ -229,9 +229,9 @@ async def asyncio(
     **Example Request:**
     ```json
     {
-      \"features\": {
-        \"api-pagination\": true,
-        \"install-delete\": false
+      "features": {
+        "api-pagination": true,
+        "install-delete": false
       }
     }
     ```

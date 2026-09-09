@@ -11,8 +11,6 @@ T = TypeVar("T", bound="AppAppSandboxConfigPulumiConfig")
 
 @_attrs_define
 class AppAppSandboxConfigPulumiConfig:
-    """ """
-
     additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
