@@ -78,11 +78,13 @@ class PlantypesActionWorkflowRunStepPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_action_workflow_run_step_plan_attrs import PlantypesActionWorkflowRunStepPlanAttrs
-        from ..models.plantypes_action_workflow_run_step_plan_interpolated_env_vars import (
-            PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars,
+        from ..models.plantypes_action_workflow_run_step_plan_attrs import (
+            PlantypesActionWorkflowRunStepPlanAttrs,  # noqa: PLC0415
         )
-        from ..models.plantypes_git_source import PlantypesGitSource
+        from ..models.plantypes_action_workflow_run_step_plan_interpolated_env_vars import (
+            PlantypesActionWorkflowRunStepPlanInterpolatedEnvVars,  # noqa: PLC0415
+        )
+        from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
 
         d = dict(src_dict)
         _attrs = d.pop("attrs", UNSET)

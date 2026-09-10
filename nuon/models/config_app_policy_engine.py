@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigAppPolicyEngine(str, Enum):
+class ConfigAppPolicyEngine(StrEnum):
     KYVERNO = "kyverno"
     OPA = "opa"
 

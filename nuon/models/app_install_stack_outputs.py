@@ -118,11 +118,11 @@ class AppInstallStackOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_aws_stack_outputs import AppAWSStackOutputs
-        from ..models.app_azure_stack_outputs import AppAzureStackOutputs
-        from ..models.app_gcp_stack_outputs import AppGCPStackOutputs
-        from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData
-        from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
+        from ..models.app_aws_stack_outputs import AppAWSStackOutputs  # noqa: PLC0415
+        from ..models.app_azure_stack_outputs import AppAzureStackOutputs  # noqa: PLC0415
+        from ..models.app_gcp_stack_outputs import AppGCPStackOutputs  # noqa: PLC0415
+        from ..models.app_install_stack_outputs_data import AppInstallStackOutputsData  # noqa: PLC0415
+        from ..models.app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws = d.pop("aws", UNSET)

@@ -48,7 +48,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetCurrentOrgFeaturesResponse200]:
-    r"""get current org's feature flags
+    """get current org's feature flags
 
      Get the current organization's feature flag values.
 
@@ -61,11 +61,11 @@ def sync_detailed(
     Example response:
     ```json
     {
-      \"api-pagination\": true,
-      \"org-dashboard\": true,
-      \"org-runner\": true,
-      \"stratus-layout\": true,
-      \"user-managed-features\": false
+      "api-pagination": true,
+      "org-dashboard": true,
+      "org-runner": true,
+      "stratus-layout": true,
+      "user-managed-features": false
     }
     ```
 
@@ -90,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> GetCurrentOrgFeaturesResponse200 | None:
-    r"""get current org's feature flags
+    """get current org's feature flags
 
      Get the current organization's feature flag values.
 
@@ -103,11 +103,11 @@ def sync(
     Example response:
     ```json
     {
-      \"api-pagination\": true,
-      \"org-dashboard\": true,
-      \"org-runner\": true,
-      \"stratus-layout\": true,
-      \"user-managed-features\": false
+      "api-pagination": true,
+      "org-dashboard": true,
+      "org-runner": true,
+      "stratus-layout": true,
+      "user-managed-features": false
     }
     ```
 
@@ -128,7 +128,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[GetCurrentOrgFeaturesResponse200]:
-    r"""get current org's feature flags
+    """get current org's feature flags
 
      Get the current organization's feature flag values.
 
@@ -141,11 +141,11 @@ async def asyncio_detailed(
     Example response:
     ```json
     {
-      \"api-pagination\": true,
-      \"org-dashboard\": true,
-      \"org-runner\": true,
-      \"stratus-layout\": true,
-      \"user-managed-features\": false
+      "api-pagination": true,
+      "org-dashboard": true,
+      "org-runner": true,
+      "stratus-layout": true,
+      "user-managed-features": false
     }
     ```
 
@@ -168,7 +168,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> GetCurrentOrgFeaturesResponse200 | None:
-    r"""get current org's feature flags
+    """get current org's feature flags
 
      Get the current organization's feature flag values.
 
@@ -181,11 +181,11 @@ async def asyncio(
     Example response:
     ```json
     {
-      \"api-pagination\": true,
-      \"org-dashboard\": true,
-      \"org-runner\": true,
-      \"stratus-layout\": true,
-      \"user-managed-features\": false
+      "api-pagination": true,
+      "org-dashboard": true,
+      "org-runner": true,
+      "stratus-layout": true,
+      "user-managed-features": false
     }
     ```
 

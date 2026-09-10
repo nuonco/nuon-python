@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceCompleteInstallStepRequestInstallMode(str, Enum):
+class ServiceCompleteInstallStepRequestInstallMode(StrEnum):
     CLOUD = "cloud"
     SANDBOX = "sandbox"
 

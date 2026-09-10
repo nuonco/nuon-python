@@ -92,8 +92,8 @@ def sync_detailed(
 ) -> Response[AppWorkflowResponse | StderrErrResponse]:
     """reprovision an install stack
 
-     Reprovision an install stack, recreating the runner and its infrastructure. Set `skip_components` to
-    avoid redeploying components on top of the new stack.
+     Reprovision an install stack, recreating the runner and its infrastructure. Components are not
+    redeployed.
 
     Args:
         install_id (str):
@@ -127,8 +127,8 @@ def sync(
 ) -> AppWorkflowResponse | StderrErrResponse | None:
     """reprovision an install stack
 
-     Reprovision an install stack, recreating the runner and its infrastructure. Set `skip_components` to
-    avoid redeploying components on top of the new stack.
+     Reprovision an install stack, recreating the runner and its infrastructure. Components are not
+    redeployed.
 
     Args:
         install_id (str):
@@ -157,8 +157,8 @@ async def asyncio_detailed(
 ) -> Response[AppWorkflowResponse | StderrErrResponse]:
     """reprovision an install stack
 
-     Reprovision an install stack, recreating the runner and its infrastructure. Set `skip_components` to
-    avoid redeploying components on top of the new stack.
+     Reprovision an install stack, recreating the runner and its infrastructure. Components are not
+    redeployed.
 
     Args:
         install_id (str):
@@ -190,8 +190,8 @@ async def asyncio(
 ) -> AppWorkflowResponse | StderrErrResponse | None:
     """reprovision an install stack
 
-     Reprovision an install stack, recreating the runner and its infrastructure. Set `skip_components` to
-    avoid redeploying components on top of the new stack.
+     Reprovision an install stack, recreating the runner and its infrastructure. Components are not
+    redeployed.
 
     Args:
         install_id (str):
