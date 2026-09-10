@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerGroupType(str, Enum):
+class AppRunnerGroupType(StrEnum):
     INSTALL = "install"
     ORG = "org"
 

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppSandboxRunType(str, Enum):
+class AppSandboxRunType(StrEnum):
     DEPROVISION = "deprovision"
     PROVISION = "provision"
     REPROVISION = "reprovision"

@@ -151,8 +151,8 @@ class AppAppAWSIAMRoleConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig  # noqa: PLC0415
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)

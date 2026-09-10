@@ -176,13 +176,13 @@ class AppInstallComponent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component import AppComponent
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_drifted_object import AppDriftedObject
-        from ..models.app_helm_chart import AppHelmChart
-        from ..models.app_install_component_links import AppInstallComponentLinks
-        from ..models.app_install_deploy import AppInstallDeploy
-        from ..models.app_terraform_workspace import AppTerraformWorkspace
+        from ..models.app_component import AppComponent  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_drifted_object import AppDriftedObject  # noqa: PLC0415
+        from ..models.app_helm_chart import AppHelmChart  # noqa: PLC0415
+        from ..models.app_install_component_links import AppInstallComponentLinks  # noqa: PLC0415
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
+        from ..models.app_terraform_workspace import AppTerraformWorkspace  # noqa: PLC0415
 
         d = dict(src_dict)
         _component = d.pop("component", UNSET)

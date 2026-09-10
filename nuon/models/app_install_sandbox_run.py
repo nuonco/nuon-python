@@ -217,16 +217,16 @@ class AppInstallSandboxRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
-        from ..models.app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_policy_report import AppPolicyReport
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_workflow import AppWorkflow
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun  # noqa: PLC0415
+        from ..models.app_install_sandbox_run_outputs import AppInstallSandboxRunOutputs  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_policy_report import AppPolicyReport  # noqa: PLC0415
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         _action_workflow_runs = d.pop("action_workflow_runs", UNSET)
