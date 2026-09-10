@@ -301,17 +301,17 @@ class AppComponentBuild:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_component_config_connection import AppComponentConfigConnection
-        from ..models.app_component_release import AppComponentRelease
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_deploy import AppInstallDeploy
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_policy_report import AppPolicyReport
-        from ..models.app_queue_signal import AppQueueSignal
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_component_config_connection import AppComponentConfigConnection  # noqa: PLC0415
+        from ..models.app_component_release import AppComponentRelease  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_policy_report import AppPolicyReport  # noqa: PLC0415
+        from ..models.app_queue_signal import AppQueueSignal  # noqa: PLC0415
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)

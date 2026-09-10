@@ -106,7 +106,7 @@ class AppActionWorkflowTriggerConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component import AppComponent
+        from ..models.app_component import AppComponent  # noqa: PLC0415
 
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)

@@ -52,8 +52,12 @@ class ServiceCreateAppInputConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_app_input_config_request_groups import ServiceCreateAppInputConfigRequestGroups
-        from ..models.service_create_app_input_config_request_inputs import ServiceCreateAppInputConfigRequestInputs
+        from ..models.service_create_app_input_config_request_groups import (
+            ServiceCreateAppInputConfigRequestGroups,  # noqa: PLC0415
+        )
+        from ..models.service_create_app_input_config_request_inputs import (
+            ServiceCreateAppInputConfigRequestInputs,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         groups = ServiceCreateAppInputConfigRequestGroups.from_dict(d.pop("groups"))

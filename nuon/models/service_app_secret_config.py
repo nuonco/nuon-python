@@ -103,7 +103,7 @@ class ServiceAppSecretConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_kubernetes_sync_target import ServiceKubernetesSyncTarget
+        from ..models.service_kubernetes_sync_target import ServiceKubernetesSyncTarget  # noqa: PLC0415
 
         d = dict(src_dict)
         description = d.pop("description")

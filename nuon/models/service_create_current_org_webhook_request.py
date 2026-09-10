@@ -66,9 +66,11 @@ class ServiceCreateCurrentOrgWebhookRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_current_org_webhook_request_interests import (
-            ServiceCreateCurrentOrgWebhookRequestInterests,
+            ServiceCreateCurrentOrgWebhookRequestInterests,  # noqa: PLC0415
         )
-        from ..models.service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
+        from ..models.service_create_current_org_webhook_request_match import (
+            ServiceCreateCurrentOrgWebhookRequestMatch,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         webhook_url = d.pop("webhook_url")

@@ -93,13 +93,13 @@ class ServiceCreateActionWorkflowConfigStepRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_connected_github_vcs_action_workflow_config_request import (
-            ServiceConnectedGithubVCSActionWorkflowConfigRequest,
+            ServiceConnectedGithubVCSActionWorkflowConfigRequest,  # noqa: PLC0415
         )
         from ..models.service_create_action_workflow_config_step_request_env_vars import (
-            ServiceCreateActionWorkflowConfigStepRequestEnvVars,
+            ServiceCreateActionWorkflowConfigStepRequestEnvVars,  # noqa: PLC0415
         )
         from ..models.service_public_git_vcs_action_workflow_config_request import (
-            ServicePublicGitVCSActionWorkflowConfigRequest,
+            ServicePublicGitVCSActionWorkflowConfigRequest,  # noqa: PLC0415
         )
 
         d = dict(src_dict)
