@@ -94,13 +94,13 @@ class PlantypesCompositePlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_action_workflow_run_plan import PlantypesActionWorkflowRunPlan
-        from ..models.plantypes_build_plan import PlantypesBuildPlan
-        from ..models.plantypes_deploy_plan import PlantypesDeployPlan
-        from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
-        from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan
-        from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan
-        from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
+        from ..models.plantypes_action_workflow_run_plan import PlantypesActionWorkflowRunPlan  # noqa: PLC0415
+        from ..models.plantypes_build_plan import PlantypesBuildPlan  # noqa: PLC0415
+        from ..models.plantypes_deploy_plan import PlantypesDeployPlan  # noqa: PLC0415
+        from ..models.plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan  # noqa: PLC0415
+        from ..models.plantypes_sandbox_run_plan import PlantypesSandboxRunPlan  # noqa: PLC0415
+        from ..models.plantypes_sync_oci_plan import PlantypesSyncOCIPlan  # noqa: PLC0415
+        from ..models.plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan  # noqa: PLC0415
 
         d = dict(src_dict)
         _action_workflow_run_plan = d.pop("action_workflow_run_plan", UNSET)

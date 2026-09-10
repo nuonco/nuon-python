@@ -63,7 +63,9 @@ class ServiceUpdateInstallInputsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_install_inputs_request_inputs import ServiceUpdateInstallInputsRequestInputs
+        from ..models.service_update_install_inputs_request_inputs import (
+            ServiceUpdateInstallInputsRequestInputs,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         inputs = ServiceUpdateInstallInputsRequestInputs.from_dict(d.pop("inputs"))

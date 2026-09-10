@@ -94,7 +94,7 @@ class AppInstallAppBranchConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch import AppAppBranch
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
 
         d = dict(src_dict)
         activated_at = d.pop("activated_at", UNSET)

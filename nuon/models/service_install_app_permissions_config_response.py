@@ -78,7 +78,9 @@ class ServiceInstallAppPermissionsConfigResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_permissions_role_status import ServiceInstallPermissionsRoleStatus
+        from ..models.service_install_permissions_role_status import (
+            ServiceInstallPermissionsRoleStatus,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _break_glass_roles = d.pop("break_glass_roles", UNSET)

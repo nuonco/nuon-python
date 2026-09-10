@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppComponentType(str, Enum):
+class AppComponentType(StrEnum):
     DOCKER_BUILD = "docker_build"
     EXTERNAL_IMAGE = "external_image"
     HELM_CHART = "helm_chart"

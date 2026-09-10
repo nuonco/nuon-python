@@ -110,15 +110,15 @@ class KubeClusterInfo:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
-            GithubComNuoncoNuonPkgAwsCredentialsConfig,
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
-            GithubComNuoncoNuonPkgAzureCredentialsConfig,
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
-            GithubComNuoncoNuonPkgGcpCredentialsConfig,
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars
+        from ..models.kube_cluster_info_env_vars import KubeClusterInfoEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)

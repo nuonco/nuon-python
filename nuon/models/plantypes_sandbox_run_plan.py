@@ -207,25 +207,27 @@ class PlantypesSandboxRunPlan:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
-            GithubComNuoncoNuonPkgAwsCredentialsConfig,
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
-            GithubComNuoncoNuonPkgAzureCredentialsConfig,
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
-            GithubComNuoncoNuonPkgGcpCredentialsConfig,
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
-        from ..models.plantypes_git_source import PlantypesGitSource
-        from ..models.plantypes_oci_source import PlantypesOCISource
-        from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend
-        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
-        from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars
-        from ..models.plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies
-        from ..models.plantypes_sandbox_run_plan_vars import PlantypesSandboxRunPlanVars
-        from ..models.plantypes_terraform_backend import PlantypesTerraformBackend
-        from ..models.plantypes_terraform_deploy_hooks import PlantypesTerraformDeployHooks
-        from ..models.plantypes_terraform_local_archive import PlantypesTerraformLocalArchive
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import (
+            GithubComNuoncoNuonPkgTypesStateState,  # noqa: PLC0415
+        )
+        from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
+        from ..models.plantypes_oci_source import PlantypesOCISource  # noqa: PLC0415
+        from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend  # noqa: PLC0415
+        from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_sandbox_run_plan_env_vars import PlantypesSandboxRunPlanEnvVars  # noqa: PLC0415
+        from ..models.plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies  # noqa: PLC0415
+        from ..models.plantypes_sandbox_run_plan_vars import PlantypesSandboxRunPlanVars  # noqa: PLC0415
+        from ..models.plantypes_terraform_backend import PlantypesTerraformBackend  # noqa: PLC0415
+        from ..models.plantypes_terraform_deploy_hooks import PlantypesTerraformDeployHooks  # noqa: PLC0415
+        from ..models.plantypes_terraform_local_archive import PlantypesTerraformLocalArchive  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
