@@ -46,7 +46,7 @@ class StateInputsState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_inputs_state_inputs import StateInputsStateInputs
+        from ..models.state_inputs_state_inputs import StateInputsStateInputs  # noqa: PLC0415
 
         d = dict(src_dict)
         _inputs = d.pop("inputs", UNSET)
