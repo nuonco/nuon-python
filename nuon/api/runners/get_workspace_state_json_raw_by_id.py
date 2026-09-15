@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_workspace_state_json_raw_by_id_response_200 import GetWorkspaceStateJSONRawByIDResponse200
+from ...models.get_workspace_state_json_raw_by_id_response_200 import GetWorkspaceStateJsonRawByIdResponse200
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
@@ -29,9 +29,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse | None:
+) -> GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = GetWorkspaceStateJSONRawByIDResponse200.from_dict(response.json())
+        response_200 = GetWorkspaceStateJsonRawByIdResponse200.from_dict(response.json())
 
         return response_200
 
@@ -68,7 +68,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse]:
+) -> Response[GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,7 +82,7 @@ def sync_detailed(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse]:
+) -> Response[GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse]:
     """get raw workspace state json by id
 
      Returns the raw state contents without format-specific parsing. Works for both terraform and pulumi
@@ -97,7 +97,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse]
+        Response[GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -117,7 +117,7 @@ def sync(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse | None:
+) -> GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse | None:
     """get raw workspace state json by id
 
      Returns the raw state contents without format-specific parsing. Works for both terraform and pulumi
@@ -132,7 +132,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse
+        GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse
     """
 
     return sync_detailed(
@@ -147,7 +147,7 @@ async def asyncio_detailed(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse]:
+) -> Response[GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse]:
     """get raw workspace state json by id
 
      Returns the raw state contents without format-specific parsing. Works for both terraform and pulumi
@@ -162,7 +162,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse]
+        Response[GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -180,7 +180,7 @@ async def asyncio(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse | None:
+) -> GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse | None:
     """get raw workspace state json by id
 
      Returns the raw state contents without format-specific parsing. Works for both terraform and pulumi
@@ -195,7 +195,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetWorkspaceStateJSONRawByIDResponse200 | StderrErrResponse
+        GetWorkspaceStateJsonRawByIdResponse200 | StderrErrResponse
     """
 
     return (

@@ -168,11 +168,11 @@ class AppRunner:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_queue import AppQueue
-        from ..models.app_runner_group import AppRunnerGroup
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_runner_operation import AppRunnerOperation
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.app_runner_group import AppRunnerGroup  # noqa: PLC0415
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_runner_operation import AppRunnerOperation  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
