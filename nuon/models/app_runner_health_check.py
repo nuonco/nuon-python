@@ -103,7 +103,7 @@ class AppRunnerHealthCheck:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_job import AppRunnerJob
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

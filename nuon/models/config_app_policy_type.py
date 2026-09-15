@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigAppPolicyType(str, Enum):
+class ConfigAppPolicyType(StrEnum):
     CONTAINER_IMAGE = "container_image"
     DOCKER_BUILD = "docker_build"
     HELM_CHART = "helm_chart"

@@ -19,6 +19,7 @@ def _get_kwargs(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    status: str | Unset = UNSET,
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
@@ -36,6 +37,8 @@ def _get_kwargs(
     params["planonly"] = planonly
 
     params["type"] = type_
+
+    params["status"] = status
 
     params["finished"] = finished
 
@@ -122,6 +125,7 @@ def sync_detailed(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    status: str | Unset = UNSET,
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
@@ -138,6 +142,7 @@ def sync_detailed(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        status (str | Unset):
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
@@ -158,6 +163,7 @@ def sync_detailed(
         page=page,
         planonly=planonly,
         type_=type_,
+        status=status,
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
@@ -180,6 +186,7 @@ def sync(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    status: str | Unset = UNSET,
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
@@ -196,6 +203,7 @@ def sync(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        status (str | Unset):
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
@@ -217,6 +225,7 @@ def sync(
         page=page,
         planonly=planonly,
         type_=type_,
+        status=status,
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
@@ -233,6 +242,7 @@ async def asyncio_detailed(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    status: str | Unset = UNSET,
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
@@ -249,6 +259,7 @@ async def asyncio_detailed(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        status (str | Unset):
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
@@ -269,6 +280,7 @@ async def asyncio_detailed(
         page=page,
         planonly=planonly,
         type_=type_,
+        status=status,
         finished=finished,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
@@ -289,6 +301,7 @@ async def asyncio(
     page: int | Unset = 0,
     planonly: bool | Unset = True,
     type_: str | Unset = UNSET,
+    status: str | Unset = UNSET,
     finished: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
@@ -305,6 +318,7 @@ async def asyncio(
         page (int | Unset):  Default: 0.
         planonly (bool | Unset):  Default: True.
         type_ (str | Unset):
+        status (str | Unset):
         finished (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
@@ -327,6 +341,7 @@ async def asyncio(
             page=page,
             planonly=planonly,
             type_=type_,
+            status=status,
             finished=finished,
             created_at_gte=created_at_gte,
             created_at_lte=created_at_lte,

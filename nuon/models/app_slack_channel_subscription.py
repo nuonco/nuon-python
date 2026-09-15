@@ -123,8 +123,10 @@ class AppSlackChannelSubscription:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_slack_channel_subscription_interests import AppSlackChannelSubscriptionInterests
-        from ..models.app_slack_channel_subscription_match import AppSlackChannelSubscriptionMatch
+        from ..models.app_slack_channel_subscription_interests import (
+            AppSlackChannelSubscriptionInterests,  # noqa: PLC0415
+        )
+        from ..models.app_slack_channel_subscription_match import AppSlackChannelSubscriptionMatch  # noqa: PLC0415
 
         d = dict(src_dict)
         channel_id = d.pop("channel_id", UNSET)
