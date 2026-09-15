@@ -81,7 +81,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | StderrErrResponse]:
-    r"""get terraform state resources. This output is similar to \"terraform state list\"
+    """get terraform state resources. This output is similar to "terraform state list"
 
      Returns terraform state resources in JSON format.
 
@@ -115,7 +115,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Any | StderrErrResponse | None:
-    r"""get terraform state resources. This output is similar to \"terraform state list\"
+    """get terraform state resources. This output is similar to "terraform state list"
 
      Returns terraform state resources in JSON format.
 
@@ -144,7 +144,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | StderrErrResponse]:
-    r"""get terraform state resources. This output is similar to \"terraform state list\"
+    """get terraform state resources. This output is similar to "terraform state list"
 
      Returns terraform state resources in JSON format.
 
@@ -176,7 +176,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Any | StderrErrResponse | None:
-    r"""get terraform state resources. This output is similar to \"terraform state list\"
+    """get terraform state resources. This output is similar to "terraform state list"
 
      Returns terraform state resources in JSON format.
 

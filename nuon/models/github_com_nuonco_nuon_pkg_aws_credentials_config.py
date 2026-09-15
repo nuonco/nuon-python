@@ -74,8 +74,8 @@ class GithubComNuoncoNuonPkgAwsCredentialsConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.credentials_assume_role_config import CredentialsAssumeRoleConfig
-        from ..models.credentials_static_credentials import CredentialsStaticCredentials
+        from ..models.credentials_assume_role_config import CredentialsAssumeRoleConfig  # noqa: PLC0415
+        from ..models.credentials_static_credentials import CredentialsStaticCredentials  # noqa: PLC0415
 
         d = dict(src_dict)
         _assume_role = d.pop("assume_role", UNSET)

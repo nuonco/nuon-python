@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class StatePartialName(str, Enum):
+class StatePartialName(StrEnum):
     ACTIONS = "actions"
     APP = "app"
     CLOUD = "cloud"
