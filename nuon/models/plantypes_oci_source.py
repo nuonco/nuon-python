@@ -46,7 +46,7 @@ class PlantypesOCISource:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
+        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
 
         d = dict(src_dict)
         _registry = d.pop("registry", UNSET)

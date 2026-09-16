@@ -62,7 +62,9 @@ class ServiceUpdateComponentRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_component_request_labels import ServiceUpdateComponentRequestLabels
+        from ..models.service_update_component_request_labels import (
+            ServiceUpdateComponentRequestLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         name = d.pop("name")
