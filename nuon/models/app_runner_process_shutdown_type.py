@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerProcessShutdownType(str, Enum):
+class AppRunnerProcessShutdownType(StrEnum):
     FORCE = "force"
     GRACEFUL = "graceful"
     RESTART = "restart"

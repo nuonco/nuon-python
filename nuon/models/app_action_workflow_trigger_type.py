@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppActionWorkflowTriggerType(str, Enum):
+class AppActionWorkflowTriggerType(StrEnum):
     ADHOC = "adhoc"
     CRON = "cron"
     MANUAL = "manual"

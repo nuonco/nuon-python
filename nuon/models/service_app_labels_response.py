@@ -60,8 +60,10 @@ class ServiceAppLabelsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_label_key_summary import ServiceAppLabelKeySummary
-        from ..models.service_app_labels_response_label_colors import ServiceAppLabelsResponseLabelColors
+        from ..models.service_app_label_key_summary import ServiceAppLabelKeySummary  # noqa: PLC0415
+        from ..models.service_app_labels_response_label_colors import (
+            ServiceAppLabelsResponseLabelColors,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         default_colors = cast(list[str], d.pop("default_colors", UNSET))

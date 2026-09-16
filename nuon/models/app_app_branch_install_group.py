@@ -19,7 +19,11 @@ T = TypeVar("T", bound="AppAppBranchInstallGroup")
 class AppAppBranchInstallGroup:
     """
     Attributes:
+        all_installs (bool | Unset): AllInstalls targets every install owned by this group's app branch.
+            A nil LabelSelector already means "use InstallIDs", so there is no
+            selector shape that expresses "everything" — hence the explicit flag.
         app_branch_config_id (str | Unset):
+        auto_approve_on_policies_passing (bool | None | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -30,10 +34,11 @@ class AppAppBranchInstallGroup:
         order (int | Unset):
         org_id (str | Unset):
         updated_at (str | Unset):
-        use_for_previews (bool | Unset): UseForPreviews marks this group for plan-only preview runs (e.g., PR previews).
     """
 
+    all_installs: bool | Unset = UNSET
     app_branch_config_id: str | Unset = UNSET
+    auto_approve_on_policies_passing: bool | None | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -44,11 +49,18 @@ class AppAppBranchInstallGroup:
     order: int | Unset = UNSET
     org_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
-    use_for_previews: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        all_installs = self.all_installs
+
         app_branch_config_id = self.app_branch_config_id
+
+        auto_approve_on_policies_passing: bool | None | Unset
+        if isinstance(self.auto_approve_on_policies_passing, Unset):
+            auto_approve_on_policies_passing = UNSET
+        else:
+            auto_approve_on_policies_passing = self.auto_approve_on_policies_passing
 
         created_at = self.created_at
 
@@ -74,13 +86,15 @@ class AppAppBranchInstallGroup:
 
         updated_at = self.updated_at
 
-        use_for_previews = self.use_for_previews
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if all_installs is not UNSET:
+            field_dict["all_installs"] = all_installs
         if app_branch_config_id is not UNSET:
             field_dict["app_branch_config_id"] = app_branch_config_id
+        if auto_approve_on_policies_passing is not UNSET:
+            field_dict["auto_approve_on_policies_passing"] = auto_approve_on_policies_passing
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -101,17 +115,30 @@ class AppAppBranchInstallGroup:
             field_dict["org_id"] = org_id
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
-        if use_for_previews is not UNSET:
-            field_dict["use_for_previews"] = use_for_previews
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_nuonco_nuon_pkg_labels_selector import GithubComNuoncoNuonPkgLabelsSelector
+        from ..models.github_com_nuonco_nuon_pkg_labels_selector import (
+            GithubComNuoncoNuonPkgLabelsSelector,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
+        all_installs = d.pop("all_installs", UNSET)
+
         app_branch_config_id = d.pop("app_branch_config_id", UNSET)
+
+        def _parse_auto_approve_on_policies_passing(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        auto_approve_on_policies_passing = _parse_auto_approve_on_policies_passing(
+            d.pop("auto_approve_on_policies_passing", UNSET)
+        )
 
         created_at = d.pop("created_at", UNSET)
 
@@ -138,10 +165,10 @@ class AppAppBranchInstallGroup:
 
         updated_at = d.pop("updated_at", UNSET)
 
-        use_for_previews = d.pop("use_for_previews", UNSET)
-
         app_app_branch_install_group = cls(
+            all_installs=all_installs,
             app_branch_config_id=app_branch_config_id,
+            auto_approve_on_policies_passing=auto_approve_on_policies_passing,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
@@ -152,7 +179,6 @@ class AppAppBranchInstallGroup:
             order=order,
             org_id=org_id,
             updated_at=updated_at,
-            use_for_previews=use_for_previews,
         )
 
         app_app_branch_install_group.additional_properties = d

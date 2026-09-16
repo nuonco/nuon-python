@@ -80,11 +80,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AppOrgInvite | StderrErrResponse]:
-    r"""Resend an org invite
+    """Resend an org invite
 
      Resend the invite email for an existing pending org invite.
 
-    The invite must be in \"pending\" status. Accepted invites cannot be resent.
+    The invite must be in "pending" status. Accepted invites cannot be resent.
 
     Args:
         invite_id (str):
@@ -113,11 +113,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> AppOrgInvite | StderrErrResponse | None:
-    r"""Resend an org invite
+    """Resend an org invite
 
      Resend the invite email for an existing pending org invite.
 
-    The invite must be in \"pending\" status. Accepted invites cannot be resent.
+    The invite must be in "pending" status. Accepted invites cannot be resent.
 
     Args:
         invite_id (str):
@@ -141,11 +141,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AppOrgInvite | StderrErrResponse]:
-    r"""Resend an org invite
+    """Resend an org invite
 
      Resend the invite email for an existing pending org invite.
 
-    The invite must be in \"pending\" status. Accepted invites cannot be resent.
+    The invite must be in "pending" status. Accepted invites cannot be resent.
 
     Args:
         invite_id (str):
@@ -172,11 +172,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> AppOrgInvite | StderrErrResponse | None:
-    r"""Resend an org invite
+    """Resend an org invite
 
      Resend the invite email for an existing pending org invite.
 
-    The invite must be in \"pending\" status. Accepted invites cannot be resent.
+    The invite must be in "pending" status. Accepted invites cannot be resent.
 
     Args:
         invite_id (str):

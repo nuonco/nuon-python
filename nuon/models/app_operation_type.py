@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppOperationType(str, Enum):
+class AppOperationType(StrEnum):
     DEPLOY = "deploy"
     DEPROVISION = "deprovision"
     PROVISION = "provision"
