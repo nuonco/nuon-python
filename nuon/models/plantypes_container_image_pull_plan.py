@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
+    from ..models.signature_verification import SignatureVerification
 
 
 T = TypeVar("T", bound="PlantypesContainerImagePullPlan")
@@ -36,6 +37,7 @@ class PlantypesContainerImagePullPlan:
             tag at build time. Tag is then ignored as the source ref.
 
             Empty for components that don't use update_policy.
+        verification (SignatureVerification | Unset):
     """
 
     image: str | Unset = UNSET
@@ -43,6 +45,7 @@ class PlantypesContainerImagePullPlan:
     repo_config: ConfigsOCIRegistryRepository | Unset = UNSET
     tag: str | Unset = UNSET
     update_policy: str | Unset = UNSET
+    verification: SignatureVerification | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,6 +61,10 @@ class PlantypesContainerImagePullPlan:
 
         update_policy = self.update_policy
 
+        verification: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.verification, Unset):
+            verification = self.verification.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -71,12 +78,15 @@ class PlantypesContainerImagePullPlan:
             field_dict["tag"] = tag
         if update_policy is not UNSET:
             field_dict["update_policy"] = update_policy
+        if verification is not UNSET:
+            field_dict["verification"] = verification
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
+        from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
+        from ..models.signature_verification import SignatureVerification  # noqa: PLC0415
 
         d = dict(src_dict)
         image = d.pop("image", UNSET)
@@ -94,12 +104,20 @@ class PlantypesContainerImagePullPlan:
 
         update_policy = d.pop("update_policy", UNSET)
 
+        _verification = d.pop("verification", UNSET)
+        verification: SignatureVerification | Unset
+        if isinstance(_verification, Unset):
+            verification = UNSET
+        else:
+            verification = SignatureVerification.from_dict(_verification)
+
         plantypes_container_image_pull_plan = cls(
             image=image,
             previous_source_digest=previous_source_digest,
             repo_config=repo_config,
             tag=tag,
             update_policy=update_policy,
+            verification=verification,
         )
 
         plantypes_container_image_pull_plan.additional_properties = d

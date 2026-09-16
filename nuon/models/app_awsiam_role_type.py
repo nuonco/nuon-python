@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAWSIAMRoleType(str, Enum):
+class AppAWSIAMRoleType(StrEnum):
     BREAKGLASS = "breakglass"
     CUSTOM = "custom"
     RUNNER_BREAKGLASS = "runner_breakglass"

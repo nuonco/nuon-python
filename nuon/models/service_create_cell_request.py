@@ -80,7 +80,7 @@ class ServiceCreateCellRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars
+        from ..models.service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         command = d.pop("command", UNSET)

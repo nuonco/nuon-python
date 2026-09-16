@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
+    from ..models.service_app_named_iam_policy_config import ServiceAppNamedIAMPolicyConfig
 
 
 T = TypeVar("T", bound="ServiceCreateAppPermissionsConfigRequest")
@@ -25,6 +26,7 @@ class ServiceCreateAppPermissionsConfigRequest:
         provision_role (ServiceAppAWSIAMRoleConfig):
         break_glass_roles (list[ServiceAppAWSIAMRoleConfig] | Unset):
         custom_roles (list[ServiceAppAWSIAMRoleConfig] | Unset):
+        named_policies (list[ServiceAppNamedIAMPolicyConfig] | Unset):
     """
 
     app_config_id: str
@@ -33,6 +35,7 @@ class ServiceCreateAppPermissionsConfigRequest:
     provision_role: ServiceAppAWSIAMRoleConfig
     break_glass_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
     custom_roles: list[ServiceAppAWSIAMRoleConfig] | Unset = UNSET
+    named_policies: list[ServiceAppNamedIAMPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,6 +61,13 @@ class ServiceCreateAppPermissionsConfigRequest:
                 custom_roles_item = custom_roles_item_data.to_dict()
                 custom_roles.append(custom_roles_item)
 
+        named_policies: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.named_policies, Unset):
+            named_policies = []
+            for named_policies_item_data in self.named_policies:
+                named_policies_item = named_policies_item_data.to_dict()
+                named_policies.append(named_policies_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -72,12 +82,15 @@ class ServiceCreateAppPermissionsConfigRequest:
             field_dict["break_glass_roles"] = break_glass_roles
         if custom_roles is not UNSET:
             field_dict["custom_roles"] = custom_roles
+        if named_policies is not UNSET:
+            field_dict["named_policies"] = named_policies
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
+        from ..models.service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig  # noqa: PLC0415
+        from ..models.service_app_named_iam_policy_config import ServiceAppNamedIAMPolicyConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id")
@@ -106,6 +119,15 @@ class ServiceCreateAppPermissionsConfigRequest:
 
                 custom_roles.append(custom_roles_item)
 
+        _named_policies = d.pop("named_policies", UNSET)
+        named_policies: list[ServiceAppNamedIAMPolicyConfig] | Unset = UNSET
+        if _named_policies is not UNSET:
+            named_policies = []
+            for named_policies_item_data in _named_policies:
+                named_policies_item = ServiceAppNamedIAMPolicyConfig.from_dict(named_policies_item_data)
+
+                named_policies.append(named_policies_item)
+
         service_create_app_permissions_config_request = cls(
             app_config_id=app_config_id,
             deprovision_role=deprovision_role,
@@ -113,6 +135,7 @@ class ServiceCreateAppPermissionsConfigRequest:
             provision_role=provision_role,
             break_glass_roles=break_glass_roles,
             custom_roles=custom_roles,
+            named_policies=named_policies,
         )
 
         service_create_app_permissions_config_request.additional_properties = d
