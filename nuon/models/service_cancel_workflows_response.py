@@ -51,7 +51,7 @@ class ServiceCancelWorkflowsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_cancel_workflow_error import ServiceCancelWorkflowError
+        from ..models.service_cancel_workflow_error import ServiceCancelWorkflowError  # noqa: PLC0415
 
         d = dict(src_dict)
         cancelled = cast(list[str], d.pop("cancelled", UNSET))

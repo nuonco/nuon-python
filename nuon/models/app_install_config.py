@@ -118,9 +118,11 @@ class AppInstallConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles
-        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles  # noqa: PLC0415
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)

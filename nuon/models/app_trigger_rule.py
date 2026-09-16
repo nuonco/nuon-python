@@ -189,8 +189,8 @@ class AppTriggerRule:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_trigger_filter import AppTriggerFilter
-        from ..models.app_trigger_rule_input_mappings import AppTriggerRuleInputMappings
+        from ..models.app_trigger_filter import AppTriggerFilter  # noqa: PLC0415
+        from ..models.app_trigger_rule_input_mappings import AppTriggerRuleInputMappings  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)

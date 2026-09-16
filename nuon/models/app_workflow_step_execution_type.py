@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppWorkflowStepExecutionType(str, Enum):
+class AppWorkflowStepExecutionType(StrEnum):
     APPROVAL = "approval"
     HIDDEN = "hidden"
     SKIPPED = "skipped"

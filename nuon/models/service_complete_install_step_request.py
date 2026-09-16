@@ -87,13 +87,17 @@ class ServiceCompleteInstallStepRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_complete_install_step_request_aws_account import (
-            ServiceCompleteInstallStepRequestAwsAccount,
+            ServiceCompleteInstallStepRequestAwsAccount,  # noqa: PLC0415
         )
         from ..models.service_complete_install_step_request_azure_account import (
-            ServiceCompleteInstallStepRequestAzureAccount,
+            ServiceCompleteInstallStepRequestAzureAccount,  # noqa: PLC0415
         )
-        from ..models.service_complete_install_step_request_inputs import ServiceCompleteInstallStepRequestInputs
-        from ..models.service_complete_install_step_request_metadata import ServiceCompleteInstallStepRequestMetadata
+        from ..models.service_complete_install_step_request_inputs import (
+            ServiceCompleteInstallStepRequestInputs,  # noqa: PLC0415
+        )
+        from ..models.service_complete_install_step_request_metadata import (
+            ServiceCompleteInstallStepRequestMetadata,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         name = d.pop("name")

@@ -245,16 +245,18 @@ class ServiceCreateHelmComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+        from ..models.service_connected_github_vcs_config_request import (
+            ServiceConnectedGithubVCSConfigRequest,  # noqa: PLC0415
+        )
         from ..models.service_create_helm_component_config_request_operation_roles import (
-            ServiceCreateHelmComponentConfigRequestOperationRoles,
+            ServiceCreateHelmComponentConfigRequestOperationRoles,  # noqa: PLC0415
         )
         from ..models.service_create_helm_component_config_request_values import (
-            ServiceCreateHelmComponentConfigRequestValues,
+            ServiceCreateHelmComponentConfigRequestValues,  # noqa: PLC0415
         )
-        from ..models.service_health_probe_request import ServiceHealthProbeRequest
-        from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest
-        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+        from ..models.service_health_probe_request import ServiceHealthProbeRequest  # noqa: PLC0415
+        from ..models.service_helm_repo_config_request import ServiceHelmRepoConfigRequest  # noqa: PLC0415
+        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         chart_name = d.pop("chart_name")
