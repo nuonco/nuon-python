@@ -150,10 +150,12 @@ class AppComponent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component_build import AppComponentBuild
-        from ..models.app_component_links import AppComponentLinks
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.app_component_build import AppComponentBuild  # noqa: PLC0415
+        from ..models.app_component_links import AppComponentLinks  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)
