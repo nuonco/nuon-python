@@ -87,7 +87,7 @@ def sync_detailed(
     type_: str | Unset = UNSET,
     source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for config file (deprecated query form)
+    """Get jsonschema for config file (deprecated query form)
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -96,7 +96,7 @@ def sync_detailed(
     ```toml
     #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
-    description = \"description\"
+    description = "description"
     ```
 
     You can pass in a valid source argument to render within a specific config file:
@@ -143,7 +143,7 @@ def sync(
     type_: str | Unset = UNSET,
     source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for config file (deprecated query form)
+    """Get jsonschema for config file (deprecated query form)
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -152,7 +152,7 @@ def sync(
     ```toml
     #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
-    description = \"description\"
+    description = "description"
     ```
 
     You can pass in a valid source argument to render within a specific config file:
@@ -194,7 +194,7 @@ async def asyncio_detailed(
     type_: str | Unset = UNSET,
     source: str | Unset = UNSET,
 ) -> Response[Any | StderrErrResponse]:
-    r"""Get jsonschema for config file (deprecated query form)
+    """Get jsonschema for config file (deprecated query form)
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -203,7 +203,7 @@ async def asyncio_detailed(
     ```toml
     #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
-    description = \"description\"
+    description = "description"
     ```
 
     You can pass in a valid source argument to render within a specific config file:
@@ -248,7 +248,7 @@ async def asyncio(
     type_: str | Unset = UNSET,
     source: str | Unset = UNSET,
 ) -> Any | StderrErrResponse | None:
-    r"""Get jsonschema for config file (deprecated query form)
+    """Get jsonschema for config file (deprecated query form)
 
      Return jsonschemas for Nuon configs. These can be used in frontmatter in most editors that have a
     TOML LSP (such as
@@ -257,7 +257,7 @@ async def asyncio(
     ```toml
     #:schema https://api.nuon.co/v1/general/config-schema/inputs
 
-    description = \"description\"
+    description = "description"
     ```
 
     You can pass in a valid source argument to render within a specific config file:

@@ -193,14 +193,16 @@ class AppInstallRunbookRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_runbook import AppInstallRunbook
-        from ..models.app_install_runbook_run_runbook_inputs import AppInstallRunbookRunRunbookInputs
-        from ..models.app_install_runbook_run_runbook_inputs_redacted import AppInstallRunbookRunRunbookInputsRedacted
-        from ..models.app_runbook_config import AppRunbookConfig
-        from ..models.app_runbook_step_selection import AppRunbookStepSelection
-        from ..models.app_workflow import AppWorkflow
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_runbook import AppInstallRunbook  # noqa: PLC0415
+        from ..models.app_install_runbook_run_runbook_inputs import AppInstallRunbookRunRunbookInputs  # noqa: PLC0415
+        from ..models.app_install_runbook_run_runbook_inputs_redacted import (
+            AppInstallRunbookRunRunbookInputsRedacted,  # noqa: PLC0415
+        )
+        from ..models.app_runbook_config import AppRunbookConfig  # noqa: PLC0415
+        from ..models.app_runbook_step_selection import AppRunbookStepSelection  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

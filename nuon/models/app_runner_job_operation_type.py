@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerJobOperationType(str, Enum):
+class AppRunnerJobOperationType(StrEnum):
     APPLY_PLAN = "apply-plan"
     BUILD = "build"
     CREATE_APPLY_PLAN = "create-apply-plan"

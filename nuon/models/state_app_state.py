@@ -64,7 +64,7 @@ class StateAppState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_app_state_variables import StateAppStateVariables
+        from ..models.state_app_state_variables import StateAppStateVariables  # noqa: PLC0415
 
         d = dict(src_dict)
         id = d.pop("id", UNSET)
