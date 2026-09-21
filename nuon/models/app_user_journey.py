@@ -55,7 +55,7 @@ class AppUserJourney:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_user_journey_step import AppUserJourneyStep
+        from ..models.app_user_journey_step import AppUserJourneyStep  # noqa: PLC0415
 
         d = dict(src_dict)
         name = d.pop("name", UNSET)

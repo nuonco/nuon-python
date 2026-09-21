@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class PermissionsPermission(str, Enum):
+class PermissionsPermission(StrEnum):
     ALL = "all"
     CREATE = "create"
     DELETE = "delete"
