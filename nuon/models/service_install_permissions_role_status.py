@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -34,6 +34,10 @@ class ServiceInstallPermissionsRoleStatus:
         enabled_in_stack (SqlNullBool | Unset):
         id (str | Unset):
         name (str | Unset):
+        named_policy_names (list[str] | Unset): NamedPolicyNames references AppNamedIAMPolicyConfig.Name values on the
+            same permissions config. JSONB because each app config is a snapshot.
+            Templated for the same reason the policy's Name is: both sides must
+            render to the same string for the attachment to resolve.
         org_id (str | Unset):
         owner_id (str | Unset):
         owner_type (str | Unset):
@@ -56,6 +60,7 @@ class ServiceInstallPermissionsRoleStatus:
     enabled_in_stack: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
     name: str | Unset = UNSET
+    named_policy_names: list[str] | Unset = UNSET
     org_id: str | Unset = UNSET
     owner_id: str | Unset = UNSET
     owner_type: str | Unset = UNSET
@@ -93,6 +98,10 @@ class ServiceInstallPermissionsRoleStatus:
         id = self.id
 
         name = self.name
+
+        named_policy_names: list[str] | Unset = UNSET
+        if not isinstance(self.named_policy_names, Unset):
+            named_policy_names = self.named_policy_names
 
         org_id = self.org_id
 
@@ -144,6 +153,8 @@ class ServiceInstallPermissionsRoleStatus:
             field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
+        if named_policy_names is not UNSET:
+            field_dict["named_policy_names"] = named_policy_names
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if owner_id is not UNSET:
@@ -163,8 +174,8 @@ class ServiceInstallPermissionsRoleStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig  # noqa: PLC0415
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -197,6 +208,8 @@ class ServiceInstallPermissionsRoleStatus:
         id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
+
+        named_policy_names = cast(list[str], d.pop("named_policy_names", UNSET))
 
         org_id = d.pop("org_id", UNSET)
 
@@ -238,6 +251,7 @@ class ServiceInstallPermissionsRoleStatus:
             enabled_in_stack=enabled_in_stack,
             id=id,
             name=name,
+            named_policy_names=named_policy_names,
             org_id=org_id,
             owner_id=owner_id,
             owner_type=owner_type,

@@ -48,7 +48,9 @@ class GithubComNuoncoNuonPkgLabelsSelector:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _match_labels = d.pop("match_labels", UNSET)

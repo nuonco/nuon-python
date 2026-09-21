@@ -63,14 +63,14 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateStaticTokenRequest,
 ) -> Response[GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse]:
-    r"""create a static API token for your org
+    """create a static API token for your org
 
-     Creates a long-lived static API token. By default (token_identity \"service_account\") each token
-    gets its own dedicated service account and only grants access to the current org; the role param
-    controls the token's permissions (any role assignable to API tokens; see GET
-    /v1/roles?context=api_token) and defaults to org_read_only. With token_identity \"personal\" the
-    token is issued against your own account instead: it uses your account's existing roles, is not
-    limited to the current org, and the role param must be empty.
+     Creates a long-lived static API token. By default (token_identity "service_account") each token gets
+    its own dedicated service account and only grants access to the current org; the role param controls
+    the token's permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and
+    defaults to org_read_only. With token_identity "personal" the token is issued against your own
+    account instead: it uses your account's existing roles, is not limited to the current org, and the
+    role param must be empty.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -99,14 +99,14 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceCreateStaticTokenRequest,
 ) -> GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse | None:
-    r"""create a static API token for your org
+    """create a static API token for your org
 
-     Creates a long-lived static API token. By default (token_identity \"service_account\") each token
-    gets its own dedicated service account and only grants access to the current org; the role param
-    controls the token's permissions (any role assignable to API tokens; see GET
-    /v1/roles?context=api_token) and defaults to org_read_only. With token_identity \"personal\" the
-    token is issued against your own account instead: it uses your account's existing roles, is not
-    limited to the current org, and the role param must be empty.
+     Creates a long-lived static API token. By default (token_identity "service_account") each token gets
+    its own dedicated service account and only grants access to the current org; the role param controls
+    the token's permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and
+    defaults to org_read_only. With token_identity "personal" the token is issued against your own
+    account instead: it uses your account's existing roles, is not limited to the current org, and the
+    role param must be empty.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -130,14 +130,14 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateStaticTokenRequest,
 ) -> Response[GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse]:
-    r"""create a static API token for your org
+    """create a static API token for your org
 
-     Creates a long-lived static API token. By default (token_identity \"service_account\") each token
-    gets its own dedicated service account and only grants access to the current org; the role param
-    controls the token's permissions (any role assignable to API tokens; see GET
-    /v1/roles?context=api_token) and defaults to org_read_only. With token_identity \"personal\" the
-    token is issued against your own account instead: it uses your account's existing roles, is not
-    limited to the current org, and the role param must be empty.
+     Creates a long-lived static API token. By default (token_identity "service_account") each token gets
+    its own dedicated service account and only grants access to the current org; the role param controls
+    the token's permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and
+    defaults to org_read_only. With token_identity "personal" the token is issued against your own
+    account instead: it uses your account's existing roles, is not limited to the current org, and the
+    role param must be empty.
 
     Args:
         body (ServiceCreateStaticTokenRequest):
@@ -164,14 +164,14 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceCreateStaticTokenRequest,
 ) -> GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse | None:
-    r"""create a static API token for your org
+    """create a static API token for your org
 
-     Creates a long-lived static API token. By default (token_identity \"service_account\") each token
-    gets its own dedicated service account and only grants access to the current org; the role param
-    controls the token's permissions (any role assignable to API tokens; see GET
-    /v1/roles?context=api_token) and defaults to org_read_only. With token_identity \"personal\" the
-    token is issued against your own account instead: it uses your account's existing roles, is not
-    limited to the current org, and the role param must be empty.
+     Creates a long-lived static API token. By default (token_identity "service_account") each token gets
+    its own dedicated service account and only grants access to the current org; the role param controls
+    the token's permissions (any role assignable to API tokens; see GET /v1/roles?context=api_token) and
+    defaults to org_read_only. With token_identity "personal" the token is issued against your own
+    account instead: it uses your account's existing roles, is not limited to the current org, and the
+    role param must be empty.
 
     Args:
         body (ServiceCreateStaticTokenRequest):

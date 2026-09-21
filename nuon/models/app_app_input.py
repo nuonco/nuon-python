@@ -154,7 +154,7 @@ class AppAppInput:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_input_group import AppAppInputGroup
+        from ..models.app_app_input_group import AppAppInputGroup  # noqa: PLC0415
 
         d = dict(src_dict)
         app_input_id = d.pop("app_input_id", UNSET)
