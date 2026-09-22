@@ -148,11 +148,11 @@ class AppQueue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_queue_emitter import AppQueueEmitter
-        from ..models.app_queue_metadata import AppQueueMetadata
-        from ..models.app_queue_signal import AppQueueSignal
-        from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_queue_emitter import AppQueueEmitter  # noqa: PLC0415
+        from ..models.app_queue_metadata import AppQueueMetadata  # noqa: PLC0415
+        from ..models.app_queue_signal import AppQueueSignal  # noqa: PLC0415
+        from ..models.signaldb_workflow_ref import SignaldbWorkflowRef  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

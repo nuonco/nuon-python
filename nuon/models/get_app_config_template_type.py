@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetAppConfigTemplateType(str, Enum):
+class GetAppConfigTemplateType(StrEnum):
     AWS_ECS = "aws-ecs"
     AWS_ECS_BYOVPC = "aws-ecs-byovpc"
     AWS_EKS = "aws-eks"

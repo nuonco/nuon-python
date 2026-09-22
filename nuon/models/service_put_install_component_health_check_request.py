@@ -64,7 +64,7 @@ class ServicePutInstallComponentHealthCheckRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_put_install_component_health_check_request_details import (
-            ServicePutInstallComponentHealthCheckRequestDetails,
+            ServicePutInstallComponentHealthCheckRequestDetails,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

@@ -95,7 +95,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateAdHocActionRequest,
 ) -> Response[ServiceCreateAdHocActionResponse | StderrErrResponse]:
-    r""" create an adhoc action run for an install
+    """ create an adhoc action run for an install
 
      # Create AdHoc Action
 
@@ -129,24 +129,24 @@ def sync_detailed(
     ## Example
 
     ```bash
-    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \
-      -H \"Authorization: Bearer $API_KEY\" \
-      -H \"X-Nuon-Org-ID: $ORG_ID\" \
-      -H \"Content-Type: application/json\" \
+    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \\
+      -H "Authorization: Bearer $API_KEY" \\
+      -H "X-Nuon-Org-ID: $ORG_ID" \\
+      -H "Content-Type: application/json" \\
       -d '{
-        \"inline_contents\": \"#!/bin/bash\necho \\"Hello from adhoc action\\"\nenv | grep NUON\",
-        \"env_vars\": {
-          \"DEBUG\": \"true\",
-          \"LOG_LEVEL\": \"info\"
+        "inline_contents": "#!/bin/bash\\necho \\"Hello from adhoc action\\"\\nenv | grep NUON",
+        "env_vars": {
+          "DEBUG": "true",
+          "LOG_LEVEL": "info"
         },
-        \"timeout\": 300,
-        \"name\": \"Debug Script\"
+        "timeout": 300,
+        "name": "Debug Script"
       }'
     ```
 
     ## Notes
 
-    - AdHoc actions are marked with `trigger_type: \"adhoc\"`
+    - AdHoc actions are marked with `trigger_type: "adhoc"`
     - They appear in action run history and can be filtered via trigger_type
     - Execution happens on the install's runner using the same infrastructure as permanent actions
     - Logs are preserved and can be viewed via the action runs API
@@ -182,7 +182,7 @@ def sync(
     client: AuthenticatedClient,
     body: ServiceCreateAdHocActionRequest,
 ) -> ServiceCreateAdHocActionResponse | StderrErrResponse | None:
-    r""" create an adhoc action run for an install
+    """ create an adhoc action run for an install
 
      # Create AdHoc Action
 
@@ -216,24 +216,24 @@ def sync(
     ## Example
 
     ```bash
-    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \
-      -H \"Authorization: Bearer $API_KEY\" \
-      -H \"X-Nuon-Org-ID: $ORG_ID\" \
-      -H \"Content-Type: application/json\" \
+    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \\
+      -H "Authorization: Bearer $API_KEY" \\
+      -H "X-Nuon-Org-ID: $ORG_ID" \\
+      -H "Content-Type: application/json" \\
       -d '{
-        \"inline_contents\": \"#!/bin/bash\necho \\"Hello from adhoc action\\"\nenv | grep NUON\",
-        \"env_vars\": {
-          \"DEBUG\": \"true\",
-          \"LOG_LEVEL\": \"info\"
+        "inline_contents": "#!/bin/bash\\necho \\"Hello from adhoc action\\"\\nenv | grep NUON",
+        "env_vars": {
+          "DEBUG": "true",
+          "LOG_LEVEL": "info"
         },
-        \"timeout\": 300,
-        \"name\": \"Debug Script\"
+        "timeout": 300,
+        "name": "Debug Script"
       }'
     ```
 
     ## Notes
 
-    - AdHoc actions are marked with `trigger_type: \"adhoc\"`
+    - AdHoc actions are marked with `trigger_type: "adhoc"`
     - They appear in action run history and can be filtered via trigger_type
     - Execution happens on the install's runner using the same infrastructure as permanent actions
     - Logs are preserved and can be viewed via the action runs API
@@ -264,7 +264,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServiceCreateAdHocActionRequest,
 ) -> Response[ServiceCreateAdHocActionResponse | StderrErrResponse]:
-    r""" create an adhoc action run for an install
+    """ create an adhoc action run for an install
 
      # Create AdHoc Action
 
@@ -298,24 +298,24 @@ async def asyncio_detailed(
     ## Example
 
     ```bash
-    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \
-      -H \"Authorization: Bearer $API_KEY\" \
-      -H \"X-Nuon-Org-ID: $ORG_ID\" \
-      -H \"Content-Type: application/json\" \
+    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \\
+      -H "Authorization: Bearer $API_KEY" \\
+      -H "X-Nuon-Org-ID: $ORG_ID" \\
+      -H "Content-Type: application/json" \\
       -d '{
-        \"inline_contents\": \"#!/bin/bash\necho \\"Hello from adhoc action\\"\nenv | grep NUON\",
-        \"env_vars\": {
-          \"DEBUG\": \"true\",
-          \"LOG_LEVEL\": \"info\"
+        "inline_contents": "#!/bin/bash\\necho \\"Hello from adhoc action\\"\\nenv | grep NUON",
+        "env_vars": {
+          "DEBUG": "true",
+          "LOG_LEVEL": "info"
         },
-        \"timeout\": 300,
-        \"name\": \"Debug Script\"
+        "timeout": 300,
+        "name": "Debug Script"
       }'
     ```
 
     ## Notes
 
-    - AdHoc actions are marked with `trigger_type: \"adhoc\"`
+    - AdHoc actions are marked with `trigger_type: "adhoc"`
     - They appear in action run history and can be filtered via trigger_type
     - Execution happens on the install's runner using the same infrastructure as permanent actions
     - Logs are preserved and can be viewed via the action runs API
@@ -349,7 +349,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServiceCreateAdHocActionRequest,
 ) -> ServiceCreateAdHocActionResponse | StderrErrResponse | None:
-    r""" create an adhoc action run for an install
+    """ create an adhoc action run for an install
 
      # Create AdHoc Action
 
@@ -383,24 +383,24 @@ async def asyncio(
     ## Example
 
     ```bash
-    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \
-      -H \"Authorization: Bearer $API_KEY\" \
-      -H \"X-Nuon-Org-ID: $ORG_ID\" \
-      -H \"Content-Type: application/json\" \
+    curl -X POST https://api.nuon.co/v1/installs/{install_id}/actions/adhoc \\
+      -H "Authorization: Bearer $API_KEY" \\
+      -H "X-Nuon-Org-ID: $ORG_ID" \\
+      -H "Content-Type: application/json" \\
       -d '{
-        \"inline_contents\": \"#!/bin/bash\necho \\"Hello from adhoc action\\"\nenv | grep NUON\",
-        \"env_vars\": {
-          \"DEBUG\": \"true\",
-          \"LOG_LEVEL\": \"info\"
+        "inline_contents": "#!/bin/bash\\necho \\"Hello from adhoc action\\"\\nenv | grep NUON",
+        "env_vars": {
+          "DEBUG": "true",
+          "LOG_LEVEL": "info"
         },
-        \"timeout\": 300,
-        \"name\": \"Debug Script\"
+        "timeout": 300,
+        "name": "Debug Script"
       }'
     ```
 
     ## Notes
 
-    - AdHoc actions are marked with `trigger_type: \"adhoc\"`
+    - AdHoc actions are marked with `trigger_type: "adhoc"`
     - They appear in action run history and can be filtered via trigger_type
     - Execution happens on the install's runner using the same infrastructure as permanent actions
     - Logs are preserved and can be viewed via the action runs API
