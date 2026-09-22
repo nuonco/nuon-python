@@ -38,7 +38,9 @@ class ServiceAddComponentLabelsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_add_component_labels_request_labels import ServiceAddComponentLabelsRequestLabels
+        from ..models.service_add_component_labels_request_labels import (
+            ServiceAddComponentLabelsRequestLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         labels = ServiceAddComponentLabelsRequestLabels.from_dict(d.pop("labels"))

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigCustomNestedStackStatus(str, Enum):
+class ConfigCustomNestedStackStatus(StrEnum):
     ERROR = "error"
     PENDING = "pending"
     READY = "ready"
