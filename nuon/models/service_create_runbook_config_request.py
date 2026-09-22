@@ -67,8 +67,10 @@ class ServiceCreateRunbookConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_runbook_input_request import ServiceCreateRunbookInputRequest
-        from ..models.service_create_runbook_step_config_request import ServiceCreateRunbookStepConfigRequest
+        from ..models.service_create_runbook_input_request import ServiceCreateRunbookInputRequest  # noqa: PLC0415
+        from ..models.service_create_runbook_step_config_request import (
+            ServiceCreateRunbookStepConfigRequest,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         steps = []

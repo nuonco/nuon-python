@@ -62,7 +62,7 @@ class PlantypesTerraformBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_terraform_build_plan_labels import PlantypesTerraformBuildPlanLabels
+        from ..models.plantypes_terraform_build_plan_labels import PlantypesTerraformBuildPlanLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         _labels = d.pop("labels", UNSET)

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppConfigStatus(str, Enum):
+class AppAppConfigStatus(StrEnum):
     ACTIVE = "active"
     ERROR = "error"
     OUTDATED = "outdated"

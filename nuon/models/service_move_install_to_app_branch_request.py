@@ -6,43 +6,44 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="GithubTimestamp")
+T = TypeVar("T", bound="ServiceMoveInstallToAppBranchRequest")
 
 
 @_attrs_define
-class GithubTimestamp:
+class ServiceMoveInstallToAppBranchRequest:
     """
     Attributes:
-        time_time (str | Unset):
+        app_branch_id (str): AppBranchID is the branch to move the install to. It must belong to the
+            install's app and have an app config to deploy.
     """
 
-    time_time: str | Unset = UNSET
+    app_branch_id: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        time_time = self.time_time
+        app_branch_id = self.app_branch_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if time_time is not UNSET:
-            field_dict["time.Time"] = time_time
+        field_dict.update(
+            {
+                "app_branch_id": app_branch_id,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        time_time = d.pop("time.Time", UNSET)
+        app_branch_id = d.pop("app_branch_id")
 
-        github_timestamp = cls(
-            time_time=time_time,
+        service_move_install_to_app_branch_request = cls(
+            app_branch_id=app_branch_id,
         )
 
-        github_timestamp.additional_properties = d
-        return github_timestamp
+        service_move_install_to_app_branch_request.additional_properties = d
+        return service_move_install_to_app_branch_request
 
     @property
     def additional_keys(self) -> list[str]:

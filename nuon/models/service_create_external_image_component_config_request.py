@@ -162,12 +162,12 @@ class ServiceCreateExternalImageComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest
-        from ..models.service_azure_acr_image_config_request import ServiceAzureACRImageConfigRequest
+        from ..models.service_aws_ecr_image_config_request import ServiceAwsECRImageConfigRequest  # noqa: PLC0415
+        from ..models.service_azure_acr_image_config_request import ServiceAzureACRImageConfigRequest  # noqa: PLC0415
         from ..models.service_create_external_image_component_config_request_operation_roles import (
-            ServiceCreateExternalImageComponentConfigRequestOperationRoles,
+            ServiceCreateExternalImageComponentConfigRequestOperationRoles,  # noqa: PLC0415
         )
-        from ..models.service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
+        from ..models.service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         image_url = d.pop("image_url")

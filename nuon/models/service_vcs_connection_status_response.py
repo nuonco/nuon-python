@@ -9,11 +9,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_user import GithubUser
     from ..models.service_vcs_connection_account import ServiceVCSConnectionAccount
     from ..models.service_vcs_connection_status_response_permissions import (
         ServiceVCSConnectionStatusResponsePermissions,
     )
+    from ..models.service_vcs_connection_user import ServiceVCSConnectionUser
 
 
 T = TypeVar("T", bound="ServiceVCSConnectionStatusResponse")
@@ -31,7 +31,7 @@ class ServiceVCSConnectionStatusResponse:
         repository_selection (str | Unset):
         status (str | Unset):
         suspended_at (str | Unset):
-        suspended_by (GithubUser | Unset):
+        suspended_by (ServiceVCSConnectionUser | Unset):
     """
 
     account: ServiceVCSConnectionAccount | Unset = UNSET
@@ -42,7 +42,7 @@ class ServiceVCSConnectionStatusResponse:
     repository_selection: str | Unset = UNSET
     status: str | Unset = UNSET
     suspended_at: str | Unset = UNSET
-    suspended_by: GithubUser | Unset = UNSET
+    suspended_by: ServiceVCSConnectionUser | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -96,11 +96,11 @@ class ServiceVCSConnectionStatusResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_user import GithubUser
-        from ..models.service_vcs_connection_account import ServiceVCSConnectionAccount
+        from ..models.service_vcs_connection_account import ServiceVCSConnectionAccount  # noqa: PLC0415
         from ..models.service_vcs_connection_status_response_permissions import (
-            ServiceVCSConnectionStatusResponsePermissions,
+            ServiceVCSConnectionStatusResponsePermissions,  # noqa: PLC0415
         )
+        from ..models.service_vcs_connection_user import ServiceVCSConnectionUser  # noqa: PLC0415
 
         d = dict(src_dict)
         _account = d.pop("account", UNSET)
@@ -130,11 +130,11 @@ class ServiceVCSConnectionStatusResponse:
         suspended_at = d.pop("suspended_at", UNSET)
 
         _suspended_by = d.pop("suspended_by", UNSET)
-        suspended_by: GithubUser | Unset
+        suspended_by: ServiceVCSConnectionUser | Unset
         if isinstance(_suspended_by, Unset):
             suspended_by = UNSET
         else:
-            suspended_by = GithubUser.from_dict(_suspended_by)
+            suspended_by = ServiceVCSConnectionUser.from_dict(_suspended_by)
 
         service_vcs_connection_status_response = cls(
             account=account,
