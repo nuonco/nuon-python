@@ -52,7 +52,7 @@ class ServiceUpdateRunbookRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_runbook_request_labels import ServiceUpdateRunbookRequestLabels
+        from ..models.service_update_runbook_request_labels import ServiceUpdateRunbookRequestLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         description = d.pop("description", UNSET)

@@ -73,8 +73,10 @@ class HelpersCreateInstallConfigParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
-        from ..models.helpers_create_install_config_params_labels import HelpersCreateInstallConfigParamsLabels
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.helpers_create_install_config_params_labels import (
+            HelpersCreateInstallConfigParamsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)

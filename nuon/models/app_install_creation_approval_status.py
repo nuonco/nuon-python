@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallCreationApprovalStatus(str, Enum):
+class AppInstallCreationApprovalStatus(StrEnum):
     APPROVED = "approved"
     DENIED = "denied"
     PENDING = "pending"
