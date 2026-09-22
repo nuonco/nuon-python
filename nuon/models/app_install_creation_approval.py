@@ -106,7 +106,7 @@ class AppInstallCreationApproval:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_proposed_install import AppProposedInstall
+        from ..models.app_proposed_install import AppProposedInstall  # noqa: PLC0415
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)

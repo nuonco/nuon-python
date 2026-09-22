@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppQueueEmitterMode(str, Enum):
+class AppQueueEmitterMode(StrEnum):
     CRON = "cron"
     FIRE_ONCE = "fire_once"
     SCHEDULED = "scheduled"

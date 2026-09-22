@@ -16,15 +16,20 @@ class AppOrgFeatureInfo:
     """
     Attributes:
         description (str | Unset):
+        forced (bool | Unset): Forced marks a flag this deployment pins on for every org, which callers
+            cannot toggle off.
         name (str | Unset):
     """
 
     description: str | Unset = UNSET
+    forced: bool | Unset = UNSET
     name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         description = self.description
+
+        forced = self.forced
 
         name = self.name
 
@@ -33,6 +38,8 @@ class AppOrgFeatureInfo:
         field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
+        if forced is not UNSET:
+            field_dict["forced"] = forced
         if name is not UNSET:
             field_dict["name"] = name
 
@@ -43,10 +50,13 @@ class AppOrgFeatureInfo:
         d = dict(src_dict)
         description = d.pop("description", UNSET)
 
+        forced = d.pop("forced", UNSET)
+
         name = d.pop("name", UNSET)
 
         app_org_feature_info = cls(
             description=description,
+            forced=forced,
             name=name,
         )
 

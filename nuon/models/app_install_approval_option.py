@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallApprovalOption(str, Enum):
+class AppInstallApprovalOption(StrEnum):
     APPROVE_ALL = "approve-all"
     PROMPT = "prompt"
 
