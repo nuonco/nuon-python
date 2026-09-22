@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
     from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
     from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
+    from ..models.app_aws_stack_outputs_named_policy_arns import AppAWSStackOutputsNamedPolicyArns
 
 
 T = TypeVar("T", bound="AppAWSStackOutputs")
@@ -27,10 +28,13 @@ class AppAWSStackOutputs:
         deprovision_iam_role_arn (str | Unset):
         install_inputs (AppAWSStackOutputsInstallInputs | Unset):
         maintenance_iam_role_arn (str | Unset):
+        named_policy_arns (AppAWSStackOutputsNamedPolicyArns | Unset):
         private_subnets (list[str] | Unset):
         provision_iam_role_arn (str | Unset):
         public_subnets (list[str] | Unset):
         region (str | Unset):
+        runner_enabled (bool | Unset): Nil when the stack predates the runner_enabled variable, which must read
+            as enabled rather than disabled.
         runner_iam_role_arn (str | Unset):
         runner_subnet (str | Unset):
         vpc_id (str | Unset):
@@ -42,10 +46,12 @@ class AppAWSStackOutputs:
     deprovision_iam_role_arn: str | Unset = UNSET
     install_inputs: AppAWSStackOutputsInstallInputs | Unset = UNSET
     maintenance_iam_role_arn: str | Unset = UNSET
+    named_policy_arns: AppAWSStackOutputsNamedPolicyArns | Unset = UNSET
     private_subnets: list[str] | Unset = UNSET
     provision_iam_role_arn: str | Unset = UNSET
     public_subnets: list[str] | Unset = UNSET
     region: str | Unset = UNSET
+    runner_enabled: bool | Unset = UNSET
     runner_iam_role_arn: str | Unset = UNSET
     runner_subnet: str | Unset = UNSET
     vpc_id: str | Unset = UNSET
@@ -70,6 +76,10 @@ class AppAWSStackOutputs:
 
         maintenance_iam_role_arn = self.maintenance_iam_role_arn
 
+        named_policy_arns: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.named_policy_arns, Unset):
+            named_policy_arns = self.named_policy_arns.to_dict()
+
         private_subnets: list[str] | Unset = UNSET
         if not isinstance(self.private_subnets, Unset):
             private_subnets = self.private_subnets
@@ -81,6 +91,8 @@ class AppAWSStackOutputs:
             public_subnets = self.public_subnets
 
         region = self.region
+
+        runner_enabled = self.runner_enabled
 
         runner_iam_role_arn = self.runner_iam_role_arn
 
@@ -103,6 +115,8 @@ class AppAWSStackOutputs:
             field_dict["install_inputs"] = install_inputs
         if maintenance_iam_role_arn is not UNSET:
             field_dict["maintenance_iam_role_arn"] = maintenance_iam_role_arn
+        if named_policy_arns is not UNSET:
+            field_dict["named_policy_arns"] = named_policy_arns
         if private_subnets is not UNSET:
             field_dict["private_subnets"] = private_subnets
         if provision_iam_role_arn is not UNSET:
@@ -111,6 +125,8 @@ class AppAWSStackOutputs:
             field_dict["public_subnets"] = public_subnets
         if region is not UNSET:
             field_dict["region"] = region
+        if runner_enabled is not UNSET:
+            field_dict["runner_enabled"] = runner_enabled
         if runner_iam_role_arn is not UNSET:
             field_dict["runner_iam_role_arn"] = runner_iam_role_arn
         if runner_subnet is not UNSET:
@@ -122,9 +138,12 @@ class AppAWSStackOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
-        from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
-        from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
+        from ..models.app_aws_stack_outputs_break_glass_role_arns import (
+            AppAWSStackOutputsBreakGlassRoleArns,  # noqa: PLC0415
+        )
+        from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns  # noqa: PLC0415
+        from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs  # noqa: PLC0415
+        from ..models.app_aws_stack_outputs_named_policy_arns import AppAWSStackOutputsNamedPolicyArns  # noqa: PLC0415
 
         d = dict(src_dict)
         account_id = d.pop("account_id", UNSET)
@@ -154,6 +173,13 @@ class AppAWSStackOutputs:
 
         maintenance_iam_role_arn = d.pop("maintenance_iam_role_arn", UNSET)
 
+        _named_policy_arns = d.pop("named_policy_arns", UNSET)
+        named_policy_arns: AppAWSStackOutputsNamedPolicyArns | Unset
+        if isinstance(_named_policy_arns, Unset):
+            named_policy_arns = UNSET
+        else:
+            named_policy_arns = AppAWSStackOutputsNamedPolicyArns.from_dict(_named_policy_arns)
+
         private_subnets = cast(list[str], d.pop("private_subnets", UNSET))
 
         provision_iam_role_arn = d.pop("provision_iam_role_arn", UNSET)
@@ -161,6 +187,8 @@ class AppAWSStackOutputs:
         public_subnets = cast(list[str], d.pop("public_subnets", UNSET))
 
         region = d.pop("region", UNSET)
+
+        runner_enabled = d.pop("runner_enabled", UNSET)
 
         runner_iam_role_arn = d.pop("runner_iam_role_arn", UNSET)
 
@@ -175,10 +203,12 @@ class AppAWSStackOutputs:
             deprovision_iam_role_arn=deprovision_iam_role_arn,
             install_inputs=install_inputs,
             maintenance_iam_role_arn=maintenance_iam_role_arn,
+            named_policy_arns=named_policy_arns,
             private_subnets=private_subnets,
             provision_iam_role_arn=provision_iam_role_arn,
             public_subnets=public_subnets,
             region=region,
+            runner_enabled=runner_enabled,
             runner_iam_role_arn=runner_iam_role_arn,
             runner_subnet=runner_subnet,
             vpc_id=vpc_id,

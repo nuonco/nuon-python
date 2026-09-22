@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppSlackInstallationStatus(str, Enum):
+class AppSlackInstallationStatus(StrEnum):
     ACTIVE = "active"
     DISABLED = "disabled"
     UNINSTALLED = "uninstalled"
