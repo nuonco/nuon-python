@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.app_awsecr_image_config import AppAWSECRImageConfig
     from ..models.app_azure_acr_image_config import AppAzureACRImageConfig
     from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
+    from ..models.signature_verification import SignatureVerification
 
 
 T = TypeVar("T", bound="AppExternalImageComponentConfig")
@@ -39,6 +40,7 @@ class AppExternalImageComponentConfig:
 
             When empty, the runner uses Tag literally.
         updated_at (str | Unset):
+        verification (SignatureVerification | Unset):
     """
 
     aws_ecr_image_config: AppAWSECRImageConfig | Unset = UNSET
@@ -52,6 +54,7 @@ class AppExternalImageComponentConfig:
     tag: str | Unset = UNSET
     update_policy: str | Unset = UNSET
     updated_at: str | Unset = UNSET
+    verification: SignatureVerification | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -83,6 +86,10 @@ class AppExternalImageComponentConfig:
 
         updated_at = self.updated_at
 
+        verification: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.verification, Unset):
+            verification = self.verification.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -108,14 +115,17 @@ class AppExternalImageComponentConfig:
             field_dict["update_policy"] = update_policy
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if verification is not UNSET:
+            field_dict["verification"] = verification
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_awsecr_image_config import AppAWSECRImageConfig
-        from ..models.app_azure_acr_image_config import AppAzureACRImageConfig
-        from ..models.app_gcpgar_image_config import AppGCPGARImageConfig
+        from ..models.app_awsecr_image_config import AppAWSECRImageConfig  # noqa: PLC0415
+        from ..models.app_azure_acr_image_config import AppAzureACRImageConfig  # noqa: PLC0415
+        from ..models.app_gcpgar_image_config import AppGCPGARImageConfig  # noqa: PLC0415
+        from ..models.signature_verification import SignatureVerification  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws_ecr_image_config = d.pop("aws_ecr_image_config", UNSET)
@@ -155,6 +165,13 @@ class AppExternalImageComponentConfig:
 
         updated_at = d.pop("updated_at", UNSET)
 
+        _verification = d.pop("verification", UNSET)
+        verification: SignatureVerification | Unset
+        if isinstance(_verification, Unset):
+            verification = UNSET
+        else:
+            verification = SignatureVerification.from_dict(_verification)
+
         app_external_image_component_config = cls(
             aws_ecr_image_config=aws_ecr_image_config,
             azure_acr_image_config=azure_acr_image_config,
@@ -167,6 +184,7 @@ class AppExternalImageComponentConfig:
             tag=tag,
             update_policy=update_policy,
             updated_at=updated_at,
+            verification=verification,
         )
 
         app_external_image_component_config.additional_properties = d

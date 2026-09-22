@@ -43,7 +43,7 @@ class ServiceComponentChildren:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component import AppComponent
+        from ..models.app_component import AppComponent  # noqa: PLC0415
 
         d = dict(src_dict)
         _children = d.pop("children", UNSET)

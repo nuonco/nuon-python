@@ -174,9 +174,9 @@ class AppNotebookCellRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_notebook_cell_run_env_vars import AppNotebookCellRunEnvVars
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_notebook_cell_run_env_vars import AppNotebookCellRunEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         cell_id = d.pop("cell_id", UNSET)

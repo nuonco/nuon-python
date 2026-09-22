@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppSlackOrgLinkStatus(str, Enum):
+class AppSlackOrgLinkStatus(StrEnum):
     REVOKED = "revoked"
     VERIFIED = "verified"
 

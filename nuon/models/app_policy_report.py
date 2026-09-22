@@ -201,10 +201,10 @@ class AppPolicyReport:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_policy_input_ref import AppPolicyInputRef
-        from ..models.app_policy_result import AppPolicyResult
-        from ..models.app_policy_violation import AppPolicyViolation
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_policy_input_ref import AppPolicyInputRef  # noqa: PLC0415
+        from ..models.app_policy_result import AppPolicyResult  # noqa: PLC0415
+        from ..models.app_policy_violation import AppPolicyViolation  # noqa: PLC0415
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)

@@ -122,7 +122,7 @@ class AppInstallState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.generics_null_time import GenericsNullTime
+        from ..models.generics_null_time import GenericsNullTime  # noqa: PLC0415
 
         d = dict(src_dict)
         archived = d.pop("archived", UNSET)
