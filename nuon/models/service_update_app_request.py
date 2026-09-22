@@ -76,7 +76,7 @@ class ServiceUpdateAppRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_app_request_label_colors import ServiceUpdateAppRequestLabelColors
+        from ..models.service_update_app_request_label_colors import ServiceUpdateAppRequestLabelColors  # noqa: PLC0415
 
         d = dict(src_dict)
         config_directory = d.pop("config_directory", UNSET)

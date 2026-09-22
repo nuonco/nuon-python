@@ -58,8 +58,12 @@ class ServiceCreateRunbookRunRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_runbook_run_request_inputs import ServiceCreateRunbookRunRequestInputs
-        from ..models.service_create_runbook_run_step_selection import ServiceCreateRunbookRunStepSelection
+        from ..models.service_create_runbook_run_request_inputs import (
+            ServiceCreateRunbookRunRequestInputs,  # noqa: PLC0415
+        )
+        from ..models.service_create_runbook_run_step_selection import (
+            ServiceCreateRunbookRunStepSelection,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _inputs = d.pop("inputs", UNSET)
