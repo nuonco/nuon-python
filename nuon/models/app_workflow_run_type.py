@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppWorkflowRunType(str, Enum):
+class AppWorkflowRunType(StrEnum):
     INITIAL = "initial"
     RESUME = "resume"
     RETRY = "retry"

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class DiffOp(str, Enum):
+class DiffOp(StrEnum):
     ADD = "add"
     CHANGE = "change"
     NOOP = "noop"

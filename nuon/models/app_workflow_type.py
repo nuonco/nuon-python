@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppWorkflowType(str, Enum):
+class AppWorkflowType(StrEnum):
     ACTION_WORKFLOW_RUN = "action_workflow_run"
     APP_BRANCHES_COMPONENT_REPO_UPDATE = "app_branches_component_repo_update"
     APP_BRANCHES_CONFIG_REPO_UPDATE = "app_branches_config_repo_update"
@@ -19,6 +19,7 @@ class AppWorkflowType(str, Enum):
     INPUT_UPDATE = "input_update"
     MANUAL_DEPLOY = "manual_deploy"
     PROVISION = "provision"
+    RECOVER_HELM_RELEASE = "recover_helm_release"
     REPROVISION = "reprovision"
     REPROVISION_SANDBOX = "reprovision_sandbox"
     REPROVISION_STACK = "reprovision_stack"

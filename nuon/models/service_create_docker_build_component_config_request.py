@@ -163,14 +163,16 @@ class ServiceCreateDockerBuildComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+        from ..models.service_connected_github_vcs_config_request import (
+            ServiceConnectedGithubVCSConfigRequest,  # noqa: PLC0415
+        )
         from ..models.service_create_docker_build_component_config_request_env_vars import (
-            ServiceCreateDockerBuildComponentConfigRequestEnvVars,
+            ServiceCreateDockerBuildComponentConfigRequestEnvVars,  # noqa: PLC0415
         )
         from ..models.service_create_docker_build_component_config_request_operation_roles import (
-            ServiceCreateDockerBuildComponentConfigRequestOperationRoles,
+            ServiceCreateDockerBuildComponentConfigRequestOperationRoles,  # noqa: PLC0415
         )
-        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         dockerfile = d.pop("dockerfile")

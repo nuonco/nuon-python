@@ -103,9 +103,9 @@ class AppInstallActionWorkflow:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_action_workflow import AppActionWorkflow
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
+        from ..models.app_action_workflow import AppActionWorkflow  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun  # noqa: PLC0415
 
         d = dict(src_dict)
         _action_workflow = d.pop("action_workflow", UNSET)

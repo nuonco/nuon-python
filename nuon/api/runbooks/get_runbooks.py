@@ -15,6 +15,7 @@ def _get_kwargs(
     app_id: str,
     *,
     q: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> dict[str, Any]:
@@ -22,6 +23,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["q"] = q
+
+    params["branch_id"] = branch_id
 
     params["offset"] = offset
 
@@ -100,6 +103,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppRunbook]]:
@@ -108,6 +112,7 @@ def sync_detailed(
     Args:
         app_id (str):
         q (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -122,6 +127,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         app_id=app_id,
         q=q,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
     )
@@ -138,6 +144,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppRunbook] | None:
@@ -146,6 +153,7 @@ def sync(
     Args:
         app_id (str):
         q (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -161,6 +169,7 @@ def sync(
         app_id=app_id,
         client=client,
         q=q,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
     ).parsed
@@ -171,6 +180,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> Response[StderrErrResponse | list[AppRunbook]]:
@@ -179,6 +189,7 @@ async def asyncio_detailed(
     Args:
         app_id (str):
         q (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -193,6 +204,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         app_id=app_id,
         q=q,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
     )
@@ -207,6 +219,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     q: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
 ) -> StderrErrResponse | list[AppRunbook] | None:
@@ -215,6 +228,7 @@ async def asyncio(
     Args:
         app_id (str):
         q (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
 
@@ -231,6 +245,7 @@ async def asyncio(
             app_id=app_id,
             client=client,
             q=q,
+            branch_id=branch_id,
             offset=offset,
             limit=limit,
         )

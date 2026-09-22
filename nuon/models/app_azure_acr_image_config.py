@@ -15,7 +15,10 @@ T = TypeVar("T", bound="AppAzureACRImageConfig")
 class AppAzureACRImageConfig:
     """
     Attributes:
+        client_certificate_name (str | Unset):
         client_id (str | Unset):
+        client_secret_name (str | Unset): Names of app secrets holding the app registration's credential material,
+            never the material itself.
         component_config_id (str | Unset): connection to parent model
         component_config_type (str | Unset):
         created_at (str | Unset):
@@ -26,7 +29,9 @@ class AppAzureACRImageConfig:
         updated_at (str | Unset):
     """
 
+    client_certificate_name: str | Unset = UNSET
     client_id: str | Unset = UNSET
+    client_secret_name: str | Unset = UNSET
     component_config_id: str | Unset = UNSET
     component_config_type: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -38,7 +43,11 @@ class AppAzureACRImageConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        client_certificate_name = self.client_certificate_name
+
         client_id = self.client_id
+
+        client_secret_name = self.client_secret_name
 
         component_config_id = self.component_config_id
 
@@ -59,8 +68,12 @@ class AppAzureACRImageConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if client_certificate_name is not UNSET:
+            field_dict["client_certificate_name"] = client_certificate_name
         if client_id is not UNSET:
             field_dict["client_id"] = client_id
+        if client_secret_name is not UNSET:
+            field_dict["client_secret_name"] = client_secret_name
         if component_config_id is not UNSET:
             field_dict["component_config_id"] = component_config_id
         if component_config_type is not UNSET:
@@ -83,7 +96,11 @@ class AppAzureACRImageConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        client_certificate_name = d.pop("client_certificate_name", UNSET)
+
         client_id = d.pop("client_id", UNSET)
+
+        client_secret_name = d.pop("client_secret_name", UNSET)
 
         component_config_id = d.pop("component_config_id", UNSET)
 
@@ -102,7 +119,9 @@ class AppAzureACRImageConfig:
         updated_at = d.pop("updated_at", UNSET)
 
         app_azure_acr_image_config = cls(
+            client_certificate_name=client_certificate_name,
             client_id=client_id,
+            client_secret_name=client_secret_name,
             component_config_id=component_config_id,
             component_config_type=component_config_type,
             created_at=created_at,
