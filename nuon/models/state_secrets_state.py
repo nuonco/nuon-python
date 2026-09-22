@@ -15,8 +15,6 @@ T = TypeVar("T", bound="StateSecretsState")
 
 @_attrs_define
 class StateSecretsState:
-    """ """
-
     additional_properties: dict[str, OutputsSecretSyncOutput] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,7 +27,7 @@ class StateSecretsState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.outputs_secret_sync_output import OutputsSecretSyncOutput
+        from ..models.outputs_secret_sync_output import OutputsSecretSyncOutput  # noqa: PLC0415
 
         d = dict(src_dict)
         state_secrets_state = cls()

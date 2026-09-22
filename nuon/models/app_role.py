@@ -28,6 +28,7 @@ class AppRole:
         description (str | Unset):
         id (str | Unset):
         managed (bool | Unset):
+        org_id (str | Unset): NOTE: not all roles have to belong to an org, this is mainly for historical reasons.
         policies (list[AppPolicy] | Unset):
         role_type (AppRoleType | Unset):
         title (str | Unset): display + assignability metadata; the single source of truth read by
@@ -43,6 +44,7 @@ class AppRole:
     description: str | Unset = UNSET
     id: str | Unset = UNSET
     managed: bool | Unset = UNSET
+    org_id: str | Unset = UNSET
     policies: list[AppPolicy] | Unset = UNSET
     role_type: AppRoleType | Unset = UNSET
     title: str | Unset = UNSET
@@ -67,6 +69,8 @@ class AppRole:
         id = self.id
 
         managed = self.managed
+
+        org_id = self.org_id
 
         policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.policies, Unset):
@@ -100,6 +104,8 @@ class AppRole:
             field_dict["id"] = id
         if managed is not UNSET:
             field_dict["managed"] = managed
+        if org_id is not UNSET:
+            field_dict["org_id"] = org_id
         if policies is not UNSET:
             field_dict["policies"] = policies
         if role_type is not UNSET:
@@ -113,8 +119,8 @@ class AppRole:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_policy import AppPolicy
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_policy import AppPolicy  # noqa: PLC0415
 
         d = dict(src_dict)
         applies_to = cast(list[str], d.pop("applies_to", UNSET))
@@ -135,6 +141,8 @@ class AppRole:
         id = d.pop("id", UNSET)
 
         managed = d.pop("managed", UNSET)
+
+        org_id = d.pop("org_id", UNSET)
 
         _policies = d.pop("policies", UNSET)
         policies: list[AppPolicy] | Unset = UNSET
@@ -164,6 +172,7 @@ class AppRole:
             description=description,
             id=id,
             managed=managed,
+            org_id=org_id,
             policies=policies,
             role_type=role_type,
             title=title,

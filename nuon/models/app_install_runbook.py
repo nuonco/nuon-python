@@ -103,9 +103,9 @@ class AppInstallRunbook:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_runbook_run import AppInstallRunbookRun
-        from ..models.app_runbook import AppRunbook
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_runbook_run import AppInstallRunbookRun  # noqa: PLC0415
+        from ..models.app_runbook import AppRunbook  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)
