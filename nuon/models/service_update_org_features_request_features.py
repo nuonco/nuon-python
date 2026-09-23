@@ -11,8 +11,6 @@ T = TypeVar("T", bound="ServiceUpdateOrgFeaturesRequestFeatures")
 
 @_attrs_define
 class ServiceUpdateOrgFeaturesRequestFeatures:
-    """ """
-
     additional_properties: dict[str, bool] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

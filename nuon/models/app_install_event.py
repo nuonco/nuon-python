@@ -97,7 +97,7 @@ class AppInstallEvent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_event_payload import AppInstallEventPayload
+        from ..models.app_install_event_payload import AppInstallEventPayload  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

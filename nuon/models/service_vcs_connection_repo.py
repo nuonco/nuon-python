@@ -22,6 +22,7 @@ class ServiceVCSConnectionRepo:
         html_url (str | Unset):
         id (int | Unset):
         name (str | Unset):
+        owner_id (int | Unset):
         private (bool | Unset):
         updated_at (str | Unset):
     """
@@ -33,6 +34,7 @@ class ServiceVCSConnectionRepo:
     html_url: str | Unset = UNSET
     id: int | Unset = UNSET
     name: str | Unset = UNSET
+    owner_id: int | Unset = UNSET
     private: bool | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -51,6 +53,8 @@ class ServiceVCSConnectionRepo:
         id = self.id
 
         name = self.name
+
+        owner_id = self.owner_id
 
         private = self.private
 
@@ -73,6 +77,8 @@ class ServiceVCSConnectionRepo:
             field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
+        if owner_id is not UNSET:
+            field_dict["owner_id"] = owner_id
         if private is not UNSET:
             field_dict["private"] = private
         if updated_at is not UNSET:
@@ -97,6 +103,8 @@ class ServiceVCSConnectionRepo:
 
         name = d.pop("name", UNSET)
 
+        owner_id = d.pop("owner_id", UNSET)
+
         private = d.pop("private", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -109,6 +117,7 @@ class ServiceVCSConnectionRepo:
             html_url=html_url,
             id=id,
             name=name,
+            owner_id=owner_id,
             private=private,
             updated_at=updated_at,
         )

@@ -97,8 +97,8 @@ class AppInstallInputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_inputs_redacted_values import AppInstallInputsRedactedValues
-        from ..models.app_install_inputs_values import AppInstallInputsValues
+        from ..models.app_install_inputs_redacted_values import AppInstallInputsRedactedValues  # noqa: PLC0415
+        from ..models.app_install_inputs_values import AppInstallInputsValues  # noqa: PLC0415
 
         d = dict(src_dict)
         app_input_config_id = d.pop("app_input_config_id", UNSET)

@@ -273,13 +273,13 @@ class AppRunnerJob:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_role_usage import AppInstallRoleUsage
-        from ..models.app_runner_job_execution import AppRunnerJobExecution
-        from ..models.app_runner_job_metadata import AppRunnerJobMetadata
-        from ..models.app_runner_job_outputs import AppRunnerJobOutputs
-        from ..models.app_runner_job_plan import AppRunnerJobPlan
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_role_usage import AppInstallRoleUsage  # noqa: PLC0415
+        from ..models.app_runner_job_execution import AppRunnerJobExecution  # noqa: PLC0415
+        from ..models.app_runner_job_metadata import AppRunnerJobMetadata  # noqa: PLC0415
+        from ..models.app_runner_job_outputs import AppRunnerJobOutputs  # noqa: PLC0415
+        from ..models.app_runner_job_plan import AppRunnerJobPlan  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         available_timeout = d.pop("available_timeout", UNSET)
