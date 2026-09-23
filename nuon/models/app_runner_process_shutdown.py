@@ -106,8 +106,8 @@ class AppRunnerProcessShutdown:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.pgtype_hstore import PgtypeHstore
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.pgtype_hstore import PgtypeHstore  # noqa: PLC0415
 
         d = dict(src_dict)
         _composite_status = d.pop("composite_status", UNSET)

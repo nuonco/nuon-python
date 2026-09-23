@@ -77,7 +77,7 @@ class CredentialsAssumeRoleConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.iam_two_step_config import IamTwoStepConfig
+        from ..models.iam_two_step_config import IamTwoStepConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         role_arn = d.pop("role_arn")

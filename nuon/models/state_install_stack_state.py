@@ -76,7 +76,7 @@ class StateInstallStackState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_install_stack_state_outputs import StateInstallStackStateOutputs
+        from ..models.state_install_stack_state_outputs import StateInstallStackStateOutputs  # noqa: PLC0415
 
         d = dict(src_dict)
         checksum = d.pop("checksum", UNSET)

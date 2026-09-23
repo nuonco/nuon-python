@@ -536,37 +536,39 @@ class AppInstall:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch import AppAppBranch
-        from ..models.app_app_runner_config import AppAppRunnerConfig
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_aws_account import AppAWSAccount
-        from ..models.app_azure_account import AppAzureAccount
-        from ..models.app_drifted_object import AppDriftedObject
-        from ..models.app_gcp_account import AppGCPAccount
-        from ..models.app_install_action_workflow import AppInstallActionWorkflow
-        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
-        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels
-        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
-        from ..models.app_install_component import AppInstallComponent
-        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
-        from ..models.app_install_component_statuses import AppInstallComponentStatuses
-        from ..models.app_install_config import AppInstallConfig
-        from ..models.app_install_event import AppInstallEvent
-        from ..models.app_install_inputs import AppInstallInputs
-        from ..models.app_install_label_templates import AppInstallLabelTemplates
-        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
-        from ..models.app_install_links import AppInstallLinks
-        from ..models.app_install_metadata import AppInstallMetadata
-        from ..models.app_install_roles import AppInstallRoles
-        from ..models.app_install_sandbox import AppInstallSandbox
-        from ..models.app_install_sandbox_run import AppInstallSandboxRun
-        from ..models.app_install_stack import AppInstallStack
-        from ..models.app_install_state import AppInstallState
-        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus
-        from ..models.app_queue import AppQueue
-        from ..models.app_workflow import AppWorkflow
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
+        from ..models.app_app_runner_config import AppAppRunnerConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_aws_account import AppAWSAccount  # noqa: PLC0415
+        from ..models.app_azure_account import AppAzureAccount  # noqa: PLC0415
+        from ..models.app_drifted_object import AppDriftedObject  # noqa: PLC0415
+        from ..models.app_gcp_account import AppGCPAccount  # noqa: PLC0415
+        from ..models.app_install_action_workflow import AppInstallActionWorkflow  # noqa: PLC0415
+        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection  # noqa: PLC0415
+        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels  # noqa: PLC0415
+        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata  # noqa: PLC0415
+        from ..models.app_install_component import AppInstallComponent  # noqa: PLC0415
+        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses  # noqa: PLC0415
+        from ..models.app_install_component_statuses import AppInstallComponentStatuses  # noqa: PLC0415
+        from ..models.app_install_config import AppInstallConfig  # noqa: PLC0415
+        from ..models.app_install_event import AppInstallEvent  # noqa: PLC0415
+        from ..models.app_install_inputs import AppInstallInputs  # noqa: PLC0415
+        from ..models.app_install_label_templates import AppInstallLabelTemplates  # noqa: PLC0415
+        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase  # noqa: PLC0415
+        from ..models.app_install_links import AppInstallLinks  # noqa: PLC0415
+        from ..models.app_install_metadata import AppInstallMetadata  # noqa: PLC0415
+        from ..models.app_install_roles import AppInstallRoles  # noqa: PLC0415
+        from ..models.app_install_sandbox import AppInstallSandbox  # noqa: PLC0415
+        from ..models.app_install_sandbox_run import AppInstallSandboxRun  # noqa: PLC0415
+        from ..models.app_install_stack import AppInstallStack  # noqa: PLC0415
+        from ..models.app_install_state import AppInstallState  # noqa: PLC0415
+        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)

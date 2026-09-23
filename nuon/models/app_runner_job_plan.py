@@ -82,7 +82,7 @@ class AppRunnerJobPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_composite_plan import PlantypesCompositePlan
+        from ..models.plantypes_composite_plan import PlantypesCompositePlan  # noqa: PLC0415
 
         d = dict(src_dict)
         _composite_plan = d.pop("composite_plan", UNSET)

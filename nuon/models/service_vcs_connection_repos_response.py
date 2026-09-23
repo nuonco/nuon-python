@@ -49,7 +49,7 @@ class ServiceVCSConnectionReposResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_vcs_connection_repo import ServiceVCSConnectionRepo
+        from ..models.service_vcs_connection_repo import ServiceVCSConnectionRepo  # noqa: PLC0415
 
         d = dict(src_dict)
         _repositories = d.pop("repositories", UNSET)
