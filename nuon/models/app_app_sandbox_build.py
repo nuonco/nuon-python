@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
+    from ..models.app_app_branch_run import AppAppBranchRun
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_log_stream import AppLogStream
     from ..models.app_runner_job import AppRunnerJob
@@ -24,6 +25,9 @@ T = TypeVar("T", bound="AppAppSandboxBuild")
 class AppAppSandboxBuild:
     """
     Attributes:
+        app_branch_id (str | Unset):
+        app_branch_run (AppAppBranchRun | Unset):
+        app_branch_run_id (str | Unset):
         app_config_id (str | Unset):
         app_id (str | Unset):
         app_sandbox_config_id (str | Unset):
@@ -42,6 +46,9 @@ class AppAppSandboxBuild:
         vcs_connection_commit_id (str | Unset):
     """
 
+    app_branch_id: str | Unset = UNSET
+    app_branch_run: AppAppBranchRun | Unset = UNSET
+    app_branch_run_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
     app_sandbox_config_id: str | Unset = UNSET
@@ -61,6 +68,14 @@ class AppAppSandboxBuild:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_id = self.app_branch_id
+
+        app_branch_run: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_branch_run, Unset):
+            app_branch_run = self.app_branch_run.to_dict()
+
+        app_branch_run_id = self.app_branch_run_id
+
         app_config_id = self.app_config_id
 
         app_id = self.app_id
@@ -108,6 +123,12 @@ class AppAppSandboxBuild:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
+        if app_branch_run is not UNSET:
+            field_dict["app_branch_run"] = app_branch_run
+        if app_branch_run_id is not UNSET:
+            field_dict["app_branch_run_id"] = app_branch_run_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
         if app_id is not UNSET:
@@ -145,14 +166,26 @@ class AppAppSandboxBuild:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_app_branch_run import AppAppBranchRun  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
+        app_branch_id = d.pop("app_branch_id", UNSET)
+
+        _app_branch_run = d.pop("app_branch_run", UNSET)
+        app_branch_run: AppAppBranchRun | Unset
+        if isinstance(_app_branch_run, Unset):
+            app_branch_run = UNSET
+        else:
+            app_branch_run = AppAppBranchRun.from_dict(_app_branch_run)
+
+        app_branch_run_id = d.pop("app_branch_run_id", UNSET)
+
         app_config_id = d.pop("app_config_id", UNSET)
 
         app_id = d.pop("app_id", UNSET)
@@ -216,6 +249,9 @@ class AppAppSandboxBuild:
         vcs_connection_commit_id = d.pop("vcs_connection_commit_id", UNSET)
 
         app_app_sandbox_build = cls(
+            app_branch_id=app_branch_id,
+            app_branch_run=app_branch_run,
+            app_branch_run_id=app_branch_run_id,
             app_config_id=app_config_id,
             app_id=app_id,
             app_sandbox_config_id=app_sandbox_config_id,

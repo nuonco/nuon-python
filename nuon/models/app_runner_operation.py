@@ -100,8 +100,8 @@ class AppRunnerOperation:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_log_stream import AppLogStream
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppPolicyReportOwnerType(str, Enum):
+class AppPolicyReportOwnerType(StrEnum):
     COMPONENT_BUILDS = "component_builds"
     INSTALL_DEPLOYS = "install_deploys"
     INSTALL_SANDBOX_RUNS = "install_sandbox_runs"

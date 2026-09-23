@@ -82,11 +82,11 @@ class PlantypesSandboxMode:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_helm_sandbox_mode import PlantypesHelmSandboxMode
-        from ..models.plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode
-        from ..models.plantypes_pulumi_sandbox_mode import PlantypesPulumiSandboxMode
-        from ..models.plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs
-        from ..models.plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode
+        from ..models.plantypes_helm_sandbox_mode import PlantypesHelmSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_kubernetes_sandbox_mode import PlantypesKubernetesSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_pulumi_sandbox_mode import PlantypesPulumiSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_sandbox_mode_outputs import PlantypesSandboxModeOutputs  # noqa: PLC0415
+        from ..models.plantypes_terraform_sandbox_mode import PlantypesTerraformSandboxMode  # noqa: PLC0415
 
         d = dict(src_dict)
         enabled = d.pop("enabled", UNSET)
