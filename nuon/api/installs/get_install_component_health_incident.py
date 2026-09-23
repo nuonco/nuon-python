@@ -87,8 +87,7 @@ def sync_detailed(
 
      Returns the most recent degraded/unhealthy transition for the component (whether or not it has since
     recovered) along with its diagnosis, correlated deploy, and the component's currently non-healthy
-    resources. Returns a null body when there's no incident in the retained history. Requires the
-    component-health feature.
+    resources. Returns a null body when there's no incident in the retained history.
 
     Args:
         install_id (str):
@@ -124,8 +123,7 @@ def sync(
 
      Returns the most recent degraded/unhealthy transition for the component (whether or not it has since
     recovered) along with its diagnosis, correlated deploy, and the component's currently non-healthy
-    resources. Returns a null body when there's no incident in the retained history. Requires the
-    component-health feature.
+    resources. Returns a null body when there's no incident in the retained history.
 
     Args:
         install_id (str):
@@ -156,8 +154,7 @@ async def asyncio_detailed(
 
      Returns the most recent degraded/unhealthy transition for the component (whether or not it has since
     recovered) along with its diagnosis, correlated deploy, and the component's currently non-healthy
-    resources. Returns a null body when there's no incident in the retained history. Requires the
-    component-health feature.
+    resources. Returns a null body when there's no incident in the retained history.
 
     Args:
         install_id (str):
@@ -191,8 +188,7 @@ async def asyncio(
 
      Returns the most recent degraded/unhealthy transition for the component (whether or not it has since
     recovered) along with its diagnosis, correlated deploy, and the component's currently non-healthy
-    resources. Returns a null body when there's no incident in the retained history. Requires the
-    component-health feature.
+    resources. Returns a null body when there's no incident in the retained history.
 
     Args:
         install_id (str):

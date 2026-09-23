@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppTriggerFilterType(str, Enum):
+class AppTriggerFilterType(StrEnum):
     CONTAINS = "contains"
     EQ = "eq"
     EXISTS = "exists"

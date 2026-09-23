@@ -83,8 +83,7 @@ def sync_detailed(
     """reset the install's health window
 
      Sets the install's health baseline to now: uptime and the health timeline start counting from this
-    moment. Past observations stay recorded but no longer count toward uptime. Requires the component-
-    health feature.
+    moment. Past observations stay recorded but no longer count toward uptime.
 
     Args:
         install_id (str):
@@ -116,8 +115,7 @@ def sync(
     """reset the install's health window
 
      Sets the install's health baseline to now: uptime and the health timeline start counting from this
-    moment. Past observations stay recorded but no longer count toward uptime. Requires the component-
-    health feature.
+    moment. Past observations stay recorded but no longer count toward uptime.
 
     Args:
         install_id (str):
@@ -144,8 +142,7 @@ async def asyncio_detailed(
     """reset the install's health window
 
      Sets the install's health baseline to now: uptime and the health timeline start counting from this
-    moment. Past observations stay recorded but no longer count toward uptime. Requires the component-
-    health feature.
+    moment. Past observations stay recorded but no longer count toward uptime.
 
     Args:
         install_id (str):
@@ -175,8 +172,7 @@ async def asyncio(
     """reset the install's health window
 
      Sets the install's health baseline to now: uptime and the health timeline start counting from this
-    moment. Past observations stay recorded but no longer count toward uptime. Requires the component-
-    health feature.
+    moment. Past observations stay recorded but no longer count toward uptime.
 
     Args:
         install_id (str):

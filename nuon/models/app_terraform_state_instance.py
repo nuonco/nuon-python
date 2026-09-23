@@ -54,7 +54,9 @@ class AppTerraformStateInstance:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_terraform_state_instance_attributes import AppTerraformStateInstanceAttributes
+        from ..models.app_terraform_state_instance_attributes import (
+            AppTerraformStateInstanceAttributes,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _attributes = d.pop("attributes", UNSET)

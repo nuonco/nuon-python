@@ -25,8 +25,11 @@ class ServiceAppAWSIAMRoleConfig:
         name (str):
         cloud_platform (ServiceAppAWSIAMRoleConfigCloudPlatform | Unset):
         enabled_in_stack (bool | None | Unset):
+        named_policy_names (list[str] | Unset):
         permissions_boundary (str | Unset):
-        policies (list[ServiceAppAWSIAMPolicyConfig] | Unset):
+        policies (list[ServiceAppAWSIAMPolicyConfig] | Unset): Policies may be empty when the role attaches named
+            policies instead. A
+            role with neither grants nothing and is rejected.
     """
 
     description: str
@@ -34,6 +37,7 @@ class ServiceAppAWSIAMRoleConfig:
     name: str
     cloud_platform: ServiceAppAWSIAMRoleConfigCloudPlatform | Unset = UNSET
     enabled_in_stack: bool | None | Unset = UNSET
+    named_policy_names: list[str] | Unset = UNSET
     permissions_boundary: str | Unset = UNSET
     policies: list[ServiceAppAWSIAMPolicyConfig] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -54,6 +58,10 @@ class ServiceAppAWSIAMRoleConfig:
             enabled_in_stack = UNSET
         else:
             enabled_in_stack = self.enabled_in_stack
+
+        named_policy_names: list[str] | Unset = UNSET
+        if not isinstance(self.named_policy_names, Unset):
+            named_policy_names = self.named_policy_names
 
         permissions_boundary = self.permissions_boundary
 
@@ -77,6 +85,8 @@ class ServiceAppAWSIAMRoleConfig:
             field_dict["cloud_platform"] = cloud_platform
         if enabled_in_stack is not UNSET:
             field_dict["enabled_in_stack"] = enabled_in_stack
+        if named_policy_names is not UNSET:
+            field_dict["named_policy_names"] = named_policy_names
         if permissions_boundary is not UNSET:
             field_dict["permissions_boundary"] = permissions_boundary
         if policies is not UNSET:
@@ -86,7 +96,7 @@ class ServiceAppAWSIAMRoleConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
+        from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         description = d.pop("description")
@@ -111,6 +121,8 @@ class ServiceAppAWSIAMRoleConfig:
 
         enabled_in_stack = _parse_enabled_in_stack(d.pop("enabled_in_stack", UNSET))
 
+        named_policy_names = cast(list[str], d.pop("named_policy_names", UNSET))
+
         permissions_boundary = d.pop("permissions_boundary", UNSET)
 
         _policies = d.pop("policies", UNSET)
@@ -128,6 +140,7 @@ class ServiceAppAWSIAMRoleConfig:
             name=name,
             cloud_platform=cloud_platform,
             enabled_in_stack=enabled_in_stack,
+            named_policy_names=named_policy_names,
             permissions_boundary=permissions_boundary,
             policies=policies,
         )
