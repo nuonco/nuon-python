@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppOperationStatus(str, Enum):
+class AppOperationStatus(StrEnum):
     FAILED = "failed"
     FINISHED = "finished"
     NOOP = "noop"

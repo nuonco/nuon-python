@@ -47,7 +47,7 @@ class ServiceUpdateUserJourneyStepRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_update_user_journey_step_request_metadata import (
-            ServiceUpdateUserJourneyStepRequestMetadata,
+            ServiceUpdateUserJourneyStepRequestMetadata,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

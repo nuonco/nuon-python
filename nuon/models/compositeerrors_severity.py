@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CompositeerrorsSeverity(str, Enum):
+class CompositeerrorsSeverity(StrEnum):
     ERROR = "error"
     FATAL = "fatal"
     INFO = "info"

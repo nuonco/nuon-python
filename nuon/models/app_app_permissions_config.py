@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
+    from ..models.app_app_named_iam_policy_config import AppAppNamedIAMPolicyConfig
 
 
 T = TypeVar("T", bound="AppAppPermissionsConfig")
@@ -29,6 +30,7 @@ class AppAppPermissionsConfig:
         deprovision_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
         id (str | Unset):
         maintenance_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
+        named_policies (list[AppAppNamedIAMPolicyConfig] | Unset):
         org_id (str | Unset):
         provision_aws_iam_role (AppAppAWSIAMRoleConfig | Unset):
         updated_at (str | Unset):
@@ -44,6 +46,7 @@ class AppAppPermissionsConfig:
     deprovision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
     id: str | Unset = UNSET
     maintenance_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
+    named_policies: list[AppAppNamedIAMPolicyConfig] | Unset = UNSET
     org_id: str | Unset = UNSET
     provision_aws_iam_role: AppAppAWSIAMRoleConfig | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -86,6 +89,13 @@ class AppAppPermissionsConfig:
         if not isinstance(self.maintenance_aws_iam_role, Unset):
             maintenance_aws_iam_role = self.maintenance_aws_iam_role.to_dict()
 
+        named_policies: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.named_policies, Unset):
+            named_policies = []
+            for named_policies_item_data in self.named_policies:
+                named_policies_item = named_policies_item_data.to_dict()
+                named_policies.append(named_policies_item)
+
         org_id = self.org_id
 
         provision_aws_iam_role: dict[str, Any] | Unset = UNSET
@@ -117,6 +127,8 @@ class AppAppPermissionsConfig:
             field_dict["id"] = id
         if maintenance_aws_iam_role is not UNSET:
             field_dict["maintenance_aws_iam_role"] = maintenance_aws_iam_role
+        if named_policies is not UNSET:
+            field_dict["named_policies"] = named_policies
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if provision_aws_iam_role is not UNSET:
@@ -128,7 +140,8 @@ class AppAppPermissionsConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
+        from ..models.app_app_awsiam_role_config import AppAppAWSIAMRoleConfig  # noqa: PLC0415
+        from ..models.app_app_named_iam_policy_config import AppAppNamedIAMPolicyConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -180,6 +193,15 @@ class AppAppPermissionsConfig:
         else:
             maintenance_aws_iam_role = AppAppAWSIAMRoleConfig.from_dict(_maintenance_aws_iam_role)
 
+        _named_policies = d.pop("named_policies", UNSET)
+        named_policies: list[AppAppNamedIAMPolicyConfig] | Unset = UNSET
+        if _named_policies is not UNSET:
+            named_policies = []
+            for named_policies_item_data in _named_policies:
+                named_policies_item = AppAppNamedIAMPolicyConfig.from_dict(named_policies_item_data)
+
+                named_policies.append(named_policies_item)
+
         org_id = d.pop("org_id", UNSET)
 
         _provision_aws_iam_role = d.pop("provision_aws_iam_role", UNSET)
@@ -202,6 +224,7 @@ class AppAppPermissionsConfig:
             deprovision_aws_iam_role=deprovision_aws_iam_role,
             id=id,
             maintenance_aws_iam_role=maintenance_aws_iam_role,
+            named_policies=named_policies,
             org_id=org_id,
             provision_aws_iam_role=provision_aws_iam_role,
             updated_at=updated_at,

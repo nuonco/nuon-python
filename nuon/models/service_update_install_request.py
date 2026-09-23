@@ -55,8 +55,8 @@ class ServiceUpdateInstallRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.helpers_install_metadata import HelpersInstallMetadata
-        from ..models.service_patch_install_config_params import ServicePatchInstallConfigParams
+        from ..models.helpers_install_metadata import HelpersInstallMetadata  # noqa: PLC0415
+        from ..models.service_patch_install_config_params import ServicePatchInstallConfigParams  # noqa: PLC0415
 
         d = dict(src_dict)
         _install_config = d.pop("install_config", UNSET)

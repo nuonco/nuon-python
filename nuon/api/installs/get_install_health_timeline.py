@@ -94,8 +94,7 @@ def sync_detailed(
 
      Returns the install's health history aggregated across its components: uptime_percent and
     observed_seconds are the worst component's, daily[].health is the worst verdict across components
-    for that day, and components lists each component's own current health and uptime. Requires the
-    component-health feature.
+    for that day, and components lists each component's own current health and uptime.
 
     Args:
         install_id (str):
@@ -131,8 +130,7 @@ def sync(
 
      Returns the install's health history aggregated across its components: uptime_percent and
     observed_seconds are the worst component's, daily[].health is the worst verdict across components
-    for that day, and components lists each component's own current health and uptime. Requires the
-    component-health feature.
+    for that day, and components lists each component's own current health and uptime.
 
     Args:
         install_id (str):
@@ -163,8 +161,7 @@ async def asyncio_detailed(
 
      Returns the install's health history aggregated across its components: uptime_percent and
     observed_seconds are the worst component's, daily[].health is the worst verdict across components
-    for that day, and components lists each component's own current health and uptime. Requires the
-    component-health feature.
+    for that day, and components lists each component's own current health and uptime.
 
     Args:
         install_id (str):
@@ -198,8 +195,7 @@ async def asyncio(
 
      Returns the install's health history aggregated across its components: uptime_percent and
     observed_seconds are the worst component's, daily[].health is the worst verdict across components
-    for that day, and components lists each component's own current health and uptime. Requires the
-    component-health feature.
+    for that day, and components lists each component's own current health and uptime.
 
     Args:
         install_id (str):
