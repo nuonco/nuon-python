@@ -69,8 +69,10 @@ class PlantypesKubernetesManifestBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_kubernetes_manifest_build_plan_labels import PlantypesKubernetesManifestBuildPlanLabels
-        from ..models.plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig
+        from ..models.plantypes_kubernetes_manifest_build_plan_labels import (
+            PlantypesKubernetesManifestBuildPlanLabels,  # noqa: PLC0415
+        )
+        from ..models.plantypes_kustomize_build_config import PlantypesKustomizeBuildConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         inline_manifest = d.pop("inline_manifest", UNSET)

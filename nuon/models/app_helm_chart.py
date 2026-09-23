@@ -85,7 +85,7 @@ class AppHelmChart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_helm_release import AppHelmRelease
+        from ..models.app_helm_release import AppHelmRelease  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppTokenType(str, Enum):
+class AppTokenType(StrEnum):
     ADMIN = "admin"
     AUTH = "auth"
     AUTH0 = "auth0"
@@ -9,6 +9,7 @@ class AppTokenType(str, Enum):
     FEDERATED = "federated"
     INTEGRATION = "integration"
     NUON = "nuon"
+    OAUTH = "oauth"
     STATIC = "static"
 
     def __str__(self) -> str:

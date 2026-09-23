@@ -99,8 +99,8 @@ def sync_detailed(
 
      Derives the install's cluster access from its current stack outputs and the chosen role, then stores
     it for the runner's health engine. Use when health reports unknown because the install has not been
-    deployed since component health was enabled, or after the cluster's endpoint or role changed. The
-    runner picks the refreshed access up within a minute. Requires the component-health feature.
+    deployed recently, or after the cluster's endpoint or role changed. The runner picks the refreshed
+    access up within a minute.
 
     Args:
         install_id (str):
@@ -136,8 +136,8 @@ def sync(
 
      Derives the install's cluster access from its current stack outputs and the chosen role, then stores
     it for the runner's health engine. Use when health reports unknown because the install has not been
-    deployed since component health was enabled, or after the cluster's endpoint or role changed. The
-    runner picks the refreshed access up within a minute. Requires the component-health feature.
+    deployed recently, or after the cluster's endpoint or role changed. The runner picks the refreshed
+    access up within a minute.
 
     Args:
         install_id (str):
@@ -168,8 +168,8 @@ async def asyncio_detailed(
 
      Derives the install's cluster access from its current stack outputs and the chosen role, then stores
     it for the runner's health engine. Use when health reports unknown because the install has not been
-    deployed since component health was enabled, or after the cluster's endpoint or role changed. The
-    runner picks the refreshed access up within a minute. Requires the component-health feature.
+    deployed recently, or after the cluster's endpoint or role changed. The runner picks the refreshed
+    access up within a minute.
 
     Args:
         install_id (str):
@@ -203,8 +203,8 @@ async def asyncio(
 
      Derives the install's cluster access from its current stack outputs and the chosen role, then stores
     it for the runner's health engine. Use when health reports unknown because the install has not been
-    deployed since component health was enabled, or after the cluster's endpoint or role changed. The
-    runner picks the refreshed access up within a minute. Requires the component-health feature.
+    deployed recently, or after the cluster's endpoint or role changed. The runner picks the refreshed
+    access up within a minute.
 
     Args:
         install_id (str):

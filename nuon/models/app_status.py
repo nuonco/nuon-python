@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppStatus(str, Enum):
+class AppStatus(StrEnum):
     ACTIVE = "active"
     APPLYING = "applying"
     APPROVAL_AWAITING = "approval-awaiting"

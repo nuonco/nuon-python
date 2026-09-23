@@ -102,7 +102,7 @@ class AppComponentReleaseStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_deploy import AppInstallDeploy
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
 
         d = dict(src_dict)
         component_release_id = d.pop("component_release_id", UNSET)

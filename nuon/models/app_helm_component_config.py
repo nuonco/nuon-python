@@ -135,10 +135,10 @@ class AppHelmComponentConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-        from ..models.app_helm_component_config_values import AppHelmComponentConfigValues
-        from ..models.app_helm_config import AppHelmConfig
-        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
+        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
+        from ..models.app_helm_component_config_values import AppHelmComponentConfigValues  # noqa: PLC0415
+        from ..models.app_helm_config import AppHelmConfig  # noqa: PLC0415
+        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         chart_name = d.pop("chart_name", UNSET)

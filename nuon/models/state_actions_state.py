@@ -46,7 +46,7 @@ class StateActionsState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_actions_state_workflows import StateActionsStateWorkflows
+        from ..models.state_actions_state_workflows import StateActionsStateWorkflows  # noqa: PLC0415
 
         d = dict(src_dict)
         populated = d.pop("populated", UNSET)
