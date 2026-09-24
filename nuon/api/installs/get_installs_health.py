@@ -95,7 +95,6 @@ def sync_detailed(
     install label selector. This is the primitive a canary or bake-period rollout polls to decide
     whether to continue: all_healthy is only true when every counted install is healthy, and installs
     whose health has never been evaluated are counted separately in unset rather than treated as a pass.
-    Requires the component-health feature.
 
     Args:
         app_id (str | Unset):
@@ -133,7 +132,6 @@ def sync(
     install label selector. This is the primitive a canary or bake-period rollout polls to decide
     whether to continue: all_healthy is only true when every counted install is healthy, and installs
     whose health has never been evaluated are counted separately in unset rather than treated as a pass.
-    Requires the component-health feature.
 
     Args:
         app_id (str | Unset):
@@ -166,7 +164,6 @@ async def asyncio_detailed(
     install label selector. This is the primitive a canary or bake-period rollout polls to decide
     whether to continue: all_healthy is only true when every counted install is healthy, and installs
     whose health has never been evaluated are counted separately in unset rather than treated as a pass.
-    Requires the component-health feature.
 
     Args:
         app_id (str | Unset):
@@ -202,7 +199,6 @@ async def asyncio(
     install label selector. This is the primitive a canary or bake-period rollout polls to decide
     whether to continue: all_healthy is only true when every counted install is healthy, and installs
     whose health has never been evaluated are counted separately in unset rather than treated as a pass.
-    Requires the component-health feature.
 
     Args:
         app_id (str | Unset):

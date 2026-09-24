@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_branch import AppAppBranch
+    from ..models.app_app_config_ref import AppAppConfigRef
     from ..models.app_app_runner_config import AppAppRunnerConfig
     from ..models.app_app_sandbox_config import AppAppSandboxConfig
     from ..models.app_aws_account import AppAWSAccount
@@ -53,6 +54,7 @@ class AppInstall:
         app_branch_connections (list[AppInstallAppBranchConnection] | Unset):
         app_branch_id (str | Unset):
         app_config_id (str | Unset):
+        app_config_ref (AppAppConfigRef | Unset):
         app_default_labels (AppInstallAppDefaultLabels | Unset): AppDefaultLabels is the snapshot of the app's default
             labels applied to
             this install. It is the lock set for label mutation endpoints, and lets
@@ -139,6 +141,7 @@ class AppInstall:
     app_branch_connections: list[AppInstallAppBranchConnection] | Unset = UNSET
     app_branch_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    app_config_ref: AppAppConfigRef | Unset = UNSET
     app_default_labels: AppInstallAppDefaultLabels | Unset = UNSET
     app_id: str | Unset = UNSET
     app_runner_config: AppAppRunnerConfig | Unset = UNSET
@@ -211,6 +214,10 @@ class AppInstall:
         app_branch_id = self.app_branch_id
 
         app_config_id = self.app_config_id
+
+        app_config_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config_ref, Unset):
+            app_config_ref = self.app_config_ref.to_dict()
 
         app_default_labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_default_labels, Unset):
@@ -421,6 +428,8 @@ class AppInstall:
             field_dict["app_branch_id"] = app_branch_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if app_config_ref is not UNSET:
+            field_dict["app_config_ref"] = app_config_ref
         if app_default_labels is not UNSET:
             field_dict["app_default_labels"] = app_default_labels
         if app_id is not UNSET:
@@ -536,37 +545,40 @@ class AppInstall:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch import AppAppBranch
-        from ..models.app_app_runner_config import AppAppRunnerConfig
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_aws_account import AppAWSAccount
-        from ..models.app_azure_account import AppAzureAccount
-        from ..models.app_drifted_object import AppDriftedObject
-        from ..models.app_gcp_account import AppGCPAccount
-        from ..models.app_install_action_workflow import AppInstallActionWorkflow
-        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
-        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels
-        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
-        from ..models.app_install_component import AppInstallComponent
-        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
-        from ..models.app_install_component_statuses import AppInstallComponentStatuses
-        from ..models.app_install_config import AppInstallConfig
-        from ..models.app_install_event import AppInstallEvent
-        from ..models.app_install_inputs import AppInstallInputs
-        from ..models.app_install_label_templates import AppInstallLabelTemplates
-        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
-        from ..models.app_install_links import AppInstallLinks
-        from ..models.app_install_metadata import AppInstallMetadata
-        from ..models.app_install_roles import AppInstallRoles
-        from ..models.app_install_sandbox import AppInstallSandbox
-        from ..models.app_install_sandbox_run import AppInstallSandboxRun
-        from ..models.app_install_stack import AppInstallStack
-        from ..models.app_install_state import AppInstallState
-        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus
-        from ..models.app_queue import AppQueue
-        from ..models.app_workflow import AppWorkflow
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
+        from ..models.app_app_config_ref import AppAppConfigRef  # noqa: PLC0415
+        from ..models.app_app_runner_config import AppAppRunnerConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_aws_account import AppAWSAccount  # noqa: PLC0415
+        from ..models.app_azure_account import AppAzureAccount  # noqa: PLC0415
+        from ..models.app_drifted_object import AppDriftedObject  # noqa: PLC0415
+        from ..models.app_gcp_account import AppGCPAccount  # noqa: PLC0415
+        from ..models.app_install_action_workflow import AppInstallActionWorkflow  # noqa: PLC0415
+        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection  # noqa: PLC0415
+        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels  # noqa: PLC0415
+        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata  # noqa: PLC0415
+        from ..models.app_install_component import AppInstallComponent  # noqa: PLC0415
+        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses  # noqa: PLC0415
+        from ..models.app_install_component_statuses import AppInstallComponentStatuses  # noqa: PLC0415
+        from ..models.app_install_config import AppInstallConfig  # noqa: PLC0415
+        from ..models.app_install_event import AppInstallEvent  # noqa: PLC0415
+        from ..models.app_install_inputs import AppInstallInputs  # noqa: PLC0415
+        from ..models.app_install_label_templates import AppInstallLabelTemplates  # noqa: PLC0415
+        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase  # noqa: PLC0415
+        from ..models.app_install_links import AppInstallLinks  # noqa: PLC0415
+        from ..models.app_install_metadata import AppInstallMetadata  # noqa: PLC0415
+        from ..models.app_install_roles import AppInstallRoles  # noqa: PLC0415
+        from ..models.app_install_sandbox import AppInstallSandbox  # noqa: PLC0415
+        from ..models.app_install_sandbox_run import AppInstallSandboxRun  # noqa: PLC0415
+        from ..models.app_install_stack import AppInstallStack  # noqa: PLC0415
+        from ..models.app_install_state import AppInstallState  # noqa: PLC0415
+        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)
@@ -588,6 +600,13 @@ class AppInstall:
         app_branch_id = d.pop("app_branch_id", UNSET)
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        _app_config_ref = d.pop("app_config_ref", UNSET)
+        app_config_ref: AppAppConfigRef | Unset
+        if isinstance(_app_config_ref, Unset):
+            app_config_ref = UNSET
+        else:
+            app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
 
         _app_default_labels = d.pop("app_default_labels", UNSET)
         app_default_labels: AppInstallAppDefaultLabels | Unset
@@ -869,6 +888,7 @@ class AppInstall:
             app_branch_connections=app_branch_connections,
             app_branch_id=app_branch_id,
             app_config_id=app_config_id,
+            app_config_ref=app_config_ref,
             app_default_labels=app_default_labels,
             app_id=app_id,
             app_runner_config=app_runner_config,

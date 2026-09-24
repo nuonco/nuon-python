@@ -28,7 +28,14 @@ class AppRunnerProcess:
         initial_health_check (bool | Unset):
         labels (list[str] | Unset): Labels are computed server-side and not persisted.
         log_stream_id (str | Unset):
+        next_scheduled_restart_at (str | Unset): NextScheduledRestartAt is the scheduled uptime TTL restart time for
+            this
+            process (install and mng only). Set on process creation and not persisted.
         org_id (str | Unset):
+        previous_scheduled_restart_at (str | Unset): PreviousScheduledRestartAt is the scheduled restart time of the
+            previous
+            process of the same type, if one exists. Set on process creation and not
+            persisted.
         restart_requested (bool | Unset):
         runner_id (str | Unset):
         shutdowns (list[AppRunnerProcessShutdown] | Unset):
@@ -47,7 +54,9 @@ class AppRunnerProcess:
     initial_health_check: bool | Unset = UNSET
     labels: list[str] | Unset = UNSET
     log_stream_id: str | Unset = UNSET
+    next_scheduled_restart_at: str | Unset = UNSET
     org_id: str | Unset = UNSET
+    previous_scheduled_restart_at: str | Unset = UNSET
     restart_requested: bool | Unset = UNSET
     runner_id: str | Unset = UNSET
     shutdowns: list[AppRunnerProcessShutdown] | Unset = UNSET
@@ -78,7 +87,11 @@ class AppRunnerProcess:
 
         log_stream_id = self.log_stream_id
 
+        next_scheduled_restart_at = self.next_scheduled_restart_at
+
         org_id = self.org_id
+
+        previous_scheduled_restart_at = self.previous_scheduled_restart_at
 
         restart_requested = self.restart_requested
 
@@ -124,8 +137,12 @@ class AppRunnerProcess:
             field_dict["labels"] = labels
         if log_stream_id is not UNSET:
             field_dict["log_stream_id"] = log_stream_id
+        if next_scheduled_restart_at is not UNSET:
+            field_dict["next_scheduled_restart_at"] = next_scheduled_restart_at
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if previous_scheduled_restart_at is not UNSET:
+            field_dict["previous_scheduled_restart_at"] = previous_scheduled_restart_at
         if restart_requested is not UNSET:
             field_dict["restart_requested"] = restart_requested
         if runner_id is not UNSET:
@@ -149,8 +166,8 @@ class AppRunnerProcess:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_runner_process_shutdown import AppRunnerProcessShutdown
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_runner_process_shutdown import AppRunnerProcessShutdown  # noqa: PLC0415
 
         d = dict(src_dict)
         _composite_status = d.pop("composite_status", UNSET)
@@ -172,7 +189,11 @@ class AppRunnerProcess:
 
         log_stream_id = d.pop("log_stream_id", UNSET)
 
+        next_scheduled_restart_at = d.pop("next_scheduled_restart_at", UNSET)
+
         org_id = d.pop("org_id", UNSET)
+
+        previous_scheduled_restart_at = d.pop("previous_scheduled_restart_at", UNSET)
 
         restart_requested = d.pop("restart_requested", UNSET)
 
@@ -212,7 +233,9 @@ class AppRunnerProcess:
             initial_health_check=initial_health_check,
             labels=labels,
             log_stream_id=log_stream_id,
+            next_scheduled_restart_at=next_scheduled_restart_at,
             org_id=org_id,
+            previous_scheduled_restart_at=previous_scheduled_restart_at,
             restart_requested=restart_requested,
             runner_id=runner_id,
             shutdowns=shutdowns,

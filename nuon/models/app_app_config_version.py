@@ -1,9 +1,9 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppConfigVersion(str, Enum):
-    V2 = "v2"
-    VALUE_0 = ""
+class AppAppConfigVersion(StrEnum):
+    APP_CONFIG_VERSION_DEFAULT = ""
+    APP_CONFIG_VERSION_V2 = "v2"
 
     def __str__(self) -> str:
         return str(self.value)
