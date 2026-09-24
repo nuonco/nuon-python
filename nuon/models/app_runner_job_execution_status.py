@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerJobExecutionStatus(str, Enum):
+class AppRunnerJobExecutionStatus(StrEnum):
     CANCELLED = "cancelled"
     CLEANING_UP = "cleaning-up"
     FAILED = "failed"

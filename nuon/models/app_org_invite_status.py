@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppOrgInviteStatus(str, Enum):
+class AppOrgInviteStatus(StrEnum):
     ACCEPTED = "accepted"
     PENDING = "pending"
     REVOKED = "revoked"

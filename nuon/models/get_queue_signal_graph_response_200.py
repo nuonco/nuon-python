@@ -11,8 +11,6 @@ T = TypeVar("T", bound="GetQueueSignalGraphResponse200")
 
 @_attrs_define
 class GetQueueSignalGraphResponse200:
-    """ """
-
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

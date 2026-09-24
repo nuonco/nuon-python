@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
+    from ..models.app_app_branch_run import AppAppBranchRun
     from ..models.app_component_config_connection import AppComponentConfigConnection
     from ..models.app_component_release import AppComponentRelease
     from ..models.app_composite_status import AppCompositeStatus
@@ -30,6 +31,7 @@ class AppComponentBuild:
     """
     Attributes:
         app_branch_id (str | Unset):
+        app_branch_run (AppAppBranchRun | Unset):
         app_branch_run_id (str | Unset):
         build_runner_job_id (str | Unset):
         checksum (str | Unset): checksum of our intermediate component config
@@ -46,6 +48,7 @@ class AppComponentBuild:
         git_ref (str | Unset):
         id (str | Unset):
         install_deploys (list[AppInstallDeploy] | Unset):
+        is_preview (bool | Unset): IsPreview is true when this build came from a preview branch run.
         log_stream (AppLogStream | Unset):
         no_op (bool | Unset): NoOp is true when the runner detected SourceDigest matches the previous
             build's SourceDigest and skipped the artifact push.
@@ -90,6 +93,7 @@ class AppComponentBuild:
     """
 
     app_branch_id: str | Unset = UNSET
+    app_branch_run: AppAppBranchRun | Unset = UNSET
     app_branch_run_id: str | Unset = UNSET
     build_runner_job_id: str | Unset = UNSET
     checksum: str | Unset = UNSET
@@ -105,6 +109,7 @@ class AppComponentBuild:
     git_ref: str | Unset = UNSET
     id: str | Unset = UNSET
     install_deploys: list[AppInstallDeploy] | Unset = UNSET
+    is_preview: bool | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     no_op: bool | Unset = UNSET
     policy_reports: list[AppPolicyReport] | Unset = UNSET
@@ -127,6 +132,10 @@ class AppComponentBuild:
 
     def to_dict(self) -> dict[str, Any]:
         app_branch_id = self.app_branch_id
+
+        app_branch_run: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_branch_run, Unset):
+            app_branch_run = self.app_branch_run.to_dict()
 
         app_branch_run_id = self.app_branch_run_id
 
@@ -168,6 +177,8 @@ class AppComponentBuild:
             for install_deploys_item_data in self.install_deploys:
                 install_deploys_item = install_deploys_item_data.to_dict()
                 install_deploys.append(install_deploys_item)
+
+        is_preview = self.is_preview
 
         log_stream: dict[str, Any] | Unset = UNSET
         if not isinstance(self.log_stream, Unset):
@@ -230,6 +241,8 @@ class AppComponentBuild:
         field_dict.update({})
         if app_branch_id is not UNSET:
             field_dict["app_branch_id"] = app_branch_id
+        if app_branch_run is not UNSET:
+            field_dict["app_branch_run"] = app_branch_run
         if app_branch_run_id is not UNSET:
             field_dict["app_branch_run_id"] = app_branch_run_id
         if build_runner_job_id is not UNSET:
@@ -260,6 +273,8 @@ class AppComponentBuild:
             field_dict["id"] = id
         if install_deploys is not UNSET:
             field_dict["install_deploys"] = install_deploys
+        if is_preview is not UNSET:
+            field_dict["is_preview"] = is_preview
         if log_stream is not UNSET:
             field_dict["log_stream"] = log_stream
         if no_op is not UNSET:
@@ -301,20 +316,28 @@ class AppComponentBuild:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_component_config_connection import AppComponentConfigConnection
-        from ..models.app_component_release import AppComponentRelease
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_deploy import AppInstallDeploy
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_policy_report import AppPolicyReport
-        from ..models.app_queue_signal import AppQueueSignal
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_app_branch_run import AppAppBranchRun  # noqa: PLC0415
+        from ..models.app_component_config_connection import AppComponentConfigConnection  # noqa: PLC0415
+        from ..models.app_component_release import AppComponentRelease  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_policy_report import AppPolicyReport  # noqa: PLC0415
+        from ..models.app_queue_signal import AppQueueSignal  # noqa: PLC0415
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)
+
+        _app_branch_run = d.pop("app_branch_run", UNSET)
+        app_branch_run: AppAppBranchRun | Unset
+        if isinstance(_app_branch_run, Unset):
+            app_branch_run = UNSET
+        else:
+            app_branch_run = AppAppBranchRun.from_dict(_app_branch_run)
 
         app_branch_run_id = d.pop("app_branch_run_id", UNSET)
 
@@ -367,6 +390,8 @@ class AppComponentBuild:
                 install_deploys_item = AppInstallDeploy.from_dict(install_deploys_item_data)
 
                 install_deploys.append(install_deploys_item)
+
+        is_preview = d.pop("is_preview", UNSET)
 
         _log_stream = d.pop("log_stream", UNSET)
         log_stream: AppLogStream | Unset
@@ -445,6 +470,7 @@ class AppComponentBuild:
 
         app_component_build = cls(
             app_branch_id=app_branch_id,
+            app_branch_run=app_branch_run,
             app_branch_run_id=app_branch_run_id,
             build_runner_job_id=build_runner_job_id,
             checksum=checksum,
@@ -460,6 +486,7 @@ class AppComponentBuild:
             git_ref=git_ref,
             id=id,
             install_deploys=install_deploys,
+            is_preview=is_preview,
             log_stream=log_stream,
             no_op=no_op,
             policy_reports=policy_reports,

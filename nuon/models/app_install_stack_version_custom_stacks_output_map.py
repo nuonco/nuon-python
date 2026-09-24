@@ -6,17 +6,12 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GithubUserPermissions")
+T = TypeVar("T", bound="AppInstallStackVersionCustomStacksOutputMap")
 
 
 @_attrs_define
-class GithubUserPermissions:
-    """Permissions and RoleName identify the permissions and role that a user has on a given
-    repository. These are only populated when calling Repositories.ListCollaborators.
-
-    """
-
-    additional_properties: dict[str, bool] = _attrs_field(init=False, factory=dict)
+class AppInstallStackVersionCustomStacksOutputMap:
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
 
@@ -28,19 +23,19 @@ class GithubUserPermissions:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        github_user_permissions = cls()
+        app_install_stack_version_custom_stacks_output_map = cls()
 
-        github_user_permissions.additional_properties = d
-        return github_user_permissions
+        app_install_stack_version_custom_stacks_output_map.additional_properties = d
+        return app_install_stack_version_custom_stacks_output_map
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> bool:
+    def __getitem__(self, key: str) -> Any:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: bool) -> None:
+    def __setitem__(self, key: str, value: Any) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

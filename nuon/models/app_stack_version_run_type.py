@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppStackVersionRunType(str, Enum):
+class AppStackVersionRunType(StrEnum):
     OUT_OF_BAND_UPDATE = "out-of-band-update"
     WORKFLOW_RUN = "workflow-run"
 

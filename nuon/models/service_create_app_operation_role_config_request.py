@@ -46,7 +46,7 @@ class ServiceCreateAppOperationRoleConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_operation_role_rule_request import ServiceOperationRoleRuleRequest
+        from ..models.service_operation_role_rule_request import ServiceOperationRoleRuleRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id")
