@@ -1,9 +1,9 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigAppPolicyEngine(str, Enum):
-    KYVERNO = "kyverno"
-    OPA = "opa"
+class ConfigAppPolicyEngine(StrEnum):
+    APP_POLICY_ENGINE_KYVERNO = "kyverno"
+    APP_POLICY_ENGINE_OPA = "opa"
 
     def __str__(self) -> str:
         return str(self.value)

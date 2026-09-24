@@ -71,10 +71,10 @@ class ServiceCreateChannelSubscriptionRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_channel_subscription_request_interests import (
-            ServiceCreateChannelSubscriptionRequestInterests,
+            ServiceCreateChannelSubscriptionRequestInterests,  # noqa: PLC0415
         )
         from ..models.service_create_channel_subscription_request_match import (
-            ServiceCreateChannelSubscriptionRequestMatch,
+            ServiceCreateChannelSubscriptionRequestMatch,  # noqa: PLC0415
         )
 
         d = dict(src_dict)
