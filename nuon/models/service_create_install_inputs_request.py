@@ -38,7 +38,9 @@ class ServiceCreateInstallInputsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_install_inputs_request_inputs import ServiceCreateInstallInputsRequestInputs
+        from ..models.service_create_install_inputs_request_inputs import (
+            ServiceCreateInstallInputsRequestInputs,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         inputs = ServiceCreateInstallInputsRequestInputs.from_dict(d.pop("inputs"))

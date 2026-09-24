@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class GetAvailableRolesOperationType(str, Enum):
+class GetAvailableRolesOperationType(StrEnum):
     DEPLOY = "deploy"
     DEPROVISION = "deprovision"
     PROVISION = "provision"

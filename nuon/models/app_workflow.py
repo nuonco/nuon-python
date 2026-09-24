@@ -285,18 +285,18 @@ class AppWorkflow:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_app_branch_run import AppAppBranchRun
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
-        from ..models.app_install_deploy import AppInstallDeploy
-        from ..models.app_install_sandbox_run import AppInstallSandboxRun
-        from ..models.app_workflow_links import AppWorkflowLinks
-        from ..models.app_workflow_metadata import AppWorkflowMetadata
-        from ..models.app_workflow_run import AppWorkflowRun
-        from ..models.app_workflow_step import AppWorkflowStep
-        from ..models.app_workflow_step_group import AppWorkflowStepGroup
-        from ..models.signaldb_signal_data import SignaldbSignalData
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_app_branch_run import AppAppBranchRun  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun  # noqa: PLC0415
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
+        from ..models.app_install_sandbox_run import AppInstallSandboxRun  # noqa: PLC0415
+        from ..models.app_workflow_links import AppWorkflowLinks  # noqa: PLC0415
+        from ..models.app_workflow_metadata import AppWorkflowMetadata  # noqa: PLC0415
+        from ..models.app_workflow_run import AppWorkflowRun  # noqa: PLC0415
+        from ..models.app_workflow_step import AppWorkflowStep  # noqa: PLC0415
+        from ..models.app_workflow_step_group import AppWorkflowStepGroup  # noqa: PLC0415
+        from ..models.signaldb_signal_data import SignaldbSignalData  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_branch_runs = d.pop("app_branch_runs", UNSET)

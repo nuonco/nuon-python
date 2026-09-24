@@ -85,7 +85,7 @@ class ServiceInstallsHealthResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_health_summary import ServiceInstallHealthSummary
+        from ..models.service_install_health_summary import ServiceInstallHealthSummary  # noqa: PLC0415
 
         d = dict(src_dict)
         all_healthy = d.pop("all_healthy", UNSET)
