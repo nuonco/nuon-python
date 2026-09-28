@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_step_change_state import AppStepChangeState
 from ..models.app_workflow_step_approval_type import AppWorkflowStepApprovalType
 from ..types import UNSET, Unset
 
@@ -22,6 +23,14 @@ T = TypeVar("T", bound="AppWorkflowStepApproval")
 class AppWorkflowStepApproval:
     """
     Attributes:
+        app_branch_id (str | Unset):
+        app_id (str | Unset):
+        changes_create (int | Unset):
+        changes_delete (int | Unset):
+        changes_noop (int | Unset):
+        changes_replace (int | Unset):
+        changes_state (AppStepChangeState | Unset):
+        changes_update (int | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -38,6 +47,14 @@ class AppWorkflowStepApproval:
         workflow_step_id (str | Unset): afterquery
     """
 
+    app_branch_id: str | Unset = UNSET
+    app_id: str | Unset = UNSET
+    changes_create: int | Unset = UNSET
+    changes_delete: int | Unset = UNSET
+    changes_noop: int | Unset = UNSET
+    changes_replace: int | Unset = UNSET
+    changes_state: AppStepChangeState | Unset = UNSET
+    changes_update: int | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -55,6 +72,24 @@ class AppWorkflowStepApproval:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_branch_id = self.app_branch_id
+
+        app_id = self.app_id
+
+        changes_create = self.changes_create
+
+        changes_delete = self.changes_delete
+
+        changes_noop = self.changes_noop
+
+        changes_replace = self.changes_replace
+
+        changes_state: str | Unset = UNSET
+        if not isinstance(self.changes_state, Unset):
+            changes_state = self.changes_state.value
+
+        changes_update = self.changes_update
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -96,6 +131,22 @@ class AppWorkflowStepApproval:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
+        if app_id is not UNSET:
+            field_dict["app_id"] = app_id
+        if changes_create is not UNSET:
+            field_dict["changes_create"] = changes_create
+        if changes_delete is not UNSET:
+            field_dict["changes_delete"] = changes_delete
+        if changes_noop is not UNSET:
+            field_dict["changes_noop"] = changes_noop
+        if changes_replace is not UNSET:
+            field_dict["changes_replace"] = changes_replace
+        if changes_state is not UNSET:
+            field_dict["changes_state"] = changes_state
+        if changes_update is not UNSET:
+            field_dict["changes_update"] = changes_update
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -129,11 +180,32 @@ class AppWorkflowStepApproval:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_job import AppRunnerJob
-        from ..models.app_workflow_step import AppWorkflowStep
-        from ..models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse
+        from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
+        from ..models.app_workflow_step import AppWorkflowStep  # noqa: PLC0415
+        from ..models.app_workflow_step_approval_response import AppWorkflowStepApprovalResponse  # noqa: PLC0415
 
         d = dict(src_dict)
+        app_branch_id = d.pop("app_branch_id", UNSET)
+
+        app_id = d.pop("app_id", UNSET)
+
+        changes_create = d.pop("changes_create", UNSET)
+
+        changes_delete = d.pop("changes_delete", UNSET)
+
+        changes_noop = d.pop("changes_noop", UNSET)
+
+        changes_replace = d.pop("changes_replace", UNSET)
+
+        _changes_state = d.pop("changes_state", UNSET)
+        changes_state: AppStepChangeState | Unset
+        if isinstance(_changes_state, Unset):
+            changes_state = UNSET
+        else:
+            changes_state = AppStepChangeState(_changes_state)
+
+        changes_update = d.pop("changes_update", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -188,6 +260,14 @@ class AppWorkflowStepApproval:
         workflow_step_id = d.pop("workflow_step_id", UNSET)
 
         app_workflow_step_approval = cls(
+            app_branch_id=app_branch_id,
+            app_id=app_id,
+            changes_create=changes_create,
+            changes_delete=changes_delete,
+            changes_noop=changes_noop,
+            changes_replace=changes_replace,
+            changes_state=changes_state,
+            changes_update=changes_update,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,

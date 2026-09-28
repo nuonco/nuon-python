@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppOrgInviteStatus(str, Enum):
-    ACCEPTED = "accepted"
-    PENDING = "pending"
-    REVOKED = "revoked"
+class AppOrgInviteStatus(StrEnum):
+    ORG_INVITE_STATUS_ACCEPTED = "accepted"
+    ORG_INVITE_STATUS_PENDING = "pending"
+    ORG_INVITE_STATUS_REVOKED = "revoked"
 
     def __str__(self) -> str:
         return str(self.value)

@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_config_ref import AppAppConfigRef
     from ..models.app_component import AppComponent
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_drifted_object import AppDriftedObject
@@ -25,6 +26,7 @@ T = TypeVar("T", bound="AppInstallComponent")
 class AppInstallComponent:
     """
     Attributes:
+        app_config_ref (AppAppConfigRef | Unset):
         component (AppComponent | Unset):
         component_id (str | Unset):
         created_at (str | Unset):
@@ -47,6 +49,7 @@ class AppInstallComponent:
         updated_at (str | Unset):
     """
 
+    app_config_ref: AppAppConfigRef | Unset = UNSET
     component: AppComponent | Unset = UNSET
     component_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -69,6 +72,10 @@ class AppInstallComponent:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_config_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config_ref, Unset):
+            app_config_ref = self.app_config_ref.to_dict()
+
         component: dict[str, Any] | Unset = UNSET
         if not isinstance(self.component, Unset):
             component = self.component.to_dict()
@@ -133,6 +140,8 @@ class AppInstallComponent:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_config_ref is not UNSET:
+            field_dict["app_config_ref"] = app_config_ref
         if component is not UNSET:
             field_dict["component"] = component
         if component_id is not UNSET:
@@ -176,15 +185,23 @@ class AppInstallComponent:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component import AppComponent
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_drifted_object import AppDriftedObject
-        from ..models.app_helm_chart import AppHelmChart
-        from ..models.app_install_component_links import AppInstallComponentLinks
-        from ..models.app_install_deploy import AppInstallDeploy
-        from ..models.app_terraform_workspace import AppTerraformWorkspace
+        from ..models.app_app_config_ref import AppAppConfigRef  # noqa: PLC0415
+        from ..models.app_component import AppComponent  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_drifted_object import AppDriftedObject  # noqa: PLC0415
+        from ..models.app_helm_chart import AppHelmChart  # noqa: PLC0415
+        from ..models.app_install_component_links import AppInstallComponentLinks  # noqa: PLC0415
+        from ..models.app_install_deploy import AppInstallDeploy  # noqa: PLC0415
+        from ..models.app_terraform_workspace import AppTerraformWorkspace  # noqa: PLC0415
 
         d = dict(src_dict)
+        _app_config_ref = d.pop("app_config_ref", UNSET)
+        app_config_ref: AppAppConfigRef | Unset
+        if isinstance(_app_config_ref, Unset):
+            app_config_ref = UNSET
+        else:
+            app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
+
         _component = d.pop("component", UNSET)
         component: AppComponent | Unset
         if isinstance(_component, Unset):
@@ -273,6 +290,7 @@ class AppInstallComponent:
         updated_at = d.pop("updated_at", UNSET)
 
         app_install_component = cls(
+            app_config_ref=app_config_ref,
             component=component,
             component_id=component_id,
             created_at=created_at,
