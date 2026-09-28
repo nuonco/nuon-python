@@ -49,8 +49,8 @@ class ServiceRunnerCardDetailsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner import AppRunner
-        from ..models.app_runner_heart_beat import AppRunnerHeartBeat
+        from ..models.app_runner import AppRunner  # noqa: PLC0415
+        from ..models.app_runner_heart_beat import AppRunnerHeartBeat  # noqa: PLC0415
 
         d = dict(src_dict)
         _latest_heart_beat = d.pop("latest_heart_beat", UNSET)

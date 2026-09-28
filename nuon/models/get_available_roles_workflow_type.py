@@ -1,0 +1,32 @@
+from enum import StrEnum
+
+
+class GetAvailableRolesWorkflowType(StrEnum):
+    ACTION_WORKFLOW_RUN = "action_workflow_run"
+    APP_BRANCHES_COMPONENT_REPO_UPDATE = "app_branches_component_repo_update"
+    APP_BRANCHES_CONFIG_REPO_UPDATE = "app_branches_config_repo_update"
+    APP_BRANCHES_MANUAL_UPDATE = "app_branches_manual_update"
+    APP_BRANCH_CONFIG_UPDATE = "app_branch_config_update"
+    APP_CONFIG_BUILD = "app_config_build"
+    APP_INSTALL_SYNC = "app_install_sync"
+    COMPONENT_DISABLED = "component_disabled"
+    COMPONENT_ENABLED = "component_enabled"
+    DEPLOY_COMPONENTS = "deploy_components"
+    DEPROVISION = "deprovision"
+    DEPROVISION_SANDBOX = "deprovision_sandbox"
+    DRIFT_RUN = "drift_run"
+    DRIFT_RUN_REPROVISION_SANDBOX = "drift_run_reprovision_sandbox"
+    INPUT_UPDATE = "input_update"
+    MANUAL_DEPLOY = "manual_deploy"
+    PROVISION = "provision"
+    RECOVER_HELM_RELEASE = "recover_helm_release"
+    REPROVISION = "reprovision"
+    REPROVISION_SANDBOX = "reprovision_sandbox"
+    REPROVISION_STACK = "reprovision_stack"
+    RUNBOOK_RUN = "runbook_run"
+    SYNC_SECRETS = "sync_secrets"
+    TEARDOWN_COMPONENT = "teardown_component"
+    TEARDOWN_COMPONENTS = "teardown_components"
+
+    def __str__(self) -> str:
+        return str(self.value)

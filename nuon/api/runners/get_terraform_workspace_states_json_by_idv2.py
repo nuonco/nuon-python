@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.get_terraform_workspace_states_json_by_idv2_response_200 import (
-    GetTerraformWorkspaceStatesJSONByIDV2Response200,
+from ...models.get_terraform_workspace_states_json_by_idv_2_response_200 import (
+    GetTerraformWorkspaceStatesJsonByIdv2Response200,
 )
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse | None:
+) -> GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = GetTerraformWorkspaceStatesJSONByIDV2Response200.from_dict(response.json())
+        response_200 = GetTerraformWorkspaceStatesJsonByIdv2Response200.from_dict(response.json())
 
         return response_200
 
@@ -70,7 +70,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]:
+) -> Response[GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -84,8 +84,8 @@ def sync_detailed(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]:
-    r"""get terraform state json by id. This output is same as \"terraform show --json\"
+) -> Response[GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse]:
+    """get terraform state json by id. This output is same as "terraform show --json"
 
      Return a terraform state in JSON format by id.
 
@@ -98,7 +98,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]
+        Response[GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -118,8 +118,8 @@ def sync(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse | None:
-    r"""get terraform state json by id. This output is same as \"terraform show --json\"
+) -> GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse | None:
+    """get terraform state json by id. This output is same as "terraform show --json"
 
      Return a terraform state in JSON format by id.
 
@@ -132,7 +132,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse
+        GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse
     """
 
     return sync_detailed(
@@ -147,8 +147,8 @@ async def asyncio_detailed(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]:
-    r"""get terraform state json by id. This output is same as \"terraform show --json\"
+) -> Response[GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse]:
+    """get terraform state json by id. This output is same as "terraform show --json"
 
      Return a terraform state in JSON format by id.
 
@@ -161,7 +161,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse]
+        Response[GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -179,8 +179,8 @@ async def asyncio(
     state_id: str,
     *,
     client: AuthenticatedClient,
-) -> GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse | None:
-    r"""get terraform state json by id. This output is same as \"terraform show --json\"
+) -> GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse | None:
+    """get terraform state json by id. This output is same as "terraform show --json"
 
      Return a terraform state in JSON format by id.
 
@@ -193,7 +193,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GetTerraformWorkspaceStatesJSONByIDV2Response200 | StderrErrResponse
+        GetTerraformWorkspaceStatesJsonByIdv2Response200 | StderrErrResponse
     """
 
     return (

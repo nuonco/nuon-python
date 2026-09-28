@@ -1,11 +1,11 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class CompositeerrorsSeverity(str, Enum):
-    ERROR = "error"
-    FATAL = "fatal"
-    INFO = "info"
-    WARNING = "warning"
+class CompositeerrorsSeverity(StrEnum):
+    SEVERITY_ERROR = "error"
+    SEVERITY_FATAL = "fatal"
+    SEVERITY_INFO = "info"
+    SEVERITY_WARNING = "warning"
 
     def __str__(self) -> str:
         return str(self.value)
