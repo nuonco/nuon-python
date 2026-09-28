@@ -51,7 +51,7 @@ class ServiceCreateUserJourneyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_user_journey_step_req import ServiceCreateUserJourneyStepReq
+        from ..models.service_create_user_journey_step_req import ServiceCreateUserJourneyStepReq  # noqa: PLC0415
 
         d = dict(src_dict)
         name = d.pop("name")
