@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppPolicyReportOwnerType(str, Enum):
-    COMPONENT_BUILDS = "component_builds"
-    INSTALL_DEPLOYS = "install_deploys"
-    INSTALL_SANDBOX_RUNS = "install_sandbox_runs"
+class AppPolicyReportOwnerType(StrEnum):
+    POLICY_REPORT_OWNER_TYPE_COMPONENT_BUILD = "component_builds"
+    POLICY_REPORT_OWNER_TYPE_INSTALL_DEPLOY = "install_deploys"
+    POLICY_REPORT_OWNER_TYPE_INSTALL_SANDBOX_RUN = "install_sandbox_runs"
 
     def __str__(self) -> str:
         return str(self.value)

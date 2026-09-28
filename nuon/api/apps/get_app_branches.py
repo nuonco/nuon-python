@@ -17,6 +17,7 @@ def _get_kwargs(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    q: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -26,6 +27,8 @@ def _get_kwargs(
     params["limit"] = limit
 
     params["page"] = page
+
+    params["q"] = q
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -102,6 +105,7 @@ def sync_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    q: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppAppBranch]]:
     """get app branches
 
@@ -112,6 +116,7 @@ def sync_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,6 +131,7 @@ def sync_detailed(
         offset=offset,
         limit=limit,
         page=page,
+        q=q,
     )
 
     response = client.get_httpx_client().request(
@@ -142,6 +148,7 @@ def sync(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    q: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppAppBranch] | None:
     """get app branches
 
@@ -152,6 +159,7 @@ def sync(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,6 +175,7 @@ def sync(
         offset=offset,
         limit=limit,
         page=page,
+        q=q,
     ).parsed
 
 
@@ -177,6 +186,7 @@ async def asyncio_detailed(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    q: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppAppBranch]]:
     """get app branches
 
@@ -187,6 +197,7 @@ async def asyncio_detailed(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -201,6 +212,7 @@ async def asyncio_detailed(
         offset=offset,
         limit=limit,
         page=page,
+        q=q,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -215,6 +227,7 @@ async def asyncio(
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
+    q: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppAppBranch] | None:
     """get app branches
 
@@ -225,6 +238,7 @@ async def asyncio(
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -241,5 +255,6 @@ async def asyncio(
             offset=offset,
             limit=limit,
             page=page,
+            q=q,
         )
     ).parsed

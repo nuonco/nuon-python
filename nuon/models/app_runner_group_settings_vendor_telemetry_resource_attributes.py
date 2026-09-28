@@ -6,14 +6,12 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GetTerraformWorkspaceStatesJSONByIDV2Response200")
+T = TypeVar("T", bound="AppRunnerGroupSettingsVendorTelemetryResourceAttributes")
 
 
 @_attrs_define
-class GetTerraformWorkspaceStatesJSONByIDV2Response200:
-    """ """
-
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+class AppRunnerGroupSettingsVendorTelemetryResourceAttributes:
+    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
 
@@ -25,19 +23,19 @@ class GetTerraformWorkspaceStatesJSONByIDV2Response200:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        get_terraform_workspace_states_json_by_idv2_response_200 = cls()
+        app_runner_group_settings_vendor_telemetry_resource_attributes = cls()
 
-        get_terraform_workspace_states_json_by_idv2_response_200.additional_properties = d
-        return get_terraform_workspace_states_json_by_idv2_response_200
+        app_runner_group_settings_vendor_telemetry_resource_attributes.additional_properties = d
+        return app_runner_group_settings_vendor_telemetry_resource_attributes
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

@@ -109,10 +109,10 @@ class AppPulumiComponentConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
-        from ..models.app_pulumi_component_config_config import AppPulumiComponentConfigConfig
-        from ..models.app_pulumi_component_config_env_vars import AppPulumiComponentConfigEnvVars
+        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
+        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
+        from ..models.app_pulumi_component_config_config import AppPulumiComponentConfigConfig  # noqa: PLC0415
+        from ..models.app_pulumi_component_config_env_vars import AppPulumiComponentConfigEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)

@@ -87,8 +87,8 @@ class AppHelmConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_helm_config_values import AppHelmConfigValues
-        from ..models.app_helm_repo_config import AppHelmRepoConfig
+        from ..models.app_helm_config_values import AppHelmConfigValues  # noqa: PLC0415
+        from ..models.app_helm_repo_config import AppHelmRepoConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         chart_name = d.pop("chart_name", UNSET)

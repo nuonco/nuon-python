@@ -96,12 +96,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ServicePutInstallComponentHealthCheckRequest,
 ) -> Response[AppInstallComponentResourceState | StderrErrResponse]:
-    r"""report a custom component health check
+    """report a custom component health check
 
      Lets an external system (a vendor's CI, a Datadog monitor webhook, a custom action) report a named
     health signal for a component. The report is written as a resource observation with provider
-    \"custom\", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
-    reported resources. Requires the component-health feature.
+    "custom", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
+    reported resources.
 
     Args:
         install_id (str):
@@ -139,12 +139,12 @@ def sync(
     client: AuthenticatedClient,
     body: ServicePutInstallComponentHealthCheckRequest,
 ) -> AppInstallComponentResourceState | StderrErrResponse | None:
-    r"""report a custom component health check
+    """report a custom component health check
 
      Lets an external system (a vendor's CI, a Datadog monitor webhook, a custom action) report a named
     health signal for a component. The report is written as a resource observation with provider
-    \"custom\", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
-    reported resources. Requires the component-health feature.
+    "custom", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
+    reported resources.
 
     Args:
         install_id (str):
@@ -177,12 +177,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ServicePutInstallComponentHealthCheckRequest,
 ) -> Response[AppInstallComponentResourceState | StderrErrResponse]:
-    r"""report a custom component health check
+    """report a custom component health check
 
      Lets an external system (a vendor's CI, a Datadog monitor webhook, a custom action) report a named
     health signal for a component. The report is written as a resource observation with provider
-    \"custom\", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
-    reported resources. Requires the component-health feature.
+    "custom", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
+    reported resources.
 
     Args:
         install_id (str):
@@ -218,12 +218,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ServicePutInstallComponentHealthCheckRequest,
 ) -> AppInstallComponentResourceState | StderrErrResponse | None:
-    r"""report a custom component health check
+    """report a custom component health check
 
      Lets an external system (a vendor's CI, a Datadog monitor webhook, a custom action) report a named
     health signal for a component. The report is written as a resource observation with provider
-    \"custom\", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
-    reported resources. Requires the component-health feature.
+    "custom", so it flows through the same live explorer, evaluator, alerting, and timeline as runner-
+    reported resources.
 
     Args:
         install_id (str):
