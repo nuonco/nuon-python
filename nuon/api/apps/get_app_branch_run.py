@@ -1,20 +1,29 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_runner_group import AppRunnerGroup
+from ...models.app_workflow import AppWorkflow
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import Response
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
+) -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/orgs/current/runner-group",
+        "url": "/v1/apps/{app_id}/branches/{app_branch_id}/runs/{run_id}".format(
+            app_id=quote(str(app_id), safe=""),
+            app_branch_id=quote(str(app_branch_id), safe=""),
+            run_id=quote(str(run_id), safe=""),
+        ),
     }
 
     return _kwargs
@@ -22,9 +31,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AppRunnerGroup | StderrErrResponse | None:
+) -> AppWorkflow | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = AppRunnerGroup.from_dict(response.json())
+        response_200 = AppWorkflow.from_dict(response.json())
 
         return response_200
 
@@ -61,7 +70,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AppRunnerGroup | StderrErrResponse]:
+) -> Response[AppWorkflow | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,22 +80,34 @@ def _build_response(
 
 
 def sync_detailed(
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppRunnerGroup | StderrErrResponse]:
-    """Get an org's runner group
+) -> Response[AppWorkflow | StderrErrResponse]:
+    """get an app branch workflow run
 
-     Get the current org's runner group, which includes the runners and their settings.
+     Returns a branch workflow by either app branch run ID or workflow ID.
+
+    Args:
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppRunnerGroup | StderrErrResponse]
+        Response[AppWorkflow | StderrErrResponse]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -96,43 +117,66 @@ def sync_detailed(
 
 
 def sync(
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppRunnerGroup | StderrErrResponse | None:
-    """Get an org's runner group
+) -> AppWorkflow | StderrErrResponse | None:
+    """get an app branch workflow run
 
-     Get the current org's runner group, which includes the runners and their settings.
+     Returns a branch workflow by either app branch run ID or workflow ID.
+
+    Args:
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppRunnerGroup | StderrErrResponse
+        AppWorkflow | StderrErrResponse
     """
 
     return sync_detailed(
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AppRunnerGroup | StderrErrResponse]:
-    """Get an org's runner group
+) -> Response[AppWorkflow | StderrErrResponse]:
+    """get an app branch workflow run
 
-     Get the current org's runner group, which includes the runners and their settings.
+     Returns a branch workflow by either app branch run ID or workflow ID.
+
+    Args:
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AppRunnerGroup | StderrErrResponse]
+        Response[AppWorkflow | StderrErrResponse]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        app_id=app_id,
+        app_branch_id=app_branch_id,
+        run_id=run_id,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -140,23 +184,34 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    app_id: str,
+    app_branch_id: str,
+    run_id: str,
     *,
     client: AuthenticatedClient,
-) -> AppRunnerGroup | StderrErrResponse | None:
-    """Get an org's runner group
+) -> AppWorkflow | StderrErrResponse | None:
+    """get an app branch workflow run
 
-     Get the current org's runner group, which includes the runners and their settings.
+     Returns a branch workflow by either app branch run ID or workflow ID.
+
+    Args:
+        app_id (str):
+        app_branch_id (str):
+        run_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AppRunnerGroup | StderrErrResponse
+        AppWorkflow | StderrErrResponse
     """
 
     return (
         await asyncio_detailed(
+            app_id=app_id,
+            app_branch_id=app_branch_id,
+            run_id=run_id,
             client=client,
         )
     ).parsed

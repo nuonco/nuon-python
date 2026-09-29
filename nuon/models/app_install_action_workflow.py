@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_action_workflow import AppActionWorkflow
+    from ..models.app_app_config_ref import AppAppConfigRef
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
 
@@ -23,6 +24,7 @@ class AppInstallActionWorkflow:
     Attributes:
         action_workflow (AppActionWorkflow | Unset):
         action_workflow_id (str | Unset):
+        app_config_ref (AppAppConfigRef | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -35,6 +37,7 @@ class AppInstallActionWorkflow:
 
     action_workflow: AppActionWorkflow | Unset = UNSET
     action_workflow_id: str | Unset = UNSET
+    app_config_ref: AppAppConfigRef | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -51,6 +54,10 @@ class AppInstallActionWorkflow:
             action_workflow = self.action_workflow.to_dict()
 
         action_workflow_id = self.action_workflow_id
+
+        app_config_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config_ref, Unset):
+            app_config_ref = self.app_config_ref.to_dict()
 
         created_at = self.created_at
 
@@ -82,6 +89,8 @@ class AppInstallActionWorkflow:
             field_dict["action_workflow"] = action_workflow
         if action_workflow_id is not UNSET:
             field_dict["action_workflow_id"] = action_workflow_id
+        if app_config_ref is not UNSET:
+            field_dict["app_config_ref"] = app_config_ref
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -103,9 +112,10 @@ class AppInstallActionWorkflow:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_action_workflow import AppActionWorkflow
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun
+        from ..models.app_action_workflow import AppActionWorkflow  # noqa: PLC0415
+        from ..models.app_app_config_ref import AppAppConfigRef  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_action_workflow_run import AppInstallActionWorkflowRun  # noqa: PLC0415
 
         d = dict(src_dict)
         _action_workflow = d.pop("action_workflow", UNSET)
@@ -116,6 +126,13 @@ class AppInstallActionWorkflow:
             action_workflow = AppActionWorkflow.from_dict(_action_workflow)
 
         action_workflow_id = d.pop("action_workflow_id", UNSET)
+
+        _app_config_ref = d.pop("app_config_ref", UNSET)
+        app_config_ref: AppAppConfigRef | Unset
+        if isinstance(_app_config_ref, Unset):
+            app_config_ref = UNSET
+        else:
+            app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -148,6 +165,7 @@ class AppInstallActionWorkflow:
         app_install_action_workflow = cls(
             action_workflow=action_workflow,
             action_workflow_id=action_workflow_id,
+            app_config_ref=app_config_ref,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
