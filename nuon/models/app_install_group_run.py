@@ -139,9 +139,9 @@ class AppInstallGroupRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch_install_group import AppAppBranchInstallGroup
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_install_group_run_install import AppInstallGroupRunInstall
+        from ..models.app_app_branch_install_group import AppAppBranchInstallGroup  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_install_group_run_install import AppInstallGroupRunInstall  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_run_id = d.pop("app_branch_run_id", UNSET)

@@ -97,7 +97,7 @@ def sync_detailed(
 
      Returns a component's health history over a window: recorded verdict transitions (newest first),
     daily worst-verdict buckets covering every day in the window, and an uptime percentage that excludes
-    unknown time from both the numerator and denominator. Requires the component-health feature.
+    unknown time from both the numerator and denominator.
 
     Args:
         install_id (str):
@@ -136,7 +136,7 @@ def sync(
 
      Returns a component's health history over a window: recorded verdict transitions (newest first),
     daily worst-verdict buckets covering every day in the window, and an uptime percentage that excludes
-    unknown time from both the numerator and denominator. Requires the component-health feature.
+    unknown time from both the numerator and denominator.
 
     Args:
         install_id (str):
@@ -170,7 +170,7 @@ async def asyncio_detailed(
 
      Returns a component's health history over a window: recorded verdict transitions (newest first),
     daily worst-verdict buckets covering every day in the window, and an uptime percentage that excludes
-    unknown time from both the numerator and denominator. Requires the component-health feature.
+    unknown time from both the numerator and denominator.
 
     Args:
         install_id (str):
@@ -207,7 +207,7 @@ async def asyncio(
 
      Returns a component's health history over a window: recorded verdict transitions (newest first),
     daily worst-verdict buckets covering every day in the window, and an uptime percentage that excludes
-    unknown time from both the numerator and denominator. Requires the component-health feature.
+    unknown time from both the numerator and denominator.
 
     Args:
         install_id (str):

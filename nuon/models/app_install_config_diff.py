@@ -6,10 +6,12 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_install_config_impact import AppInstallConfigImpact
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_component_diff_entry import AppComponentDiffEntry
+    from ..models.diff_impact_reason import DiffImpactReason
 
 
 T = TypeVar("T", bound="AppInstallConfigDiff")
@@ -22,10 +24,15 @@ class AppInstallConfigDiff:
         added (list[AppComponentDiffEntry] | Unset):
         changed (list[AppComponentDiffEntry] | Unset):
         removed (list[AppComponentDiffEntry] | Unset):
+        sandbox_build_changed (bool | Unset):
+        sandbox_build_new_id (str | Unset):
+        sandbox_build_old_id (str | Unset):
         sandbox_changed (bool | Unset):
         sandbox_new_id (str | Unset):
         sandbox_old_id (str | Unset):
         stack_changed (bool | Unset):
+        stack_impact_reasons (list[DiffImpactReason] | Unset):
+        stack_impacts (list[AppInstallConfigImpact] | Unset):
         stack_new_id (str | Unset):
         stack_old_id (str | Unset):
         unchanged (list[AppComponentDiffEntry] | Unset):
@@ -34,10 +41,15 @@ class AppInstallConfigDiff:
     added: list[AppComponentDiffEntry] | Unset = UNSET
     changed: list[AppComponentDiffEntry] | Unset = UNSET
     removed: list[AppComponentDiffEntry] | Unset = UNSET
+    sandbox_build_changed: bool | Unset = UNSET
+    sandbox_build_new_id: str | Unset = UNSET
+    sandbox_build_old_id: str | Unset = UNSET
     sandbox_changed: bool | Unset = UNSET
     sandbox_new_id: str | Unset = UNSET
     sandbox_old_id: str | Unset = UNSET
     stack_changed: bool | Unset = UNSET
+    stack_impact_reasons: list[DiffImpactReason] | Unset = UNSET
+    stack_impacts: list[AppInstallConfigImpact] | Unset = UNSET
     stack_new_id: str | Unset = UNSET
     stack_old_id: str | Unset = UNSET
     unchanged: list[AppComponentDiffEntry] | Unset = UNSET
@@ -65,6 +77,12 @@ class AppInstallConfigDiff:
                 removed_item = removed_item_data.to_dict()
                 removed.append(removed_item)
 
+        sandbox_build_changed = self.sandbox_build_changed
+
+        sandbox_build_new_id = self.sandbox_build_new_id
+
+        sandbox_build_old_id = self.sandbox_build_old_id
+
         sandbox_changed = self.sandbox_changed
 
         sandbox_new_id = self.sandbox_new_id
@@ -72,6 +90,20 @@ class AppInstallConfigDiff:
         sandbox_old_id = self.sandbox_old_id
 
         stack_changed = self.stack_changed
+
+        stack_impact_reasons: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.stack_impact_reasons, Unset):
+            stack_impact_reasons = []
+            for stack_impact_reasons_item_data in self.stack_impact_reasons:
+                stack_impact_reasons_item = stack_impact_reasons_item_data.to_dict()
+                stack_impact_reasons.append(stack_impact_reasons_item)
+
+        stack_impacts: list[str] | Unset = UNSET
+        if not isinstance(self.stack_impacts, Unset):
+            stack_impacts = []
+            for stack_impacts_item_data in self.stack_impacts:
+                stack_impacts_item = stack_impacts_item_data.value
+                stack_impacts.append(stack_impacts_item)
 
         stack_new_id = self.stack_new_id
 
@@ -93,6 +125,12 @@ class AppInstallConfigDiff:
             field_dict["changed"] = changed
         if removed is not UNSET:
             field_dict["removed"] = removed
+        if sandbox_build_changed is not UNSET:
+            field_dict["sandbox_build_changed"] = sandbox_build_changed
+        if sandbox_build_new_id is not UNSET:
+            field_dict["sandbox_build_new_id"] = sandbox_build_new_id
+        if sandbox_build_old_id is not UNSET:
+            field_dict["sandbox_build_old_id"] = sandbox_build_old_id
         if sandbox_changed is not UNSET:
             field_dict["sandbox_changed"] = sandbox_changed
         if sandbox_new_id is not UNSET:
@@ -101,6 +139,10 @@ class AppInstallConfigDiff:
             field_dict["sandbox_old_id"] = sandbox_old_id
         if stack_changed is not UNSET:
             field_dict["stack_changed"] = stack_changed
+        if stack_impact_reasons is not UNSET:
+            field_dict["stack_impact_reasons"] = stack_impact_reasons
+        if stack_impacts is not UNSET:
+            field_dict["stack_impacts"] = stack_impacts
         if stack_new_id is not UNSET:
             field_dict["stack_new_id"] = stack_new_id
         if stack_old_id is not UNSET:
@@ -112,7 +154,8 @@ class AppInstallConfigDiff:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component_diff_entry import AppComponentDiffEntry
+        from ..models.app_component_diff_entry import AppComponentDiffEntry  # noqa: PLC0415
+        from ..models.diff_impact_reason import DiffImpactReason  # noqa: PLC0415
 
         d = dict(src_dict)
         _added = d.pop("added", UNSET)
@@ -142,6 +185,12 @@ class AppInstallConfigDiff:
 
                 removed.append(removed_item)
 
+        sandbox_build_changed = d.pop("sandbox_build_changed", UNSET)
+
+        sandbox_build_new_id = d.pop("sandbox_build_new_id", UNSET)
+
+        sandbox_build_old_id = d.pop("sandbox_build_old_id", UNSET)
+
         sandbox_changed = d.pop("sandbox_changed", UNSET)
 
         sandbox_new_id = d.pop("sandbox_new_id", UNSET)
@@ -149,6 +198,24 @@ class AppInstallConfigDiff:
         sandbox_old_id = d.pop("sandbox_old_id", UNSET)
 
         stack_changed = d.pop("stack_changed", UNSET)
+
+        _stack_impact_reasons = d.pop("stack_impact_reasons", UNSET)
+        stack_impact_reasons: list[DiffImpactReason] | Unset = UNSET
+        if _stack_impact_reasons is not UNSET:
+            stack_impact_reasons = []
+            for stack_impact_reasons_item_data in _stack_impact_reasons:
+                stack_impact_reasons_item = DiffImpactReason.from_dict(stack_impact_reasons_item_data)
+
+                stack_impact_reasons.append(stack_impact_reasons_item)
+
+        _stack_impacts = d.pop("stack_impacts", UNSET)
+        stack_impacts: list[AppInstallConfigImpact] | Unset = UNSET
+        if _stack_impacts is not UNSET:
+            stack_impacts = []
+            for stack_impacts_item_data in _stack_impacts:
+                stack_impacts_item = AppInstallConfigImpact(stack_impacts_item_data)
+
+                stack_impacts.append(stack_impacts_item)
 
         stack_new_id = d.pop("stack_new_id", UNSET)
 
@@ -167,10 +234,15 @@ class AppInstallConfigDiff:
             added=added,
             changed=changed,
             removed=removed,
+            sandbox_build_changed=sandbox_build_changed,
+            sandbox_build_new_id=sandbox_build_new_id,
+            sandbox_build_old_id=sandbox_build_old_id,
             sandbox_changed=sandbox_changed,
             sandbox_new_id=sandbox_new_id,
             sandbox_old_id=sandbox_old_id,
             stack_changed=stack_changed,
+            stack_impact_reasons=stack_impact_reasons,
+            stack_impacts=stack_impacts,
             stack_new_id=stack_new_id,
             stack_old_id=stack_old_id,
             unchanged=unchanged,

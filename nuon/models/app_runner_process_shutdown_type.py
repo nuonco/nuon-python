@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppRunnerProcessShutdownType(str, Enum):
-    FORCE = "force"
-    GRACEFUL = "graceful"
-    RESTART = "restart"
+class AppRunnerProcessShutdownType(StrEnum):
+    RUNNER_PROCESS_SHUTDOWN_TYPE_FORCE = "force"
+    RUNNER_PROCESS_SHUTDOWN_TYPE_GRACEFUL = "graceful"
+    RUNNER_PROCESS_SHUTDOWN_TYPE_RESTART = "restart"
 
     def __str__(self) -> str:
         return str(self.value)

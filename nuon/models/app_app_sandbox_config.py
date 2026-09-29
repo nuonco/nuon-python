@@ -215,13 +215,13 @@ class AppAppSandboxConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars
-        from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles
-        from ..models.app_app_sandbox_config_pulumi_config import AppAppSandboxConfigPulumiConfig
-        from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables
-        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
-        from ..models.refs_ref import RefsRef
+        from ..models.app_app_sandbox_config_env_vars import AppAppSandboxConfigEnvVars  # noqa: PLC0415
+        from ..models.app_app_sandbox_config_operation_roles import AppAppSandboxConfigOperationRoles  # noqa: PLC0415
+        from ..models.app_app_sandbox_config_pulumi_config import AppAppSandboxConfigPulumiConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config_variables import AppAppSandboxConfigVariables  # noqa: PLC0415
+        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
+        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
+        from ..models.refs_ref import RefsRef  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
