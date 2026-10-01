@@ -6,14 +6,17 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_install_app_branch_group_assignment_source import AppInstallAppBranchGroupAssignmentSource
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_branch import AppAppBranch
+    from ..models.app_app_config_ref import AppAppConfigRef
     from ..models.app_app_runner_config import AppAppRunnerConfig
     from ..models.app_app_sandbox_config import AppAppSandboxConfig
     from ..models.app_aws_account import AppAWSAccount
     from ..models.app_azure_account import AppAzureAccount
+    from ..models.app_cloud_connection import AppCloudConnection
     from ..models.app_drifted_object import AppDriftedObject
     from ..models.app_gcp_account import AppGCPAccount
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
@@ -51,8 +54,11 @@ class AppInstall:
     Attributes:
         app_branch (AppAppBranch | Unset):
         app_branch_connections (list[AppInstallAppBranchConnection] | Unset):
+        app_branch_group (str | Unset):
+        app_branch_group_assignment_source (AppInstallAppBranchGroupAssignmentSource | Unset):
         app_branch_id (str | Unset):
         app_config_id (str | Unset):
+        app_config_ref (AppAppConfigRef | Unset):
         app_default_labels (AppInstallAppDefaultLabels | Unset): AppDefaultLabels is the snapshot of the app's default
             labels applied to
             this install. It is the lock set for label mutation endpoints, and lets
@@ -62,6 +68,8 @@ class AppInstall:
         app_sandbox_config (AppAppSandboxConfig | Unset):
         aws_account (AppAWSAccount | Unset):
         azure_account (AppAzureAccount | Unset):
+        cloud_connection (AppCloudConnection | Unset):
+        cloud_connection_id (str | Unset):
         cloud_platform (str | Unset):
         cloud_platform_metadata (AppInstallCloudPlatformMetadata | Unset): CloudPlatformMetadata records the cloud
             account this install is expected to
@@ -137,14 +145,19 @@ class AppInstall:
 
     app_branch: AppAppBranch | Unset = UNSET
     app_branch_connections: list[AppInstallAppBranchConnection] | Unset = UNSET
+    app_branch_group: str | Unset = UNSET
+    app_branch_group_assignment_source: AppInstallAppBranchGroupAssignmentSource | Unset = UNSET
     app_branch_id: str | Unset = UNSET
     app_config_id: str | Unset = UNSET
+    app_config_ref: AppAppConfigRef | Unset = UNSET
     app_default_labels: AppInstallAppDefaultLabels | Unset = UNSET
     app_id: str | Unset = UNSET
     app_runner_config: AppAppRunnerConfig | Unset = UNSET
     app_sandbox_config: AppAppSandboxConfig | Unset = UNSET
     aws_account: AppAWSAccount | Unset = UNSET
     azure_account: AppAzureAccount | Unset = UNSET
+    cloud_connection: AppCloudConnection | Unset = UNSET
+    cloud_connection_id: str | Unset = UNSET
     cloud_platform: str | Unset = UNSET
     cloud_platform_metadata: AppInstallCloudPlatformMetadata | Unset = UNSET
     component_health_statuses: AppInstallComponentHealthStatuses | Unset = UNSET
@@ -208,9 +221,19 @@ class AppInstall:
                 app_branch_connections_item = app_branch_connections_item_data.to_dict()
                 app_branch_connections.append(app_branch_connections_item)
 
+        app_branch_group = self.app_branch_group
+
+        app_branch_group_assignment_source: str | Unset = UNSET
+        if not isinstance(self.app_branch_group_assignment_source, Unset):
+            app_branch_group_assignment_source = self.app_branch_group_assignment_source.value
+
         app_branch_id = self.app_branch_id
 
         app_config_id = self.app_config_id
+
+        app_config_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config_ref, Unset):
+            app_config_ref = self.app_config_ref.to_dict()
 
         app_default_labels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_default_labels, Unset):
@@ -233,6 +256,12 @@ class AppInstall:
         azure_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_account, Unset):
             azure_account = self.azure_account.to_dict()
+
+        cloud_connection: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.cloud_connection, Unset):
+            cloud_connection = self.cloud_connection.to_dict()
+
+        cloud_connection_id = self.cloud_connection_id
 
         cloud_platform = self.cloud_platform
 
@@ -417,10 +446,16 @@ class AppInstall:
             field_dict["app_branch"] = app_branch
         if app_branch_connections is not UNSET:
             field_dict["app_branch_connections"] = app_branch_connections
+        if app_branch_group is not UNSET:
+            field_dict["app_branch_group"] = app_branch_group
+        if app_branch_group_assignment_source is not UNSET:
+            field_dict["app_branch_group_assignment_source"] = app_branch_group_assignment_source
         if app_branch_id is not UNSET:
             field_dict["app_branch_id"] = app_branch_id
         if app_config_id is not UNSET:
             field_dict["app_config_id"] = app_config_id
+        if app_config_ref is not UNSET:
+            field_dict["app_config_ref"] = app_config_ref
         if app_default_labels is not UNSET:
             field_dict["app_default_labels"] = app_default_labels
         if app_id is not UNSET:
@@ -433,6 +468,10 @@ class AppInstall:
             field_dict["aws_account"] = aws_account
         if azure_account is not UNSET:
             field_dict["azure_account"] = azure_account
+        if cloud_connection is not UNSET:
+            field_dict["cloud_connection"] = cloud_connection
+        if cloud_connection_id is not UNSET:
+            field_dict["cloud_connection_id"] = cloud_connection_id
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
         if cloud_platform_metadata is not UNSET:
@@ -536,37 +575,41 @@ class AppInstall:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch import AppAppBranch
-        from ..models.app_app_runner_config import AppAppRunnerConfig
-        from ..models.app_app_sandbox_config import AppAppSandboxConfig
-        from ..models.app_aws_account import AppAWSAccount
-        from ..models.app_azure_account import AppAzureAccount
-        from ..models.app_drifted_object import AppDriftedObject
-        from ..models.app_gcp_account import AppGCPAccount
-        from ..models.app_install_action_workflow import AppInstallActionWorkflow
-        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection
-        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels
-        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata
-        from ..models.app_install_component import AppInstallComponent
-        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses
-        from ..models.app_install_component_statuses import AppInstallComponentStatuses
-        from ..models.app_install_config import AppInstallConfig
-        from ..models.app_install_event import AppInstallEvent
-        from ..models.app_install_inputs import AppInstallInputs
-        from ..models.app_install_label_templates import AppInstallLabelTemplates
-        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase
-        from ..models.app_install_links import AppInstallLinks
-        from ..models.app_install_metadata import AppInstallMetadata
-        from ..models.app_install_roles import AppInstallRoles
-        from ..models.app_install_sandbox import AppInstallSandbox
-        from ..models.app_install_sandbox_run import AppInstallSandboxRun
-        from ..models.app_install_stack import AppInstallStack
-        from ..models.app_install_state import AppInstallState
-        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus
-        from ..models.app_queue import AppQueue
-        from ..models.app_workflow import AppWorkflow
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
-        from ..models.sql_null_bool import SqlNullBool
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
+        from ..models.app_app_config_ref import AppAppConfigRef  # noqa: PLC0415
+        from ..models.app_app_runner_config import AppAppRunnerConfig  # noqa: PLC0415
+        from ..models.app_app_sandbox_config import AppAppSandboxConfig  # noqa: PLC0415
+        from ..models.app_aws_account import AppAWSAccount  # noqa: PLC0415
+        from ..models.app_azure_account import AppAzureAccount  # noqa: PLC0415
+        from ..models.app_cloud_connection import AppCloudConnection  # noqa: PLC0415
+        from ..models.app_drifted_object import AppDriftedObject  # noqa: PLC0415
+        from ..models.app_gcp_account import AppGCPAccount  # noqa: PLC0415
+        from ..models.app_install_action_workflow import AppInstallActionWorkflow  # noqa: PLC0415
+        from ..models.app_install_app_branch_connection import AppInstallAppBranchConnection  # noqa: PLC0415
+        from ..models.app_install_app_default_labels import AppInstallAppDefaultLabels  # noqa: PLC0415
+        from ..models.app_install_cloud_platform_metadata import AppInstallCloudPlatformMetadata  # noqa: PLC0415
+        from ..models.app_install_component import AppInstallComponent  # noqa: PLC0415
+        from ..models.app_install_component_health_statuses import AppInstallComponentHealthStatuses  # noqa: PLC0415
+        from ..models.app_install_component_statuses import AppInstallComponentStatuses  # noqa: PLC0415
+        from ..models.app_install_config import AppInstallConfig  # noqa: PLC0415
+        from ..models.app_install_event import AppInstallEvent  # noqa: PLC0415
+        from ..models.app_install_inputs import AppInstallInputs  # noqa: PLC0415
+        from ..models.app_install_label_templates import AppInstallLabelTemplates  # noqa: PLC0415
+        from ..models.app_install_lifecycle_phase import AppInstallLifecyclePhase  # noqa: PLC0415
+        from ..models.app_install_links import AppInstallLinks  # noqa: PLC0415
+        from ..models.app_install_metadata import AppInstallMetadata  # noqa: PLC0415
+        from ..models.app_install_roles import AppInstallRoles  # noqa: PLC0415
+        from ..models.app_install_sandbox import AppInstallSandbox  # noqa: PLC0415
+        from ..models.app_install_sandbox_run import AppInstallSandboxRun  # noqa: PLC0415
+        from ..models.app_install_stack import AppInstallStack  # noqa: PLC0415
+        from ..models.app_install_state import AppInstallState  # noqa: PLC0415
+        from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
+        from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)
@@ -585,9 +628,27 @@ class AppInstall:
 
                 app_branch_connections.append(app_branch_connections_item)
 
+        app_branch_group = d.pop("app_branch_group", UNSET)
+
+        _app_branch_group_assignment_source = d.pop("app_branch_group_assignment_source", UNSET)
+        app_branch_group_assignment_source: AppInstallAppBranchGroupAssignmentSource | Unset
+        if isinstance(_app_branch_group_assignment_source, Unset):
+            app_branch_group_assignment_source = UNSET
+        else:
+            app_branch_group_assignment_source = AppInstallAppBranchGroupAssignmentSource(
+                _app_branch_group_assignment_source
+            )
+
         app_branch_id = d.pop("app_branch_id", UNSET)
 
         app_config_id = d.pop("app_config_id", UNSET)
+
+        _app_config_ref = d.pop("app_config_ref", UNSET)
+        app_config_ref: AppAppConfigRef | Unset
+        if isinstance(_app_config_ref, Unset):
+            app_config_ref = UNSET
+        else:
+            app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
 
         _app_default_labels = d.pop("app_default_labels", UNSET)
         app_default_labels: AppInstallAppDefaultLabels | Unset
@@ -625,6 +686,15 @@ class AppInstall:
             azure_account = UNSET
         else:
             azure_account = AppAzureAccount.from_dict(_azure_account)
+
+        _cloud_connection = d.pop("cloud_connection", UNSET)
+        cloud_connection: AppCloudConnection | Unset
+        if isinstance(_cloud_connection, Unset):
+            cloud_connection = UNSET
+        else:
+            cloud_connection = AppCloudConnection.from_dict(_cloud_connection)
+
+        cloud_connection_id = d.pop("cloud_connection_id", UNSET)
 
         cloud_platform = d.pop("cloud_platform", UNSET)
 
@@ -867,14 +937,19 @@ class AppInstall:
         app_install = cls(
             app_branch=app_branch,
             app_branch_connections=app_branch_connections,
+            app_branch_group=app_branch_group,
+            app_branch_group_assignment_source=app_branch_group_assignment_source,
             app_branch_id=app_branch_id,
             app_config_id=app_config_id,
+            app_config_ref=app_config_ref,
             app_default_labels=app_default_labels,
             app_id=app_id,
             app_runner_config=app_runner_config,
             app_sandbox_config=app_sandbox_config,
             aws_account=aws_account,
             azure_account=azure_account,
+            cloud_connection=cloud_connection,
+            cloud_connection_id=cloud_connection_id,
             cloud_platform=cloud_platform,
             cloud_platform_metadata=cloud_platform_metadata,
             component_health_statuses=component_health_statuses,

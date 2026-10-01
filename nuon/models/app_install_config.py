@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,6 +32,7 @@ class AppInstallConfig:
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         org_id (str | Unset):
         runner_nested_template_url (str | Unset):
+        telemetry_enabled (bool | None | Unset):
         updated_at (str | Unset):
         vpc_nested_template_url (str | Unset): Per-install stack template overrides (nil = use app config default)
     """
@@ -46,6 +47,7 @@ class AppInstallConfig:
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     org_id: str | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
+    telemetry_enabled: bool | None | Unset = UNSET
     updated_at: str | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -82,6 +84,12 @@ class AppInstallConfig:
 
         runner_nested_template_url = self.runner_nested_template_url
 
+        telemetry_enabled: bool | None | Unset
+        if isinstance(self.telemetry_enabled, Unset):
+            telemetry_enabled = UNSET
+        else:
+            telemetry_enabled = self.telemetry_enabled
+
         updated_at = self.updated_at
 
         vpc_nested_template_url = self.vpc_nested_template_url
@@ -109,6 +117,8 @@ class AppInstallConfig:
             field_dict["org_id"] = org_id
         if runner_nested_template_url is not UNSET:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
+        if telemetry_enabled is not UNSET:
+            field_dict["telemetry_enabled"] = telemetry_enabled
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vpc_nested_template_url is not UNSET:
@@ -118,9 +128,11 @@ class AppInstallConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles
-        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
+        from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles  # noqa: PLC0415
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
@@ -165,6 +177,15 @@ class AppInstallConfig:
 
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
+        def _parse_telemetry_enabled(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        telemetry_enabled = _parse_telemetry_enabled(d.pop("telemetry_enabled", UNSET))
+
         updated_at = d.pop("updated_at", UNSET)
 
         vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
@@ -180,6 +201,7 @@ class AppInstallConfig:
             labels=labels,
             org_id=org_id,
             runner_nested_template_url=runner_nested_template_url,
+            telemetry_enabled=telemetry_enabled,
             updated_at=updated_at,
             vpc_nested_template_url=vpc_nested_template_url,
         )

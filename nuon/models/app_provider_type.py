@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppProviderType(str, Enum):
-    GITHUB = "github"
-    GOOGLE = "google"
-    OIDC = "oidc"
+class AppProviderType(StrEnum):
+    PROVIDER_TYPE_GIT_HUB = "github"
+    PROVIDER_TYPE_GOOGLE = "google"
+    PROVIDER_TYPE_OIDC = "oidc"
 
     def __str__(self) -> str:
         return str(self.value)

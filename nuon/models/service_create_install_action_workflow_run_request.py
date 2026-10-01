@@ -57,7 +57,7 @@ class ServiceCreateInstallActionWorkflowRunRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_install_action_workflow_run_request_run_env_vars import (
-            ServiceCreateInstallActionWorkflowRunRequestRunEnvVars,
+            ServiceCreateInstallActionWorkflowRunRequestRunEnvVars,  # noqa: PLC0415
         )
 
         d = dict(src_dict)

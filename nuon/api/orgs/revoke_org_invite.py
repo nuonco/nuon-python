@@ -80,9 +80,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AppOrgInvite | StderrErrResponse]:
-    r"""Revoke an org invite
+    """Revoke an org invite
 
-     Revoke a pending org invite. The invite status is set to \"revoked\" and the record is soft-deleted,
+     Revoke a pending org invite. The invite status is set to "revoked" and the record is soft-deleted,
     freeing the unique constraint so the same email can be re-invited.
 
     Only org admins can revoke invites. Only pending invites can be revoked.
@@ -114,9 +114,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> AppOrgInvite | StderrErrResponse | None:
-    r"""Revoke an org invite
+    """Revoke an org invite
 
-     Revoke a pending org invite. The invite status is set to \"revoked\" and the record is soft-deleted,
+     Revoke a pending org invite. The invite status is set to "revoked" and the record is soft-deleted,
     freeing the unique constraint so the same email can be re-invited.
 
     Only org admins can revoke invites. Only pending invites can be revoked.
@@ -143,9 +143,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[AppOrgInvite | StderrErrResponse]:
-    r"""Revoke an org invite
+    """Revoke an org invite
 
-     Revoke a pending org invite. The invite status is set to \"revoked\" and the record is soft-deleted,
+     Revoke a pending org invite. The invite status is set to "revoked" and the record is soft-deleted,
     freeing the unique constraint so the same email can be re-invited.
 
     Only org admins can revoke invites. Only pending invites can be revoked.
@@ -175,9 +175,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> AppOrgInvite | StderrErrResponse | None:
-    r"""Revoke an org invite
+    """Revoke an org invite
 
-     Revoke a pending org invite. The invite status is set to \"revoked\" and the record is soft-deleted,
+     Revoke a pending org invite. The invite status is set to "revoked" and the record is soft-deleted,
     freeing the unique constraint so the same email can be re-invited.
 
     Only org admins can revoke invites. Only pending invites can be revoked.

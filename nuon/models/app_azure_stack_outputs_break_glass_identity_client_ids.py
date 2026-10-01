@@ -11,8 +11,6 @@ T = TypeVar("T", bound="AppAzureStackOutputsBreakGlassIdentityClientIds")
 
 @_attrs_define
 class AppAzureStackOutputsBreakGlassIdentityClientIds:
-    """ """
-
     additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
