@@ -40,7 +40,7 @@ class PlantypesPulumiBuildPlan:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_pulumi_build_plan_labels import PlantypesPulumiBuildPlanLabels
+        from ..models.plantypes_pulumi_build_plan_labels import PlantypesPulumiBuildPlanLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         _labels = d.pop("labels", UNSET)

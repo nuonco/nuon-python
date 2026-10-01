@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_composite_status_metadata import AppCompositeStatusMetadata
+    from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
 
 
 T = TypeVar("T", bound="AppCompositeStatus")
@@ -20,6 +21,7 @@ T = TypeVar("T", bound="AppCompositeStatus")
 class AppCompositeStatus:
     """
     Attributes:
+        composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at_ts (int | Unset):
         created_by_id (str | Unset):
         history (list[AppCompositeStatus] | Unset):
@@ -28,6 +30,7 @@ class AppCompositeStatus:
         status_human_description (str | Unset):
     """
 
+    composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at_ts: int | Unset = UNSET
     created_by_id: str | Unset = UNSET
     history: list[AppCompositeStatus] | Unset = UNSET
@@ -37,6 +40,10 @@ class AppCompositeStatus:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        composite_error: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.composite_error, Unset):
+            composite_error = self.composite_error.to_dict()
+
         created_at_ts = self.created_at_ts
 
         created_by_id = self.created_by_id
@@ -61,6 +68,8 @@ class AppCompositeStatus:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if composite_error is not UNSET:
+            field_dict["composite_error"] = composite_error
         if created_at_ts is not UNSET:
             field_dict["created_at_ts"] = created_at_ts
         if created_by_id is not UNSET:
@@ -78,9 +87,17 @@ class AppCompositeStatus:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status_metadata import AppCompositeStatusMetadata
+        from ..models.app_composite_status_metadata import AppCompositeStatusMetadata  # noqa: PLC0415
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
+        _composite_error = d.pop("composite_error", UNSET)
+        composite_error: CompositeerrorsCompositeErrorData | Unset
+        if isinstance(_composite_error, Unset):
+            composite_error = UNSET
+        else:
+            composite_error = CompositeerrorsCompositeErrorData.from_dict(_composite_error)
+
         created_at_ts = d.pop("created_at_ts", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -111,6 +128,7 @@ class AppCompositeStatus:
         status_human_description = d.pop("status_human_description", UNSET)
 
         app_composite_status = cls(
+            composite_error=composite_error,
             created_at_ts=created_at_ts,
             created_by_id=created_by_id,
             history=history,

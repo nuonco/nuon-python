@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_config_ref import AppAppConfigRef
     from ..models.app_install_stack_outputs import AppInstallStackOutputs
     from ..models.app_install_stack_version import AppInstallStackVersion
 
@@ -20,6 +21,7 @@ T = TypeVar("T", bound="AppInstallStack")
 class AppInstallStack:
     """
     Attributes:
+        app_config_ref (AppAppConfigRef | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -30,6 +32,7 @@ class AppInstallStack:
         versions (list[AppInstallStackVersion] | Unset):
     """
 
+    app_config_ref: AppAppConfigRef | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -41,6 +44,10 @@ class AppInstallStack:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        app_config_ref: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.app_config_ref, Unset):
+            app_config_ref = self.app_config_ref.to_dict()
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
@@ -67,6 +74,8 @@ class AppInstallStack:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if app_config_ref is not UNSET:
+            field_dict["app_config_ref"] = app_config_ref
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -88,10 +97,18 @@ class AppInstallStack:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_install_stack_outputs import AppInstallStackOutputs
-        from ..models.app_install_stack_version import AppInstallStackVersion
+        from ..models.app_app_config_ref import AppAppConfigRef  # noqa: PLC0415
+        from ..models.app_install_stack_outputs import AppInstallStackOutputs  # noqa: PLC0415
+        from ..models.app_install_stack_version import AppInstallStackVersion  # noqa: PLC0415
 
         d = dict(src_dict)
+        _app_config_ref = d.pop("app_config_ref", UNSET)
+        app_config_ref: AppAppConfigRef | Unset
+        if isinstance(_app_config_ref, Unset):
+            app_config_ref = UNSET
+        else:
+            app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -121,6 +138,7 @@ class AppInstallStack:
                 versions.append(versions_item)
 
         app_install_stack = cls(
+            app_config_ref=app_config_ref,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,

@@ -17,6 +17,7 @@ def _get_kwargs(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     trigger_types: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -29,6 +30,8 @@ def _get_kwargs(
     params["labels"] = labels
 
     params["trigger_types"] = trigger_types
+
+    params["branch_id"] = branch_id
 
     params["offset"] = offset
 
@@ -111,6 +114,7 @@ def sync_detailed(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     trigger_types: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -124,6 +128,7 @@ def sync_detailed(
         q (str | Unset):
         labels (str | Unset):
         trigger_types (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -141,6 +146,7 @@ def sync_detailed(
         q=q,
         labels=labels,
         trigger_types=trigger_types,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -160,6 +166,7 @@ def sync(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     trigger_types: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -173,6 +180,7 @@ def sync(
         q (str | Unset):
         labels (str | Unset):
         trigger_types (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -191,6 +199,7 @@ def sync(
         q=q,
         labels=labels,
         trigger_types=trigger_types,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -204,6 +213,7 @@ async def asyncio_detailed(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     trigger_types: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -217,6 +227,7 @@ async def asyncio_detailed(
         q (str | Unset):
         labels (str | Unset):
         trigger_types (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -234,6 +245,7 @@ async def asyncio_detailed(
         q=q,
         labels=labels,
         trigger_types=trigger_types,
+        branch_id=branch_id,
         offset=offset,
         limit=limit,
         page=page,
@@ -251,6 +263,7 @@ async def asyncio(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     trigger_types: str | Unset = UNSET,
+    branch_id: str | Unset = UNSET,
     offset: int | Unset = 0,
     limit: int | Unset = 10,
     page: int | Unset = 0,
@@ -264,6 +277,7 @@ async def asyncio(
         q (str | Unset):
         labels (str | Unset):
         trigger_types (str | Unset):
+        branch_id (str | Unset):
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
@@ -283,6 +297,7 @@ async def asyncio(
             q=q,
             labels=labels,
             trigger_types=trigger_types,
+            branch_id=branch_id,
             offset=offset,
             limit=limit,
             page=page,

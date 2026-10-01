@@ -64,7 +64,7 @@ class ServiceSeriesPoint:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_series_point_labels import ServiceSeriesPointLabels
+        from ..models.service_series_point_labels import ServiceSeriesPointLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         denies = d.pop("denies", UNSET)

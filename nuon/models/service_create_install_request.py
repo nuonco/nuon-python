@@ -26,6 +26,11 @@ class ServiceCreateInstallRequest:
     """
     Attributes:
         name (str):
+        app_branch_group (str | Unset):
+        app_branch_id (str | Unset): AppBranchID is the optional app branch this install belongs to. When set,
+            the install starts on that branch's active app config and stays on the
+            branch until explicitly moved. When empty, the install uses the latest
+            unbranched config from apps sync.
         aws_account (HelpersCreateInstallAWSAccountParams | Unset):
         azure_account (HelpersCreateInstallAzureAccountParams | Unset):
         gcp_account (HelpersCreateInstallGCPAccountParams | Unset):
@@ -40,6 +45,8 @@ class ServiceCreateInstallRequest:
     """
 
     name: str
+    app_branch_group: str | Unset = UNSET
+    app_branch_id: str | Unset = UNSET
     aws_account: HelpersCreateInstallAWSAccountParams | Unset = UNSET
     azure_account: HelpersCreateInstallAzureAccountParams | Unset = UNSET
     gcp_account: HelpersCreateInstallGCPAccountParams | Unset = UNSET
@@ -52,6 +59,10 @@ class ServiceCreateInstallRequest:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
+
+        app_branch_group = self.app_branch_group
+
+        app_branch_id = self.app_branch_id
 
         aws_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_account, Unset):
@@ -90,6 +101,10 @@ class ServiceCreateInstallRequest:
                 "name": name,
             }
         )
+        if app_branch_group is not UNSET:
+            field_dict["app_branch_group"] = app_branch_group
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
         if aws_account is not UNSET:
             field_dict["aws_account"] = aws_account
         if azure_account is not UNSET:
@@ -111,16 +126,26 @@ class ServiceCreateInstallRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
-        from ..models.helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
-        from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
-        from ..models.helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
-        from ..models.helpers_install_metadata import HelpersInstallMetadata
-        from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs
-        from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels
+        from ..models.helpers_create_install_aws_account_params import (
+            HelpersCreateInstallAWSAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_create_install_azure_account_params import (
+            HelpersCreateInstallAzureAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams  # noqa: PLC0415
+        from ..models.helpers_create_install_gcp_account_params import (
+            HelpersCreateInstallGCPAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_install_metadata import HelpersInstallMetadata  # noqa: PLC0415
+        from ..models.service_create_install_request_inputs import ServiceCreateInstallRequestInputs  # noqa: PLC0415
+        from ..models.service_create_install_request_labels import ServiceCreateInstallRequestLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         name = d.pop("name")
+
+        app_branch_group = d.pop("app_branch_group", UNSET)
+
+        app_branch_id = d.pop("app_branch_id", UNSET)
 
         _aws_account = d.pop("aws_account", UNSET)
         aws_account: HelpersCreateInstallAWSAccountParams | Unset
@@ -175,6 +200,8 @@ class ServiceCreateInstallRequest:
 
         service_create_install_request = cls(
             name=name,
+            app_branch_group=app_branch_group,
+            app_branch_id=app_branch_id,
             aws_account=aws_account,
             azure_account=azure_account,
             gcp_account=gcp_account,

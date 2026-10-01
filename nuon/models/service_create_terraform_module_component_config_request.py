@@ -175,17 +175,19 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+        from ..models.service_connected_github_vcs_config_request import (
+            ServiceConnectedGithubVCSConfigRequest,  # noqa: PLC0415
+        )
         from ..models.service_create_terraform_module_component_config_request_env_vars import (
-            ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
+            ServiceCreateTerraformModuleComponentConfigRequestEnvVars,  # noqa: PLC0415
         )
         from ..models.service_create_terraform_module_component_config_request_operation_roles import (
-            ServiceCreateTerraformModuleComponentConfigRequestOperationRoles,
+            ServiceCreateTerraformModuleComponentConfigRequestOperationRoles,  # noqa: PLC0415
         )
         from ..models.service_create_terraform_module_component_config_request_variables import (
-            ServiceCreateTerraformModuleComponentConfigRequestVariables,
+            ServiceCreateTerraformModuleComponentConfigRequestVariables,  # noqa: PLC0415
         )
-        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
+        from ..models.service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         env_vars = ServiceCreateTerraformModuleComponentConfigRequestEnvVars.from_dict(d.pop("env_vars"))
