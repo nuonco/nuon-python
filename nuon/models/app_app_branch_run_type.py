@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppAppBranchRunType(str, Enum):
-    GIT_PREVIEW_RUN = "git-preview-run"
-    GIT_RUN = "git-run"
-    MANUAL_RUN = "manual-run"
+class AppAppBranchRunType(StrEnum):
+    APP_BRANCH_RUN_TYPE_GIT = "git-run"
+    APP_BRANCH_RUN_TYPE_GIT_PREVIEW = "git-preview-run"
+    APP_BRANCH_RUN_TYPE_MANUAL = "manual-run"
 
     def __str__(self) -> str:
         return str(self.value)
