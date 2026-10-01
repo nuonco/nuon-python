@@ -1,18 +1,18 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class StatePartialName(str, Enum):
-    ACTIONS = "actions"
-    APP = "app"
-    CLOUD = "cloud"
-    COMPONENTS = "components"
-    DOMAIN = "domain"
-    INPUTS = "inputs"
-    ORG = "org"
-    RUNNER = "runner"
-    SANDBOX = "sandbox"
-    SECRETS = "secrets"
-    STACK = "stack"
+class StatePartialName(StrEnum):
+    PARTIAL_ACTIONS = "actions"
+    PARTIAL_APP = "app"
+    PARTIAL_CLOUD = "cloud"
+    PARTIAL_COMPONENTS = "components"
+    PARTIAL_DOMAIN = "domain"
+    PARTIAL_INPUTS = "inputs"
+    PARTIAL_ORG = "org"
+    PARTIAL_RUNNER = "runner"
+    PARTIAL_SANDBOX = "sandbox"
+    PARTIAL_SECRETS = "secrets"
+    PARTIAL_STACK = "stack"
 
     def __str__(self) -> str:
         return str(self.value)

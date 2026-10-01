@@ -1,10 +1,11 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppInstallDeployType(str, Enum):
-    APPLY = "apply"
-    SYNC_IMAGE = "sync-image"
-    TEARDOWN = "teardown"
+class AppInstallDeployType(StrEnum):
+    INSTALL_DEPLOY_TYPE_APPLY = "apply"
+    INSTALL_DEPLOY_TYPE_RECOVER = "recover"
+    INSTALL_DEPLOY_TYPE_SYNC = "sync-image"
+    INSTALL_DEPLOY_TYPE_TEARDOWN = "teardown"
 
     def __str__(self) -> str:
         return str(self.value)

@@ -16,6 +16,9 @@ def _get_kwargs(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     runner_id: str | Unset = UNSET,
+    cloud_connection_id: str | Unset = UNSET,
+    branches: str | Unset = UNSET,
+    include_components: bool | Unset = True,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> dict[str, Any]:
@@ -29,6 +32,12 @@ def _get_kwargs(
     params["labels"] = labels
 
     params["runner_id"] = runner_id
+
+    params["cloud_connection_id"] = cloud_connection_id
+
+    params["branches"] = branches
+
+    params["include_components"] = include_components
 
     params["limit"] = limit
 
@@ -107,6 +116,9 @@ def sync_detailed(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     runner_id: str | Unset = UNSET,
+    cloud_connection_id: str | Unset = UNSET,
+    branches: str | Unset = UNSET,
+    include_components: bool | Unset = True,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -119,6 +131,9 @@ def sync_detailed(
         q (str | Unset):
         labels (str | Unset):
         runner_id (str | Unset):
+        cloud_connection_id (str | Unset):
+        branches (str | Unset):
+        include_components (bool | Unset):  Default: True.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -135,6 +150,9 @@ def sync_detailed(
         q=q,
         labels=labels,
         runner_id=runner_id,
+        cloud_connection_id=cloud_connection_id,
+        branches=branches,
+        include_components=include_components,
         limit=limit,
         page=page,
     )
@@ -153,6 +171,9 @@ def sync(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     runner_id: str | Unset = UNSET,
+    cloud_connection_id: str | Unset = UNSET,
+    branches: str | Unset = UNSET,
+    include_components: bool | Unset = True,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -165,6 +186,9 @@ def sync(
         q (str | Unset):
         labels (str | Unset):
         runner_id (str | Unset):
+        cloud_connection_id (str | Unset):
+        branches (str | Unset):
+        include_components (bool | Unset):  Default: True.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -182,6 +206,9 @@ def sync(
         q=q,
         labels=labels,
         runner_id=runner_id,
+        cloud_connection_id=cloud_connection_id,
+        branches=branches,
+        include_components=include_components,
         limit=limit,
         page=page,
     ).parsed
@@ -194,6 +221,9 @@ async def asyncio_detailed(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     runner_id: str | Unset = UNSET,
+    cloud_connection_id: str | Unset = UNSET,
+    branches: str | Unset = UNSET,
+    include_components: bool | Unset = True,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> Response[StderrErrResponse | list[AppInstall]]:
@@ -206,6 +236,9 @@ async def asyncio_detailed(
         q (str | Unset):
         labels (str | Unset):
         runner_id (str | Unset):
+        cloud_connection_id (str | Unset):
+        branches (str | Unset):
+        include_components (bool | Unset):  Default: True.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -222,6 +255,9 @@ async def asyncio_detailed(
         q=q,
         labels=labels,
         runner_id=runner_id,
+        cloud_connection_id=cloud_connection_id,
+        branches=branches,
+        include_components=include_components,
         limit=limit,
         page=page,
     )
@@ -238,6 +274,9 @@ async def asyncio(
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     runner_id: str | Unset = UNSET,
+    cloud_connection_id: str | Unset = UNSET,
+    branches: str | Unset = UNSET,
+    include_components: bool | Unset = True,
     limit: int | Unset = 10,
     page: int | Unset = 0,
 ) -> StderrErrResponse | list[AppInstall] | None:
@@ -250,6 +289,9 @@ async def asyncio(
         q (str | Unset):
         labels (str | Unset):
         runner_id (str | Unset):
+        cloud_connection_id (str | Unset):
+        branches (str | Unset):
+        include_components (bool | Unset):  Default: True.
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
 
@@ -268,6 +310,9 @@ async def asyncio(
             q=q,
             labels=labels,
             runner_id=runner_id,
+            cloud_connection_id=cloud_connection_id,
+            branches=branches,
+            include_components=include_components,
             limit=limit,
             page=page,
         )

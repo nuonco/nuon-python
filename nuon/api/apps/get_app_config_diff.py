@@ -16,11 +16,14 @@ def _get_kwargs(
     config_id: str,
     *,
     old_config_id: str | Unset = UNSET,
+    include: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["old_config_id"] = old_config_id
+
+    params["include"] = include
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -92,6 +95,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     old_config_id: str | Unset = UNSET,
+    include: str | Unset = UNSET,
 ) -> Response[ServiceAppConfigDiffResponse | StderrErrResponse]:
     """diff two app configs
 
@@ -101,6 +105,7 @@ def sync_detailed(
         app_id (str):
         config_id (str):
         old_config_id (str | Unset):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,6 +119,7 @@ def sync_detailed(
         app_id=app_id,
         config_id=config_id,
         old_config_id=old_config_id,
+        include=include,
     )
 
     response = client.get_httpx_client().request(
@@ -129,6 +135,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     old_config_id: str | Unset = UNSET,
+    include: str | Unset = UNSET,
 ) -> ServiceAppConfigDiffResponse | StderrErrResponse | None:
     """diff two app configs
 
@@ -138,6 +145,7 @@ def sync(
         app_id (str):
         config_id (str):
         old_config_id (str | Unset):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -152,6 +160,7 @@ def sync(
         config_id=config_id,
         client=client,
         old_config_id=old_config_id,
+        include=include,
     ).parsed
 
 
@@ -161,6 +170,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     old_config_id: str | Unset = UNSET,
+    include: str | Unset = UNSET,
 ) -> Response[ServiceAppConfigDiffResponse | StderrErrResponse]:
     """diff two app configs
 
@@ -170,6 +180,7 @@ async def asyncio_detailed(
         app_id (str):
         config_id (str):
         old_config_id (str | Unset):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,6 +194,7 @@ async def asyncio_detailed(
         app_id=app_id,
         config_id=config_id,
         old_config_id=old_config_id,
+        include=include,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -196,6 +208,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     old_config_id: str | Unset = UNSET,
+    include: str | Unset = UNSET,
 ) -> ServiceAppConfigDiffResponse | StderrErrResponse | None:
     """diff two app configs
 
@@ -205,6 +218,7 @@ async def asyncio(
         app_id (str):
         config_id (str):
         old_config_id (str | Unset):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -220,5 +234,6 @@ async def asyncio(
             config_id=config_id,
             client=client,
             old_config_id=old_config_id,
+            include=include,
         )
     ).parsed

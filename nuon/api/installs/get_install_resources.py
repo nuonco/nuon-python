@@ -114,7 +114,7 @@ def sync_detailed(
     """live resource explorer for an install
 
      Returns the latest observed state of every resource the install's components manage, filterable by
-    component, kind, namespace, health, and provider. Requires the component-health feature.
+    component, kind, namespace, health, and provider.
 
     Args:
         install_id (str):
@@ -161,7 +161,7 @@ def sync(
     """live resource explorer for an install
 
      Returns the latest observed state of every resource the install's components manage, filterable by
-    component, kind, namespace, health, and provider. Requires the component-health feature.
+    component, kind, namespace, health, and provider.
 
     Args:
         install_id (str):
@@ -203,7 +203,7 @@ async def asyncio_detailed(
     """live resource explorer for an install
 
      Returns the latest observed state of every resource the install's components manage, filterable by
-    component, kind, namespace, health, and provider. Requires the component-health feature.
+    component, kind, namespace, health, and provider.
 
     Args:
         install_id (str):
@@ -248,7 +248,7 @@ async def asyncio(
     """live resource explorer for an install
 
      Returns the latest observed state of every resource the install's components manage, filterable by
-    component, kind, namespace, health, and provider. Requires the component-health feature.
+    component, kind, namespace, health, and provider.
 
     Args:
         install_id (str):
