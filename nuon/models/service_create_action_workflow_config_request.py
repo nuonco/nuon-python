@@ -28,6 +28,8 @@ class ServiceCreateActionWorkflowConfigRequest:
         break_glass_role_arn (str | Unset):
         dependencies (list[str] | Unset):
         enable_kube_config (bool | None | Unset):
+        image (str | Unset):
+        is_healthcheck (bool | Unset):
         kubernetes_context (str | Unset):
         references (list[str] | Unset):
         role (str | Unset):
@@ -40,6 +42,8 @@ class ServiceCreateActionWorkflowConfigRequest:
     break_glass_role_arn: str | Unset = UNSET
     dependencies: list[str] | Unset = UNSET
     enable_kube_config: bool | None | Unset = UNSET
+    image: str | Unset = UNSET
+    is_healthcheck: bool | Unset = UNSET
     kubernetes_context: str | Unset = UNSET
     references: list[str] | Unset = UNSET
     role: str | Unset = UNSET
@@ -71,6 +75,10 @@ class ServiceCreateActionWorkflowConfigRequest:
         else:
             enable_kube_config = self.enable_kube_config
 
+        image = self.image
+
+        is_healthcheck = self.is_healthcheck
+
         kubernetes_context = self.kubernetes_context
 
         references: list[str] | Unset = UNSET
@@ -96,6 +104,10 @@ class ServiceCreateActionWorkflowConfigRequest:
             field_dict["dependencies"] = dependencies
         if enable_kube_config is not UNSET:
             field_dict["enable_kube_config"] = enable_kube_config
+        if image is not UNSET:
+            field_dict["image"] = image
+        if is_healthcheck is not UNSET:
+            field_dict["is_healthcheck"] = is_healthcheck
         if kubernetes_context is not UNSET:
             field_dict["kubernetes_context"] = kubernetes_context
         if references is not UNSET:
@@ -110,10 +122,10 @@ class ServiceCreateActionWorkflowConfigRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_create_action_workflow_config_step_request import (
-            ServiceCreateActionWorkflowConfigStepRequest,
+            ServiceCreateActionWorkflowConfigStepRequest,  # noqa: PLC0415
         )
         from ..models.service_create_action_workflow_config_trigger_request import (
-            ServiceCreateActionWorkflowConfigTriggerRequest,
+            ServiceCreateActionWorkflowConfigTriggerRequest,  # noqa: PLC0415
         )
 
         d = dict(src_dict)
@@ -146,6 +158,10 @@ class ServiceCreateActionWorkflowConfigRequest:
 
         enable_kube_config = _parse_enable_kube_config(d.pop("enable_kube_config", UNSET))
 
+        image = d.pop("image", UNSET)
+
+        is_healthcheck = d.pop("is_healthcheck", UNSET)
+
         kubernetes_context = d.pop("kubernetes_context", UNSET)
 
         references = cast(list[str], d.pop("references", UNSET))
@@ -161,6 +177,8 @@ class ServiceCreateActionWorkflowConfigRequest:
             break_glass_role_arn=break_glass_role_arn,
             dependencies=dependencies,
             enable_kube_config=enable_kube_config,
+            image=image,
+            is_healthcheck=is_healthcheck,
             kubernetes_context=kubernetes_context,
             references=references,
             role=role,

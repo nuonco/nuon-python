@@ -98,7 +98,7 @@ class AppJobComponentConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_job_component_config_env_vars import AppJobComponentConfigEnvVars
+        from ..models.app_job_component_config_env_vars import AppJobComponentConfigEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         args = cast(list[str], d.pop("args", UNSET))

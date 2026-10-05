@@ -88,10 +88,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppInstallComponentResourceState]]:
-    r"""list custom component health checks
+    """list custom component health checks
 
      Returns the latest reported state of every custom health check for the component (provider
-    \"custom\"), keyed by check name. Requires the component-health feature.
+    "custom"), keyed by check name.
 
     Args:
         install_id (str):
@@ -123,10 +123,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppInstallComponentResourceState] | None:
-    r"""list custom component health checks
+    """list custom component health checks
 
      Returns the latest reported state of every custom health check for the component (provider
-    \"custom\"), keyed by check name. Requires the component-health feature.
+    "custom"), keyed by check name.
 
     Args:
         install_id (str):
@@ -153,10 +153,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[StderrErrResponse | list[AppInstallComponentResourceState]]:
-    r"""list custom component health checks
+    """list custom component health checks
 
      Returns the latest reported state of every custom health check for the component (provider
-    \"custom\"), keyed by check name. Requires the component-health feature.
+    "custom"), keyed by check name.
 
     Args:
         install_id (str):
@@ -186,10 +186,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> StderrErrResponse | list[AppInstallComponentResourceState] | None:
-    r"""list custom component health checks
+    """list custom component health checks
 
      Returns the latest reported state of every custom health check for the component (provider
-    \"custom\"), keyed by check name. Requires the component-health feature.
+    "custom"), keyed by check name.
 
     Args:
         install_id (str):

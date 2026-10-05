@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ServiceUpdateNotebookRequestStatus(str, Enum):
+class ServiceUpdateNotebookRequestStatus(StrEnum):
     ACTIVE = "active"
     ARCHIVED = "archived"
 

@@ -1,10 +1,10 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigCustomNestedStackStatus(str, Enum):
-    ERROR = "error"
-    PENDING = "pending"
-    READY = "ready"
+class ConfigCustomNestedStackStatus(StrEnum):
+    CUSTOM_NESTED_STACK_STATUS_ERROR = "error"
+    CUSTOM_NESTED_STACK_STATUS_PENDING = "pending"
+    CUSTOM_NESTED_STACK_STATUS_READY = "ready"
 
     def __str__(self) -> str:
         return str(self.value)

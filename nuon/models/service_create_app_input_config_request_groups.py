@@ -15,8 +15,6 @@ T = TypeVar("T", bound="ServiceCreateAppInputConfigRequestGroups")
 
 @_attrs_define
 class ServiceCreateAppInputConfigRequestGroups:
-    """ """
-
     additional_properties: dict[str, ServiceAppGroupRequest] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,7 +27,7 @@ class ServiceCreateAppInputConfigRequestGroups:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_app_group_request import ServiceAppGroupRequest
+        from ..models.service_app_group_request import ServiceAppGroupRequest  # noqa: PLC0415
 
         d = dict(src_dict)
         service_create_app_input_config_request_groups = cls()
