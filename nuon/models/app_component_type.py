@@ -1,15 +1,15 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class AppComponentType(str, Enum):
-    DOCKER_BUILD = "docker_build"
-    EXTERNAL_IMAGE = "external_image"
-    HELM_CHART = "helm_chart"
-    JOB = "job"
-    KUBERNETES_MANIFEST = "kubernetes_manifest"
-    PULUMI = "pulumi"
-    TERRAFORM_MODULE = "terraform_module"
-    UNKNOWN = "unknown"
+class AppComponentType(StrEnum):
+    COMPONENT_TYPE_DOCKER_BUILD = "docker_build"
+    COMPONENT_TYPE_EXTERNAL_IMAGE = "external_image"
+    COMPONENT_TYPE_HELM_CHART = "helm_chart"
+    COMPONENT_TYPE_JOB = "job"
+    COMPONENT_TYPE_KUBERNETES_MANIFEST = "kubernetes_manifest"
+    COMPONENT_TYPE_PULUMI = "pulumi"
+    COMPONENT_TYPE_TERRAFORM_MODULE = "terraform_module"
+    COMPONENT_TYPE_UNKNOWN = "unknown"
 
     def __str__(self) -> str:
         return str(self.value)

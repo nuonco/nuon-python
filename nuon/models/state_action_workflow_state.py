@@ -58,7 +58,7 @@ class StateActionWorkflowState:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.state_action_workflow_state_outputs import StateActionWorkflowStateOutputs
+        from ..models.state_action_workflow_state_outputs import StateActionWorkflowStateOutputs  # noqa: PLC0415
 
         d = dict(src_dict)
         id = d.pop("id", UNSET)

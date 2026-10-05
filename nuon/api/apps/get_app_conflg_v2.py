@@ -16,11 +16,14 @@ def _get_kwargs(
     config_id: str,
     *,
     recurse: bool | Unset = False,
+    include_intermediate: bool | Unset = False,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
     params["recurse"] = recurse
+
+    params["include_intermediate"] = include_intermediate
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -92,6 +95,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     recurse: bool | Unset = False,
+    include_intermediate: bool | Unset = False,
 ) -> Response[AppAppConfig | StderrErrResponse]:
     """get an app config
 
@@ -101,6 +105,7 @@ def sync_detailed(
         app_id (str):
         config_id (str):
         recurse (bool | Unset):  Default: False.
+        include_intermediate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,6 +119,7 @@ def sync_detailed(
         app_id=app_id,
         config_id=config_id,
         recurse=recurse,
+        include_intermediate=include_intermediate,
     )
 
     response = client.get_httpx_client().request(
@@ -129,6 +135,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     recurse: bool | Unset = False,
+    include_intermediate: bool | Unset = False,
 ) -> AppAppConfig | StderrErrResponse | None:
     """get an app config
 
@@ -138,6 +145,7 @@ def sync(
         app_id (str):
         config_id (str):
         recurse (bool | Unset):  Default: False.
+        include_intermediate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -152,6 +160,7 @@ def sync(
         config_id=config_id,
         client=client,
         recurse=recurse,
+        include_intermediate=include_intermediate,
     ).parsed
 
 
@@ -161,6 +170,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     recurse: bool | Unset = False,
+    include_intermediate: bool | Unset = False,
 ) -> Response[AppAppConfig | StderrErrResponse]:
     """get an app config
 
@@ -170,6 +180,7 @@ async def asyncio_detailed(
         app_id (str):
         config_id (str):
         recurse (bool | Unset):  Default: False.
+        include_intermediate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,6 +194,7 @@ async def asyncio_detailed(
         app_id=app_id,
         config_id=config_id,
         recurse=recurse,
+        include_intermediate=include_intermediate,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -196,6 +208,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     recurse: bool | Unset = False,
+    include_intermediate: bool | Unset = False,
 ) -> AppAppConfig | StderrErrResponse | None:
     """get an app config
 
@@ -205,6 +218,7 @@ async def asyncio(
         app_id (str):
         config_id (str):
         recurse (bool | Unset):  Default: False.
+        include_intermediate (bool | Unset):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -220,5 +234,6 @@ async def asyncio(
             config_id=config_id,
             client=client,
             recurse=recurse,
+            include_intermediate=include_intermediate,
         )
     ).parsed

@@ -27,8 +27,14 @@ class ServiceCreateInstallV2Request:
     Attributes:
         app_id (str):
         name (str):
+        app_branch_group (str | Unset):
+        app_branch_id (str | Unset): AppBranchID is the optional app branch this install belongs to. When set,
+            the install starts on that branch's active app config and stays on the
+            branch until explicitly moved. When empty, the install uses the latest
+            unbranched config from apps sync.
         aws_account (HelpersCreateInstallAWSAccountParams | Unset):
         azure_account (HelpersCreateInstallAzureAccountParams | Unset):
+        cloud_connection_id (str | Unset):
         gcp_account (HelpersCreateInstallGCPAccountParams | Unset):
         inputs (ServiceCreateInstallV2RequestInputs | Unset):
         install_config (HelpersCreateInstallConfigParams | Unset):
@@ -42,8 +48,11 @@ class ServiceCreateInstallV2Request:
 
     app_id: str
     name: str
+    app_branch_group: str | Unset = UNSET
+    app_branch_id: str | Unset = UNSET
     aws_account: HelpersCreateInstallAWSAccountParams | Unset = UNSET
     azure_account: HelpersCreateInstallAzureAccountParams | Unset = UNSET
+    cloud_connection_id: str | Unset = UNSET
     gcp_account: HelpersCreateInstallGCPAccountParams | Unset = UNSET
     inputs: ServiceCreateInstallV2RequestInputs | Unset = UNSET
     install_config: HelpersCreateInstallConfigParams | Unset = UNSET
@@ -57,6 +66,10 @@ class ServiceCreateInstallV2Request:
 
         name = self.name
 
+        app_branch_group = self.app_branch_group
+
+        app_branch_id = self.app_branch_id
+
         aws_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.aws_account, Unset):
             aws_account = self.aws_account.to_dict()
@@ -64,6 +77,8 @@ class ServiceCreateInstallV2Request:
         azure_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.azure_account, Unset):
             azure_account = self.azure_account.to_dict()
+
+        cloud_connection_id = self.cloud_connection_id
 
         gcp_account: dict[str, Any] | Unset = UNSET
         if not isinstance(self.gcp_account, Unset):
@@ -95,10 +110,16 @@ class ServiceCreateInstallV2Request:
                 "name": name,
             }
         )
+        if app_branch_group is not UNSET:
+            field_dict["app_branch_group"] = app_branch_group
+        if app_branch_id is not UNSET:
+            field_dict["app_branch_id"] = app_branch_id
         if aws_account is not UNSET:
             field_dict["aws_account"] = aws_account
         if azure_account is not UNSET:
             field_dict["azure_account"] = azure_account
+        if cloud_connection_id is not UNSET:
+            field_dict["cloud_connection_id"] = cloud_connection_id
         if gcp_account is not UNSET:
             field_dict["gcp_account"] = gcp_account
         if inputs is not UNSET:
@@ -116,18 +137,32 @@ class ServiceCreateInstallV2Request:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
-        from ..models.helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
-        from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams
-        from ..models.helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
-        from ..models.helpers_install_metadata import HelpersInstallMetadata
-        from ..models.service_create_install_v2_request_inputs import ServiceCreateInstallV2RequestInputs
-        from ..models.service_create_install_v2_request_labels import ServiceCreateInstallV2RequestLabels
+        from ..models.helpers_create_install_aws_account_params import (
+            HelpersCreateInstallAWSAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_create_install_azure_account_params import (
+            HelpersCreateInstallAzureAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_create_install_config_params import HelpersCreateInstallConfigParams  # noqa: PLC0415
+        from ..models.helpers_create_install_gcp_account_params import (
+            HelpersCreateInstallGCPAccountParams,  # noqa: PLC0415
+        )
+        from ..models.helpers_install_metadata import HelpersInstallMetadata  # noqa: PLC0415
+        from ..models.service_create_install_v2_request_inputs import (
+            ServiceCreateInstallV2RequestInputs,  # noqa: PLC0415
+        )
+        from ..models.service_create_install_v2_request_labels import (
+            ServiceCreateInstallV2RequestLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         app_id = d.pop("app_id")
 
         name = d.pop("name")
+
+        app_branch_group = d.pop("app_branch_group", UNSET)
+
+        app_branch_id = d.pop("app_branch_id", UNSET)
 
         _aws_account = d.pop("aws_account", UNSET)
         aws_account: HelpersCreateInstallAWSAccountParams | Unset
@@ -142,6 +177,8 @@ class ServiceCreateInstallV2Request:
             azure_account = UNSET
         else:
             azure_account = HelpersCreateInstallAzureAccountParams.from_dict(_azure_account)
+
+        cloud_connection_id = d.pop("cloud_connection_id", UNSET)
 
         _gcp_account = d.pop("gcp_account", UNSET)
         gcp_account: HelpersCreateInstallGCPAccountParams | Unset
@@ -183,8 +220,11 @@ class ServiceCreateInstallV2Request:
         service_create_install_v2_request = cls(
             app_id=app_id,
             name=name,
+            app_branch_group=app_branch_group,
+            app_branch_id=app_branch_id,
             aws_account=aws_account,
             azure_account=azure_account,
+            cloud_connection_id=cloud_connection_id,
             gcp_account=gcp_account,
             inputs=inputs,
             install_config=install_config,

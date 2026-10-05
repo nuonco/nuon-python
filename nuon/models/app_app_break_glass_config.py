@@ -85,7 +85,7 @@ class AppAppBreakGlassConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
+        from ..models.app_app_awsiam_role_config import AppAppAWSIAMRoleConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
