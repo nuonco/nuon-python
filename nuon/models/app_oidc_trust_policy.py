@@ -123,7 +123,7 @@ class AppOIDCTrustPolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_oidc_trust_policy_claim_conditions import AppOIDCTrustPolicyClaimConditions
+        from ..models.app_oidc_trust_policy_claim_conditions import AppOIDCTrustPolicyClaimConditions  # noqa: PLC0415
 
         d = dict(src_dict)
         audience = d.pop("audience", UNSET)

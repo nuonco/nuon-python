@@ -55,7 +55,9 @@ class ServiceOrgComponentBuildHistoryResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_org_component_build_history_item import ServiceOrgComponentBuildHistoryItem
+        from ..models.service_org_component_build_history_item import (
+            ServiceOrgComponentBuildHistoryItem,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _items = d.pop("items", UNSET)

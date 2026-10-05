@@ -138,9 +138,11 @@ class AppActionWorkflowStepConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_action_workflow_step_config_env_vars import AppActionWorkflowStepConfigEnvVars
-        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig
+        from ..models.app_action_workflow_step_config_env_vars import (
+            AppActionWorkflowStepConfigEnvVars,  # noqa: PLC0415
+        )
+        from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
+        from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id", UNSET)

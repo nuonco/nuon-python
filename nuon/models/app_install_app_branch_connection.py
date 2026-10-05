@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.app_install_app_branch_group_assignment_source import AppInstallAppBranchGroupAssignmentSource
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -22,6 +23,8 @@ class AppInstallAppBranchConnection:
         activated_at (str | Unset):
         active (bool | Unset):
         app_branch (AppAppBranch | Unset):
+        app_branch_group (str | Unset):
+        app_branch_group_assignment_source (AppInstallAppBranchGroupAssignmentSource | Unset):
         app_branch_id (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
@@ -34,6 +37,8 @@ class AppInstallAppBranchConnection:
     activated_at: str | Unset = UNSET
     active: bool | Unset = UNSET
     app_branch: AppAppBranch | Unset = UNSET
+    app_branch_group: str | Unset = UNSET
+    app_branch_group_assignment_source: AppInstallAppBranchGroupAssignmentSource | Unset = UNSET
     app_branch_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -51,6 +56,12 @@ class AppInstallAppBranchConnection:
         app_branch: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_branch, Unset):
             app_branch = self.app_branch.to_dict()
+
+        app_branch_group = self.app_branch_group
+
+        app_branch_group_assignment_source: str | Unset = UNSET
+        if not isinstance(self.app_branch_group_assignment_source, Unset):
+            app_branch_group_assignment_source = self.app_branch_group_assignment_source.value
 
         app_branch_id = self.app_branch_id
 
@@ -75,6 +86,10 @@ class AppInstallAppBranchConnection:
             field_dict["active"] = active
         if app_branch is not UNSET:
             field_dict["app_branch"] = app_branch
+        if app_branch_group is not UNSET:
+            field_dict["app_branch_group"] = app_branch_group
+        if app_branch_group_assignment_source is not UNSET:
+            field_dict["app_branch_group_assignment_source"] = app_branch_group_assignment_source
         if app_branch_id is not UNSET:
             field_dict["app_branch_id"] = app_branch_id
         if created_at is not UNSET:
@@ -94,7 +109,7 @@ class AppInstallAppBranchConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_app_branch import AppAppBranch
+        from ..models.app_app_branch import AppAppBranch  # noqa: PLC0415
 
         d = dict(src_dict)
         activated_at = d.pop("activated_at", UNSET)
@@ -107,6 +122,17 @@ class AppInstallAppBranchConnection:
             app_branch = UNSET
         else:
             app_branch = AppAppBranch.from_dict(_app_branch)
+
+        app_branch_group = d.pop("app_branch_group", UNSET)
+
+        _app_branch_group_assignment_source = d.pop("app_branch_group_assignment_source", UNSET)
+        app_branch_group_assignment_source: AppInstallAppBranchGroupAssignmentSource | Unset
+        if isinstance(_app_branch_group_assignment_source, Unset):
+            app_branch_group_assignment_source = UNSET
+        else:
+            app_branch_group_assignment_source = AppInstallAppBranchGroupAssignmentSource(
+                _app_branch_group_assignment_source
+            )
 
         app_branch_id = d.pop("app_branch_id", UNSET)
 
@@ -126,6 +152,8 @@ class AppInstallAppBranchConnection:
             activated_at=activated_at,
             active=active,
             app_branch=app_branch,
+            app_branch_group=app_branch_group,
+            app_branch_group_assignment_source=app_branch_group_assignment_source,
             app_branch_id=app_branch_id,
             created_at=created_at,
             created_by_id=created_by_id,

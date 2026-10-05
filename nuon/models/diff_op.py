@@ -1,12 +1,12 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class DiffOp(str, Enum):
-    ADD = "add"
-    CHANGE = "change"
-    NOOP = "noop"
-    REMOVE = "remove"
-    VALUE_4 = ""
+class DiffOp(StrEnum):
+    OP_ADD = "add"
+    OP_CHANGE = "change"
+    OP_NOOP = "noop"
+    OP_REMOVE = "remove"
+    OP_UNKNOWN = ""
 
     def __str__(self) -> str:
         return str(self.value)

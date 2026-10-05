@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.config_source_archive_diff import ConfigSourceArchiveDiff
     from ..models.diff_diff import DiffDiff
     from ..models.diff_diff_summary import DiffDiffSummary
 
@@ -24,6 +25,8 @@ class ServiceAppConfigDiffResponse:
         config_id (str | Unset):
         diff (DiffDiff | Unset):
         old_config_id (str | Unset):
+        source (ConfigSourceArchiveDiff | Unset):
+        source_skipped (bool | Unset):
         summary (DiffDiffSummary | Unset):
     """
 
@@ -31,6 +34,8 @@ class ServiceAppConfigDiffResponse:
     config_id: str | Unset = UNSET
     diff: DiffDiff | Unset = UNSET
     old_config_id: str | Unset = UNSET
+    source: ConfigSourceArchiveDiff | Unset = UNSET
+    source_skipped: bool | Unset = UNSET
     summary: DiffDiffSummary | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -44,6 +49,12 @@ class ServiceAppConfigDiffResponse:
             diff = self.diff.to_dict()
 
         old_config_id = self.old_config_id
+
+        source: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.source, Unset):
+            source = self.source.to_dict()
+
+        source_skipped = self.source_skipped
 
         summary: dict[str, Any] | Unset = UNSET
         if not isinstance(self.summary, Unset):
@@ -60,6 +71,10 @@ class ServiceAppConfigDiffResponse:
             field_dict["diff"] = diff
         if old_config_id is not UNSET:
             field_dict["old_config_id"] = old_config_id
+        if source is not UNSET:
+            field_dict["source"] = source
+        if source_skipped is not UNSET:
+            field_dict["source_skipped"] = source_skipped
         if summary is not UNSET:
             field_dict["summary"] = summary
 
@@ -67,8 +82,9 @@ class ServiceAppConfigDiffResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.diff_diff import DiffDiff
-        from ..models.diff_diff_summary import DiffDiffSummary
+        from ..models.config_source_archive_diff import ConfigSourceArchiveDiff  # noqa: PLC0415
+        from ..models.diff_diff import DiffDiff  # noqa: PLC0415
+        from ..models.diff_diff_summary import DiffDiffSummary  # noqa: PLC0415
 
         d = dict(src_dict)
         changed = d.pop("changed", UNSET)
@@ -84,6 +100,15 @@ class ServiceAppConfigDiffResponse:
 
         old_config_id = d.pop("old_config_id", UNSET)
 
+        _source = d.pop("source", UNSET)
+        source: ConfigSourceArchiveDiff | Unset
+        if isinstance(_source, Unset):
+            source = UNSET
+        else:
+            source = ConfigSourceArchiveDiff.from_dict(_source)
+
+        source_skipped = d.pop("source_skipped", UNSET)
+
         _summary = d.pop("summary", UNSET)
         summary: DiffDiffSummary | Unset
         if isinstance(_summary, Unset):
@@ -96,6 +121,8 @@ class ServiceAppConfigDiffResponse:
             config_id=config_id,
             diff=diff,
             old_config_id=old_config_id,
+            source=source,
+            source_skipped=source_skipped,
             summary=summary,
         )
 
