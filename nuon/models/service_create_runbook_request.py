@@ -54,7 +54,7 @@ class ServiceCreateRunbookRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_create_runbook_request_labels import ServiceCreateRunbookRequestLabels
+        from ..models.service_create_runbook_request_labels import ServiceCreateRunbookRequestLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         name = d.pop("name")

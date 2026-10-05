@@ -18,6 +18,7 @@ class ServiceInstallComponentHealthSummary:
         component_id (str | Unset): ComponentID is what dashboard component routes are keyed by — a link
             built from the install-component id instead dead-ends on an empty page.
         component_name (str | Unset):
+        component_type (str | Unset):
         current_health (str | Unset):
         install_component_id (str | Unset):
         observed_seconds (int | Unset): ObservedSeconds distinguishes "no data" from "0% up" — without it a
@@ -27,6 +28,7 @@ class ServiceInstallComponentHealthSummary:
 
     component_id: str | Unset = UNSET
     component_name: str | Unset = UNSET
+    component_type: str | Unset = UNSET
     current_health: str | Unset = UNSET
     install_component_id: str | Unset = UNSET
     observed_seconds: int | Unset = UNSET
@@ -37,6 +39,8 @@ class ServiceInstallComponentHealthSummary:
         component_id = self.component_id
 
         component_name = self.component_name
+
+        component_type = self.component_type
 
         current_health = self.current_health
 
@@ -53,6 +57,8 @@ class ServiceInstallComponentHealthSummary:
             field_dict["component_id"] = component_id
         if component_name is not UNSET:
             field_dict["component_name"] = component_name
+        if component_type is not UNSET:
+            field_dict["component_type"] = component_type
         if current_health is not UNSET:
             field_dict["current_health"] = current_health
         if install_component_id is not UNSET:
@@ -71,6 +77,8 @@ class ServiceInstallComponentHealthSummary:
 
         component_name = d.pop("component_name", UNSET)
 
+        component_type = d.pop("component_type", UNSET)
+
         current_health = d.pop("current_health", UNSET)
 
         install_component_id = d.pop("install_component_id", UNSET)
@@ -82,6 +90,7 @@ class ServiceInstallComponentHealthSummary:
         service_install_component_health_summary = cls(
             component_id=component_id,
             component_name=component_name,
+            component_type=component_type,
             current_health=current_health,
             install_component_id=install_component_id,
             observed_seconds=observed_seconds,

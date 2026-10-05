@@ -100,7 +100,7 @@ class AppAppOperationRoleRule:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_org import AppOrg
+        from ..models.app_org import AppOrg  # noqa: PLC0415
 
         d = dict(src_dict)
         app_operation_role_config_id = d.pop("app_operation_role_config_id", UNSET)

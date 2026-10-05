@@ -294,13 +294,13 @@ class AppWorkflowStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_account import AppAccount
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_log_stream import AppLogStream
-        from ..models.app_workflow_step_approval import AppWorkflowStepApproval
-        from ..models.app_workflow_step_links import AppWorkflowStepLinks
-        from ..models.app_workflow_step_metadata import AppWorkflowStepMetadata
-        from ..models.app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
+        from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
+        from ..models.app_workflow_step_approval import AppWorkflowStepApproval  # noqa: PLC0415
+        from ..models.app_workflow_step_links import AppWorkflowStepLinks  # noqa: PLC0415
+        from ..models.app_workflow_step_metadata import AppWorkflowStepMetadata  # noqa: PLC0415
+        from ..models.app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation  # noqa: PLC0415
 
         d = dict(src_dict)
         _approval = d.pop("approval", UNSET)

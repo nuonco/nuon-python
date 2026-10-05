@@ -13,6 +13,9 @@ if TYPE_CHECKING:
     from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
     from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
     from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
+    from ..models.app_runner_group_settings_vendor_telemetry_resource_attributes import (
+        AppRunnerGroupSettingsVendorTelemetryResourceAttributes,
+    )
 
 
 T = TypeVar("T", bound="AppRunnerGroupSettings")
@@ -30,8 +33,13 @@ class AppRunnerGroupSettings:
         aws_tags (AppRunnerGroupSettingsAwsTags | Unset):
         binary_version (str | Unset): configuration for managing the runner binary version (for mng mode, not the
             install runner)
+        container_image_signature_identity_regexp (str | Unset):
+        container_image_signature_issuer (str | Unset):
         container_image_tag (str | Unset):
         container_image_url (str | Unset): configuration for deploying the runner
+        container_image_verification_mode (str | Unset): How the runner VM checks the runner image signature before
+            running it. Not persisted;
+            populated by the runner-settings handler from control plane config.
         container_max_uptime (int | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
@@ -64,7 +72,10 @@ class AppRunnerGroupSettings:
             host for mng mode. When empty, defaults to the S3 artifacts URL.
         runner_group_id (str | Unset):
         sandbox_mode (bool | Unset): configuration for managing the runner server side
+        telemetry_relay_endpoint (str | Unset):
         updated_at (str | Unset):
+        vendor_telemetry_enabled (bool | Unset):
+        vendor_telemetry_resource_attributes (AppRunnerGroupSettingsVendorTelemetryResourceAttributes | Unset):
         vm_max_uptime (int | Unset):
     """
 
@@ -74,8 +85,11 @@ class AppRunnerGroupSettings:
     aws_max_instance_lifetime: int | Unset = UNSET
     aws_tags: AppRunnerGroupSettingsAwsTags | Unset = UNSET
     binary_version: str | Unset = UNSET
+    container_image_signature_identity_regexp: str | Unset = UNSET
+    container_image_signature_issuer: str | Unset = UNSET
     container_image_tag: str | Unset = UNSET
     container_image_url: str | Unset = UNSET
+    container_image_verification_mode: str | Unset = UNSET
     container_max_uptime: int | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
@@ -101,7 +115,10 @@ class AppRunnerGroupSettings:
     runner_binary_url: str | Unset = UNSET
     runner_group_id: str | Unset = UNSET
     sandbox_mode: bool | Unset = UNSET
+    telemetry_relay_endpoint: str | Unset = UNSET
     updated_at: str | Unset = UNSET
+    vendor_telemetry_enabled: bool | Unset = UNSET
+    vendor_telemetry_resource_attributes: AppRunnerGroupSettingsVendorTelemetryResourceAttributes | Unset = UNSET
     vm_max_uptime: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -122,9 +139,15 @@ class AppRunnerGroupSettings:
 
         binary_version = self.binary_version
 
+        container_image_signature_identity_regexp = self.container_image_signature_identity_regexp
+
+        container_image_signature_issuer = self.container_image_signature_issuer
+
         container_image_tag = self.container_image_tag
 
         container_image_url = self.container_image_url
+
+        container_image_verification_mode = self.container_image_verification_mode
 
         container_max_uptime = self.container_max_uptime
 
@@ -182,7 +205,15 @@ class AppRunnerGroupSettings:
 
         sandbox_mode = self.sandbox_mode
 
+        telemetry_relay_endpoint = self.telemetry_relay_endpoint
+
         updated_at = self.updated_at
+
+        vendor_telemetry_enabled = self.vendor_telemetry_enabled
+
+        vendor_telemetry_resource_attributes: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.vendor_telemetry_resource_attributes, Unset):
+            vendor_telemetry_resource_attributes = self.vendor_telemetry_resource_attributes.to_dict()
 
         vm_max_uptime = self.vm_max_uptime
 
@@ -201,10 +232,16 @@ class AppRunnerGroupSettings:
             field_dict["aws_tags"] = aws_tags
         if binary_version is not UNSET:
             field_dict["binary_version"] = binary_version
+        if container_image_signature_identity_regexp is not UNSET:
+            field_dict["container_image_signature_identity_regexp"] = container_image_signature_identity_regexp
+        if container_image_signature_issuer is not UNSET:
+            field_dict["container_image_signature_issuer"] = container_image_signature_issuer
         if container_image_tag is not UNSET:
             field_dict["container_image_tag"] = container_image_tag
         if container_image_url is not UNSET:
             field_dict["container_image_url"] = container_image_url
+        if container_image_verification_mode is not UNSET:
+            field_dict["container_image_verification_mode"] = container_image_verification_mode
         if container_max_uptime is not UNSET:
             field_dict["container_max_uptime"] = container_max_uptime
         if created_at is not UNSET:
@@ -255,8 +292,14 @@ class AppRunnerGroupSettings:
             field_dict["runner_group_id"] = runner_group_id
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
+        if telemetry_relay_endpoint is not UNSET:
+            field_dict["telemetry_relay_endpoint"] = telemetry_relay_endpoint
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if vendor_telemetry_enabled is not UNSET:
+            field_dict["vendor_telemetry_enabled"] = vendor_telemetry_enabled
+        if vendor_telemetry_resource_attributes is not UNSET:
+            field_dict["vendor_telemetry_resource_attributes"] = vendor_telemetry_resource_attributes
         if vm_max_uptime is not UNSET:
             field_dict["vm_max_uptime"] = vm_max_uptime
 
@@ -264,9 +307,14 @@ class AppRunnerGroupSettings:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
-        from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
-        from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
+        from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags  # noqa: PLC0415
+        from ..models.app_runner_group_settings_job_group_parallelism import (
+            AppRunnerGroupSettingsJobGroupParallelism,  # noqa: PLC0415
+        )
+        from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata  # noqa: PLC0415
+        from ..models.app_runner_group_settings_vendor_telemetry_resource_attributes import (
+            AppRunnerGroupSettingsVendorTelemetryResourceAttributes,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _aws_auth_method = d.pop("aws_auth_method", UNSET)
@@ -291,9 +339,15 @@ class AppRunnerGroupSettings:
 
         binary_version = d.pop("binary_version", UNSET)
 
+        container_image_signature_identity_regexp = d.pop("container_image_signature_identity_regexp", UNSET)
+
+        container_image_signature_issuer = d.pop("container_image_signature_issuer", UNSET)
+
         container_image_tag = d.pop("container_image_tag", UNSET)
 
         container_image_url = d.pop("container_image_url", UNSET)
+
+        container_image_verification_mode = d.pop("container_image_verification_mode", UNSET)
 
         container_max_uptime = d.pop("container_max_uptime", UNSET)
 
@@ -355,7 +409,20 @@ class AppRunnerGroupSettings:
 
         sandbox_mode = d.pop("sandbox_mode", UNSET)
 
+        telemetry_relay_endpoint = d.pop("telemetry_relay_endpoint", UNSET)
+
         updated_at = d.pop("updated_at", UNSET)
+
+        vendor_telemetry_enabled = d.pop("vendor_telemetry_enabled", UNSET)
+
+        _vendor_telemetry_resource_attributes = d.pop("vendor_telemetry_resource_attributes", UNSET)
+        vendor_telemetry_resource_attributes: AppRunnerGroupSettingsVendorTelemetryResourceAttributes | Unset
+        if isinstance(_vendor_telemetry_resource_attributes, Unset):
+            vendor_telemetry_resource_attributes = UNSET
+        else:
+            vendor_telemetry_resource_attributes = AppRunnerGroupSettingsVendorTelemetryResourceAttributes.from_dict(
+                _vendor_telemetry_resource_attributes
+            )
 
         vm_max_uptime = d.pop("vm_max_uptime", UNSET)
 
@@ -366,8 +433,11 @@ class AppRunnerGroupSettings:
             aws_max_instance_lifetime=aws_max_instance_lifetime,
             aws_tags=aws_tags,
             binary_version=binary_version,
+            container_image_signature_identity_regexp=container_image_signature_identity_regexp,
+            container_image_signature_issuer=container_image_signature_issuer,
             container_image_tag=container_image_tag,
             container_image_url=container_image_url,
+            container_image_verification_mode=container_image_verification_mode,
             container_max_uptime=container_max_uptime,
             created_at=created_at,
             created_by_id=created_by_id,
@@ -393,7 +463,10 @@ class AppRunnerGroupSettings:
             runner_binary_url=runner_binary_url,
             runner_group_id=runner_group_id,
             sandbox_mode=sandbox_mode,
+            telemetry_relay_endpoint=telemetry_relay_endpoint,
             updated_at=updated_at,
+            vendor_telemetry_enabled=vendor_telemetry_enabled,
+            vendor_telemetry_resource_attributes=vendor_telemetry_resource_attributes,
             vm_max_uptime=vm_max_uptime,
         )
 
