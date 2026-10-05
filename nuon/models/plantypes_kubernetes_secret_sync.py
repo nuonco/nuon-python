@@ -95,7 +95,9 @@ class PlantypesKubernetesSecretSync:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.plantypes_kubernetes_secret_sync_target import PlantypesKubernetesSecretSyncTarget
+        from ..models.plantypes_kubernetes_secret_sync_target import (
+            PlantypesKubernetesSecretSyncTarget,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         azure_key_vault_secret_id = d.pop("azure_key_vault_secret_id", UNSET)

@@ -180,12 +180,12 @@ class AppQueueSignal:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_queue import AppQueue
-        from ..models.callback_ref import CallbackRef
-        from ..models.cctx_signal_context import CctxSignalContext
-        from ..models.signaldb_signal_data import SignaldbSignalData
-        from ..models.signaldb_workflow_ref import SignaldbWorkflowRef
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_queue import AppQueue  # noqa: PLC0415
+        from ..models.callback_ref import CallbackRef  # noqa: PLC0415
+        from ..models.cctx_signal_context import CctxSignalContext  # noqa: PLC0415
+        from ..models.signaldb_signal_data import SignaldbSignalData  # noqa: PLC0415
+        from ..models.signaldb_workflow_ref import SignaldbWorkflowRef  # noqa: PLC0415
 
         d = dict(src_dict)
         _callback = d.pop("callback", UNSET)

@@ -141,18 +141,20 @@ class PlantypesPulumiDeployPlan:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
-            GithubComNuoncoNuonPkgAwsCredentialsConfig,
+            GithubComNuoncoNuonPkgAwsCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_azure_credentials_config import (
-            GithubComNuoncoNuonPkgAzureCredentialsConfig,
+            GithubComNuoncoNuonPkgAzureCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
-            GithubComNuoncoNuonPkgGcpCredentialsConfig,
+            GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
-        from ..models.kube_cluster_info import KubeClusterInfo
-        from ..models.plantypes_pulumi_deploy_plan_config import PlantypesPulumiDeployPlanConfig
-        from ..models.plantypes_pulumi_deploy_plan_env_vars import PlantypesPulumiDeployPlanEnvVars
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import (
+            GithubComNuoncoNuonPkgTypesStateState,  # noqa: PLC0415
+        )
+        from ..models.kube_cluster_info import KubeClusterInfo  # noqa: PLC0415
+        from ..models.plantypes_pulumi_deploy_plan_config import PlantypesPulumiDeployPlanConfig  # noqa: PLC0415
+        from ..models.plantypes_pulumi_deploy_plan_env_vars import PlantypesPulumiDeployPlanEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         _aws_auth = d.pop("aws_auth", UNSET)

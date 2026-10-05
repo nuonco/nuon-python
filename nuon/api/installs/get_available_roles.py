@@ -8,6 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.get_available_roles_operation_type import GetAvailableRolesOperationType
 from ...models.get_available_roles_principal_type import GetAvailableRolesPrincipalType
+from ...models.get_available_roles_workflow_type import GetAvailableRolesWorkflowType
 from ...models.service_available_roles_response import ServiceAvailableRolesResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
@@ -18,6 +19,7 @@ def _get_kwargs(
     *,
     principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
     operation_type: GetAvailableRolesOperationType | Unset = UNSET,
+    workflow_type: GetAvailableRolesWorkflowType | Unset = UNSET,
     principal_id: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -34,6 +36,12 @@ def _get_kwargs(
         json_operation_type = operation_type.value
 
     params["operation_type"] = json_operation_type
+
+    json_workflow_type: str | Unset = UNSET
+    if not isinstance(workflow_type, Unset):
+        json_workflow_type = workflow_type.value
+
+    params["workflow_type"] = json_workflow_type
 
     params["principal_id"] = principal_id
 
@@ -106,24 +114,34 @@ def sync_detailed(
     client: AuthenticatedClient,
     principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
     operation_type: GetAvailableRolesOperationType | Unset = UNSET,
+    workflow_type: GetAvailableRolesWorkflowType | Unset = UNSET,
     principal_id: str | Unset = UNSET,
 ) -> Response[ServiceAvailableRolesResponse | StderrErrResponse]:
     """get available IAM roles for a specific operation
 
-     Returns a list of available IAM roles that can be used for a specific operation on an install.
+     Returns the roles available in the install's stack outputs, including provision,
+    deprovision, maintenance, custom, and break-glass roles.
 
-    The endpoint filters roles based on the operation type:
-    - **provision/reprovision**: Custom roles, break glass roles, provision IAM role
-    - **deprovision/teardown**: Custom roles, break glass roles, deprovision IAM role
-    - **deploy**: Custom roles, break glass roles, maintenance IAM role
-    - **trigger** (actions): Custom roles, break glass roles, provision + maintenance IAM roles
+    Pass `workflow_type` to preview the parent workflow's default for component and
+    action steps. Workflow-type defaults are enabled by default, using the same
+    mapping as execution. Set `USE_LEGACY_MAINTENANCE_ROLE_DEFAULT=true` to keep the
+    legacy maintenance default instead. The API and worker must use the same flag
+    value.
 
-    Roles are sourced from the install's stack outputs.
+    With `principal_type`, `operation_type`, and `principal_id`, the `default` marker
+    also accounts for entity, break-glass, and operation-matrix configuration. Omit
+    `principal_id` for adhoc actions. Sandbox defaults follow their operation type
+    independently of the workflow-default flag.
+
+    Without a principal, the preview is the workflow's base default; individual steps
+    may use configured role overrides. Omitting `workflow_type` preserves the legacy
+    component/action maintenance default.
 
     Args:
         install_id (str):
         principal_type (GetAvailableRolesPrincipalType | Unset):
         operation_type (GetAvailableRolesOperationType | Unset):
+        workflow_type (GetAvailableRolesWorkflowType | Unset):
         principal_id (str | Unset):
 
     Raises:
@@ -138,6 +156,7 @@ def sync_detailed(
         install_id=install_id,
         principal_type=principal_type,
         operation_type=operation_type,
+        workflow_type=workflow_type,
         principal_id=principal_id,
     )
 
@@ -154,24 +173,34 @@ def sync(
     client: AuthenticatedClient,
     principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
     operation_type: GetAvailableRolesOperationType | Unset = UNSET,
+    workflow_type: GetAvailableRolesWorkflowType | Unset = UNSET,
     principal_id: str | Unset = UNSET,
 ) -> ServiceAvailableRolesResponse | StderrErrResponse | None:
     """get available IAM roles for a specific operation
 
-     Returns a list of available IAM roles that can be used for a specific operation on an install.
+     Returns the roles available in the install's stack outputs, including provision,
+    deprovision, maintenance, custom, and break-glass roles.
 
-    The endpoint filters roles based on the operation type:
-    - **provision/reprovision**: Custom roles, break glass roles, provision IAM role
-    - **deprovision/teardown**: Custom roles, break glass roles, deprovision IAM role
-    - **deploy**: Custom roles, break glass roles, maintenance IAM role
-    - **trigger** (actions): Custom roles, break glass roles, provision + maintenance IAM roles
+    Pass `workflow_type` to preview the parent workflow's default for component and
+    action steps. Workflow-type defaults are enabled by default, using the same
+    mapping as execution. Set `USE_LEGACY_MAINTENANCE_ROLE_DEFAULT=true` to keep the
+    legacy maintenance default instead. The API and worker must use the same flag
+    value.
 
-    Roles are sourced from the install's stack outputs.
+    With `principal_type`, `operation_type`, and `principal_id`, the `default` marker
+    also accounts for entity, break-glass, and operation-matrix configuration. Omit
+    `principal_id` for adhoc actions. Sandbox defaults follow their operation type
+    independently of the workflow-default flag.
+
+    Without a principal, the preview is the workflow's base default; individual steps
+    may use configured role overrides. Omitting `workflow_type` preserves the legacy
+    component/action maintenance default.
 
     Args:
         install_id (str):
         principal_type (GetAvailableRolesPrincipalType | Unset):
         operation_type (GetAvailableRolesOperationType | Unset):
+        workflow_type (GetAvailableRolesWorkflowType | Unset):
         principal_id (str | Unset):
 
     Raises:
@@ -187,6 +216,7 @@ def sync(
         client=client,
         principal_type=principal_type,
         operation_type=operation_type,
+        workflow_type=workflow_type,
         principal_id=principal_id,
     ).parsed
 
@@ -197,24 +227,34 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
     operation_type: GetAvailableRolesOperationType | Unset = UNSET,
+    workflow_type: GetAvailableRolesWorkflowType | Unset = UNSET,
     principal_id: str | Unset = UNSET,
 ) -> Response[ServiceAvailableRolesResponse | StderrErrResponse]:
     """get available IAM roles for a specific operation
 
-     Returns a list of available IAM roles that can be used for a specific operation on an install.
+     Returns the roles available in the install's stack outputs, including provision,
+    deprovision, maintenance, custom, and break-glass roles.
 
-    The endpoint filters roles based on the operation type:
-    - **provision/reprovision**: Custom roles, break glass roles, provision IAM role
-    - **deprovision/teardown**: Custom roles, break glass roles, deprovision IAM role
-    - **deploy**: Custom roles, break glass roles, maintenance IAM role
-    - **trigger** (actions): Custom roles, break glass roles, provision + maintenance IAM roles
+    Pass `workflow_type` to preview the parent workflow's default for component and
+    action steps. Workflow-type defaults are enabled by default, using the same
+    mapping as execution. Set `USE_LEGACY_MAINTENANCE_ROLE_DEFAULT=true` to keep the
+    legacy maintenance default instead. The API and worker must use the same flag
+    value.
 
-    Roles are sourced from the install's stack outputs.
+    With `principal_type`, `operation_type`, and `principal_id`, the `default` marker
+    also accounts for entity, break-glass, and operation-matrix configuration. Omit
+    `principal_id` for adhoc actions. Sandbox defaults follow their operation type
+    independently of the workflow-default flag.
+
+    Without a principal, the preview is the workflow's base default; individual steps
+    may use configured role overrides. Omitting `workflow_type` preserves the legacy
+    component/action maintenance default.
 
     Args:
         install_id (str):
         principal_type (GetAvailableRolesPrincipalType | Unset):
         operation_type (GetAvailableRolesOperationType | Unset):
+        workflow_type (GetAvailableRolesWorkflowType | Unset):
         principal_id (str | Unset):
 
     Raises:
@@ -229,6 +269,7 @@ async def asyncio_detailed(
         install_id=install_id,
         principal_type=principal_type,
         operation_type=operation_type,
+        workflow_type=workflow_type,
         principal_id=principal_id,
     )
 
@@ -243,24 +284,34 @@ async def asyncio(
     client: AuthenticatedClient,
     principal_type: GetAvailableRolesPrincipalType | Unset = UNSET,
     operation_type: GetAvailableRolesOperationType | Unset = UNSET,
+    workflow_type: GetAvailableRolesWorkflowType | Unset = UNSET,
     principal_id: str | Unset = UNSET,
 ) -> ServiceAvailableRolesResponse | StderrErrResponse | None:
     """get available IAM roles for a specific operation
 
-     Returns a list of available IAM roles that can be used for a specific operation on an install.
+     Returns the roles available in the install's stack outputs, including provision,
+    deprovision, maintenance, custom, and break-glass roles.
 
-    The endpoint filters roles based on the operation type:
-    - **provision/reprovision**: Custom roles, break glass roles, provision IAM role
-    - **deprovision/teardown**: Custom roles, break glass roles, deprovision IAM role
-    - **deploy**: Custom roles, break glass roles, maintenance IAM role
-    - **trigger** (actions): Custom roles, break glass roles, provision + maintenance IAM roles
+    Pass `workflow_type` to preview the parent workflow's default for component and
+    action steps. Workflow-type defaults are enabled by default, using the same
+    mapping as execution. Set `USE_LEGACY_MAINTENANCE_ROLE_DEFAULT=true` to keep the
+    legacy maintenance default instead. The API and worker must use the same flag
+    value.
 
-    Roles are sourced from the install's stack outputs.
+    With `principal_type`, `operation_type`, and `principal_id`, the `default` marker
+    also accounts for entity, break-glass, and operation-matrix configuration. Omit
+    `principal_id` for adhoc actions. Sandbox defaults follow their operation type
+    independently of the workflow-default flag.
+
+    Without a principal, the preview is the workflow's base default; individual steps
+    may use configured role overrides. Omitting `workflow_type` preserves the legacy
+    component/action maintenance default.
 
     Args:
         install_id (str):
         principal_type (GetAvailableRolesPrincipalType | Unset):
         operation_type (GetAvailableRolesOperationType | Unset):
+        workflow_type (GetAvailableRolesWorkflowType | Unset):
         principal_id (str | Unset):
 
     Raises:
@@ -277,6 +328,7 @@ async def asyncio(
             client=client,
             principal_type=principal_type,
             operation_type=operation_type,
+            workflow_type=workflow_type,
             principal_id=principal_id,
         )
     ).parsed

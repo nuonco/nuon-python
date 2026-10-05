@@ -16,10 +16,21 @@ from .app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
 from .app_app_branch import AppAppBranch
 from .app_app_branch_config import AppAppBranchConfig
 from .app_app_branch_install_group import AppAppBranchInstallGroup
+from .app_app_branch_preview_config import AppAppBranchPreviewConfig
+from .app_app_branch_preview_override import AppAppBranchPreviewOverride
 from .app_app_branch_run import AppAppBranchRun
+from .app_app_branch_run_comparison import AppAppBranchRunComparison
+from .app_app_branch_run_config import AppAppBranchRunConfig
+from .app_app_branch_run_metadata import AppAppBranchRunMetadata
+from .app_app_branch_run_mode import AppAppBranchRunMode
+from .app_app_branch_run_preview import AppAppBranchRunPreview
+from .app_app_branch_run_preview_mode import AppAppBranchRunPreviewMode
+from .app_app_branch_run_preview_source import AppAppBranchRunPreviewSource
+from .app_app_branch_run_trigger import AppAppBranchRunTrigger
 from .app_app_branch_run_type import AppAppBranchRunType
 from .app_app_break_glass_config import AppAppBreakGlassConfig
 from .app_app_config import AppAppConfig
+from .app_app_config_ref import AppAppConfigRef
 from .app_app_config_status import AppAppConfigStatus
 from .app_app_config_version import AppAppConfigVersion
 from .app_app_default_labels import AppAppDefaultLabels
@@ -33,6 +44,7 @@ from .app_app_kubernetes_context_config import AppAppKubernetesContextConfig
 from .app_app_kubernetes_contexts_config import AppAppKubernetesContextsConfig
 from .app_app_label_colors import AppAppLabelColors
 from .app_app_links import AppAppLinks
+from .app_app_named_iam_policy_config import AppAppNamedIAMPolicyConfig
 from .app_app_operation_role_config import AppAppOperationRoleConfig
 from .app_app_operation_role_rule import AppAppOperationRoleRule
 from .app_app_permissions_config import AppAppPermissionsConfig
@@ -58,6 +70,7 @@ from .app_aws_stack_outputs import AppAWSStackOutputs
 from .app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns
 from .app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns
 from .app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs
+from .app_aws_stack_outputs_named_policy_arns import AppAWSStackOutputsNamedPolicyArns
 from .app_awsecr_image_config import AppAWSECRImageConfig
 from .app_awsiam_role_type import AppAWSIAMRoleType
 from .app_azure_account import AppAzureAccount
@@ -66,6 +79,10 @@ from .app_azure_stack_outputs import AppAzureStackOutputs
 from .app_azure_stack_outputs_break_glass_identity_client_ids import AppAzureStackOutputsBreakGlassIdentityClientIds
 from .app_azure_stack_outputs_custom_identity_client_ids import AppAzureStackOutputsCustomIdentityClientIds
 from .app_azure_stack_outputs_install_inputs import AppAzureStackOutputsInstallInputs
+from .app_cloud_connection import AppCloudConnection
+from .app_cloud_connection_platform import AppCloudConnectionPlatform
+from .app_cloud_connection_preset import AppCloudConnectionPreset
+from .app_cloud_connection_status import AppCloudConnectionStatus
 from .app_cloud_platform import AppCloudPlatform
 from .app_cloud_platform_region import AppCloudPlatformRegion
 from .app_component import AppComponent
@@ -109,6 +126,7 @@ from .app_install_action_workflow_run_status import AppInstallActionWorkflowRunS
 from .app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep
 from .app_install_action_workflow_run_step_status import AppInstallActionWorkflowRunStepStatus
 from .app_install_app_branch_connection import AppInstallAppBranchConnection
+from .app_install_app_branch_group_assignment_source import AppInstallAppBranchGroupAssignmentSource
 from .app_install_app_config_version import AppInstallAppConfigVersion
 from .app_install_app_config_version_metadata import AppInstallAppConfigVersionMetadata
 from .app_install_app_default_labels import AppInstallAppDefaultLabels
@@ -123,6 +141,7 @@ from .app_install_component_statuses import AppInstallComponentStatuses
 from .app_install_config import AppInstallConfig
 from .app_install_config_component_toggles import AppInstallConfigComponentToggles
 from .app_install_config_diff import AppInstallConfigDiff
+from .app_install_config_impact import AppInstallConfigImpact
 from .app_install_config_sync import AppInstallConfigSync
 from .app_install_config_sync_metadata import AppInstallConfigSyncMetadata
 from .app_install_config_version import AppInstallConfigVersion
@@ -159,6 +178,10 @@ from .app_install_stack_outputs import AppInstallStackOutputs
 from .app_install_stack_outputs_data import AppInstallStackOutputsData
 from .app_install_stack_outputs_data_contents import AppInstallStackOutputsDataContents
 from .app_install_stack_version import AppInstallStackVersion
+from .app_install_stack_version_custom_stacks_input_parameters_map import (
+    AppInstallStackVersionCustomStacksInputParametersMap,
+)
+from .app_install_stack_version_custom_stacks_output_map import AppInstallStackVersionCustomStacksOutputMap
 from .app_install_stack_version_run import AppInstallStackVersionRun
 from .app_install_stack_version_run_data import AppInstallStackVersionRunData
 from .app_install_stack_version_run_data_contents import AppInstallStackVersionRunDataContents
@@ -191,6 +214,9 @@ from .app_org_feature_info import AppOrgFeatureInfo
 from .app_org_invite import AppOrgInvite
 from .app_org_invite_status import AppOrgInviteStatus
 from .app_org_links import AppOrgLinks
+from .app_org_member import AppOrgMember
+from .app_org_member_status import AppOrgMemberStatus
+from .app_org_telemetry_settings import AppOrgTelemetrySettings
 from .app_otel_log_record import AppOtelLogRecord
 from .app_otel_log_record_log_attributes import AppOtelLogRecordLogAttributes
 from .app_otel_log_record_resource_attributes import AppOtelLogRecordResourceAttributes
@@ -230,6 +256,9 @@ from .app_runner_group_settings_aws_auth_method import AppRunnerGroupSettingsAws
 from .app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags
 from .app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism
 from .app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata
+from .app_runner_group_settings_vendor_telemetry_resource_attributes import (
+    AppRunnerGroupSettingsVendorTelemetryResourceAttributes,
+)
 from .app_runner_group_type import AppRunnerGroupType
 from .app_runner_health_check import AppRunnerHealthCheck
 from .app_runner_heart_beat import AppRunnerHeartBeat
@@ -266,11 +295,13 @@ from .app_slack_installation import AppSlackInstallation
 from .app_slack_installation_status import AppSlackInstallationStatus
 from .app_slack_org_link import AppSlackOrgLink
 from .app_slack_org_link_status import AppSlackOrgLinkStatus
+from .app_stack_deployment_scope import AppStackDeploymentScope
 from .app_stack_type import AppStackType
 from .app_stack_version_run_input_diff import AppStackVersionRunInputDiff
 from .app_stack_version_run_role_diff import AppStackVersionRunRoleDiff
 from .app_stack_version_run_type import AppStackVersionRunType
 from .app_status import AppStatus
+from .app_step_change_state import AppStepChangeState
 from .app_terraform_lock import AppTerraformLock
 from .app_terraform_module_component_config import AppTerraformModuleComponentConfig
 from .app_terraform_module_component_config_env_vars import AppTerraformModuleComponentConfigEnvVars
@@ -314,6 +345,7 @@ from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
 from .blobstore_blob import BlobstoreBlob
+from .blobstore_blob_metadata import BlobstoreBlobMetadata
 from .callback_ref import CallbackRef
 from .cctx_signal_context import CctxSignalContext
 from .client_conversation import ClientConversation
@@ -329,6 +361,10 @@ from .config_custom_nested_stack import ConfigCustomNestedStack
 from .config_custom_nested_stack_parameters import ConfigCustomNestedStackParameters
 from .config_custom_nested_stack_status import ConfigCustomNestedStackStatus
 from .config_helm_repo_config import ConfigHelmRepoConfig
+from .config_install_telemetry import ConfigInstallTelemetry
+from .config_source_archive_diff import ConfigSourceArchiveDiff
+from .config_source_file_diff import ConfigSourceFileDiff
+from .configs_acr_app_registration import ConfigsACRAppRegistration
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
 from .configs_oci_registry_type import ConfigsOCIRegistryType
@@ -339,12 +375,15 @@ from .delete_app_installs_config_response_200 import DeleteAppInstallsConfigResp
 from .diff_diff import DiffDiff
 from .diff_diff_key import DiffDiffKey
 from .diff_diff_summary import DiffDiffSummary
+from .diff_edge_reason import DiffEdgeReason
+from .diff_impact_reason import DiffImpactReason
 from .diff_op import DiffOp
 from .generics_null_time import GenericsNullTime
 from .get_action_label_keys_response_200 import GetActionLabelKeysResponse200
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_available_roles_operation_type import GetAvailableRolesOperationType
 from .get_available_roles_principal_type import GetAvailableRolesPrincipalType
+from .get_available_roles_workflow_type import GetAvailableRolesWorkflowType
 from .get_component_label_keys_response_200 import GetComponentLabelKeysResponse200
 from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse200
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
@@ -352,9 +391,9 @@ from .get_install_component_outputs_response_200 import GetInstallComponentOutpu
 from .get_install_config_version_diff_response_200 import GetInstallConfigVersionDiffResponse200
 from .get_install_label_keys_response_200 import GetInstallLabelKeysResponse200
 from .get_queue_signal_graph_response_200 import GetQueueSignalGraphResponse200
-from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJSONByIDResponse200
-from .get_terraform_workspace_states_json_by_idv2_response_200 import GetTerraformWorkspaceStatesJSONByIDV2Response200
-from .get_workspace_state_json_raw_by_id_response_200 import GetWorkspaceStateJSONRawByIDResponse200
+from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJsonByIdResponse200
+from .get_terraform_workspace_states_json_by_idv_2_response_200 import GetTerraformWorkspaceStatesJsonByIdv2Response200
+from .get_workspace_state_json_raw_by_id_response_200 import GetWorkspaceStateJsonRawByIdResponse200
 from .github_com_nuonco_nuon_pkg_aws_credentials_config import GithubComNuoncoNuonPkgAwsCredentialsConfig
 from .github_com_nuonco_nuon_pkg_azure_credentials_config import GithubComNuoncoNuonPkgAzureCredentialsConfig
 from .github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
@@ -366,12 +405,6 @@ from .github_com_nuonco_nuon_pkg_types_state_state_labels import GithubComNuonco
 from .github_com_nuonco_nuon_services_ctl_api_internal_app_accounts_service_static_token_response import (
     GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse,
 )
-from .github_match import GithubMatch
-from .github_plan import GithubPlan
-from .github_text_match import GithubTextMatch
-from .github_timestamp import GithubTimestamp
-from .github_user import GithubUser
-from .github_user_permissions import GithubUserPermissions
 from .helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest
 from .helpers_create_install_aws_account_params import HelpersCreateInstallAWSAccountParams
 from .helpers_create_install_azure_account_params import HelpersCreateInstallAzureAccountParams
@@ -379,11 +412,17 @@ from .helpers_create_install_config_params import HelpersCreateInstallConfigPara
 from .helpers_create_install_config_params_labels import HelpersCreateInstallConfigParamsLabels
 from .helpers_create_install_gcp_account_params import HelpersCreateInstallGCPAccountParams
 from .helpers_install_metadata import HelpersInstallMetadata
+from .helpers_list_preview_sources_result import HelpersListPreviewSourcesResult
+from .helpers_preview_source_branch import HelpersPreviewSourceBranch
+from .helpers_preview_source_pr import HelpersPreviewSourcePR
 from .helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest
 from .iam_static_credentials import IamStaticCredentials
 from .iam_two_step_config import IamTwoStepConfig
+from .keys_workflow_telemetry import KeysWorkflowTelemetry
 from .kube_cluster_info import KubeClusterInfo
 from .kube_cluster_info_env_vars import KubeClusterInfoEnvVars
+from .oidcissuer_discovery_document import OidcissuerDiscoveryDocument
+from .oidcissuer_jwk import OidcissuerJWK
 from .outputs_secret_sync_output import OutputsSecretSyncOutput
 from .permissions_permission import PermissionsPermission
 from .permissions_set import PermissionsSet
@@ -460,6 +499,8 @@ from .service_add_install_labels_request_labels import ServiceAddInstallLabelsRe
 from .service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
 from .service_app_awsiam_role_config import ServiceAppAWSIAMRoleConfig
 from .service_app_awsiam_role_config_cloud_platform import ServiceAppAWSIAMRoleConfigCloudPlatform
+from .service_app_branch_run_comparison_response import ServiceAppBranchRunComparisonResponse
+from .service_app_branch_run_comparison_run_summary import ServiceAppBranchRunComparisonRunSummary
 from .service_app_config_diff_response import ServiceAppConfigDiffResponse
 from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
@@ -469,6 +510,7 @@ from .service_app_kubernetes_context import ServiceAppKubernetesContext
 from .service_app_label_key_summary import ServiceAppLabelKeySummary
 from .service_app_labels_response import ServiceAppLabelsResponse
 from .service_app_labels_response_label_colors import ServiceAppLabelsResponseLabelColors
+from .service_app_named_iam_policy_config import ServiceAppNamedIAMPolicyConfig
 from .service_app_policy_config import ServiceAppPolicyConfig
 from .service_app_secret_config import ServiceAppSecretConfig
 from .service_auth_me_identity import ServiceAuthMeIdentity
@@ -502,6 +544,11 @@ from .service_connected_github_vcs_action_workflow_config_request import (
     ServiceConnectedGithubVCSActionWorkflowConfigRequest,
 )
 from .service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
+from .service_connection_list_response import ServiceConnectionListResponse
+from .service_connection_list_response_platform import ServiceConnectionListResponsePlatform
+from .service_connection_response import ServiceConnectionResponse
+from .service_connection_response_platform import ServiceConnectionResponsePlatform
+from .service_connection_usage import ServiceConnectionUsage
 from .service_create_action_workflow_config_request import ServiceCreateActionWorkflowConfigRequest
 from .service_create_action_workflow_config_step_request import ServiceCreateActionWorkflowConfigStepRequest
 from .service_create_action_workflow_config_step_request_env_vars import (
@@ -611,6 +658,8 @@ from .service_create_pulumi_component_config_request_env_vars import ServiceCrea
 from .service_create_pulumi_component_config_request_operation_roles import (
     ServiceCreatePulumiComponentConfigRequestOperationRoles,
 )
+from .service_create_request import ServiceCreateRequest
+from .service_create_request_platform import ServiceCreateRequestPlatform
 from .service_create_runbook_config_request import ServiceCreateRunbookConfigRequest
 from .service_create_runbook_input_request import ServiceCreateRunbookInputRequest
 from .service_create_runbook_request import ServiceCreateRunbookRequest
@@ -654,19 +703,51 @@ from .service_force_shutdown_request import ServiceForceShutdownRequest
 from .service_forget_install_component_request import ServiceForgetInstallComponentRequest
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
+from .service_get_install_activity_response import ServiceGetInstallActivityResponse
+from .service_get_install_deployments_response import ServiceGetInstallDeploymentsResponse
 from .service_get_install_url_response import ServiceGetInstallURLResponse
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
 from .service_health_probe_request import ServiceHealthProbeRequest
 from .service_health_transition_response import ServiceHealthTransitionResponse
 from .service_helm_repo_config_request import ServiceHelmRepoConfigRequest
+from .service_install_activity import ServiceInstallActivity
+from .service_install_activity_action import ServiceInstallActivityAction
+from .service_install_activity_policy import ServiceInstallActivityPolicy
+from .service_install_activity_runbook import ServiceInstallActivityRunbook
+from .service_install_activity_type import ServiceInstallActivityType
+from .service_install_activity_workflow_ref import ServiceInstallActivityWorkflowRef
+from .service_install_app_config_update import ServiceInstallAppConfigUpdate
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
+from .service_install_branch_tracking import ServiceInstallBranchTracking
 from .service_install_component_health_summary import ServiceInstallComponentHealthSummary
 from .service_install_component_health_timeline_response import ServiceInstallComponentHealthTimelineResponse
+from .service_install_config_drift import ServiceInstallConfigDrift
+from .service_install_config_drift_component import ServiceInstallConfigDriftComponent
+from .service_install_config_drift_resource import ServiceInstallConfigDriftResource
+from .service_install_config_update import ServiceInstallConfigUpdate
+from .service_install_deployment import ServiceInstallDeployment
+from .service_install_deployment_affected_resources import ServiceInstallDeploymentAffectedResources
+from .service_install_deployment_app_branch_ref import ServiceInstallDeploymentAppBranchRef
+from .service_install_deployment_change_group import ServiceInstallDeploymentChangeGroup
+from .service_install_deployment_config_change import ServiceInstallDeploymentConfigChange
+from .service_install_deployment_image import ServiceInstallDeploymentImage
+from .service_install_deployment_type import ServiceInstallDeploymentType
+from .service_install_deployment_workflow_ref import ServiceInstallDeploymentWorkflowRef
 from .service_install_group_request import ServiceInstallGroupRequest
 from .service_install_health_summary import ServiceInstallHealthSummary
 from .service_install_health_timeline_response import ServiceInstallHealthTimelineResponse
+from .service_install_healthcheck import ServiceInstallHealthcheck
+from .service_install_inputs_update import ServiceInstallInputsUpdate
+from .service_install_overview_commit import ServiceInstallOverviewCommit
+from .service_install_overview_response import ServiceInstallOverviewResponse
 from .service_install_permissions_role_status import ServiceInstallPermissionsRoleStatus
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
+from .service_install_stack_update import ServiceInstallStackUpdate
+from .service_install_status_response import ServiceInstallStatusResponse
+from .service_install_telemetry_settings import ServiceInstallTelemetrySettings
+from .service_install_update import ServiceInstallUpdate
+from .service_install_update_type import ServiceInstallUpdateType
+from .service_install_updates_response import ServiceInstallUpdatesResponse
 from .service_installs_health_response import ServiceInstallsHealthResponse
 from .service_kubernetes_sync_target import ServiceKubernetesSyncTarget
 from .service_kustomize_config_request import ServiceKustomizeConfigRequest
@@ -679,6 +760,8 @@ from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
 from .service_mng_vm_shut_down_request import ServiceMngVMShutDownRequest
+from .service_move_install_to_app_branch_request import ServiceMoveInstallToAppBranchRequest
+from .service_move_install_to_app_branch_request_labels import ServiceMoveInstallToAppBranchRequestLabels
 from .service_operation_role_rule_request import ServiceOperationRoleRuleRequest
 from .service_org_component_build_history_item import ServiceOrgComponentBuildHistoryItem
 from .service_org_component_build_history_response import ServiceOrgComponentBuildHistoryResponse
@@ -686,6 +769,8 @@ from .service_patch_install_config_params import ServicePatchInstallConfigParams
 from .service_policy_analytics_breakdown import ServicePolicyAnalyticsBreakdown
 from .service_policy_analytics_summary import ServicePolicyAnalyticsSummary
 from .service_policy_analytics_timeseries import ServicePolicyAnalyticsTimeseries
+from .service_preview_install_candidates_response import ServicePreviewInstallCandidatesResponse
+from .service_preview_run_request import ServicePreviewRunRequest
 from .service_prune_tokens_response import ServicePruneTokensResponse
 from .service_public_git_vcs_action_workflow_config_request import ServicePublicGitVCSActionWorkflowConfigRequest
 from .service_public_git_vcs_config_request import ServicePublicGitVCSConfigRequest
@@ -694,6 +779,7 @@ from .service_put_install_component_health_check_request_details import (
     ServicePutInstallComponentHealthCheckRequestDetails,
 )
 from .service_readme import ServiceReadme
+from .service_recover_install_component_helm_release_request import ServiceRecoverInstallComponentHelmReleaseRequest
 from .service_refresh_install_health_cluster_access_request import ServiceRefreshInstallHealthClusterAccessRequest
 from .service_refresh_install_health_cluster_access_response import ServiceRefreshInstallHealthClusterAccessResponse
 from .service_remove_action_labels_request import ServiceRemoveActionLabelsRequest
@@ -717,19 +803,26 @@ from .service_runner_card_details_response import ServiceRunnerCardDetailsRespon
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_series_point import ServiceSeriesPoint
 from .service_series_point_labels import ServiceSeriesPointLabels
+from .service_setup_response import ServiceSetupResponse
+from .service_setup_response_permissions_policy import ServiceSetupResponsePermissionsPolicy
+from .service_setup_response_trust_policy import ServiceSetupResponseTrustPolicy
 from .service_shutdown_runner_process_request import ServiceShutdownRunnerProcessRequest
 from .service_skip_workflow_step_response import ServiceSkipWorkflowStepResponse
 from .service_slack_challenge_response import ServiceSlackChallengeResponse
 from .service_slash_response import ServiceSlashResponse
+from .service_stack_service_account_response import ServiceStackServiceAccountResponse
 from .service_sync_secrets_request import ServiceSyncSecretsRequest
 from .service_teardown_install_component_request import ServiceTeardownInstallComponentRequest
 from .service_teardown_install_components_request import ServiceTeardownInstallComponentsRequest
+from .service_telemetry_json_web_key_set import ServiceTelemetryJSONWebKeySet
 from .service_timeseries_bucket import ServiceTimeseriesBucket
 from .service_toggle_install_component_request import ServiceToggleInstallComponentRequest
 from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRequest
+from .service_trigger_app_branch_run_source import ServiceTriggerAppBranchRunSource
 from .service_trigger_install_config_sync_request import ServiceTriggerInstallConfigSyncRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
 from .service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels
+from .service_update_app_branch_config_request import ServiceUpdateAppBranchConfigRequest
 from .service_update_app_branch_request import ServiceUpdateAppBranchRequest
 from .service_update_app_config_installs_request import ServiceUpdateAppConfigInstallsRequest
 from .service_update_app_config_request import ServiceUpdateAppConfigRequest
@@ -761,6 +854,7 @@ from .service_update_org_account_role_request import ServiceUpdateOrgAccountRole
 from .service_update_org_features_request import ServiceUpdateOrgFeaturesRequest
 from .service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures
 from .service_update_org_request import ServiceUpdateOrgRequest
+from .service_update_org_telemetry_request import ServiceUpdateOrgTelemetryRequest
 from .service_update_runbook_request import ServiceUpdateRunbookRequest
 from .service_update_runbook_request_labels import ServiceUpdateRunbookRequestLabels
 from .service_update_runner_settings_request import ServiceUpdateRunnerSettingsRequest
@@ -778,12 +872,16 @@ from .service_vcs_connection_repo import ServiceVCSConnectionRepo
 from .service_vcs_connection_repos_response import ServiceVCSConnectionReposResponse
 from .service_vcs_connection_status_response import ServiceVCSConnectionStatusResponse
 from .service_vcs_connection_status_response_permissions import ServiceVCSConnectionStatusResponsePermissions
+from .service_vcs_connection_user import ServiceVCSConnectionUser
 from .service_waitlist_request import ServiceWaitlistRequest
 from .service_workflow_queue_item import ServiceWorkflowQueueItem
 from .service_workflow_queue_item_metadata import ServiceWorkflowQueueItemMetadata
 from .service_workflow_queue_position_response import ServiceWorkflowQueuePositionResponse
 from .signaldb_signal_data import SignaldbSignalData
 from .signaldb_workflow_ref import SignaldbWorkflowRef
+from .signature_authority import SignatureAuthority
+from .signature_authority_type import SignatureAuthorityType
+from .signature_verification import SignatureVerification
 from .slack_events_body import SlackEventsBody
 from .slack_interactions_body import SlackInteractionsBody
 from .slack_slash_command_body import SlackSlashCommandBody
@@ -834,10 +932,21 @@ __all__ = (
     "AppAppBranch",
     "AppAppBranchConfig",
     "AppAppBranchInstallGroup",
+    "AppAppBranchPreviewConfig",
+    "AppAppBranchPreviewOverride",
     "AppAppBranchRun",
+    "AppAppBranchRunComparison",
+    "AppAppBranchRunConfig",
+    "AppAppBranchRunMetadata",
+    "AppAppBranchRunMode",
+    "AppAppBranchRunPreview",
+    "AppAppBranchRunPreviewMode",
+    "AppAppBranchRunPreviewSource",
+    "AppAppBranchRunTrigger",
     "AppAppBranchRunType",
     "AppAppBreakGlassConfig",
     "AppAppConfig",
+    "AppAppConfigRef",
     "AppAppConfigStatus",
     "AppAppConfigVersion",
     "AppAppDefaultLabels",
@@ -851,6 +960,7 @@ __all__ = (
     "AppAppKubernetesContextsConfig",
     "AppAppLabelColors",
     "AppAppLinks",
+    "AppAppNamedIAMPolicyConfig",
     "AppAppOperationRoleConfig",
     "AppAppOperationRoleRule",
     "AppAppPermissionsConfig",
@@ -878,12 +988,17 @@ __all__ = (
     "AppAWSStackOutputsBreakGlassRoleArns",
     "AppAWSStackOutputsCustomRoleArns",
     "AppAWSStackOutputsInstallInputs",
+    "AppAWSStackOutputsNamedPolicyArns",
     "AppAzureAccount",
     "AppAzureACRImageConfig",
     "AppAzureStackOutputs",
     "AppAzureStackOutputsBreakGlassIdentityClientIds",
     "AppAzureStackOutputsCustomIdentityClientIds",
     "AppAzureStackOutputsInstallInputs",
+    "AppCloudConnection",
+    "AppCloudConnectionPlatform",
+    "AppCloudConnectionPreset",
+    "AppCloudConnectionStatus",
     "AppCloudPlatform",
     "AppCloudPlatformRegion",
     "AppComponent",
@@ -927,6 +1042,7 @@ __all__ = (
     "AppInstallActionWorkflowRunStep",
     "AppInstallActionWorkflowRunStepStatus",
     "AppInstallAppBranchConnection",
+    "AppInstallAppBranchGroupAssignmentSource",
     "AppInstallAppConfigVersion",
     "AppInstallAppConfigVersionMetadata",
     "AppInstallAppDefaultLabels",
@@ -941,6 +1057,7 @@ __all__ = (
     "AppInstallConfig",
     "AppInstallConfigComponentToggles",
     "AppInstallConfigDiff",
+    "AppInstallConfigImpact",
     "AppInstallConfigSync",
     "AppInstallConfigSyncMetadata",
     "AppInstallConfigVersion",
@@ -977,6 +1094,8 @@ __all__ = (
     "AppInstallStackOutputsData",
     "AppInstallStackOutputsDataContents",
     "AppInstallStackVersion",
+    "AppInstallStackVersionCustomStacksInputParametersMap",
+    "AppInstallStackVersionCustomStacksOutputMap",
     "AppInstallStackVersionRun",
     "AppInstallStackVersionRunData",
     "AppInstallStackVersionRunDataContents",
@@ -1009,6 +1128,9 @@ __all__ = (
     "AppOrgInvite",
     "AppOrgInviteStatus",
     "AppOrgLinks",
+    "AppOrgMember",
+    "AppOrgMemberStatus",
+    "AppOrgTelemetrySettings",
     "AppOtelLogRecord",
     "AppOtelLogRecordLogAttributes",
     "AppOtelLogRecordResourceAttributes",
@@ -1048,6 +1170,7 @@ __all__ = (
     "AppRunnerGroupSettingsAwsTags",
     "AppRunnerGroupSettingsJobGroupParallelism",
     "AppRunnerGroupSettingsMetadata",
+    "AppRunnerGroupSettingsVendorTelemetryResourceAttributes",
     "AppRunnerGroupType",
     "AppRunnerHealthCheck",
     "AppRunnerHeartBeat",
@@ -1082,11 +1205,13 @@ __all__ = (
     "AppSlackInstallationStatus",
     "AppSlackOrgLink",
     "AppSlackOrgLinkStatus",
+    "AppStackDeploymentScope",
     "AppStackType",
     "AppStackVersionRunInputDiff",
     "AppStackVersionRunRoleDiff",
     "AppStackVersionRunType",
     "AppStatus",
+    "AppStepChangeState",
     "AppTerraformLock",
     "AppTerraformModuleComponentConfig",
     "AppTerraformModuleComponentConfigEnvVars",
@@ -1130,6 +1255,7 @@ __all__ = (
     "AppWorkflowStepResponseType",
     "AppWorkflowType",
     "BlobstoreBlob",
+    "BlobstoreBlobMetadata",
     "CallbackRef",
     "CctxSignalContext",
     "ClientConversation",
@@ -1145,9 +1271,13 @@ __all__ = (
     "ConfigCustomNestedStackParameters",
     "ConfigCustomNestedStackStatus",
     "ConfigHelmRepoConfig",
+    "ConfigInstallTelemetry",
+    "ConfigsACRAppRegistration",
     "ConfigsOCIRegistryAuth",
     "ConfigsOCIRegistryRepository",
     "ConfigsOCIRegistryType",
+    "ConfigSourceArchiveDiff",
+    "ConfigSourceFileDiff",
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",
@@ -1155,12 +1285,15 @@ __all__ = (
     "DiffDiff",
     "DiffDiffKey",
     "DiffDiffSummary",
+    "DiffEdgeReason",
+    "DiffImpactReason",
     "DiffOp",
     "GenericsNullTime",
     "GetActionLabelKeysResponse200",
     "GetAppConfigTemplateType",
     "GetAvailableRolesOperationType",
     "GetAvailableRolesPrincipalType",
+    "GetAvailableRolesWorkflowType",
     "GetComponentLabelKeysResponse200",
     "GetCurrentOrgFeaturesResponse200",
     "GetInstallActionWorkflowOutputsResponse200",
@@ -1168,9 +1301,9 @@ __all__ = (
     "GetInstallConfigVersionDiffResponse200",
     "GetInstallLabelKeysResponse200",
     "GetQueueSignalGraphResponse200",
-    "GetTerraformWorkspaceStatesJSONByIDResponse200",
-    "GetTerraformWorkspaceStatesJSONByIDV2Response200",
-    "GetWorkspaceStateJSONRawByIDResponse200",
+    "GetTerraformWorkspaceStatesJsonByIdResponse200",
+    "GetTerraformWorkspaceStatesJsonByIdv2Response200",
+    "GetWorkspaceStateJsonRawByIdResponse200",
     "GithubComNuoncoNuonPkgAwsCredentialsConfig",
     "GithubComNuoncoNuonPkgAzureCredentialsConfig",
     "GithubComNuoncoNuonPkgGcpCredentialsConfig",
@@ -1180,12 +1313,6 @@ __all__ = (
     "GithubComNuoncoNuonPkgTypesStateStateComponents",
     "GithubComNuoncoNuonPkgTypesStateStateLabels",
     "GithubComNuoncoNuonServicesCtlApiInternalAppAccountsServiceStaticTokenResponse",
-    "GithubMatch",
-    "GithubPlan",
-    "GithubTextMatch",
-    "GithubTimestamp",
-    "GithubUser",
-    "GithubUserPermissions",
     "HelpersConnectedGithubVCSConfigRequest",
     "HelpersCreateInstallAWSAccountParams",
     "HelpersCreateInstallAzureAccountParams",
@@ -1193,11 +1320,17 @@ __all__ = (
     "HelpersCreateInstallConfigParamsLabels",
     "HelpersCreateInstallGCPAccountParams",
     "HelpersInstallMetadata",
+    "HelpersListPreviewSourcesResult",
+    "HelpersPreviewSourceBranch",
+    "HelpersPreviewSourcePR",
     "HelpersPublicGitVCSConfigRequest",
     "IamStaticCredentials",
     "IamTwoStepConfig",
+    "KeysWorkflowTelemetry",
     "KubeClusterInfo",
     "KubeClusterInfoEnvVars",
+    "OidcissuerDiscoveryDocument",
+    "OidcissuerJWK",
     "OutputsSecretSyncOutput",
     "PermissionsPermission",
     "PermissionsSet",
@@ -1272,6 +1405,8 @@ __all__ = (
     "ServiceAppAWSIAMPolicyConfig",
     "ServiceAppAWSIAMRoleConfig",
     "ServiceAppAWSIAMRoleConfigCloudPlatform",
+    "ServiceAppBranchRunComparisonResponse",
+    "ServiceAppBranchRunComparisonRunSummary",
     "ServiceAppConfigDiffResponse",
     "ServiceAppConfigTemplate",
     "ServiceAppConfigTemplateType",
@@ -1281,6 +1416,7 @@ __all__ = (
     "ServiceAppLabelKeySummary",
     "ServiceAppLabelsResponse",
     "ServiceAppLabelsResponseLabelColors",
+    "ServiceAppNamedIAMPolicyConfig",
     "ServiceAppPolicyConfig",
     "ServiceAppSecretConfig",
     "ServiceAuthMeIdentity",
@@ -1312,6 +1448,11 @@ __all__ = (
     "ServiceComponentHealthIncidentBundle",
     "ServiceConnectedGithubVCSActionWorkflowConfigRequest",
     "ServiceConnectedGithubVCSConfigRequest",
+    "ServiceConnectionListResponse",
+    "ServiceConnectionListResponsePlatform",
+    "ServiceConnectionResponse",
+    "ServiceConnectionResponsePlatform",
+    "ServiceConnectionUsage",
     "ServiceCreateActionWorkflowConfigRequest",
     "ServiceCreateActionWorkflowConfigStepRequest",
     "ServiceCreateActionWorkflowConfigStepRequestEnvVars",
@@ -1397,6 +1538,8 @@ __all__ = (
     "ServiceCreatePulumiComponentConfigRequestConfig",
     "ServiceCreatePulumiComponentConfigRequestEnvVars",
     "ServiceCreatePulumiComponentConfigRequestOperationRoles",
+    "ServiceCreateRequest",
+    "ServiceCreateRequestPlatform",
     "ServiceCreateRunbookConfigRequest",
     "ServiceCreateRunbookInputRequest",
     "ServiceCreateRunbookRequest",
@@ -1434,20 +1577,52 @@ __all__ = (
     "ServiceForgetInstallComponentRequest",
     "ServiceForgetInstallRequest",
     "ServiceGcpGARImageConfigRequest",
+    "ServiceGetInstallActivityResponse",
+    "ServiceGetInstallDeploymentsResponse",
     "ServiceGetInstallURLResponse",
     "ServiceGracefulShutdownRequest",
     "ServiceHealthProbeRequest",
     "ServiceHealthTransitionResponse",
     "ServiceHelmRepoConfigRequest",
+    "ServiceInstallActivity",
+    "ServiceInstallActivityAction",
+    "ServiceInstallActivityPolicy",
+    "ServiceInstallActivityRunbook",
+    "ServiceInstallActivityType",
+    "ServiceInstallActivityWorkflowRef",
+    "ServiceInstallAppConfigUpdate",
     "ServiceInstallAppPermissionsConfigResponse",
+    "ServiceInstallBranchTracking",
     "ServiceInstallComponentHealthSummary",
     "ServiceInstallComponentHealthTimelineResponse",
+    "ServiceInstallConfigDrift",
+    "ServiceInstallConfigDriftComponent",
+    "ServiceInstallConfigDriftResource",
+    "ServiceInstallConfigUpdate",
+    "ServiceInstallDeployment",
+    "ServiceInstallDeploymentAffectedResources",
+    "ServiceInstallDeploymentAppBranchRef",
+    "ServiceInstallDeploymentChangeGroup",
+    "ServiceInstallDeploymentConfigChange",
+    "ServiceInstallDeploymentImage",
+    "ServiceInstallDeploymentType",
+    "ServiceInstallDeploymentWorkflowRef",
     "ServiceInstallGroupRequest",
+    "ServiceInstallHealthcheck",
     "ServiceInstallHealthSummary",
     "ServiceInstallHealthTimelineResponse",
+    "ServiceInstallInputsUpdate",
+    "ServiceInstallOverviewCommit",
+    "ServiceInstallOverviewResponse",
     "ServiceInstallPermissionsRoleStatus",
     "ServiceInstallPhoneHomeRequest",
     "ServiceInstallsHealthResponse",
+    "ServiceInstallStackUpdate",
+    "ServiceInstallStatusResponse",
+    "ServiceInstallTelemetrySettings",
+    "ServiceInstallUpdate",
+    "ServiceInstallUpdatesResponse",
+    "ServiceInstallUpdateType",
     "ServiceKubernetesSyncTarget",
     "ServiceKustomizeConfigRequest",
     "ServiceLatestRunnerHeartBeats",
@@ -1459,6 +1634,8 @@ __all__ = (
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
     "ServiceMngVMShutDownRequest",
+    "ServiceMoveInstallToAppBranchRequest",
+    "ServiceMoveInstallToAppBranchRequestLabels",
     "ServiceOperationRoleRuleRequest",
     "ServiceOrgComponentBuildHistoryItem",
     "ServiceOrgComponentBuildHistoryResponse",
@@ -1466,12 +1643,15 @@ __all__ = (
     "ServicePolicyAnalyticsBreakdown",
     "ServicePolicyAnalyticsSummary",
     "ServicePolicyAnalyticsTimeseries",
+    "ServicePreviewInstallCandidatesResponse",
+    "ServicePreviewRunRequest",
     "ServicePruneTokensResponse",
     "ServicePublicGitVCSActionWorkflowConfigRequest",
     "ServicePublicGitVCSConfigRequest",
     "ServicePutInstallComponentHealthCheckRequest",
     "ServicePutInstallComponentHealthCheckRequestDetails",
     "ServiceReadme",
+    "ServiceRecoverInstallComponentHelmReleaseRequest",
     "ServiceRefreshInstallHealthClusterAccessRequest",
     "ServiceRefreshInstallHealthClusterAccessResponse",
     "ServiceRemoveActionLabelsRequest",
@@ -1493,19 +1673,26 @@ __all__ = (
     "ServiceRunnerConnectionStatus",
     "ServiceSeriesPoint",
     "ServiceSeriesPointLabels",
+    "ServiceSetupResponse",
+    "ServiceSetupResponsePermissionsPolicy",
+    "ServiceSetupResponseTrustPolicy",
     "ServiceShutdownRunnerProcessRequest",
     "ServiceSkipWorkflowStepResponse",
     "ServiceSlackChallengeResponse",
     "ServiceSlashResponse",
+    "ServiceStackServiceAccountResponse",
     "ServiceSyncSecretsRequest",
     "ServiceTeardownInstallComponentRequest",
     "ServiceTeardownInstallComponentsRequest",
+    "ServiceTelemetryJSONWebKeySet",
     "ServiceTimeseriesBucket",
     "ServiceToggleInstallComponentRequest",
     "ServiceTriggerAppBranchRunRequest",
+    "ServiceTriggerAppBranchRunSource",
     "ServiceTriggerInstallConfigSyncRequest",
     "ServiceUpdateActionWorkflowRequest",
     "ServiceUpdateActionWorkflowRequestLabels",
+    "ServiceUpdateAppBranchConfigRequest",
     "ServiceUpdateAppBranchRequest",
     "ServiceUpdateAppConfigInstallsRequest",
     "ServiceUpdateAppConfigRequest",
@@ -1535,6 +1722,7 @@ __all__ = (
     "ServiceUpdateOrgFeaturesRequest",
     "ServiceUpdateOrgFeaturesRequestFeatures",
     "ServiceUpdateOrgRequest",
+    "ServiceUpdateOrgTelemetryRequest",
     "ServiceUpdateRunbookRequest",
     "ServiceUpdateRunbookRequestLabels",
     "ServiceUpdateRunnerSettingsRequest",
@@ -1550,12 +1738,16 @@ __all__ = (
     "ServiceVCSConnectionReposResponse",
     "ServiceVCSConnectionStatusResponse",
     "ServiceVCSConnectionStatusResponsePermissions",
+    "ServiceVCSConnectionUser",
     "ServiceWaitlistRequest",
     "ServiceWorkflowQueueItem",
     "ServiceWorkflowQueueItemMetadata",
     "ServiceWorkflowQueuePositionResponse",
     "SignaldbSignalData",
     "SignaldbWorkflowRef",
+    "SignatureAuthority",
+    "SignatureAuthorityType",
+    "SignatureVerification",
     "SlackEventsBody",
     "SlackInteractionsBody",
     "SlackSlashCommandBody",

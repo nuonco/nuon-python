@@ -1,15 +1,15 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ConfigAppPolicyType(str, Enum):
-    CONTAINER_IMAGE = "container_image"
-    DOCKER_BUILD = "docker_build"
-    HELM_CHART = "helm_chart"
-    KUBERNETES_CLUSTER = "kubernetes_cluster"
-    KUBERNETES_MANIFEST = "kubernetes_manifest"
-    PULUMI = "pulumi"
-    SANDBOX = "sandbox"
-    TERRAFORM_MODULE = "terraform_module"
+class ConfigAppPolicyType(StrEnum):
+    APP_POLICY_TYPE_CONTAINER_IMAGE = "container_image"
+    APP_POLICY_TYPE_DOCKER_BUILD = "docker_build"
+    APP_POLICY_TYPE_HELM_CHART = "helm_chart"
+    APP_POLICY_TYPE_KUBERNETES_CLUSTER = "kubernetes_cluster"
+    APP_POLICY_TYPE_KUBERNETES_MANIFEST = "kubernetes_manifest"
+    APP_POLICY_TYPE_PULUMI = "pulumi"
+    APP_POLICY_TYPE_SANDBOX = "sandbox"
+    APP_POLICY_TYPE_TERRAFORM_MODULE = "terraform_module"
 
     def __str__(self) -> str:
         return str(self.value)
