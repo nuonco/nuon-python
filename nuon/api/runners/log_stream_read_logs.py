@@ -15,19 +15,39 @@ def _get_kwargs(
     log_stream_id: str,
     *,
     order: str | Unset = "asc",
+    start_time: str | Unset = UNSET,
+    end_time: str | Unset = UNSET,
     service_name: list[str] | Unset = UNSET,
     scope_name: list[str] | Unset = UNSET,
+    scope_version: list[str] | Unset = UNSET,
+    resource_schema_url: list[str] | Unset = UNSET,
+    scope_schema_url: list[str] | Unset = UNSET,
     severity_text: list[str] | Unset = UNSET,
-    tool: str | Unset = UNSET,
+    severity_number_min: int | Unset = UNSET,
+    severity_number_max: int | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    trace_flags: int | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
+    runner_job_id: str | Unset = UNSET,
+    runner_group_id: str | Unset = UNSET,
+    runner_job_execution_id: str | Unset = UNSET,
+    runner_job_execution_step: str | Unset = UNSET,
+    tool: list[str] | Unset = UNSET,
     helm_release_name: str | Unset = UNSET,
+    helm_chart_name: str | Unset = UNSET,
+    helm_chart_id: str | Unset = UNSET,
+    helm_namespace: str | Unset = UNSET,
     helm_operation: str | Unset = UNSET,
     tf_workspace_id: str | Unset = UNSET,
     tf_operation: str | Unset = UNSET,
     k8s_kind: str | Unset = UNSET,
     k8s_namespace: str | Unset = UNSET,
     k8s_name: str | Unset = UNSET,
-    trace_id: str | Unset = UNSET,
-    span_id: str | Unset = UNSET,
+    k8s_operation: str | Unset = UNSET,
+    attr: list[str] | Unset = UNSET,
+    resource_attr: list[str] | Unset = UNSET,
+    scope_attr: list[str] | Unset = UNSET,
     q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -38,6 +58,10 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["order"] = order
+
+    params["start_time"] = start_time
+
+    params["end_time"] = end_time
 
     json_service_name: list[str] | Unset = UNSET
     if not isinstance(service_name, Unset):
@@ -51,15 +75,63 @@ def _get_kwargs(
 
     params["scope_name"] = json_scope_name
 
+    json_scope_version: list[str] | Unset = UNSET
+    if not isinstance(scope_version, Unset):
+        json_scope_version = scope_version
+
+    params["scope_version"] = json_scope_version
+
+    json_resource_schema_url: list[str] | Unset = UNSET
+    if not isinstance(resource_schema_url, Unset):
+        json_resource_schema_url = resource_schema_url
+
+    params["resource_schema_url"] = json_resource_schema_url
+
+    json_scope_schema_url: list[str] | Unset = UNSET
+    if not isinstance(scope_schema_url, Unset):
+        json_scope_schema_url = scope_schema_url
+
+    params["scope_schema_url"] = json_scope_schema_url
+
     json_severity_text: list[str] | Unset = UNSET
     if not isinstance(severity_text, Unset):
         json_severity_text = severity_text
 
     params["severity_text"] = json_severity_text
 
-    params["tool"] = tool
+    params["severity_number_min"] = severity_number_min
+
+    params["severity_number_max"] = severity_number_max
+
+    params["trace_id"] = trace_id
+
+    params["span_id"] = span_id
+
+    params["trace_flags"] = trace_flags
+
+    params["runner_id"] = runner_id
+
+    params["runner_job_id"] = runner_job_id
+
+    params["runner_group_id"] = runner_group_id
+
+    params["runner_job_execution_id"] = runner_job_execution_id
+
+    params["runner_job_execution_step"] = runner_job_execution_step
+
+    json_tool: list[str] | Unset = UNSET
+    if not isinstance(tool, Unset):
+        json_tool = tool
+
+    params["tool"] = json_tool
 
     params["helm_release_name"] = helm_release_name
+
+    params["helm_chart_name"] = helm_chart_name
+
+    params["helm_chart_id"] = helm_chart_id
+
+    params["helm_namespace"] = helm_namespace
 
     params["helm_operation"] = helm_operation
 
@@ -73,9 +145,25 @@ def _get_kwargs(
 
     params["k8s_name"] = k8s_name
 
-    params["trace_id"] = trace_id
+    params["k8s_operation"] = k8s_operation
 
-    params["span_id"] = span_id
+    json_attr: list[str] | Unset = UNSET
+    if not isinstance(attr, Unset):
+        json_attr = attr
+
+    params["attr"] = json_attr
+
+    json_resource_attr: list[str] | Unset = UNSET
+    if not isinstance(resource_attr, Unset):
+        json_resource_attr = resource_attr
+
+    params["resource_attr"] = json_resource_attr
+
+    json_scope_attr: list[str] | Unset = UNSET
+    if not isinstance(scope_attr, Unset):
+        json_scope_attr = scope_attr
+
+    params["scope_attr"] = json_scope_attr
 
     params["q"] = q
 
@@ -153,19 +241,39 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    start_time: str | Unset = UNSET,
+    end_time: str | Unset = UNSET,
     service_name: list[str] | Unset = UNSET,
     scope_name: list[str] | Unset = UNSET,
+    scope_version: list[str] | Unset = UNSET,
+    resource_schema_url: list[str] | Unset = UNSET,
+    scope_schema_url: list[str] | Unset = UNSET,
     severity_text: list[str] | Unset = UNSET,
-    tool: str | Unset = UNSET,
+    severity_number_min: int | Unset = UNSET,
+    severity_number_max: int | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    trace_flags: int | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
+    runner_job_id: str | Unset = UNSET,
+    runner_group_id: str | Unset = UNSET,
+    runner_job_execution_id: str | Unset = UNSET,
+    runner_job_execution_step: str | Unset = UNSET,
+    tool: list[str] | Unset = UNSET,
     helm_release_name: str | Unset = UNSET,
+    helm_chart_name: str | Unset = UNSET,
+    helm_chart_id: str | Unset = UNSET,
+    helm_namespace: str | Unset = UNSET,
     helm_operation: str | Unset = UNSET,
     tf_workspace_id: str | Unset = UNSET,
     tf_operation: str | Unset = UNSET,
     k8s_kind: str | Unset = UNSET,
     k8s_namespace: str | Unset = UNSET,
     k8s_name: str | Unset = UNSET,
-    trace_id: str | Unset = UNSET,
-    span_id: str | Unset = UNSET,
+    k8s_operation: str | Unset = UNSET,
+    attr: list[str] | Unset = UNSET,
+    resource_attr: list[str] | Unset = UNSET,
+    scope_attr: list[str] | Unset = UNSET,
     q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
@@ -176,19 +284,39 @@ def sync_detailed(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        start_time (str | Unset):
+        end_time (str | Unset):
         service_name (list[str] | Unset):
         scope_name (list[str] | Unset):
+        scope_version (list[str] | Unset):
+        resource_schema_url (list[str] | Unset):
+        scope_schema_url (list[str] | Unset):
         severity_text (list[str] | Unset):
-        tool (str | Unset):
+        severity_number_min (int | Unset):
+        severity_number_max (int | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        trace_flags (int | Unset):
+        runner_id (str | Unset):
+        runner_job_id (str | Unset):
+        runner_group_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        runner_job_execution_step (str | Unset):
+        tool (list[str] | Unset):
         helm_release_name (str | Unset):
+        helm_chart_name (str | Unset):
+        helm_chart_id (str | Unset):
+        helm_namespace (str | Unset):
         helm_operation (str | Unset):
         tf_workspace_id (str | Unset):
         tf_operation (str | Unset):
         k8s_kind (str | Unset):
         k8s_namespace (str | Unset):
         k8s_name (str | Unset):
-        trace_id (str | Unset):
-        span_id (str | Unset):
+        k8s_operation (str | Unset):
+        attr (list[str] | Unset):
+        resource_attr (list[str] | Unset):
+        scope_attr (list[str] | Unset):
         q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
@@ -203,19 +331,39 @@ def sync_detailed(
     kwargs = _get_kwargs(
         log_stream_id=log_stream_id,
         order=order,
+        start_time=start_time,
+        end_time=end_time,
         service_name=service_name,
         scope_name=scope_name,
+        scope_version=scope_version,
+        resource_schema_url=resource_schema_url,
+        scope_schema_url=scope_schema_url,
         severity_text=severity_text,
+        severity_number_min=severity_number_min,
+        severity_number_max=severity_number_max,
+        trace_id=trace_id,
+        span_id=span_id,
+        trace_flags=trace_flags,
+        runner_id=runner_id,
+        runner_job_id=runner_job_id,
+        runner_group_id=runner_group_id,
+        runner_job_execution_id=runner_job_execution_id,
+        runner_job_execution_step=runner_job_execution_step,
         tool=tool,
         helm_release_name=helm_release_name,
+        helm_chart_name=helm_chart_name,
+        helm_chart_id=helm_chart_id,
+        helm_namespace=helm_namespace,
         helm_operation=helm_operation,
         tf_workspace_id=tf_workspace_id,
         tf_operation=tf_operation,
         k8s_kind=k8s_kind,
         k8s_namespace=k8s_namespace,
         k8s_name=k8s_name,
-        trace_id=trace_id,
-        span_id=span_id,
+        k8s_operation=k8s_operation,
+        attr=attr,
+        resource_attr=resource_attr,
+        scope_attr=scope_attr,
         q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     )
@@ -232,19 +380,39 @@ def sync(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    start_time: str | Unset = UNSET,
+    end_time: str | Unset = UNSET,
     service_name: list[str] | Unset = UNSET,
     scope_name: list[str] | Unset = UNSET,
+    scope_version: list[str] | Unset = UNSET,
+    resource_schema_url: list[str] | Unset = UNSET,
+    scope_schema_url: list[str] | Unset = UNSET,
     severity_text: list[str] | Unset = UNSET,
-    tool: str | Unset = UNSET,
+    severity_number_min: int | Unset = UNSET,
+    severity_number_max: int | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    trace_flags: int | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
+    runner_job_id: str | Unset = UNSET,
+    runner_group_id: str | Unset = UNSET,
+    runner_job_execution_id: str | Unset = UNSET,
+    runner_job_execution_step: str | Unset = UNSET,
+    tool: list[str] | Unset = UNSET,
     helm_release_name: str | Unset = UNSET,
+    helm_chart_name: str | Unset = UNSET,
+    helm_chart_id: str | Unset = UNSET,
+    helm_namespace: str | Unset = UNSET,
     helm_operation: str | Unset = UNSET,
     tf_workspace_id: str | Unset = UNSET,
     tf_operation: str | Unset = UNSET,
     k8s_kind: str | Unset = UNSET,
     k8s_namespace: str | Unset = UNSET,
     k8s_name: str | Unset = UNSET,
-    trace_id: str | Unset = UNSET,
-    span_id: str | Unset = UNSET,
+    k8s_operation: str | Unset = UNSET,
+    attr: list[str] | Unset = UNSET,
+    resource_attr: list[str] | Unset = UNSET,
+    scope_attr: list[str] | Unset = UNSET,
     q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppOtelLogRecord] | None:
@@ -255,19 +423,39 @@ def sync(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        start_time (str | Unset):
+        end_time (str | Unset):
         service_name (list[str] | Unset):
         scope_name (list[str] | Unset):
+        scope_version (list[str] | Unset):
+        resource_schema_url (list[str] | Unset):
+        scope_schema_url (list[str] | Unset):
         severity_text (list[str] | Unset):
-        tool (str | Unset):
+        severity_number_min (int | Unset):
+        severity_number_max (int | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        trace_flags (int | Unset):
+        runner_id (str | Unset):
+        runner_job_id (str | Unset):
+        runner_group_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        runner_job_execution_step (str | Unset):
+        tool (list[str] | Unset):
         helm_release_name (str | Unset):
+        helm_chart_name (str | Unset):
+        helm_chart_id (str | Unset):
+        helm_namespace (str | Unset):
         helm_operation (str | Unset):
         tf_workspace_id (str | Unset):
         tf_operation (str | Unset):
         k8s_kind (str | Unset):
         k8s_namespace (str | Unset):
         k8s_name (str | Unset):
-        trace_id (str | Unset):
-        span_id (str | Unset):
+        k8s_operation (str | Unset):
+        attr (list[str] | Unset):
+        resource_attr (list[str] | Unset):
+        scope_attr (list[str] | Unset):
         q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
@@ -283,19 +471,39 @@ def sync(
         log_stream_id=log_stream_id,
         client=client,
         order=order,
+        start_time=start_time,
+        end_time=end_time,
         service_name=service_name,
         scope_name=scope_name,
+        scope_version=scope_version,
+        resource_schema_url=resource_schema_url,
+        scope_schema_url=scope_schema_url,
         severity_text=severity_text,
+        severity_number_min=severity_number_min,
+        severity_number_max=severity_number_max,
+        trace_id=trace_id,
+        span_id=span_id,
+        trace_flags=trace_flags,
+        runner_id=runner_id,
+        runner_job_id=runner_job_id,
+        runner_group_id=runner_group_id,
+        runner_job_execution_id=runner_job_execution_id,
+        runner_job_execution_step=runner_job_execution_step,
         tool=tool,
         helm_release_name=helm_release_name,
+        helm_chart_name=helm_chart_name,
+        helm_chart_id=helm_chart_id,
+        helm_namespace=helm_namespace,
         helm_operation=helm_operation,
         tf_workspace_id=tf_workspace_id,
         tf_operation=tf_operation,
         k8s_kind=k8s_kind,
         k8s_namespace=k8s_namespace,
         k8s_name=k8s_name,
-        trace_id=trace_id,
-        span_id=span_id,
+        k8s_operation=k8s_operation,
+        attr=attr,
+        resource_attr=resource_attr,
+        scope_attr=scope_attr,
         q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     ).parsed
@@ -306,19 +514,39 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    start_time: str | Unset = UNSET,
+    end_time: str | Unset = UNSET,
     service_name: list[str] | Unset = UNSET,
     scope_name: list[str] | Unset = UNSET,
+    scope_version: list[str] | Unset = UNSET,
+    resource_schema_url: list[str] | Unset = UNSET,
+    scope_schema_url: list[str] | Unset = UNSET,
     severity_text: list[str] | Unset = UNSET,
-    tool: str | Unset = UNSET,
+    severity_number_min: int | Unset = UNSET,
+    severity_number_max: int | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    trace_flags: int | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
+    runner_job_id: str | Unset = UNSET,
+    runner_group_id: str | Unset = UNSET,
+    runner_job_execution_id: str | Unset = UNSET,
+    runner_job_execution_step: str | Unset = UNSET,
+    tool: list[str] | Unset = UNSET,
     helm_release_name: str | Unset = UNSET,
+    helm_chart_name: str | Unset = UNSET,
+    helm_chart_id: str | Unset = UNSET,
+    helm_namespace: str | Unset = UNSET,
     helm_operation: str | Unset = UNSET,
     tf_workspace_id: str | Unset = UNSET,
     tf_operation: str | Unset = UNSET,
     k8s_kind: str | Unset = UNSET,
     k8s_namespace: str | Unset = UNSET,
     k8s_name: str | Unset = UNSET,
-    trace_id: str | Unset = UNSET,
-    span_id: str | Unset = UNSET,
+    k8s_operation: str | Unset = UNSET,
+    attr: list[str] | Unset = UNSET,
+    resource_attr: list[str] | Unset = UNSET,
+    scope_attr: list[str] | Unset = UNSET,
     q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> Response[StderrErrResponse | list[AppOtelLogRecord]]:
@@ -329,19 +557,39 @@ async def asyncio_detailed(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        start_time (str | Unset):
+        end_time (str | Unset):
         service_name (list[str] | Unset):
         scope_name (list[str] | Unset):
+        scope_version (list[str] | Unset):
+        resource_schema_url (list[str] | Unset):
+        scope_schema_url (list[str] | Unset):
         severity_text (list[str] | Unset):
-        tool (str | Unset):
+        severity_number_min (int | Unset):
+        severity_number_max (int | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        trace_flags (int | Unset):
+        runner_id (str | Unset):
+        runner_job_id (str | Unset):
+        runner_group_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        runner_job_execution_step (str | Unset):
+        tool (list[str] | Unset):
         helm_release_name (str | Unset):
+        helm_chart_name (str | Unset):
+        helm_chart_id (str | Unset):
+        helm_namespace (str | Unset):
         helm_operation (str | Unset):
         tf_workspace_id (str | Unset):
         tf_operation (str | Unset):
         k8s_kind (str | Unset):
         k8s_namespace (str | Unset):
         k8s_name (str | Unset):
-        trace_id (str | Unset):
-        span_id (str | Unset):
+        k8s_operation (str | Unset):
+        attr (list[str] | Unset):
+        resource_attr (list[str] | Unset):
+        scope_attr (list[str] | Unset):
         q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
@@ -356,19 +604,39 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         log_stream_id=log_stream_id,
         order=order,
+        start_time=start_time,
+        end_time=end_time,
         service_name=service_name,
         scope_name=scope_name,
+        scope_version=scope_version,
+        resource_schema_url=resource_schema_url,
+        scope_schema_url=scope_schema_url,
         severity_text=severity_text,
+        severity_number_min=severity_number_min,
+        severity_number_max=severity_number_max,
+        trace_id=trace_id,
+        span_id=span_id,
+        trace_flags=trace_flags,
+        runner_id=runner_id,
+        runner_job_id=runner_job_id,
+        runner_group_id=runner_group_id,
+        runner_job_execution_id=runner_job_execution_id,
+        runner_job_execution_step=runner_job_execution_step,
         tool=tool,
         helm_release_name=helm_release_name,
+        helm_chart_name=helm_chart_name,
+        helm_chart_id=helm_chart_id,
+        helm_namespace=helm_namespace,
         helm_operation=helm_operation,
         tf_workspace_id=tf_workspace_id,
         tf_operation=tf_operation,
         k8s_kind=k8s_kind,
         k8s_namespace=k8s_namespace,
         k8s_name=k8s_name,
-        trace_id=trace_id,
-        span_id=span_id,
+        k8s_operation=k8s_operation,
+        attr=attr,
+        resource_attr=resource_attr,
+        scope_attr=scope_attr,
         q=q,
         x_nuon_api_offset=x_nuon_api_offset,
     )
@@ -383,19 +651,39 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     order: str | Unset = "asc",
+    start_time: str | Unset = UNSET,
+    end_time: str | Unset = UNSET,
     service_name: list[str] | Unset = UNSET,
     scope_name: list[str] | Unset = UNSET,
+    scope_version: list[str] | Unset = UNSET,
+    resource_schema_url: list[str] | Unset = UNSET,
+    scope_schema_url: list[str] | Unset = UNSET,
     severity_text: list[str] | Unset = UNSET,
-    tool: str | Unset = UNSET,
+    severity_number_min: int | Unset = UNSET,
+    severity_number_max: int | Unset = UNSET,
+    trace_id: str | Unset = UNSET,
+    span_id: str | Unset = UNSET,
+    trace_flags: int | Unset = UNSET,
+    runner_id: str | Unset = UNSET,
+    runner_job_id: str | Unset = UNSET,
+    runner_group_id: str | Unset = UNSET,
+    runner_job_execution_id: str | Unset = UNSET,
+    runner_job_execution_step: str | Unset = UNSET,
+    tool: list[str] | Unset = UNSET,
     helm_release_name: str | Unset = UNSET,
+    helm_chart_name: str | Unset = UNSET,
+    helm_chart_id: str | Unset = UNSET,
+    helm_namespace: str | Unset = UNSET,
     helm_operation: str | Unset = UNSET,
     tf_workspace_id: str | Unset = UNSET,
     tf_operation: str | Unset = UNSET,
     k8s_kind: str | Unset = UNSET,
     k8s_namespace: str | Unset = UNSET,
     k8s_name: str | Unset = UNSET,
-    trace_id: str | Unset = UNSET,
-    span_id: str | Unset = UNSET,
+    k8s_operation: str | Unset = UNSET,
+    attr: list[str] | Unset = UNSET,
+    resource_attr: list[str] | Unset = UNSET,
+    scope_attr: list[str] | Unset = UNSET,
     q: str | Unset = UNSET,
     x_nuon_api_offset: str | Unset = UNSET,
 ) -> StderrErrResponse | list[AppOtelLogRecord] | None:
@@ -406,19 +694,39 @@ async def asyncio(
     Args:
         log_stream_id (str):
         order (str | Unset):  Default: 'asc'.
+        start_time (str | Unset):
+        end_time (str | Unset):
         service_name (list[str] | Unset):
         scope_name (list[str] | Unset):
+        scope_version (list[str] | Unset):
+        resource_schema_url (list[str] | Unset):
+        scope_schema_url (list[str] | Unset):
         severity_text (list[str] | Unset):
-        tool (str | Unset):
+        severity_number_min (int | Unset):
+        severity_number_max (int | Unset):
+        trace_id (str | Unset):
+        span_id (str | Unset):
+        trace_flags (int | Unset):
+        runner_id (str | Unset):
+        runner_job_id (str | Unset):
+        runner_group_id (str | Unset):
+        runner_job_execution_id (str | Unset):
+        runner_job_execution_step (str | Unset):
+        tool (list[str] | Unset):
         helm_release_name (str | Unset):
+        helm_chart_name (str | Unset):
+        helm_chart_id (str | Unset):
+        helm_namespace (str | Unset):
         helm_operation (str | Unset):
         tf_workspace_id (str | Unset):
         tf_operation (str | Unset):
         k8s_kind (str | Unset):
         k8s_namespace (str | Unset):
         k8s_name (str | Unset):
-        trace_id (str | Unset):
-        span_id (str | Unset):
+        k8s_operation (str | Unset):
+        attr (list[str] | Unset):
+        resource_attr (list[str] | Unset):
+        scope_attr (list[str] | Unset):
         q (str | Unset):
         x_nuon_api_offset (str | Unset):
 
@@ -435,19 +743,39 @@ async def asyncio(
             log_stream_id=log_stream_id,
             client=client,
             order=order,
+            start_time=start_time,
+            end_time=end_time,
             service_name=service_name,
             scope_name=scope_name,
+            scope_version=scope_version,
+            resource_schema_url=resource_schema_url,
+            scope_schema_url=scope_schema_url,
             severity_text=severity_text,
+            severity_number_min=severity_number_min,
+            severity_number_max=severity_number_max,
+            trace_id=trace_id,
+            span_id=span_id,
+            trace_flags=trace_flags,
+            runner_id=runner_id,
+            runner_job_id=runner_job_id,
+            runner_group_id=runner_group_id,
+            runner_job_execution_id=runner_job_execution_id,
+            runner_job_execution_step=runner_job_execution_step,
             tool=tool,
             helm_release_name=helm_release_name,
+            helm_chart_name=helm_chart_name,
+            helm_chart_id=helm_chart_id,
+            helm_namespace=helm_namespace,
             helm_operation=helm_operation,
             tf_workspace_id=tf_workspace_id,
             tf_operation=tf_operation,
             k8s_kind=k8s_kind,
             k8s_namespace=k8s_namespace,
             k8s_name=k8s_name,
-            trace_id=trace_id,
-            span_id=span_id,
+            k8s_operation=k8s_operation,
+            attr=attr,
+            resource_attr=resource_attr,
+            scope_attr=scope_attr,
             q=q,
             x_nuon_api_offset=x_nuon_api_offset,
         )

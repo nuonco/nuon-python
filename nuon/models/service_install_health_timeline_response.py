@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.service_daily_health_bucket import ServiceDailyHealthBucket
     from ..models.service_install_component_health_summary import ServiceInstallComponentHealthSummary
+    from ..models.service_install_healthcheck import ServiceInstallHealthcheck
 
 
 T = TypeVar("T", bound="ServiceInstallHealthTimelineResponse")
@@ -26,6 +27,7 @@ class ServiceInstallHealthTimelineResponse:
         current_health (str | Unset):
         daily (list[ServiceDailyHealthBucket] | Unset):
         days (int | Unset):
+        healthchecks (list[ServiceInstallHealthcheck] | Unset):
         install_id (str | Unset):
         observed_seconds (int | Unset):
         uptime_percent (float | Unset):
@@ -36,6 +38,7 @@ class ServiceInstallHealthTimelineResponse:
     current_health: str | Unset = UNSET
     daily: list[ServiceDailyHealthBucket] | Unset = UNSET
     days: int | Unset = UNSET
+    healthchecks: list[ServiceInstallHealthcheck] | Unset = UNSET
     install_id: str | Unset = UNSET
     observed_seconds: int | Unset = UNSET
     uptime_percent: float | Unset = UNSET
@@ -62,6 +65,13 @@ class ServiceInstallHealthTimelineResponse:
 
         days = self.days
 
+        healthchecks: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.healthchecks, Unset):
+            healthchecks = []
+            for healthchecks_item_data in self.healthchecks:
+                healthchecks_item = healthchecks_item_data.to_dict()
+                healthchecks.append(healthchecks_item)
+
         install_id = self.install_id
 
         observed_seconds = self.observed_seconds
@@ -81,6 +91,8 @@ class ServiceInstallHealthTimelineResponse:
             field_dict["daily"] = daily
         if days is not UNSET:
             field_dict["days"] = days
+        if healthchecks is not UNSET:
+            field_dict["healthchecks"] = healthchecks
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
         if observed_seconds is not UNSET:
@@ -92,8 +104,11 @@ class ServiceInstallHealthTimelineResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_daily_health_bucket import ServiceDailyHealthBucket
-        from ..models.service_install_component_health_summary import ServiceInstallComponentHealthSummary
+        from ..models.service_daily_health_bucket import ServiceDailyHealthBucket  # noqa: PLC0415
+        from ..models.service_install_component_health_summary import (
+            ServiceInstallComponentHealthSummary,  # noqa: PLC0415
+        )
+        from ..models.service_install_healthcheck import ServiceInstallHealthcheck  # noqa: PLC0415
 
         d = dict(src_dict)
         cluster_access_error = d.pop("cluster_access_error", UNSET)
@@ -120,6 +135,15 @@ class ServiceInstallHealthTimelineResponse:
 
         days = d.pop("days", UNSET)
 
+        _healthchecks = d.pop("healthchecks", UNSET)
+        healthchecks: list[ServiceInstallHealthcheck] | Unset = UNSET
+        if _healthchecks is not UNSET:
+            healthchecks = []
+            for healthchecks_item_data in _healthchecks:
+                healthchecks_item = ServiceInstallHealthcheck.from_dict(healthchecks_item_data)
+
+                healthchecks.append(healthchecks_item)
+
         install_id = d.pop("install_id", UNSET)
 
         observed_seconds = d.pop("observed_seconds", UNSET)
@@ -132,6 +156,7 @@ class ServiceInstallHealthTimelineResponse:
             current_health=current_health,
             daily=daily,
             days=days,
+            healthchecks=healthchecks,
             install_id=install_id,
             observed_seconds=observed_seconds,
             uptime_percent=uptime_percent,

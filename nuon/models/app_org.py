@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_notifications_config import AppNotificationsConfig
     from ..models.app_org_links import AppOrgLinks
+    from ..models.app_org_telemetry_settings import AppOrgTelemetrySettings
     from ..models.app_runner_group import AppRunnerGroup
     from ..models.app_vcs_connection import AppVCSConnection
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
@@ -42,6 +43,7 @@ class AppOrg:
         status_description (str | Unset):
         status_v2 (AppCompositeStatus | Unset):
         tags (list[str] | Unset):
+        telemetry (AppOrgTelemetrySettings | Unset):
         updated_at (str | Unset):
         vcs_connections (list[AppVCSConnection] | Unset):
     """
@@ -63,6 +65,7 @@ class AppOrg:
     status_description: str | Unset = UNSET
     status_v2: AppCompositeStatus | Unset = UNSET
     tags: list[str] | Unset = UNSET
+    telemetry: AppOrgTelemetrySettings | Unset = UNSET
     updated_at: str | Unset = UNSET
     vcs_connections: list[AppVCSConnection] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -116,6 +119,10 @@ class AppOrg:
         if not isinstance(self.tags, Unset):
             tags = self.tags
 
+        telemetry: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.telemetry, Unset):
+            telemetry = self.telemetry.to_dict()
+
         updated_at = self.updated_at
 
         vcs_connections: list[dict[str, Any]] | Unset = UNSET
@@ -162,6 +169,8 @@ class AppOrg:
             field_dict["status_v2"] = status_v2
         if tags is not UNSET:
             field_dict["tags"] = tags
+        if telemetry is not UNSET:
+            field_dict["telemetry"] = telemetry
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vcs_connections is not UNSET:
@@ -171,13 +180,16 @@ class AppOrg:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_composite_status import AppCompositeStatus
-        from ..models.app_notifications_config import AppNotificationsConfig
-        from ..models.app_org_links import AppOrgLinks
-        from ..models.app_runner_group import AppRunnerGroup
-        from ..models.app_vcs_connection import AppVCSConnection
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
-        from ..models.types_string_bool_map import TypesStringBoolMap
+        from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
+        from ..models.app_notifications_config import AppNotificationsConfig  # noqa: PLC0415
+        from ..models.app_org_links import AppOrgLinks  # noqa: PLC0415
+        from ..models.app_org_telemetry_settings import AppOrgTelemetrySettings  # noqa: PLC0415
+        from ..models.app_runner_group import AppRunnerGroup  # noqa: PLC0415
+        from ..models.app_vcs_connection import AppVCSConnection  # noqa: PLC0415
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
+            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
+        )
+        from ..models.types_string_bool_map import TypesStringBoolMap  # noqa: PLC0415
 
         d = dict(src_dict)
         app_count = d.pop("app_count", UNSET)
@@ -244,6 +256,13 @@ class AppOrg:
 
         tags = cast(list[str], d.pop("tags", UNSET))
 
+        _telemetry = d.pop("telemetry", UNSET)
+        telemetry: AppOrgTelemetrySettings | Unset
+        if isinstance(_telemetry, Unset):
+            telemetry = UNSET
+        else:
+            telemetry = AppOrgTelemetrySettings.from_dict(_telemetry)
+
         updated_at = d.pop("updated_at", UNSET)
 
         _vcs_connections = d.pop("vcs_connections", UNSET)
@@ -273,6 +292,7 @@ class AppOrg:
             status_description=status_description,
             status_v2=status_v2,
             tags=tags,
+            telemetry=telemetry,
             updated_at=updated_at,
             vcs_connections=vcs_connections,
         )

@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+    from ..models.config_install_telemetry import ConfigInstallTelemetry
     from ..models.service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
 
 
@@ -25,6 +26,7 @@ class ServiceUpdateInstallConfigRequest:
         custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
         labels (ServiceUpdateInstallConfigRequestLabels | Unset):
         runner_nested_template_url (str | Unset):
+        telemetry (ConfigInstallTelemetry | Unset):
         vpc_nested_template_url (str | Unset):
     """
 
@@ -32,6 +34,7 @@ class ServiceUpdateInstallConfigRequest:
     custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
     labels: ServiceUpdateInstallConfigRequestLabels | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
+    telemetry: ConfigInstallTelemetry | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -53,6 +56,10 @@ class ServiceUpdateInstallConfigRequest:
 
         runner_nested_template_url = self.runner_nested_template_url
 
+        telemetry: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.telemetry, Unset):
+            telemetry = self.telemetry.to_dict()
+
         vpc_nested_template_url = self.vpc_nested_template_url
 
         field_dict: dict[str, Any] = {}
@@ -66,6 +73,8 @@ class ServiceUpdateInstallConfigRequest:
             field_dict["labels"] = labels
         if runner_nested_template_url is not UNSET:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
+        if telemetry is not UNSET:
+            field_dict["telemetry"] = telemetry
         if vpc_nested_template_url is not UNSET:
             field_dict["vpc_nested_template_url"] = vpc_nested_template_url
 
@@ -73,8 +82,11 @@ class ServiceUpdateInstallConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.config_custom_nested_stack import ConfigCustomNestedStack
-        from ..models.service_update_install_config_request_labels import ServiceUpdateInstallConfigRequestLabels
+        from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.config_install_telemetry import ConfigInstallTelemetry  # noqa: PLC0415
+        from ..models.service_update_install_config_request_labels import (
+            ServiceUpdateInstallConfigRequestLabels,  # noqa: PLC0415
+        )
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
@@ -102,6 +114,13 @@ class ServiceUpdateInstallConfigRequest:
 
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
+        _telemetry = d.pop("telemetry", UNSET)
+        telemetry: ConfigInstallTelemetry | Unset
+        if isinstance(_telemetry, Unset):
+            telemetry = UNSET
+        else:
+            telemetry = ConfigInstallTelemetry.from_dict(_telemetry)
+
         vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
 
         service_update_install_config_request = cls(
@@ -109,6 +128,7 @@ class ServiceUpdateInstallConfigRequest:
             custom_nested_stacks=custom_nested_stacks,
             labels=labels,
             runner_nested_template_url=runner_nested_template_url,
+            telemetry=telemetry,
             vpc_nested_template_url=vpc_nested_template_url,
         )
 

@@ -121,8 +121,10 @@ class AppRunnerJobExecutionResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_runner_job_execution_result_error_metadata import AppRunnerJobExecutionResultErrorMetadata
-        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+        from ..models.app_runner_job_execution_result_error_metadata import (
+            AppRunnerJobExecutionResultErrorMetadata,  # noqa: PLC0415
+        )
+        from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
 
         d = dict(src_dict)
         _composite_error = d.pop("composite_error", UNSET)
