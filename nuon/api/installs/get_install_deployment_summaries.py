@@ -6,7 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_get_install_deployments_response import ServiceGetInstallDeploymentsResponse
+from ...models.get_install_deployment_summaries_sort import GetInstallDeploymentSummariesSort
+from ...models.get_install_deployment_summaries_state import GetInstallDeploymentSummariesState
+from ...models.service_get_install_deployment_summaries_response import ServiceGetInstallDeploymentSummariesResponse
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
@@ -17,6 +19,9 @@ def _get_kwargs(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
+    state: GetInstallDeploymentSummariesState | Unset = UNSET,
+    sort: GetInstallDeploymentSummariesSort | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     resource: str | Unset = UNSET,
@@ -32,6 +37,20 @@ def _get_kwargs(
     params["offset"] = offset
 
     params["limit"] = limit
+
+    params["cursor"] = cursor
+
+    json_state: str | Unset = UNSET
+    if not isinstance(state, Unset):
+        json_state = state.value
+
+    params["state"] = json_state
+
+    json_sort: str | Unset = UNSET
+    if not isinstance(sort, Unset):
+        json_sort = sort.value
+
+    params["sort"] = json_sort
 
     params["type"] = type_
 
@@ -49,7 +68,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/installs/{install_id}/deployments".format(
+        "url": "/v1/installs/{install_id}/deployment-summaries".format(
             install_id=quote(str(install_id), safe=""),
         ),
         "params": params,
@@ -60,9 +79,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ServiceGetInstallDeploymentsResponse | StderrErrResponse | None:
+) -> ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse | None:
     if response.status_code == 200:
-        response_200 = ServiceGetInstallDeploymentsResponse.from_dict(response.json())
+        response_200 = ServiceGetInstallDeploymentSummariesResponse.from_dict(response.json())
 
         return response_200
 
@@ -99,7 +118,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ServiceGetInstallDeploymentsResponse | StderrErrResponse]:
+) -> Response[ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -115,36 +134,51 @@ def sync_detailed(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
+    state: GetInstallDeploymentSummariesState | Unset = UNSET,
+    sort: GetInstallDeploymentSummariesSort | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     resource: str | Unset = UNSET,
     search: str | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
-) -> Response[ServiceGetInstallDeploymentsResponse | StderrErrResponse]:
-    """get normalized deployment feed for an install
+) -> Response[ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse]:
+    """get lightweight deployment summaries for an install
 
-     Returns a normalized, chronological deployment feed for an install.
+     Returns a lightweight, chronological deployment feed for an install.
 
     Each record represents one install-owned workflow that caused a real change: provisioning,
     reprovisioning, component deploys, input updates, stack reprovisioning, sandbox reprovisioning, and
     install-config updates. Action runs, runbook runs, and policy checks are returned by the activity
     feed. Plan-only and preview records are excluded.
 
-    Records include a `type`, workflow `status`, `title`, `summary`, workflow and app branch references,
-    affected resources, and change groups. Component and image details are included when applicable.
+    Records include a `type`, workflow `status`, `title`, `activity`, `finished`, and slim workflow
+    `steps` for progress and resource outcomes. Use the single deployment endpoint for app branch,
+    image, affected resource, and change details.
 
     Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
-    Use the deployment summaries endpoint for lightweight progress lists with lifecycle filtering and
-    cursor pagination.
+    `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
+    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
+    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+
+    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
+    others. Each group is ordered newest first. The default order is newest first.
+
+    When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
+    `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
+    `offset`. An invalid `state`, `sort`, or `cursor` returns 400.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
+        state (GetInstallDeploymentSummariesState | Unset):
+        sort (GetInstallDeploymentSummariesSort | Unset):
         type_ (str | Unset):
         status (str | Unset):
         resource (str | Unset):
@@ -157,7 +191,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceGetInstallDeploymentsResponse | StderrErrResponse]
+        Response[ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -165,6 +199,9 @@ def sync_detailed(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
+        state=state,
+        sort=sort,
         type_=type_,
         status=status,
         resource=resource,
@@ -187,36 +224,51 @@ def sync(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
+    state: GetInstallDeploymentSummariesState | Unset = UNSET,
+    sort: GetInstallDeploymentSummariesSort | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     resource: str | Unset = UNSET,
     search: str | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
-) -> ServiceGetInstallDeploymentsResponse | StderrErrResponse | None:
-    """get normalized deployment feed for an install
+) -> ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse | None:
+    """get lightweight deployment summaries for an install
 
-     Returns a normalized, chronological deployment feed for an install.
+     Returns a lightweight, chronological deployment feed for an install.
 
     Each record represents one install-owned workflow that caused a real change: provisioning,
     reprovisioning, component deploys, input updates, stack reprovisioning, sandbox reprovisioning, and
     install-config updates. Action runs, runbook runs, and policy checks are returned by the activity
     feed. Plan-only and preview records are excluded.
 
-    Records include a `type`, workflow `status`, `title`, `summary`, workflow and app branch references,
-    affected resources, and change groups. Component and image details are included when applicable.
+    Records include a `type`, workflow `status`, `title`, `activity`, `finished`, and slim workflow
+    `steps` for progress and resource outcomes. Use the single deployment endpoint for app branch,
+    image, affected resource, and change details.
 
     Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
-    Use the deployment summaries endpoint for lightweight progress lists with lifecycle filtering and
-    cursor pagination.
+    `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
+    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
+    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+
+    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
+    others. Each group is ordered newest first. The default order is newest first.
+
+    When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
+    `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
+    `offset`. An invalid `state`, `sort`, or `cursor` returns 400.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
+        state (GetInstallDeploymentSummariesState | Unset):
+        sort (GetInstallDeploymentSummariesSort | Unset):
         type_ (str | Unset):
         status (str | Unset):
         resource (str | Unset):
@@ -229,7 +281,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceGetInstallDeploymentsResponse | StderrErrResponse
+        ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse
     """
 
     return sync_detailed(
@@ -238,6 +290,9 @@ def sync(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
+        state=state,
+        sort=sort,
         type_=type_,
         status=status,
         resource=resource,
@@ -254,36 +309,51 @@ async def asyncio_detailed(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
+    state: GetInstallDeploymentSummariesState | Unset = UNSET,
+    sort: GetInstallDeploymentSummariesSort | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     resource: str | Unset = UNSET,
     search: str | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
-) -> Response[ServiceGetInstallDeploymentsResponse | StderrErrResponse]:
-    """get normalized deployment feed for an install
+) -> Response[ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse]:
+    """get lightweight deployment summaries for an install
 
-     Returns a normalized, chronological deployment feed for an install.
+     Returns a lightweight, chronological deployment feed for an install.
 
     Each record represents one install-owned workflow that caused a real change: provisioning,
     reprovisioning, component deploys, input updates, stack reprovisioning, sandbox reprovisioning, and
     install-config updates. Action runs, runbook runs, and policy checks are returned by the activity
     feed. Plan-only and preview records are excluded.
 
-    Records include a `type`, workflow `status`, `title`, `summary`, workflow and app branch references,
-    affected resources, and change groups. Component and image details are included when applicable.
+    Records include a `type`, workflow `status`, `title`, `activity`, `finished`, and slim workflow
+    `steps` for progress and resource outcomes. Use the single deployment endpoint for app branch,
+    image, affected resource, and change details.
 
     Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
-    Use the deployment summaries endpoint for lightweight progress lists with lifecycle filtering and
-    cursor pagination.
+    `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
+    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
+    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+
+    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
+    others. Each group is ordered newest first. The default order is newest first.
+
+    When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
+    `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
+    `offset`. An invalid `state`, `sort`, or `cursor` returns 400.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
+        state (GetInstallDeploymentSummariesState | Unset):
+        sort (GetInstallDeploymentSummariesSort | Unset):
         type_ (str | Unset):
         status (str | Unset):
         resource (str | Unset):
@@ -296,7 +366,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ServiceGetInstallDeploymentsResponse | StderrErrResponse]
+        Response[ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse]
     """
 
     kwargs = _get_kwargs(
@@ -304,6 +374,9 @@ async def asyncio_detailed(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
+        state=state,
+        sort=sort,
         type_=type_,
         status=status,
         resource=resource,
@@ -324,36 +397,51 @@ async def asyncio(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
+    state: GetInstallDeploymentSummariesState | Unset = UNSET,
+    sort: GetInstallDeploymentSummariesSort | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     resource: str | Unset = UNSET,
     search: str | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
-) -> ServiceGetInstallDeploymentsResponse | StderrErrResponse | None:
-    """get normalized deployment feed for an install
+) -> ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse | None:
+    """get lightweight deployment summaries for an install
 
-     Returns a normalized, chronological deployment feed for an install.
+     Returns a lightweight, chronological deployment feed for an install.
 
     Each record represents one install-owned workflow that caused a real change: provisioning,
     reprovisioning, component deploys, input updates, stack reprovisioning, sandbox reprovisioning, and
     install-config updates. Action runs, runbook runs, and policy checks are returned by the activity
     feed. Plan-only and preview records are excluded.
 
-    Records include a `type`, workflow `status`, `title`, `summary`, workflow and app branch references,
-    affected resources, and change groups. Component and image details are included when applicable.
+    Records include a `type`, workflow `status`, `title`, `activity`, `finished`, and slim workflow
+    `steps` for progress and resource outcomes. Use the single deployment endpoint for app branch,
+    image, affected resource, and change details.
 
     Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
-    Use the deployment summaries endpoint for lightweight progress lists with lifecycle filtering and
-    cursor pagination.
+    `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
+    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
+    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+
+    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
+    others. Each group is ordered newest first. The default order is newest first.
+
+    When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
+    `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
+    `offset`. An invalid `state`, `sort`, or `cursor` returns 400.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
+        state (GetInstallDeploymentSummariesState | Unset):
+        sort (GetInstallDeploymentSummariesSort | Unset):
         type_ (str | Unset):
         status (str | Unset):
         resource (str | Unset):
@@ -366,7 +454,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ServiceGetInstallDeploymentsResponse | StderrErrResponse
+        ServiceGetInstallDeploymentSummariesResponse | StderrErrResponse
     """
 
     return (
@@ -376,6 +464,9 @@ async def asyncio(
             page=page,
             offset=offset,
             limit=limit,
+            cursor=cursor,
+            state=state,
+            sort=sort,
             type_=type_,
             status=status,
             resource=resource,
