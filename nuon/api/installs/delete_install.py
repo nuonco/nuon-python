@@ -7,13 +7,17 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_workflow_response import AppWorkflowResponse
+from ...models.service_delete_install_request import ServiceDeleteInstallRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     install_id: str,
+    *,
+    body: ServiceDeleteInstallRequest | Unset = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
@@ -22,6 +26,12 @@ def _get_kwargs(
         ),
     }
 
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -53,6 +63,11 @@ def _parse_response(
 
         return response_404
 
+    if response.status_code == 409:
+        response_409 = StderrErrResponse.from_dict(response.json())
+
+        return response_409
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -79,6 +94,7 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceDeleteInstallRequest | Unset = UNSET,
 ) -> Response[AppWorkflowResponse | StderrErrResponse]:
     """delete an install
 
@@ -86,6 +102,7 @@ def sync_detailed(
 
     Args:
         install_id (str):
+        body (ServiceDeleteInstallRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,6 +114,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -110,6 +128,7 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceDeleteInstallRequest | Unset = UNSET,
 ) -> AppWorkflowResponse | StderrErrResponse | None:
     """delete an install
 
@@ -117,6 +136,7 @@ def sync(
 
     Args:
         install_id (str):
+        body (ServiceDeleteInstallRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,6 +149,7 @@ def sync(
     return sync_detailed(
         install_id=install_id,
         client=client,
+        body=body,
     ).parsed
 
 
@@ -136,6 +157,7 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceDeleteInstallRequest | Unset = UNSET,
 ) -> Response[AppWorkflowResponse | StderrErrResponse]:
     """delete an install
 
@@ -143,6 +165,7 @@ async def asyncio_detailed(
 
     Args:
         install_id (str):
+        body (ServiceDeleteInstallRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,6 +177,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -165,6 +189,7 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceDeleteInstallRequest | Unset = UNSET,
 ) -> AppWorkflowResponse | StderrErrResponse | None:
     """delete an install
 
@@ -172,6 +197,7 @@ async def asyncio(
 
     Args:
         install_id (str):
+        body (ServiceDeleteInstallRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,5 +211,6 @@ async def asyncio(
         await asyncio_detailed(
             install_id=install_id,
             client=client,
+            body=body,
         )
     ).parsed

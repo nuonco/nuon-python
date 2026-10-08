@@ -15,18 +15,24 @@ T = TypeVar("T", bound="ServiceRecoverInstallComponentHelmReleaseRequest")
 class ServiceRecoverInstallComponentHelmReleaseRequest:
     """
     Attributes:
+        request_id (str | Unset):
         role (str | Unset):
     """
 
+    request_id: str | Unset = UNSET
     role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        request_id = self.request_id
+
         role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if role is not UNSET:
             field_dict["role"] = role
 
@@ -35,9 +41,12 @@ class ServiceRecoverInstallComponentHelmReleaseRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        request_id = d.pop("request_id", UNSET)
+
         role = d.pop("role", UNSET)
 
         service_recover_install_component_helm_release_request = cls(
+            request_id=request_id,
             role=role,
         )
 

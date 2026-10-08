@@ -19,6 +19,7 @@ class ServiceCreateInstallDeployRequest:
         deploy_dependencies (bool | Unset):
         deploy_dependents (bool | Unset):
         plan_only (bool | Unset):
+        request_id (str | Unset):
         role (str | Unset):
     """
 
@@ -26,6 +27,7 @@ class ServiceCreateInstallDeployRequest:
     deploy_dependencies: bool | Unset = UNSET
     deploy_dependents: bool | Unset = UNSET
     plan_only: bool | Unset = UNSET
+    request_id: str | Unset = UNSET
     role: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,6 +39,8 @@ class ServiceCreateInstallDeployRequest:
         deploy_dependents = self.deploy_dependents
 
         plan_only = self.plan_only
+
+        request_id = self.request_id
 
         role = self.role
 
@@ -51,6 +55,8 @@ class ServiceCreateInstallDeployRequest:
             field_dict["deploy_dependents"] = deploy_dependents
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if role is not UNSET:
             field_dict["role"] = role
 
@@ -67,6 +73,8 @@ class ServiceCreateInstallDeployRequest:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        request_id = d.pop("request_id", UNSET)
+
         role = d.pop("role", UNSET)
 
         service_create_install_deploy_request = cls(
@@ -74,6 +82,7 @@ class ServiceCreateInstallDeployRequest:
             deploy_dependencies=deploy_dependencies,
             deploy_dependents=deploy_dependents,
             plan_only=plan_only,
+            request_id=request_id,
             role=role,
         )
 

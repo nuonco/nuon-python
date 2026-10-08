@@ -21,15 +21,21 @@ class AppInstallGroupRunInstall:
     Attributes:
         install_id (str | Unset):
         phase (str | Unset): Phase is which stage of the group the install is in: "deploy" or "runbook".
+        release_reason (str | Unset): ReleaseReason is why the group stopped waiting on this install.
         runbooks (list[AppInstallGroupRunRunbook] | Unset):
         status (str | Unset):
+        superseded_by_run_id (str | Unset): SupersededByRunID is the later app branch run that cancelled this one.
+        waiting_on_run_id (str | Unset): WaitingOnRunID is the app branch run this install is queued behind.
         workflow_id (str | Unset):
     """
 
     install_id: str | Unset = UNSET
     phase: str | Unset = UNSET
+    release_reason: str | Unset = UNSET
     runbooks: list[AppInstallGroupRunRunbook] | Unset = UNSET
     status: str | Unset = UNSET
+    superseded_by_run_id: str | Unset = UNSET
+    waiting_on_run_id: str | Unset = UNSET
     workflow_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,6 +43,8 @@ class AppInstallGroupRunInstall:
         install_id = self.install_id
 
         phase = self.phase
+
+        release_reason = self.release_reason
 
         runbooks: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.runbooks, Unset):
@@ -47,6 +55,10 @@ class AppInstallGroupRunInstall:
 
         status = self.status
 
+        superseded_by_run_id = self.superseded_by_run_id
+
+        waiting_on_run_id = self.waiting_on_run_id
+
         workflow_id = self.workflow_id
 
         field_dict: dict[str, Any] = {}
@@ -56,10 +68,16 @@ class AppInstallGroupRunInstall:
             field_dict["install_id"] = install_id
         if phase is not UNSET:
             field_dict["phase"] = phase
+        if release_reason is not UNSET:
+            field_dict["release_reason"] = release_reason
         if runbooks is not UNSET:
             field_dict["runbooks"] = runbooks
         if status is not UNSET:
             field_dict["status"] = status
+        if superseded_by_run_id is not UNSET:
+            field_dict["superseded_by_run_id"] = superseded_by_run_id
+        if waiting_on_run_id is not UNSET:
+            field_dict["waiting_on_run_id"] = waiting_on_run_id
         if workflow_id is not UNSET:
             field_dict["workflow_id"] = workflow_id
 
@@ -74,6 +92,8 @@ class AppInstallGroupRunInstall:
 
         phase = d.pop("phase", UNSET)
 
+        release_reason = d.pop("release_reason", UNSET)
+
         _runbooks = d.pop("runbooks", UNSET)
         runbooks: list[AppInstallGroupRunRunbook] | Unset = UNSET
         if _runbooks is not UNSET:
@@ -85,13 +105,20 @@ class AppInstallGroupRunInstall:
 
         status = d.pop("status", UNSET)
 
+        superseded_by_run_id = d.pop("superseded_by_run_id", UNSET)
+
+        waiting_on_run_id = d.pop("waiting_on_run_id", UNSET)
+
         workflow_id = d.pop("workflow_id", UNSET)
 
         app_install_group_run_install = cls(
             install_id=install_id,
             phase=phase,
+            release_reason=release_reason,
             runbooks=runbooks,
             status=status,
+            superseded_by_run_id=superseded_by_run_id,
+            waiting_on_run_id=waiting_on_run_id,
             workflow_id=workflow_id,
         )
 

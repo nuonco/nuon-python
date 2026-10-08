@@ -22,17 +22,21 @@ class ServiceCreateInstallActionWorkflowRunRequest:
     """
     Attributes:
         action_workflow_config_id (str):
+        request_id (str | Unset):
         role (str | Unset):
         run_env_vars (ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset):
     """
 
     action_workflow_config_id: str
+    request_id: str | Unset = UNSET
     role: str | Unset = UNSET
     run_env_vars: ServiceCreateInstallActionWorkflowRunRequestRunEnvVars | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         action_workflow_config_id = self.action_workflow_config_id
+
+        request_id = self.request_id
 
         role = self.role
 
@@ -47,6 +51,8 @@ class ServiceCreateInstallActionWorkflowRunRequest:
                 "action_workflow_config_id": action_workflow_config_id,
             }
         )
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if role is not UNSET:
             field_dict["role"] = role
         if run_env_vars is not UNSET:
@@ -63,6 +69,8 @@ class ServiceCreateInstallActionWorkflowRunRequest:
         d = dict(src_dict)
         action_workflow_config_id = d.pop("action_workflow_config_id")
 
+        request_id = d.pop("request_id", UNSET)
+
         role = d.pop("role", UNSET)
 
         _run_env_vars = d.pop("run_env_vars", UNSET)
@@ -74,6 +82,7 @@ class ServiceCreateInstallActionWorkflowRunRequest:
 
         service_create_install_action_workflow_run_request = cls(
             action_workflow_config_id=action_workflow_config_id,
+            request_id=request_id,
             role=role,
             run_env_vars=run_env_vars,
         )
