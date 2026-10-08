@@ -17,16 +17,20 @@ class ServiceCreateInstallAppConfigUpdateRequest:
     Attributes:
         app_config_id (str):
         plan_only (bool | Unset):
+        request_id (str | Unset):
     """
 
     app_config_id: str
     plan_only: bool | Unset = UNSET
+    request_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         app_config_id = self.app_config_id
 
         plan_only = self.plan_only
+
+        request_id = self.request_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -37,6 +41,8 @@ class ServiceCreateInstallAppConfigUpdateRequest:
         )
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
 
         return field_dict
 
@@ -47,9 +53,12 @@ class ServiceCreateInstallAppConfigUpdateRequest:
 
         plan_only = d.pop("plan_only", UNSET)
 
+        request_id = d.pop("request_id", UNSET)
+
         service_create_install_app_config_update_request = cls(
             app_config_id=app_config_id,
             plan_only=plan_only,
+            request_id=request_id,
         )
 
         service_create_install_app_config_update_request.additional_properties = d

@@ -24,6 +24,7 @@ class ServiceCreateAdHocActionRequest:
         env_vars (ServiceCreateAdHocActionRequestEnvVars | Unset):
         inline_contents (str | Unset):
         name (str | Unset):
+        request_id (str | Unset):
         role (str | Unset):
         timeout (int | Unset):
     """
@@ -33,6 +34,7 @@ class ServiceCreateAdHocActionRequest:
     env_vars: ServiceCreateAdHocActionRequestEnvVars | Unset = UNSET
     inline_contents: str | Unset = UNSET
     name: str | Unset = UNSET
+    request_id: str | Unset = UNSET
     role: str | Unset = UNSET
     timeout: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -54,6 +56,8 @@ class ServiceCreateAdHocActionRequest:
 
         name = self.name
 
+        request_id = self.request_id
+
         role = self.role
 
         timeout = self.timeout
@@ -71,6 +75,8 @@ class ServiceCreateAdHocActionRequest:
             field_dict["inline_contents"] = inline_contents
         if name is not UNSET:
             field_dict["name"] = name
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if role is not UNSET:
             field_dict["role"] = role
         if timeout is not UNSET:
@@ -107,6 +113,8 @@ class ServiceCreateAdHocActionRequest:
 
         name = d.pop("name", UNSET)
 
+        request_id = d.pop("request_id", UNSET)
+
         role = d.pop("role", UNSET)
 
         timeout = d.pop("timeout", UNSET)
@@ -117,6 +125,7 @@ class ServiceCreateAdHocActionRequest:
             env_vars=env_vars,
             inline_contents=inline_contents,
             name=name,
+            request_id=request_id,
             role=role,
             timeout=timeout,
         )

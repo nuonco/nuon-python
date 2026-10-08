@@ -16,19 +16,25 @@ class ServiceSyncSecretsRequest:
     """
     Attributes:
         plan_only (bool | Unset):
+        request_id (str | Unset):
     """
 
     plan_only: bool | Unset = UNSET
+    request_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         plan_only = self.plan_only
+
+        request_id = self.request_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if plan_only is not UNSET:
             field_dict["plan_only"] = plan_only
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
 
         return field_dict
 
@@ -37,8 +43,11 @@ class ServiceSyncSecretsRequest:
         d = dict(src_dict)
         plan_only = d.pop("plan_only", UNSET)
 
+        request_id = d.pop("request_id", UNSET)
+
         service_sync_secrets_request = cls(
             plan_only=plan_only,
+            request_id=request_id,
         )
 
         service_sync_secrets_request.additional_properties = d

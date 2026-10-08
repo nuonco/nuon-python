@@ -29,6 +29,9 @@ from .app_app_branch_run_preview_source import AppAppBranchRunPreviewSource
 from .app_app_branch_run_trigger import AppAppBranchRunTrigger
 from .app_app_branch_run_type import AppAppBranchRunType
 from .app_app_break_glass_config import AppAppBreakGlassConfig
+from .app_app_bundle_platform_runtime import AppAppBundlePlatformRuntime
+from .app_app_bundle_runtime import AppAppBundleRuntime
+from .app_app_bundle_runtime_platforms import AppAppBundleRuntimePlatforms
 from .app_app_config import AppAppConfig
 from .app_app_config_ref import AppAppConfigRef
 from .app_app_config_status import AppAppConfigStatus
@@ -344,6 +347,10 @@ from .app_workflow_step_metadata import AppWorkflowStepMetadata
 from .app_workflow_step_policy_validation import AppWorkflowStepPolicyValidation
 from .app_workflow_step_response_type import AppWorkflowStepResponseType
 from .app_workflow_type import AppWorkflowType
+from .appbundle_finding import AppbundleFinding
+from .appbundle_qualification_report import AppbundleQualificationReport
+from .appbundle_runbook_step import AppbundleRunbookStep
+from .appbundle_runbook_template import AppbundleRunbookTemplate
 from .blobstore_blob import BlobstoreBlob
 from .blobstore_blob_metadata import BlobstoreBlobMetadata
 from .callback_ref import CallbackRef
@@ -380,6 +387,7 @@ from .diff_impact_reason import DiffImpactReason
 from .diff_op import DiffOp
 from .generics_null_time import GenericsNullTime
 from .get_action_label_keys_response_200 import GetActionLabelKeysResponse200
+from .get_app_bundles_status import GetAppBundlesStatus
 from .get_app_config_template_type import GetAppConfigTemplateType
 from .get_available_roles_operation_type import GetAvailableRolesOperationType
 from .get_available_roles_principal_type import GetAvailableRolesPrincipalType
@@ -522,6 +530,8 @@ from .service_azure_acr_image_config_request import ServiceAzureACRImageConfigRe
 from .service_branch import ServiceBranch
 from .service_breakdown_entry import ServiceBreakdownEntry
 from .service_build_all_components_request import ServiceBuildAllComponentsRequest
+from .service_build_app_config_request import ServiceBuildAppConfigRequest
+from .service_bundle_response import ServiceBundleResponse
 from .service_cancel_runner_job_request import ServiceCancelRunnerJobRequest
 from .service_cancel_workflow_error import ServiceCancelWorkflowError
 from .service_cancel_workflow_step_response import ServiceCancelWorkflowStepResponse
@@ -577,6 +587,7 @@ from .service_create_app_policies_config_request import ServiceCreateAppPolicies
 from .service_create_app_request import ServiceCreateAppRequest
 from .service_create_app_runner_config_request import ServiceCreateAppRunnerConfigRequest
 from .service_create_app_runner_config_request_env_vars import ServiceCreateAppRunnerConfigRequestEnvVars
+from .service_create_app_sandbox_build_request import ServiceCreateAppSandboxBuildRequest
 from .service_create_app_sandbox_config_request import ServiceCreateAppSandboxConfigRequest
 from .service_create_app_sandbox_config_request_env_vars import ServiceCreateAppSandboxConfigRequestEnvVars
 from .service_create_app_sandbox_config_request_operation_roles import (
@@ -587,6 +598,7 @@ from .service_create_app_sandbox_config_request_variables import ServiceCreateAp
 from .service_create_app_secret_request import ServiceCreateAppSecretRequest
 from .service_create_app_secrets_config_request import ServiceCreateAppSecretsConfigRequest
 from .service_create_app_stack_config_request import ServiceCreateAppStackConfigRequest
+from .service_create_bundle_request import ServiceCreateBundleRequest
 from .service_create_cell_request import ServiceCreateCellRequest
 from .service_create_cell_request_env_vars import ServiceCreateCellRequestEnvVars
 from .service_create_channel_subscription_request import ServiceCreateChannelSubscriptionRequest
@@ -693,9 +705,11 @@ from .service_current_org_webhook_response import ServiceCurrentOrgWebhookRespon
 from .service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests
 from .service_current_org_webhook_response_match import ServiceCurrentOrgWebhookResponseMatch
 from .service_daily_health_bucket import ServiceDailyHealthBucket
+from .service_delete_install_request import ServiceDeleteInstallRequest
 from .service_deploy_install_components_request import ServiceDeployInstallComponentsRequest
 from .service_deprovision_install_request import ServiceDeprovisionInstallRequest
 from .service_deprovision_install_sandbox_request import ServiceDeprovisionInstallSandboxRequest
+from .service_download_grant_response import ServiceDownloadGrantResponse
 from .service_example_app import ServiceExampleApp
 from .service_exchange_oidc_token_request import ServiceExchangeOIDCTokenRequest
 from .service_exchange_oidc_token_response import ServiceExchangeOIDCTokenResponse
@@ -716,6 +730,7 @@ from .service_install_activity_policy import ServiceInstallActivityPolicy
 from .service_install_activity_runbook import ServiceInstallActivityRunbook
 from .service_install_activity_type import ServiceInstallActivityType
 from .service_install_activity_workflow_ref import ServiceInstallActivityWorkflowRef
+from .service_install_app_config_tree_diff_response import ServiceInstallAppConfigTreeDiffResponse
 from .service_install_app_config_update import ServiceInstallAppConfigUpdate
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
 from .service_install_branch_tracking import ServiceInstallBranchTracking
@@ -819,6 +834,7 @@ from .service_timeseries_bucket import ServiceTimeseriesBucket
 from .service_toggle_install_component_request import ServiceToggleInstallComponentRequest
 from .service_trigger_app_branch_run_request import ServiceTriggerAppBranchRunRequest
 from .service_trigger_app_branch_run_source import ServiceTriggerAppBranchRunSource
+from .service_trigger_app_install_sync_request import ServiceTriggerAppInstallSyncRequest
 from .service_trigger_install_config_sync_request import ServiceTriggerInstallConfigSyncRequest
 from .service_update_action_workflow_request import ServiceUpdateActionWorkflowRequest
 from .service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels
@@ -945,6 +961,9 @@ __all__ = (
     "AppAppBranchRunTrigger",
     "AppAppBranchRunType",
     "AppAppBreakGlassConfig",
+    "AppAppBundlePlatformRuntime",
+    "AppAppBundleRuntime",
+    "AppAppBundleRuntimePlatforms",
     "AppAppConfig",
     "AppAppConfigRef",
     "AppAppConfigStatus",
@@ -995,6 +1014,10 @@ __all__ = (
     "AppAzureStackOutputsBreakGlassIdentityClientIds",
     "AppAzureStackOutputsCustomIdentityClientIds",
     "AppAzureStackOutputsInstallInputs",
+    "AppbundleFinding",
+    "AppbundleQualificationReport",
+    "AppbundleRunbookStep",
+    "AppbundleRunbookTemplate",
     "AppCloudConnection",
     "AppCloudConnectionPlatform",
     "AppCloudConnectionPreset",
@@ -1290,6 +1313,7 @@ __all__ = (
     "DiffOp",
     "GenericsNullTime",
     "GetActionLabelKeysResponse200",
+    "GetAppBundlesStatus",
     "GetAppConfigTemplateType",
     "GetAvailableRolesOperationType",
     "GetAvailableRolesPrincipalType",
@@ -1428,6 +1452,8 @@ __all__ = (
     "ServiceBranch",
     "ServiceBreakdownEntry",
     "ServiceBuildAllComponentsRequest",
+    "ServiceBuildAppConfigRequest",
+    "ServiceBundleResponse",
     "ServiceCancelRunnerJobRequest",
     "ServiceCancelWorkflowError",
     "ServiceCancelWorkflowsRequest",
@@ -1479,6 +1505,7 @@ __all__ = (
     "ServiceCreateAppRequest",
     "ServiceCreateAppRunnerConfigRequest",
     "ServiceCreateAppRunnerConfigRequestEnvVars",
+    "ServiceCreateAppSandboxBuildRequest",
     "ServiceCreateAppSandboxConfigRequest",
     "ServiceCreateAppSandboxConfigRequestEnvVars",
     "ServiceCreateAppSandboxConfigRequestOperationRoles",
@@ -1487,6 +1514,7 @@ __all__ = (
     "ServiceCreateAppSecretRequest",
     "ServiceCreateAppSecretsConfigRequest",
     "ServiceCreateAppStackConfigRequest",
+    "ServiceCreateBundleRequest",
     "ServiceCreateCellRequest",
     "ServiceCreateCellRequestEnvVars",
     "ServiceCreateChannelSubscriptionRequest",
@@ -1567,9 +1595,11 @@ __all__ = (
     "ServiceCurrentOrgWebhookResponseInterests",
     "ServiceCurrentOrgWebhookResponseMatch",
     "ServiceDailyHealthBucket",
+    "ServiceDeleteInstallRequest",
     "ServiceDeployInstallComponentsRequest",
     "ServiceDeprovisionInstallRequest",
     "ServiceDeprovisionInstallSandboxRequest",
+    "ServiceDownloadGrantResponse",
     "ServiceExampleApp",
     "ServiceExchangeOIDCTokenRequest",
     "ServiceExchangeOIDCTokenResponse",
@@ -1590,6 +1620,7 @@ __all__ = (
     "ServiceInstallActivityRunbook",
     "ServiceInstallActivityType",
     "ServiceInstallActivityWorkflowRef",
+    "ServiceInstallAppConfigTreeDiffResponse",
     "ServiceInstallAppConfigUpdate",
     "ServiceInstallAppPermissionsConfigResponse",
     "ServiceInstallBranchTracking",
@@ -1689,6 +1720,7 @@ __all__ = (
     "ServiceToggleInstallComponentRequest",
     "ServiceTriggerAppBranchRunRequest",
     "ServiceTriggerAppBranchRunSource",
+    "ServiceTriggerAppInstallSyncRequest",
     "ServiceTriggerInstallConfigSyncRequest",
     "ServiceUpdateActionWorkflowRequest",
     "ServiceUpdateActionWorkflowRequestLabels",

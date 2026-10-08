@@ -46,12 +46,11 @@ class AppInstallStackVersion:
         org_id (str | Unset):
         phone_home_id (str | Unset):
         phone_home_url (str | Unset):
-        quick_link_bucket_key (str | Unset): QuickLinkBucketKey held the wrapper template an earlier Azure quick link
-            pointed at. Nothing writes it now. QuickLinkUIDefBucketKey is the
-            createUiDefinition uploaded for an Azure subscription-scoped quick link and
-            appended as createUIDefinitionUri, so the portal pins the install's
-            subscription and region. Rows created while the wrapper shipped still carry
-            QuickLinkBucketKey.
+        quick_link_bucket_key (str | Unset): QuickLinkBucketKey is the deployment-stack wrapper an Azure subscription-
+            scoped
+            quick link points at (see arm.QuickLinkWrapper). QuickLinkUIDefBucketKey is
+            the createUiDefinition appended as createUIDefinitionUri, so the portal pins
+            the install's subscription and region.
         quick_link_ui_def_bucket_key (str | Unset):
         quick_link_url (str | Unset): QuickLinkURL opens the cloud console pre-loaded with this version's stack:
             CloudFormation quick-create on AWS, Deploy to Azure on Azure. Empty on GCP,

@@ -73,6 +73,8 @@ class AppComponentBuild:
             runner selected (e.g. "1.25.5" even if SourceRef pinned "1.25.3" with a
             "~1.25.0" update_policy constraint).
         runner_job (AppRunnerJob | Unset):
+        signature_verification (str | Unset): SignatureVerification is empty when the outcome is unknown (older builds,
+            or failures before verification ran).
         source_checksum (str | Unset): checksum of the component's source directory at build time
         source_digest (str | Unset): SourceDigest is the manifest list digest of the resolved source ref,
             e.g. "sha256:abc...". This is the canonical content address of what was
@@ -118,6 +120,7 @@ class AppComponentBuild:
     resolved_at: str | Unset = UNSET
     resolved_tag: str | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
+    signature_verification: str | Unset = UNSET
     source_checksum: str | Unset = UNSET
     source_digest: str | Unset = UNSET
     source_image: str | Unset = UNSET
@@ -212,6 +215,8 @@ class AppComponentBuild:
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
 
+        signature_verification = self.signature_verification
+
         source_checksum = self.source_checksum
 
         source_digest = self.source_digest
@@ -291,6 +296,8 @@ class AppComponentBuild:
             field_dict["resolved_tag"] = resolved_tag
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
+        if signature_verification is not UNSET:
+            field_dict["signature_verification"] = signature_verification
         if source_checksum is not UNSET:
             field_dict["source_checksum"] = source_checksum
         if source_digest is not UNSET:
@@ -438,6 +445,8 @@ class AppComponentBuild:
         else:
             runner_job = AppRunnerJob.from_dict(_runner_job)
 
+        signature_verification = d.pop("signature_verification", UNSET)
+
         source_checksum = d.pop("source_checksum", UNSET)
 
         source_digest = d.pop("source_digest", UNSET)
@@ -495,6 +504,7 @@ class AppComponentBuild:
             resolved_at=resolved_at,
             resolved_tag=resolved_tag,
             runner_job=runner_job,
+            signature_verification=signature_verification,
             source_checksum=source_checksum,
             source_digest=source_digest,
             source_image=source_image,

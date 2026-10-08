@@ -7,13 +7,17 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_app_install_config_sync import AppAppInstallConfigSync
+from ...models.service_trigger_app_install_sync_request import ServiceTriggerAppInstallSyncRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     app_id: str,
+    *,
+    body: ServiceTriggerAppInstallSyncRequest | Unset = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -22,6 +26,12 @@ def _get_kwargs(
         ),
     }
 
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -53,6 +63,11 @@ def _parse_response(
 
         return response_404
 
+    if response.status_code == 409:
+        response_409 = StderrErrResponse.from_dict(response.json())
+
+        return response_409
+
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -79,6 +94,7 @@ def sync_detailed(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceTriggerAppInstallSyncRequest | Unset = UNSET,
 ) -> Response[AppAppInstallConfigSync | StderrErrResponse]:
     """trigger app-level install config sync
 
@@ -86,6 +102,7 @@ def sync_detailed(
 
     Args:
         app_id (str):
+        body (ServiceTriggerAppInstallSyncRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,6 +114,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -110,6 +128,7 @@ def sync(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceTriggerAppInstallSyncRequest | Unset = UNSET,
 ) -> AppAppInstallConfigSync | StderrErrResponse | None:
     """trigger app-level install config sync
 
@@ -117,6 +136,7 @@ def sync(
 
     Args:
         app_id (str):
+        body (ServiceTriggerAppInstallSyncRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,6 +149,7 @@ def sync(
     return sync_detailed(
         app_id=app_id,
         client=client,
+        body=body,
     ).parsed
 
 
@@ -136,6 +157,7 @@ async def asyncio_detailed(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceTriggerAppInstallSyncRequest | Unset = UNSET,
 ) -> Response[AppAppInstallConfigSync | StderrErrResponse]:
     """trigger app-level install config sync
 
@@ -143,6 +165,7 @@ async def asyncio_detailed(
 
     Args:
         app_id (str):
+        body (ServiceTriggerAppInstallSyncRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,6 +177,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -165,6 +189,7 @@ async def asyncio(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceTriggerAppInstallSyncRequest | Unset = UNSET,
 ) -> AppAppInstallConfigSync | StderrErrResponse | None:
     """trigger app-level install config sync
 
@@ -172,6 +197,7 @@ async def asyncio(
 
     Args:
         app_id (str):
+        body (ServiceTriggerAppInstallSyncRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,5 +211,6 @@ async def asyncio(
         await asyncio_detailed(
             app_id=app_id,
             client=client,
+            body=body,
         )
     ).parsed

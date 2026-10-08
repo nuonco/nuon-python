@@ -7,13 +7,17 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app_app_sandbox_build import AppAppSandboxBuild
+from ...models.service_create_app_sandbox_build_request import ServiceCreateAppSandboxBuildRequest
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     app_id: str,
+    *,
+    body: ServiceCreateAppSandboxBuildRequest | Unset = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -22,6 +26,12 @@ def _get_kwargs(
         ),
     }
 
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -79,11 +89,13 @@ def sync_detailed(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceCreateAppSandboxBuildRequest | Unset = UNSET,
 ) -> Response[AppAppSandboxBuild | StderrErrResponse]:
     """create app sandbox build
 
     Args:
         app_id (str):
+        body (ServiceCreateAppSandboxBuildRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -95,6 +107,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -108,11 +121,13 @@ def sync(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceCreateAppSandboxBuildRequest | Unset = UNSET,
 ) -> AppAppSandboxBuild | StderrErrResponse | None:
     """create app sandbox build
 
     Args:
         app_id (str):
+        body (ServiceCreateAppSandboxBuildRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -125,6 +140,7 @@ def sync(
     return sync_detailed(
         app_id=app_id,
         client=client,
+        body=body,
     ).parsed
 
 
@@ -132,11 +148,13 @@ async def asyncio_detailed(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceCreateAppSandboxBuildRequest | Unset = UNSET,
 ) -> Response[AppAppSandboxBuild | StderrErrResponse]:
     """create app sandbox build
 
     Args:
         app_id (str):
+        body (ServiceCreateAppSandboxBuildRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -148,6 +166,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         app_id=app_id,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -159,11 +178,13 @@ async def asyncio(
     app_id: str,
     *,
     client: AuthenticatedClient,
+    body: ServiceCreateAppSandboxBuildRequest | Unset = UNSET,
 ) -> AppAppSandboxBuild | StderrErrResponse | None:
     """create app sandbox build
 
     Args:
         app_id (str):
+        body (ServiceCreateAppSandboxBuildRequest | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,5 +198,6 @@ async def asyncio(
         await asyncio_detailed(
             app_id=app_id,
             client=client,
+            body=body,
         )
     ).parsed

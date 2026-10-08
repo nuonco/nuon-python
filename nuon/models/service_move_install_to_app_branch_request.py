@@ -20,7 +20,7 @@ class ServiceMoveInstallToAppBranchRequest:
     """
     Attributes:
         app_branch_id (str): AppBranchID is the branch to move the install to. It must belong to the
-            install's app and have an app config to deploy.
+            install's app. A branch with no completed run still accepts the install.
         app_branch_group (str | Unset):
         labels (ServiceMoveInstallToAppBranchRequestLabels | Unset):
     """

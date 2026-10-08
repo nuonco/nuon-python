@@ -16,15 +16,19 @@ class ServiceCreateComponentBuildRequest:
     """
     Attributes:
         git_ref (str | Unset):
+        request_id (str | Unset):
         use_latest (bool | Unset):
     """
 
     git_ref: str | Unset = UNSET
+    request_id: str | Unset = UNSET
     use_latest: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         git_ref = self.git_ref
+
+        request_id = self.request_id
 
         use_latest = self.use_latest
 
@@ -33,6 +37,8 @@ class ServiceCreateComponentBuildRequest:
         field_dict.update({})
         if git_ref is not UNSET:
             field_dict["git_ref"] = git_ref
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if use_latest is not UNSET:
             field_dict["use_latest"] = use_latest
 
@@ -43,10 +49,13 @@ class ServiceCreateComponentBuildRequest:
         d = dict(src_dict)
         git_ref = d.pop("git_ref", UNSET)
 
+        request_id = d.pop("request_id", UNSET)
+
         use_latest = d.pop("use_latest", UNSET)
 
         service_create_component_build_request = cls(
             git_ref=git_ref,
+            request_id=request_id,
             use_latest=use_latest,
         )
 

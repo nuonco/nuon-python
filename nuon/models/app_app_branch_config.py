@@ -37,6 +37,8 @@ class AppAppBranchConfig:
             marked not-attempted instead of building and deploying. Empty disables the
             check, and a forced run bypasses it.
         install_groups (list[AppAppBranchInstallGroup] | Unset):
+        install_update_policy (str | Unset): InstallUpdatePolicy is unused. A new run always supersedes an open install
+            update. The column stays so existing rows do not need a migration.
         org_id (str | Unset):
         post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs are runbooks run on each install, in order,
             after its
@@ -63,6 +65,7 @@ class AppAppBranchConfig:
     id: str | Unset = UNSET
     ignore_changes_regex: str | Unset = UNSET
     install_groups: list[AppAppBranchInstallGroup] | Unset = UNSET
+    install_update_policy: str | Unset = UNSET
     org_id: str | Unset = UNSET
     post_deploy_runbook_ids: list[str] | Unset = UNSET
     preview_config: AppAppBranchPreviewConfig | Unset = UNSET
@@ -105,6 +108,8 @@ class AppAppBranchConfig:
             for install_groups_item_data in self.install_groups:
                 install_groups_item = install_groups_item_data.to_dict()
                 install_groups.append(install_groups_item)
+
+        install_update_policy = self.install_update_policy
 
         org_id = self.org_id
 
@@ -162,6 +167,8 @@ class AppAppBranchConfig:
             field_dict["ignore_changes_regex"] = ignore_changes_regex
         if install_groups is not UNSET:
             field_dict["install_groups"] = install_groups
+        if install_update_policy is not UNSET:
+            field_dict["install_update_policy"] = install_update_policy
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
         if post_deploy_runbook_ids is not UNSET:
@@ -225,6 +232,8 @@ class AppAppBranchConfig:
 
                 install_groups.append(install_groups_item)
 
+        install_update_policy = d.pop("install_update_policy", UNSET)
+
         org_id = d.pop("org_id", UNSET)
 
         post_deploy_runbook_ids = cast(list[str], d.pop("post_deploy_runbook_ids", UNSET))
@@ -276,6 +285,7 @@ class AppAppBranchConfig:
             id=id,
             ignore_changes_regex=ignore_changes_regex,
             install_groups=install_groups,
+            install_update_policy=install_update_policy,
             org_id=org_id,
             post_deploy_runbook_ids=post_deploy_runbook_ids,
             preview_config=preview_config,

@@ -29,6 +29,7 @@ class ServiceTriggerAppBranchRunRequest:
         plan_only (bool | Unset):
         pr_number (int | Unset):
         preview_run (ServicePreviewRunRequest | Unset):
+        request_id (str | Unset):
         run_ref (str | Unset):
         run_type (ServiceTriggerAppBranchRunSource | Unset):
         skip_builds (bool | Unset):
@@ -44,6 +45,7 @@ class ServiceTriggerAppBranchRunRequest:
     plan_only: bool | Unset = UNSET
     pr_number: int | Unset = UNSET
     preview_run: ServicePreviewRunRequest | Unset = UNSET
+    request_id: str | Unset = UNSET
     run_ref: str | Unset = UNSET
     run_type: ServiceTriggerAppBranchRunSource | Unset = UNSET
     skip_builds: bool | Unset = UNSET
@@ -70,6 +72,8 @@ class ServiceTriggerAppBranchRunRequest:
         preview_run: dict[str, Any] | Unset = UNSET
         if not isinstance(self.preview_run, Unset):
             preview_run = self.preview_run.to_dict()
+
+        request_id = self.request_id
 
         run_ref = self.run_ref
 
@@ -102,6 +106,8 @@ class ServiceTriggerAppBranchRunRequest:
             field_dict["pr_number"] = pr_number
         if preview_run is not UNSET:
             field_dict["preview_run"] = preview_run
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if run_ref is not UNSET:
             field_dict["run_ref"] = run_ref
         if run_type is not UNSET:
@@ -141,6 +147,8 @@ class ServiceTriggerAppBranchRunRequest:
         else:
             preview_run = ServicePreviewRunRequest.from_dict(_preview_run)
 
+        request_id = d.pop("request_id", UNSET)
+
         run_ref = d.pop("run_ref", UNSET)
 
         _run_type = d.pop("run_type", UNSET)
@@ -164,6 +172,7 @@ class ServiceTriggerAppBranchRunRequest:
             plan_only=plan_only,
             pr_number=pr_number,
             preview_run=preview_run,
+            request_id=request_id,
             run_ref=run_ref,
             run_type=run_type,
             skip_builds=skip_builds,

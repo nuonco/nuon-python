@@ -42,6 +42,7 @@ class ServiceCreateInstallV2Request:
             creation time.
             They are merged into the install's existing labels (which is empty for a brand-new install).
         metadata (HelpersInstallMetadata | Unset):
+        request_id (str | Unset):
         stack_only (bool | Unset): StackOnly provisions the install stack and runner, then stops. The sandbox
             and components stay unprovisioned until the install is provisioned again.
     """
@@ -58,6 +59,7 @@ class ServiceCreateInstallV2Request:
     install_config: HelpersCreateInstallConfigParams | Unset = UNSET
     labels: ServiceCreateInstallV2RequestLabels | Unset = UNSET
     metadata: HelpersInstallMetadata | Unset = UNSET
+    request_id: str | Unset = UNSET
     stack_only: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -100,6 +102,8 @@ class ServiceCreateInstallV2Request:
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
+        request_id = self.request_id
+
         stack_only = self.stack_only
 
         field_dict: dict[str, Any] = {}
@@ -130,6 +134,8 @@ class ServiceCreateInstallV2Request:
             field_dict["labels"] = labels
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
+        if request_id is not UNSET:
+            field_dict["request_id"] = request_id
         if stack_only is not UNSET:
             field_dict["stack_only"] = stack_only
 
@@ -215,6 +221,8 @@ class ServiceCreateInstallV2Request:
         else:
             metadata = HelpersInstallMetadata.from_dict(_metadata)
 
+        request_id = d.pop("request_id", UNSET)
+
         stack_only = d.pop("stack_only", UNSET)
 
         service_create_install_v2_request = cls(
@@ -230,6 +238,7 @@ class ServiceCreateInstallV2Request:
             install_config=install_config,
             labels=labels,
             metadata=metadata,
+            request_id=request_id,
             stack_only=stack_only,
         )
 
