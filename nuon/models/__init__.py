@@ -397,6 +397,8 @@ from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_install_config_version_diff_response_200 import GetInstallConfigVersionDiffResponse200
+from .get_install_deployment_summaries_sort import GetInstallDeploymentSummariesSort
+from .get_install_deployment_summaries_state import GetInstallDeploymentSummariesState
 from .get_install_label_keys_response_200 import GetInstallLabelKeysResponse200
 from .get_queue_signal_graph_response_200 import GetQueueSignalGraphResponse200
 from .get_terraform_workspace_states_json_by_id_response_200 import GetTerraformWorkspaceStatesJsonByIdResponse200
@@ -718,6 +720,7 @@ from .service_forget_install_component_request import ServiceForgetInstallCompon
 from .service_forget_install_request import ServiceForgetInstallRequest
 from .service_gcp_gar_image_config_request import ServiceGcpGARImageConfigRequest
 from .service_get_install_activity_response import ServiceGetInstallActivityResponse
+from .service_get_install_deployment_summaries_response import ServiceGetInstallDeploymentSummariesResponse
 from .service_get_install_deployments_response import ServiceGetInstallDeploymentsResponse
 from .service_get_install_url_response import ServiceGetInstallURLResponse
 from .service_graceful_shutdown_request import ServiceGracefulShutdownRequest
@@ -746,6 +749,9 @@ from .service_install_deployment_app_branch_ref import ServiceInstallDeploymentA
 from .service_install_deployment_change_group import ServiceInstallDeploymentChangeGroup
 from .service_install_deployment_config_change import ServiceInstallDeploymentConfigChange
 from .service_install_deployment_image import ServiceInstallDeploymentImage
+from .service_install_deployment_policy_summary import ServiceInstallDeploymentPolicySummary
+from .service_install_deployment_step import ServiceInstallDeploymentStep
+from .service_install_deployment_summary import ServiceInstallDeploymentSummary
 from .service_install_deployment_type import ServiceInstallDeploymentType
 from .service_install_deployment_workflow_ref import ServiceInstallDeploymentWorkflowRef
 from .service_install_group_request import ServiceInstallGroupRequest
@@ -1323,6 +1329,8 @@ __all__ = (
     "GetInstallActionWorkflowOutputsResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetInstallConfigVersionDiffResponse200",
+    "GetInstallDeploymentSummariesSort",
+    "GetInstallDeploymentSummariesState",
     "GetInstallLabelKeysResponse200",
     "GetQueueSignalGraphResponse200",
     "GetTerraformWorkspaceStatesJsonByIdResponse200",
@@ -1609,6 +1617,7 @@ __all__ = (
     "ServiceGcpGARImageConfigRequest",
     "ServiceGetInstallActivityResponse",
     "ServiceGetInstallDeploymentsResponse",
+    "ServiceGetInstallDeploymentSummariesResponse",
     "ServiceGetInstallURLResponse",
     "ServiceGracefulShutdownRequest",
     "ServiceHealthProbeRequest",
@@ -1636,6 +1645,9 @@ __all__ = (
     "ServiceInstallDeploymentChangeGroup",
     "ServiceInstallDeploymentConfigChange",
     "ServiceInstallDeploymentImage",
+    "ServiceInstallDeploymentPolicySummary",
+    "ServiceInstallDeploymentStep",
+    "ServiceInstallDeploymentSummary",
     "ServiceInstallDeploymentType",
     "ServiceInstallDeploymentWorkflowRef",
     "ServiceInstallGroupRequest",
