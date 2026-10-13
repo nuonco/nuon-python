@@ -182,9 +182,7 @@ class PlantypesActionWorkflowRunPlan:
             GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
         from ..models.kube_cluster_info import KubeClusterInfo  # noqa: PLC0415
-        from ..models.plantypes_action_workflow_run_plan_attrs import (
-            PlantypesActionWorkflowRunPlanAttrs,  # noqa: PLC0415
-        )
+        from ..models.plantypes_action_workflow_run_plan_attrs import PlantypesActionWorkflowRunPlanAttrs  # noqa: PLC0415
         from ..models.plantypes_action_workflow_run_plan_builtin_env_vars import (
             PlantypesActionWorkflowRunPlanBuiltinEnvVars,  # noqa: PLC0415
         )

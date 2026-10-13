@@ -46,9 +46,7 @@ class ServiceUpdateActionWorkflowRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_action_workflow_request_labels import (
-            ServiceUpdateActionWorkflowRequestLabels,  # noqa: PLC0415
-        )
+        from ..models.service_update_action_workflow_request_labels import ServiceUpdateActionWorkflowRequestLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         _labels = d.pop("labels", UNSET)

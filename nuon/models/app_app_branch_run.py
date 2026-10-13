@@ -285,9 +285,7 @@ class AppAppBranchRun:
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
         from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
         from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
-            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         _app_branch = d.pop("app_branch", UNSET)

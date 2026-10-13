@@ -138,9 +138,7 @@ class AppAWSStackOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_aws_stack_outputs_break_glass_role_arns import (
-            AppAWSStackOutputsBreakGlassRoleArns,  # noqa: PLC0415
-        )
+        from ..models.app_aws_stack_outputs_break_glass_role_arns import AppAWSStackOutputsBreakGlassRoleArns  # noqa: PLC0415
         from ..models.app_aws_stack_outputs_custom_role_arns import AppAWSStackOutputsCustomRoleArns  # noqa: PLC0415
         from ..models.app_aws_stack_outputs_install_inputs import AppAWSStackOutputsInstallInputs  # noqa: PLC0415
         from ..models.app_aws_stack_outputs_named_policy_arns import AppAWSStackOutputsNamedPolicyArns  # noqa: PLC0415

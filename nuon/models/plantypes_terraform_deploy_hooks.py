@@ -58,9 +58,7 @@ class PlantypesTerraformDeployHooks:
         from ..models.github_com_nuonco_nuon_pkg_aws_credentials_config import (
             GithubComNuoncoNuonPkgAwsCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.plantypes_terraform_deploy_hooks_env_vars import (
-            PlantypesTerraformDeployHooksEnvVars,  # noqa: PLC0415
-        )
+        from ..models.plantypes_terraform_deploy_hooks_env_vars import PlantypesTerraformDeployHooksEnvVars  # noqa: PLC0415
 
         d = dict(src_dict)
         enabled = d.pop("enabled", UNSET)

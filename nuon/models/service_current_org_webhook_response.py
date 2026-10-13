@@ -91,12 +91,8 @@ class ServiceCurrentOrgWebhookResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_current_org_webhook_response_interests import (
-            ServiceCurrentOrgWebhookResponseInterests,  # noqa: PLC0415
-        )
-        from ..models.service_current_org_webhook_response_match import (
-            ServiceCurrentOrgWebhookResponseMatch,  # noqa: PLC0415
-        )
+        from ..models.service_current_org_webhook_response_interests import ServiceCurrentOrgWebhookResponseInterests  # noqa: PLC0415
+        from ..models.service_current_org_webhook_response_match import ServiceCurrentOrgWebhookResponseMatch  # noqa: PLC0415
 
         d = dict(src_dict)
         created_at = d.pop("created_at", UNSET)

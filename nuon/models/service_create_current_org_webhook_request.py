@@ -68,9 +68,7 @@ class ServiceCreateCurrentOrgWebhookRequest:
         from ..models.service_create_current_org_webhook_request_interests import (
             ServiceCreateCurrentOrgWebhookRequestInterests,  # noqa: PLC0415
         )
-        from ..models.service_create_current_org_webhook_request_match import (
-            ServiceCreateCurrentOrgWebhookRequestMatch,  # noqa: PLC0415
-        )
+        from ..models.service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch  # noqa: PLC0415
 
         d = dict(src_dict)
         webhook_url = d.pop("webhook_url")

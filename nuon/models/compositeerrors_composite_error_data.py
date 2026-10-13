@@ -105,9 +105,7 @@ class CompositeerrorsCompositeErrorData:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.compositeerrors_composite_error_data_data import (
-            CompositeerrorsCompositeErrorDataData,  # noqa: PLC0415
-        )
+        from ..models.compositeerrors_composite_error_data_data import CompositeerrorsCompositeErrorDataData  # noqa: PLC0415
         from ..models.compositeerrors_hints import CompositeerrorsHints  # noqa: PLC0415
         from ..models.compositeerrors_section import CompositeerrorsSection  # noqa: PLC0415
 

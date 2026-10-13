@@ -85,9 +85,7 @@ class AppAppBranchPreviewConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_nuonco_nuon_pkg_labels_selector import (
-            GithubComNuoncoNuonPkgLabelsSelector,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_labels_selector import GithubComNuoncoNuonPkgLabelsSelector  # noqa: PLC0415
 
         d = dict(src_dict)
         comment = d.pop("comment", UNSET)

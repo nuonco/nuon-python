@@ -134,9 +134,7 @@ class PlantypesBuildPlan:
         from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan  # noqa: PLC0415
         from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
         from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan  # noqa: PLC0415
-        from ..models.plantypes_kubernetes_manifest_build_plan import (
-            PlantypesKubernetesManifestBuildPlan,  # noqa: PLC0415
-        )
+        from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan  # noqa: PLC0415
         from ..models.plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan  # noqa: PLC0415
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
         from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan  # noqa: PLC0415

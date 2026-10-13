@@ -186,9 +186,7 @@ class AppOrg:
         from ..models.app_org_telemetry_settings import AppOrgTelemetrySettings  # noqa: PLC0415
         from ..models.app_runner_group import AppRunnerGroup  # noqa: PLC0415
         from ..models.app_vcs_connection import AppVCSConnection  # noqa: PLC0415
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
-            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
         from ..models.types_string_bool_map import TypesStringBoolMap  # noqa: PLC0415
 
         d = dict(src_dict)

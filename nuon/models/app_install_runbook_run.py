@@ -197,9 +197,7 @@ class AppInstallRunbookRun:
         from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
         from ..models.app_install_runbook import AppInstallRunbook  # noqa: PLC0415
         from ..models.app_install_runbook_run_runbook_inputs import AppInstallRunbookRunRunbookInputs  # noqa: PLC0415
-        from ..models.app_install_runbook_run_runbook_inputs_redacted import (
-            AppInstallRunbookRunRunbookInputsRedacted,  # noqa: PLC0415
-        )
+        from ..models.app_install_runbook_run_runbook_inputs_redacted import AppInstallRunbookRunRunbookInputsRedacted  # noqa: PLC0415
         from ..models.app_runbook_config import AppRunbookConfig  # noqa: PLC0415
         from ..models.app_runbook_step_selection import AppRunbookStepSelection  # noqa: PLC0415
         from ..models.app_workflow import AppWorkflow  # noqa: PLC0415

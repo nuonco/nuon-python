@@ -311,17 +311,13 @@ class AppComponentConfigConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_component_config_connection_operation_roles import (
-            AppComponentConfigConnectionOperationRoles,  # noqa: PLC0415
-        )
+        from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles  # noqa: PLC0415
         from ..models.app_component_health_probe import AppComponentHealthProbe  # noqa: PLC0415
         from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig  # noqa: PLC0415
         from ..models.app_external_image_component_config import AppExternalImageComponentConfig  # noqa: PLC0415
         from ..models.app_helm_component_config import AppHelmComponentConfig  # noqa: PLC0415
         from ..models.app_job_component_config import AppJobComponentConfig  # noqa: PLC0415
-        from ..models.app_kubernetes_manifest_component_config import (
-            AppKubernetesManifestComponentConfig,  # noqa: PLC0415
-        )
+        from ..models.app_kubernetes_manifest_component_config import AppKubernetesManifestComponentConfig  # noqa: PLC0415
         from ..models.app_pulumi_component_config import AppPulumiComponentConfig  # noqa: PLC0415
         from ..models.app_terraform_module_component_config import AppTerraformModuleComponentConfig  # noqa: PLC0415
         from ..models.refs_ref import RefsRef  # noqa: PLC0415

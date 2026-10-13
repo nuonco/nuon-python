@@ -209,9 +209,7 @@ class ServiceCreateKubernetesManifestComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_connected_github_vcs_config_request import (
-            ServiceConnectedGithubVCSConfigRequest,  # noqa: PLC0415
-        )
+        from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest  # noqa: PLC0415
         from ..models.service_create_kubernetes_manifest_component_config_request_operation_roles import (
             ServiceCreateKubernetesManifestComponentConfigRequestOperationRoles,  # noqa: PLC0415
         )

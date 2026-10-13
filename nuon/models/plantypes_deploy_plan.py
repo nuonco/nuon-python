@@ -154,9 +154,7 @@ class PlantypesDeployPlan:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
         from ..models.plantypes_helm_deploy_plan import PlantypesHelmDeployPlan  # noqa: PLC0415
-        from ..models.plantypes_kubernetes_manifest_deploy_plan import (
-            PlantypesKubernetesManifestDeployPlan,  # noqa: PLC0415
-        )
+        from ..models.plantypes_kubernetes_manifest_deploy_plan import PlantypesKubernetesManifestDeployPlan  # noqa: PLC0415
         from ..models.plantypes_noop_deploy_plan import PlantypesNoopDeployPlan  # noqa: PLC0415
         from ..models.plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan  # noqa: PLC0415
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415

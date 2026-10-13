@@ -136,9 +136,7 @@ class ServiceAppBranchRunComparisonResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.blobstore_blob_metadata import BlobstoreBlobMetadata  # noqa: PLC0415
-        from ..models.service_app_branch_run_comparison_run_summary import (
-            ServiceAppBranchRunComparisonRunSummary,  # noqa: PLC0415
-        )
+        from ..models.service_app_branch_run_comparison_run_summary import ServiceAppBranchRunComparisonRunSummary  # noqa: PLC0415
 
         d = dict(src_dict)
         _base_run = d.pop("base_run", UNSET)

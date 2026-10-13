@@ -606,9 +606,7 @@ class AppInstall:
         from ..models.app_phone_home_auth_status import AppPhoneHomeAuthStatus  # noqa: PLC0415
         from ..models.app_queue import AppQueue  # noqa: PLC0415
         from ..models.app_workflow import AppWorkflow  # noqa: PLC0415
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
-            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
         from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)

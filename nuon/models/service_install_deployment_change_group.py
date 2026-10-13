@@ -85,9 +85,7 @@ class ServiceInstallDeploymentChangeGroup:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_deployment_config_change import (
-            ServiceInstallDeploymentConfigChange,  # noqa: PLC0415
-        )
+        from ..models.service_install_deployment_config_change import ServiceInstallDeploymentConfigChange  # noqa: PLC0415
 
         d = dict(src_dict)
         _changes = d.pop("changes", UNSET)
