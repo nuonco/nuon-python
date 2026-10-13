@@ -308,9 +308,7 @@ class AppRunnerGroupSettings:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_runner_group_settings_aws_tags import AppRunnerGroupSettingsAwsTags  # noqa: PLC0415
-        from ..models.app_runner_group_settings_job_group_parallelism import (
-            AppRunnerGroupSettingsJobGroupParallelism,  # noqa: PLC0415
-        )
+        from ..models.app_runner_group_settings_job_group_parallelism import AppRunnerGroupSettingsJobGroupParallelism  # noqa: PLC0415
         from ..models.app_runner_group_settings_metadata import AppRunnerGroupSettingsMetadata  # noqa: PLC0415
         from ..models.app_runner_group_settings_vendor_telemetry_resource_attributes import (
             AppRunnerGroupSettingsVendorTelemetryResourceAttributes,  # noqa: PLC0415

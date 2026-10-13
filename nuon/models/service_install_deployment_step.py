@@ -106,9 +106,7 @@ class ServiceInstallDeploymentStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_deployment_policy_summary import (
-            ServiceInstallDeploymentPolicySummary,  # noqa: PLC0415
-        )
+        from ..models.service_install_deployment_policy_summary import ServiceInstallDeploymentPolicySummary  # noqa: PLC0415
 
         d = dict(src_dict)
         approval_response_id = d.pop("approval_response_id", UNSET)

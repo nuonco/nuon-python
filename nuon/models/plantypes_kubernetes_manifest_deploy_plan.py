@@ -110,9 +110,7 @@ class PlantypesKubernetesManifestDeployPlan:
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
             GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.github_com_nuonco_nuon_pkg_types_state_state import (
-            GithubComNuoncoNuonPkgTypesStateState,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState  # noqa: PLC0415
         from ..models.kube_cluster_info import KubeClusterInfo  # noqa: PLC0415
         from ..models.plantypes_oci_artifact_reference import PlantypesOCIArtifactReference  # noqa: PLC0415
 

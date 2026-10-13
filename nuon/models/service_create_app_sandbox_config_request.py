@@ -158,9 +158,7 @@ class ServiceCreateAppSandboxConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.helpers_connected_github_vcs_config_request import (
-            HelpersConnectedGithubVCSConfigRequest,  # noqa: PLC0415
-        )
+        from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest  # noqa: PLC0415
         from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest  # noqa: PLC0415
         from ..models.service_create_app_sandbox_config_request_env_vars import (
             ServiceCreateAppSandboxConfigRequestEnvVars,  # noqa: PLC0415

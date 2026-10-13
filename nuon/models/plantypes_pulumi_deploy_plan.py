@@ -149,9 +149,7 @@ class PlantypesPulumiDeployPlan:
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
             GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.github_com_nuonco_nuon_pkg_types_state_state import (
-            GithubComNuoncoNuonPkgTypesStateState,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState  # noqa: PLC0415
         from ..models.kube_cluster_info import KubeClusterInfo  # noqa: PLC0415
         from ..models.plantypes_pulumi_deploy_plan_config import PlantypesPulumiDeployPlanConfig  # noqa: PLC0415
         from ..models.plantypes_pulumi_deploy_plan_env_vars import PlantypesPulumiDeployPlanEnvVars  # noqa: PLC0415

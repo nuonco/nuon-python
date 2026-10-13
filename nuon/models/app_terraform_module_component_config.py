@@ -113,12 +113,8 @@ class AppTerraformModuleComponentConfig:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_connected_github_vcs_config import AppConnectedGithubVCSConfig  # noqa: PLC0415
         from ..models.app_public_git_vcs_config import AppPublicGitVCSConfig  # noqa: PLC0415
-        from ..models.app_terraform_module_component_config_env_vars import (
-            AppTerraformModuleComponentConfigEnvVars,  # noqa: PLC0415
-        )
-        from ..models.app_terraform_module_component_config_variables import (
-            AppTerraformModuleComponentConfigVariables,  # noqa: PLC0415
-        )
+        from ..models.app_terraform_module_component_config_env_vars import AppTerraformModuleComponentConfigEnvVars  # noqa: PLC0415
+        from ..models.app_terraform_module_component_config_variables import AppTerraformModuleComponentConfigVariables  # noqa: PLC0415
 
         d = dict(src_dict)
         component_config_connection_id = d.pop("component_config_connection_id", UNSET)

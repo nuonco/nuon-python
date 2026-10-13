@@ -124,19 +124,11 @@ class ServiceInstallDeployment:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_deployment_affected_resources import (
-            ServiceInstallDeploymentAffectedResources,  # noqa: PLC0415
-        )
-        from ..models.service_install_deployment_app_branch_ref import (
-            ServiceInstallDeploymentAppBranchRef,  # noqa: PLC0415
-        )
-        from ..models.service_install_deployment_change_group import (
-            ServiceInstallDeploymentChangeGroup,  # noqa: PLC0415
-        )
+        from ..models.service_install_deployment_affected_resources import ServiceInstallDeploymentAffectedResources  # noqa: PLC0415
+        from ..models.service_install_deployment_app_branch_ref import ServiceInstallDeploymentAppBranchRef  # noqa: PLC0415
+        from ..models.service_install_deployment_change_group import ServiceInstallDeploymentChangeGroup  # noqa: PLC0415
         from ..models.service_install_deployment_image import ServiceInstallDeploymentImage  # noqa: PLC0415
-        from ..models.service_install_deployment_workflow_ref import (
-            ServiceInstallDeploymentWorkflowRef,  # noqa: PLC0415
-        )
+        from ..models.service_install_deployment_workflow_ref import ServiceInstallDeploymentWorkflowRef  # noqa: PLC0415
 
         d = dict(src_dict)
         _affected_resources = d.pop("affected_resources", UNSET)

@@ -153,9 +153,7 @@ class AppComponent:
         from ..models.app_component_build import AppComponentBuild  # noqa: PLC0415
         from ..models.app_component_links import AppComponentLinks  # noqa: PLC0415
         from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
-        from ..models.github_com_nuonco_nuon_pkg_labels_labels import (
-            GithubComNuoncoNuonPkgLabelsLabels,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         app_id = d.pop("app_id", UNSET)

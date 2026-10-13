@@ -215,9 +215,7 @@ class PlantypesSandboxRunPlan:
         from ..models.github_com_nuonco_nuon_pkg_gcp_credentials_config import (
             GithubComNuoncoNuonPkgGcpCredentialsConfig,  # noqa: PLC0415
         )
-        from ..models.github_com_nuonco_nuon_pkg_types_state_state import (
-            GithubComNuoncoNuonPkgTypesStateState,  # noqa: PLC0415
-        )
+        from ..models.github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState  # noqa: PLC0415
         from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
         from ..models.plantypes_oci_source import PlantypesOCISource  # noqa: PLC0415
         from ..models.plantypes_pulumi_backend import PlantypesPulumiBackend  # noqa: PLC0415

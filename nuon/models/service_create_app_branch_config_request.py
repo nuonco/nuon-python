@@ -122,9 +122,7 @@ class ServiceCreateAppBranchConfigRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_branch_preview_config import AppAppBranchPreviewConfig  # noqa: PLC0415
         from ..models.app_app_branch_run_config import AppAppBranchRunConfig  # noqa: PLC0415
-        from ..models.helpers_connected_github_vcs_config_request import (
-            HelpersConnectedGithubVCSConfigRequest,  # noqa: PLC0415
-        )
+        from ..models.helpers_connected_github_vcs_config_request import HelpersConnectedGithubVCSConfigRequest  # noqa: PLC0415
         from ..models.helpers_public_git_vcs_config_request import HelpersPublicGitVCSConfigRequest  # noqa: PLC0415
         from ..models.service_install_group_request import ServiceInstallGroupRequest  # noqa: PLC0415
 

@@ -260,9 +260,7 @@ class AppInstallActionWorkflowRun:
         from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
         from ..models.app_install_action_workflow import AppInstallActionWorkflow  # noqa: PLC0415
         from ..models.app_install_action_workflow_run_outputs import AppInstallActionWorkflowRunOutputs  # noqa: PLC0415
-        from ..models.app_install_action_workflow_run_run_env_vars import (
-            AppInstallActionWorkflowRunRunEnvVars,  # noqa: PLC0415
-        )
+        from ..models.app_install_action_workflow_run_run_env_vars import AppInstallActionWorkflowRunRunEnvVars  # noqa: PLC0415
         from ..models.app_install_action_workflow_run_step import AppInstallActionWorkflowRunStep  # noqa: PLC0415
         from ..models.app_log_stream import AppLogStream  # noqa: PLC0415
         from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415

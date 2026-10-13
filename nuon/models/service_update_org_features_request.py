@@ -38,9 +38,7 @@ class ServiceUpdateOrgFeaturesRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_update_org_features_request_features import (
-            ServiceUpdateOrgFeaturesRequestFeatures,  # noqa: PLC0415
-        )
+        from ..models.service_update_org_features_request_features import ServiceUpdateOrgFeaturesRequestFeatures  # noqa: PLC0415
 
         d = dict(src_dict)
         features = ServiceUpdateOrgFeaturesRequestFeatures.from_dict(d.pop("features"))

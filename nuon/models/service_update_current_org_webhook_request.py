@@ -60,9 +60,7 @@ class ServiceUpdateCurrentOrgWebhookRequest:
         from ..models.service_update_current_org_webhook_request_interests import (
             ServiceUpdateCurrentOrgWebhookRequestInterests,  # noqa: PLC0415
         )
-        from ..models.service_update_current_org_webhook_request_match import (
-            ServiceUpdateCurrentOrgWebhookRequestMatch,  # noqa: PLC0415
-        )
+        from ..models.service_update_current_org_webhook_request_match import ServiceUpdateCurrentOrgWebhookRequestMatch  # noqa: PLC0415
 
         d = dict(src_dict)
         _interests = d.pop("interests", UNSET)

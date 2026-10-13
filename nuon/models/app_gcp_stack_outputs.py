@@ -131,9 +131,7 @@ class AppGCPStackOutputs:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.app_gcp_stack_outputs_break_glass_sa_emails import (
-            AppGCPStackOutputsBreakGlassSaEmails,  # noqa: PLC0415
-        )
+        from ..models.app_gcp_stack_outputs_break_glass_sa_emails import AppGCPStackOutputsBreakGlassSaEmails  # noqa: PLC0415
         from ..models.app_gcp_stack_outputs_custom_sa_emails import AppGCPStackOutputsCustomSaEmails  # noqa: PLC0415
         from ..models.app_gcp_stack_outputs_install_inputs import AppGCPStackOutputsInstallInputs  # noqa: PLC0415
 

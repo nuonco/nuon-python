@@ -84,9 +84,7 @@ class ServiceCreateInstallConfigRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
         from ..models.config_install_telemetry import ConfigInstallTelemetry  # noqa: PLC0415
-        from ..models.service_create_install_config_request_labels import (
-            ServiceCreateInstallConfigRequestLabels,  # noqa: PLC0415
-        )
+        from ..models.service_create_install_config_request_labels import ServiceCreateInstallConfigRequestLabels  # noqa: PLC0415
 
         d = dict(src_dict)
         _approval_option = d.pop("approval_option", UNSET)
