@@ -198,6 +198,8 @@ from .app_kustomize_config import AppKustomizeConfig
 from .app_latest_runner_heart_beat import AppLatestRunnerHeartBeat
 from .app_log_stream import AppLogStream
 from .app_log_stream_attrs import AppLogStreamAttrs
+from .app_managed_service_account import AppManagedServiceAccount
+from .app_managed_service_account_purpose import AppManagedServiceAccountPurpose
 from .app_notebook import AppNotebook
 from .app_notebook_cell import AppNotebookCell
 from .app_notebook_cell_env_vars import AppNotebookCellEnvVars
@@ -431,6 +433,7 @@ from .iam_two_step_config import IamTwoStepConfig
 from .keys_workflow_telemetry import KeysWorkflowTelemetry
 from .kube_cluster_info import KubeClusterInfo
 from .kube_cluster_info_env_vars import KubeClusterInfoEnvVars
+from .list_service_accounts_management import ListServiceAccountsManagement
 from .oidcissuer_discovery_document import OidcissuerDiscoveryDocument
 from .oidcissuer_jwk import OidcissuerJWK
 from .outputs_secret_sync_output import OutputsSecretSyncOutput
@@ -824,6 +827,8 @@ from .service_runner_card_details_response import ServiceRunnerCardDetailsRespon
 from .service_runner_connection_status import ServiceRunnerConnectionStatus
 from .service_series_point import ServiceSeriesPoint
 from .service_series_point_labels import ServiceSeriesPointLabels
+from .service_service_account import ServiceServiceAccount
+from .service_service_account_ownership import ServiceServiceAccountOwnership
 from .service_setup_response import ServiceSetupResponse
 from .service_setup_response_permissions_policy import ServiceSetupResponsePermissionsPolicy
 from .service_setup_response_trust_policy import ServiceSetupResponseTrustPolicy
@@ -1138,6 +1143,8 @@ __all__ = (
     "AppLatestRunnerHeartBeat",
     "AppLogStream",
     "AppLogStreamAttrs",
+    "AppManagedServiceAccount",
+    "AppManagedServiceAccountPurpose",
     "AppNotebook",
     "AppNotebookCell",
     "AppNotebookCellEnvVars",
@@ -1361,6 +1368,7 @@ __all__ = (
     "KeysWorkflowTelemetry",
     "KubeClusterInfo",
     "KubeClusterInfoEnvVars",
+    "ListServiceAccountsManagement",
     "OidcissuerDiscoveryDocument",
     "OidcissuerJWK",
     "OutputsSecretSyncOutput",
@@ -1716,6 +1724,8 @@ __all__ = (
     "ServiceRunnerConnectionStatus",
     "ServiceSeriesPoint",
     "ServiceSeriesPointLabels",
+    "ServiceServiceAccount",
+    "ServiceServiceAccountOwnership",
     "ServiceSetupResponse",
     "ServiceSetupResponsePermissionsPolicy",
     "ServiceSetupResponseTrustPolicy",
