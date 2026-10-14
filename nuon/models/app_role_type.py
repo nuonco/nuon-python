@@ -10,6 +10,7 @@ class AppRoleType(StrEnum):
     ROLE_TYPE_ORG_SUPPORT = "org_support"
     ROLE_TYPE_RUNNER = "runner"
     ROLE_TYPE_STACK = "stack"
+    ROLE_TYPE_TELEMETRY_COLLECTOR = "telemetry_collector"
 
     def __str__(self) -> str:
         return str(self.value)
