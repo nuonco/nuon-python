@@ -1,0 +1,240 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.app_account_type import AppAccountType
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_role import AppRole
+    from ..models.app_user_journey import AppUserJourney
+    from ..models.permissions_set import PermissionsSet
+    from ..models.service_service_account_ownership import ServiceServiceAccountOwnership
+
+
+T = TypeVar("T", bound="ServiceServiceAccount")
+
+
+@_attrs_define
+class ServiceServiceAccount:
+    """
+    Attributes:
+        account_type (AppAccountType | Unset):
+        created_at (str | Unset):
+        email (str | Unset):
+        id (str | Unset):
+        managed_service_account (ServiceServiceAccountOwnership | Unset):
+        name (str | Unset):
+        org_ids (list[str] | Unset): ReadOnly Fields
+        permissions (PermissionsSet | Unset):
+        purposes (list[str] | Unset):
+        roles (list[AppRole] | Unset):
+        subject (str | Unset):
+        system_account (bool | Unset):
+        updated_at (str | Unset):
+        user_journeys (list[AppUserJourney] | Unset):
+    """
+
+    account_type: AppAccountType | Unset = UNSET
+    created_at: str | Unset = UNSET
+    email: str | Unset = UNSET
+    id: str | Unset = UNSET
+    managed_service_account: ServiceServiceAccountOwnership | Unset = UNSET
+    name: str | Unset = UNSET
+    org_ids: list[str] | Unset = UNSET
+    permissions: PermissionsSet | Unset = UNSET
+    purposes: list[str] | Unset = UNSET
+    roles: list[AppRole] | Unset = UNSET
+    subject: str | Unset = UNSET
+    system_account: bool | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    user_journeys: list[AppUserJourney] | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        account_type: str | Unset = UNSET
+        if not isinstance(self.account_type, Unset):
+            account_type = self.account_type.value
+
+        created_at = self.created_at
+
+        email = self.email
+
+        id = self.id
+
+        managed_service_account: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.managed_service_account, Unset):
+            managed_service_account = self.managed_service_account.to_dict()
+
+        name = self.name
+
+        org_ids: list[str] | Unset = UNSET
+        if not isinstance(self.org_ids, Unset):
+            org_ids = self.org_ids
+
+        permissions: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.permissions, Unset):
+            permissions = self.permissions.to_dict()
+
+        purposes: list[str] | Unset = UNSET
+        if not isinstance(self.purposes, Unset):
+            purposes = self.purposes
+
+        roles: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.roles, Unset):
+            roles = []
+            for roles_item_data in self.roles:
+                roles_item = roles_item_data.to_dict()
+                roles.append(roles_item)
+
+        subject = self.subject
+
+        system_account = self.system_account
+
+        updated_at = self.updated_at
+
+        user_journeys: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.user_journeys, Unset):
+            user_journeys = []
+            for user_journeys_item_data in self.user_journeys:
+                user_journeys_item = user_journeys_item_data.to_dict()
+                user_journeys.append(user_journeys_item)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if account_type is not UNSET:
+            field_dict["account_type"] = account_type
+        if created_at is not UNSET:
+            field_dict["created_at"] = created_at
+        if email is not UNSET:
+            field_dict["email"] = email
+        if id is not UNSET:
+            field_dict["id"] = id
+        if managed_service_account is not UNSET:
+            field_dict["managed_service_account"] = managed_service_account
+        if name is not UNSET:
+            field_dict["name"] = name
+        if org_ids is not UNSET:
+            field_dict["org_ids"] = org_ids
+        if permissions is not UNSET:
+            field_dict["permissions"] = permissions
+        if purposes is not UNSET:
+            field_dict["purposes"] = purposes
+        if roles is not UNSET:
+            field_dict["roles"] = roles
+        if subject is not UNSET:
+            field_dict["subject"] = subject
+        if system_account is not UNSET:
+            field_dict["system_account"] = system_account
+        if updated_at is not UNSET:
+            field_dict["updated_at"] = updated_at
+        if user_journeys is not UNSET:
+            field_dict["user_journeys"] = user_journeys
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_role import AppRole  # noqa: PLC0415
+        from ..models.app_user_journey import AppUserJourney  # noqa: PLC0415
+        from ..models.permissions_set import PermissionsSet  # noqa: PLC0415
+        from ..models.service_service_account_ownership import ServiceServiceAccountOwnership  # noqa: PLC0415
+
+        d = dict(src_dict)
+        _account_type = d.pop("account_type", UNSET)
+        account_type: AppAccountType | Unset
+        if isinstance(_account_type, Unset):
+            account_type = UNSET
+        else:
+            account_type = AppAccountType(_account_type)
+
+        created_at = d.pop("created_at", UNSET)
+
+        email = d.pop("email", UNSET)
+
+        id = d.pop("id", UNSET)
+
+        _managed_service_account = d.pop("managed_service_account", UNSET)
+        managed_service_account: ServiceServiceAccountOwnership | Unset
+        if isinstance(_managed_service_account, Unset):
+            managed_service_account = UNSET
+        else:
+            managed_service_account = ServiceServiceAccountOwnership.from_dict(_managed_service_account)
+
+        name = d.pop("name", UNSET)
+
+        org_ids = cast(list[str], d.pop("org_ids", UNSET))
+
+        _permissions = d.pop("permissions", UNSET)
+        permissions: PermissionsSet | Unset
+        if isinstance(_permissions, Unset):
+            permissions = UNSET
+        else:
+            permissions = PermissionsSet.from_dict(_permissions)
+
+        purposes = cast(list[str], d.pop("purposes", UNSET))
+
+        _roles = d.pop("roles", UNSET)
+        roles: list[AppRole] | Unset = UNSET
+        if _roles is not UNSET:
+            roles = []
+            for roles_item_data in _roles:
+                roles_item = AppRole.from_dict(roles_item_data)
+
+                roles.append(roles_item)
+
+        subject = d.pop("subject", UNSET)
+
+        system_account = d.pop("system_account", UNSET)
+
+        updated_at = d.pop("updated_at", UNSET)
+
+        _user_journeys = d.pop("user_journeys", UNSET)
+        user_journeys: list[AppUserJourney] | Unset = UNSET
+        if _user_journeys is not UNSET:
+            user_journeys = []
+            for user_journeys_item_data in _user_journeys:
+                user_journeys_item = AppUserJourney.from_dict(user_journeys_item_data)
+
+                user_journeys.append(user_journeys_item)
+
+        service_service_account = cls(
+            account_type=account_type,
+            created_at=created_at,
+            email=email,
+            id=id,
+            managed_service_account=managed_service_account,
+            name=name,
+            org_ids=org_ids,
+            permissions=permissions,
+            purposes=purposes,
+            roles=roles,
+            subject=subject,
+            system_account=system_account,
+            updated_at=updated_at,
+            user_journeys=user_journeys,
+        )
+
+        service_service_account.additional_properties = d
+        return service_service_account
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

@@ -17,6 +17,7 @@ def _get_kwargs(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
@@ -31,6 +32,8 @@ def _get_kwargs(
     params["offset"] = offset
 
     params["limit"] = limit
+
+    params["cursor"] = cursor
 
     params["type"] = type_
 
@@ -112,6 +115,7 @@ def sync_detailed(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
@@ -132,16 +136,22 @@ def sync_detailed(
     `runbook`, or `policy`). Action and runbook records include a `workflow` reference when the run has
     one.
 
-    Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
-    `search`, `created_at_gte`, and `created_at_lte`. `status` matches each source's own status string.
-    Action and runbook runs use values such as `queued`, `in-progress`, `finished`, and `error`. Policy
-    checks use `success`, `warning`, and `error`.
+    For efficient pagination, request the first page with `limit`, then pass the returned `next_cursor`
+    as `cursor` to fetch the next page. Keep filters unchanged while paging; restart without a cursor
+    when changing filters. Records sort by timestamp, type, and ID descending. `has_more` indicates
+    another page is available. Legacy `page`/`offset` pagination remains supported, but cannot be
+    combined with a cursor and reads preceding records on deep pages.
+
+    Supports filtering by `type`, `status`, `search`, `created_at_gte`, and `created_at_lte`. `status`
+    matches each source's own stored status string. Action and runbook runs use values such as `queued`,
+    `in-progress`, `finished`, and `error`. Policy checks use `success`, `warning`, and `error`.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
@@ -161,6 +171,7 @@ def sync_detailed(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
         type_=type_,
         status=status,
         search=search,
@@ -182,6 +193,7 @@ def sync(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
@@ -202,16 +214,22 @@ def sync(
     `runbook`, or `policy`). Action and runbook records include a `workflow` reference when the run has
     one.
 
-    Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
-    `search`, `created_at_gte`, and `created_at_lte`. `status` matches each source's own status string.
-    Action and runbook runs use values such as `queued`, `in-progress`, `finished`, and `error`. Policy
-    checks use `success`, `warning`, and `error`.
+    For efficient pagination, request the first page with `limit`, then pass the returned `next_cursor`
+    as `cursor` to fetch the next page. Keep filters unchanged while paging; restart without a cursor
+    when changing filters. Records sort by timestamp, type, and ID descending. `has_more` indicates
+    another page is available. Legacy `page`/`offset` pagination remains supported, but cannot be
+    combined with a cursor and reads preceding records on deep pages.
+
+    Supports filtering by `type`, `status`, `search`, `created_at_gte`, and `created_at_lte`. `status`
+    matches each source's own stored status string. Action and runbook runs use values such as `queued`,
+    `in-progress`, `finished`, and `error`. Policy checks use `success`, `warning`, and `error`.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
@@ -232,6 +250,7 @@ def sync(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
         type_=type_,
         status=status,
         search=search,
@@ -247,6 +266,7 @@ async def asyncio_detailed(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
@@ -267,16 +287,22 @@ async def asyncio_detailed(
     `runbook`, or `policy`). Action and runbook records include a `workflow` reference when the run has
     one.
 
-    Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
-    `search`, `created_at_gte`, and `created_at_lte`. `status` matches each source's own status string.
-    Action and runbook runs use values such as `queued`, `in-progress`, `finished`, and `error`. Policy
-    checks use `success`, `warning`, and `error`.
+    For efficient pagination, request the first page with `limit`, then pass the returned `next_cursor`
+    as `cursor` to fetch the next page. Keep filters unchanged while paging; restart without a cursor
+    when changing filters. Records sort by timestamp, type, and ID descending. `has_more` indicates
+    another page is available. Legacy `page`/`offset` pagination remains supported, but cannot be
+    combined with a cursor and reads preceding records on deep pages.
+
+    Supports filtering by `type`, `status`, `search`, `created_at_gte`, and `created_at_lte`. `status`
+    matches each source's own stored status string. Action and runbook runs use values such as `queued`,
+    `in-progress`, `finished`, and `error`. Policy checks use `success`, `warning`, and `error`.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
@@ -296,6 +322,7 @@ async def asyncio_detailed(
         page=page,
         offset=offset,
         limit=limit,
+        cursor=cursor,
         type_=type_,
         status=status,
         search=search,
@@ -315,6 +342,7 @@ async def asyncio(
     page: int | Unset = 0,
     offset: int | Unset = 0,
     limit: int | Unset = 20,
+    cursor: str | Unset = UNSET,
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
@@ -335,16 +363,22 @@ async def asyncio(
     `runbook`, or `policy`). Action and runbook records include a `workflow` reference when the run has
     one.
 
-    Supports pagination via `page`/`offset`/`limit`/`has_more`, and filtering by `type`, `status`,
-    `search`, `created_at_gte`, and `created_at_lte`. `status` matches each source's own status string.
-    Action and runbook runs use values such as `queued`, `in-progress`, `finished`, and `error`. Policy
-    checks use `success`, `warning`, and `error`.
+    For efficient pagination, request the first page with `limit`, then pass the returned `next_cursor`
+    as `cursor` to fetch the next page. Keep filters unchanged while paging; restart without a cursor
+    when changing filters. Records sort by timestamp, type, and ID descending. `has_more` indicates
+    another page is available. Legacy `page`/`offset` pagination remains supported, but cannot be
+    combined with a cursor and reads preceding records on deep pages.
+
+    Supports filtering by `type`, `status`, `search`, `created_at_gte`, and `created_at_lte`. `status`
+    matches each source's own stored status string. Action and runbook runs use values such as `queued`,
+    `in-progress`, `finished`, and `error`. Policy checks use `success`, `warning`, and `error`.
 
     Args:
         install_id (str):
         page (int | Unset):  Default: 0.
         offset (int | Unset):  Default: 0.
         limit (int | Unset):  Default: 20.
+        cursor (str | Unset):
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
@@ -366,6 +400,7 @@ async def asyncio(
             page=page,
             offset=offset,
             limit=limit,
+            cursor=cursor,
             type_=type_,
             status=status,
             search=search,

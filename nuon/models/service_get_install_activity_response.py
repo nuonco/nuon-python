@@ -22,6 +22,7 @@ class ServiceGetInstallActivityResponse:
         activity (list[ServiceInstallActivity] | Unset):
         has_more (bool | Unset):
         limit (int | Unset):
+        next_cursor (str | Unset):
         offset (int | Unset):
         page (int | Unset):
     """
@@ -29,6 +30,7 @@ class ServiceGetInstallActivityResponse:
     activity: list[ServiceInstallActivity] | Unset = UNSET
     has_more: bool | Unset = UNSET
     limit: int | Unset = UNSET
+    next_cursor: str | Unset = UNSET
     offset: int | Unset = UNSET
     page: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -45,6 +47,8 @@ class ServiceGetInstallActivityResponse:
 
         limit = self.limit
 
+        next_cursor = self.next_cursor
+
         offset = self.offset
 
         page = self.page
@@ -58,6 +62,8 @@ class ServiceGetInstallActivityResponse:
             field_dict["has_more"] = has_more
         if limit is not UNSET:
             field_dict["limit"] = limit
+        if next_cursor is not UNSET:
+            field_dict["next_cursor"] = next_cursor
         if offset is not UNSET:
             field_dict["offset"] = offset
         if page is not UNSET:
@@ -83,6 +89,8 @@ class ServiceGetInstallActivityResponse:
 
         limit = d.pop("limit", UNSET)
 
+        next_cursor = d.pop("next_cursor", UNSET)
+
         offset = d.pop("offset", UNSET)
 
         page = d.pop("page", UNSET)
@@ -91,6 +99,7 @@ class ServiceGetInstallActivityResponse:
             activity=activity,
             has_more=has_more,
             limit=limit,
+            next_cursor=next_cursor,
             offset=offset,
             page=page,
         )

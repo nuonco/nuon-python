@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,20 +21,26 @@ class ServiceInstallBranchTracking:
     Attributes:
         applied_commit (ServiceInstallOverviewCommit | Unset):
         branch_id (str | Unset):
+        commits_behind (int | None | Unset):
         directory (str | Unset):
         expected_commit (ServiceInstallOverviewCommit | Unset):
         git_branch (str | Unset):
+        pending_commits (list[ServiceInstallOverviewCommit] | Unset):
         repo (str | Unset):
+        selected_commit (ServiceInstallOverviewCommit | Unset):
         status (str | Unset):
         target_branch (str | Unset):
     """
 
     applied_commit: ServiceInstallOverviewCommit | Unset = UNSET
     branch_id: str | Unset = UNSET
+    commits_behind: int | None | Unset = UNSET
     directory: str | Unset = UNSET
     expected_commit: ServiceInstallOverviewCommit | Unset = UNSET
     git_branch: str | Unset = UNSET
+    pending_commits: list[ServiceInstallOverviewCommit] | Unset = UNSET
     repo: str | Unset = UNSET
+    selected_commit: ServiceInstallOverviewCommit | Unset = UNSET
     status: str | Unset = UNSET
     target_branch: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -46,6 +52,12 @@ class ServiceInstallBranchTracking:
 
         branch_id = self.branch_id
 
+        commits_behind: int | None | Unset
+        if isinstance(self.commits_behind, Unset):
+            commits_behind = UNSET
+        else:
+            commits_behind = self.commits_behind
+
         directory = self.directory
 
         expected_commit: dict[str, Any] | Unset = UNSET
@@ -54,7 +66,18 @@ class ServiceInstallBranchTracking:
 
         git_branch = self.git_branch
 
+        pending_commits: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.pending_commits, Unset):
+            pending_commits = []
+            for pending_commits_item_data in self.pending_commits:
+                pending_commits_item = pending_commits_item_data.to_dict()
+                pending_commits.append(pending_commits_item)
+
         repo = self.repo
+
+        selected_commit: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.selected_commit, Unset):
+            selected_commit = self.selected_commit.to_dict()
 
         status = self.status
 
@@ -67,14 +90,20 @@ class ServiceInstallBranchTracking:
             field_dict["applied_commit"] = applied_commit
         if branch_id is not UNSET:
             field_dict["branch_id"] = branch_id
+        if commits_behind is not UNSET:
+            field_dict["commits_behind"] = commits_behind
         if directory is not UNSET:
             field_dict["directory"] = directory
         if expected_commit is not UNSET:
             field_dict["expected_commit"] = expected_commit
         if git_branch is not UNSET:
             field_dict["git_branch"] = git_branch
+        if pending_commits is not UNSET:
+            field_dict["pending_commits"] = pending_commits
         if repo is not UNSET:
             field_dict["repo"] = repo
+        if selected_commit is not UNSET:
+            field_dict["selected_commit"] = selected_commit
         if status is not UNSET:
             field_dict["status"] = status
         if target_branch is not UNSET:
@@ -96,6 +125,15 @@ class ServiceInstallBranchTracking:
 
         branch_id = d.pop("branch_id", UNSET)
 
+        def _parse_commits_behind(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        commits_behind = _parse_commits_behind(d.pop("commits_behind", UNSET))
+
         directory = d.pop("directory", UNSET)
 
         _expected_commit = d.pop("expected_commit", UNSET)
@@ -107,7 +145,23 @@ class ServiceInstallBranchTracking:
 
         git_branch = d.pop("git_branch", UNSET)
 
+        _pending_commits = d.pop("pending_commits", UNSET)
+        pending_commits: list[ServiceInstallOverviewCommit] | Unset = UNSET
+        if _pending_commits is not UNSET:
+            pending_commits = []
+            for pending_commits_item_data in _pending_commits:
+                pending_commits_item = ServiceInstallOverviewCommit.from_dict(pending_commits_item_data)
+
+                pending_commits.append(pending_commits_item)
+
         repo = d.pop("repo", UNSET)
+
+        _selected_commit = d.pop("selected_commit", UNSET)
+        selected_commit: ServiceInstallOverviewCommit | Unset
+        if isinstance(_selected_commit, Unset):
+            selected_commit = UNSET
+        else:
+            selected_commit = ServiceInstallOverviewCommit.from_dict(_selected_commit)
 
         status = d.pop("status", UNSET)
 
@@ -116,10 +170,13 @@ class ServiceInstallBranchTracking:
         service_install_branch_tracking = cls(
             applied_commit=applied_commit,
             branch_id=branch_id,
+            commits_behind=commits_behind,
             directory=directory,
             expected_commit=expected_commit,
             git_branch=git_branch,
+            pending_commits=pending_commits,
             repo=repo,
+            selected_commit=selected_commit,
             status=status,
             target_branch=target_branch,
         )

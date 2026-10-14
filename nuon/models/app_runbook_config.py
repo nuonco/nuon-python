@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_runbook_input import AppRunbookInput
     from ..models.app_runbook_step_config import AppRunbookStepConfig
+    from ..models.app_runbook_trigger_config import AppRunbookTriggerConfig
 
 
 T = TypeVar("T", bound="AppRunbookConfig")
@@ -29,6 +30,7 @@ class AppRunbookConfig:
         readme (str | Unset):
         runbook_id (str | Unset):
         steps (list[AppRunbookStepConfig] | Unset):
+        triggers (list[AppRunbookTriggerConfig] | Unset):
         updated_at (str | Unset):
     """
 
@@ -41,6 +43,7 @@ class AppRunbookConfig:
     readme: str | Unset = UNSET
     runbook_id: str | Unset = UNSET
     steps: list[AppRunbookStepConfig] | Unset = UNSET
+    triggers: list[AppRunbookTriggerConfig] | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -73,6 +76,13 @@ class AppRunbookConfig:
                 steps_item = steps_item_data.to_dict()
                 steps.append(steps_item)
 
+        triggers: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.triggers, Unset):
+            triggers = []
+            for triggers_item_data in self.triggers:
+                triggers_item = triggers_item_data.to_dict()
+                triggers.append(triggers_item)
+
         updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
@@ -96,6 +106,8 @@ class AppRunbookConfig:
             field_dict["runbook_id"] = runbook_id
         if steps is not UNSET:
             field_dict["steps"] = steps
+        if triggers is not UNSET:
+            field_dict["triggers"] = triggers
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
 
@@ -105,6 +117,7 @@ class AppRunbookConfig:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_runbook_input import AppRunbookInput  # noqa: PLC0415
         from ..models.app_runbook_step_config import AppRunbookStepConfig  # noqa: PLC0415
+        from ..models.app_runbook_trigger_config import AppRunbookTriggerConfig  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -139,6 +152,15 @@ class AppRunbookConfig:
 
                 steps.append(steps_item)
 
+        _triggers = d.pop("triggers", UNSET)
+        triggers: list[AppRunbookTriggerConfig] | Unset = UNSET
+        if _triggers is not UNSET:
+            triggers = []
+            for triggers_item_data in _triggers:
+                triggers_item = AppRunbookTriggerConfig.from_dict(triggers_item_data)
+
+                triggers.append(triggers_item)
+
         updated_at = d.pop("updated_at", UNSET)
 
         app_runbook_config = cls(
@@ -151,6 +173,7 @@ class AppRunbookConfig:
             readme=readme,
             runbook_id=runbook_id,
             steps=steps,
+            triggers=triggers,
             updated_at=updated_at,
         )
 
