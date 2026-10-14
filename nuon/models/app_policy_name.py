@@ -10,6 +10,7 @@ class AppPolicyName(StrEnum):
     POLICY_NAME_ORG_SUPPORT = "org_support"
     POLICY_NAME_RUNNER = "runner"
     POLICY_NAME_STACK = "stack"
+    POLICY_NAME_TELEMETRY_COLLECTOR = "telemetry_collector"
 
     def __str__(self) -> str:
         return str(self.value)

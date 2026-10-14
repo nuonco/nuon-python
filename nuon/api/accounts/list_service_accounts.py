@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.app_account import AppAccount
+from ...models.list_service_accounts_management import ListServiceAccountsManagement
+from ...models.service_service_account import ServiceServiceAccount
 from ...models.stderr_err_response import StderrErrResponse
 from ...types import UNSET, Response, Unset
 
@@ -17,6 +18,9 @@ def _get_kwargs(
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
     include_stacks: bool | Unset = UNSET,
+    management: ListServiceAccountsManagement | Unset = UNSET,
+    purpose: str | Unset = UNSET,
+    q: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -31,6 +35,16 @@ def _get_kwargs(
 
     params["include_stacks"] = include_stacks
 
+    json_management: str | Unset = UNSET
+    if not isinstance(management, Unset):
+        json_management = management.value
+
+    params["management"] = json_management
+
+    params["purpose"] = purpose
+
+    params["q"] = q
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -44,16 +58,21 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> StderrErrResponse | list[AppAccount] | None:
+) -> StderrErrResponse | list[ServiceServiceAccount] | None:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = AppAccount.from_dict(response_200_item_data)
+            response_200_item = ServiceServiceAccount.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = StderrErrResponse.from_dict(response.json())
+
+        return response_400
 
     if response.status_code == 401:
         response_401 = StderrErrResponse.from_dict(response.json())
@@ -78,7 +97,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StderrErrResponse | list[AppAccount]]:
+) -> Response[StderrErrResponse | list[ServiceServiceAccount]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,11 +114,23 @@ def sync_detailed(
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
     include_stacks: bool | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppAccount]]:
+    management: ListServiceAccountsManagement | Unset = UNSET,
+    purpose: str | Unset = UNSET,
+    q: str | Unset = UNSET,
+) -> Response[StderrErrResponse | list[ServiceServiceAccount]]:
     """List service accounts for the current org
 
      List the service accounts that belong to the current organization, along with
     their roles. Supports offset-based pagination.
+
+    Each account reports whether it is a system account, its purposes, and, for
+    accounts managed by a resource, the owning resource.
+
+    - `management` filters to `user` accounts, `system` accounts, or `all`. When set,
+      it replaces `include_runners` and `include_stacks`.
+    - `purpose` filters to accounts with that exact purpose.
+    - `q` matches a case-insensitive substring of the account name, email, or ID, or
+      of the owning resource's name or ID.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -107,13 +138,16 @@ def sync_detailed(
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
         include_stacks (bool | Unset):
+        management (ListServiceAccountsManagement | Unset):
+        purpose (str | Unset):
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppAccount]]
+        Response[StderrErrResponse | list[ServiceServiceAccount]]
     """
 
     kwargs = _get_kwargs(
@@ -122,6 +156,9 @@ def sync_detailed(
         page=page,
         include_runners=include_runners,
         include_stacks=include_stacks,
+        management=management,
+        purpose=purpose,
+        q=q,
     )
 
     response = client.get_httpx_client().request(
@@ -139,11 +176,23 @@ def sync(
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
     include_stacks: bool | Unset = UNSET,
-) -> StderrErrResponse | list[AppAccount] | None:
+    management: ListServiceAccountsManagement | Unset = UNSET,
+    purpose: str | Unset = UNSET,
+    q: str | Unset = UNSET,
+) -> StderrErrResponse | list[ServiceServiceAccount] | None:
     """List service accounts for the current org
 
      List the service accounts that belong to the current organization, along with
     their roles. Supports offset-based pagination.
+
+    Each account reports whether it is a system account, its purposes, and, for
+    accounts managed by a resource, the owning resource.
+
+    - `management` filters to `user` accounts, `system` accounts, or `all`. When set,
+      it replaces `include_runners` and `include_stacks`.
+    - `purpose` filters to accounts with that exact purpose.
+    - `q` matches a case-insensitive substring of the account name, email, or ID, or
+      of the owning resource's name or ID.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -151,13 +200,16 @@ def sync(
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
         include_stacks (bool | Unset):
+        management (ListServiceAccountsManagement | Unset):
+        purpose (str | Unset):
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppAccount]
+        StderrErrResponse | list[ServiceServiceAccount]
     """
 
     return sync_detailed(
@@ -167,6 +219,9 @@ def sync(
         page=page,
         include_runners=include_runners,
         include_stacks=include_stacks,
+        management=management,
+        purpose=purpose,
+        q=q,
     ).parsed
 
 
@@ -178,11 +233,23 @@ async def asyncio_detailed(
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
     include_stacks: bool | Unset = UNSET,
-) -> Response[StderrErrResponse | list[AppAccount]]:
+    management: ListServiceAccountsManagement | Unset = UNSET,
+    purpose: str | Unset = UNSET,
+    q: str | Unset = UNSET,
+) -> Response[StderrErrResponse | list[ServiceServiceAccount]]:
     """List service accounts for the current org
 
      List the service accounts that belong to the current organization, along with
     their roles. Supports offset-based pagination.
+
+    Each account reports whether it is a system account, its purposes, and, for
+    accounts managed by a resource, the owning resource.
+
+    - `management` filters to `user` accounts, `system` accounts, or `all`. When set,
+      it replaces `include_runners` and `include_stacks`.
+    - `purpose` filters to accounts with that exact purpose.
+    - `q` matches a case-insensitive substring of the account name, email, or ID, or
+      of the owning resource's name or ID.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -190,13 +257,16 @@ async def asyncio_detailed(
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
         include_stacks (bool | Unset):
+        management (ListServiceAccountsManagement | Unset):
+        purpose (str | Unset):
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[StderrErrResponse | list[AppAccount]]
+        Response[StderrErrResponse | list[ServiceServiceAccount]]
     """
 
     kwargs = _get_kwargs(
@@ -205,6 +275,9 @@ async def asyncio_detailed(
         page=page,
         include_runners=include_runners,
         include_stacks=include_stacks,
+        management=management,
+        purpose=purpose,
+        q=q,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -220,11 +293,23 @@ async def asyncio(
     page: int | Unset = 0,
     include_runners: bool | Unset = UNSET,
     include_stacks: bool | Unset = UNSET,
-) -> StderrErrResponse | list[AppAccount] | None:
+    management: ListServiceAccountsManagement | Unset = UNSET,
+    purpose: str | Unset = UNSET,
+    q: str | Unset = UNSET,
+) -> StderrErrResponse | list[ServiceServiceAccount] | None:
     """List service accounts for the current org
 
      List the service accounts that belong to the current organization, along with
     their roles. Supports offset-based pagination.
+
+    Each account reports whether it is a system account, its purposes, and, for
+    accounts managed by a resource, the owning resource.
+
+    - `management` filters to `user` accounts, `system` accounts, or `all`. When set,
+      it replaces `include_runners` and `include_stacks`.
+    - `purpose` filters to accounts with that exact purpose.
+    - `q` matches a case-insensitive substring of the account name, email, or ID, or
+      of the owning resource's name or ID.
 
     Args:
         offset (int | Unset):  Default: 0.
@@ -232,13 +317,16 @@ async def asyncio(
         page (int | Unset):  Default: 0.
         include_runners (bool | Unset):
         include_stacks (bool | Unset):
+        management (ListServiceAccountsManagement | Unset):
+        purpose (str | Unset):
+        q (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        StderrErrResponse | list[AppAccount]
+        StderrErrResponse | list[ServiceServiceAccount]
     """
 
     return (
@@ -249,5 +337,8 @@ async def asyncio(
             page=page,
             include_runners=include_runners,
             include_stacks=include_stacks,
+            management=management,
+            purpose=purpose,
+            q=q,
         )
     ).parsed

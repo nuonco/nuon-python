@@ -161,11 +161,11 @@ def sync_detailed(
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
     `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
-    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
-    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+    awaiting approval, or approved. `state=finished` returns every other status. When `state=active`,
+    `total` counts all matching active deployments, ignoring `limit` and `cursor`.
 
-    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
-    others. Each group is ordered newest first. The default order is newest first.
+    `sort=attention` orders running deployments first, then deployments awaiting approval, then the
+    rest. Each group is ordered newest first. The default order is newest first.
 
     When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
     `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
@@ -251,11 +251,11 @@ def sync(
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
     `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
-    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
-    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+    awaiting approval, or approved. `state=finished` returns every other status. When `state=active`,
+    `total` counts all matching active deployments, ignoring `limit` and `cursor`.
 
-    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
-    others. Each group is ordered newest first. The default order is newest first.
+    `sort=attention` orders running deployments first, then deployments awaiting approval, then the
+    rest. Each group is ordered newest first. The default order is newest first.
 
     When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
     `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
@@ -336,11 +336,11 @@ async def asyncio_detailed(
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
     `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
-    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
-    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+    awaiting approval, or approved. `state=finished` returns every other status. When `state=active`,
+    `total` counts all matching active deployments, ignoring `limit` and `cursor`.
 
-    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
-    others. Each group is ordered newest first. The default order is newest first.
+    `sort=attention` orders running deployments first, then deployments awaiting approval, then the
+    rest. Each group is ordered newest first. The default order is newest first.
 
     When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
     `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
@@ -424,11 +424,11 @@ async def asyncio(
     `resource`, `search`, `created_at_gte`, and `created_at_lte`.
 
     `state=active` returns deployments whose workflow status is pending, queued, in progress, retrying,
-    awaiting approval, approved, or failed pending retry. `state=finished` returns every other status.
-    When `state=active`, `total` counts all matching active deployments, ignoring `limit` and `cursor`.
+    awaiting approval, or approved. `state=finished` returns every other status. When `state=active`,
+    `total` counts all matching active deployments, ignoring `limit` and `cursor`.
 
-    `sort=attention` orders deployments awaiting approval first, failed pending retry second, then all
-    others. Each group is ordered newest first. The default order is newest first.
+    `sort=attention` orders running deployments first, then deployments awaiting approval, then the
+    rest. Each group is ordered newest first. The default order is newest first.
 
     When `has_more` is true, `next_cursor` is an opaque cursor for the next page. Pass it back as
     `cursor` with the same `state` and `sort`. A cursor cannot be combined with a non-zero `page` or
