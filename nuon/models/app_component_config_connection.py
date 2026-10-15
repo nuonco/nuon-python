@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles
     from ..models.app_component_health_probe import AppComponentHealthProbe
+    from ..models.app_component_teardown import AppComponentTeardown
     from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig
     from ..models.app_external_image_component_config import AppExternalImageComponentConfig
     from ..models.app_helm_component_config import AppHelmComponentConfig
@@ -66,6 +67,7 @@ class AppComponentConfigConnection:
         references (list[str] | Unset):
         refs (list[RefsRef] | Unset):
         skip_noops (bool | Unset):
+        teardown (AppComponentTeardown | Unset):
         terraform_module (AppTerraformModuleComponentConfig | Unset):
         toggleable (bool | Unset):
         type_ (AppComponentType | Unset):
@@ -105,6 +107,7 @@ class AppComponentConfigConnection:
     references: list[str] | Unset = UNSET
     refs: list[RefsRef] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    teardown: AppComponentTeardown | Unset = UNSET
     terraform_module: AppTerraformModuleComponentConfig | Unset = UNSET
     toggleable: bool | Unset = UNSET
     type_: AppComponentType | Unset = UNSET
@@ -215,6 +218,10 @@ class AppComponentConfigConnection:
 
         skip_noops = self.skip_noops
 
+        teardown: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.teardown, Unset):
+            teardown = self.teardown.to_dict()
+
         terraform_module: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_module, Unset):
             terraform_module = self.terraform_module.to_dict()
@@ -296,6 +303,8 @@ class AppComponentConfigConnection:
             field_dict["refs"] = refs
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if teardown is not UNSET:
+            field_dict["teardown"] = teardown
         if terraform_module is not UNSET:
             field_dict["terraform_module"] = terraform_module
         if toggleable is not UNSET:
@@ -313,6 +322,7 @@ class AppComponentConfigConnection:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_component_config_connection_operation_roles import AppComponentConfigConnectionOperationRoles  # noqa: PLC0415
         from ..models.app_component_health_probe import AppComponentHealthProbe  # noqa: PLC0415
+        from ..models.app_component_teardown import AppComponentTeardown  # noqa: PLC0415
         from ..models.app_docker_build_component_config import AppDockerBuildComponentConfig  # noqa: PLC0415
         from ..models.app_external_image_component_config import AppExternalImageComponentConfig  # noqa: PLC0415
         from ..models.app_helm_component_config import AppHelmComponentConfig  # noqa: PLC0415
@@ -450,6 +460,13 @@ class AppComponentConfigConnection:
 
         skip_noops = d.pop("skip_noops", UNSET)
 
+        _teardown = d.pop("teardown", UNSET)
+        teardown: AppComponentTeardown | Unset
+        if isinstance(_teardown, Unset):
+            teardown = UNSET
+        else:
+            teardown = AppComponentTeardown.from_dict(_teardown)
+
         _terraform_module = d.pop("terraform_module", UNSET)
         terraform_module: AppTerraformModuleComponentConfig | Unset
         if isinstance(_terraform_module, Unset):
@@ -503,6 +520,7 @@ class AppComponentConfigConnection:
             references=references,
             refs=refs,
             skip_noops=skip_noops,
+            teardown=teardown,
             terraform_module=terraform_module,
             toggleable=toggleable,
             type_=type_,

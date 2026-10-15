@@ -21,6 +21,8 @@ def _get_kwargs(
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
+    actor_id: str | Unset = UNSET,
+    exclude_cron: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -40,6 +42,10 @@ def _get_kwargs(
     params["status"] = status
 
     params["search"] = search
+
+    params["actor_id"] = actor_id
+
+    params["exclude_cron"] = exclude_cron
 
     params["created_at_gte"] = created_at_gte
 
@@ -119,6 +125,8 @@ def sync_detailed(
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
+    actor_id: str | Unset = UNSET,
+    exclude_cron: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> Response[ServiceGetInstallActivityResponse | StderrErrResponse]:
@@ -155,6 +163,8 @@ def sync_detailed(
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
+        actor_id (str | Unset):
+        exclude_cron (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -175,6 +185,8 @@ def sync_detailed(
         type_=type_,
         status=status,
         search=search,
+        actor_id=actor_id,
+        exclude_cron=exclude_cron,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     )
@@ -197,6 +209,8 @@ def sync(
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
+    actor_id: str | Unset = UNSET,
+    exclude_cron: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> ServiceGetInstallActivityResponse | StderrErrResponse | None:
@@ -233,6 +247,8 @@ def sync(
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
+        actor_id (str | Unset):
+        exclude_cron (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -254,6 +270,8 @@ def sync(
         type_=type_,
         status=status,
         search=search,
+        actor_id=actor_id,
+        exclude_cron=exclude_cron,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     ).parsed
@@ -270,6 +288,8 @@ async def asyncio_detailed(
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
+    actor_id: str | Unset = UNSET,
+    exclude_cron: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> Response[ServiceGetInstallActivityResponse | StderrErrResponse]:
@@ -306,6 +326,8 @@ async def asyncio_detailed(
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
+        actor_id (str | Unset):
+        exclude_cron (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -326,6 +348,8 @@ async def asyncio_detailed(
         type_=type_,
         status=status,
         search=search,
+        actor_id=actor_id,
+        exclude_cron=exclude_cron,
         created_at_gte=created_at_gte,
         created_at_lte=created_at_lte,
     )
@@ -346,6 +370,8 @@ async def asyncio(
     type_: str | Unset = UNSET,
     status: str | Unset = UNSET,
     search: str | Unset = UNSET,
+    actor_id: str | Unset = UNSET,
+    exclude_cron: bool | Unset = UNSET,
     created_at_gte: str | Unset = UNSET,
     created_at_lte: str | Unset = UNSET,
 ) -> ServiceGetInstallActivityResponse | StderrErrResponse | None:
@@ -382,6 +408,8 @@ async def asyncio(
         type_ (str | Unset):
         status (str | Unset):
         search (str | Unset):
+        actor_id (str | Unset):
+        exclude_cron (bool | Unset):
         created_at_gte (str | Unset):
         created_at_lte (str | Unset):
 
@@ -404,6 +432,8 @@ async def asyncio(
             type_=type_,
             status=status,
             search=search,
+            actor_id=actor_id,
+            exclude_cron=exclude_cron,
             created_at_gte=created_at_gte,
             created_at_lte=created_at_lte,
         )

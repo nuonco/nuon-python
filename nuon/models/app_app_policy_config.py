@@ -20,6 +20,7 @@ class AppAppPolicyConfig:
         app_config_id (str | Unset):
         app_id (str | Unset):
         app_policies_config (str | Unset):
+        apply_on_teardown (bool | None | Unset):
         components (list[str] | Unset):
         contents (str | Unset):
         created_at (str | Unset):
@@ -36,6 +37,7 @@ class AppAppPolicyConfig:
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
     app_policies_config: str | Unset = UNSET
+    apply_on_teardown: bool | None | Unset = UNSET
     components: list[str] | Unset = UNSET
     contents: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -55,6 +57,12 @@ class AppAppPolicyConfig:
         app_id = self.app_id
 
         app_policies_config = self.app_policies_config
+
+        apply_on_teardown: bool | None | Unset
+        if isinstance(self.apply_on_teardown, Unset):
+            apply_on_teardown = UNSET
+        else:
+            apply_on_teardown = self.apply_on_teardown
 
         components: list[str] | Unset = UNSET
         if not isinstance(self.components, Unset):
@@ -93,6 +101,8 @@ class AppAppPolicyConfig:
             field_dict["app_id"] = app_id
         if app_policies_config is not UNSET:
             field_dict["app_policies_config"] = app_policies_config
+        if apply_on_teardown is not UNSET:
+            field_dict["apply_on_teardown"] = apply_on_teardown
         if components is not UNSET:
             field_dict["components"] = components
         if contents is not UNSET:
@@ -126,6 +136,15 @@ class AppAppPolicyConfig:
         app_id = d.pop("app_id", UNSET)
 
         app_policies_config = d.pop("app_policies_config", UNSET)
+
+        def _parse_apply_on_teardown(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        apply_on_teardown = _parse_apply_on_teardown(d.pop("apply_on_teardown", UNSET))
 
         components = cast(list[str], d.pop("components", UNSET))
 
@@ -163,6 +182,7 @@ class AppAppPolicyConfig:
             app_config_id=app_config_id,
             app_id=app_id,
             app_policies_config=app_policies_config,
+            apply_on_teardown=apply_on_teardown,
             components=components,
             contents=contents,
             created_at=created_at,

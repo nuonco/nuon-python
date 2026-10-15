@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.app_app_branch_run_metadata import AppAppBranchRunMetadata
+
 
 T = TypeVar("T", bound="ServiceInstallOverviewCommit")
 
@@ -21,6 +25,7 @@ class ServiceInstallOverviewCommit:
         branch_id (str | Unset):
         created_at (str | Unset):
         message (str | Unset):
+        metadata (AppAppBranchRunMetadata | Unset):
         run_id (str | Unset):
         run_status (str | Unset):
         sha (str | Unset):
@@ -33,6 +38,7 @@ class ServiceInstallOverviewCommit:
     branch_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     message: str | Unset = UNSET
+    metadata: AppAppBranchRunMetadata | Unset = UNSET
     run_id: str | Unset = UNSET
     run_status: str | Unset = UNSET
     sha: str | Unset = UNSET
@@ -51,6 +57,10 @@ class ServiceInstallOverviewCommit:
         created_at = self.created_at
 
         message = self.message
+
+        metadata: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         run_id = self.run_id
 
@@ -75,6 +85,8 @@ class ServiceInstallOverviewCommit:
             field_dict["created_at"] = created_at
         if message is not UNSET:
             field_dict["message"] = message
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
         if run_id is not UNSET:
             field_dict["run_id"] = run_id
         if run_status is not UNSET:
@@ -88,6 +100,8 @@ class ServiceInstallOverviewCommit:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_branch_run_metadata import AppAppBranchRunMetadata  # noqa: PLC0415
+
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
 
@@ -100,6 +114,13 @@ class ServiceInstallOverviewCommit:
         created_at = d.pop("created_at", UNSET)
 
         message = d.pop("message", UNSET)
+
+        _metadata = d.pop("metadata", UNSET)
+        metadata: AppAppBranchRunMetadata | Unset
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = AppAppBranchRunMetadata.from_dict(_metadata)
 
         run_id = d.pop("run_id", UNSET)
 
@@ -116,6 +137,7 @@ class ServiceInstallOverviewCommit:
             branch_id=branch_id,
             created_at=created_at,
             message=message,
+            metadata=metadata,
             run_id=run_id,
             run_status=run_status,
             sha=sha,

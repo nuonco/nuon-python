@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.service_component_teardown_request import ServiceComponentTeardownRequest
     from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest
     from ..models.service_create_terraform_module_component_config_request_env_vars import (
         ServiceCreateTerraformModuleComponentConfigRequestEnvVars,
@@ -46,6 +47,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         public_git_vcs_config (ServicePublicGitVCSConfigRequest | Unset):
         references (list[str] | Unset):
         skip_noops (bool | Unset):
+        teardown (ServiceComponentTeardownRequest | Unset):
         toggleable (bool | Unset):
         variables_files (list[str] | Unset):
         version (str | Unset):
@@ -68,6 +70,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
     public_git_vcs_config: ServicePublicGitVCSConfigRequest | Unset = UNSET
     references: list[str] | Unset = UNSET
     skip_noops: bool | Unset = UNSET
+    teardown: ServiceComponentTeardownRequest | Unset = UNSET
     toggleable: bool | Unset = UNSET
     variables_files: list[str] | Unset = UNSET
     version: str | Unset = UNSET
@@ -118,6 +121,10 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         skip_noops = self.skip_noops
 
+        teardown: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.teardown, Unset):
+            teardown = self.teardown.to_dict()
+
         toggleable = self.toggleable
 
         variables_files: list[str] | Unset = UNSET
@@ -164,6 +171,8 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             field_dict["references"] = references
         if skip_noops is not UNSET:
             field_dict["skip_noops"] = skip_noops
+        if teardown is not UNSET:
+            field_dict["teardown"] = teardown
         if toggleable is not UNSET:
             field_dict["toggleable"] = toggleable
         if variables_files is not UNSET:
@@ -175,6 +184,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_component_teardown_request import ServiceComponentTeardownRequest  # noqa: PLC0415
         from ..models.service_connected_github_vcs_config_request import ServiceConnectedGithubVCSConfigRequest  # noqa: PLC0415
         from ..models.service_create_terraform_module_component_config_request_env_vars import (
             ServiceCreateTerraformModuleComponentConfigRequestEnvVars,  # noqa: PLC0415
@@ -239,6 +249,13 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
 
         skip_noops = d.pop("skip_noops", UNSET)
 
+        _teardown = d.pop("teardown", UNSET)
+        teardown: ServiceComponentTeardownRequest | Unset
+        if isinstance(_teardown, Unset):
+            teardown = UNSET
+        else:
+            teardown = ServiceComponentTeardownRequest.from_dict(_teardown)
+
         toggleable = d.pop("toggleable", UNSET)
 
         variables_files = cast(list[str], d.pop("variables_files", UNSET))
@@ -263,6 +280,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
             public_git_vcs_config=public_git_vcs_config,
             references=references,
             skip_noops=skip_noops,
+            teardown=teardown,
             toggleable=toggleable,
             variables_files=variables_files,
             version=version,

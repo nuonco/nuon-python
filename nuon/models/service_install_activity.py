@@ -10,6 +10,7 @@ from ..models.service_install_activity_type import ServiceInstallActivityType
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_account import AppAccount
     from ..models.service_install_activity_action import ServiceInstallActivityAction
     from ..models.service_install_activity_policy import ServiceInstallActivityPolicy
     from ..models.service_install_activity_runbook import ServiceInstallActivityRunbook
@@ -24,6 +25,7 @@ class ServiceInstallActivity:
     """
     Attributes:
         action (ServiceInstallActivityAction | Unset):
+        actor (AppAccount | Unset):
         created_at (str | Unset):
         id (str | Unset):
         policy (ServiceInstallActivityPolicy | Unset):
@@ -36,6 +38,7 @@ class ServiceInstallActivity:
     """
 
     action: ServiceInstallActivityAction | Unset = UNSET
+    actor: AppAccount | Unset = UNSET
     created_at: str | Unset = UNSET
     id: str | Unset = UNSET
     policy: ServiceInstallActivityPolicy | Unset = UNSET
@@ -51,6 +54,10 @@ class ServiceInstallActivity:
         action: dict[str, Any] | Unset = UNSET
         if not isinstance(self.action, Unset):
             action = self.action.to_dict()
+
+        actor: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.actor, Unset):
+            actor = self.actor.to_dict()
 
         created_at = self.created_at
 
@@ -83,6 +90,8 @@ class ServiceInstallActivity:
         field_dict.update({})
         if action is not UNSET:
             field_dict["action"] = action
+        if actor is not UNSET:
+            field_dict["actor"] = actor
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if id is not UNSET:
@@ -106,6 +115,7 @@ class ServiceInstallActivity:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_account import AppAccount  # noqa: PLC0415
         from ..models.service_install_activity_action import ServiceInstallActivityAction  # noqa: PLC0415
         from ..models.service_install_activity_policy import ServiceInstallActivityPolicy  # noqa: PLC0415
         from ..models.service_install_activity_runbook import ServiceInstallActivityRunbook  # noqa: PLC0415
@@ -118,6 +128,13 @@ class ServiceInstallActivity:
             action = UNSET
         else:
             action = ServiceInstallActivityAction.from_dict(_action)
+
+        _actor = d.pop("actor", UNSET)
+        actor: AppAccount | Unset
+        if isinstance(_actor, Unset):
+            actor = UNSET
+        else:
+            actor = AppAccount.from_dict(_actor)
 
         created_at = d.pop("created_at", UNSET)
 
@@ -159,6 +176,7 @@ class ServiceInstallActivity:
 
         service_install_activity = cls(
             action=action,
+            actor=actor,
             created_at=created_at,
             id=id,
             policy=policy,

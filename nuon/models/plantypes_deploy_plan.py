@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.plantypes_noop_deploy_plan import PlantypesNoopDeployPlan
     from ..models.plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
+    from ..models.plantypes_teardown_plan import PlantypesTeardownPlan
     from ..models.plantypes_terraform_deploy_plan import PlantypesTerraformDeployPlan
 
 
@@ -45,6 +46,7 @@ class PlantypesDeployPlan:
             non-image builds and legacy image builds. When non-empty, runners
             should prefer this over SrcTag for content-addressed pulls and for
             rendering digest-pinned image references in pod specs.
+        teardown (PlantypesTeardownPlan | Unset):
         terraform (PlantypesTerraformDeployPlan | Unset):
     """
 
@@ -63,6 +65,7 @@ class PlantypesDeployPlan:
     pulumi: PlantypesPulumiDeployPlan | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
     src_digest: str | Unset = UNSET
+    teardown: PlantypesTeardownPlan | Unset = UNSET
     terraform: PlantypesTerraformDeployPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -107,6 +110,10 @@ class PlantypesDeployPlan:
 
         src_digest = self.src_digest
 
+        teardown: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.teardown, Unset):
+            teardown = self.teardown.to_dict()
+
         terraform: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform, Unset):
             terraform = self.terraform.to_dict()
@@ -145,6 +152,8 @@ class PlantypesDeployPlan:
             field_dict["sandbox_mode"] = sandbox_mode
         if src_digest is not UNSET:
             field_dict["src_digest"] = src_digest
+        if teardown is not UNSET:
+            field_dict["teardown"] = teardown
         if terraform is not UNSET:
             field_dict["terraform"] = terraform
 
@@ -158,6 +167,7 @@ class PlantypesDeployPlan:
         from ..models.plantypes_noop_deploy_plan import PlantypesNoopDeployPlan  # noqa: PLC0415
         from ..models.plantypes_pulumi_deploy_plan import PlantypesPulumiDeployPlan  # noqa: PLC0415
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
+        from ..models.plantypes_teardown_plan import PlantypesTeardownPlan  # noqa: PLC0415
         from ..models.plantypes_terraform_deploy_plan import PlantypesTerraformDeployPlan  # noqa: PLC0415
 
         d = dict(src_dict)
@@ -216,6 +226,13 @@ class PlantypesDeployPlan:
 
         src_digest = d.pop("src_digest", UNSET)
 
+        _teardown = d.pop("teardown", UNSET)
+        teardown: PlantypesTeardownPlan | Unset
+        if isinstance(_teardown, Unset):
+            teardown = UNSET
+        else:
+            teardown = PlantypesTeardownPlan.from_dict(_teardown)
+
         _terraform = d.pop("terraform", UNSET)
         terraform: PlantypesTerraformDeployPlan | Unset
         if isinstance(_terraform, Unset):
@@ -239,6 +256,7 @@ class PlantypesDeployPlan:
             pulumi=pulumi,
             sandbox_mode=sandbox_mode,
             src_digest=src_digest,
+            teardown=teardown,
             terraform=terraform,
         )
 
