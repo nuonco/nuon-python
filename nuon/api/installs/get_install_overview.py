@@ -82,12 +82,13 @@ def sync_detailed(
 ) -> Response[ServiceInstallOverviewResponse | StderrErrResponse]:
     """install overview
 
-     Returns branch tracking and config drift for an install. commits_behind counts distinct newer app
-    configurations on the tracked branch relative to the install's selected app_config_id, excluding
-    previews and no-config-change runs. It is omitted when selected branch provenance is unknown.
-    pending_commits includes the newest 50 configurations and their latest branch runs. A stack,
-    sandbox, or component is drifted when its applied app config is set and is not the install's current
-    app config.
+     Returns branch tracking and config drift for an install. runs_behind counts successful app branch
+    runs with newer app configurations on the tracked branch relative to the install's selected
+    app_config_id, excluding previews and no-config-change runs. It is omitted when selected branch
+    provenance is unknown. successful_runs includes the newest 50 successful runs with their associated
+    commits, ordered by run creation time. commits_behind and pending_commits are deprecated aliases of
+    runs_behind and successful_runs. A stack, sandbox, or component is drifted when its applied app
+    config is set and is not the install's current app config.
 
     Args:
         install_id (str):
@@ -118,12 +119,13 @@ def sync(
 ) -> ServiceInstallOverviewResponse | StderrErrResponse | None:
     """install overview
 
-     Returns branch tracking and config drift for an install. commits_behind counts distinct newer app
-    configurations on the tracked branch relative to the install's selected app_config_id, excluding
-    previews and no-config-change runs. It is omitted when selected branch provenance is unknown.
-    pending_commits includes the newest 50 configurations and their latest branch runs. A stack,
-    sandbox, or component is drifted when its applied app config is set and is not the install's current
-    app config.
+     Returns branch tracking and config drift for an install. runs_behind counts successful app branch
+    runs with newer app configurations on the tracked branch relative to the install's selected
+    app_config_id, excluding previews and no-config-change runs. It is omitted when selected branch
+    provenance is unknown. successful_runs includes the newest 50 successful runs with their associated
+    commits, ordered by run creation time. commits_behind and pending_commits are deprecated aliases of
+    runs_behind and successful_runs. A stack, sandbox, or component is drifted when its applied app
+    config is set and is not the install's current app config.
 
     Args:
         install_id (str):
@@ -149,12 +151,13 @@ async def asyncio_detailed(
 ) -> Response[ServiceInstallOverviewResponse | StderrErrResponse]:
     """install overview
 
-     Returns branch tracking and config drift for an install. commits_behind counts distinct newer app
-    configurations on the tracked branch relative to the install's selected app_config_id, excluding
-    previews and no-config-change runs. It is omitted when selected branch provenance is unknown.
-    pending_commits includes the newest 50 configurations and their latest branch runs. A stack,
-    sandbox, or component is drifted when its applied app config is set and is not the install's current
-    app config.
+     Returns branch tracking and config drift for an install. runs_behind counts successful app branch
+    runs with newer app configurations on the tracked branch relative to the install's selected
+    app_config_id, excluding previews and no-config-change runs. It is omitted when selected branch
+    provenance is unknown. successful_runs includes the newest 50 successful runs with their associated
+    commits, ordered by run creation time. commits_behind and pending_commits are deprecated aliases of
+    runs_behind and successful_runs. A stack, sandbox, or component is drifted when its applied app
+    config is set and is not the install's current app config.
 
     Args:
         install_id (str):
@@ -183,12 +186,13 @@ async def asyncio(
 ) -> ServiceInstallOverviewResponse | StderrErrResponse | None:
     """install overview
 
-     Returns branch tracking and config drift for an install. commits_behind counts distinct newer app
-    configurations on the tracked branch relative to the install's selected app_config_id, excluding
-    previews and no-config-change runs. It is omitted when selected branch provenance is unknown.
-    pending_commits includes the newest 50 configurations and their latest branch runs. A stack,
-    sandbox, or component is drifted when its applied app config is set and is not the install's current
-    app config.
+     Returns branch tracking and config drift for an install. runs_behind counts successful app branch
+    runs with newer app configurations on the tracked branch relative to the install's selected
+    app_config_id, excluding previews and no-config-change runs. It is omitted when selected branch
+    provenance is unknown. successful_runs includes the newest 50 successful runs with their associated
+    commits, ordered by run creation time. commits_behind and pending_commits are deprecated aliases of
+    runs_behind and successful_runs. A stack, sandbox, or component is drifted when its applied app
+    config is set and is not the install's current app config.
 
     Args:
         install_id (str):

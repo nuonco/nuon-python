@@ -27,8 +27,10 @@ class ServiceInstallBranchTracking:
         git_branch (str | Unset):
         pending_commits (list[ServiceInstallOverviewCommit] | Unset):
         repo (str | Unset):
+        runs_behind (int | None | Unset):
         selected_commit (ServiceInstallOverviewCommit | Unset):
         status (str | Unset):
+        successful_runs (list[ServiceInstallOverviewCommit] | Unset):
         target_branch (str | Unset):
     """
 
@@ -40,8 +42,10 @@ class ServiceInstallBranchTracking:
     git_branch: str | Unset = UNSET
     pending_commits: list[ServiceInstallOverviewCommit] | Unset = UNSET
     repo: str | Unset = UNSET
+    runs_behind: int | None | Unset = UNSET
     selected_commit: ServiceInstallOverviewCommit | Unset = UNSET
     status: str | Unset = UNSET
+    successful_runs: list[ServiceInstallOverviewCommit] | Unset = UNSET
     target_branch: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -75,11 +79,24 @@ class ServiceInstallBranchTracking:
 
         repo = self.repo
 
+        runs_behind: int | None | Unset
+        if isinstance(self.runs_behind, Unset):
+            runs_behind = UNSET
+        else:
+            runs_behind = self.runs_behind
+
         selected_commit: dict[str, Any] | Unset = UNSET
         if not isinstance(self.selected_commit, Unset):
             selected_commit = self.selected_commit.to_dict()
 
         status = self.status
+
+        successful_runs: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.successful_runs, Unset):
+            successful_runs = []
+            for successful_runs_item_data in self.successful_runs:
+                successful_runs_item = successful_runs_item_data.to_dict()
+                successful_runs.append(successful_runs_item)
 
         target_branch = self.target_branch
 
@@ -102,10 +119,14 @@ class ServiceInstallBranchTracking:
             field_dict["pending_commits"] = pending_commits
         if repo is not UNSET:
             field_dict["repo"] = repo
+        if runs_behind is not UNSET:
+            field_dict["runs_behind"] = runs_behind
         if selected_commit is not UNSET:
             field_dict["selected_commit"] = selected_commit
         if status is not UNSET:
             field_dict["status"] = status
+        if successful_runs is not UNSET:
+            field_dict["successful_runs"] = successful_runs
         if target_branch is not UNSET:
             field_dict["target_branch"] = target_branch
 
@@ -156,6 +177,15 @@ class ServiceInstallBranchTracking:
 
         repo = d.pop("repo", UNSET)
 
+        def _parse_runs_behind(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        runs_behind = _parse_runs_behind(d.pop("runs_behind", UNSET))
+
         _selected_commit = d.pop("selected_commit", UNSET)
         selected_commit: ServiceInstallOverviewCommit | Unset
         if isinstance(_selected_commit, Unset):
@@ -164,6 +194,15 @@ class ServiceInstallBranchTracking:
             selected_commit = ServiceInstallOverviewCommit.from_dict(_selected_commit)
 
         status = d.pop("status", UNSET)
+
+        _successful_runs = d.pop("successful_runs", UNSET)
+        successful_runs: list[ServiceInstallOverviewCommit] | Unset = UNSET
+        if _successful_runs is not UNSET:
+            successful_runs = []
+            for successful_runs_item_data in _successful_runs:
+                successful_runs_item = ServiceInstallOverviewCommit.from_dict(successful_runs_item_data)
+
+                successful_runs.append(successful_runs_item)
 
         target_branch = d.pop("target_branch", UNSET)
 
@@ -176,8 +215,10 @@ class ServiceInstallBranchTracking:
             git_branch=git_branch,
             pending_commits=pending_commits,
             repo=repo,
+            runs_behind=runs_behind,
             selected_commit=selected_commit,
             status=status,
+            successful_runs=successful_runs,
             target_branch=target_branch,
         )
 

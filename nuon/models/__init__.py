@@ -2,6 +2,7 @@
 
 from .app_account import AppAccount
 from .app_account_type import AppAccountType
+from .app_action_run_trigger import AppActionRunTrigger
 from .app_action_workflow import AppActionWorkflow
 from .app_action_workflow_config import AppActionWorkflowConfig
 from .app_action_workflow_step_config import AppActionWorkflowStepConfig
@@ -97,6 +98,7 @@ from .app_component_health_probe import AppComponentHealthProbe
 from .app_component_links import AppComponentLinks
 from .app_component_release import AppComponentRelease
 from .app_component_release_step import AppComponentReleaseStep
+from .app_component_teardown import AppComponentTeardown
 from .app_component_type import AppComponentType
 from .app_composite_status import AppCompositeStatus
 from .app_composite_status_metadata import AppCompositeStatusMetadata
@@ -490,6 +492,7 @@ from .plantypes_sandbox_run_plan_policies import PlantypesSandboxRunPlanPolicies
 from .plantypes_sandbox_run_plan_vars import PlantypesSandboxRunPlanVars
 from .plantypes_sync_oci_plan import PlantypesSyncOCIPlan
 from .plantypes_sync_secrets_plan import PlantypesSyncSecretsPlan
+from .plantypes_teardown_plan import PlantypesTeardownPlan
 from .plantypes_terraform_backend import PlantypesTerraformBackend
 from .plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
 from .plantypes_terraform_build_plan_labels import PlantypesTerraformBuildPlanLabels
@@ -557,6 +560,7 @@ from .service_complete_your_stack_step_request import ServiceCompleteYourStackSt
 from .service_complete_your_stack_step_request_app_type import ServiceCompleteYourStackStepRequestAppType
 from .service_component_children import ServiceComponentChildren
 from .service_component_health_incident_bundle import ServiceComponentHealthIncidentBundle
+from .service_component_teardown_request import ServiceComponentTeardownRequest
 from .service_connected_github_vcs_action_workflow_config_request import (
     ServiceConnectedGithubVCSActionWorkflowConfigRequest,
 )
@@ -949,6 +953,7 @@ from .validate_token_response_200 import ValidateTokenResponse200
 __all__ = (
     "AppAccount",
     "AppAccountType",
+    "AppActionRunTrigger",
     "AppActionWorkflow",
     "AppActionWorkflowConfig",
     "AppActionWorkflowStepConfig",
@@ -1048,6 +1053,7 @@ __all__ = (
     "AppComponentLinks",
     "AppComponentRelease",
     "AppComponentReleaseStep",
+    "AppComponentTeardown",
     "AppComponentType",
     "AppCompositeStatus",
     "AppCompositeStatusMetadata",
@@ -1427,6 +1433,7 @@ __all__ = (
     "PlantypesSandboxRunPlanVars",
     "PlantypesSyncOCIPlan",
     "PlantypesSyncSecretsPlan",
+    "PlantypesTeardownPlan",
     "PlantypesTerraformBackend",
     "PlantypesTerraformBuildPlan",
     "PlantypesTerraformBuildPlanLabels",
@@ -1494,6 +1501,7 @@ __all__ = (
     "ServiceCompleteYourStackStepRequestAppType",
     "ServiceComponentChildren",
     "ServiceComponentHealthIncidentBundle",
+    "ServiceComponentTeardownRequest",
     "ServiceConnectedGithubVCSActionWorkflowConfigRequest",
     "ServiceConnectedGithubVCSConfigRequest",
     "ServiceConnectionListResponse",

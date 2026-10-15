@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_account import AppAccount
+    from ..models.app_action_run_trigger import AppActionRunTrigger
     from ..models.app_action_workflow_config import AppActionWorkflowConfig
     from ..models.app_composite_status import AppCompositeStatus
     from ..models.app_install_action_workflow import AppInstallActionWorkflow
@@ -37,6 +38,7 @@ class AppInstallActionWorkflowRun:
         created_at (str | Unset):
         created_by (AppAccount | Unset):
         created_by_id (str | Unset):
+        effective_timeout (int | Unset):
         enable_kube_config (SqlNullBool | Unset):
         execution_time (int | Unset): after query
         id (str | Unset):
@@ -57,6 +59,7 @@ class AppInstallActionWorkflowRun:
         status_v2 (AppCompositeStatus | Unset):
         steps (list[AppInstallActionWorkflowRunStep] | Unset):
         timeout (int | Unset):
+        trigger (AppActionRunTrigger | Unset):
         trigger_type (AppActionWorkflowTriggerType | Unset):
         triggered_by_id (str | Unset):
         triggered_by_type (str | Unset):
@@ -71,6 +74,7 @@ class AppInstallActionWorkflowRun:
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
     created_by_id: str | Unset = UNSET
+    effective_timeout: int | Unset = UNSET
     enable_kube_config: SqlNullBool | Unset = UNSET
     execution_time: int | Unset = UNSET
     id: str | Unset = UNSET
@@ -89,6 +93,7 @@ class AppInstallActionWorkflowRun:
     status_v2: AppCompositeStatus | Unset = UNSET
     steps: list[AppInstallActionWorkflowRunStep] | Unset = UNSET
     timeout: int | Unset = UNSET
+    trigger: AppActionRunTrigger | Unset = UNSET
     trigger_type: AppActionWorkflowTriggerType | Unset = UNSET
     triggered_by_id: str | Unset = UNSET
     triggered_by_type: str | Unset = UNSET
@@ -115,6 +120,8 @@ class AppInstallActionWorkflowRun:
             created_by = self.created_by.to_dict()
 
         created_by_id = self.created_by_id
+
+        effective_timeout = self.effective_timeout
 
         enable_kube_config: dict[str, Any] | Unset = UNSET
         if not isinstance(self.enable_kube_config, Unset):
@@ -171,6 +178,10 @@ class AppInstallActionWorkflowRun:
 
         timeout = self.timeout
 
+        trigger: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.trigger, Unset):
+            trigger = self.trigger.to_dict()
+
         trigger_type: str | Unset = UNSET
         if not isinstance(self.trigger_type, Unset):
             trigger_type = self.trigger_type.value
@@ -202,6 +213,8 @@ class AppInstallActionWorkflowRun:
             field_dict["created_by"] = created_by
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
+        if effective_timeout is not UNSET:
+            field_dict["effective_timeout"] = effective_timeout
         if enable_kube_config is not UNSET:
             field_dict["enable_kube_config"] = enable_kube_config
         if execution_time is not UNSET:
@@ -238,6 +251,8 @@ class AppInstallActionWorkflowRun:
             field_dict["steps"] = steps
         if timeout is not UNSET:
             field_dict["timeout"] = timeout
+        if trigger is not UNSET:
+            field_dict["trigger"] = trigger
         if trigger_type is not UNSET:
             field_dict["trigger_type"] = trigger_type
         if triggered_by_id is not UNSET:
@@ -256,6 +271,7 @@ class AppInstallActionWorkflowRun:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_account import AppAccount  # noqa: PLC0415
+        from ..models.app_action_run_trigger import AppActionRunTrigger  # noqa: PLC0415
         from ..models.app_action_workflow_config import AppActionWorkflowConfig  # noqa: PLC0415
         from ..models.app_composite_status import AppCompositeStatus  # noqa: PLC0415
         from ..models.app_install_action_workflow import AppInstallActionWorkflow  # noqa: PLC0415
@@ -295,6 +311,8 @@ class AppInstallActionWorkflowRun:
             created_by = AppAccount.from_dict(_created_by)
 
         created_by_id = d.pop("created_by_id", UNSET)
+
+        effective_timeout = d.pop("effective_timeout", UNSET)
 
         _enable_kube_config = d.pop("enable_kube_config", UNSET)
         enable_kube_config: SqlNullBool | Unset
@@ -374,6 +392,13 @@ class AppInstallActionWorkflowRun:
 
         timeout = d.pop("timeout", UNSET)
 
+        _trigger = d.pop("trigger", UNSET)
+        trigger: AppActionRunTrigger | Unset
+        if isinstance(_trigger, Unset):
+            trigger = UNSET
+        else:
+            trigger = AppActionRunTrigger.from_dict(_trigger)
+
         _trigger_type = d.pop("trigger_type", UNSET)
         trigger_type: AppActionWorkflowTriggerType | Unset
         if isinstance(_trigger_type, Unset):
@@ -403,6 +428,7 @@ class AppInstallActionWorkflowRun:
             created_at=created_at,
             created_by=created_by,
             created_by_id=created_by_id,
+            effective_timeout=effective_timeout,
             enable_kube_config=enable_kube_config,
             execution_time=execution_time,
             id=id,
@@ -421,6 +447,7 @@ class AppInstallActionWorkflowRun:
             status_v2=status_v2,
             steps=steps,
             timeout=timeout,
+            trigger=trigger,
             trigger_type=trigger_type,
             triggered_by_id=triggered_by_id,
             triggered_by_type=triggered_by_type,

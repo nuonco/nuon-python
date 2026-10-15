@@ -19,6 +19,7 @@ class ServiceAppPolicyConfig:
     Attributes:
         contents (str):
         type_ (ConfigAppPolicyType):
+        apply_on_teardown (bool | None | Unset):
         components (list[str] | Unset):
         description (str | Unset):
         engine (ConfigAppPolicyEngine | Unset):
@@ -27,6 +28,7 @@ class ServiceAppPolicyConfig:
 
     contents: str
     type_: ConfigAppPolicyType
+    apply_on_teardown: bool | None | Unset = UNSET
     components: list[str] | Unset = UNSET
     description: str | Unset = UNSET
     engine: ConfigAppPolicyEngine | Unset = UNSET
@@ -37,6 +39,12 @@ class ServiceAppPolicyConfig:
         contents = self.contents
 
         type_ = self.type_.value
+
+        apply_on_teardown: bool | None | Unset
+        if isinstance(self.apply_on_teardown, Unset):
+            apply_on_teardown = UNSET
+        else:
+            apply_on_teardown = self.apply_on_teardown
 
         components: list[str] | Unset = UNSET
         if not isinstance(self.components, Unset):
@@ -58,6 +66,8 @@ class ServiceAppPolicyConfig:
                 "type": type_,
             }
         )
+        if apply_on_teardown is not UNSET:
+            field_dict["apply_on_teardown"] = apply_on_teardown
         if components is not UNSET:
             field_dict["components"] = components
         if description is not UNSET:
@@ -76,6 +86,15 @@ class ServiceAppPolicyConfig:
 
         type_ = ConfigAppPolicyType(d.pop("type"))
 
+        def _parse_apply_on_teardown(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        apply_on_teardown = _parse_apply_on_teardown(d.pop("apply_on_teardown", UNSET))
+
         components = cast(list[str], d.pop("components", UNSET))
 
         description = d.pop("description", UNSET)
@@ -92,6 +111,7 @@ class ServiceAppPolicyConfig:
         service_app_policy_config = cls(
             contents=contents,
             type_=type_,
+            apply_on_teardown=apply_on_teardown,
             components=components,
             description=description,
             engine=engine,
