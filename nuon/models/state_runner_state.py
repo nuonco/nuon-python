@@ -15,12 +15,14 @@ T = TypeVar("T", bound="StateRunnerState")
 class StateRunnerState:
     """
     Attributes:
+        api_url (str | Unset):
         id (str | Unset):
         populated (bool | Unset):
         runner_group_id (str | Unset):
         status (str | Unset):
     """
 
+    api_url: str | Unset = UNSET
     id: str | Unset = UNSET
     populated: bool | Unset = UNSET
     runner_group_id: str | Unset = UNSET
@@ -28,6 +30,8 @@ class StateRunnerState:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        api_url = self.api_url
+
         id = self.id
 
         populated = self.populated
@@ -39,6 +43,8 @@ class StateRunnerState:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if api_url is not UNSET:
+            field_dict["api_url"] = api_url
         if id is not UNSET:
             field_dict["id"] = id
         if populated is not UNSET:
@@ -53,6 +59,8 @@ class StateRunnerState:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        api_url = d.pop("api_url", UNSET)
+
         id = d.pop("id", UNSET)
 
         populated = d.pop("populated", UNSET)
@@ -62,6 +70,7 @@ class StateRunnerState:
         status = d.pop("status", UNSET)
 
         state_runner_state = cls(
+            api_url=api_url,
             id=id,
             populated=populated,
             runner_group_id=runner_group_id,
