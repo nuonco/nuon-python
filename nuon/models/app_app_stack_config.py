@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+    from ..models.config_uploaded_ui_definition import ConfigUploadedUIDefinition
 
 
 T = TypeVar("T", bound="AppAppStackConfig")
@@ -33,6 +34,7 @@ class AppAppStackConfig:
         org_id (str | Unset):
         runner_nested_template_url (str | Unset):
         type_ (AppStackType | Unset):
+        ui_definition (ConfigUploadedUIDefinition | Unset):
         updated_at (str | Unset):
         vpc_nested_template_url (str | Unset):
     """
@@ -49,6 +51,7 @@ class AppAppStackConfig:
     org_id: str | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
     type_: AppStackType | Unset = UNSET
+    ui_definition: ConfigUploadedUIDefinition | Unset = UNSET
     updated_at: str | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -87,6 +90,10 @@ class AppAppStackConfig:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
+        ui_definition: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.ui_definition, Unset):
+            ui_definition = self.ui_definition.to_dict()
+
         updated_at = self.updated_at
 
         vpc_nested_template_url = self.vpc_nested_template_url
@@ -118,6 +125,8 @@ class AppAppStackConfig:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if ui_definition is not UNSET:
+            field_dict["ui_definition"] = ui_definition
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vpc_nested_template_url is not UNSET:
@@ -128,6 +137,7 @@ class AppAppStackConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.config_uploaded_ui_definition import ConfigUploadedUIDefinition  # noqa: PLC0415
 
         d = dict(src_dict)
         app_config_id = d.pop("app_config_id", UNSET)
@@ -171,6 +181,13 @@ class AppAppStackConfig:
         else:
             type_ = AppStackType(_type_)
 
+        _ui_definition = d.pop("ui_definition", UNSET)
+        ui_definition: ConfigUploadedUIDefinition | Unset
+        if isinstance(_ui_definition, Unset):
+            ui_definition = UNSET
+        else:
+            ui_definition = ConfigUploadedUIDefinition.from_dict(_ui_definition)
+
         updated_at = d.pop("updated_at", UNSET)
 
         vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
@@ -188,6 +205,7 @@ class AppAppStackConfig:
             org_id=org_id,
             runner_nested_template_url=runner_nested_template_url,
             type_=type_,
+            ui_definition=ui_definition,
             updated_at=updated_at,
             vpc_nested_template_url=vpc_nested_template_url,
         )

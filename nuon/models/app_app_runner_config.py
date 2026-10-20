@@ -30,6 +30,8 @@ class AppAppRunnerConfig:
         env_vars (AppAppRunnerConfigEnvVars | Unset):
         helm_driver (str | Unset):
         id (str | Unset):
+        image_auto_update (bool | Unset):
+        image_id (str | Unset):
         init_script (str | Unset): takes a URL to a bash script ⤵  which will be `curl | bash`-ed on the VM. usually via
             user-data or equivalent.
         instance_type (str | Unset): InstanceType is the cloud machine/instance type for the install runner host, mapped
@@ -54,6 +56,8 @@ class AppAppRunnerConfig:
     env_vars: AppAppRunnerConfigEnvVars | Unset = UNSET
     helm_driver: str | Unset = UNSET
     id: str | Unset = UNSET
+    image_auto_update: bool | Unset = UNSET
+    image_id: str | Unset = UNSET
     init_script: str | Unset = UNSET
     instance_type: str | Unset = UNSET
     org_id: str | Unset = UNSET
@@ -87,6 +91,10 @@ class AppAppRunnerConfig:
         helm_driver = self.helm_driver
 
         id = self.id
+
+        image_auto_update = self.image_auto_update
+
+        image_id = self.image_id
 
         init_script = self.init_script
 
@@ -123,6 +131,10 @@ class AppAppRunnerConfig:
             field_dict["helm_driver"] = helm_driver
         if id is not UNSET:
             field_dict["id"] = id
+        if image_auto_update is not UNSET:
+            field_dict["image_auto_update"] = image_auto_update
+        if image_id is not UNSET:
+            field_dict["image_id"] = image_id
         if init_script is not UNSET:
             field_dict["init_script"] = init_script
         if instance_type is not UNSET:
@@ -178,6 +190,10 @@ class AppAppRunnerConfig:
 
         id = d.pop("id", UNSET)
 
+        image_auto_update = d.pop("image_auto_update", UNSET)
+
+        image_id = d.pop("image_id", UNSET)
+
         init_script = d.pop("init_script", UNSET)
 
         instance_type = d.pop("instance_type", UNSET)
@@ -202,6 +218,8 @@ class AppAppRunnerConfig:
             env_vars=env_vars,
             helm_driver=helm_driver,
             id=id,
+            image_auto_update=image_auto_update,
+            image_id=image_id,
             init_script=init_script,
             instance_type=instance_type,
             org_id=org_id,

@@ -25,6 +25,8 @@ class ServiceCreateAppRunnerConfigRequest:
         app_config_id (str | Unset):
         env_vars (ServiceCreateAppRunnerConfigRequestEnvVars | Unset):
         helm_driver (AppAppRunnerConfigHelmDriverType | Unset):
+        image_auto_update (bool | Unset):
+        image_id (str | Unset):
         init_script_url (str | Unset):
         instance_type (str | Unset):
         phone_home_script_url (str | Unset): PhoneHomeScriptURL overrides the phone-home Lambda source for this app.
@@ -36,6 +38,8 @@ class ServiceCreateAppRunnerConfigRequest:
     app_config_id: str | Unset = UNSET
     env_vars: ServiceCreateAppRunnerConfigRequestEnvVars | Unset = UNSET
     helm_driver: AppAppRunnerConfigHelmDriverType | Unset = UNSET
+    image_auto_update: bool | Unset = UNSET
+    image_id: str | Unset = UNSET
     init_script_url: str | Unset = UNSET
     instance_type: str | Unset = UNSET
     phone_home_script_url: str | Unset = UNSET
@@ -55,6 +59,10 @@ class ServiceCreateAppRunnerConfigRequest:
         helm_driver: str | Unset = UNSET
         if not isinstance(self.helm_driver, Unset):
             helm_driver = self.helm_driver.value
+
+        image_auto_update = self.image_auto_update
+
+        image_id = self.image_id
 
         init_script_url = self.init_script_url
 
@@ -79,6 +87,10 @@ class ServiceCreateAppRunnerConfigRequest:
             field_dict["env_vars"] = env_vars
         if helm_driver is not UNSET:
             field_dict["helm_driver"] = helm_driver
+        if image_auto_update is not UNSET:
+            field_dict["image_auto_update"] = image_auto_update
+        if image_id is not UNSET:
+            field_dict["image_id"] = image_id
         if init_script_url is not UNSET:
             field_dict["init_script_url"] = init_script_url
         if instance_type is not UNSET:
@@ -117,6 +129,10 @@ class ServiceCreateAppRunnerConfigRequest:
         else:
             helm_driver = AppAppRunnerConfigHelmDriverType(_helm_driver)
 
+        image_auto_update = d.pop("image_auto_update", UNSET)
+
+        image_id = d.pop("image_id", UNSET)
+
         init_script_url = d.pop("init_script_url", UNSET)
 
         instance_type = d.pop("instance_type", UNSET)
@@ -132,6 +148,8 @@ class ServiceCreateAppRunnerConfigRequest:
             app_config_id=app_config_id,
             env_vars=env_vars,
             helm_driver=helm_driver,
+            image_auto_update=image_auto_update,
+            image_id=image_id,
             init_script_url=init_script_url,
             instance_type=instance_type,
             phone_home_script_url=phone_home_script_url,

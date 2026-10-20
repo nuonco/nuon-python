@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,6 +25,8 @@ class ServiceUpdateInstallConfigRequest:
         approval_option (AppInstallApprovalOption | Unset):
         custom_nested_stacks (list[ConfigCustomNestedStack] | Unset):
         labels (ServiceUpdateInstallConfigRequestLabels | Unset):
+        runner_image_auto_update (bool | None | Unset):
+        runner_image_id (str | Unset):
         runner_nested_template_url (str | Unset):
         telemetry (ConfigInstallTelemetry | Unset):
         vpc_nested_template_url (str | Unset):
@@ -33,6 +35,8 @@ class ServiceUpdateInstallConfigRequest:
     approval_option: AppInstallApprovalOption | Unset = UNSET
     custom_nested_stacks: list[ConfigCustomNestedStack] | Unset = UNSET
     labels: ServiceUpdateInstallConfigRequestLabels | Unset = UNSET
+    runner_image_auto_update: bool | None | Unset = UNSET
+    runner_image_id: str | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
     telemetry: ConfigInstallTelemetry | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
@@ -54,6 +58,14 @@ class ServiceUpdateInstallConfigRequest:
         if not isinstance(self.labels, Unset):
             labels = self.labels.to_dict()
 
+        runner_image_auto_update: bool | None | Unset
+        if isinstance(self.runner_image_auto_update, Unset):
+            runner_image_auto_update = UNSET
+        else:
+            runner_image_auto_update = self.runner_image_auto_update
+
+        runner_image_id = self.runner_image_id
+
         runner_nested_template_url = self.runner_nested_template_url
 
         telemetry: dict[str, Any] | Unset = UNSET
@@ -71,6 +83,10 @@ class ServiceUpdateInstallConfigRequest:
             field_dict["custom_nested_stacks"] = custom_nested_stacks
         if labels is not UNSET:
             field_dict["labels"] = labels
+        if runner_image_auto_update is not UNSET:
+            field_dict["runner_image_auto_update"] = runner_image_auto_update
+        if runner_image_id is not UNSET:
+            field_dict["runner_image_id"] = runner_image_id
         if runner_nested_template_url is not UNSET:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
         if telemetry is not UNSET:
@@ -110,6 +126,17 @@ class ServiceUpdateInstallConfigRequest:
         else:
             labels = ServiceUpdateInstallConfigRequestLabels.from_dict(_labels)
 
+        def _parse_runner_image_auto_update(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        runner_image_auto_update = _parse_runner_image_auto_update(d.pop("runner_image_auto_update", UNSET))
+
+        runner_image_id = d.pop("runner_image_id", UNSET)
+
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
         _telemetry = d.pop("telemetry", UNSET)
@@ -125,6 +152,8 @@ class ServiceUpdateInstallConfigRequest:
             approval_option=approval_option,
             custom_nested_stacks=custom_nested_stacks,
             labels=labels,
+            runner_image_auto_update=runner_image_auto_update,
+            runner_image_id=runner_image_id,
             runner_nested_template_url=runner_nested_template_url,
             telemetry=telemetry,
             vpc_nested_template_url=vpc_nested_template_url,
