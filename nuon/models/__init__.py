@@ -377,6 +377,7 @@ from .config_helm_repo_config import ConfigHelmRepoConfig
 from .config_install_telemetry import ConfigInstallTelemetry
 from .config_source_archive_diff import ConfigSourceArchiveDiff
 from .config_source_file_diff import ConfigSourceFileDiff
+from .config_uploaded_ui_definition import ConfigUploadedUIDefinition
 from .configs_acr_app_registration import ConfigsACRAppRegistration
 from .configs_oci_registry_auth import ConfigsOCIRegistryAuth
 from .configs_oci_registry_repository import ConfigsOCIRegistryRepository
@@ -1326,6 +1327,7 @@ __all__ = (
     "ConfigsOCIRegistryType",
     "ConfigSourceArchiveDiff",
     "ConfigSourceFileDiff",
+    "ConfigUploadedUIDefinition",
     "CredentialsAssumeRoleConfig",
     "CredentialsServicePrincipalCredentials",
     "CredentialsStaticCredentials",

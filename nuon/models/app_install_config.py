@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles
     from ..models.config_custom_nested_stack import ConfigCustomNestedStack
+    from ..models.config_uploaded_ui_definition import ConfigUploadedUIDefinition
     from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 
 
@@ -31,8 +32,11 @@ class AppInstallConfig:
         install_id (str | Unset):
         labels (GithubComNuoncoNuonPkgLabelsLabels | Unset):
         org_id (str | Unset):
+        runner_image_auto_update (bool | None | Unset):
+        runner_image_id (str | Unset):
         runner_nested_template_url (str | Unset):
         telemetry_enabled (bool | None | Unset):
+        ui_definition (ConfigUploadedUIDefinition | Unset):
         updated_at (str | Unset):
         vpc_nested_template_url (str | Unset): Per-install stack template overrides (nil = use app config default)
     """
@@ -46,8 +50,11 @@ class AppInstallConfig:
     install_id: str | Unset = UNSET
     labels: GithubComNuoncoNuonPkgLabelsLabels | Unset = UNSET
     org_id: str | Unset = UNSET
+    runner_image_auto_update: bool | None | Unset = UNSET
+    runner_image_id: str | Unset = UNSET
     runner_nested_template_url: str | Unset = UNSET
     telemetry_enabled: bool | None | Unset = UNSET
+    ui_definition: ConfigUploadedUIDefinition | Unset = UNSET
     updated_at: str | Unset = UNSET
     vpc_nested_template_url: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -82,6 +89,14 @@ class AppInstallConfig:
 
         org_id = self.org_id
 
+        runner_image_auto_update: bool | None | Unset
+        if isinstance(self.runner_image_auto_update, Unset):
+            runner_image_auto_update = UNSET
+        else:
+            runner_image_auto_update = self.runner_image_auto_update
+
+        runner_image_id = self.runner_image_id
+
         runner_nested_template_url = self.runner_nested_template_url
 
         telemetry_enabled: bool | None | Unset
@@ -89,6 +104,10 @@ class AppInstallConfig:
             telemetry_enabled = UNSET
         else:
             telemetry_enabled = self.telemetry_enabled
+
+        ui_definition: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.ui_definition, Unset):
+            ui_definition = self.ui_definition.to_dict()
 
         updated_at = self.updated_at
 
@@ -115,10 +134,16 @@ class AppInstallConfig:
             field_dict["labels"] = labels
         if org_id is not UNSET:
             field_dict["org_id"] = org_id
+        if runner_image_auto_update is not UNSET:
+            field_dict["runner_image_auto_update"] = runner_image_auto_update
+        if runner_image_id is not UNSET:
+            field_dict["runner_image_id"] = runner_image_id
         if runner_nested_template_url is not UNSET:
             field_dict["runner_nested_template_url"] = runner_nested_template_url
         if telemetry_enabled is not UNSET:
             field_dict["telemetry_enabled"] = telemetry_enabled
+        if ui_definition is not UNSET:
+            field_dict["ui_definition"] = ui_definition
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
         if vpc_nested_template_url is not UNSET:
@@ -130,6 +155,7 @@ class AppInstallConfig:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_install_config_component_toggles import AppInstallConfigComponentToggles  # noqa: PLC0415
         from ..models.config_custom_nested_stack import ConfigCustomNestedStack  # noqa: PLC0415
+        from ..models.config_uploaded_ui_definition import ConfigUploadedUIDefinition  # noqa: PLC0415
         from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
 
         d = dict(src_dict)
@@ -173,6 +199,17 @@ class AppInstallConfig:
 
         org_id = d.pop("org_id", UNSET)
 
+        def _parse_runner_image_auto_update(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        runner_image_auto_update = _parse_runner_image_auto_update(d.pop("runner_image_auto_update", UNSET))
+
+        runner_image_id = d.pop("runner_image_id", UNSET)
+
         runner_nested_template_url = d.pop("runner_nested_template_url", UNSET)
 
         def _parse_telemetry_enabled(data: object) -> bool | None | Unset:
@@ -183,6 +220,13 @@ class AppInstallConfig:
             return cast(bool | None | Unset, data)
 
         telemetry_enabled = _parse_telemetry_enabled(d.pop("telemetry_enabled", UNSET))
+
+        _ui_definition = d.pop("ui_definition", UNSET)
+        ui_definition: ConfigUploadedUIDefinition | Unset
+        if isinstance(_ui_definition, Unset):
+            ui_definition = UNSET
+        else:
+            ui_definition = ConfigUploadedUIDefinition.from_dict(_ui_definition)
 
         updated_at = d.pop("updated_at", UNSET)
 
@@ -198,8 +242,11 @@ class AppInstallConfig:
             install_id=install_id,
             labels=labels,
             org_id=org_id,
+            runner_image_auto_update=runner_image_auto_update,
+            runner_image_id=runner_image_id,
             runner_nested_template_url=runner_nested_template_url,
             telemetry_enabled=telemetry_enabled,
+            ui_definition=ui_definition,
             updated_at=updated_at,
             vpc_nested_template_url=vpc_nested_template_url,
         )
