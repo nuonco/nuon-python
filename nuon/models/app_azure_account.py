@@ -20,7 +20,6 @@ class AppAzureAccount:
         id (str | Unset):
         location (str | Unset):
         service_principal_app_id (str | Unset):
-        service_principal_password (str | Unset):
         subscription_id (str | Unset):
         subscription_tenant_id (str | Unset):
         updated_at (str | Unset):
@@ -31,7 +30,6 @@ class AppAzureAccount:
     id: str | Unset = UNSET
     location: str | Unset = UNSET
     service_principal_app_id: str | Unset = UNSET
-    service_principal_password: str | Unset = UNSET
     subscription_id: str | Unset = UNSET
     subscription_tenant_id: str | Unset = UNSET
     updated_at: str | Unset = UNSET
@@ -47,8 +45,6 @@ class AppAzureAccount:
         location = self.location
 
         service_principal_app_id = self.service_principal_app_id
-
-        service_principal_password = self.service_principal_password
 
         subscription_id = self.subscription_id
 
@@ -69,8 +65,6 @@ class AppAzureAccount:
             field_dict["location"] = location
         if service_principal_app_id is not UNSET:
             field_dict["service_principal_app_id"] = service_principal_app_id
-        if service_principal_password is not UNSET:
-            field_dict["service_principal_password"] = service_principal_password
         if subscription_id is not UNSET:
             field_dict["subscription_id"] = subscription_id
         if subscription_tenant_id is not UNSET:
@@ -93,8 +87,6 @@ class AppAzureAccount:
 
         service_principal_app_id = d.pop("service_principal_app_id", UNSET)
 
-        service_principal_password = d.pop("service_principal_password", UNSET)
-
         subscription_id = d.pop("subscription_id", UNSET)
 
         subscription_tenant_id = d.pop("subscription_tenant_id", UNSET)
@@ -107,7 +99,6 @@ class AppAzureAccount:
             id=id,
             location=location,
             service_principal_app_id=service_principal_app_id,
-            service_principal_password=service_principal_password,
             subscription_id=subscription_id,
             subscription_tenant_id=subscription_tenant_id,
             updated_at=updated_at,
