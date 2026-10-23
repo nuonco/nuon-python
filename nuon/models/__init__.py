@@ -745,6 +745,14 @@ from .service_install_activity_policy import ServiceInstallActivityPolicy
 from .service_install_activity_runbook import ServiceInstallActivityRunbook
 from .service_install_activity_type import ServiceInstallActivityType
 from .service_install_activity_workflow_ref import ServiceInstallActivityWorkflowRef
+from .service_install_alignment import ServiceInstallAlignment
+from .service_install_alignment_attempt import ServiceInstallAlignmentAttempt
+from .service_install_alignment_category import ServiceInstallAlignmentCategory
+from .service_install_alignment_explanation import ServiceInstallAlignmentExplanation
+from .service_install_alignment_open_deployment import ServiceInstallAlignmentOpenDeployment
+from .service_install_alignment_plan import ServiceInstallAlignmentPlan
+from .service_install_alignment_resource import ServiceInstallAlignmentResource
+from .service_install_alignment_resource_kind import ServiceInstallAlignmentResourceKind
 from .service_install_app_config_tree_diff_response import ServiceInstallAppConfigTreeDiffResponse
 from .service_install_app_config_update import ServiceInstallAppConfigUpdate
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
@@ -1655,6 +1663,14 @@ __all__ = (
     "ServiceInstallActivityRunbook",
     "ServiceInstallActivityType",
     "ServiceInstallActivityWorkflowRef",
+    "ServiceInstallAlignment",
+    "ServiceInstallAlignmentAttempt",
+    "ServiceInstallAlignmentCategory",
+    "ServiceInstallAlignmentExplanation",
+    "ServiceInstallAlignmentOpenDeployment",
+    "ServiceInstallAlignmentPlan",
+    "ServiceInstallAlignmentResource",
+    "ServiceInstallAlignmentResourceKind",
     "ServiceInstallAppConfigTreeDiffResponse",
     "ServiceInstallAppConfigUpdate",
     "ServiceInstallAppPermissionsConfigResponse",

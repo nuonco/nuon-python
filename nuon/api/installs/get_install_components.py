@@ -15,6 +15,7 @@ def _get_kwargs(
     install_id: str,
     *,
     types: str | Unset = UNSET,
+    ids: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     synced: bool | Unset = True,
@@ -25,6 +26,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["types"] = types
+
+    params["ids"] = ids
 
     params["q"] = q
 
@@ -109,6 +112,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
+    ids: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     synced: bool | Unset = True,
@@ -122,6 +126,7 @@ def sync_detailed(
     Args:
         install_id (str):
         types (str | Unset):
+        ids (str | Unset):
         q (str | Unset):
         labels (str | Unset):
         synced (bool | Unset):  Default: True.
@@ -139,6 +144,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         types=types,
+        ids=ids,
         q=q,
         labels=labels,
         synced=synced,
@@ -158,6 +164,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
+    ids: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     synced: bool | Unset = True,
@@ -171,6 +178,7 @@ def sync(
     Args:
         install_id (str):
         types (str | Unset):
+        ids (str | Unset):
         q (str | Unset):
         labels (str | Unset):
         synced (bool | Unset):  Default: True.
@@ -189,6 +197,7 @@ def sync(
         install_id=install_id,
         client=client,
         types=types,
+        ids=ids,
         q=q,
         labels=labels,
         synced=synced,
@@ -202,6 +211,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
+    ids: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     synced: bool | Unset = True,
@@ -215,6 +225,7 @@ async def asyncio_detailed(
     Args:
         install_id (str):
         types (str | Unset):
+        ids (str | Unset):
         q (str | Unset):
         labels (str | Unset):
         synced (bool | Unset):  Default: True.
@@ -232,6 +243,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         install_id=install_id,
         types=types,
+        ids=ids,
         q=q,
         labels=labels,
         synced=synced,
@@ -249,6 +261,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     types: str | Unset = UNSET,
+    ids: str | Unset = UNSET,
     q: str | Unset = UNSET,
     labels: str | Unset = UNSET,
     synced: bool | Unset = True,
@@ -262,6 +275,7 @@ async def asyncio(
     Args:
         install_id (str):
         types (str | Unset):
+        ids (str | Unset):
         q (str | Unset):
         labels (str | Unset):
         synced (bool | Unset):  Default: True.
@@ -281,6 +295,7 @@ async def asyncio(
             install_id=install_id,
             client=client,
             types=types,
+            ids=ids,
             q=q,
             labels=labels,
             synced=synced,
