@@ -35,6 +35,7 @@ class PlantypesDeployPlan:
         component_id (str | Unset):
         component_name (str | Unset):
         helm (PlantypesHelmDeployPlan | Unset):
+        inputs_digest (str | Unset):
         install_id (str | Unset):
         kubernetes_manifest (PlantypesKubernetesManifestDeployPlan | Unset):
         noop (PlantypesNoopDeployPlan | Unset):
@@ -59,6 +60,7 @@ class PlantypesDeployPlan:
     component_id: str | Unset = UNSET
     component_name: str | Unset = UNSET
     helm: PlantypesHelmDeployPlan | Unset = UNSET
+    inputs_digest: str | Unset = UNSET
     install_id: str | Unset = UNSET
     kubernetes_manifest: PlantypesKubernetesManifestDeployPlan | Unset = UNSET
     noop: PlantypesNoopDeployPlan | Unset = UNSET
@@ -89,6 +91,8 @@ class PlantypesDeployPlan:
         helm: dict[str, Any] | Unset = UNSET
         if not isinstance(self.helm, Unset):
             helm = self.helm.to_dict()
+
+        inputs_digest = self.inputs_digest
 
         install_id = self.install_id
 
@@ -140,6 +144,8 @@ class PlantypesDeployPlan:
             field_dict["component_name"] = component_name
         if helm is not UNSET:
             field_dict["helm"] = helm
+        if inputs_digest is not UNSET:
+            field_dict["inputs_digest"] = inputs_digest
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
         if kubernetes_manifest is not UNSET:
@@ -193,6 +199,8 @@ class PlantypesDeployPlan:
             helm = UNSET
         else:
             helm = PlantypesHelmDeployPlan.from_dict(_helm)
+
+        inputs_digest = d.pop("inputs_digest", UNSET)
 
         install_id = d.pop("install_id", UNSET)
 
@@ -250,6 +258,7 @@ class PlantypesDeployPlan:
             component_id=component_id,
             component_name=component_name,
             helm=helm,
+            inputs_digest=inputs_digest,
             install_id=install_id,
             kubernetes_manifest=kubernetes_manifest,
             noop=noop,

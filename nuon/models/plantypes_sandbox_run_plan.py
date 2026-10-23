@@ -45,6 +45,7 @@ class PlantypesSandboxRunPlan:
         gcp_auth (GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset):
         git_source (PlantypesGitSource | Unset):
         hooks (PlantypesTerraformDeployHooks | Unset):
+        inputs_digest (str | Unset):
         install_id (str | Unset):
         kyverno_policies_dir (str | Unset):
         local_archive (PlantypesTerraformLocalArchive | Unset):
@@ -68,6 +69,7 @@ class PlantypesSandboxRunPlan:
     gcp_auth: GithubComNuoncoNuonPkgGcpCredentialsConfig | Unset = UNSET
     git_source: PlantypesGitSource | Unset = UNSET
     hooks: PlantypesTerraformDeployHooks | Unset = UNSET
+    inputs_digest: str | Unset = UNSET
     install_id: str | Unset = UNSET
     kyverno_policies_dir: str | Unset = UNSET
     local_archive: PlantypesTerraformLocalArchive | Unset = UNSET
@@ -115,6 +117,8 @@ class PlantypesSandboxRunPlan:
         hooks: dict[str, Any] | Unset = UNSET
         if not isinstance(self.hooks, Unset):
             hooks = self.hooks.to_dict()
+
+        inputs_digest = self.inputs_digest
 
         install_id = self.install_id
 
@@ -179,6 +183,8 @@ class PlantypesSandboxRunPlan:
             field_dict["git_source"] = git_source
         if hooks is not UNSET:
             field_dict["hooks"] = hooks
+        if inputs_digest is not UNSET:
+            field_dict["inputs_digest"] = inputs_digest
         if install_id is not UNSET:
             field_dict["install_id"] = install_id
         if kyverno_policies_dir is not UNSET:
@@ -278,6 +284,8 @@ class PlantypesSandboxRunPlan:
         else:
             hooks = PlantypesTerraformDeployHooks.from_dict(_hooks)
 
+        inputs_digest = d.pop("inputs_digest", UNSET)
+
         install_id = d.pop("install_id", UNSET)
 
         kyverno_policies_dir = d.pop("kyverno_policies_dir", UNSET)
@@ -351,6 +359,7 @@ class PlantypesSandboxRunPlan:
             gcp_auth=gcp_auth,
             git_source=git_source,
             hooks=hooks,
+            inputs_digest=inputs_digest,
             install_id=install_id,
             kyverno_policies_dir=kyverno_policies_dir,
             local_archive=local_archive,
