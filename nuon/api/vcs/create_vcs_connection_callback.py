@@ -87,12 +87,13 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: ServiceCreateConnectionCallbackRequest,
 ) -> Response[AppVCSConnection | StderrErrResponse]:
-    """public connection to create a vcs connection via a callback
+    """create a vcs connection from the github app install callback
 
-     Handle VCS connection callback for OAuth flow.
+     Create a VCS connection after the GitHub App install redirect. The caller must be authenticated and
+    have write access to `org_id`.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):
@@ -118,12 +119,13 @@ def sync_detailed(
 
 def sync(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: ServiceCreateConnectionCallbackRequest,
 ) -> AppVCSConnection | StderrErrResponse | None:
-    """public connection to create a vcs connection via a callback
+    """create a vcs connection from the github app install callback
 
-     Handle VCS connection callback for OAuth flow.
+     Create a VCS connection after the GitHub App install redirect. The caller must be authenticated and
+    have write access to `org_id`.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):
@@ -144,12 +146,13 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: ServiceCreateConnectionCallbackRequest,
 ) -> Response[AppVCSConnection | StderrErrResponse]:
-    """public connection to create a vcs connection via a callback
+    """create a vcs connection from the github app install callback
 
-     Handle VCS connection callback for OAuth flow.
+     Create a VCS connection after the GitHub App install redirect. The caller must be authenticated and
+    have write access to `org_id`.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):
@@ -173,12 +176,13 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: AuthenticatedClient | Client,
+    client: AuthenticatedClient,
     body: ServiceCreateConnectionCallbackRequest,
 ) -> AppVCSConnection | StderrErrResponse | None:
-    """public connection to create a vcs connection via a callback
+    """create a vcs connection from the github app install callback
 
-     Handle VCS connection callback for OAuth flow.
+     Create a VCS connection after the GitHub App install redirect. The caller must be authenticated and
+    have write access to `org_id`.
 
     Args:
         body (ServiceCreateConnectionCallbackRequest):
