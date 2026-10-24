@@ -19,6 +19,7 @@ class ServiceCLIConfig:
         auth_client_id (str | Unset):
         auth_domain (str | Unset):
         dashboard_url (str | Unset):
+        min_cli_version (str | Unset):
         nuon_auth_enabled (bool | Unset):
         oidc_federation_enabled (bool | Unset):
         root_domain (str | Unset):
@@ -28,6 +29,7 @@ class ServiceCLIConfig:
     auth_client_id: str | Unset = UNSET
     auth_domain: str | Unset = UNSET
     dashboard_url: str | Unset = UNSET
+    min_cli_version: str | Unset = UNSET
     nuon_auth_enabled: bool | Unset = UNSET
     oidc_federation_enabled: bool | Unset = UNSET
     root_domain: str | Unset = UNSET
@@ -41,6 +43,8 @@ class ServiceCLIConfig:
         auth_domain = self.auth_domain
 
         dashboard_url = self.dashboard_url
+
+        min_cli_version = self.min_cli_version
 
         nuon_auth_enabled = self.nuon_auth_enabled
 
@@ -59,6 +63,8 @@ class ServiceCLIConfig:
             field_dict["auth_domain"] = auth_domain
         if dashboard_url is not UNSET:
             field_dict["dashboard_url"] = dashboard_url
+        if min_cli_version is not UNSET:
+            field_dict["min_cli_version"] = min_cli_version
         if nuon_auth_enabled is not UNSET:
             field_dict["nuon_auth_enabled"] = nuon_auth_enabled
         if oidc_federation_enabled is not UNSET:
@@ -79,6 +85,8 @@ class ServiceCLIConfig:
 
         dashboard_url = d.pop("dashboard_url", UNSET)
 
+        min_cli_version = d.pop("min_cli_version", UNSET)
+
         nuon_auth_enabled = d.pop("nuon_auth_enabled", UNSET)
 
         oidc_federation_enabled = d.pop("oidc_federation_enabled", UNSET)
@@ -90,6 +98,7 @@ class ServiceCLIConfig:
             auth_client_id=auth_client_id,
             auth_domain=auth_domain,
             dashboard_url=dashboard_url,
+            min_cli_version=min_cli_version,
             nuon_auth_enabled=nuon_auth_enabled,
             oidc_federation_enabled=oidc_federation_enabled,
             root_domain=root_domain,
