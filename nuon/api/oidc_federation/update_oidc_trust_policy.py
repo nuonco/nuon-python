@@ -84,6 +84,7 @@ def sync_detailed(
 
      Updates an OIDC workload identity trust policy belonging to your current org. Changing the role also
     updates the policy's service account role, which affects tokens already issued under the policy.
+    Disabling the policy revokes tokens already issued under it.
 
     Args:
         policy_id (str):
@@ -119,6 +120,7 @@ def sync(
 
      Updates an OIDC workload identity trust policy belonging to your current org. Changing the role also
     updates the policy's service account role, which affects tokens already issued under the policy.
+    Disabling the policy revokes tokens already issued under it.
 
     Args:
         policy_id (str):
@@ -149,6 +151,7 @@ async def asyncio_detailed(
 
      Updates an OIDC workload identity trust policy belonging to your current org. Changing the role also
     updates the policy's service account role, which affects tokens already issued under the policy.
+    Disabling the policy revokes tokens already issued under it.
 
     Args:
         policy_id (str):
@@ -182,6 +185,7 @@ async def asyncio(
 
      Updates an OIDC workload identity trust policy belonging to your current org. Changing the role also
     updates the policy's service account role, which affects tokens already issued under the policy.
+    Disabling the policy revokes tokens already issued under it.
 
     Args:
         policy_id (str):
