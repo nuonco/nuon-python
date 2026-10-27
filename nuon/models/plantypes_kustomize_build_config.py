@@ -16,7 +16,8 @@ class PlantypesKustomizeBuildConfig:
     """
     Attributes:
         enable_helm (bool | Unset): EnableHelm enables Helm chart inflation during kustomize build
-        load_restrictor (str | Unset): LoadRestrictor controls file loading: "none" or "rootOnly" (default)
+        load_restrictor (str | Unset): Ignored by the runner, which pins rootOnly so app config cannot widen worker file
+            access
         patches (list[str] | Unset): Patches are additional patch files to apply after kustomize build
     """
 
