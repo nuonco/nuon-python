@@ -16,7 +16,7 @@ class AppKustomizeConfig:
     """
     Attributes:
         enable_helm (bool | Unset): Enable Helm chart inflation during kustomize build
-        load_restrictor (str | Unset): Load restrictor: "none" or "rootOnly" (default: "rootOnly")
+        load_restrictor (str | Unset): Load restrictor: only "rootOnly" is supported
         patches (list[str] | Unset): Additional patch files to apply after kustomize build
         path (str | Unset): Path to kustomization directory (relative to source root)
     """
