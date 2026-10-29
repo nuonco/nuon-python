@@ -49,9 +49,10 @@ def sync_detailed(
 ) -> Response[Any]:
     """delete a static API token
 
-     Deletes a static API token belonging to your current org. For service account tokens, the dedicated
-    service account is deleted as well; for personal tokens, only the token is deleted and your account
-    is untouched. Once deleted, the token can no longer be used to access the API.
+     Deprecated: use DELETE /v1/tokens/{token_id} instead. Deletes a static API token belonging to your
+    current org. For service account tokens, the dedicated service account is deleted as well; for
+    personal tokens, only the token is deleted and your account is untouched. Once deleted, the token
+    can no longer be used to access the API.
 
     Args:
         token_id (str):
@@ -82,9 +83,10 @@ async def asyncio_detailed(
 ) -> Response[Any]:
     """delete a static API token
 
-     Deletes a static API token belonging to your current org. For service account tokens, the dedicated
-    service account is deleted as well; for personal tokens, only the token is deleted and your account
-    is untouched. Once deleted, the token can no longer be used to access the API.
+     Deprecated: use DELETE /v1/tokens/{token_id} instead. Deletes a static API token belonging to your
+    current org. For service account tokens, the dedicated service account is deleted as well; for
+    personal tokens, only the token is deleted and your account is untouched. Once deleted, the token
+    can no longer be used to access the API.
 
     Args:
         token_id (str):

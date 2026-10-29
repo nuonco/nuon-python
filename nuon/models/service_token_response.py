@@ -1,0 +1,213 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.app_token_type import AppTokenType
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="ServiceTokenResponse")
+
+
+@_attrs_define
+class ServiceTokenResponse:
+    """
+    Attributes:
+        account_email (str | Unset):
+        account_id (str | Unset):
+        account_name (str | Unset):
+        account_role (str | Unset):
+        created_at (str | Unset):
+        created_by_id (str | Unset):
+        expires_at (str | Unset): claim data
+        id (str | Unset):
+        issued_at (str | Unset):
+        issuer (str | Unset):
+        name (str | Unset):
+        org_id (str | Unset):
+        role (str | Unset):
+        source_id (str | Unset):
+        source_type (str | Unset):
+        token_type (AppTokenType | Unset):
+        updated_at (str | Unset):
+    """
+
+    account_email: str | Unset = UNSET
+    account_id: str | Unset = UNSET
+    account_name: str | Unset = UNSET
+    account_role: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    created_by_id: str | Unset = UNSET
+    expires_at: str | Unset = UNSET
+    id: str | Unset = UNSET
+    issued_at: str | Unset = UNSET
+    issuer: str | Unset = UNSET
+    name: str | Unset = UNSET
+    org_id: str | Unset = UNSET
+    role: str | Unset = UNSET
+    source_id: str | Unset = UNSET
+    source_type: str | Unset = UNSET
+    token_type: AppTokenType | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        account_email = self.account_email
+
+        account_id = self.account_id
+
+        account_name = self.account_name
+
+        account_role = self.account_role
+
+        created_at = self.created_at
+
+        created_by_id = self.created_by_id
+
+        expires_at = self.expires_at
+
+        id = self.id
+
+        issued_at = self.issued_at
+
+        issuer = self.issuer
+
+        name = self.name
+
+        org_id = self.org_id
+
+        role = self.role
+
+        source_id = self.source_id
+
+        source_type = self.source_type
+
+        token_type: str | Unset = UNSET
+        if not isinstance(self.token_type, Unset):
+            token_type = self.token_type.value
+
+        updated_at = self.updated_at
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if account_email is not UNSET:
+            field_dict["account_email"] = account_email
+        if account_id is not UNSET:
+            field_dict["account_id"] = account_id
+        if account_name is not UNSET:
+            field_dict["account_name"] = account_name
+        if account_role is not UNSET:
+            field_dict["account_role"] = account_role
+        if created_at is not UNSET:
+            field_dict["created_at"] = created_at
+        if created_by_id is not UNSET:
+            field_dict["created_by_id"] = created_by_id
+        if expires_at is not UNSET:
+            field_dict["expires_at"] = expires_at
+        if id is not UNSET:
+            field_dict["id"] = id
+        if issued_at is not UNSET:
+            field_dict["issued_at"] = issued_at
+        if issuer is not UNSET:
+            field_dict["issuer"] = issuer
+        if name is not UNSET:
+            field_dict["name"] = name
+        if org_id is not UNSET:
+            field_dict["org_id"] = org_id
+        if role is not UNSET:
+            field_dict["role"] = role
+        if source_id is not UNSET:
+            field_dict["source_id"] = source_id
+        if source_type is not UNSET:
+            field_dict["source_type"] = source_type
+        if token_type is not UNSET:
+            field_dict["token_type"] = token_type
+        if updated_at is not UNSET:
+            field_dict["updated_at"] = updated_at
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        account_email = d.pop("account_email", UNSET)
+
+        account_id = d.pop("account_id", UNSET)
+
+        account_name = d.pop("account_name", UNSET)
+
+        account_role = d.pop("account_role", UNSET)
+
+        created_at = d.pop("created_at", UNSET)
+
+        created_by_id = d.pop("created_by_id", UNSET)
+
+        expires_at = d.pop("expires_at", UNSET)
+
+        id = d.pop("id", UNSET)
+
+        issued_at = d.pop("issued_at", UNSET)
+
+        issuer = d.pop("issuer", UNSET)
+
+        name = d.pop("name", UNSET)
+
+        org_id = d.pop("org_id", UNSET)
+
+        role = d.pop("role", UNSET)
+
+        source_id = d.pop("source_id", UNSET)
+
+        source_type = d.pop("source_type", UNSET)
+
+        _token_type = d.pop("token_type", UNSET)
+        token_type: AppTokenType | Unset
+        if isinstance(_token_type, Unset):
+            token_type = UNSET
+        else:
+            token_type = AppTokenType(_token_type)
+
+        updated_at = d.pop("updated_at", UNSET)
+
+        service_token_response = cls(
+            account_email=account_email,
+            account_id=account_id,
+            account_name=account_name,
+            account_role=account_role,
+            created_at=created_at,
+            created_by_id=created_by_id,
+            expires_at=expires_at,
+            id=id,
+            issued_at=issued_at,
+            issuer=issuer,
+            name=name,
+            org_id=org_id,
+            role=role,
+            source_id=source_id,
+            source_type=source_type,
+            token_type=token_type,
+            updated_at=updated_at,
+        )
+
+        service_token_response.additional_properties = d
+        return service_token_response
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties
