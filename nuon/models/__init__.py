@@ -416,6 +416,7 @@ from .github_com_nuonco_nuon_pkg_azure_credentials_config import GithubComNuonco
 from .github_com_nuonco_nuon_pkg_gcp_credentials_config import GithubComNuoncoNuonPkgGcpCredentialsConfig
 from .github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels
 from .github_com_nuonco_nuon_pkg_labels_selector import GithubComNuoncoNuonPkgLabelsSelector
+from .github_com_nuonco_nuon_pkg_policies_opa_result import GithubComNuoncoNuonPkgPoliciesOpaResult
 from .github_com_nuonco_nuon_pkg_types_state_state import GithubComNuoncoNuonPkgTypesStateState
 from .github_com_nuonco_nuon_pkg_types_state_state_components import GithubComNuoncoNuonPkgTypesStateStateComponents
 from .github_com_nuonco_nuon_pkg_types_state_state_labels import GithubComNuoncoNuonPkgTypesStateStateLabels
@@ -445,6 +446,8 @@ from .kube_cluster_info_env_vars import KubeClusterInfoEnvVars
 from .list_service_accounts_management import ListServiceAccountsManagement
 from .oidcissuer_discovery_document import OidcissuerDiscoveryDocument
 from .oidcissuer_jwk import OidcissuerJWK
+from .opa_evaluation_error import OpaEvaluationError
+from .opa_finding import OpaFinding
 from .outputs_secret_sync_output import OutputsSecretSyncOutput
 from .permissions_permission import PermissionsPermission
 from .permissions_set import PermissionsSet
@@ -1377,6 +1380,7 @@ __all__ = (
     "GithubComNuoncoNuonPkgGcpCredentialsConfig",
     "GithubComNuoncoNuonPkgLabelsLabels",
     "GithubComNuoncoNuonPkgLabelsSelector",
+    "GithubComNuoncoNuonPkgPoliciesOpaResult",
     "GithubComNuoncoNuonPkgTypesStateState",
     "GithubComNuoncoNuonPkgTypesStateStateComponents",
     "GithubComNuoncoNuonPkgTypesStateStateLabels",
@@ -1402,6 +1406,8 @@ __all__ = (
     "ListServiceAccountsManagement",
     "OidcissuerDiscoveryDocument",
     "OidcissuerJWK",
+    "OpaEvaluationError",
+    "OpaFinding",
     "OutputsSecretSyncOutput",
     "PermissionsPermission",
     "PermissionsSet",

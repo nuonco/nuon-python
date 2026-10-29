@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.github_com_nuonco_nuon_pkg_policies_opa_result import GithubComNuoncoNuonPkgPoliciesOpaResult
+
 
 T = TypeVar("T", bound="AppPolicyResult")
 
@@ -15,6 +19,7 @@ T = TypeVar("T", bound="AppPolicyResult")
 class AppPolicyResult:
     """
     Attributes:
+        checks (list[GithubComNuoncoNuonPkgPoliciesOpaResult] | Unset):
         deny_count (int | Unset):
         input_count (int | Unset):
         pass_count (int | Unset):
@@ -24,6 +29,7 @@ class AppPolicyResult:
         warn_count (int | Unset):
     """
 
+    checks: list[GithubComNuoncoNuonPkgPoliciesOpaResult] | Unset = UNSET
     deny_count: int | Unset = UNSET
     input_count: int | Unset = UNSET
     pass_count: int | Unset = UNSET
@@ -34,6 +40,13 @@ class AppPolicyResult:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        checks: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.checks, Unset):
+            checks = []
+            for checks_item_data in self.checks:
+                checks_item = checks_item_data.to_dict()
+                checks.append(checks_item)
+
         deny_count = self.deny_count
 
         input_count = self.input_count
@@ -51,6 +64,8 @@ class AppPolicyResult:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if checks is not UNSET:
+            field_dict["checks"] = checks
         if deny_count is not UNSET:
             field_dict["deny_count"] = deny_count
         if input_count is not UNSET:
@@ -70,7 +85,18 @@ class AppPolicyResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.github_com_nuonco_nuon_pkg_policies_opa_result import GithubComNuoncoNuonPkgPoliciesOpaResult  # noqa: PLC0415
+
         d = dict(src_dict)
+        _checks = d.pop("checks", UNSET)
+        checks: list[GithubComNuoncoNuonPkgPoliciesOpaResult] | Unset = UNSET
+        if _checks is not UNSET:
+            checks = []
+            for checks_item_data in _checks:
+                checks_item = GithubComNuoncoNuonPkgPoliciesOpaResult.from_dict(checks_item_data)
+
+                checks.append(checks_item)
+
         deny_count = d.pop("deny_count", UNSET)
 
         input_count = d.pop("input_count", UNSET)
@@ -86,6 +112,7 @@ class AppPolicyResult:
         warn_count = d.pop("warn_count", UNSET)
 
         app_policy_result = cls(
+            checks=checks,
             deny_count=deny_count,
             input_count=input_count,
             pass_count=pass_count,
