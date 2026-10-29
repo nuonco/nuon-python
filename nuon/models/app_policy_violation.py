@@ -15,6 +15,7 @@ T = TypeVar("T", bound="AppPolicyViolation")
 class AppPolicyViolation:
     """
     Attributes:
+        check_id (str | Unset):
         input_identity (str | Unset): Human-readable input reference (e.g., "Deployment/default/nginx")
         input_index (int | Unset):
         message (str | Unset):
@@ -23,6 +24,7 @@ class AppPolicyViolation:
         severity (str | Unset): "deny" or "warn"
     """
 
+    check_id: str | Unset = UNSET
     input_identity: str | Unset = UNSET
     input_index: int | Unset = UNSET
     message: str | Unset = UNSET
@@ -32,6 +34,8 @@ class AppPolicyViolation:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        check_id = self.check_id
+
         input_identity = self.input_identity
 
         input_index = self.input_index
@@ -47,6 +51,8 @@ class AppPolicyViolation:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if check_id is not UNSET:
+            field_dict["check_id"] = check_id
         if input_identity is not UNSET:
             field_dict["input_identity"] = input_identity
         if input_index is not UNSET:
@@ -65,6 +71,8 @@ class AppPolicyViolation:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        check_id = d.pop("check_id", UNSET)
+
         input_identity = d.pop("input_identity", UNSET)
 
         input_index = d.pop("input_index", UNSET)
@@ -78,6 +86,7 @@ class AppPolicyViolation:
         severity = d.pop("severity", UNSET)
 
         app_policy_violation = cls(
+            check_id=check_id,
             input_identity=input_identity,
             input_index=input_index,
             message=message,
