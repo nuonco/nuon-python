@@ -51,7 +51,8 @@ def sync_detailed(
 ) -> Response[list[AppToken]]:
     """list your org's static API tokens
 
-     Lists the static API tokens for your current org. Token secrets are never returned.
+     Deprecated: use GET /v1/tokens instead. Lists the static API tokens for your current org. Token
+    secrets are never returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -76,7 +77,8 @@ def sync(
 ) -> list[AppToken] | None:
     """list your org's static API tokens
 
-     Lists the static API tokens for your current org. Token secrets are never returned.
+     Deprecated: use GET /v1/tokens instead. Lists the static API tokens for your current org. Token
+    secrets are never returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,7 +99,8 @@ async def asyncio_detailed(
 ) -> Response[list[AppToken]]:
     """list your org's static API tokens
 
-     Lists the static API tokens for your current org. Token secrets are never returned.
+     Deprecated: use GET /v1/tokens instead. Lists the static API tokens for your current org. Token
+    secrets are never returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,7 +123,8 @@ async def asyncio(
 ) -> list[AppToken] | None:
     """list your org's static API tokens
 
-     Lists the static API tokens for your current org. Token secrets are never returned.
+     Deprecated: use GET /v1/tokens instead. Lists the static API tokens for your current org. Token
+    secrets are never returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

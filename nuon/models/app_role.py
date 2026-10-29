@@ -35,6 +35,7 @@ class AppRole:
             GET /v1/roles and every role picker. Managed roles are kept in sync
             with standardOrgRoles by the authz reconciler.
         updated_at (str | Unset):
+        version (int | Unset):
     """
 
     applies_to: list[str] | Unset = UNSET
@@ -49,6 +50,7 @@ class AppRole:
     role_type: AppRoleType | Unset = UNSET
     title: str | Unset = UNSET
     updated_at: str | Unset = UNSET
+    version: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -87,6 +89,8 @@ class AppRole:
 
         updated_at = self.updated_at
 
+        version = self.version
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -114,6 +118,8 @@ class AppRole:
             field_dict["title"] = title
         if updated_at is not UNSET:
             field_dict["updated_at"] = updated_at
+        if version is not UNSET:
+            field_dict["version"] = version
 
         return field_dict
 
@@ -164,6 +170,8 @@ class AppRole:
 
         updated_at = d.pop("updated_at", UNSET)
 
+        version = d.pop("version", UNSET)
+
         app_role = cls(
             applies_to=applies_to,
             created_by=created_by,
@@ -177,6 +185,7 @@ class AppRole:
             role_type=role_type,
             title=title,
             updated_at=updated_at,
+            version=version,
         )
 
         app_role.additional_properties = d

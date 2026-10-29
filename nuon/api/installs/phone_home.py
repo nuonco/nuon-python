@@ -95,8 +95,8 @@ def sync_detailed(
 ) -> Response[AppEmptyResponse | StderrErrResponse]:
     """phone home for an install
 
-     A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
-    processing it.
+     Deprecated. Phone home with POST /v1/stacks/{install_id}/phone-home on the stack API. The caller
+    authenticates as the stack service account, and the path no longer contains phone_home_id.
 
     Args:
         install_id (str):
@@ -133,8 +133,8 @@ def sync(
 ) -> AppEmptyResponse | StderrErrResponse | None:
     """phone home for an install
 
-     A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
-    processing it.
+     Deprecated. Phone home with POST /v1/stacks/{install_id}/phone-home on the stack API. The caller
+    authenticates as the stack service account, and the path no longer contains phone_home_id.
 
     Args:
         install_id (str):
@@ -166,8 +166,8 @@ async def asyncio_detailed(
 ) -> Response[AppEmptyResponse | StderrErrResponse]:
     """phone home for an install
 
-     A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
-    processing it.
+     Deprecated. Phone home with POST /v1/stacks/{install_id}/phone-home on the stack API. The caller
+    authenticates as the stack service account, and the path no longer contains phone_home_id.
 
     Args:
         install_id (str):
@@ -202,8 +202,8 @@ async def asyncio(
 ) -> AppEmptyResponse | StderrErrResponse | None:
     """phone home for an install
 
-     A public endpoint for phoning home from a runner AWS cloudformation stack upon successfully
-    processing it.
+     Deprecated. Phone home with POST /v1/stacks/{install_id}/phone-home on the stack API. The caller
+    authenticates as the stack service account, and the path no longer contains phone_home_id.
 
     Args:
         install_id (str):
