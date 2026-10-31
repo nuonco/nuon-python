@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.service_min_cli_version_policy import ServiceMinCLIVersionPolicy
+
 
 T = TypeVar("T", bound="ServiceCLIConfig")
 
@@ -19,7 +23,9 @@ class ServiceCLIConfig:
         auth_client_id (str | Unset):
         auth_domain (str | Unset):
         dashboard_url (str | Unset):
-        min_cli_version (str | Unset):
+        min_cli_version (str | Unset): Deprecated: older CLIs read this warning floor. New CLIs use
+            min_cli_version_policy.
+        min_cli_version_policy (ServiceMinCLIVersionPolicy | Unset):
         nuon_auth_enabled (bool | Unset):
         oidc_federation_enabled (bool | Unset):
         root_domain (str | Unset):
@@ -30,6 +36,7 @@ class ServiceCLIConfig:
     auth_domain: str | Unset = UNSET
     dashboard_url: str | Unset = UNSET
     min_cli_version: str | Unset = UNSET
+    min_cli_version_policy: ServiceMinCLIVersionPolicy | Unset = UNSET
     nuon_auth_enabled: bool | Unset = UNSET
     oidc_federation_enabled: bool | Unset = UNSET
     root_domain: str | Unset = UNSET
@@ -45,6 +52,10 @@ class ServiceCLIConfig:
         dashboard_url = self.dashboard_url
 
         min_cli_version = self.min_cli_version
+
+        min_cli_version_policy: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.min_cli_version_policy, Unset):
+            min_cli_version_policy = self.min_cli_version_policy.to_dict()
 
         nuon_auth_enabled = self.nuon_auth_enabled
 
@@ -65,6 +76,8 @@ class ServiceCLIConfig:
             field_dict["dashboard_url"] = dashboard_url
         if min_cli_version is not UNSET:
             field_dict["min_cli_version"] = min_cli_version
+        if min_cli_version_policy is not UNSET:
+            field_dict["min_cli_version_policy"] = min_cli_version_policy
         if nuon_auth_enabled is not UNSET:
             field_dict["nuon_auth_enabled"] = nuon_auth_enabled
         if oidc_federation_enabled is not UNSET:
@@ -76,6 +89,8 @@ class ServiceCLIConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.service_min_cli_version_policy import ServiceMinCLIVersionPolicy  # noqa: PLC0415
+
         d = dict(src_dict)
         auth_audience = d.pop("auth_audience", UNSET)
 
@@ -86,6 +101,13 @@ class ServiceCLIConfig:
         dashboard_url = d.pop("dashboard_url", UNSET)
 
         min_cli_version = d.pop("min_cli_version", UNSET)
+
+        _min_cli_version_policy = d.pop("min_cli_version_policy", UNSET)
+        min_cli_version_policy: ServiceMinCLIVersionPolicy | Unset
+        if isinstance(_min_cli_version_policy, Unset):
+            min_cli_version_policy = UNSET
+        else:
+            min_cli_version_policy = ServiceMinCLIVersionPolicy.from_dict(_min_cli_version_policy)
 
         nuon_auth_enabled = d.pop("nuon_auth_enabled", UNSET)
 
@@ -99,6 +121,7 @@ class ServiceCLIConfig:
             auth_domain=auth_domain,
             dashboard_url=dashboard_url,
             min_cli_version=min_cli_version,
+            min_cli_version_policy=min_cli_version_policy,
             nuon_auth_enabled=nuon_auth_enabled,
             oidc_federation_enabled=oidc_federation_enabled,
             root_domain=root_domain,

@@ -17,11 +17,13 @@ class ServiceInstallDeploymentPolicySummary:
     Attributes:
         deny_count (int | Unset):
         first_warn_message (str | Unset):
+        skipped_by_policy (bool | Unset):
         warn_count (int | Unset):
     """
 
     deny_count: int | Unset = UNSET
     first_warn_message: str | Unset = UNSET
+    skipped_by_policy: bool | Unset = UNSET
     warn_count: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -29,6 +31,8 @@ class ServiceInstallDeploymentPolicySummary:
         deny_count = self.deny_count
 
         first_warn_message = self.first_warn_message
+
+        skipped_by_policy = self.skipped_by_policy
 
         warn_count = self.warn_count
 
@@ -39,6 +43,8 @@ class ServiceInstallDeploymentPolicySummary:
             field_dict["deny_count"] = deny_count
         if first_warn_message is not UNSET:
             field_dict["first_warn_message"] = first_warn_message
+        if skipped_by_policy is not UNSET:
+            field_dict["skipped_by_policy"] = skipped_by_policy
         if warn_count is not UNSET:
             field_dict["warn_count"] = warn_count
 
@@ -51,11 +57,14 @@ class ServiceInstallDeploymentPolicySummary:
 
         first_warn_message = d.pop("first_warn_message", UNSET)
 
+        skipped_by_policy = d.pop("skipped_by_policy", UNSET)
+
         warn_count = d.pop("warn_count", UNSET)
 
         service_install_deployment_policy_summary = cls(
             deny_count=deny_count,
             first_warn_message=first_warn_message,
+            skipped_by_policy=skipped_by_policy,
             warn_count=warn_count,
         )
 

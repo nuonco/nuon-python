@@ -628,7 +628,6 @@ from .service_create_component_build_request import ServiceCreateComponentBuildR
 from .service_create_component_request import ServiceCreateComponentRequest
 from .service_create_component_request_labels import ServiceCreateComponentRequestLabels
 from .service_create_connection_callback_request import ServiceCreateConnectionCallbackRequest
-from .service_create_connection_request import ServiceCreateConnectionRequest
 from .service_create_current_org_webhook_request import ServiceCreateCurrentOrgWebhookRequest
 from .service_create_current_org_webhook_request_interests import ServiceCreateCurrentOrgWebhookRequestInterests
 from .service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
@@ -805,6 +804,7 @@ from .service_list_channels_response import ServiceListChannelsResponse
 from .service_log_stream_span import ServiceLogStreamSpan
 from .service_log_stream_span_attributes import ServiceLogStreamSpanAttributes
 from .service_log_stream_tail_logs_response import ServiceLogStreamTailLogsResponse
+from .service_min_cli_version_policy import ServiceMinCLIVersionPolicy
 from .service_mng_restart_request import ServiceMngRestartRequest
 from .service_mng_shut_down_request import ServiceMngShutDownRequest
 from .service_mng_update_request import ServiceMngUpdateRequest
@@ -1580,7 +1580,6 @@ __all__ = (
     "ServiceCreateComponentRequest",
     "ServiceCreateComponentRequestLabels",
     "ServiceCreateConnectionCallbackRequest",
-    "ServiceCreateConnectionRequest",
     "ServiceCreateCurrentOrgWebhookRequest",
     "ServiceCreateCurrentOrgWebhookRequestInterests",
     "ServiceCreateCurrentOrgWebhookRequestMatch",
@@ -1731,6 +1730,7 @@ __all__ = (
     "ServiceLogStreamSpan",
     "ServiceLogStreamSpanAttributes",
     "ServiceLogStreamTailLogsResponse",
+    "ServiceMinCLIVersionPolicy",
     "ServiceMngRestartRequest",
     "ServiceMngShutDownRequest",
     "ServiceMngUpdateRequest",
