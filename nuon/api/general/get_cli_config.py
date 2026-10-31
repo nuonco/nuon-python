@@ -78,6 +78,10 @@ def sync_detailed(
 
      Returns CLI configuration and settings.
 
+    `min_cli_version` is deprecated. It remains the warning floor for older CLIs. Prefer
+    `min_cli_version_policy.warn`. `min_cli_version_policy.error` is the oldest CLI this control plane
+    will run. An empty warn means the CLI does not warn.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,6 +107,10 @@ def sync(
 
      Returns CLI configuration and settings.
 
+    `min_cli_version` is deprecated. It remains the warning floor for older CLIs. Prefer
+    `min_cli_version_policy.warn`. `min_cli_version_policy.error` is the oldest CLI this control plane
+    will run. An empty warn means the CLI does not warn.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -123,6 +131,10 @@ async def asyncio_detailed(
     """Get config for cli
 
      Returns CLI configuration and settings.
+
+    `min_cli_version` is deprecated. It remains the warning floor for older CLIs. Prefer
+    `min_cli_version_policy.warn`. `min_cli_version_policy.error` is the oldest CLI this control plane
+    will run. An empty warn means the CLI does not warn.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,6 +158,10 @@ async def asyncio(
     """Get config for cli
 
      Returns CLI configuration and settings.
+
+    `min_cli_version` is deprecated. It remains the warning floor for older CLIs. Prefer
+    `min_cli_version_policy.warn`. `min_cli_version_policy.error` is the oldest CLI this control plane
+    will run. An empty warn means the CLI does not warn.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

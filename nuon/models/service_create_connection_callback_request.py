@@ -6,6 +6,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 T = TypeVar("T", bound="ServiceCreateConnectionCallbackRequest")
 
 
@@ -15,16 +17,22 @@ class ServiceCreateConnectionCallbackRequest:
     Attributes:
         github_install_id (str):
         org_id (str):
+        code (str | Unset): Code is the GitHub user-authorization code issued after the install.
+            It proves the caller can see github_install_id; the id alone can be
+            spoofed.
     """
 
     github_install_id: str
     org_id: str
+    code: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         github_install_id = self.github_install_id
 
         org_id = self.org_id
+
+        code = self.code
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -34,6 +42,8 @@ class ServiceCreateConnectionCallbackRequest:
                 "org_id": org_id,
             }
         )
+        if code is not UNSET:
+            field_dict["code"] = code
 
         return field_dict
 
@@ -44,9 +54,12 @@ class ServiceCreateConnectionCallbackRequest:
 
         org_id = d.pop("org_id")
 
+        code = d.pop("code", UNSET)
+
         service_create_connection_callback_request = cls(
             github_install_id=github_install_id,
             org_id=org_id,
+            code=code,
         )
 
         service_create_connection_callback_request.additional_properties = d

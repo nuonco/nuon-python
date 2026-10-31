@@ -6,43 +6,52 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ServiceCreateConnectionRequest")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="ServiceMinCLIVersionPolicy")
 
 
 @_attrs_define
-class ServiceCreateConnectionRequest:
+class ServiceMinCLIVersionPolicy:
     """
     Attributes:
-        github_install_id (str):
+        error (str | Unset):
+        warn (str | Unset):
     """
 
-    github_install_id: str
+    error: str | Unset = UNSET
+    warn: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        github_install_id = self.github_install_id
+        error = self.error
+
+        warn = self.warn
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "github_install_id": github_install_id,
-            }
-        )
+        field_dict.update({})
+        if error is not UNSET:
+            field_dict["error"] = error
+        if warn is not UNSET:
+            field_dict["warn"] = warn
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        github_install_id = d.pop("github_install_id")
+        error = d.pop("error", UNSET)
 
-        service_create_connection_request = cls(
-            github_install_id=github_install_id,
+        warn = d.pop("warn", UNSET)
+
+        service_min_cli_version_policy = cls(
+            error=error,
+            warn=warn,
         )
 
-        service_create_connection_request.additional_properties = d
-        return service_create_connection_request
+        service_min_cli_version_policy.additional_properties = d
+        return service_min_cli_version_policy
 
     @property
     def additional_keys(self) -> list[str]:

@@ -23,6 +23,7 @@ T = TypeVar("T", bound="AppInstallConfig")
 class AppInstallConfig:
     """
     Attributes:
+        action_timeout (int | None | Unset):
         approval_option (AppInstallApprovalOption | Unset):
         component_toggles (AppInstallConfigComponentToggles | Unset):
         created_at (str | Unset):
@@ -41,6 +42,7 @@ class AppInstallConfig:
         vpc_nested_template_url (str | Unset): Per-install stack template overrides (nil = use app config default)
     """
 
+    action_timeout: int | None | Unset = UNSET
     approval_option: AppInstallApprovalOption | Unset = UNSET
     component_toggles: AppInstallConfigComponentToggles | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -60,6 +62,12 @@ class AppInstallConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        action_timeout: int | None | Unset
+        if isinstance(self.action_timeout, Unset):
+            action_timeout = UNSET
+        else:
+            action_timeout = self.action_timeout
+
         approval_option: str | Unset = UNSET
         if not isinstance(self.approval_option, Unset):
             approval_option = self.approval_option.value
@@ -116,6 +124,8 @@ class AppInstallConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if action_timeout is not UNSET:
+            field_dict["action_timeout"] = action_timeout
         if approval_option is not UNSET:
             field_dict["approval_option"] = approval_option
         if component_toggles is not UNSET:
@@ -159,6 +169,16 @@ class AppInstallConfig:
         from ..models.github_com_nuonco_nuon_pkg_labels_labels import GithubComNuoncoNuonPkgLabelsLabels  # noqa: PLC0415
 
         d = dict(src_dict)
+
+        def _parse_action_timeout(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        action_timeout = _parse_action_timeout(d.pop("action_timeout", UNSET))
+
         _approval_option = d.pop("approval_option", UNSET)
         approval_option: AppInstallApprovalOption | Unset
         if isinstance(_approval_option, Unset):
@@ -233,6 +253,7 @@ class AppInstallConfig:
         vpc_nested_template_url = d.pop("vpc_nested_template_url", UNSET)
 
         app_install_config = cls(
+            action_timeout=action_timeout,
             approval_option=approval_option,
             component_toggles=component_toggles,
             created_at=created_at,
