@@ -22,6 +22,10 @@ class AppInstallStack:
     """
     Attributes:
         app_config_ref (AppAppConfigRef | Unset):
+        azure_runner_auth_app_id (str | Unset): AzureRunnerAuthAppID is this control plane's Entra app id for runner
+            login. Set on read from server config, never stored. Empty when the
+            control plane still accepts only ARM tokens, so the dashboard can hide
+            the tenant consent step.
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -33,6 +37,7 @@ class AppInstallStack:
     """
 
     app_config_ref: AppAppConfigRef | Unset = UNSET
+    azure_runner_auth_app_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -47,6 +52,8 @@ class AppInstallStack:
         app_config_ref: dict[str, Any] | Unset = UNSET
         if not isinstance(self.app_config_ref, Unset):
             app_config_ref = self.app_config_ref.to_dict()
+
+        azure_runner_auth_app_id = self.azure_runner_auth_app_id
 
         created_at = self.created_at
 
@@ -76,6 +83,8 @@ class AppInstallStack:
         field_dict.update({})
         if app_config_ref is not UNSET:
             field_dict["app_config_ref"] = app_config_ref
+        if azure_runner_auth_app_id is not UNSET:
+            field_dict["azure_runner_auth_app_id"] = azure_runner_auth_app_id
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -109,6 +118,8 @@ class AppInstallStack:
         else:
             app_config_ref = AppAppConfigRef.from_dict(_app_config_ref)
 
+        azure_runner_auth_app_id = d.pop("azure_runner_auth_app_id", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -139,6 +150,7 @@ class AppInstallStack:
 
         app_install_stack = cls(
             app_config_ref=app_config_ref,
+            azure_runner_auth_app_id=azure_runner_auth_app_id,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
