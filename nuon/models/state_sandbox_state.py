@@ -19,6 +19,7 @@ T = TypeVar("T", bound="StateSandboxState")
 class StateSandboxState:
     """
     Attributes:
+        build_id (str | Unset):
         outputs (StateSandboxStateOutputs | Unset):
         populated (bool | Unset):
         recent_runs (list[StateSandboxState] | Unset):
@@ -27,6 +28,7 @@ class StateSandboxState:
         version (str | Unset):
     """
 
+    build_id: str | Unset = UNSET
     outputs: StateSandboxStateOutputs | Unset = UNSET
     populated: bool | Unset = UNSET
     recent_runs: list[StateSandboxState] | Unset = UNSET
@@ -36,6 +38,8 @@ class StateSandboxState:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        build_id = self.build_id
+
         outputs: dict[str, Any] | Unset = UNSET
         if not isinstance(self.outputs, Unset):
             outputs = self.outputs.to_dict()
@@ -58,6 +62,8 @@ class StateSandboxState:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if build_id is not UNSET:
+            field_dict["build_id"] = build_id
         if outputs is not UNSET:
             field_dict["outputs"] = outputs
         if populated is not UNSET:
@@ -78,6 +84,8 @@ class StateSandboxState:
         from ..models.state_sandbox_state_outputs import StateSandboxStateOutputs  # noqa: PLC0415
 
         d = dict(src_dict)
+        build_id = d.pop("build_id", UNSET)
+
         _outputs = d.pop("outputs", UNSET)
         outputs: StateSandboxStateOutputs | Unset
         if isinstance(_outputs, Unset):
@@ -103,6 +111,7 @@ class StateSandboxState:
         version = d.pop("version", UNSET)
 
         state_sandbox_state = cls(
+            build_id=build_id,
             outputs=outputs,
             populated=populated,
             recent_runs=recent_runs,

@@ -103,8 +103,6 @@ from .app_component_type import AppComponentType
 from .app_composite_status import AppCompositeStatus
 from .app_composite_status_metadata import AppCompositeStatusMetadata
 from .app_connected_github_vcs_config import AppConnectedGithubVCSConfig
-from .app_docker_build_component_config import AppDockerBuildComponentConfig
-from .app_docker_build_component_config_env_vars import AppDockerBuildComponentConfigEnvVars
 from .app_drifted_object import AppDriftedObject
 from .app_empty_response import AppEmptyResponse
 from .app_external_image_component_config import AppExternalImageComponentConfig
@@ -122,6 +120,8 @@ from .app_helm_config import AppHelmConfig
 from .app_helm_config_values import AppHelmConfigValues
 from .app_helm_release import AppHelmRelease
 from .app_helm_repo_config import AppHelmRepoConfig
+from .app_image_repository import AppImageRepository
+from .app_image_repository_platform import AppImageRepositoryPlatform
 from .app_install import AppInstall
 from .app_install_action_workflow import AppInstallActionWorkflow
 from .app_install_action_workflow_run import AppInstallActionWorkflowRun
@@ -404,6 +404,7 @@ from .get_current_org_features_response_200 import GetCurrentOrgFeaturesResponse
 from .get_install_action_workflow_outputs_response_200 import GetInstallActionWorkflowOutputsResponse200
 from .get_install_component_outputs_response_200 import GetInstallComponentOutputsResponse200
 from .get_install_config_version_diff_response_200 import GetInstallConfigVersionDiffResponse200
+from .get_install_deployment_source_diff_kind import GetInstallDeploymentSourceDiffKind
 from .get_install_deployment_summaries_sort import GetInstallDeploymentSummariesSort
 from .get_install_deployment_summaries_state import GetInstallDeploymentSummariesState
 from .get_install_label_keys_response_200 import GetInstallLabelKeysResponse200
@@ -443,6 +444,8 @@ from .iam_two_step_config import IamTwoStepConfig
 from .keys_workflow_telemetry import KeysWorkflowTelemetry
 from .kube_cluster_info import KubeClusterInfo
 from .kube_cluster_info_env_vars import KubeClusterInfoEnvVars
+from .list_cloud_connections_platform import ListCloudConnectionsPlatform
+from .list_image_repositories_platform import ListImageRepositoriesPlatform
 from .list_service_accounts_management import ListServiceAccountsManagement
 from .oidcissuer_discovery_document import OidcissuerDiscoveryDocument
 from .oidcissuer_jwk import OidcissuerJWK
@@ -465,8 +468,6 @@ from .plantypes_build_plan import PlantypesBuildPlan
 from .plantypes_composite_plan import PlantypesCompositePlan
 from .plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan
 from .plantypes_deploy_plan import PlantypesDeployPlan
-from .plantypes_docker_build_plan import PlantypesDockerBuildPlan
-from .plantypes_docker_build_plan_build_args import PlantypesDockerBuildPlanBuildArgs
 from .plantypes_fetch_image_metadata_plan import PlantypesFetchImageMetadataPlan
 from .plantypes_git_source import PlantypesGitSource
 from .plantypes_helm_build_plan import PlantypesHelmBuildPlan
@@ -631,13 +632,6 @@ from .service_create_connection_callback_request import ServiceCreateConnectionC
 from .service_create_current_org_webhook_request import ServiceCreateCurrentOrgWebhookRequest
 from .service_create_current_org_webhook_request_interests import ServiceCreateCurrentOrgWebhookRequestInterests
 from .service_create_current_org_webhook_request_match import ServiceCreateCurrentOrgWebhookRequestMatch
-from .service_create_docker_build_component_config_request import ServiceCreateDockerBuildComponentConfigRequest
-from .service_create_docker_build_component_config_request_env_vars import (
-    ServiceCreateDockerBuildComponentConfigRequestEnvVars,
-)
-from .service_create_docker_build_component_config_request_operation_roles import (
-    ServiceCreateDockerBuildComponentConfigRequestOperationRoles,
-)
 from .service_create_external_image_component_config_request import ServiceCreateExternalImageComponentConfigRequest
 from .service_create_external_image_component_config_request_operation_roles import (
     ServiceCreateExternalImageComponentConfigRequestOperationRoles,
@@ -647,6 +641,7 @@ from .service_create_helm_component_config_request_operation_roles import (
     ServiceCreateHelmComponentConfigRequestOperationRoles,
 )
 from .service_create_helm_component_config_request_values import ServiceCreateHelmComponentConfigRequestValues
+from .service_create_image_repository_request import ServiceCreateImageRepositoryRequest
 from .service_create_install_action_workflow_run_request import ServiceCreateInstallActionWorkflowRunRequest
 from .service_create_install_action_workflow_run_request_run_env_vars import (
     ServiceCreateInstallActionWorkflowRunRequestRunEnvVars,
@@ -777,6 +772,13 @@ from .service_install_deployment_change_group import ServiceInstallDeploymentCha
 from .service_install_deployment_config_change import ServiceInstallDeploymentConfigChange
 from .service_install_deployment_image import ServiceInstallDeploymentImage
 from .service_install_deployment_policy_summary import ServiceInstallDeploymentPolicySummary
+from .service_install_deployment_source_build import ServiceInstallDeploymentSourceBuild
+from .service_install_deployment_source_diff import ServiceInstallDeploymentSourceDiff
+from .service_install_deployment_source_diff_kind import ServiceInstallDeploymentSourceDiffKind
+from .service_install_deployment_source_diff_status import ServiceInstallDeploymentSourceDiffStatus
+from .service_install_deployment_source_file import ServiceInstallDeploymentSourceFile
+from .service_install_deployment_source_file_change import ServiceInstallDeploymentSourceFileChange
+from .service_install_deployment_source_file_content import ServiceInstallDeploymentSourceFileContent
 from .service_install_deployment_step import ServiceInstallDeploymentStep
 from .service_install_deployment_summary import ServiceInstallDeploymentSummary
 from .service_install_deployment_type import ServiceInstallDeploymentType
@@ -939,6 +941,9 @@ from .signature_verification import SignatureVerification
 from .slack_events_body import SlackEventsBody
 from .slack_interactions_body import SlackInteractionsBody
 from .slack_slash_command_body import SlackSlashCommandBody
+from .sourceidentity_file import SourceidentityFile
+from .sourceidentity_identity import SourceidentityIdentity
+from .sourceidentity_input import SourceidentityInput
 from .sql_null_bool import SqlNullBool
 from .state_action_workflow_state import StateActionWorkflowState
 from .state_action_workflow_state_outputs import StateActionWorkflowStateOutputs
@@ -1077,8 +1082,6 @@ __all__ = (
     "AppCompositeStatus",
     "AppCompositeStatusMetadata",
     "AppConnectedGithubVCSConfig",
-    "AppDockerBuildComponentConfig",
-    "AppDockerBuildComponentConfigEnvVars",
     "AppDriftedObject",
     "AppEmptyResponse",
     "AppExternalImageComponentConfig",
@@ -1096,6 +1099,8 @@ __all__ = (
     "AppHelmConfigValues",
     "AppHelmRelease",
     "AppHelmRepoConfig",
+    "AppImageRepository",
+    "AppImageRepositoryPlatform",
     "AppInstall",
     "AppInstallActionWorkflow",
     "AppInstallActionWorkflowRun",
@@ -1368,6 +1373,7 @@ __all__ = (
     "GetInstallActionWorkflowOutputsResponse200",
     "GetInstallComponentOutputsResponse200",
     "GetInstallConfigVersionDiffResponse200",
+    "GetInstallDeploymentSourceDiffKind",
     "GetInstallDeploymentSummariesSort",
     "GetInstallDeploymentSummariesState",
     "GetInstallLabelKeysResponse200",
@@ -1403,6 +1409,8 @@ __all__ = (
     "KeysWorkflowTelemetry",
     "KubeClusterInfo",
     "KubeClusterInfoEnvVars",
+    "ListCloudConnectionsPlatform",
+    "ListImageRepositoriesPlatform",
     "ListServiceAccountsManagement",
     "OidcissuerDiscoveryDocument",
     "OidcissuerJWK",
@@ -1423,8 +1431,6 @@ __all__ = (
     "PlantypesCompositePlan",
     "PlantypesContainerImagePullPlan",
     "PlantypesDeployPlan",
-    "PlantypesDockerBuildPlan",
-    "PlantypesDockerBuildPlanBuildArgs",
     "PlantypesFetchImageMetadataPlan",
     "PlantypesGitSource",
     "PlantypesHelmBuildPlan",
@@ -1583,14 +1589,12 @@ __all__ = (
     "ServiceCreateCurrentOrgWebhookRequest",
     "ServiceCreateCurrentOrgWebhookRequestInterests",
     "ServiceCreateCurrentOrgWebhookRequestMatch",
-    "ServiceCreateDockerBuildComponentConfigRequest",
-    "ServiceCreateDockerBuildComponentConfigRequestEnvVars",
-    "ServiceCreateDockerBuildComponentConfigRequestOperationRoles",
     "ServiceCreateExternalImageComponentConfigRequest",
     "ServiceCreateExternalImageComponentConfigRequestOperationRoles",
     "ServiceCreateHelmComponentConfigRequest",
     "ServiceCreateHelmComponentConfigRequestOperationRoles",
     "ServiceCreateHelmComponentConfigRequestValues",
+    "ServiceCreateImageRepositoryRequest",
     "ServiceCreateInstallActionWorkflowRunRequest",
     "ServiceCreateInstallActionWorkflowRunRequestRunEnvVars",
     "ServiceCreateInstallAppConfigUpdateRequest",
@@ -1703,6 +1707,13 @@ __all__ = (
     "ServiceInstallDeploymentConfigChange",
     "ServiceInstallDeploymentImage",
     "ServiceInstallDeploymentPolicySummary",
+    "ServiceInstallDeploymentSourceBuild",
+    "ServiceInstallDeploymentSourceDiff",
+    "ServiceInstallDeploymentSourceDiffKind",
+    "ServiceInstallDeploymentSourceDiffStatus",
+    "ServiceInstallDeploymentSourceFile",
+    "ServiceInstallDeploymentSourceFileChange",
+    "ServiceInstallDeploymentSourceFileContent",
     "ServiceInstallDeploymentStep",
     "ServiceInstallDeploymentSummary",
     "ServiceInstallDeploymentType",
@@ -1857,6 +1868,9 @@ __all__ = (
     "SlackEventsBody",
     "SlackInteractionsBody",
     "SlackSlashCommandBody",
+    "SourceidentityFile",
+    "SourceidentityIdentity",
+    "SourceidentityInput",
     "SqlNullBool",
     "StateActionsState",
     "StateActionsStateWorkflows",

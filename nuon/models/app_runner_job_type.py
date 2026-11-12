@@ -4,7 +4,6 @@ from enum import StrEnum
 class AppRunnerJobType(StrEnum):
     RUNNER_JOB_TYPE_ACTIONS_WORKFLOW_RUN = "actions-workflow"
     RUNNER_JOB_TYPE_CONTAINER_IMAGE_BUILD = "container-image-build"
-    RUNNER_JOB_TYPE_DOCKER_BUILD = "docker-build"
     RUNNER_JOB_TYPE_FETCH_IMAGE_METADATA = "fetch-image-metadata"
     RUNNER_JOB_TYPE_HEALTH_CHECK = "health-check"
     RUNNER_JOB_TYPE_HELM_CHART_BUILD = "helm-chart-build"

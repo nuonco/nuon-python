@@ -8,7 +8,6 @@ class GetAppConfigTemplateType(StrEnum):
     AWS_EKS_BYOVPC = "aws-eks-byovpc"
     AZURE_AKS = "azure-aks"
     CONTAINER_IMAGE = "container-image"
-    DOCKER_BUILD = "docker-build"
     ECR_CONTAINER_IMAGE = "ecr-container-image"
     FLAT = "flat"
     HELM = "helm"

@@ -11,8 +11,6 @@ T = TypeVar("T", bound="AppPolicyPermissions")
 
 @_attrs_define
 class AppPolicyPermissions:
-    """Permissions are used to track granular permissions for each domain"""
-
     additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

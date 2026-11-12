@@ -15,6 +15,7 @@ T = TypeVar("T", bound="AppGCPGARImageConfig")
 class AppGCPGARImageConfig:
     """
     Attributes:
+        cloud_connection_id (str | Unset):
         component_config_id (str | Unset):
         component_config_type (str | Unset):
         created_at (str | Unset):
@@ -27,6 +28,7 @@ class AppGCPGARImageConfig:
         workload_identity_provider (str | Unset):
     """
 
+    cloud_connection_id: str | Unset = UNSET
     component_config_id: str | Unset = UNSET
     component_config_type: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -40,6 +42,8 @@ class AppGCPGARImageConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        cloud_connection_id = self.cloud_connection_id
+
         component_config_id = self.component_config_id
 
         component_config_type = self.component_config_type
@@ -63,6 +67,8 @@ class AppGCPGARImageConfig:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if cloud_connection_id is not UNSET:
+            field_dict["cloud_connection_id"] = cloud_connection_id
         if component_config_id is not UNSET:
             field_dict["component_config_id"] = component_config_id
         if component_config_type is not UNSET:
@@ -89,6 +95,8 @@ class AppGCPGARImageConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        cloud_connection_id = d.pop("cloud_connection_id", UNSET)
+
         component_config_id = d.pop("component_config_id", UNSET)
 
         component_config_type = d.pop("component_config_type", UNSET)
@@ -110,6 +118,7 @@ class AppGCPGARImageConfig:
         workload_identity_provider = d.pop("workload_identity_provider", UNSET)
 
         app_gcpgar_image_config = cls(
+            cloud_connection_id=cloud_connection_id,
             component_config_id=component_config_id,
             component_config_type=component_config_type,
             created_at=created_at,
