@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from typing import Any
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
@@ -31,7 +31,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> ServiceConnectionResponse | StderrErrResponse | None:
     if response.status_code == 201:
         response_201 = ServiceConnectionResponse.from_dict(response.json())
@@ -58,11 +58,6 @@ def _parse_response(
 
         return response_404
 
-    if response.status_code == 409:
-        response_409 = StderrErrResponse.from_dict(response.json())
-
-        return response_409
-
     if response.status_code == 500:
         response_500 = StderrErrResponse.from_dict(response.json())
 
@@ -75,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[ServiceConnectionResponse | StderrErrResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -92,15 +87,19 @@ def sync_detailed(
 ) -> Response[ServiceConnectionResponse | StderrErrResponse]:
     """create a cloud connection
 
-     Create an AWS connection using the stacks or custom preset. Custom renders trust only; attach your
-    own permissions policy.
+     Create an org-bound AWS, GCP, or Azure identity. Optional repository arrays generate initial read-
+    only setup material but are not stored or used as an allowlist. ECR and GAR use default_region for
+    image connection matching. ACR requires a subscription UUID, existing Entra application client ID
+    and service principal, tenant UUID, registry ARM ID, and bare login server. Its registry must
+    already use RBAC Registry + ABAC Repository Permissions; setup never changes registry mode. Cloud
+    IAM authorizes image pulls. Custom renders AWS trust only.
 
     Args:
         body (ServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         Response[ServiceConnectionResponse | StderrErrResponse]
@@ -124,15 +123,19 @@ def sync(
 ) -> ServiceConnectionResponse | StderrErrResponse | None:
     """create a cloud connection
 
-     Create an AWS connection using the stacks or custom preset. Custom renders trust only; attach your
-    own permissions policy.
+     Create an org-bound AWS, GCP, or Azure identity. Optional repository arrays generate initial read-
+    only setup material but are not stored or used as an allowlist. ECR and GAR use default_region for
+    image connection matching. ACR requires a subscription UUID, existing Entra application client ID
+    and service principal, tenant UUID, registry ARM ID, and bare login server. Its registry must
+    already use RBAC Registry + ABAC Repository Permissions; setup never changes registry mode. Cloud
+    IAM authorizes image pulls. Custom renders AWS trust only.
 
     Args:
         body (ServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         ServiceConnectionResponse | StderrErrResponse
@@ -151,15 +154,19 @@ async def asyncio_detailed(
 ) -> Response[ServiceConnectionResponse | StderrErrResponse]:
     """create a cloud connection
 
-     Create an AWS connection using the stacks or custom preset. Custom renders trust only; attach your
-    own permissions policy.
+     Create an org-bound AWS, GCP, or Azure identity. Optional repository arrays generate initial read-
+    only setup material but are not stored or used as an allowlist. ECR and GAR use default_region for
+    image connection matching. ACR requires a subscription UUID, existing Entra application client ID
+    and service principal, tenant UUID, registry ARM ID, and bare login server. Its registry must
+    already use RBAC Registry + ABAC Repository Permissions; setup never changes registry mode. Cloud
+    IAM authorizes image pulls. Custom renders AWS trust only.
 
     Args:
         body (ServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         Response[ServiceConnectionResponse | StderrErrResponse]
@@ -181,15 +188,19 @@ async def asyncio(
 ) -> ServiceConnectionResponse | StderrErrResponse | None:
     """create a cloud connection
 
-     Create an AWS connection using the stacks or custom preset. Custom renders trust only; attach your
-    own permissions policy.
+     Create an org-bound AWS, GCP, or Azure identity. Optional repository arrays generate initial read-
+    only setup material but are not stored or used as an allowlist. ECR and GAR use default_region for
+    image connection matching. ACR requires a subscription UUID, existing Entra application client ID
+    and service principal, tenant UUID, registry ARM ID, and bare login server. Its registry must
+    already use RBAC Registry + ABAC Repository Permissions; setup never changes registry mode. Cloud
+    IAM authorizes image pulls. Custom renders AWS trust only.
 
     Args:
         body (ServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         ServiceConnectionResponse | StderrErrResponse

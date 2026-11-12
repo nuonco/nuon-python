@@ -19,12 +19,13 @@ class AppAzureACRImageConfig:
         client_id (str | Unset):
         client_secret_name (str | Unset): Names of app secrets holding the app registration's credential material,
             never the material itself.
+        cloud_connection_id (str | Unset): actual configuration
         component_config_id (str | Unset): connection to parent model
         component_config_type (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
-        registry_url (str | Unset): actual configuration
+        registry_url (str | Unset):
         tenant_id (str | Unset):
         updated_at (str | Unset):
     """
@@ -32,6 +33,7 @@ class AppAzureACRImageConfig:
     client_certificate_name: str | Unset = UNSET
     client_id: str | Unset = UNSET
     client_secret_name: str | Unset = UNSET
+    cloud_connection_id: str | Unset = UNSET
     component_config_id: str | Unset = UNSET
     component_config_type: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -48,6 +50,8 @@ class AppAzureACRImageConfig:
         client_id = self.client_id
 
         client_secret_name = self.client_secret_name
+
+        cloud_connection_id = self.cloud_connection_id
 
         component_config_id = self.component_config_id
 
@@ -74,6 +78,8 @@ class AppAzureACRImageConfig:
             field_dict["client_id"] = client_id
         if client_secret_name is not UNSET:
             field_dict["client_secret_name"] = client_secret_name
+        if cloud_connection_id is not UNSET:
+            field_dict["cloud_connection_id"] = cloud_connection_id
         if component_config_id is not UNSET:
             field_dict["component_config_id"] = component_config_id
         if component_config_type is not UNSET:
@@ -102,6 +108,8 @@ class AppAzureACRImageConfig:
 
         client_secret_name = d.pop("client_secret_name", UNSET)
 
+        cloud_connection_id = d.pop("cloud_connection_id", UNSET)
+
         component_config_id = d.pop("component_config_id", UNSET)
 
         component_config_type = d.pop("component_config_type", UNSET)
@@ -122,6 +130,7 @@ class AppAzureACRImageConfig:
             client_certificate_name=client_certificate_name,
             client_id=client_id,
             client_secret_name=client_secret_name,
+            cloud_connection_id=cloud_connection_id,
             component_config_id=component_config_id,
             component_config_type=component_config_type,
             created_at=created_at,

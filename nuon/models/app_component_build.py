@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+    from ..models.sourceidentity_identity import SourceidentityIdentity
 
 
 T = TypeVar("T", bound="AppComponentBuild")
@@ -34,7 +35,7 @@ class AppComponentBuild:
         app_branch_run (AppAppBranchRun | Unset):
         app_branch_run_id (str | Unset):
         build_runner_job_id (str | Unset):
-        checksum (str | Unset): checksum of our intermediate component config
+        checksum (str | Unset):
         component_config_connection (AppComponentConfigConnection | Unset):
         component_config_connection_id (str | Unset): DEPRECATED: will retain the field to connect against the last
             component config connection that set this build
@@ -75,10 +76,11 @@ class AppComponentBuild:
         runner_job (AppRunnerJob | Unset):
         signature_verification (str | Unset): SignatureVerification is empty when the outcome is unknown (older builds,
             or failures before verification ran).
-        source_checksum (str | Unset): checksum of the component's source directory at build time
+        source_checksum (str | Unset):
         source_digest (str | Unset): SourceDigest is the manifest list digest of the resolved source ref,
             e.g. "sha256:abc...". This is the canonical content address of what was
             pulled and is used for build dedup.
+        source_identity (SourceidentityIdentity | Unset):
         source_image (str | Unset): SourceImage is the repository portion of SourceRef without tag/digest, e.g. "nginx".
         source_media_type (str | Unset): SourceMediaType records the media type of the resolved manifest (image,
             image index, OCI artifact, etc.) for downstream rendering decisions.
@@ -123,6 +125,7 @@ class AppComponentBuild:
     signature_verification: str | Unset = UNSET
     source_checksum: str | Unset = UNSET
     source_digest: str | Unset = UNSET
+    source_identity: SourceidentityIdentity | Unset = UNSET
     source_image: str | Unset = UNSET
     source_media_type: str | Unset = UNSET
     source_ref: str | Unset = UNSET
@@ -221,6 +224,10 @@ class AppComponentBuild:
 
         source_digest = self.source_digest
 
+        source_identity: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.source_identity, Unset):
+            source_identity = self.source_identity.to_dict()
+
         source_image = self.source_image
 
         source_media_type = self.source_media_type
@@ -302,6 +309,8 @@ class AppComponentBuild:
             field_dict["source_checksum"] = source_checksum
         if source_digest is not UNSET:
             field_dict["source_digest"] = source_digest
+        if source_identity is not UNSET:
+            field_dict["source_identity"] = source_identity
         if source_image is not UNSET:
             field_dict["source_image"] = source_image
         if source_media_type is not UNSET:
@@ -335,6 +344,7 @@ class AppComponentBuild:
         from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
         from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
+        from ..models.sourceidentity_identity import SourceidentityIdentity  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)
@@ -451,6 +461,13 @@ class AppComponentBuild:
 
         source_digest = d.pop("source_digest", UNSET)
 
+        _source_identity = d.pop("source_identity", UNSET)
+        source_identity: SourceidentityIdentity | Unset
+        if isinstance(_source_identity, Unset):
+            source_identity = UNSET
+        else:
+            source_identity = SourceidentityIdentity.from_dict(_source_identity)
+
         source_image = d.pop("source_image", UNSET)
 
         source_media_type = d.pop("source_media_type", UNSET)
@@ -507,6 +524,7 @@ class AppComponentBuild:
             signature_verification=signature_verification,
             source_checksum=source_checksum,
             source_digest=source_digest,
+            source_identity=source_identity,
             source_image=source_image,
             source_media_type=source_media_type,
             source_ref=source_ref,

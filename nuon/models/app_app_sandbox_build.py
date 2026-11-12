@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.app_runner_job import AppRunnerJob
     from ..models.app_vcs_connection_commit import AppVCSConnectionCommit
     from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData
+    from ..models.sourceidentity_identity import SourceidentityIdentity
 
 
 T = TypeVar("T", bound="AppAppSandboxBuild")
@@ -31,6 +32,7 @@ class AppAppSandboxBuild:
         app_config_id (str | Unset):
         app_id (str | Unset):
         app_sandbox_config_id (str | Unset):
+        checksum (str | Unset):
         composite_error (CompositeerrorsCompositeErrorData | Unset):
         created_at (str | Unset):
         created_by (AppAccount | Unset):
@@ -38,6 +40,8 @@ class AppAppSandboxBuild:
         id (str | Unset):
         log_stream (AppLogStream | Unset):
         runner_job (AppRunnerJob | Unset):
+        source_checksum (str | Unset):
+        source_identity (SourceidentityIdentity | Unset):
         status (str | Unset):
         status_description (str | Unset):
         status_v2 (AppCompositeStatus | Unset):
@@ -52,6 +56,7 @@ class AppAppSandboxBuild:
     app_config_id: str | Unset = UNSET
     app_id: str | Unset = UNSET
     app_sandbox_config_id: str | Unset = UNSET
+    checksum: str | Unset = UNSET
     composite_error: CompositeerrorsCompositeErrorData | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by: AppAccount | Unset = UNSET
@@ -59,6 +64,8 @@ class AppAppSandboxBuild:
     id: str | Unset = UNSET
     log_stream: AppLogStream | Unset = UNSET
     runner_job: AppRunnerJob | Unset = UNSET
+    source_checksum: str | Unset = UNSET
+    source_identity: SourceidentityIdentity | Unset = UNSET
     status: str | Unset = UNSET
     status_description: str | Unset = UNSET
     status_v2: AppCompositeStatus | Unset = UNSET
@@ -82,6 +89,8 @@ class AppAppSandboxBuild:
 
         app_sandbox_config_id = self.app_sandbox_config_id
 
+        checksum = self.checksum
+
         composite_error: dict[str, Any] | Unset = UNSET
         if not isinstance(self.composite_error, Unset):
             composite_error = self.composite_error.to_dict()
@@ -103,6 +112,12 @@ class AppAppSandboxBuild:
         runner_job: dict[str, Any] | Unset = UNSET
         if not isinstance(self.runner_job, Unset):
             runner_job = self.runner_job.to_dict()
+
+        source_checksum = self.source_checksum
+
+        source_identity: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.source_identity, Unset):
+            source_identity = self.source_identity.to_dict()
 
         status = self.status
 
@@ -135,6 +150,8 @@ class AppAppSandboxBuild:
             field_dict["app_id"] = app_id
         if app_sandbox_config_id is not UNSET:
             field_dict["app_sandbox_config_id"] = app_sandbox_config_id
+        if checksum is not UNSET:
+            field_dict["checksum"] = checksum
         if composite_error is not UNSET:
             field_dict["composite_error"] = composite_error
         if created_at is not UNSET:
@@ -149,6 +166,10 @@ class AppAppSandboxBuild:
             field_dict["log_stream"] = log_stream
         if runner_job is not UNSET:
             field_dict["runner_job"] = runner_job
+        if source_checksum is not UNSET:
+            field_dict["source_checksum"] = source_checksum
+        if source_identity is not UNSET:
+            field_dict["source_identity"] = source_identity
         if status is not UNSET:
             field_dict["status"] = status
         if status_description is not UNSET:
@@ -173,6 +194,7 @@ class AppAppSandboxBuild:
         from ..models.app_runner_job import AppRunnerJob  # noqa: PLC0415
         from ..models.app_vcs_connection_commit import AppVCSConnectionCommit  # noqa: PLC0415
         from ..models.compositeerrors_composite_error_data import CompositeerrorsCompositeErrorData  # noqa: PLC0415
+        from ..models.sourceidentity_identity import SourceidentityIdentity  # noqa: PLC0415
 
         d = dict(src_dict)
         app_branch_id = d.pop("app_branch_id", UNSET)
@@ -191,6 +213,8 @@ class AppAppSandboxBuild:
         app_id = d.pop("app_id", UNSET)
 
         app_sandbox_config_id = d.pop("app_sandbox_config_id", UNSET)
+
+        checksum = d.pop("checksum", UNSET)
 
         _composite_error = d.pop("composite_error", UNSET)
         composite_error: CompositeerrorsCompositeErrorData | Unset
@@ -226,6 +250,15 @@ class AppAppSandboxBuild:
         else:
             runner_job = AppRunnerJob.from_dict(_runner_job)
 
+        source_checksum = d.pop("source_checksum", UNSET)
+
+        _source_identity = d.pop("source_identity", UNSET)
+        source_identity: SourceidentityIdentity | Unset
+        if isinstance(_source_identity, Unset):
+            source_identity = UNSET
+        else:
+            source_identity = SourceidentityIdentity.from_dict(_source_identity)
+
         status = d.pop("status", UNSET)
 
         status_description = d.pop("status_description", UNSET)
@@ -255,6 +288,7 @@ class AppAppSandboxBuild:
             app_config_id=app_config_id,
             app_id=app_id,
             app_sandbox_config_id=app_sandbox_config_id,
+            checksum=checksum,
             composite_error=composite_error,
             created_at=created_at,
             created_by=created_by,
@@ -262,6 +296,8 @@ class AppAppSandboxBuild:
             id=id,
             log_stream=log_stream,
             runner_job=runner_job,
+            source_checksum=source_checksum,
+            source_identity=source_identity,
             status=status,
             status_description=status_description,
             status_v2=status_v2,

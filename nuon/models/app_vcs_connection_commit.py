@@ -18,6 +18,7 @@ class AppVCSConnectionCommit:
         author_avatar_url (str | Unset):
         author_email (str | Unset):
         author_name (str | Unset):
+        committed_at (str | Unset): Git committer time. CreatedAt is when this row was stored during the run.
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
@@ -32,6 +33,7 @@ class AppVCSConnectionCommit:
     author_avatar_url: str | Unset = UNSET
     author_email: str | Unset = UNSET
     author_name: str | Unset = UNSET
+    committed_at: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
@@ -49,6 +51,8 @@ class AppVCSConnectionCommit:
         author_email = self.author_email
 
         author_name = self.author_name
+
+        committed_at = self.committed_at
 
         created_at = self.created_at
 
@@ -77,6 +81,8 @@ class AppVCSConnectionCommit:
             field_dict["author_email"] = author_email
         if author_name is not UNSET:
             field_dict["author_name"] = author_name
+        if committed_at is not UNSET:
+            field_dict["committed_at"] = committed_at
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
@@ -107,6 +113,8 @@ class AppVCSConnectionCommit:
 
         author_name = d.pop("author_name", UNSET)
 
+        committed_at = d.pop("committed_at", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
@@ -129,6 +137,7 @@ class AppVCSConnectionCommit:
             author_avatar_url=author_avatar_url,
             author_email=author_email,
             author_name=author_name,
+            committed_at=committed_at,
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,

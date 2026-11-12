@@ -11,13 +11,13 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository
     from ..models.plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan
-    from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan
     from ..models.plantypes_git_source import PlantypesGitSource
     from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan
     from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan
     from ..models.plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan
     from ..models.plantypes_sandbox_mode import PlantypesSandboxMode
     from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan
+    from ..models.sourceidentity_identity import SourceidentityIdentity
 
 
 T = TypeVar("T", bound="PlantypesBuildPlan")
@@ -32,12 +32,12 @@ class PlantypesBuildPlan:
         component_build_id (str | Unset):
         component_id (str | Unset):
         container_image_pull_plan (PlantypesContainerImagePullPlan | Unset):
-        docker_build_plan (PlantypesDockerBuildPlan | Unset):
         git_source (PlantypesGitSource | Unset):
         helm_build_plan (PlantypesHelmBuildPlan | Unset):
         kubernetes_manifest_build_plan (PlantypesKubernetesManifestBuildPlan | Unset):
         pulumi_build_plan (PlantypesPulumiBuildPlan | Unset):
         sandbox_mode (PlantypesSandboxMode | Unset):
+        source_identity (SourceidentityIdentity | Unset):
         terraform_build_plan (PlantypesTerraformBuildPlan | Unset):
     """
 
@@ -46,12 +46,12 @@ class PlantypesBuildPlan:
     component_build_id: str | Unset = UNSET
     component_id: str | Unset = UNSET
     container_image_pull_plan: PlantypesContainerImagePullPlan | Unset = UNSET
-    docker_build_plan: PlantypesDockerBuildPlan | Unset = UNSET
     git_source: PlantypesGitSource | Unset = UNSET
     helm_build_plan: PlantypesHelmBuildPlan | Unset = UNSET
     kubernetes_manifest_build_plan: PlantypesKubernetesManifestBuildPlan | Unset = UNSET
     pulumi_build_plan: PlantypesPulumiBuildPlan | Unset = UNSET
     sandbox_mode: PlantypesSandboxMode | Unset = UNSET
+    source_identity: SourceidentityIdentity | Unset = UNSET
     terraform_build_plan: PlantypesTerraformBuildPlan | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -67,10 +67,6 @@ class PlantypesBuildPlan:
         container_image_pull_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.container_image_pull_plan, Unset):
             container_image_pull_plan = self.container_image_pull_plan.to_dict()
-
-        docker_build_plan: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.docker_build_plan, Unset):
-            docker_build_plan = self.docker_build_plan.to_dict()
 
         git_source: dict[str, Any] | Unset = UNSET
         if not isinstance(self.git_source, Unset):
@@ -92,6 +88,10 @@ class PlantypesBuildPlan:
         if not isinstance(self.sandbox_mode, Unset):
             sandbox_mode = self.sandbox_mode.to_dict()
 
+        source_identity: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.source_identity, Unset):
+            source_identity = self.source_identity.to_dict()
+
         terraform_build_plan: dict[str, Any] | Unset = UNSET
         if not isinstance(self.terraform_build_plan, Unset):
             terraform_build_plan = self.terraform_build_plan.to_dict()
@@ -110,8 +110,6 @@ class PlantypesBuildPlan:
             field_dict["component_id"] = component_id
         if container_image_pull_plan is not UNSET:
             field_dict["container_image_pull_plan"] = container_image_pull_plan
-        if docker_build_plan is not UNSET:
-            field_dict["docker_build_plan"] = docker_build_plan
         if git_source is not UNSET:
             field_dict["git_source"] = git_source
         if helm_build_plan is not UNSET:
@@ -122,6 +120,8 @@ class PlantypesBuildPlan:
             field_dict["pulumi_build_plan"] = pulumi_build_plan
         if sandbox_mode is not UNSET:
             field_dict["sandbox_mode"] = sandbox_mode
+        if source_identity is not UNSET:
+            field_dict["source_identity"] = source_identity
         if terraform_build_plan is not UNSET:
             field_dict["terraform_build_plan"] = terraform_build_plan
 
@@ -131,13 +131,13 @@ class PlantypesBuildPlan:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.configs_oci_registry_repository import ConfigsOCIRegistryRepository  # noqa: PLC0415
         from ..models.plantypes_container_image_pull_plan import PlantypesContainerImagePullPlan  # noqa: PLC0415
-        from ..models.plantypes_docker_build_plan import PlantypesDockerBuildPlan  # noqa: PLC0415
         from ..models.plantypes_git_source import PlantypesGitSource  # noqa: PLC0415
         from ..models.plantypes_helm_build_plan import PlantypesHelmBuildPlan  # noqa: PLC0415
         from ..models.plantypes_kubernetes_manifest_build_plan import PlantypesKubernetesManifestBuildPlan  # noqa: PLC0415
         from ..models.plantypes_pulumi_build_plan import PlantypesPulumiBuildPlan  # noqa: PLC0415
         from ..models.plantypes_sandbox_mode import PlantypesSandboxMode  # noqa: PLC0415
         from ..models.plantypes_terraform_build_plan import PlantypesTerraformBuildPlan  # noqa: PLC0415
+        from ..models.sourceidentity_identity import SourceidentityIdentity  # noqa: PLC0415
 
         d = dict(src_dict)
         dst_registry = ConfigsOCIRegistryRepository.from_dict(d.pop("dst_registry"))
@@ -154,13 +154,6 @@ class PlantypesBuildPlan:
             container_image_pull_plan = UNSET
         else:
             container_image_pull_plan = PlantypesContainerImagePullPlan.from_dict(_container_image_pull_plan)
-
-        _docker_build_plan = d.pop("docker_build_plan", UNSET)
-        docker_build_plan: PlantypesDockerBuildPlan | Unset
-        if isinstance(_docker_build_plan, Unset):
-            docker_build_plan = UNSET
-        else:
-            docker_build_plan = PlantypesDockerBuildPlan.from_dict(_docker_build_plan)
 
         _git_source = d.pop("git_source", UNSET)
         git_source: PlantypesGitSource | Unset
@@ -199,6 +192,13 @@ class PlantypesBuildPlan:
         else:
             sandbox_mode = PlantypesSandboxMode.from_dict(_sandbox_mode)
 
+        _source_identity = d.pop("source_identity", UNSET)
+        source_identity: SourceidentityIdentity | Unset
+        if isinstance(_source_identity, Unset):
+            source_identity = UNSET
+        else:
+            source_identity = SourceidentityIdentity.from_dict(_source_identity)
+
         _terraform_build_plan = d.pop("terraform_build_plan", UNSET)
         terraform_build_plan: PlantypesTerraformBuildPlan | Unset
         if isinstance(_terraform_build_plan, Unset):
@@ -212,12 +212,12 @@ class PlantypesBuildPlan:
             component_build_id=component_build_id,
             component_id=component_id,
             container_image_pull_plan=container_image_pull_plan,
-            docker_build_plan=docker_build_plan,
             git_source=git_source,
             helm_build_plan=helm_build_plan,
             kubernetes_manifest_build_plan=kubernetes_manifest_build_plan,
             pulumi_build_plan=pulumi_build_plan,
             sandbox_mode=sandbox_mode,
+            source_identity=source_identity,
             terraform_build_plan=terraform_build_plan,
         )
 

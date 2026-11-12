@@ -23,6 +23,8 @@ class AppLogStream:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
+        logs_deleted_at (str | Unset):
+        logs_deleted_by_id (str | Unset):
         open_ (bool | Unset):
         org_id (str | Unset):
         owner_id (str | Unset):
@@ -36,6 +38,8 @@ class AppLogStream:
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     id: str | Unset = UNSET
+    logs_deleted_at: str | Unset = UNSET
+    logs_deleted_by_id: str | Unset = UNSET
     open_: bool | Unset = UNSET
     org_id: str | Unset = UNSET
     owner_id: str | Unset = UNSET
@@ -55,6 +59,10 @@ class AppLogStream:
         created_by_id = self.created_by_id
 
         id = self.id
+
+        logs_deleted_at = self.logs_deleted_at
+
+        logs_deleted_by_id = self.logs_deleted_by_id
 
         open_ = self.open_
 
@@ -81,6 +89,10 @@ class AppLogStream:
             field_dict["created_by_id"] = created_by_id
         if id is not UNSET:
             field_dict["id"] = id
+        if logs_deleted_at is not UNSET:
+            field_dict["logs_deleted_at"] = logs_deleted_at
+        if logs_deleted_by_id is not UNSET:
+            field_dict["logs_deleted_by_id"] = logs_deleted_by_id
         if open_ is not UNSET:
             field_dict["open"] = open_
         if org_id is not UNSET:
@@ -116,6 +128,10 @@ class AppLogStream:
 
         id = d.pop("id", UNSET)
 
+        logs_deleted_at = d.pop("logs_deleted_at", UNSET)
+
+        logs_deleted_by_id = d.pop("logs_deleted_by_id", UNSET)
+
         open_ = d.pop("open", UNSET)
 
         org_id = d.pop("org_id", UNSET)
@@ -135,6 +151,8 @@ class AppLogStream:
             created_at=created_at,
             created_by_id=created_by_id,
             id=id,
+            logs_deleted_at=logs_deleted_at,
+            logs_deleted_by_id=logs_deleted_by_id,
             open_=open_,
             org_id=org_id,
             owner_id=owner_id,

@@ -15,18 +15,24 @@ T = TypeVar("T", bound="ServiceConnectionUsage")
 class ServiceConnectionUsage:
     """
     Attributes:
+        image_repositories (int | Unset):
         installs (int | Unset):
     """
 
+    image_repositories: int | Unset = UNSET
     installs: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        image_repositories = self.image_repositories
+
         installs = self.installs
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if image_repositories is not UNSET:
+            field_dict["image_repositories"] = image_repositories
         if installs is not UNSET:
             field_dict["installs"] = installs
 
@@ -35,9 +41,12 @@ class ServiceConnectionUsage:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        image_repositories = d.pop("image_repositories", UNSET)
+
         installs = d.pop("installs", UNSET)
 
         service_connection_usage = cls(
+            image_repositories=image_repositories,
             installs=installs,
         )
 

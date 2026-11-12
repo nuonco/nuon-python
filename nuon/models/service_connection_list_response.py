@@ -23,9 +23,13 @@ T = TypeVar("T", bound="ServiceConnectionListResponse")
 class ServiceConnectionListResponse:
     """
     Attributes:
+        azure_registry_id (str | Unset):
+        azure_registry_login_server (str | Unset):
+        azure_tenant_id (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
         default_region (str | Unset):
+        gcp_project_number (str | Unset):
         id (str | Unset):
         last_verified_at (str | Unset):
         name (str | Unset):
@@ -43,9 +47,13 @@ class ServiceConnectionListResponse:
         verification_requested_at (str | Unset):
     """
 
+    azure_registry_id: str | Unset = UNSET
+    azure_registry_login_server: str | Unset = UNSET
+    azure_tenant_id: str | Unset = UNSET
     created_at: str | Unset = UNSET
     created_by_id: str | Unset = UNSET
     default_region: str | Unset = UNSET
+    gcp_project_number: str | Unset = UNSET
     id: str | Unset = UNSET
     last_verified_at: str | Unset = UNSET
     name: str | Unset = UNSET
@@ -64,11 +72,19 @@ class ServiceConnectionListResponse:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        azure_registry_id = self.azure_registry_id
+
+        azure_registry_login_server = self.azure_registry_login_server
+
+        azure_tenant_id = self.azure_tenant_id
+
         created_at = self.created_at
 
         created_by_id = self.created_by_id
 
         default_region = self.default_region
+
+        gcp_project_number = self.gcp_project_number
 
         id = self.id
 
@@ -116,12 +132,20 @@ class ServiceConnectionListResponse:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if azure_registry_id is not UNSET:
+            field_dict["azure_registry_id"] = azure_registry_id
+        if azure_registry_login_server is not UNSET:
+            field_dict["azure_registry_login_server"] = azure_registry_login_server
+        if azure_tenant_id is not UNSET:
+            field_dict["azure_tenant_id"] = azure_tenant_id
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if created_by_id is not UNSET:
             field_dict["created_by_id"] = created_by_id
         if default_region is not UNSET:
             field_dict["default_region"] = default_region
+        if gcp_project_number is not UNSET:
+            field_dict["gcp_project_number"] = gcp_project_number
         if id is not UNSET:
             field_dict["id"] = id
         if last_verified_at is not UNSET:
@@ -161,11 +185,19 @@ class ServiceConnectionListResponse:
         from ..models.service_connection_usage import ServiceConnectionUsage  # noqa: PLC0415
 
         d = dict(src_dict)
+        azure_registry_id = d.pop("azure_registry_id", UNSET)
+
+        azure_registry_login_server = d.pop("azure_registry_login_server", UNSET)
+
+        azure_tenant_id = d.pop("azure_tenant_id", UNSET)
+
         created_at = d.pop("created_at", UNSET)
 
         created_by_id = d.pop("created_by_id", UNSET)
 
         default_region = d.pop("default_region", UNSET)
+
+        gcp_project_number = d.pop("gcp_project_number", UNSET)
 
         id = d.pop("id", UNSET)
 
@@ -225,9 +257,13 @@ class ServiceConnectionListResponse:
         verification_requested_at = d.pop("verification_requested_at", UNSET)
 
         service_connection_list_response = cls(
+            azure_registry_id=azure_registry_id,
+            azure_registry_login_server=azure_registry_login_server,
+            azure_tenant_id=azure_tenant_id,
             created_at=created_at,
             created_by_id=created_by_id,
             default_region=default_region,
+            gcp_project_number=gcp_project_number,
             id=id,
             last_verified_at=last_verified_at,
             name=name,

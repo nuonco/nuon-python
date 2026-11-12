@@ -25,6 +25,7 @@ class ServiceSetupResponse:
         cli (str | Unset):
         cloudformation (str | Unset):
         issuer_url (str | Unset):
+        permissions_cli (str | Unset):
         permissions_policy (ServiceSetupResponsePermissionsPolicy | Unset):
         preset (AppCloudConnectionPreset | Unset):
         subject (str | Unset):
@@ -36,6 +37,7 @@ class ServiceSetupResponse:
     cli: str | Unset = UNSET
     cloudformation: str | Unset = UNSET
     issuer_url: str | Unset = UNSET
+    permissions_cli: str | Unset = UNSET
     permissions_policy: ServiceSetupResponsePermissionsPolicy | Unset = UNSET
     preset: AppCloudConnectionPreset | Unset = UNSET
     subject: str | Unset = UNSET
@@ -51,6 +53,8 @@ class ServiceSetupResponse:
         cloudformation = self.cloudformation
 
         issuer_url = self.issuer_url
+
+        permissions_cli = self.permissions_cli
 
         permissions_policy: dict[str, Any] | Unset = UNSET
         if not isinstance(self.permissions_policy, Unset):
@@ -79,6 +83,8 @@ class ServiceSetupResponse:
             field_dict["cloudformation"] = cloudformation
         if issuer_url is not UNSET:
             field_dict["issuer_url"] = issuer_url
+        if permissions_cli is not UNSET:
+            field_dict["permissions_cli"] = permissions_cli
         if permissions_policy is not UNSET:
             field_dict["permissions_policy"] = permissions_policy
         if preset is not UNSET:
@@ -105,6 +111,8 @@ class ServiceSetupResponse:
         cloudformation = d.pop("cloudformation", UNSET)
 
         issuer_url = d.pop("issuer_url", UNSET)
+
+        permissions_cli = d.pop("permissions_cli", UNSET)
 
         _permissions_policy = d.pop("permissions_policy", UNSET)
         permissions_policy: ServiceSetupResponsePermissionsPolicy | Unset
@@ -136,6 +144,7 @@ class ServiceSetupResponse:
             cli=cli,
             cloudformation=cloudformation,
             issuer_url=issuer_url,
+            permissions_cli=permissions_cli,
             permissions_policy=permissions_policy,
             preset=preset,
             subject=subject,

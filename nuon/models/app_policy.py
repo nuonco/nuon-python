@@ -24,7 +24,7 @@ class AppPolicy:
         created_by_id (str | Unset):
         id (str | Unset):
         name (AppPolicyName | Unset):
-        permissions (AppPolicyPermissions | Unset): Permissions are used to track granular permissions for each domain
+        permissions (AppPolicyPermissions | Unset):
         role_id (str | Unset):
         updated_at (str | Unset):
     """

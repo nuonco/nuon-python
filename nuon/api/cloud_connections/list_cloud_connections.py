@@ -1,10 +1,11 @@
 from http import HTTPStatus
 from typing import Any
 
-import httpx
+import httpx2
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.list_cloud_connections_platform import ListCloudConnectionsPlatform
 from ...models.service_connection_list_response import ServiceConnectionListResponse
 from ...types import UNSET, Response, Unset
 
@@ -15,6 +16,8 @@ def _get_kwargs(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    platform: ListCloudConnectionsPlatform | Unset = UNSET,
+    preset: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -26,6 +29,14 @@ def _get_kwargs(
     params["page"] = page
 
     params["q"] = q
+
+    json_platform: str | Unset = UNSET
+    if not isinstance(platform, Unset):
+        json_platform = platform.value
+
+    params["platform"] = json_platform
+
+    params["preset"] = preset
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -39,7 +50,7 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> list[ServiceConnectionListResponse] | None:
     if response.status_code == 200:
         response_200 = []
@@ -58,7 +69,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx2.Response
 ) -> Response[list[ServiceConnectionListResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -75,6 +86,8 @@ def sync_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    platform: ListCloudConnectionsPlatform | Unset = UNSET,
+    preset: str | Unset = UNSET,
 ) -> Response[list[ServiceConnectionListResponse]]:
     """list cloud connections
 
@@ -83,10 +96,12 @@ def sync_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        platform (ListCloudConnectionsPlatform | Unset):
+        preset (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         Response[list[ServiceConnectionListResponse]]
@@ -97,6 +112,8 @@ def sync_detailed(
         limit=limit,
         page=page,
         q=q,
+        platform=platform,
+        preset=preset,
     )
 
     response = client.get_httpx_client().request(
@@ -113,6 +130,8 @@ def sync(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    platform: ListCloudConnectionsPlatform | Unset = UNSET,
+    preset: str | Unset = UNSET,
 ) -> list[ServiceConnectionListResponse] | None:
     """list cloud connections
 
@@ -121,10 +140,12 @@ def sync(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        platform (ListCloudConnectionsPlatform | Unset):
+        preset (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         list[ServiceConnectionListResponse]
@@ -136,6 +157,8 @@ def sync(
         limit=limit,
         page=page,
         q=q,
+        platform=platform,
+        preset=preset,
     ).parsed
 
 
@@ -146,6 +169,8 @@ async def asyncio_detailed(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    platform: ListCloudConnectionsPlatform | Unset = UNSET,
+    preset: str | Unset = UNSET,
 ) -> Response[list[ServiceConnectionListResponse]]:
     """list cloud connections
 
@@ -154,10 +179,12 @@ async def asyncio_detailed(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        platform (ListCloudConnectionsPlatform | Unset):
+        preset (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         Response[list[ServiceConnectionListResponse]]
@@ -168,6 +195,8 @@ async def asyncio_detailed(
         limit=limit,
         page=page,
         q=q,
+        platform=platform,
+        preset=preset,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -182,6 +211,8 @@ async def asyncio(
     limit: int | Unset = 10,
     page: int | Unset = 0,
     q: str | Unset = UNSET,
+    platform: ListCloudConnectionsPlatform | Unset = UNSET,
+    preset: str | Unset = UNSET,
 ) -> list[ServiceConnectionListResponse] | None:
     """list cloud connections
 
@@ -190,10 +221,12 @@ async def asyncio(
         limit (int | Unset):  Default: 10.
         page (int | Unset):  Default: 0.
         q (str | Unset):
+        platform (ListCloudConnectionsPlatform | Unset):
+        preset (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
+        httpx2.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
         list[ServiceConnectionListResponse]
@@ -206,5 +239,7 @@ async def asyncio(
             limit=limit,
             page=page,
             q=q,
+            platform=platform,
+            preset=preset,
         )
     ).parsed

@@ -16,16 +16,18 @@ class AppAWSECRImageConfig:
     """
     Attributes:
         aws_region (str | Unset):
+        cloud_connection_id (str | Unset): actual configuration
         component_config_id (str | Unset): connection to parent model
         component_config_type (str | Unset):
         created_at (str | Unset):
         created_by_id (str | Unset):
-        iam_role_arn (str | Unset): actual configuration
+        iam_role_arn (str | Unset):
         id (str | Unset):
         updated_at (str | Unset):
     """
 
     aws_region: str | Unset = UNSET
+    cloud_connection_id: str | Unset = UNSET
     component_config_id: str | Unset = UNSET
     component_config_type: str | Unset = UNSET
     created_at: str | Unset = UNSET
@@ -37,6 +39,8 @@ class AppAWSECRImageConfig:
 
     def to_dict(self) -> dict[str, Any]:
         aws_region = self.aws_region
+
+        cloud_connection_id = self.cloud_connection_id
 
         component_config_id = self.component_config_id
 
@@ -57,6 +61,8 @@ class AppAWSECRImageConfig:
         field_dict.update({})
         if aws_region is not UNSET:
             field_dict["aws_region"] = aws_region
+        if cloud_connection_id is not UNSET:
+            field_dict["cloud_connection_id"] = cloud_connection_id
         if component_config_id is not UNSET:
             field_dict["component_config_id"] = component_config_id
         if component_config_type is not UNSET:
@@ -79,6 +85,8 @@ class AppAWSECRImageConfig:
         d = dict(src_dict)
         aws_region = d.pop("aws_region", UNSET)
 
+        cloud_connection_id = d.pop("cloud_connection_id", UNSET)
+
         component_config_id = d.pop("component_config_id", UNSET)
 
         component_config_type = d.pop("component_config_type", UNSET)
@@ -95,6 +103,7 @@ class AppAWSECRImageConfig:
 
         app_awsecr_image_config = cls(
             aws_region=aws_region,
+            cloud_connection_id=cloud_connection_id,
             component_config_id=component_config_id,
             component_config_type=component_config_type,
             created_at=created_at,
