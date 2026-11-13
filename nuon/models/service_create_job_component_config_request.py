@@ -29,7 +29,7 @@ class ServiceCreateJobComponentConfigRequest:
         app_config_id (str | Unset):
         args (list[str] | Unset):
         auto_approve_on_policies_passing (bool | Unset):
-        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
+        build_timeout (str | Unset): Duration string for build operations (e.g., "10m", "30m")
         checksum (str | Unset):
         cmd (list[str] | Unset):
         default_enabled (bool | Unset):

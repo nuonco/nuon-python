@@ -772,13 +772,7 @@ from .service_install_deployment_change_group import ServiceInstallDeploymentCha
 from .service_install_deployment_config_change import ServiceInstallDeploymentConfigChange
 from .service_install_deployment_image import ServiceInstallDeploymentImage
 from .service_install_deployment_policy_summary import ServiceInstallDeploymentPolicySummary
-from .service_install_deployment_source_build import ServiceInstallDeploymentSourceBuild
 from .service_install_deployment_source_diff import ServiceInstallDeploymentSourceDiff
-from .service_install_deployment_source_diff_kind import ServiceInstallDeploymentSourceDiffKind
-from .service_install_deployment_source_diff_status import ServiceInstallDeploymentSourceDiffStatus
-from .service_install_deployment_source_file import ServiceInstallDeploymentSourceFile
-from .service_install_deployment_source_file_change import ServiceInstallDeploymentSourceFileChange
-from .service_install_deployment_source_file_content import ServiceInstallDeploymentSourceFileContent
 from .service_install_deployment_step import ServiceInstallDeploymentStep
 from .service_install_deployment_summary import ServiceInstallDeploymentSummary
 from .service_install_deployment_type import ServiceInstallDeploymentType
@@ -1707,13 +1701,7 @@ __all__ = (
     "ServiceInstallDeploymentConfigChange",
     "ServiceInstallDeploymentImage",
     "ServiceInstallDeploymentPolicySummary",
-    "ServiceInstallDeploymentSourceBuild",
     "ServiceInstallDeploymentSourceDiff",
-    "ServiceInstallDeploymentSourceDiffKind",
-    "ServiceInstallDeploymentSourceDiffStatus",
-    "ServiceInstallDeploymentSourceFile",
-    "ServiceInstallDeploymentSourceFileChange",
-    "ServiceInstallDeploymentSourceFileContent",
     "ServiceInstallDeploymentStep",
     "ServiceInstallDeploymentSummary",
     "ServiceInstallDeploymentType",
