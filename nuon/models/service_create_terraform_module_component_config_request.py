@@ -34,7 +34,7 @@ class ServiceCreateTerraformModuleComponentConfigRequest:
         variables (ServiceCreateTerraformModuleComponentConfigRequestVariables):
         app_config_id (str | Unset):
         auto_approve_on_policies_passing (bool | Unset):
-        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
+        build_timeout (str | Unset): Duration string for build operations (e.g., "10m", "30m")
         checksum (str | Unset):
         connected_github_vcs_config (ServiceConnectedGithubVCSConfigRequest | Unset):
         default_enabled (bool | Unset):

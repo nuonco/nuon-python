@@ -32,7 +32,7 @@ class AppComponentConfigConnection:
         app_config_id (str | Unset):
         app_config_version (int | Unset):
         auto_approve_on_policies_passing (bool | Unset):
-        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h"). Max 1h.
+        build_timeout (str | Unset): Duration string for build operations (e.g., "10m", "30m"). Max 30m.
         checksum (str | Unset):
         component_dependency_ids (list[str] | Unset):
         component_id (str | Unset):

@@ -9,7 +9,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.get_install_deployment_source_diff_kind import GetInstallDeploymentSourceDiffKind
 from ...models.service_install_deployment_source_diff import ServiceInstallDeploymentSourceDiff
 from ...models.stderr_err_response import StderrErrResponse
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
@@ -18,7 +18,6 @@ def _get_kwargs(
     *,
     kind: GetInstallDeploymentSourceDiffKind,
     name: str,
-    path: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -27,8 +26,6 @@ def _get_kwargs(
     params["kind"] = json_kind
 
     params["name"] = name
-
-    params["path"] = path
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -101,19 +98,19 @@ def sync_detailed(
     client: AuthenticatedClient,
     kind: GetInstallDeploymentSourceDiffKind,
     name: str,
-    path: str | Unset = UNSET,
 ) -> Response[ServiceInstallDeploymentSourceDiff | StderrErrResponse]:
-    """compare captured source for a deployment resource
+    """get the GitHub compare link for a deployment resource
 
-     Compare the resource's frozen previously applied and selected builds. File content is fetched only
-    when path is provided.
+     Returns a GitHub compare URL between the commits of the resource's build for the install's pinned
+    app config and its build for this deployment's app config. The URL is empty when the builds are not
+    in the same GitHub repository, use the same commit, or have the same source digest. Nuon does not
+    read the repository for this response.
 
     Args:
         install_id (str):
         workflow_id (str):
         kind (GetInstallDeploymentSourceDiffKind):
         name (str):
-        path (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -128,7 +125,6 @@ def sync_detailed(
         workflow_id=workflow_id,
         kind=kind,
         name=name,
-        path=path,
     )
 
     response = client.get_httpx_client().request(
@@ -145,19 +141,19 @@ def sync(
     client: AuthenticatedClient,
     kind: GetInstallDeploymentSourceDiffKind,
     name: str,
-    path: str | Unset = UNSET,
 ) -> ServiceInstallDeploymentSourceDiff | StderrErrResponse | None:
-    """compare captured source for a deployment resource
+    """get the GitHub compare link for a deployment resource
 
-     Compare the resource's frozen previously applied and selected builds. File content is fetched only
-    when path is provided.
+     Returns a GitHub compare URL between the commits of the resource's build for the install's pinned
+    app config and its build for this deployment's app config. The URL is empty when the builds are not
+    in the same GitHub repository, use the same commit, or have the same source digest. Nuon does not
+    read the repository for this response.
 
     Args:
         install_id (str):
         workflow_id (str):
         kind (GetInstallDeploymentSourceDiffKind):
         name (str):
-        path (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,7 +169,6 @@ def sync(
         client=client,
         kind=kind,
         name=name,
-        path=path,
     ).parsed
 
 
@@ -184,19 +179,19 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     kind: GetInstallDeploymentSourceDiffKind,
     name: str,
-    path: str | Unset = UNSET,
 ) -> Response[ServiceInstallDeploymentSourceDiff | StderrErrResponse]:
-    """compare captured source for a deployment resource
+    """get the GitHub compare link for a deployment resource
 
-     Compare the resource's frozen previously applied and selected builds. File content is fetched only
-    when path is provided.
+     Returns a GitHub compare URL between the commits of the resource's build for the install's pinned
+    app config and its build for this deployment's app config. The URL is empty when the builds are not
+    in the same GitHub repository, use the same commit, or have the same source digest. Nuon does not
+    read the repository for this response.
 
     Args:
         install_id (str):
         workflow_id (str):
         kind (GetInstallDeploymentSourceDiffKind):
         name (str):
-        path (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -211,7 +206,6 @@ async def asyncio_detailed(
         workflow_id=workflow_id,
         kind=kind,
         name=name,
-        path=path,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -226,19 +220,19 @@ async def asyncio(
     client: AuthenticatedClient,
     kind: GetInstallDeploymentSourceDiffKind,
     name: str,
-    path: str | Unset = UNSET,
 ) -> ServiceInstallDeploymentSourceDiff | StderrErrResponse | None:
-    """compare captured source for a deployment resource
+    """get the GitHub compare link for a deployment resource
 
-     Compare the resource's frozen previously applied and selected builds. File content is fetched only
-    when path is provided.
+     Returns a GitHub compare URL between the commits of the resource's build for the install's pinned
+    app config and its build for this deployment's app config. The URL is empty when the builds are not
+    in the same GitHub repository, use the same commit, or have the same source digest. Nuon does not
+    read the repository for this response.
 
     Args:
         install_id (str):
         workflow_id (str):
         kind (GetInstallDeploymentSourceDiffKind):
         name (str):
-        path (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -255,6 +249,5 @@ async def asyncio(
             client=client,
             kind=kind,
             name=name,
-            path=path,
         )
     ).parsed

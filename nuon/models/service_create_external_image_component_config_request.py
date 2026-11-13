@@ -29,7 +29,7 @@ class ServiceCreateExternalImageComponentConfigRequest:
         auto_approve_on_policies_passing (bool | Unset):
         aws_ecr_image_config (ServiceAwsECRImageConfigRequest | Unset):
         azure_acr_image_config (ServiceAzureACRImageConfigRequest | Unset):
-        build_timeout (str | Unset): Duration string for build operations (e.g., "30m", "1h")
+        build_timeout (str | Unset): Duration string for build operations (e.g., "10m", "30m")
         checksum (str | Unset):
         default_enabled (bool | Unset):
         dependencies (list[str] | Unset):
