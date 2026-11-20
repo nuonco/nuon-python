@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
+    from ..models.app_app_awsiam_role_eks_access import AppAppAWSIAMRoleEKSAccess
     from ..models.sql_null_bool import SqlNullBool
 
 
@@ -30,6 +31,7 @@ class ServiceInstallPermissionsRoleStatus:
         created_by_id (str | Unset):
         description (str | Unset):
         display_name (str | Unset):
+        eks_access (AppAppAWSIAMRoleEKSAccess | Unset):
         enabled (bool | Unset):
         enabled_in_stack (SqlNullBool | Unset):
         id (str | Unset):
@@ -56,6 +58,7 @@ class ServiceInstallPermissionsRoleStatus:
     created_by_id: str | Unset = UNSET
     description: str | Unset = UNSET
     display_name: str | Unset = UNSET
+    eks_access: AppAppAWSIAMRoleEKSAccess | Unset = UNSET
     enabled: bool | Unset = UNSET
     enabled_in_stack: SqlNullBool | Unset = UNSET
     id: str | Unset = UNSET
@@ -88,6 +91,10 @@ class ServiceInstallPermissionsRoleStatus:
         description = self.description
 
         display_name = self.display_name
+
+        eks_access: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.eks_access, Unset):
+            eks_access = self.eks_access.to_dict()
 
         enabled = self.enabled
 
@@ -145,6 +152,8 @@ class ServiceInstallPermissionsRoleStatus:
             field_dict["description"] = description
         if display_name is not UNSET:
             field_dict["display_name"] = display_name
+        if eks_access is not UNSET:
+            field_dict["eks_access"] = eks_access
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
         if enabled_in_stack is not UNSET:
@@ -175,6 +184,7 @@ class ServiceInstallPermissionsRoleStatus:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig  # noqa: PLC0415
+        from ..models.app_app_awsiam_role_eks_access import AppAppAWSIAMRoleEKSAccess  # noqa: PLC0415
         from ..models.sql_null_bool import SqlNullBool  # noqa: PLC0415
 
         d = dict(src_dict)
@@ -195,6 +205,13 @@ class ServiceInstallPermissionsRoleStatus:
         description = d.pop("description", UNSET)
 
         display_name = d.pop("display_name", UNSET)
+
+        _eks_access = d.pop("eks_access", UNSET)
+        eks_access: AppAppAWSIAMRoleEKSAccess | Unset
+        if isinstance(_eks_access, Unset):
+            eks_access = UNSET
+        else:
+            eks_access = AppAppAWSIAMRoleEKSAccess.from_dict(_eks_access)
 
         enabled = d.pop("enabled", UNSET)
 
@@ -247,6 +264,7 @@ class ServiceInstallPermissionsRoleStatus:
             created_by_id=created_by_id,
             description=description,
             display_name=display_name,
+            eks_access=eks_access,
             enabled=enabled,
             enabled_in_stack=enabled_in_stack,
             id=id,

@@ -10,6 +10,7 @@ from ..models.service_app_awsiam_role_config_cloud_platform import ServiceAppAWS
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.app_app_awsiam_role_eks_access import AppAppAWSIAMRoleEKSAccess
     from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig
 
 
@@ -24,6 +25,7 @@ class ServiceAppAWSIAMRoleConfig:
         display_name (str):
         name (str):
         cloud_platform (ServiceAppAWSIAMRoleConfigCloudPlatform | Unset):
+        eks_access (AppAppAWSIAMRoleEKSAccess | Unset):
         enabled_in_stack (bool | None | Unset):
         named_policy_names (list[str] | Unset):
         permissions_boundary (str | Unset):
@@ -36,6 +38,7 @@ class ServiceAppAWSIAMRoleConfig:
     display_name: str
     name: str
     cloud_platform: ServiceAppAWSIAMRoleConfigCloudPlatform | Unset = UNSET
+    eks_access: AppAppAWSIAMRoleEKSAccess | Unset = UNSET
     enabled_in_stack: bool | None | Unset = UNSET
     named_policy_names: list[str] | Unset = UNSET
     permissions_boundary: str | Unset = UNSET
@@ -52,6 +55,10 @@ class ServiceAppAWSIAMRoleConfig:
         cloud_platform: str | Unset = UNSET
         if not isinstance(self.cloud_platform, Unset):
             cloud_platform = self.cloud_platform.value
+
+        eks_access: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.eks_access, Unset):
+            eks_access = self.eks_access.to_dict()
 
         enabled_in_stack: bool | None | Unset
         if isinstance(self.enabled_in_stack, Unset):
@@ -83,6 +90,8 @@ class ServiceAppAWSIAMRoleConfig:
         )
         if cloud_platform is not UNSET:
             field_dict["cloud_platform"] = cloud_platform
+        if eks_access is not UNSET:
+            field_dict["eks_access"] = eks_access
         if enabled_in_stack is not UNSET:
             field_dict["enabled_in_stack"] = enabled_in_stack
         if named_policy_names is not UNSET:
@@ -96,6 +105,7 @@ class ServiceAppAWSIAMRoleConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.app_app_awsiam_role_eks_access import AppAppAWSIAMRoleEKSAccess  # noqa: PLC0415
         from ..models.service_app_awsiam_policy_config import ServiceAppAWSIAMPolicyConfig  # noqa: PLC0415
 
         d = dict(src_dict)
@@ -111,6 +121,13 @@ class ServiceAppAWSIAMRoleConfig:
             cloud_platform = UNSET
         else:
             cloud_platform = ServiceAppAWSIAMRoleConfigCloudPlatform(_cloud_platform)
+
+        _eks_access = d.pop("eks_access", UNSET)
+        eks_access: AppAppAWSIAMRoleEKSAccess | Unset
+        if isinstance(_eks_access, Unset):
+            eks_access = UNSET
+        else:
+            eks_access = AppAppAWSIAMRoleEKSAccess.from_dict(_eks_access)
 
         def _parse_enabled_in_stack(data: object) -> bool | None | Unset:
             if data is None:
@@ -139,6 +156,7 @@ class ServiceAppAWSIAMRoleConfig:
             display_name=display_name,
             name=name,
             cloud_platform=cloud_platform,
+            eks_access=eks_access,
             enabled_in_stack=enabled_in_stack,
             named_policy_names=named_policy_names,
             permissions_boundary=permissions_boundary,
