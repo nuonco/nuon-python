@@ -14,6 +14,8 @@ from .app_ad_hoc_step_config_env_vars import AppAdHocStepConfigEnvVars
 from .app_app import AppApp
 from .app_app_awsiam_policy_config import AppAppAWSIAMPolicyConfig
 from .app_app_awsiam_role_config import AppAppAWSIAMRoleConfig
+from .app_app_awsiam_role_eks_access import AppAppAWSIAMRoleEKSAccess
+from .app_app_awsiam_role_eks_access_policy import AppAppAWSIAMRoleEKSAccessPolicy
 from .app_app_branch import AppAppBranch
 from .app_app_branch_config import AppAppBranchConfig
 from .app_app_branch_install_group import AppAppBranchInstallGroup
@@ -983,6 +985,8 @@ __all__ = (
     "AppApp",
     "AppAppAWSIAMPolicyConfig",
     "AppAppAWSIAMRoleConfig",
+    "AppAppAWSIAMRoleEKSAccess",
+    "AppAppAWSIAMRoleEKSAccessPolicy",
     "AppAppBranch",
     "AppAppBranchConfig",
     "AppAppBranchInstallGroup",
