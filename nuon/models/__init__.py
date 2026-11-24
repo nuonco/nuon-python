@@ -533,6 +533,13 @@ from .service_app_branch_run_comparison_run_summary import ServiceAppBranchRunCo
 from .service_app_config_diff_response import ServiceAppConfigDiffResponse
 from .service_app_config_template import ServiceAppConfigTemplate
 from .service_app_config_template_type import ServiceAppConfigTemplateType
+from .service_app_fleet_branch import ServiceAppFleetBranch
+from .service_app_fleet_counts import ServiceAppFleetCounts
+from .service_app_fleet_group import ServiceAppFleetGroup
+from .service_app_fleet_install import ServiceAppFleetInstall
+from .service_app_fleet_response import ServiceAppFleetResponse
+from .service_app_fleet_summary import ServiceAppFleetSummary
+from .service_app_fleet_target_run import ServiceAppFleetTargetRun
 from .service_app_group_request import ServiceAppGroupRequest
 from .service_app_input_request import ServiceAppInputRequest
 from .service_app_kubernetes_context import ServiceAppKubernetesContext
@@ -749,14 +756,6 @@ from .service_install_activity_policy import ServiceInstallActivityPolicy
 from .service_install_activity_runbook import ServiceInstallActivityRunbook
 from .service_install_activity_type import ServiceInstallActivityType
 from .service_install_activity_workflow_ref import ServiceInstallActivityWorkflowRef
-from .service_install_alignment import ServiceInstallAlignment
-from .service_install_alignment_attempt import ServiceInstallAlignmentAttempt
-from .service_install_alignment_category import ServiceInstallAlignmentCategory
-from .service_install_alignment_explanation import ServiceInstallAlignmentExplanation
-from .service_install_alignment_open_deployment import ServiceInstallAlignmentOpenDeployment
-from .service_install_alignment_plan import ServiceInstallAlignmentPlan
-from .service_install_alignment_resource import ServiceInstallAlignmentResource
-from .service_install_alignment_resource_kind import ServiceInstallAlignmentResourceKind
 from .service_install_app_config_tree_diff_response import ServiceInstallAppConfigTreeDiffResponse
 from .service_install_app_config_update import ServiceInstallAppConfigUpdate
 from .service_install_app_permissions_config_response import ServiceInstallAppPermissionsConfigResponse
@@ -788,6 +787,15 @@ from .service_install_overview_commit import ServiceInstallOverviewCommit
 from .service_install_overview_response import ServiceInstallOverviewResponse
 from .service_install_permissions_role_status import ServiceInstallPermissionsRoleStatus
 from .service_install_phone_home_request import ServiceInstallPhoneHomeRequest
+from .service_install_resource_sync_status import ServiceInstallResourceSyncStatus
+from .service_install_resource_sync_status_attempt import ServiceInstallResourceSyncStatusAttempt
+from .service_install_resource_sync_status_category import ServiceInstallResourceSyncStatusCategory
+from .service_install_resource_sync_status_explanation import ServiceInstallResourceSyncStatusExplanation
+from .service_install_resource_sync_status_open_deployment import ServiceInstallResourceSyncStatusOpenDeployment
+from .service_install_resource_sync_status_origin import ServiceInstallResourceSyncStatusOrigin
+from .service_install_resource_sync_status_plan import ServiceInstallResourceSyncStatusPlan
+from .service_install_resource_sync_status_resource import ServiceInstallResourceSyncStatusResource
+from .service_install_resource_sync_status_resource_kind import ServiceInstallResourceSyncStatusResourceKind
 from .service_install_stack_update import ServiceInstallStackUpdate
 from .service_install_status_response import ServiceInstallStatusResponse
 from .service_install_telemetry_settings import ServiceInstallTelemetrySettings
@@ -1492,6 +1500,13 @@ __all__ = (
     "ServiceAppConfigDiffResponse",
     "ServiceAppConfigTemplate",
     "ServiceAppConfigTemplateType",
+    "ServiceAppFleetBranch",
+    "ServiceAppFleetCounts",
+    "ServiceAppFleetGroup",
+    "ServiceAppFleetInstall",
+    "ServiceAppFleetResponse",
+    "ServiceAppFleetSummary",
+    "ServiceAppFleetTargetRun",
     "ServiceAppGroupRequest",
     "ServiceAppInputRequest",
     "ServiceAppKubernetesContext",
@@ -1680,14 +1695,6 @@ __all__ = (
     "ServiceInstallActivityRunbook",
     "ServiceInstallActivityType",
     "ServiceInstallActivityWorkflowRef",
-    "ServiceInstallAlignment",
-    "ServiceInstallAlignmentAttempt",
-    "ServiceInstallAlignmentCategory",
-    "ServiceInstallAlignmentExplanation",
-    "ServiceInstallAlignmentOpenDeployment",
-    "ServiceInstallAlignmentPlan",
-    "ServiceInstallAlignmentResource",
-    "ServiceInstallAlignmentResourceKind",
     "ServiceInstallAppConfigTreeDiffResponse",
     "ServiceInstallAppConfigUpdate",
     "ServiceInstallAppPermissionsConfigResponse",
@@ -1719,6 +1726,15 @@ __all__ = (
     "ServiceInstallOverviewResponse",
     "ServiceInstallPermissionsRoleStatus",
     "ServiceInstallPhoneHomeRequest",
+    "ServiceInstallResourceSyncStatus",
+    "ServiceInstallResourceSyncStatusAttempt",
+    "ServiceInstallResourceSyncStatusCategory",
+    "ServiceInstallResourceSyncStatusExplanation",
+    "ServiceInstallResourceSyncStatusOpenDeployment",
+    "ServiceInstallResourceSyncStatusOrigin",
+    "ServiceInstallResourceSyncStatusPlan",
+    "ServiceInstallResourceSyncStatusResource",
+    "ServiceInstallResourceSyncStatusResourceKind",
     "ServiceInstallsHealthResponse",
     "ServiceInstallStackUpdate",
     "ServiceInstallStatusResponse",

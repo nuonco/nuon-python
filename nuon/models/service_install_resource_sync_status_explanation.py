@@ -8,11 +8,11 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceInstallAlignmentExplanation")
+T = TypeVar("T", bound="ServiceInstallResourceSyncStatusExplanation")
 
 
 @_attrs_define
-class ServiceInstallAlignmentExplanation:
+class ServiceInstallResourceSyncStatusExplanation:
     """
     Attributes:
         status (str | Unset):
@@ -61,15 +61,15 @@ class ServiceInstallAlignmentExplanation:
 
         workflow_id = d.pop("workflow_id", UNSET)
 
-        service_install_alignment_explanation = cls(
+        service_install_resource_sync_status_explanation = cls(
             status=status,
             step_id=step_id,
             summary=summary,
             workflow_id=workflow_id,
         )
 
-        service_install_alignment_explanation.additional_properties = d
-        return service_install_alignment_explanation
+        service_install_resource_sync_status_explanation.additional_properties = d
+        return service_install_resource_sync_status_explanation
 
     @property
     def additional_keys(self) -> list[str]:

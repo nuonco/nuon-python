@@ -20,7 +20,8 @@ class AppInstallGroupRunInstall:
     """
     Attributes:
         install_id (str | Unset):
-        phase (str | Unset): Phase is which stage of the group the install is in: "deploy" or "runbook".
+        phase (str | Unset): Phase is which stage of the group the install is in: "deploy", "desired",
+            or "runbook".
         release_reason (str | Unset): ReleaseReason is why the group stopped waiting on this install.
         runbooks (list[AppInstallGroupRunRunbook] | Unset):
         status (str | Unset):
