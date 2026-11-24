@@ -9,11 +9,11 @@ from attrs import field as _attrs_field
 from ..models.app_workflow_step_approval_type import AppWorkflowStepApprovalType
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceInstallAlignmentPlan")
+T = TypeVar("T", bound="ServiceInstallResourceSyncStatusPlan")
 
 
 @_attrs_define
-class ServiceInstallAlignmentPlan:
+class ServiceInstallResourceSyncStatusPlan:
     """
     Attributes:
         approval_id (str | Unset):
@@ -141,7 +141,7 @@ class ServiceInstallAlignmentPlan:
 
         workflow_id = d.pop("workflow_id", UNSET)
 
-        service_install_alignment_plan = cls(
+        service_install_resource_sync_status_plan = cls(
             approval_id=approval_id,
             changes_create=changes_create,
             changes_delete=changes_delete,
@@ -157,8 +157,8 @@ class ServiceInstallAlignmentPlan:
             workflow_id=workflow_id,
         )
 
-        service_install_alignment_plan.additional_properties = d
-        return service_install_alignment_plan
+        service_install_resource_sync_status_plan.additional_properties = d
+        return service_install_resource_sync_status_plan
 
     @property
     def additional_keys(self) -> list[str]:

@@ -6,58 +6,67 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.service_install_alignment_category import ServiceInstallAlignmentCategory
-from ..models.service_install_alignment_resource_kind import ServiceInstallAlignmentResourceKind
+from ..models.service_install_resource_sync_status_category import ServiceInstallResourceSyncStatusCategory
+from ..models.service_install_resource_sync_status_resource_kind import ServiceInstallResourceSyncStatusResourceKind
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.service_install_alignment_attempt import ServiceInstallAlignmentAttempt
-    from ..models.service_install_alignment_explanation import ServiceInstallAlignmentExplanation
-    from ..models.service_install_alignment_open_deployment import ServiceInstallAlignmentOpenDeployment
-    from ..models.service_install_alignment_plan import ServiceInstallAlignmentPlan
+    from ..models.service_install_resource_sync_status_attempt import ServiceInstallResourceSyncStatusAttempt
+    from ..models.service_install_resource_sync_status_explanation import ServiceInstallResourceSyncStatusExplanation
+    from ..models.service_install_resource_sync_status_open_deployment import (
+        ServiceInstallResourceSyncStatusOpenDeployment,
+    )
+    from ..models.service_install_resource_sync_status_origin import ServiceInstallResourceSyncStatusOrigin
+    from ..models.service_install_resource_sync_status_plan import ServiceInstallResourceSyncStatusPlan
 
 
-T = TypeVar("T", bound="ServiceInstallAlignmentResource")
+T = TypeVar("T", bound="ServiceInstallResourceSyncStatusResource")
 
 
 @_attrs_define
-class ServiceInstallAlignmentResource:
+class ServiceInstallResourceSyncStatusResource:
     """
     Attributes:
         applied_build_id (str | Unset):
+        applied_by (ServiceInstallResourceSyncStatusOrigin | Unset):
         applied_config_id (str | Unset):
-        category (ServiceInstallAlignmentCategory | Unset):
+        applied_deploy_at (str | Unset):
+        applied_deploy_id (str | Unset):
+        category (ServiceInstallResourceSyncStatusCategory | Unset):
         component_id (str | Unset):
         component_type (str | Unset):
         expected_build_id (str | Unset):
         expected_config_id (str | Unset):
-        explanation (ServiceInstallAlignmentExplanation | Unset):
+        explanation (ServiceInstallResourceSyncStatusExplanation | Unset):
         id (str | Unset):
-        kind (ServiceInstallAlignmentResourceKind | Unset):
-        last_attempt (ServiceInstallAlignmentAttempt | Unset):
+        kind (ServiceInstallResourceSyncStatusResourceKind | Unset):
+        last_attempt (ServiceInstallResourceSyncStatusAttempt | Unset):
         name (str | Unset):
         newer_branch_runs (int | None | Unset):
-        open_deployment (ServiceInstallAlignmentOpenDeployment | Unset):
-        plan (ServiceInstallAlignmentPlan | Unset):
+        open_deployment (ServiceInstallResourceSyncStatusOpenDeployment | Unset):
+        plan (ServiceInstallResourceSyncStatusPlan | Unset):
         reason (str | Unset):
         status (str | Unset):
     """
 
     applied_build_id: str | Unset = UNSET
+    applied_by: ServiceInstallResourceSyncStatusOrigin | Unset = UNSET
     applied_config_id: str | Unset = UNSET
-    category: ServiceInstallAlignmentCategory | Unset = UNSET
+    applied_deploy_at: str | Unset = UNSET
+    applied_deploy_id: str | Unset = UNSET
+    category: ServiceInstallResourceSyncStatusCategory | Unset = UNSET
     component_id: str | Unset = UNSET
     component_type: str | Unset = UNSET
     expected_build_id: str | Unset = UNSET
     expected_config_id: str | Unset = UNSET
-    explanation: ServiceInstallAlignmentExplanation | Unset = UNSET
+    explanation: ServiceInstallResourceSyncStatusExplanation | Unset = UNSET
     id: str | Unset = UNSET
-    kind: ServiceInstallAlignmentResourceKind | Unset = UNSET
-    last_attempt: ServiceInstallAlignmentAttempt | Unset = UNSET
+    kind: ServiceInstallResourceSyncStatusResourceKind | Unset = UNSET
+    last_attempt: ServiceInstallResourceSyncStatusAttempt | Unset = UNSET
     name: str | Unset = UNSET
     newer_branch_runs: int | None | Unset = UNSET
-    open_deployment: ServiceInstallAlignmentOpenDeployment | Unset = UNSET
-    plan: ServiceInstallAlignmentPlan | Unset = UNSET
+    open_deployment: ServiceInstallResourceSyncStatusOpenDeployment | Unset = UNSET
+    plan: ServiceInstallResourceSyncStatusPlan | Unset = UNSET
     reason: str | Unset = UNSET
     status: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -65,7 +74,15 @@ class ServiceInstallAlignmentResource:
     def to_dict(self) -> dict[str, Any]:
         applied_build_id = self.applied_build_id
 
+        applied_by: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.applied_by, Unset):
+            applied_by = self.applied_by.to_dict()
+
         applied_config_id = self.applied_config_id
+
+        applied_deploy_at = self.applied_deploy_at
+
+        applied_deploy_id = self.applied_deploy_id
 
         category: str | Unset = UNSET
         if not isinstance(self.category, Unset):
@@ -118,8 +135,14 @@ class ServiceInstallAlignmentResource:
         field_dict.update({})
         if applied_build_id is not UNSET:
             field_dict["applied_build_id"] = applied_build_id
+        if applied_by is not UNSET:
+            field_dict["applied_by"] = applied_by
         if applied_config_id is not UNSET:
             field_dict["applied_config_id"] = applied_config_id
+        if applied_deploy_at is not UNSET:
+            field_dict["applied_deploy_at"] = applied_deploy_at
+        if applied_deploy_id is not UNSET:
+            field_dict["applied_deploy_id"] = applied_deploy_id
         if category is not UNSET:
             field_dict["category"] = category
         if component_id is not UNSET:
@@ -155,22 +178,38 @@ class ServiceInstallAlignmentResource:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_alignment_attempt import ServiceInstallAlignmentAttempt  # noqa: PLC0415
-        from ..models.service_install_alignment_explanation import ServiceInstallAlignmentExplanation  # noqa: PLC0415
-        from ..models.service_install_alignment_open_deployment import ServiceInstallAlignmentOpenDeployment  # noqa: PLC0415
-        from ..models.service_install_alignment_plan import ServiceInstallAlignmentPlan  # noqa: PLC0415
+        from ..models.service_install_resource_sync_status_attempt import ServiceInstallResourceSyncStatusAttempt  # noqa: PLC0415
+        from ..models.service_install_resource_sync_status_explanation import (
+            ServiceInstallResourceSyncStatusExplanation,  # noqa: PLC0415
+        )
+        from ..models.service_install_resource_sync_status_open_deployment import (
+            ServiceInstallResourceSyncStatusOpenDeployment,  # noqa: PLC0415
+        )
+        from ..models.service_install_resource_sync_status_origin import ServiceInstallResourceSyncStatusOrigin  # noqa: PLC0415
+        from ..models.service_install_resource_sync_status_plan import ServiceInstallResourceSyncStatusPlan  # noqa: PLC0415
 
         d = dict(src_dict)
         applied_build_id = d.pop("applied_build_id", UNSET)
 
+        _applied_by = d.pop("applied_by", UNSET)
+        applied_by: ServiceInstallResourceSyncStatusOrigin | Unset
+        if isinstance(_applied_by, Unset):
+            applied_by = UNSET
+        else:
+            applied_by = ServiceInstallResourceSyncStatusOrigin.from_dict(_applied_by)
+
         applied_config_id = d.pop("applied_config_id", UNSET)
 
+        applied_deploy_at = d.pop("applied_deploy_at", UNSET)
+
+        applied_deploy_id = d.pop("applied_deploy_id", UNSET)
+
         _category = d.pop("category", UNSET)
-        category: ServiceInstallAlignmentCategory | Unset
+        category: ServiceInstallResourceSyncStatusCategory | Unset
         if isinstance(_category, Unset):
             category = UNSET
         else:
-            category = ServiceInstallAlignmentCategory(_category)
+            category = ServiceInstallResourceSyncStatusCategory(_category)
 
         component_id = d.pop("component_id", UNSET)
 
@@ -181,27 +220,27 @@ class ServiceInstallAlignmentResource:
         expected_config_id = d.pop("expected_config_id", UNSET)
 
         _explanation = d.pop("explanation", UNSET)
-        explanation: ServiceInstallAlignmentExplanation | Unset
+        explanation: ServiceInstallResourceSyncStatusExplanation | Unset
         if isinstance(_explanation, Unset):
             explanation = UNSET
         else:
-            explanation = ServiceInstallAlignmentExplanation.from_dict(_explanation)
+            explanation = ServiceInstallResourceSyncStatusExplanation.from_dict(_explanation)
 
         id = d.pop("id", UNSET)
 
         _kind = d.pop("kind", UNSET)
-        kind: ServiceInstallAlignmentResourceKind | Unset
+        kind: ServiceInstallResourceSyncStatusResourceKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
-            kind = ServiceInstallAlignmentResourceKind(_kind)
+            kind = ServiceInstallResourceSyncStatusResourceKind(_kind)
 
         _last_attempt = d.pop("last_attempt", UNSET)
-        last_attempt: ServiceInstallAlignmentAttempt | Unset
+        last_attempt: ServiceInstallResourceSyncStatusAttempt | Unset
         if isinstance(_last_attempt, Unset):
             last_attempt = UNSET
         else:
-            last_attempt = ServiceInstallAlignmentAttempt.from_dict(_last_attempt)
+            last_attempt = ServiceInstallResourceSyncStatusAttempt.from_dict(_last_attempt)
 
         name = d.pop("name", UNSET)
 
@@ -215,26 +254,29 @@ class ServiceInstallAlignmentResource:
         newer_branch_runs = _parse_newer_branch_runs(d.pop("newer_branch_runs", UNSET))
 
         _open_deployment = d.pop("open_deployment", UNSET)
-        open_deployment: ServiceInstallAlignmentOpenDeployment | Unset
+        open_deployment: ServiceInstallResourceSyncStatusOpenDeployment | Unset
         if isinstance(_open_deployment, Unset):
             open_deployment = UNSET
         else:
-            open_deployment = ServiceInstallAlignmentOpenDeployment.from_dict(_open_deployment)
+            open_deployment = ServiceInstallResourceSyncStatusOpenDeployment.from_dict(_open_deployment)
 
         _plan = d.pop("plan", UNSET)
-        plan: ServiceInstallAlignmentPlan | Unset
+        plan: ServiceInstallResourceSyncStatusPlan | Unset
         if isinstance(_plan, Unset):
             plan = UNSET
         else:
-            plan = ServiceInstallAlignmentPlan.from_dict(_plan)
+            plan = ServiceInstallResourceSyncStatusPlan.from_dict(_plan)
 
         reason = d.pop("reason", UNSET)
 
         status = d.pop("status", UNSET)
 
-        service_install_alignment_resource = cls(
+        service_install_resource_sync_status_resource = cls(
             applied_build_id=applied_build_id,
+            applied_by=applied_by,
             applied_config_id=applied_config_id,
+            applied_deploy_at=applied_deploy_at,
+            applied_deploy_id=applied_deploy_id,
             category=category,
             component_id=component_id,
             component_type=component_type,
@@ -252,8 +294,8 @@ class ServiceInstallAlignmentResource:
             status=status,
         )
 
-        service_install_alignment_resource.additional_properties = d
-        return service_install_alignment_resource
+        service_install_resource_sync_status_resource.additional_properties = d
+        return service_install_resource_sync_status_resource
 
     @property
     def additional_keys(self) -> list[str]:
