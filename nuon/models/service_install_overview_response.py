@@ -9,9 +9,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.service_install_alignment import ServiceInstallAlignment
     from ..models.service_install_branch_tracking import ServiceInstallBranchTracking
     from ..models.service_install_config_drift import ServiceInstallConfigDrift
+    from ..models.service_install_resource_sync_status import ServiceInstallResourceSyncStatus
 
 
 T = TypeVar("T", bound="ServiceInstallOverviewResponse")
@@ -21,21 +21,17 @@ T = TypeVar("T", bound="ServiceInstallOverviewResponse")
 class ServiceInstallOverviewResponse:
     """
     Attributes:
-        alignment (ServiceInstallAlignment | Unset):
         branch_tracking (ServiceInstallBranchTracking | Unset):
         config_drift (ServiceInstallConfigDrift | Unset):
+        resource_sync_status (ServiceInstallResourceSyncStatus | Unset):
     """
 
-    alignment: ServiceInstallAlignment | Unset = UNSET
     branch_tracking: ServiceInstallBranchTracking | Unset = UNSET
     config_drift: ServiceInstallConfigDrift | Unset = UNSET
+    resource_sync_status: ServiceInstallResourceSyncStatus | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        alignment: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.alignment, Unset):
-            alignment = self.alignment.to_dict()
-
         branch_tracking: dict[str, Any] | Unset = UNSET
         if not isinstance(self.branch_tracking, Unset):
             branch_tracking = self.branch_tracking.to_dict()
@@ -44,32 +40,29 @@ class ServiceInstallOverviewResponse:
         if not isinstance(self.config_drift, Unset):
             config_drift = self.config_drift.to_dict()
 
+        resource_sync_status: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.resource_sync_status, Unset):
+            resource_sync_status = self.resource_sync_status.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if alignment is not UNSET:
-            field_dict["alignment"] = alignment
         if branch_tracking is not UNSET:
             field_dict["branch_tracking"] = branch_tracking
         if config_drift is not UNSET:
             field_dict["config_drift"] = config_drift
+        if resource_sync_status is not UNSET:
+            field_dict["resource_sync_status"] = resource_sync_status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_alignment import ServiceInstallAlignment  # noqa: PLC0415
         from ..models.service_install_branch_tracking import ServiceInstallBranchTracking  # noqa: PLC0415
         from ..models.service_install_config_drift import ServiceInstallConfigDrift  # noqa: PLC0415
+        from ..models.service_install_resource_sync_status import ServiceInstallResourceSyncStatus  # noqa: PLC0415
 
         d = dict(src_dict)
-        _alignment = d.pop("alignment", UNSET)
-        alignment: ServiceInstallAlignment | Unset
-        if isinstance(_alignment, Unset):
-            alignment = UNSET
-        else:
-            alignment = ServiceInstallAlignment.from_dict(_alignment)
-
         _branch_tracking = d.pop("branch_tracking", UNSET)
         branch_tracking: ServiceInstallBranchTracking | Unset
         if isinstance(_branch_tracking, Unset):
@@ -84,10 +77,17 @@ class ServiceInstallOverviewResponse:
         else:
             config_drift = ServiceInstallConfigDrift.from_dict(_config_drift)
 
+        _resource_sync_status = d.pop("resource_sync_status", UNSET)
+        resource_sync_status: ServiceInstallResourceSyncStatus | Unset
+        if isinstance(_resource_sync_status, Unset):
+            resource_sync_status = UNSET
+        else:
+            resource_sync_status = ServiceInstallResourceSyncStatus.from_dict(_resource_sync_status)
+
         service_install_overview_response = cls(
-            alignment=alignment,
             branch_tracking=branch_tracking,
             config_drift=config_drift,
+            resource_sync_status=resource_sync_status,
         )
 
         service_install_overview_response.additional_properties = d

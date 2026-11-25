@@ -9,22 +9,22 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.service_install_alignment_resource import ServiceInstallAlignmentResource
+    from ..models.service_install_resource_sync_status_resource import ServiceInstallResourceSyncStatusResource
 
 
-T = TypeVar("T", bound="ServiceInstallAlignment")
+T = TypeVar("T", bound="ServiceInstallResourceSyncStatus")
 
 
 @_attrs_define
-class ServiceInstallAlignment:
+class ServiceInstallResourceSyncStatus:
     """
     Attributes:
         error (str | Unset):
-        resources (list[ServiceInstallAlignmentResource] | Unset):
+        resources (list[ServiceInstallResourceSyncStatusResource] | Unset):
     """
 
     error: str | Unset = UNSET
-    resources: list[ServiceInstallAlignmentResource] | Unset = UNSET
+    resources: list[ServiceInstallResourceSyncStatusResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,27 +49,27 @@ class ServiceInstallAlignment:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.service_install_alignment_resource import ServiceInstallAlignmentResource  # noqa: PLC0415
+        from ..models.service_install_resource_sync_status_resource import ServiceInstallResourceSyncStatusResource  # noqa: PLC0415
 
         d = dict(src_dict)
         error = d.pop("error", UNSET)
 
         _resources = d.pop("resources", UNSET)
-        resources: list[ServiceInstallAlignmentResource] | Unset = UNSET
+        resources: list[ServiceInstallResourceSyncStatusResource] | Unset = UNSET
         if _resources is not UNSET:
             resources = []
             for resources_item_data in _resources:
-                resources_item = ServiceInstallAlignmentResource.from_dict(resources_item_data)
+                resources_item = ServiceInstallResourceSyncStatusResource.from_dict(resources_item_data)
 
                 resources.append(resources_item)
 
-        service_install_alignment = cls(
+        service_install_resource_sync_status = cls(
             error=error,
             resources=resources,
         )
 
-        service_install_alignment.additional_properties = d
-        return service_install_alignment
+        service_install_resource_sync_status.additional_properties = d
+        return service_install_resource_sync_status
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,11 +18,17 @@ class AppAppBranchRunConfig:
     Attributes:
         github_label (str | Unset):
         mode (AppAppBranchRunMode | Unset):
+        paths (list[str] | Unset): Paths and PathsIgnore are mutually exclusive, and neither accepts a pattern
+            starting with "!". The check on app_branch_configs.run_config enforces this;
+            AutoMigrate creates it, it is not a migration.
+        paths_ignore (list[str] | Unset):
         tag_prefix (str | Unset):
     """
 
     github_label: str | Unset = UNSET
     mode: AppAppBranchRunMode | Unset = UNSET
+    paths: list[str] | Unset = UNSET
+    paths_ignore: list[str] | Unset = UNSET
     tag_prefix: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -33,6 +39,14 @@ class AppAppBranchRunConfig:
         if not isinstance(self.mode, Unset):
             mode = self.mode.value
 
+        paths: list[str] | Unset = UNSET
+        if not isinstance(self.paths, Unset):
+            paths = self.paths
+
+        paths_ignore: list[str] | Unset = UNSET
+        if not isinstance(self.paths_ignore, Unset):
+            paths_ignore = self.paths_ignore
+
         tag_prefix = self.tag_prefix
 
         field_dict: dict[str, Any] = {}
@@ -42,6 +56,10 @@ class AppAppBranchRunConfig:
             field_dict["github_label"] = github_label
         if mode is not UNSET:
             field_dict["mode"] = mode
+        if paths is not UNSET:
+            field_dict["paths"] = paths
+        if paths_ignore is not UNSET:
+            field_dict["paths_ignore"] = paths_ignore
         if tag_prefix is not UNSET:
             field_dict["tag_prefix"] = tag_prefix
 
@@ -59,11 +77,17 @@ class AppAppBranchRunConfig:
         else:
             mode = AppAppBranchRunMode(_mode)
 
+        paths = cast(list[str], d.pop("paths", UNSET))
+
+        paths_ignore = cast(list[str], d.pop("paths_ignore", UNSET))
+
         tag_prefix = d.pop("tag_prefix", UNSET)
 
         app_app_branch_run_config = cls(
             github_label=github_label,
             mode=mode,
+            paths=paths,
+            paths_ignore=paths_ignore,
             tag_prefix=tag_prefix,
         )
 
