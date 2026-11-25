@@ -14,12 +14,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     install_id: str,
     *,
-    include_alignment: bool | Unset = True,
+    include_resource_sync_status: bool | Unset = True,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
 
-    params["include_alignment"] = include_alignment
+    params["include_resource_sync_status"] = include_resource_sync_status
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -88,22 +88,25 @@ def sync_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    include_alignment: bool | Unset = True,
+    include_resource_sync_status: bool | Unset = True,
 ) -> Response[ServiceInstallOverviewResponse | StderrErrResponse]:
     """install overview
 
-     Returns branch tracking, config drift, and per-resource alignment for an install. runs_behind counts
-    successful app branch runs with newer app configurations on the tracked branch relative to the
-    install's selected app_config_id, excluding previews and no-config-change runs. It is omitted when
-    selected branch provenance is unknown. successful_runs includes the newest 50 successful runs with
-    their associated commits, ordered by run creation time. commits_behind and pending_commits are
-    deprecated aliases of runs_behind and successful_runs. config_drift compares applied app config IDs
-    for compatibility. alignment compares resources against the selected app config's builds and
-    relevant inputs, separating changes not applied from state drift detected by scans.
+     Returns branch tracking, config drift, and per-resource sync status for an install. The desired app
+    branch run is the run that produced the install's selected app_config_id, and the applied app branch
+    run is the run that produced the app config it last applied. runs_behind counts successful runs
+    after the applied app branch run, up to and including the desired app branch run, excluding
+    previews, no-config-change runs, and runs that reproduce the applied configuration. It is omitted
+    when the desired app config has no recorded app branch run. successful_runs includes the newest 50
+    runs behind with their associated commits, ordered by run creation time. commits_behind and
+    pending_commits are deprecated aliases of runs_behind and successful_runs. config_drift compares
+    applied app config IDs for compatibility. resource_sync_status compares resources against the
+    selected app config's builds and relevant inputs, separating changes not applied from state drift
+    detected by scans.
 
     Args:
         install_id (str):
-        include_alignment (bool | Unset):  Default: True.
+        include_resource_sync_status (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,7 +118,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        include_alignment=include_alignment,
+        include_resource_sync_status=include_resource_sync_status,
     )
 
     response = client.get_httpx_client().request(
@@ -129,22 +132,25 @@ def sync(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    include_alignment: bool | Unset = True,
+    include_resource_sync_status: bool | Unset = True,
 ) -> ServiceInstallOverviewResponse | StderrErrResponse | None:
     """install overview
 
-     Returns branch tracking, config drift, and per-resource alignment for an install. runs_behind counts
-    successful app branch runs with newer app configurations on the tracked branch relative to the
-    install's selected app_config_id, excluding previews and no-config-change runs. It is omitted when
-    selected branch provenance is unknown. successful_runs includes the newest 50 successful runs with
-    their associated commits, ordered by run creation time. commits_behind and pending_commits are
-    deprecated aliases of runs_behind and successful_runs. config_drift compares applied app config IDs
-    for compatibility. alignment compares resources against the selected app config's builds and
-    relevant inputs, separating changes not applied from state drift detected by scans.
+     Returns branch tracking, config drift, and per-resource sync status for an install. The desired app
+    branch run is the run that produced the install's selected app_config_id, and the applied app branch
+    run is the run that produced the app config it last applied. runs_behind counts successful runs
+    after the applied app branch run, up to and including the desired app branch run, excluding
+    previews, no-config-change runs, and runs that reproduce the applied configuration. It is omitted
+    when the desired app config has no recorded app branch run. successful_runs includes the newest 50
+    runs behind with their associated commits, ordered by run creation time. commits_behind and
+    pending_commits are deprecated aliases of runs_behind and successful_runs. config_drift compares
+    applied app config IDs for compatibility. resource_sync_status compares resources against the
+    selected app config's builds and relevant inputs, separating changes not applied from state drift
+    detected by scans.
 
     Args:
         install_id (str):
-        include_alignment (bool | Unset):  Default: True.
+        include_resource_sync_status (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -157,7 +163,7 @@ def sync(
     return sync_detailed(
         install_id=install_id,
         client=client,
-        include_alignment=include_alignment,
+        include_resource_sync_status=include_resource_sync_status,
     ).parsed
 
 
@@ -165,22 +171,25 @@ async def asyncio_detailed(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    include_alignment: bool | Unset = True,
+    include_resource_sync_status: bool | Unset = True,
 ) -> Response[ServiceInstallOverviewResponse | StderrErrResponse]:
     """install overview
 
-     Returns branch tracking, config drift, and per-resource alignment for an install. runs_behind counts
-    successful app branch runs with newer app configurations on the tracked branch relative to the
-    install's selected app_config_id, excluding previews and no-config-change runs. It is omitted when
-    selected branch provenance is unknown. successful_runs includes the newest 50 successful runs with
-    their associated commits, ordered by run creation time. commits_behind and pending_commits are
-    deprecated aliases of runs_behind and successful_runs. config_drift compares applied app config IDs
-    for compatibility. alignment compares resources against the selected app config's builds and
-    relevant inputs, separating changes not applied from state drift detected by scans.
+     Returns branch tracking, config drift, and per-resource sync status for an install. The desired app
+    branch run is the run that produced the install's selected app_config_id, and the applied app branch
+    run is the run that produced the app config it last applied. runs_behind counts successful runs
+    after the applied app branch run, up to and including the desired app branch run, excluding
+    previews, no-config-change runs, and runs that reproduce the applied configuration. It is omitted
+    when the desired app config has no recorded app branch run. successful_runs includes the newest 50
+    runs behind with their associated commits, ordered by run creation time. commits_behind and
+    pending_commits are deprecated aliases of runs_behind and successful_runs. config_drift compares
+    applied app config IDs for compatibility. resource_sync_status compares resources against the
+    selected app config's builds and relevant inputs, separating changes not applied from state drift
+    detected by scans.
 
     Args:
         install_id (str):
-        include_alignment (bool | Unset):  Default: True.
+        include_resource_sync_status (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -192,7 +201,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         install_id=install_id,
-        include_alignment=include_alignment,
+        include_resource_sync_status=include_resource_sync_status,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -204,22 +213,25 @@ async def asyncio(
     install_id: str,
     *,
     client: AuthenticatedClient,
-    include_alignment: bool | Unset = True,
+    include_resource_sync_status: bool | Unset = True,
 ) -> ServiceInstallOverviewResponse | StderrErrResponse | None:
     """install overview
 
-     Returns branch tracking, config drift, and per-resource alignment for an install. runs_behind counts
-    successful app branch runs with newer app configurations on the tracked branch relative to the
-    install's selected app_config_id, excluding previews and no-config-change runs. It is omitted when
-    selected branch provenance is unknown. successful_runs includes the newest 50 successful runs with
-    their associated commits, ordered by run creation time. commits_behind and pending_commits are
-    deprecated aliases of runs_behind and successful_runs. config_drift compares applied app config IDs
-    for compatibility. alignment compares resources against the selected app config's builds and
-    relevant inputs, separating changes not applied from state drift detected by scans.
+     Returns branch tracking, config drift, and per-resource sync status for an install. The desired app
+    branch run is the run that produced the install's selected app_config_id, and the applied app branch
+    run is the run that produced the app config it last applied. runs_behind counts successful runs
+    after the applied app branch run, up to and including the desired app branch run, excluding
+    previews, no-config-change runs, and runs that reproduce the applied configuration. It is omitted
+    when the desired app config has no recorded app branch run. successful_runs includes the newest 50
+    runs behind with their associated commits, ordered by run creation time. commits_behind and
+    pending_commits are deprecated aliases of runs_behind and successful_runs. config_drift compares
+    applied app config IDs for compatibility. resource_sync_status compares resources against the
+    selected app config's builds and relevant inputs, separating changes not applied from state drift
+    detected by scans.
 
     Args:
         install_id (str):
-        include_alignment (bool | Unset):  Default: True.
+        include_resource_sync_status (bool | Unset):  Default: True.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -233,6 +245,6 @@ async def asyncio(
         await asyncio_detailed(
             install_id=install_id,
             client=client,
-            include_alignment=include_alignment,
+            include_resource_sync_status=include_resource_sync_status,
         )
     ).parsed

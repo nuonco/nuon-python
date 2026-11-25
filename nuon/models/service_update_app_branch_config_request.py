@@ -15,9 +15,7 @@ T = TypeVar("T", bound="ServiceUpdateAppBranchConfigRequest")
 class ServiceUpdateAppBranchConfigRequest:
     """
     Attributes:
-        ignore_changes_regex (None | str | Unset): IgnoreChangesRegex marks a run not-attempted when every changed file
-            path in
-            it matches this RE2 pattern. Send an empty string to clear it.
+        ignore_changes_regex (None | str | Unset): Deprecated: use run_config.paths or run_config.paths_ignore.
         send_statuses_on_ignore (bool | None | Unset): SendStatusesOnIgnore posts a successful commit status for ignored
             runs.
     """

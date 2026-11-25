@@ -25,10 +25,7 @@ class ServiceCreateAppBranchConfigRequest:
     Attributes:
         clear_preview_config (bool | Unset):
         connected_github_vcs_config (HelpersConnectedGithubVCSConfigRequest | Unset):
-        ignore_changes_regex (None | str | Unset): IgnoreChangesRegex marks a run not-attempted when every changed file
-            path in
-            it matches this RE2 pattern. Omit to carry the current setting forward; send
-            an empty string to clear it.
+        ignore_changes_regex (None | str | Unset): Deprecated: use run_config.paths or run_config.paths_ignore.
         install_groups (list[ServiceInstallGroupRequest] | Unset):
         post_deploy_runbook_ids (list[str] | Unset): PostDeployRunbookIDs run on each install, in order, after its
             deploy succeeds.

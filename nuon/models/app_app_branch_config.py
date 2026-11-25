@@ -32,10 +32,7 @@ class AppAppBranchConfig:
         created_at (str | Unset):
         created_by_id (str | Unset):
         id (str | Unset):
-        ignore_changes_regex (str | Unset): IgnoreChangesRegex is an RE2 pattern matched against every changed file path
-            in a git-run or git-preview run. When every changed file matches, the run is
-            marked not-attempted instead of building and deploying. Empty disables the
-            check, and a forced run bypasses it.
+        ignore_changes_regex (str | Unset): Deprecated: use run.paths or run.paths_ignore.
         install_groups (list[AppAppBranchInstallGroup] | Unset):
         install_update_policy (str | Unset): InstallUpdatePolicy is unused. A new run always supersedes an open install
             update. The column stays so existing rows do not need a migration.
